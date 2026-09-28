@@ -15,135 +15,231 @@
     "matching": "label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country; candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
     "idNote": "Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.",
     "counts": {
-      "existing": 0,
+      "existing": 3,
       "renamed": 0,
       "merged": 0,
       "abandoned": 0,
-      "unknown": 3
+      "unknown": 0
     },
     "targets": 3,
-    "networkRequests": 0
+    "networkRequests": 3
   },
   "villages": {
     "ro/banat/caras-severin/anina": {
       "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
+        "commune": "Caraș-Severin County",
+        "communeQid": "Q187925",
+        "county": "Caraș-Severin County",
+        "countyQid": "Q187925",
+        "countyRo": "Caraș-Severin"
       },
       "cached": false,
-      "candidates": [],
-      "coord": null,
+      "candidates": [
+        "Q548502"
+      ],
+      "coord": {
+        "lat": 45.091666666,
+        "lng": 21.853333333
+      },
       "county": "Caraș-Severin",
       "countyHistorical": "Krassó-Szörény",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 1.4,
       "evidence": [
-        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+        "Q548502 score 21: county matches; 1.4 km from gazetteer coordinate; type score 3 (town in Romania)"
       ],
       "gazetteerSource": "gazetteer",
       "id": "ro/banat/caras-severin/anina",
-      "inception": null,
-      "instanceOf": [],
+      "inception": "1773-01-01",
+      "instanceOf": [
+        {
+          "label": "town in Romania",
+          "qid": "Q16858213"
+        }
+      ],
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
       "name": "Anina",
       "nameHistorical": "Stájerlakanina",
       "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
+        "aliasesDe": [
+          "Stájerlakanina"
+        ],
+        "aliasesHu": [
+          "Anina",
+          "Erlental",
+          "Steierdorf",
+          "Stájerdorf"
+        ],
+        "aliasesRo": [
+          "Erlental",
+          "Steierdorf",
+          "Stájerlakanina"
+        ],
+        "en": "Anina",
         "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
+        "hu": "Stájerlakanina",
+        "native": [
+          "Anina",
+          "Steierdorf",
+          "Stájerlakanina"
+        ],
+        "ro": "Anina"
       },
-      "population": null,
-      "qid": null,
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 5521
+      },
+      "qid": "Q548502",
       "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q548502"
     },
     "ro/banat/caras-severin/bocsa": {
       "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
+        "commune": "Caraș-Severin County",
+        "communeQid": "Q187925",
+        "county": "Caraș-Severin County",
+        "countyQid": "Q187925",
+        "countyRo": "Caraș-Severin"
       },
       "cached": false,
-      "candidates": [],
-      "coord": null,
+      "candidates": [
+        "Q75504"
+      ],
+      "coord": {
+        "lat": 45.374722222,
+        "lng": 21.710555555
+      },
       "county": "Caraș-Severin",
       "countyHistorical": "Krassó-Szörény",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 0.5,
       "evidence": [
-        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+        "Q75504 score 21: county matches; 0.5 km from gazetteer coordinate; type score 3 (town in Romania)"
       ],
       "gazetteerSource": "gazetteer",
       "id": "ro/banat/caras-severin/bocsa",
-      "inception": null,
-      "instanceOf": [],
+      "inception": "1333-01-01",
+      "instanceOf": [
+        {
+          "label": "town in Romania",
+          "qid": "Q16858213"
+        }
+      ],
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
       "name": "Bocșa",
       "nameHistorical": "Boksánbánya",
       "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
+        "aliasesDe": [
+          "Németbogsán"
+        ],
+        "aliasesHu": [
+          "Deutsch-Bokschan",
+          "Németbogsán"
+        ],
+        "aliasesRo": [
+          "Bocşa",
+          "Bocșa Montană",
+          "Bokschan",
+          "Boksánbánya",
+          "Deutsch-Bokschan",
+          "Németbogsán"
+        ],
+        "en": "Bocșa",
         "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
+        "hu": "Boksánbánya",
+        "native": [
+          "Bocșa",
+          "Bokschan",
+          "Boksánbánya"
+        ],
+        "ro": "Bocșa"
       },
-      "population": null,
-      "qid": null,
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 12949
+      },
+      "qid": "Q75504",
       "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q75504"
     },
     "ro/banat/caras-severin/bozovici": {
       "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
+        "commune": "Bozovici",
+        "communeQid": "Q5065812",
+        "county": "Caraș-Severin County",
+        "countyQid": "Q187925",
+        "countyRo": "Caraș-Severin"
       },
       "cached": false,
-      "candidates": [],
-      "coord": null,
+      "candidates": [
+        "Q4952890",
+        "Q5065812",
+        "Q848684"
+      ],
+      "coord": {
+        "lat": 44.93333333,
+        "lng": 22
+      },
       "county": "Caraș-Severin",
       "countyHistorical": "Krassó-Szörény",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 0.7,
       "evidence": [
-        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+        "Q848684 score 21: county matches; 0.7 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5065812 score 18: county matches; 1.3 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
       "gazetteerSource": "gazetteer",
       "id": "ro/banat/caras-severin/bozovici",
-      "inception": null,
-      "instanceOf": [],
+      "inception": "1484-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
       "name": "Bozovici",
       "nameHistorical": "Bozovics",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
+        "aliasesRo": [
+          "Bozovici, Caraş-Severin",
+          "Bozovici, caraş-severin",
+          "Bozovici, caraș-severin",
+          "Comuna Bozovici, Caraş-Severin"
+        ],
+        "en": "Bozovici",
         "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
+        "hu": "Bozovics",
+        "native": [
+          "Bozovici"
+        ],
+        "ro": "Bozovici"
       },
-      "population": null,
-      "qid": null,
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1853
+      },
+      "qid": "Q848684",
       "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q848684"
     }
   }
 }

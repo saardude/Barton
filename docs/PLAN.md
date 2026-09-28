@@ -140,6 +140,22 @@ border year auto-selection by trip date, village status badges, citations visibl
 Data-gate note (from QA): the 95 % county-resolution gate applies to records whose locality is
 in present-day Romania, not to the 13,000 Hungarian records of the Bartók System.
 
+## Decisions log
+
+| # | Decision | Rationale |
+| --- | --- | --- |
+| D1 | URL params: comma lists (`genre=colinda,joc`), place params carry schema path ids (`county=ro/crisana/bihor`) | Matches QA tests; ids are stable across renames |
+| D2 | `county` and `performance` are single-valued; villages, genres, styles, instruments are multi | The place tree is a drill-down; QA to adjust AC-03 and AC-07 |
+| D3 | Default `country=ro` with a country switch to `all` | Romania focus without discarding the rest |
+| D4 | History: pushState for filter changes, replaceState while typing in search | Back button restores filters (AC-22); ARCHITECTURE.md updated to match |
+| D5 | Fonts self-hosted via `@fontsource/ibm-plex-sans` and `-mono`; no Google Fonts in the app | Keeps the CSP tight and works offline |
+| D6 | Tiles: CARTO Positron with OpenStreetMap fallback | Quieter base under data; both already in the CSP |
+| D7 | Map markers are accessible `<button>` divIcons; switch to canvas only above ~2,000 visible markers | Keyboard and screen-reader access first |
+| D8 | Source link text priority: referenceCode, then system position, then site + number; always links to `source.url` | Academic integrity requirement |
+| D9 | Style sort uses collator order on the verbatim style string | No controlled vocabulary for style in the sources |
+| D10 | UI in English; Romanian and Hungarian shown as secondary labels for facets, genres and place names | Wireframe language; sources are HU/RO |
+| D11 | Crawl of systems.zti.hu proceeds with `--ignore-robots` at the owner's instruction, 1 req/s, cached | Owner decision 2026-09-28; recommend requesting an export from ZTI |
+
 ## Open decisions for the owner
 
 1. Mirror notation images and audio, or link out to the source pages? (Legal and storage.)

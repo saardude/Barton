@@ -64,7 +64,9 @@ export function parseCollectionLabel(label) {
   // Date part ends at the first ". " after a 4-digit year, or at ", " after "yyyy" in "March 1907, Nyitra county".
   let dateRaw = null;
   let place = rest;
-  const m = rest.match(/^(.*?\b1[89]\d\d\b[^.,]*)[.,]\s+(.*)$/) || rest.match(/^(.*?\b1[89]\d\d\.)\s*(.*)$/);
+  // Hungarian year-first form: "1914. április 3–10. Felső-Maros mente", "1915. január–február. Rákoskeresztúr"
+  const hu = rest.match(/^(1[89]\d\d\.\s*[a-záéíóöőúüű]+(?:[–-][a-záéíóöőúüű]+)?(?:\s*\d{1,2}(?:[–-]\d{1,2})?)?)\.?\s+(.*)$/i);
+  const m = hu || rest.match(/^(.*?\b1[89]\d\d\b[^.,]*)[.,]\s+(.*)$/) || rest.match(/^(.*?\b1[89]\d\d\.)\s*(.*)$/);
   if (m) {
     dateRaw = clean(m[1].replace(/\.$/, ''));
     place = clean(m[2]) || null;

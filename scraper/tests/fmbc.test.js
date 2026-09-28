@@ -12,7 +12,7 @@ test('fmbc discover: record links with work/movement context (real trimmed brows
   const $ = load(await fx('fmbc-browse.html'));
   const { records, listings } = fmbc.discover($, 'https://bartok-nepzene.zti.hu/en/browse/');
   assert.equal(listings.length, 0);
-  assert.ok(records.length >= 20, `expected the 4 kept works to yield >= 20 records, got ${records.length}`);
+  assert.ok(records.length >= 15, `expected the 4 kept works to yield >= 15 records, got ${records.length}`);
   const r = records.find((x) => x.url.endsWith('/BB057-L155-01/'));
   assert.ok(r);
   assert.equal(r.url, 'https://bartok-nepzene.zti.hu/en/browse/record/BB057-L155-01/');

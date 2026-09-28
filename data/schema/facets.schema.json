@@ -4,24 +4,92 @@
   "title": "Facets",
   "description": "facets.json: for each facet, a map of value -> number of songs. Keys are sorted. Null values are counted under the key 'null'.",
   "type": "object",
-  "required": ["_meta", "genre", "style", "performance", "instrument", "year", "country", "region", "county", "collector", "site"],
+  "required": [
+    "_meta",
+    "genre",
+    "style",
+    "performance",
+    "instrument",
+    "year",
+    "country",
+    "region",
+    "county",
+    "village",
+    "collector",
+    "ethnicity",
+    "site"
+  ],
   "properties": {
     "_meta": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["songCount", "sites"],
+      "required": [
+        "songCount",
+        "sites"
+      ],
       "properties": {
-        "songCount": { "type": "integer", "minimum": 0 },
-        "sites": { "$ref": "#/$defs/countMap" },
-        "builtWith": { "type": ["string", "null"] }
+        "songCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sites": {
+          "$ref": "#/$defs/countMap"
+        },
+        "builtWith": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
+    },
+    "genre": {
+      "$ref": "#/$defs/countMap"
+    },
+    "style": {
+      "$ref": "#/$defs/countMap"
+    },
+    "performance": {
+      "$ref": "#/$defs/countMap"
+    },
+    "instrument": {
+      "$ref": "#/$defs/countMap"
+    },
+    "year": {
+      "$ref": "#/$defs/countMap"
+    },
+    "country": {
+      "$ref": "#/$defs/countMap"
+    },
+    "region": {
+      "$ref": "#/$defs/countMap"
+    },
+    "county": {
+      "$ref": "#/$defs/countMap"
+    },
+    "village": {
+      "$ref": "#/$defs/countMap"
+    },
+    "collector": {
+      "$ref": "#/$defs/countMap"
+    },
+    "ethnicity": {
+      "$ref": "#/$defs/countMap"
+    },
+    "site": {
+      "$ref": "#/$defs/countMap"
     }
   },
-  "additionalProperties": { "$ref": "#/$defs/countMap" },
+  "additionalProperties": {
+    "$ref": "#/$defs/countMap"
+  },
   "$defs": {
     "countMap": {
       "type": "object",
-      "additionalProperties": { "type": "integer", "minimum": 0 }
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
     }
   }
 }

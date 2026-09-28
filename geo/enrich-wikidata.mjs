@@ -18,6 +18,17 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+
+// Node's built-in fetch ignores HTTPS_PROXY unless NODE_USE_ENV_PROXY=1 (Node >= 22.21).
+// In proxied environments re-run ourselves with it set, so the script works unchanged.
+if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_USE_ENV_PROXY && !process.env.BARTON_NO_REEXEC) {
+  const r = spawnSync(process.execPath, process.argv.slice(1), {
+    stdio: 'inherit',
+    env: { ...process.env, NODE_USE_ENV_PROXY: '1', BARTON_NO_REEXEC: '1' }
+  });
+  process.exit(r.status ?? 1);
+}
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..');
@@ -176,12 +187,13 @@ function buildQuery(t) {
     parts.push(`{ ?item rdfs:label ${sparqlString(a)}@ro . BIND("alias-gazetteer-ro" AS ?via) }`);
   }
   return `
-SELECT ?item ?via ?inst ?coord ?labelRo ?labelHu ?labelEn ?native ?dissolved ?inception ?replacedBy ?replacedByLabel
+SELECT ?item ?via ?inst ?instLabel ?isSettlement ?coord ?labelRo ?labelHu ?labelEn ?native ?dissolved ?inception ?replacedBy ?replacedByLabel
        ?pop ?popTime ?county ?countyLabel ?countyLabelRo ?parent ?parentLabel ?officialName ?officialEnd ?aliasRo ?aliasHu ?aliasDe
 WHERE {
   ${parts.join('\n  UNION\n  ')}
   ?item wdt:P17 wd:${country} .
   ?item wdt:P31 ?inst .
+  BIND(EXISTS { ?inst wdt:P279* wd:Q486972 } AS ?isSettlement)
   OPTIONAL { ?item wdt:P625 ?coord }
   OPTIONAL { ?item rdfs:label ?labelRo FILTER(LANG(?labelRo) = "ro") }
   OPTIONAL { ?item rdfs:label ?labelHu FILTER(LANG(?labelHu) = "hu") }
@@ -246,14 +258,19 @@ function groupCandidates(bindings) {
   for (const b of bindings) {
     const id = qid(b.item.value);
     const c = byItem.get(id) || {
-      qid: id, via: new Set(), inst: new Set(), coord: null, labelRo: null, labelHu: null, labelEn: null,
+      qid: id, via: new Set(), inst: new Set(), instLabels: {}, settlementClasses: new Set(), coord: null, labelRo: null, labelHu: null, labelEn: null,
       native: new Set(), dissolved: null, inception: null, replacedBy: null, replacedByLabel: null,
       pops: [], counties: new Map(), parent: null, parentLabel: null, officialNames: [],
       aliasRo: new Set(), aliasHu: new Set(), aliasDe: new Set()
     };
     const v = (k) => (b[k] ? b[k].value : null);
     if (v('via')) c.via.add(v('via'));
-    if (v('inst')) c.inst.add(qid(v('inst')));
+    if (v('inst')) {
+      const iq = qid(v('inst'));
+      c.inst.add(iq);
+      if (v('instLabel') && !/^Q\d+$/.test(v('instLabel'))) c.instLabels[iq] = v('instLabel');
+      if (v('isSettlement') === 'true' || SETTLEMENT_CLASSES[iq]) c.settlementClasses.add(iq);
+    }
     if (!c.coord && v('coord')) c.coord = parsePoint(v('coord'));
     c.labelRo = c.labelRo || v('labelRo');
     c.labelHu = c.labelHu || v('labelHu');
@@ -287,9 +304,10 @@ function countyMatches(c, t) {
 
 function typeScore(c, t) {
   const inst = c.inst;
-  const isVillage = inst.has('Q532') || inst.has('Q3558970') || inst.has('Q5084');
+  const isVillage = inst.has('Q532') || inst.has('Q3558970') || inst.has('Q5084') || inst.has('Q34841063') || /\b(village|hamlet)\b/.test(Object.values(c.instLabels).join(' | ').toLowerCase());
   const isCommune = inst.has('Q659103');
-  const isTown = inst.has('Q640364') || inst.has('Q3685430') || inst.has('Q3957') || inst.has('Q515') || inst.has('Q15921247') || inst.has('Q34842776') || inst.has('Q16898115');
+  const labels = Object.values(c.instLabels).join(' | ').toLowerCase();
+  const isTown = inst.has('Q640364') || inst.has('Q3685430') || inst.has('Q3957') || inst.has('Q515') || inst.has('Q15921247') || inst.has('Q34842776') || inst.has('Q16898115') || inst.has('Q16858213') || /\b(town|city|municipality)\b/.test(labels);
   const want = t.type || 'village';
   if (want === 'village' || want === 'hamlet') return isVillage ? 3 : isTown ? 1 : isCommune ? 0 : 1;
   if (want === 'town' || want === 'city') return isTown ? 3 : isVillage ? 1 : 0;
@@ -298,11 +316,11 @@ function typeScore(c, t) {
 }
 
 function pickCandidate(cands, t) {
-  const settlements = cands.filter((c) => [...c.inst].some((q) => SETTLEMENT_CLASSES[q]));
+  const settlements = cands.filter((c) => c.settlementClasses.size > 0);
   const evidence = [];
   if (!cands.length) return { match: null, evidence: ['no Wikidata item with this label (ro) or historical label (hu) in the country'] };
   if (!settlements.length) {
-    return { match: null, evidence: [`label matched ${cands.length} item(s) but none is a settlement class: ${cands.map((c) => c.qid + ' [' + [...c.inst].join(',') + ']').join('; ')}`] };
+    return { match: null, evidence: [`label matched ${cands.length} item(s) but none is a human settlement (P31/P279* Q486972): ${cands.map((c) => c.qid + ' [' + [...c.inst].map((q) => c.instLabels[q] || q).join(', ') + ']').join('; ')}`] };
   }
   const scored = settlements.map((c) => {
     let score = 0;
@@ -319,7 +337,7 @@ function pickCandidate(cands, t) {
     }
     const ts = typeScore(c, t);
     score += ts;
-    why.push('type score ' + ts + ' (' + [...c.inst].map((q) => SETTLEMENT_CLASSES[q] || q).join(', ') + ')');
+    why.push('type score ' + ts + ' (' + [...c.inst].map((q) => c.instLabels[q] || SETTLEMENT_CLASSES[q] || q).join(', ') + ')');
     if (c.via.has('label-ro')) score += 2;
     if (c.via.has('label-hu')) score += 1;
     return { c, score, why, km };
@@ -403,7 +421,7 @@ function record(t, picked, allCands, fromCache) {
     inception: c.inception ? c.inception.slice(0, 10) : null,
     replacedBy: c.replacedBy ? { qid: c.replacedBy, label: c.replacedByLabel } : null,
     population: latestPopulation(c.pops),
-    instanceOf: [...c.inst].sort().map((q) => ({ qid: q, label: SETTLEMENT_CLASSES[q] || null })),
+    instanceOf: [...c.inst].sort().map((q) => ({ qid: q, label: c.instLabels[q] || SETTLEMENT_CLASSES[q] || null })),
     matchedVia: [...c.via].sort()
   };
 }

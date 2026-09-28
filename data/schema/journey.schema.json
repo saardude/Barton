@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bartok-romania.local/schema/journey.schema.json",
+  "title": "Journey",
+  "description": "One reconstructed field trip of Bela Bartok, derived from dated song records by geo/derive-journeys.mjs as specified in docs/JOURNEY-SPEC.md. journeys.json is { _meta, journeys: Journey[] } with journeys sorted by id. Nothing here is asserted beyond what the record dates and places support; every inferred value carries a confidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "collector", "dateStart", "dateEnd", "dateConfidence", "days", "departure", "stops", "distanceKm", "recordCount", "facts", "songIds", "derivation"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^J-[0-9]{4}-(0[1-9]|1[0-2]|00)-[0-9]{2}$",
+      "description": "J-YYYY-MM-nn: year and month of the first stop, nn = 01-based sequence within that month. Fuzzy trips with no known month use MM = 00."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["route", "cluster"],
+      "description": "route = every record has a full date, stops are ordered in time and drawn as a polyline. cluster = only year or year+month known; stops are unordered and drawn as a cluster hull, no polyline."
+    },
+    "collector": { "type": "string", "description": "Collector name as printed on the records (normalised, e.g. 'Bartok Bela')." },
+    "dateStart": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$", "description": "ISO date, month or year of the first record." },
+    "dateEnd": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$", "description": "ISO date, month or year of the last record." },
+    "dateConfidence": { "type": "string", "enum": ["day", "month", "year"], "description": "Finest date precision shared by all records in the trip." },
+    "days": { "type": ["integer", "null"], "minimum": 1, "description": "Inclusive length in days for route trips; null for clusters." },
+    "departure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "lat", "lng", "confidence", "note"],
+      "properties": {
+        "name": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "confidence": { "type": "string", "enum": ["documented", "assumed"], "description": "'assumed' means the configured default (Budapest, Bartok's home base) was used; the UI labels it as such." },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+    "stops": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["seq", "placeId", "village", "villageHistorical", "county", "countyHistorical", "country", "lat", "lng", "arrival", "departure", "recordCount", "songIds", "kmFromPrevious", "locationConfidence"],
+        "properties": {
+          "seq": { "type": "integer", "minimum": 1, "description": "1-based order along the route; for clusters the order is alphabetical by village and carries no temporal meaning." },
+          "placeId": { "type": ["string", "null"], "description": "location.placeId of the records, when resolved." },
+          "village": { "type": ["string", "null"] },
+          "villageHistorical": { "type": ["string", "null"] },
+          "county": { "type": ["string", "null"] },
+          "countyHistorical": { "type": ["string", "null"] },
+          "country": { "type": ["string", "null"] },
+          "lat": { "type": ["number", "null"] },
+          "lng": { "type": ["number", "null"] },
+          "arrival": { "type": "string", "description": "Earliest record date at this stop (ISO date, month or year)." },
+          "departure": { "type": "string", "description": "Latest record date at this stop." },
+          "recordCount": { "type": "integer", "minimum": 1 },
+          "songIds": { "type": "array", "items": { "type": "string" } },
+          "kmFromPrevious": { "type": ["number", "null"], "description": "Great-circle distance from the previous stop (or from the departure point for seq 1); null for clusters or when coordinates are missing." },
+          "locationConfidence": { "type": "string", "enum": ["resolved", "unresolved"], "description": "unresolved stops have no coordinates and are listed but not drawn." }
+        }
+      }
+    },
+    "distanceKm": { "type": ["number", "null"], "description": "Sum of kmFromPrevious over resolved stops (departure -> first stop -> ... -> last stop); the return leg is not included. null for clusters." },
+    "recordCount": { "type": "integer", "minimum": 1 },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["villages", "counties", "countiesHistorical", "ethnicGroups", "instruments", "genres", "performers"],
+      "properties": {
+        "villages": { "type": "integer", "minimum": 0, "description": "Distinct resolved villages (stops with a placeId or village name)." },
+        "counties": { "type": "array", "items": { "type": "string" }, "description": "Distinct modern counties, sorted." },
+        "countiesHistorical": { "type": "array", "items": { "type": "string" }, "description": "Distinct historical counties as printed, sorted." },
+        "ethnicGroups": { "$ref": "#/$defs/countMap", "description": "performer.ethnicity -> record count." },
+        "instruments": { "$ref": "#/$defs/countMap", "description": "instrument -> record count." },
+        "genres": { "$ref": "#/$defs/countMap" },
+        "performers": { "type": "integer", "minimum": 0, "description": "Distinct performer names (null names not counted)." }
+      }
+    },
+    "songIds": { "type": "array", "items": { "type": "string" }, "description": "All record ids in the trip, sorted." },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gapDays", "jumpKm", "splitReasons", "generator"],
+      "properties": {
+        "gapDays": { "type": "integer", "description": "Configured maximum gap between consecutive dated records within one trip (default 10)." },
+        "jumpKm": { "type": "number", "description": "Configured maximum distance between stops on consecutive days before a split (default 250)." },
+        "splitReasons": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["start", "gap", "jump", "precision", "year", "collector"] },
+          "description": "Why this trip starts where it does: 'start' for the first trip, 'gap' for a > gapDays gap, 'jump' for a > jumpKm move on consecutive days, 'precision' when the date precision changed, 'year' for a new year in fuzzy trips."
+        },
+        "generator": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "countMap": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+  }
+}

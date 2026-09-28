@@ -71,7 +71,7 @@ interface): `songById`, `placeById`, `childrenOf(placeId)`, `ancestorsOf(placeId
 | `/`                   | Explorer            | phone layout under 768 px is the Phone explorer (section 10)          |
 | `/county/:countyId`   | County drill-down   | `:countyId` is the place id path, e.g. `/county/ro/crisana/bihor`; `?tab=` plus Query |
 | `/song/:songId`       | Song record         | `?tab=record|raw` plus Query (so back returns to the same list)       |
-| `/journeys`           | Journey mapper      | section 14; `?journey=`, `?date=`, `?borders=` plus Query             |
+| `/journeys`           | Journey mapper      | section 14; `?trip=`, `?stop=`, `?date=`, `?borders=` plus Query      |
 | `/about`              | About and sources   | static text, attribution, glossary                                    |
 | anything else         | NotFound            | `<title>` "Not found", link to `/` (AC-32, E2E-11)                    |
 
@@ -97,9 +97,10 @@ interface Query {
   dir: 'asc' | 'desc';
   page: number;              // 1-based
   unmapped?: boolean;        // extension: only songs without coordinates (MAP-SPEC section 8)
-  journey?: string;          // extension: journey id (section 14)
+  trip?: string;             // extension: journey (trip) id (section 14)
+  stop?: number;             // extension: selected stop number within the trip, 1-based
   date?: string;             // extension: 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD' (section 14)
-  borders?: 'then' | 'now' | 'both';  // extension: border layer on the journey map
+  borders?: '1910' | '1920' | 'now' | 'both';  // extension: border layer on the journey map
 }
 const DEFAULT_QUERY: Query = {
   q: '', country: 'ro', genre: [], style: [], instrument: [], sort: 'title', dir: 'asc', page: 1,
@@ -116,14 +117,15 @@ Invariants (enforced by `setQuery`, never by callers):
   and keeps the levels above.
 - `country` defaults to `ro` (AC-01). The country switch in the place tree sets another
   country id or `all`; `all` means no country constraint.
-- Any change other than `page`, `sort`, `dir`, `borders` resets `page` to 1.
+- Any change other than `page`, `sort`, `dir`, `borders`, `stop` resets `page` to 1.
 - Array facets are deduplicated and sorted: genre by the fixed genre order, style and
   instrument by `roBase` collation (section 5) so the canonical string is stable.
 - `yearFrom <= yearTo` when both are set; if the user inverts them they are swapped.
 - Ids that do not exist in the catalogue are dropped on decode and recorded in the
   decoder's `warnings` array (QA 3.1); nothing throws.
-- `journey`, `date` and `borders` are only meaningful on `/journeys` but survive on other
-  routes so that a link back keeps the journey selected.
+- `trip`, `stop`, `date` and `borders` are only meaningful on `/journeys` but survive on
+  other routes so that a link back keeps the trip selected. `stop` is dropped when `trip`
+  changes or is cleared.
 
 ### 3.1 URL codec
 
@@ -148,9 +150,10 @@ and encoding, in canonical order:
 | dir          | `dir`      | omitted when `asc`                                                                           |
 | page         | `page`     | omitted when 1                                                                               |
 | unmapped     | `unmapped` | `unmapped=1`; omitted when false                                                             |
-| journey      | `journey`  | journey id                                                                                   |
+| trip         | `trip`     | trip id (AC-39)                                                                              |
+| stop         | `stop`     | integer, 1-based stop number; only with `trip` (AC-39)                                       |
 | date         | `date`     | `YYYY`, `YYYY-MM` or `YYYY-MM-DD`                                                            |
-| borders      | `borders`  | `then`, `now` or `both`; omitted when it equals the default for the route (section 14.3)    |
+| borders      | `borders`  | `1910`, `1920`, `now` or `both` (AC-40); omitted when it equals the default for the state (section 14.3) |
 
 Rules:
 
@@ -185,7 +188,7 @@ Rules:
 - `useCatalog(): { status: 'loading' | 'ready' | 'error'; error?: Error; songs; places;
   facets; journeys?; villages?; contextEvents?; index; retry() }`.
 - `useQuery(): [query: Query, setQuery: (patch: Partial<Query>) => void, reset: () => void]`;
-  `reset` clears everything except `sort`, `dir`, `borders` (AC-11).
+  `reset` clears everything except `sort`, `dir`, `borders` (AC-11); on `/journeys` it also keeps `trip`.
 - `useDerived(): Derived` (section 4), memoised on `[query, catalogue]`. Above 5,000
   records the filtering step runs in the worker and returns ids; the selectors are written
   as pure functions over ids so both paths share code.
@@ -234,7 +237,7 @@ type Counts = Map<string, number>;
 - `predicates.year`: `collected.year` between `yearFrom` and `yearTo` inclusive; null-year
   records are excluded only when at least one bound is set (AC-09).
 - `predicates.unmapped`: `location.lat` or `location.lng` is null (only when `query.unmapped`).
-- `predicates.journey`: id is in the selected journey's `songIds` (section 14).
+- `predicates.journey`: id is in the selected trip's `songIds` (section 14).
 - **facetCounts**: for facet F, count values over the songs that satisfy every predicate
   except F (AC-05, QA 3.3). Values with count 0 are still listed; the UI disables them.
   The sum of genre counts equals the size of the set filtered by everything except genre.
@@ -309,7 +312,8 @@ canonical query string in mono (`--fs-11`), "Copy link" (copies `location.href`,
 **ExportButton** `{ songs: Song[]; query: Query }` (AC-21): downloads
 `bartok-romania-<N>-<yyyymmdd>.json` containing `{ query: canonicalString, count, generatedAt,
 attribution, records }` with `records` in display order and each record byte-identical to
-`songs.json` (sorted keys). Disabled when N = 0; when the serialised size exceeds 10 MB a
+`songs.json` (sorted keys), and `attribution` = the footer text plus the three database
+URLs (section 15). Disabled when N = 0; when the serialised size exceeds 10 MB a
 confirm dialog ("This export is about 14 MB. Download?") precedes the download. Built with
 a `Blob` and an object URL that is revoked after the click.
 
@@ -322,7 +326,7 @@ rendered on NotFound and the error state.
 padding, 44 px on touch. "Clear all filters" is last. Order: place (deepest only, "Bihor
 (Bihar)" or "Beiuș, Bihor" for a village per AC-04), genre..., style..., performance,
 instrument..., year ("1909-1912", "from 1909", "to 1912"), q ("\"text\""), unmapped,
-journey. Removing a chip moves focus to the next chip or to "Clear all".
+trip. Removing a chip moves focus to the next chip or to "Clear all".
 
 **GenreSwatch** `{ genre: GenreId | null; size?: 8 | 12 }`: coloured square, `aria-hidden`;
 the genre name is always adjacent as text. Null genre renders the hatched "other" swatch.
@@ -431,9 +435,9 @@ focusing a row highlights its village dot (`MapPanel` receives `highlightPlaceId
 
 **SongRow** `{ song; place?; showPlace?: boolean }`: link to `/song/:id?<query>`. Line 1:
 title or "Untitled" (`--fs-14 --fw-medium`) with genre swatch; line 2 `--fs-12 --muted`:
-village (historical) / county, year or "n.d.", `source.referenceCode` in mono; right edge:
-icons for `media.audio.length > 0` and `media.notation.length > 0` with visually hidden
-text. Min height 56 px; the whole row is the target.
+village (historical) / county, year or "n.d.", then the `SourceLink` (section 15); right
+edge: icons for `media.audio.length > 0` and `media.notation.length > 0` with visually
+hidden text. Min height 56 px; the title link covers the row except the source link.
 
 **Interactions on the Explorer**
 
@@ -482,7 +486,7 @@ sticky header, zebra rows with `--surface-2`.
 Tab panels:
 
 - **MelodiesTable** `{ songs; sort; onSort }`: Title (link), Genre, Performance, Village,
-  Year, Source (`referenceCode` mono), audio / notation icons. Column sort writes `sort` /
+  Year, Source (`SourceLink`, section 15), audio / notation icons. Column sort writes `sort` /
   `dir` into the Query for title / style / location / year / source; `genre` and `village`
   are local. 50 rows per page with `Pagination`.
 - **ByGenrePanel** `{ genreCounts; total; onPick(genre) }`: one row per genre: swatch,
@@ -522,7 +526,8 @@ goes to `/` (or the county page it came from, via `state.from`) with the Query; 
 Explorer restores the scroll position of the list from `sessionStorage`.
 
 **SongHeader** `{ song }`: title `--fs-36` (falls back to `incipit`, then "Untitled" with
-the reference code), incipit under it in `--fs-16` italic when distinct, then a
+the reference code), `SourceLink size="header"` with the database name directly under the
+title (section 15), incipit under it in `--fs-16` italic when distinct, then a
 `role="list"` of link chips: genre with swatch, performance, style, each instrument; each
 links to the Explorer with only that facet set (`/?genre=colinda`).
 
@@ -561,7 +566,7 @@ section, uppercase mono headings; a row is omitted when its value is null.
 | Who / when     | Performer, Age, Sex, Ethnicity (as stated by the source), Collector, Date (`collected.raw`), Year                                                  |
 | Music          | Genre (with `genreRaw` in mono when it differs), Performance, Style, Instruments, System position, Cadences, Rhythm, Mode, Ambitus, Syllables, Form |
 | In Bartók's works | one row per `composition[]` item: "{work}, {movement}" with catalogue number in mono (site 1 only; section omitted when empty)                   |
-| Source         | Reference (`referenceCode`, mono), Volume, Number, Database (human name of `source.site`), "Open record on zti.hu" (`target="_blank" rel="noopener noreferrer"`, AC-33), Record id (mono) |
+| Source         | Reference (`SourceLink`), Volume, Number, Database (human name of `source.site`), "Open record on {site}" (`target="_blank" rel="noopener noreferrer"`, AC-33, AC-36), Record id (mono) |
 
 **RawJson** `{ value: Song }`: `<pre><code>` of the record with sorted keys, 2-space
 indent, deep-equal to `songs.json` including `rawFields` (AC-20); "Copy JSON" button;
@@ -659,16 +664,20 @@ Touch specifics: rows 44 px min, inputs 16 px font, 44 px slider thumbs, tree ro
 
 ## 14. Journey mapper
 
-Route `/journeys`. Reconstructs each of Bartók's field trips from the record dates and
-shows it as a route on the map with the borders of the time, the stops in order, what was
-recorded at each stop, and a dated context strip with citations. Everything shown comes
-from data files; the UI adds no interpretation (see the copy rule in UI-COPY section 13).
+Route `/journeys` (wireframe artboard 5). Shows each of Bartók's field trips, reconstructed
+by the data agent from the record dates (AC-38: dated records grouped while the gap between
+successive dates is 10 days or less), as a route on the map with the borders of the time,
+the stops in order, what was recorded at each stop, and a dated context strip with
+citations. Everything shown comes from data files; the UI adds no interpretation (copy
+rule in UI-COPY section 13). ACCEPTANCE-CRITERIA.md AC-38 to AC-44 are the contract;
+PLAN.md names `JOURNEY-SPEC.md` (data derivation) and `GEO-SOURCES.md` (attribution),
+which this section does not duplicate.
 
 ### 14.1 Data (assumed shapes; reconcile with the schemas the data agent writes)
 
 ```ts
-interface Journey {
-  id: string;                       // "j-1909-07-bihor"
+interface Journey {                 // one trip; `trip` in the URL
+  id: string;                       // "t-1909-07-bihor"
   label: string;                    // "Bihor, July 1909"
   dateFrom: string; dateTo: string; // ISO dates; precision says how much of them is known
   precision: 'day' | 'month' | 'year';
@@ -678,6 +687,7 @@ interface Journey {
   stops: JourneyStop[];             // ordered
   distanceKm?: number;              // null when any leg is unresolved
   songIds: string[];
+  unmapped: { songId: string; reason: 'no-date' | 'place-not-located' }[];   // AC-42
   notes?: string;                   // how the trip was reconstructed, from the data agent
 }
 interface JourneyStop {
@@ -705,22 +715,27 @@ interface ContextEvent {            // context-events.json
 }
 ```
 
-Border files (MAP-SPEC section 11): `data/geo/borders-1910.geo.json`,
-`data/geo/borders-1920.geo.json`, `data/geo/borders-now.geo.json`.
+Border files (MAP-SPEC section 11): `data/geo/borders-1910.json`, `data/geo/borders-1920.json`,
+`data/geo/borders-now.json`, optionally `borders-1914.json` (PLAN.md); the UI treats any
+`borders-<year>.json` in the manifest as an era, so adding one needs no UI change.
+Records with a year but no month belong to no trip and are listed under "Unmapped" on the
+timeline (AC-38, AC-42).
 
 ### 14.2 Derived (`derived.journey`)
 
 ```ts
 interface JourneyDerived {
   journeys: Journey[];                 // all, sorted by dateFrom
-  selected?: Journey;                  // by query.journey, or the journey containing query.date
-  atDate?: string;                     // query.date when no journey matches it
-  bordersDefault: 'then' | 'now';      // 'then' when a journey or date is selected, else 'now'
-  bordersEpoch: '1910' | '1920';       // from the trip's dateFrom: < 1920-06-04 -> 1910, else 1920
-  route: RouteLeg[];                   // legs between resolved points, each { from, to, kind: 'assumed' | 'known' | 'return', fuzzy }
-  stops: (JourneyStop & { status?: VillageStatus; resolved: boolean })[];
-  unresolvedStops: number;
-  events: ContextEvent[];              // context events within [dateFrom - 1 year, dateTo + 1 year], plus those listing the journey id
+  selected?: Journey;                  // by query.trip, or the trip containing query.date
+  selectedStop?: number;               // query.stop when it exists in the trip
+  atDate?: string;                     // query.date when no trip matches it
+  era: '1910' | '1920';                // from dateFrom (or query.date): before 1918-01-01 -> '1910', else '1920' (AC-40)
+  bordersDefault: '1910' | '1920' | 'now';   // the era when a trip or date is selected, else 'now'
+  route: RouteLeg[];                   // legs between resolved points, each { from, to, kind: 'assumed' | 'known' | 'return', fuzzy, km? }
+  stops: (JourneyStop & { status: VillageStatus['status']; statusNote?: string; resolved: boolean })[];  // 'unknown' when absent from villages.json (AC-41)
+  unmapped: { song: Song; reason: 'no-date' | 'place-not-located' }[];   // AC-42
+  events: ContextEvent[];              // cited events within [dateFrom - 2 years, dateTo + 2 years] (AC-43); uncited events never shown
+  unmappedTrips: { song: Song; reason: 'no-date' }[];   // year-only records, the timeline's "Unmapped" section
 }
 ```
 
@@ -730,12 +745,13 @@ apply (a genre filter dims stops with no matching songs rather than removing the
 
 ### 14.3 Query and URL
 
-Fields `journey`, `date`, `borders` (section 3). Rules: setting `journey` clears `date`;
-setting `date` clears `journey` unless a journey contains that date, in which case the
-journey is set instead. `borders` is omitted from the URL when it equals
-`bordersDefault` for the current state; on `/journeys` with a selection the default is
-`then`. The comparison handle position (section 14.4 `BorderToggle`) is local state, not
-in the URL.
+Fields `trip`, `stop`, `date`, `borders` (section 3). Rules: setting `trip` clears `date`
+and `stop`; setting `date` clears `trip` unless a trip contains that date, in which case
+the trip is set instead; `stop` is written only while it names an existing stop of the
+trip. `borders` is omitted from the URL when it equals `bordersDefault` (the era while a
+trip or date is selected, `now` otherwise); the "Borders then" control writes the era
+value explicitly (`borders=1910` or `borders=1920`) so a shared link shows the same set
+(AC-40). The comparison handle position (`BorderToggle`) is local state, not in the URL.
 
 ### 14.4 Components
 
@@ -750,39 +766,43 @@ in the URL.
   </JourneyPanel>
 ```
 
-**JourneyTimeline** `{ journeys: Journey[]; selectedId?; date?; onSelect(id); onDate(date) }`:
+**JourneyTimeline** `{ journeys: Journey[]; selectedId?; date?; unmappedCount: number; onSelect(id); onDate(date) }`:
 an inline SVG track from the earliest to the latest `dateFrom` (years as ticks, `--fs-11`
-mono) with one marker per journey (a bar spanning `dateFrom` to `dateTo`, min width 6 px,
+mono; two labelled reference ticks at 1914 and 1920 drawn in `--line-strong`, their
+labels taken from the matching `context-events.json` entries) with one marker per trip (a bar spanning `dateFrom` to `dateTo`, min width 6 px,
 fuzzy trips hatched, selected in `--accent` with the two-ring halo). The markers are a
 `role="listbox"` (`aria-label="Journeys"`) of `role="option"` elements with
 `aria-selected`; keyboard: Left / Right (or Up / Down) move the active option, Home / End,
 Enter or Space select, Esc clears the selection; type-ahead by year digits. Next to the
 track: `<input type="date">` labelled "Go to date" (min / max from the data) and a
 `<select>` "Journey" listing every journey ("Bihor, July 1909 (38 melodies)") for people
-who prefer a list to a track. Hovering or focusing a marker shows a small card (label,
-dates, stops count, melodies count). Under 768 px the track scrolls horizontally with the
+who prefer a list to a track, and an "Unmapped (n)" button at the end of the track that
+opens the list of year-only records (AC-42). Hovering or focusing a marker shows a small
+card (label, dates, stops count, melodies count). Under 768 px the track scrolls horizontally with the
 selected marker centred, and the select is the primary control.
 
-**JourneyMap** `{ journey?: JourneyDerived; borders: 'then' | 'now' | 'both'; epoch; selectedStop?; onStop(order); highlightStop? }`:
+**JourneyMap** `{ journey?: JourneyDerived; borders: '1910' | '1920' | 'now' | 'both'; era; selectedStop?; onStop(order); highlightStop? }`:
 `MapView` with the route and border layers of MAP-SPEC section 11; fits to the route
 bounds (departure included) when a journey is selected, else to Romania. Stop markers are
 numbered buttons (Tab order = stop order), `aria-label="Stop 3 of 9: Belényes (1909), now
 Beiuș; 12 melodies, 3 to 5 July 1909"`, `aria-pressed` when selected. `[` and `]` move
 between stops when the map has focus.
 
-**BorderToggle** `{ value: 'then' | 'now' | 'both'; epoch: '1910' | '1920'; opacity: number; onChange; onOpacity }`:
-a `role="radiogroup"` of three 44 px buttons "Borders then ({epoch})", "Borders now",
-"Compare", and in Compare mode an `<input type="range" min=0 max=100>` labelled
+**BorderToggle** `{ value: '1910' | '1920' | 'now' | 'both'; era: '1910' | '1920'; opacity: number; onChange; onOpacity }`:
+a `role="radiogroup"` of three 44 px buttons "Borders then ({era})", "Borders now",
+"Compare", plus, when the data ships more than one historical set, an "Era" `<select>`
+(1910 / 1920) so the user can override the automatic choice; and in Compare mode an `<input type="range" min=0 max=100>` labelled
 "Comparison: then / now" that drives both the swipe position (a vertical divider across the
 map, MAP-SPEC 11.4) and, when the user prefers, the opacity of the "then" layer (a second
 toggle "Swipe / Fade"). The range input is the keyboard path; dragging the on-map handle
-writes back to it. The epoch is chosen automatically from the trip date and is stated in
-the button text; a `title` explains "1910 counties and the Austria-Hungary frontier" /
-"1920 borders after the Treaty of Trianon".
+writes back to it. The era is chosen automatically from the trip date (before 1918: 1910;
+from 1918: 1920, AC-40) and is stated in the button text and the legend; a `title`
+explains "1910 counties and the Austria-Hungary frontier" / "1920 borders after the Treaty
+of Trianon".
 
 **JourneyHeader** `{ journey }`: label `--fs-24`, dates (formatted to the precision:
-"3 to 21 July 1909", "July 1909", "1909, approximate"), "n stops, m melodies, k km"
-(distance omitted when null), departure line "Departure: Budapest (assumed)" with the
+"3 to 21 July 1909", "July 1909", "1909, approximate"), "n stops, m unmapped records"
+(AC-42) and "k melodies, d km" (distance omitted when null), departure line "Departure: Budapest (assumed)" with the
 `assumed` marker, `ExportButton` for the journey's songs, "Copy link".
 
 **StopList** `{ stops; selectedOrder?; onSelect(order); onHover(order | undefined) }`: an
@@ -793,7 +813,11 @@ the button text; a `title` explains "1910 counties and the Austria-Hungary front
 instruments. Rows are buttons (`aria-pressed`); Enter selects and pans the map; Up / Down
 move; hovering highlights the marker. Unresolved stops (no coordinates) show "location
 unknown" and are not drawn, but keep their number. Departure and return are the first and
-last items, styled as endpoints, with "(assumed)" when flagged.
+last items, styled as endpoints, with "(assumed)" when flagged. Each row ends with a
+"n records" disclosure listing each record's title and its `SourceLink` (section 15).
+After the stops, an "Unmapped (n)" section lists the trip's records with no usable date or
+no located place, each with the reason ("no date", "place not located") and its
+`SourceLink` (AC-42); they stay in the header count.
 
 **VillageStatusBadge** `{ status: VillageStatus['status']; mergedInto?; note? }`: a text
 badge (uppercase mono `--fs-11`, `--border-strong`, no colour coding) reading "existing",
@@ -803,9 +827,10 @@ present. Never colour-only.
 **ContextStrip** `{ events: ContextEvent[]; range: [string, string] }`: a horizontal strip
 (desktop) or a vertical list (phone) of dated cards ordered by date, each: date, type
 label ("Border change", "Publication", "Statement", "Press"), title, one-sentence summary,
-and "Source: {citation.source}, {locator}" linked to `citation.url` when present
-(`rel="noopener noreferrer"`). Events inside the trip's date range are marked "during
-this trip". The strip is `role="list"`; cards are `role="listitem"`; the strip scrolls
+and the citation "Source: {author}, {title} ({year}), {locator}" linked to `citation.url`
+when present (`rel="noopener noreferrer"`). Only events dated within the trip's start
+minus 2 years to its end plus 2 years are shown, and an event without a citation is never
+rendered (AC-43). Events inside the trip's date range are marked "during this trip". The strip is `role="list"`; cards are `role="listitem"`; the strip scrolls
 horizontally with Left / Right when a card is focused. A footer line reads "Context
 entries are quoted from the cited sources and are listed for chronology only." Copy rule:
 the UI never adds adjectives, judgements or summaries of its own to an event; it shows the
@@ -820,12 +845,12 @@ It is also the whole map replacement when tiles and the SVG fallback are both un
 
 | Action                               | Effect                                                                      |
 |--------------------------------------|-----------------------------------------------------------------------------|
-| select a journey (timeline, select)  | `journey` set, `date` cleared, map fits the route, panel fills, results narrow |
+| select a trip (timeline, select)     | `trip` set, `date` and `stop` cleared, map fits the route, panel fills, results narrow |
 | pick a date                          | journey containing it selected, else `date` set and the map shows borders for that date with all stops of that year dimmed |
-| click a stop (map, list)             | stop selected (local state), map pans, list scrolls, card shows            |
-| click a stop again                   | deselect                                                                    |
+| click a stop (map, list)             | `stop=<n>` set (pushState), marker highlighted, list scrolls, card shows (AC-39) |
+| click a stop again                   | `stop` cleared                                                              |
 | "Show melodies" on a stop            | `/` with `village` set to the stop's placeId and `journey` kept              |
-| Borders then / now / compare         | `borders`; compare shows the handle                                          |
+| Borders then / now / compare         | `borders=1910|1920|now|both`; compare shows the handle                        |
 | genre etc. chips (from the shell)    | still apply; stops with no matching songs render dimmed with "0 of n"        |
 | Export JSON                          | the journey's songs in stop order                                            |
 
@@ -843,26 +868,73 @@ both, and the compare handle has a visible focus ring.
 
 | State                                   | Behaviour                                                                                                    |
 |-----------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| `journeys.json` missing or empty        | `EmptyState` "No journeys could be reconstructed: no dated records." + "Back to explorer"; the nav entry stays |
-| no journey selected                     | timeline and map (Romania, borders now) with the prompt "Pick a journey on the timeline or enter a date"; panel shows the list of journeys as cards |
-| date with no journey                    | map shows borders for that date; panel says "No journey on {date}. Nearest: {label} ({from})" with a link      |
+| `journeys.json` missing or empty        | `EmptyState` "No trips could be reconstructed: no dated records." + "Back to explorer"; the nav entry stays |
+| no trip selected                        | timeline and map (Romania, borders now) with the prompt "Pick a trip on the timeline or enter a date"; panel shows the list of trips as cards |
+| date with no trip                       | map shows the era's borders for that date; panel says "No trip on {date}. Nearest: {label} ({from})" with a link |
 | trip with unresolved coordinates        | route drawn between resolved stops only; a dashed gap marker "n stops without coordinates" in the legend; unresolved stops listed with "location unknown"; if fewer than 2 resolved points, no route and the notice "Route cannot be drawn: fewer than two located stops" |
 | fuzzy trip                              | header badge "approximate dates", route dotted, stops ordered by best-known date then by source order         |
 | assumed departure                       | "(assumed)" on the endpoint and a dashed first leg; the legend explains it                                     |
 | no context events in range              | strip shows "No context entries for this period."                                                            |
-| filters remove every song of a journey  | stops all dimmed; header "0 of n melodies match the active filters" with "Clear all filters"                  |
+| filters remove every song of a trip     | stops all dimmed; header "0 of n melodies match the active filters" with "Clear all filters"                  |
+| year-only records (no trip)             | listed under "Unmapped (n)" on the timeline with the reason "no date" and a `SourceLink` each (AC-42)          |
 | border files fail to load               | map without border layers; toggle disabled with "Border layers unavailable"                                   |
 
 ### 14.8 Phone layout
 
-Under 768 px: `PhoneHeader` (masthead + "Journey" select), the timeline as a horizontal
+Under 768 px: `PhoneHeader` (masthead + "Trip" select), the timeline as a horizontal
 scroller (56 px), then bottom tabs Map / Stops / Context. Map tab: `JourneyMap` full
 height with `BorderToggle` collapsed into a single 44 px "Borders" button that opens a small
 sheet (then / now / compare + range). Stops tab: `JourneyHeader` + `StopList`. Context
 tab: `ContextStrip` as a vertical list. Tapping a stop marker opens a bottom sheet with
 the stop row content and "Show melodies".
 
-## 15. Open decisions for the orchestrator
+## 15. Cross-cutting: source identifiers and attribution (AC-36, AC-37)
+
+Owner requirement, academic integrity. Every catalogued record is traceable to the
+original record on the source database from wherever it appears, and every page says
+where the data comes from.
+
+**SourceLink** `{ song: Pick<Song, 'source' | 'music'>; size?: 'row' | 'header' }`: renders
+the record's source identifier as visible text followed by an external-link icon, as one
+`<a href={song.source.url} target="_blank" rel="noopener noreferrer">`. The text is
+`source.referenceCode`; when that is null, `music.systemPosition`; when both are null,
+`source.number` prefixed by the site's short name ("FMBC 5398"); never empty (the record
+id is the last resort). The icon is `aria-hidden`; the link's `aria-label` is "Open
+original record on {site name}" where the site name is the database's human name (UI-COPY
+section 9: "Folk Music in Bartók's Compositions", "The Bartók System", "Béla Bartók, the
+Ethnomusicologist"). The identifier text is mono `--fs-12` (`--fs-14` in the song header),
+underlined like every link, colour `--accent`; the hit area is at least 24 x 24 px on fine
+pointers and 44 px on touch. Inside a result row the `SourceLink` is a sibling of the
+title link, not nested in it (the row is a `<li>` holding both), so both stay separately
+focusable and the row's click target excludes the source link.
+
+Where it appears (each is required):
+
+| Place                                  | Component                                      | Form                                                            |
+|----------------------------------------|------------------------------------------------|-----------------------------------------------------------------|
+| Explorer results row                   | `SongRow` line 2, right of the year            | `SourceLink size="row"`                                          |
+| County melodies table                  | `MelodiesTable` "Source" column                | `SourceLink size="row"`; the column is never hidden, also in phone cards |
+| Song record header                     | `SongHeader` under the title                   | `SourceLink size="header"` followed by the database name as visible text |
+| Song metadata rail                     | `RailSection id="source"` "Reference" row      | `SourceLink` plus the "Open record on {site}" row (both to `source.url`) |
+| Related melodies rows                  | `SongRow`                                      | as the results row                                               |
+| Journey stop list                      | `StopList` record disclosure and Unmapped list | `SourceLink size="row"` per record                              |
+| Export JSON                            | `ExportButton`                                 | every record keeps `source.url`, `source.referenceCode`, `music.systemPosition` verbatim; the top-level `attribution` field carries the footer text and the three database URLs |
+| Map hover card / point sheet           | aggregate, no record ids                       | "Show melodies" leads to rows that carry the link                |
+
+Rules: the link is never an icon alone and never hidden behind hover; it is present in
+the DOM at every viewport; `source.url` is used exactly as stored; if `source.url` were
+missing (the schema requires it) the text renders without a link and the data gate reports
+the record.
+
+**Attribution footer** (`Footer`, AC-37): rendered on every route including `/journeys`,
+NotFound and the catalogue error state, on desktop and phone, in the DOM before data
+loads. It contains the attribution sentence to HUN-REN BTK Institute for Musicology,
+Budapest, the three database links (UI-COPY section 12) with `rel="noopener noreferrer"`,
+the map credits, and on `/journeys` the historical GIS credits (MAP-SPEC 11.6,
+GEO-SOURCES.md). On the phone the footer sits below the list content, above the bottom
+tabs' safe area, never overlapped by them.
+
+## 16. Open decisions for the orchestrator
 
 1. URL param names follow the QA assumptions: `perf`, `instr`, `from`, `to`, and comma
    lists for arrays (not repeated params). QA-PLAN and ACCEPTANCE-CRITERIA already test
@@ -872,7 +944,8 @@ the stop row content and "Show melodies".
 3. `county` and `performance` stay single-valued as in the brief's `Query`; AC-03
    ("selecting a second county adds it") and AC-07 (multiple performance chips) assume
    multi-select. One of the two documents must change.
-4. `unmapped`, `journey`, `date`, `borders` extend the specified `Query` shape.
+4. `unmapped`, `trip`, `stop`, `date`, `borders` extend the specified `Query` shape, with
+   the journey names taken from AC-39 and AC-40 (`trip`, `stop`, `borders=1910|1920|now|both`).
 5. Default country is `ro` (AC-01) with a country switch; `country=all` removes it.
 6. History policy follows AC-22 (replace for typing, push for other changes), not
    ARCHITECTURE.md's "replace for filters".
@@ -886,4 +959,8 @@ the stop row content and "Show melodies".
    spacing (MAP-SPEC).
 10. The UI is English; Romanian and Hungarian appear as secondary labels, not as a locale
     switch (PLAN.md open decision 3).
-11. Journey data shapes in 14.1 are assumptions until the data agent publishes schemas.
+11. Journey data shapes in 14.1 are assumptions until the data agent publishes schemas
+    and `JOURNEY-SPEC.md`; the era cutoff (1918-01-01 per AC-40) and the 10-day split
+    rule (PLAN.md open decision 5) are the data agent's to confirm.
+12. `SourceLink` text order (referenceCode, then systemPosition, then site + number) is
+    for the owner to confirm; Bartók System records have both, and the header shows both.

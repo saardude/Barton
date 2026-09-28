@@ -10,14 +10,15 @@ export const SITE_NAMES = {
   gyuj: 'Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)'
 };
 
-// Order matters: the first matching rule wins. Patterns are tested on the folded label.
+// Order matters: the first matching rule wins. Stems are matched at a word start on the folded
+// label (no trailing boundary, so "lakodalmas", "colinde", "jocuri" all match).
 const GENRE_RULES = [
-  ['nunta', /\b(nunta|nunti|nuntii|wedding|lakodalm|bridal|mireas|menyasszony|hora miresii|cantec de nunta)\b/],
-  ['colinda', /\b(colind|colinde|colinda|carol|karacsony|christmas|kolinda|kolenda|koleda|star song|cantec de stea|turca)\b/],
-  ['bocet', /\b(bocet|bocete|lament|dirge|sirato|halott|funeral|mourning|cantec de mort|zori|zorile|siratoenek)\b/],
-  ['doina', /\b(doina|doine|hora lunga|dojna|cantec lung|long song|parlando song)\b/],
-  ['joc', /\b(joc|jocuri|dance|tanc|tancdal|tancdallam|ardeleana|invartita|hora|sarba|sirba|batuta|briu|briul|pe loc|de doi|mananjelul|manaea|instrumental dance|dance tune)\b/],
-  ['cantec', /\b(cantec|cantece|song|dal|nepdal|lied|enek|cantec propriu zis|proper song|ballad|balada|lullaby|leganat|cantec de leagan|de dragoste|de jale|de catanie|soldier)\b/]
+  ['nunta', /\b(nunt|wedding|lakodalm|bridal|mireas|menyasszony|hora miresii)/],
+  ['colinda', /\b(colind|carol|karacsony|christmas|kolind|kolend|koled|star song|cantec de stea|turca)/],
+  ['bocet', /\b(bocet|lament|dirge|sirat|halott|funeral|mourning|cantec de mort|zori)/],
+  ['doina', /\b(doin|hora lung|dojn|cantec lung|long song|parlando song)/],
+  ['joc', /\b(joc|dance|tanc|ardelean|invartit|hora|sarb|sirb|batut|briu|pe loc|de doi|mananjel|manae)/],
+  ['cantec', /\b(cantec|song|dal\b|nepdal|lied|enek|ballad|balad|lullaby|legana|de dragoste|de jale|de catanie|soldier)/]
 ];
 
 /** Map a site genre label to the controlled vocabulary. null only when the label is empty. */

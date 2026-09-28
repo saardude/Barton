@@ -311,3 +311,124 @@ duplicate asset.
   better match for the county ids; geoBoundaries is the alternative and requires a credit.
 - D4: Map click on a county narrows the Explorer; the County page is reached through the
   explicit "Open county page" action, not by a map click.
+- D5: Journey border layers use `clip-path` on Leaflet panes for the swipe, a custom
+  arrow layer, and lazily loaded GeoJSON; no extra Leaflet plugins beyond markercluster.
+- D6: Border sets are keyed by year (`1910`, `1920`, optional `1914`) as AC-40 expects, and
+  the era cutoff is 1918-01-01 (AC-40), not the Trianon date; the data agent confirms.
+
+## 11. Journey mapper layers
+
+Used by `JourneyMap` on `/journeys` (FRONTEND-SPEC section 14) and by its phone variant.
+The base map, controls, focus model and SVG fallback are the same as above; this section
+adds the route, stop and border layers. Acceptance: AC-39 to AC-44.
+
+### 11.1 Layer order
+
+Bottom to top: tiles (filtered greyscale as in section 1), border fills "now", border
+fills "then", border lines "now", border lines "then", compare divider, route casing, route
+line, direction arrows, dimmed explorer dots (optional, off by default), stop markers,
+selected stop, hover card. Each is its own Leaflet pane so z-order never depends on
+insertion order: `pane-borders-now` 410, `pane-borders-then` 415, `pane-route` 430,
+`pane-stops` 440 (Leaflet's marker pane is 600 and is not used here).
+
+### 11.2 Route
+
+- Geometry: one polyline per leg between consecutive resolved points, in order: departure
+  -> stop 1 -> ... -> stop n -> return. Great-circle interpolation is unnecessary at this
+  scale; straight segments in Web Mercator. Legs whose either end is unresolved are not
+  drawn; the gap is shown by a small "n stops without coordinates" note in the legend and
+  by the numbering jump on the markers.
+- Style, light mode: casing 5 px `--surface` at 90% opacity under a 2.5 px `--accent`
+  line, `lineJoin: round`, `lineCap: round`. Dark mode: casing `--ground`, line `--accent`
+  (dark accent). Contrast of the accent line against the filtered tiles is at least 3:1
+  in both modes because the tile pane is desaturated and lightened (light) or darkened
+  (dark); the casing guarantees separation over any tile.
+- Leg kinds: `known` solid; `assumed` (departure or return flagged `assumed: true`)
+  dashed `8 6`; the whole route of a `fuzzy` trip dotted `2 6`; the return leg at 60%
+  opacity. The legend names all three patterns.
+- Direction arrows: an arrowhead every 96 px of screen length (recomputed on `zoomend`),
+  drawn as `divIcon` markers (12 px SVG chevron in `--accent` with a 1 px `--surface`
+  outline) rotated to the leg bearing; `interactive: false`, `aria-hidden`. Not drawn on
+  legs shorter than 48 px on screen. (Implementation: a small custom layer; do not add
+  `leaflet-polylinedecorator` unless the custom one proves harder than 60 lines.)
+- Distance label: none on the map; the km figure lives in the header and the stop list.
+
+### 11.3 Stop markers
+
+- Marker: `divIcon` with a `<button>`; a 26 px circle, fill `--surface`, 1.5 px stroke
+  `--ink`, the stop number centred in mono `--fs-12` `--fw-medium` `--ink` (12.6:1).
+  Departure and return: 18 px squares with "D" / "R" in `--fs-11`. Tab order = stop order.
+  Hover: stroke 2.5 px; selected (`query.stop`): the two-ring halo of section 3.4 and
+  `zIndexOffset` 1000. Stops with no melodies matching the active filters render at 45%
+  opacity with the number still legible; the `aria-label` adds "0 of n melodies match the
+  filters".
+- Two stops at the same coordinates (a place visited twice) are offset by 8 px along the
+  route bearing so both numbers show; the hover card lists both visits.
+- Hover / focus card: number, "Belényes (1909) -> Beiuș (today)" with `lang` spans,
+  `VillageStatusBadge`, modern county, dates, "12 melodies", top three genres, stated
+  ethnicities, instruments, "Show melodies" and "Select stop" actions (touch: bottom
+  sheet). Village status comes from `villages.json`; missing entries show "status unknown"
+  (AC-41).
+- No clustering on this map. If a trip has more than 60 stops, numbers are hidden below
+  zoom 8 and shown again above it.
+
+### 11.4 Border layers
+
+Data: `data/geo/borders-<era>.json` (1910, 1920, optionally 1914) and `borders-now.json`,
+GeoJSON `FeatureCollection`s with `properties.kind` = `state` | `county` and
+`properties.name` (plus `nameHistorical` where relevant). Simplified for the web (target
+< 250 KB each); loaded lazily on first visit to `/journeys` and cached for the session.
+
+| Set   | Fill                                      | Line, counties                                   | Line, state frontier                              |
+|-------|-------------------------------------------|--------------------------------------------------|---------------------------------------------------|
+| then  | `--ink` at 6% (light) / `--ink` at 8% (dark) | 1.5 px `--ink-2`, dash `6 4`                    | 2.5 px `--ink`, dash `10 4 2 4` (long-short)      |
+| now   | `--accent` at 5% (light) / 7% (dark)       | 1 px `--line-strong`, solid                      | 2 px `--line-strong`, solid                       |
+
+Line styles differ by dash pattern, weight and colour, so the two sets are separable in
+greyscale and with reduced colour vision; the legend shows the actual line samples. Fills
+stay under 10% so tiles and the route remain readable; polygons are non-interactive
+(`interactive: false`) except for a `title`-less hover that shows the county name in the
+legend's "under pointer" line (then-name and now-name side by side, "Bihar (1910) /
+Bihor (now)").
+
+Modes (`borders` in the URL, AC-40): `1910` or `1920` shows only that "then" set; `now`
+only the modern set; `both` shows both with the compare control:
+
+- Compare, swipe: a vertical divider (2 px `--ink`, handle 44 x 44 px at mid-height with a
+  double-chevron icon) clips the "then" panes to its left and the "now" panes to its right
+  using `clip-path` on the pane elements (updated on move, zoom and resize). The handle is
+  the visual twin of the `<input type="range">` in `BorderToggle`; dragging it writes the
+  range value, and arrow keys on the range move the divider 2% per step (10% with Shift).
+- Compare, fade: the same range sets the opacity of the "then" panes from 0 to 1 over the
+  "now" panes; no clipping.
+- The default era is picked from the trip date (before 1918: 1910; from 1918: 1920). The
+  legend title reads "Borders 1910 (Kingdom of Hungary counties)", "Borders 1920 (after
+  Trianon)", "Borders now (states and județe)" or "Comparing 1910 and now".
+
+### 11.5 Legend and controls
+
+`JourneyLegend` (bottom-left) lists: route line (solid known, dashed assumed, dotted
+approximate, lighter return), arrow meaning, stop marker sample, departure / return
+square, the active border set(s) with their line samples, and, when relevant, "n stops
+without coordinates". Controls: zoom in / out, "Fit to route", `BorderToggle` (top-right),
+"List route (n stops)" disclosure after the map (the ordered-list fallback, AC-44).
+
+### 11.6 Attribution
+
+The map's attribution control shows, in addition to the tile and county credits: "Historical
+borders: <dataset name>, <licence>" for each loaded era file, with the text taken from each
+file's `properties.attribution` at the collection level so the credit always matches the
+data actually shipped. Expected sources per PLAN.md: historical-basemaps (aourednik,
+CC BY-SA 4.0), GISta Hungarorum (1910 counties), Natural Earth (public domain); the
+definitive list and licence wording is `GEO-SOURCES.md`. The footer repeats the credits on
+`/journeys` (FRONTEND-SPEC section 15).
+
+### 11.7 Fallback and empty states
+
+- SVG fallback (section 9) draws the route, arrows, numbered stops and border polygons
+  with the same styles; the swipe divider becomes a fade (opacity) control only.
+- No trip selected: Romania fit, modern borders, no route; the prompt is in the panel.
+- Fewer than two resolved points: no route, markers for the resolved points only, legend
+  note "Route cannot be drawn: fewer than two located stops".
+- Border file failed to load: border layers off, `BorderToggle` disabled with "Border
+  layers unavailable", route still drawn.
