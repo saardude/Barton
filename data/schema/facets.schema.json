@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bartok-romania.local/schema/facets.schema.json",
+  "title": "Facets",
+  "description": "facets.json: for each facet, a map of value -> number of songs. Keys are sorted. Null values are counted under the key 'null'.",
+  "type": "object",
+  "required": ["_meta", "genre", "style", "performance", "instrument", "year", "country", "region", "county", "collector", "site"],
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["songCount", "sites"],
+      "properties": {
+        "songCount": { "type": "integer", "minimum": 0 },
+        "sites": { "$ref": "#/$defs/countMap" },
+        "builtWith": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "additionalProperties": { "$ref": "#/$defs/countMap" },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

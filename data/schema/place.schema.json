@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bartok-romania.local/schema/place.schema.json",
+  "title": "Place",
+  "description": "One node of the place hierarchy in places.json (country > region > county > village). places.json is an array of these nodes sorted by id; the app rebuilds the tree from `parent`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "name", "nameHistorical", "parent", "country", "region", "county", "countyHistorical", "lat", "lng", "coordSource", "counts", "years", "songIds"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Slash-joined slug path, e.g. 'ro', 'ro/crisana', 'ro/crisana/bihor', 'ro/crisana/bihor/beius'. Unresolved localities live under '<country or xx>/unresolved/<slug>'.",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+){0,3}$"
+    },
+    "type": { "type": "string", "enum": ["country", "region", "county", "village"] },
+    "name": { "type": "string", "description": "Modern name (Romanian with diacritics for RO)." },
+    "nameHistorical": { "type": ["string", "null"], "description": "Historical (usually Hungarian) name as printed on the source sites." },
+    "parent": { "type": ["string", "null"], "description": "Id of the parent node; null for a country." },
+    "country": { "type": ["string", "null"], "description": "ISO 3166-1 alpha-2, or null when unresolved." },
+    "region": { "type": ["string", "null"] },
+    "county": { "type": ["string", "null"], "description": "Modern county name." },
+    "countyHistorical": { "type": ["string", "null"] },
+    "lat": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+    "lng": { "type": ["number", "null"], "minimum": -180, "maximum": 180 },
+    "coordSource": {
+      "type": ["string", "null"],
+      "enum": ["site", "gazetteer-approx", "centroid-of-children", null],
+      "description": "Where lat/lng came from. 'gazetteer-approx' coordinates are seeds to be verified."
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "byGenre", "byPerformance", "bySite"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "byGenre": { "$ref": "#/$defs/countMap" },
+        "byPerformance": { "$ref": "#/$defs/countMap" },
+        "bySite": { "$ref": "#/$defs/countMap" }
+      }
+    },
+    "years": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": ["integer", "null"] },
+        "max": { "type": ["integer", "null"] }
+      }
+    },
+    "songIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ids of songs located directly at this node (villages only; aggregates use counts)."
+    },
+    "confidence": { "type": ["string", "null"], "enum": ["high", "medium", "low", null], "description": "Gazetteer confidence for the modern-name/coordinate match." }
+  },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    }
+  }
+}
