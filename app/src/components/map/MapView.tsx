@@ -17,9 +17,16 @@ const MAX_BOUNDS: L.LatLngBoundsLiteral = [
   [50.5, 33.0],
 ]
 
+// CARTO raster basemaps need an API key (watermarked without one). The key is public by
+// nature (it travels in tile URLs) and is set at build time from VITE_CARTO_KEY.
+const CARTO_KEY = (import.meta.env.VITE_CARTO_KEY as string | undefined) ?? ''
+const CARTO_URL = CARTO_KEY
+  ? `https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`
+  : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+
 export const TILE_PROVIDERS = {
   carto: {
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    url: CARTO_URL,
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>',
     subdomains: 'abcd',
