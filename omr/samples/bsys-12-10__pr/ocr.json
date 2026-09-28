@@ -1,0 +1,146 @@
+{
+ "engine": "rapidocr-onnxruntime",
+ "seconds": 3.4,
+ "lines": [
+  {
+   "text": "M. F. 470 c)",
+   "score": 0.997,
+   "x": 46,
+   "y": 105,
+   "h": 31
+  },
+  {
+   "text": "Gy: Vikar Bela",
+   "score": 0.985,
+   "x": 959,
+   "y": 108,
+   "h": 30
+  },
+  {
+   "text": "Felsoboldogfalva (Udvarhely)",
+   "score": 0.994,
+   "x": 44,
+   "y": 131,
+   "h": 37
+  },
+  {
+   "text": "[1903. V1. 27.]",
+   "score": 0.957,
+   "x": 1001,
+   "y": 137,
+   "h": 30
+  },
+  {
+   "text": "Peter Ignacne",
+   "score": 0.958,
+   "x": 44,
+   "y": 164,
+   "h": 32
+  },
+  {
+   "text": "L: Bartok Bela",
+   "score": 0.985,
+   "x": 972,
+   "y": 165,
+   "h": 32
+  },
+  {
+   "text": "1. E- rik a meggy - fa,",
+   "score": 0.904,
+   "x": 214,
+   "y": 325,
+   "h": 41
+  },
+  {
+   "text": "Haj - lik az",
+   "score": 0.934,
+   "x": 650,
+   "y": 333,
+   "h": 33
+  },
+  {
+   "text": "á - ga,",
+   "score": 0.839,
+   "x": 843,
+   "y": 333,
+   "h": 38
+  },
+  {
+   "text": "Ar-ra",
+   "score": 0.997,
+   "x": 262,
+   "y": 455,
+   "h": 27
+  },
+  {
+   "text": "fe-ju-ro",
+   "score": 0.955,
+   "x": 382,
+   "y": 455,
+   "h": 27
+  },
+  {
+   "text": "Szo - ke kis - lany - ka.",
+   "score": 0.947,
+   "x": 626,
+   "y": 452,
+   "h": 36
+  },
+  {
+   "text": "2.Kapd be szi-vem,kapd be",
+   "score": 0.951,
+   "x": 184,
+   "y": 572,
+   "h": 31
+  },
+  {
+   "text": "jA-kit szeretsz, kapd be,",
+   "score": 0.973,
+   "x": 619,
+   "y": 573,
+   "h": 34
+  },
+  {
+   "text": "Ezt sze-re-tem,ezt ked-ve-lem,",
+   "score": 0.966,
+   "x": 223,
+   "y": 680,
+   "h": 35
+  },
+  {
+   "text": "Ez az én é - de - sem.",
+   "score": 0.973,
+   "x": 650,
+   "y": 681,
+   "h": 34
+  },
+  {
+   "text": "[3.Arany volnek,megpendilnek,",
+   "score": 0.962,
+   "x": 407,
+   "y": 767,
+   "h": 29
+  },
+  {
+   "text": "Rozsa volnek, kivirulnek,",
+   "score": 0.978,
+   "x": 444,
+   "y": 800,
+   "h": 27
+  },
+  {
+   "text": "Allj ki szivem, allj ki!]",
+   "score": 0.971,
+   "x": 443,
+   "y": 827,
+   "h": 37
+  },
+  {
+   "text": "Ziegler Marta masolata Bartok javitasaival. Kiegeszitesek Vikar: 13/18a alapjan.  1019. Bartok: (2); javitva:",
+   "score": 0.985,
+   "x": 47,
+   "y": 929,
+   "h": 36
+  }
+ ]
+}
