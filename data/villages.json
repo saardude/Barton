@@ -15,14 +15,14 @@
     "matching": "Stage 1: label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country. Stage 2 (only when stage 1 finds no settlement): all settlements within 20 km of the gazetteer coordinate whose ro/hu label or alias equals the name after folding diacritics. Candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
     "idNote": "Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.",
     "counts": {
-      "existing": 648,
-      "renamed": 86,
+      "existing": 642,
+      "renamed": 85,
       "merged": 0,
       "abandoned": 1,
-      "unknown": 412
+      "unknown": 405
     },
-    "targets": 1147,
-    "networkRequests": 53
+    "targets": 1133,
+    "networkRequests": 7
   },
   "villages": {
     "hr/unresolved/korod": {
@@ -1372,64 +1372,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q480421"
-    },
-    "hu/unresolved/adacs": {
-      "admin": {
-        "commune": "Gyöngyös District",
-        "communeQid": "Q853127",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q506654"
-      ],
-      "coord": {
-        "lat": 47.69114,
-        "lng": 19.97465
-      },
-      "county": null,
-      "countyHistorical": "Heves",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q506654 score 4: county unknown on item; type score 1 (municipality of Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/adacs",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "municipality of Hungary",
-          "qid": "Q2590631"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Adács",
-      "nameHistorical": "Adács",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Adács",
-        "historical": [],
-        "hu": "Adács",
-        "native": [],
-        "ro": "Adács"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 2507
-      },
-      "qid": "Q506654",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q506654"
     },
     "hu/unresolved/ajak": {
       "admin": {
@@ -10379,6 +10321,47 @@
       "status": "unknown",
       "wikidataUrl": null
     },
+    "hu/unresolved/kiskomarom-galambok": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Zala",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "hu/unresolved/kiskomarom-galambok",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Kiskomárom , Galambok",
+      "nameHistorical": "Kiskomárom , Galambok",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
     "hu/unresolved/kiskomarom-kapolnapuszta": {
       "admin": {
         "commune": null,
@@ -13717,47 +13700,6 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1089284"
     },
-    "hu/unresolved/nyirvaja": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Szabolcs",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/nyirvaja",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Nyírvaja",
-      "nameHistorical": "Nyírvaja",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "hu/unresolved/nyulfalu": {
       "admin": {
         "commune": null,
@@ -14265,64 +14207,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q214945"
-    },
-    "hu/unresolved/papkeszi": {
-      "admin": {
-        "commune": "Balatonalmádi District",
-        "communeQid": "Q789244",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q1185718"
-      ],
-      "coord": {
-        "lat": 47.080638888,
-        "lng": 18.080488888
-      },
-      "county": null,
-      "countyHistorical": "Veszprém",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q1185718 score 4: county unknown on item; type score 1 (municipality of Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/papkeszi",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "municipality of Hungary",
-          "qid": "Q2590631"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Papkeszi",
-      "nameHistorical": "Papkeszi",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Papkeszi",
-        "historical": [],
-        "hu": "Papkeszi",
-        "native": [],
-        "ro": "Papkeszi"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 1384
-      },
-      "qid": "Q1185718",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q1185718"
     },
     "hu/unresolved/parad": {
       "admin": {
@@ -15330,66 +15214,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "hu/unresolved/rudabanya": {
-      "admin": {
-        "commune": "Kazincbarcika District",
-        "communeQid": "Q1043071",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q1008635"
-      ],
-      "coord": {
-        "lat": 48.375038888,
-        "lng": 20.62085
-      },
-      "county": null,
-      "countyHistorical": "Borsod",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q1008635 score 4: county unknown on item; type score 1 (town in Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/rudabanya",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "town in Hungary",
-          "qid": "Q13218690"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Rudabánya",
-      "nameHistorical": "Rudabánya",
-      "names": {
-        "aliasesDe": [
-          "Rudabanya"
-        ],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Rudabánya",
-        "historical": [],
-        "hu": "Rudabánya",
-        "native": [],
-        "ro": "Rudabánya"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 2256
-      },
-      "qid": "Q1008635",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q1008635"
-    },
     "hu/unresolved/sajoivanka": {
       "admin": {
         "commune": "Kazincbarcika District",
@@ -15608,64 +15432,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q645987"
-    },
-    "hu/unresolved/sarud": {
-      "admin": {
-        "commune": "Füzesabony District",
-        "communeQid": "Q853176",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q633429"
-      ],
-      "coord": {
-        "lat": 47.595,
-        "lng": 20.59
-      },
-      "county": null,
-      "countyHistorical": "Borsod",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q633429 score 4: county unknown on item; type score 1 (municipality of Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/sarud",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "municipality of Hungary",
-          "qid": "Q2590631"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Sarud",
-      "nameHistorical": "Sarud",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Sarud",
-        "historical": [],
-        "hu": "Sarud",
-        "native": [],
-        "ro": "Sarud"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 949
-      },
-      "qid": "Q633429",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q633429"
     },
     "hu/unresolved/sata": {
       "admin": {
@@ -16377,80 +16143,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q594757"
-    },
-    "hu/unresolved/szekszard": {
-      "admin": {
-        "commune": "Szekszárd District",
-        "communeQid": "Q668323",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q189761"
-      ],
-      "coord": {
-        "lat": 46.355833333,
-        "lng": 18.703888888
-      },
-      "county": null,
-      "countyHistorical": "Tolna",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q189761 score 4: county unknown on item; type score 1 (city with county rights, town in Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/szekszard",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "town in Hungary",
-          "qid": "Q13218690"
-        },
-        {
-          "label": "city with county rights",
-          "qid": "Q681277"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Szekszárd",
-      "nameHistorical": "Szekszárd",
-      "names": {
-        "aliasesDe": [
-          "Sechsard",
-          "Sechshard",
-          "Szekszard"
-        ],
-        "aliasesHu": [
-          "Szegszárd",
-          "Szegzárd",
-          "Szexárd"
-        ],
-        "aliasesRo": [
-          "Szekszard"
-        ],
-        "en": "Szekszárd",
-        "historical": [],
-        "hu": "Szekszárd",
-        "native": [
-          "Szekszárd"
-        ],
-        "ro": "Szekszárd"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 29337
-      },
-      "qid": "Q189761",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q189761"
     },
     "hu/unresolved/szenna": {
       "admin": {
@@ -18032,66 +17724,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q742840"
-    },
-    "hu/unresolved/tiszacsege": {
-      "admin": {
-        "commune": "Balmazújváros District",
-        "communeQid": "Q15129766",
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [
-        "Q962014"
-      ],
-      "coord": {
-        "lat": 47.7,
-        "lng": 21
-      },
-      "county": null,
-      "countyHistorical": "Hajdú",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q962014 score 4: county unknown on item; type score 1 (town in Hungary)"
-      ],
-      "gazetteerSource": "places",
-      "id": "hu/unresolved/tiszacsege",
-      "inception": null,
-      "instanceOf": [
-        {
-          "label": "town in Hungary",
-          "qid": "Q13218690"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu",
-        "label-ro"
-      ],
-      "name": "Tiszacsege",
-      "nameHistorical": "Tiszacsege",
-      "names": {
-        "aliasesDe": [
-          "Tiszacsege (Hungary)"
-        ],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Tiszacsege",
-        "historical": [],
-        "hu": "Tiszacsege",
-        "native": [],
-        "ro": "Tiszacsege"
-      },
-      "population": {
-        "asOf": "2025-01-01",
-        "value": 4237
-      },
-      "qid": "Q962014",
-      "replacedBy": null,
-      "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q962014"
     },
     "hu/unresolved/tiszakeszi": {
       "admin": {
@@ -24069,7 +23701,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1177009"
       ],
@@ -24306,7 +23938,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1082215",
         "Q12140338",
@@ -24594,7 +24226,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1096416",
         "Q5062134"
@@ -24659,7 +24291,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q757201"
       ],
@@ -24718,7 +24350,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q4684754",
         "Q724049"
@@ -25136,7 +24768,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1083018",
         "Q12129382",
@@ -25658,7 +25290,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q714085",
         "Q754305",
@@ -27509,7 +27141,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q754730"
       ],
@@ -27582,7 +27214,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Bihor",
@@ -27624,7 +27256,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Bihor",
@@ -27732,7 +27364,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q16898095",
         "Q425922",
@@ -27862,7 +27494,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1087801",
         "Q12172188"
@@ -28194,7 +27826,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q539144",
         "Q7862572"
@@ -28323,7 +27955,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q724988"
       ],
@@ -28864,71 +28496,6 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q660417"
-    },
-    "ro/crisana/salaj/kraszna": {
-      "admin": {
-        "commune": "Crasna",
-        "communeQid": "Q16427309",
-        "county": "Sălaj County",
-        "countyQid": "Q190690",
-        "countyRo": "Sălaj"
-      },
-      "cached": true,
-      "candidates": [
-        "Q1088466",
-        "Q1096661"
-      ],
-      "coord": {
-        "lat": 47.16,
-        "lng": 22.874722222
-      },
-      "county": "Sălaj",
-      "countyHistorical": "Szilágy",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "Q1096661 score 14: county matches; type score 3 (seat of the local council, village)"
-      ],
-      "gazetteerSource": "places",
-      "id": "ro/crisana/salaj/kraszna",
-      "inception": "1164-01-01",
-      "instanceOf": [
-        {
-          "label": "seat of the local council",
-          "qid": "Q34841063"
-        },
-        {
-          "label": "village",
-          "qid": "Q532"
-        }
-      ],
-      "matchStage": "label",
-      "matchedVia": [
-        "label-hu"
-      ],
-      "name": "Kraszna",
-      "nameHistorical": "Kraszna",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": "Crasna",
-        "historical": [],
-        "hu": "Kraszna",
-        "native": [
-          "Crasna",
-          "Kraszna"
-        ],
-        "ro": "Crasna"
-      },
-      "population": {
-        "asOf": "2021-12-01",
-        "value": 4241
-      },
-      "qid": "Q1096661",
-      "replacedBy": null,
-      "status": "renamed",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q1096661"
     },
     "ro/crisana/salaj/simleu-silvaniei": {
       "admin": {
@@ -29914,7 +29481,7 @@
         "countyQid": "Q165459",
         "countyRo": "Satu Mare"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1188978",
         "Q5055124"
@@ -30747,7 +30314,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Maramureș",
@@ -31136,7 +30703,7 @@
         "countyQid": "Q188813",
         "countyRo": "Maramureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q32535407",
         "Q724877"
@@ -33699,7 +33266,7 @@
         "countyQid": "Q188813",
         "countyRo": "Maramureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q10858327",
         "Q12088203",
@@ -34126,7 +33693,7 @@
         "countyQid": "Q179779",
         "countyRo": "Bacău"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1107941"
       ],
@@ -34387,7 +33954,7 @@
         "countyQid": "Q179779",
         "countyRo": "Bacău"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1007391",
         "Q15642783",
@@ -34958,7 +34525,7 @@
         "countyQid": "Q179779",
         "countyRo": "Bacău"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q543436"
       ],
@@ -36126,7 +35693,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12139311",
         "Q12139312",
@@ -36367,7 +35934,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1108275"
       ],
@@ -36411,7 +35978,7 @@
         "countyQid": "Q179779",
         "countyRo": "Bacău"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q906817"
       ],
@@ -36473,7 +36040,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q108201068",
         "Q12087502",
@@ -36695,7 +36262,7 @@
         "countyQid": "Q182888",
         "countyRo": "Iași"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12172883",
         "Q12172885"
@@ -37533,7 +37100,7 @@
         "countyQid": "Q45868",
         "countyRo": "Alba"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1014839",
         "Q1029476",
@@ -37677,7 +37244,7 @@
         "countyQid": "Q45868",
         "countyRo": "Alba"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1706759",
         "Q32752094",
@@ -38132,7 +37699,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Alba",
@@ -38418,7 +37985,7 @@
         "countyQid": "Q45868",
         "countyRo": "Alba"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1024232",
         "Q1091518",
@@ -39007,7 +38574,7 @@
         "countyQid": "Q181513",
         "countyRo": "Bistrița-Năsăud"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q5065240",
         "Q773323"
@@ -40399,7 +39966,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Cluj",
@@ -42181,7 +41748,7 @@
         "countyQid": "Q182624",
         "countyRo": "Cluj"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12113000",
         "Q12113002",
@@ -42994,7 +42561,7 @@
         "countyQid": "Q182624",
         "countyRo": "Cluj"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q719158"
       ],
@@ -43581,7 +43148,7 @@
         "countyQid": "Q182624",
         "countyRo": "Cluj"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1006721",
         "Q16896903"
@@ -45036,7 +44603,7 @@
         "countyQid": "Q188959",
         "countyRo": "Covasna"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q583332"
       ],
@@ -53959,7 +53526,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Hunedoara",
@@ -54665,7 +54232,7 @@
         "countyQid": "Q191071",
         "countyRo": "Hunedoara"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q2031984"
       ],
@@ -56237,7 +55804,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12724528",
         "Q5059386",
@@ -56658,7 +56225,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q431959"
       ],
@@ -57959,7 +57526,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q221566",
         "Q6511588"
@@ -58019,7 +57586,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Mureș",
@@ -58507,7 +58074,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12724930",
         "Q1896287",
@@ -58621,7 +58188,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q12124155",
         "Q4686608",
@@ -58755,7 +58322,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": "Mureș",
@@ -59268,7 +58835,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q1092812",
         "Q5064232"
@@ -59340,7 +58907,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": false,
+      "cached": true,
       "candidates": [
         "Q730608",
         "Q8083834"
@@ -61888,7 +61455,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -61929,7 +61496,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -61970,7 +61537,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -62988,6 +62555,47 @@
       "status": "unknown",
       "wikidataUrl": null
     },
+    "sk/unresolved/felsoszeli-pered-zsigard": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Pozsony",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "sk/unresolved/felsoszeli-pered-zsigard",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Felsőszeli , Pered , Zsigárd",
+      "nameHistorical": "Felsőszeli , Pered , Zsigárd",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
     "sk/unresolved/filier": {
       "admin": {
         "commune": null,
@@ -63868,6 +63476,47 @@
       "status": "unknown",
       "wikidataUrl": null
     },
+    "sk/unresolved/menyhe-pograny": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Nyitra",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "sk/unresolved/menyhe-pograny",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Menyhe , Pográny",
+      "nameHistorical": "Menyhe , Pográny",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
     "sk/unresolved/mohi": {
       "admin": {
         "commune": null,
@@ -63939,6 +63588,47 @@
       "matchStage": "label",
       "name": "Nádszeg",
       "nameHistorical": "Nádszeg",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
+    "sk/unresolved/nadszeg-pered": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Pozsony",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "sk/unresolved/nadszeg-pered",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Nádszeg , Pered",
+      "nameHistorical": "Nádszeg , Pered",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -64195,6 +63885,47 @@
       "matchStage": "label",
       "name": "Pered",
       "nameHistorical": "Pered",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
+    "sk/unresolved/pered-galanta": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Pozsony",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "sk/unresolved/pered-galanta",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Pered , Galánta",
+      "nameHistorical": "Pered , Galánta",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -64709,6 +64440,47 @@
       "matchStage": "label",
       "name": "Taksony",
       "nameHistorical": "Taksony",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
+    "sk/unresolved/taksonyfalva-felsoszeli-zsigard-pered": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": null,
+      "countyHistorical": "Pozsony",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "no Wikidata item with this label (ro) or historical label (hu) in the country"
+      ],
+      "gazetteerSource": "places",
+      "id": "sk/unresolved/taksonyfalva-felsoszeli-zsigard-pered",
+      "inception": null,
+      "instanceOf": [],
+      "matchStage": "label",
+      "name": "Taksonyfalva , Felsőszeli , Zsigárd , Pered",
+      "nameHistorical": "Taksonyfalva , Felsőszeli , Zsigárd , Pered",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -66414,47 +66186,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "xx/unresolved/boly": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Zemplén",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/boly",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Boly",
-      "nameHistorical": "Boly",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "xx/unresolved/borgata": {
       "admin": {
         "commune": null,
@@ -67196,88 +66927,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "xx/unresolved/des-mezoveresegyhaza": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Szolnok-Doboka, Szolnok-Doboka",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/des-mezoveresegyhaza",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Dés, Mezőveresegyháza",
-      "nameHistorical": "Dés, Mezőveresegyháza",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/diosad-kraszna": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Szilágy, Szilágy",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/diosad-kraszna",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Diósad, Kraszna",
-      "nameHistorical": "Diósad, Kraszna",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "xx/unresolved/diosjeno": {
       "admin": {
         "commune": null,
@@ -67819,11 +67468,11 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": true,
+      "cached": false,
       "candidates": [],
       "coord": null,
       "county": null,
-      "countyHistorical": "Gömör és Kis-Hont, Gömör és Kis-Hont",
+      "countyHistorical": "Gömör és Kis-Hont",
       "dissolved": null,
       "distanceFromGazetteerKm": null,
       "evidence": [
@@ -67834,49 +67483,8 @@
       "inception": null,
       "instanceOf": [],
       "matchStage": "label",
-      "name": "Felsőrás, Kisvisnyó",
-      "nameHistorical": "Felsőrás, Kisvisnyó",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/felsoszeli-pered-zsigard": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Pozsony, Pozsony, Pozsony",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/felsoszeli-pered-zsigard",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Felsőszeli, Pered, Zsigárd",
-      "nameHistorical": "Felsőszeli, Pered, Zsigárd",
+      "name": "Felsőrás , Kisvisnyó",
+      "nameHistorical": "Felsőrás , Kisvisnyó",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -68533,47 +68141,6 @@
       "matchStage": "label",
       "name": "Hirics",
       "nameHistorical": "Hirics",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/hodmezovasarhely-csicsater-hodmezovasarhely-kulsoszorhat": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Csongrád, Csongrád",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/hodmezovasarhely-csicsater-hodmezovasarhely-kulsoszorhat",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Hódmezővásárhely – Csicsatér, Hódmezővásárhely – Külsőszőrhát",
-      "nameHistorical": "Hódmezővásárhely – Csicsatér, Hódmezővásárhely – Külsőszőrhát",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -69377,7 +68944,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -69533,47 +69100,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "xx/unresolved/kiskomarom-galambok": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Zala, Zala",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/kiskomarom-galambok",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Kiskomárom, Galambok",
-      "nameHistorical": "Kiskomárom, Galambok",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "xx/unresolved/kisolved": {
       "admin": {
         "commune": null,
@@ -69640,47 +69166,6 @@
       "matchStage": "label",
       "name": "Kisrákos",
       "nameHistorical": "Kisrákos",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/kisunyom": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Vas",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/kisunyom",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Kisunyom",
-      "nameHistorical": "Kisunyom",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -70189,47 +69674,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "xx/unresolved/menyhe-pograny": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Nyitra, Nyitra",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/menyhe-pograny",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Menyhe, Pográny",
-      "nameHistorical": "Menyhe, Pográny",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "xx/unresolved/mikosszeplak": {
       "admin": {
         "commune": null,
@@ -70296,47 +69740,6 @@
       "matchStage": "label",
       "name": "Mokroluh",
       "nameHistorical": "Mokroluh",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/nadszeg-pered": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Pozsony, Pozsony",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/nadszeg-pered",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Nádszeg, Pered",
-      "nameHistorical": "Nádszeg, Pered",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -71296,47 +70699,6 @@
       "status": "unknown",
       "wikidataUrl": null
     },
-    "xx/unresolved/pered-galanta": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Pozsony, Pozsony",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/pered-galanta",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Pered, Galánta",
-      "nameHistorical": "Pered, Galánta",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
     "xx/unresolved/perjese": {
       "admin": {
         "commune": null,
@@ -71488,47 +70850,6 @@
       "matchStage": "label",
       "name": "Pilismarót",
       "nameHistorical": "Pilismarót",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/pinc": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Nógrád",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/pinc",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Pinc",
-      "nameHistorical": "Pinc",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -72761,47 +72082,6 @@
       "matchStage": "label",
       "name": "Takácsháza",
       "nameHistorical": "Takácsháza",
-      "names": {
-        "aliasesDe": [],
-        "aliasesHu": [],
-        "aliasesRo": [],
-        "en": null,
-        "historical": [],
-        "hu": null,
-        "native": [],
-        "ro": null
-      },
-      "population": null,
-      "qid": null,
-      "replacedBy": null,
-      "status": "unknown",
-      "wikidataUrl": null
-    },
-    "xx/unresolved/taksonyfalva-felsoszeli-zsigard-pered": {
-      "admin": {
-        "commune": null,
-        "communeQid": null,
-        "county": null,
-        "countyQid": null,
-        "countyRo": null
-      },
-      "cached": true,
-      "candidates": [],
-      "coord": null,
-      "county": null,
-      "countyHistorical": "Pozsony, Pozsony, Pozsony, Pozsony",
-      "dissolved": null,
-      "distanceFromGazetteerKm": null,
-      "evidence": [
-        "no Wikidata item with this label (ro) or historical label (hu) in the country"
-      ],
-      "gazetteerSource": "places",
-      "id": "xx/unresolved/taksonyfalva-felsoszeli-zsigard-pered",
-      "inception": null,
-      "instanceOf": [],
-      "matchStage": "label",
-      "name": "Taksonyfalva, Felsőszeli, Zsigárd, Pered",
-      "nameHistorical": "Taksonyfalva, Felsőszeli, Zsigárd, Pered",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],

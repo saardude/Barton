@@ -103,19 +103,19 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 6472
+        "null": 6548
       },
       "byPerformance": {
-        "instrumental": 59,
-        "unknown": 6340,
+        "instrumental": 67,
+        "unknown": 6408,
         "vocal": 73
       },
       "bySite": {
-        "bsys": 6396,
+        "bsys": 6472,
         "fmbc": 74,
         "gyuj": 2
       },
-      "total": 6472
+      "total": 6548
     },
     "county": null,
     "countyHistorical": null,
@@ -139,19 +139,19 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 6472
+        "null": 6548
       },
       "byPerformance": {
-        "instrumental": 59,
-        "unknown": 6340,
+        "instrumental": 67,
+        "unknown": 6408,
         "vocal": 73
       },
       "bySite": {
-        "bsys": 6396,
+        "bsys": 6472,
         "fmbc": 74,
         "gyuj": 2
       },
-      "total": 6472
+      "total": 6548
     },
     "county": null,
     "countyHistorical": null,
@@ -270,42 +270,6 @@
     "years": {
       "max": null,
       "min": null
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 3
-      },
-      "byPerformance": {
-        "unknown": 3
-      },
-      "bySite": {
-        "bsys": 3
-      },
-      "total": 3
-    },
-    "county": null,
-    "countyHistorical": "Heves",
-    "id": "hu/unresolved/adacs",
-    "lat": null,
-    "lng": null,
-    "name": "Adács",
-    "nameHistorical": "Adács",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-36-8524",
-      "bsys-37-8694",
-      "bsys-62-11022"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1899,
-      "min": 1899
     }
   },
   {
@@ -1467,18 +1431,18 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 84
+        "null": 83
       },
       "byPerformance": {
-        "instrumental": 2,
+        "instrumental": 1,
         "unknown": 81,
         "vocal": 1
       },
       "bySite": {
-        "bsys": 83,
+        "bsys": 82,
         "fmbc": 1
       },
-      "total": 84
+      "total": 83
     },
     "county": null,
     "countyHistorical": "Somogy",
@@ -1570,7 +1534,6 @@
       "bsys-74-12272",
       "bsys-75-12292",
       "bsys-76-12451",
-      "bsys-82-13090",
       "bsys-82-13091",
       "bsys-83-13538",
       "fmbc-BB105-L313-127"
@@ -2094,15 +2057,16 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 134
+        "null": 221
       },
       "byPerformance": {
-        "unknown": 134
+        "instrumental": 1,
+        "unknown": 220
       },
       "bySite": {
-        "bsys": 134
+        "bsys": 221
       },
-      "total": 134
+      "total": 221
     },
     "county": null,
     "countyHistorical": "Budapest",
@@ -2242,12 +2206,99 @@
       "bsys-34-8069",
       "bsys-34-8091",
       "bsys-34-8116",
+      "bsys-35-8140",
+      "bsys-35-8146",
+      "bsys-35-8183",
+      "bsys-35-8255",
+      "bsys-35-8263",
+      "bsys-35-8300",
+      "bsys-35-8339",
+      "bsys-35-8360",
+      "bsys-35-8363",
+      "bsys-35-8462",
+      "bsys-35-8471",
+      "bsys-35-8474",
+      "bsys-36-8501",
+      "bsys-36-8515",
+      "bsys-36-8561",
+      "bsys-36-8601",
+      "bsys-37-8644",
+      "bsys-37-8650",
+      "bsys-37-8672",
+      "bsys-37-8748",
+      "bsys-37-8765",
+      "bsys-37-8796",
+      "bsys-37-8835",
+      "bsys-37-8853",
+      "bsys-37-8954",
+      "bsys-37-8964",
+      "bsys-37-8967",
+      "bsys-37-8975",
+      "bsys-37-9004",
       "bsys-37-9223",
+      "bsys-37-9241",
       "bsys-37-9313",
+      "bsys-37-9351",
+      "bsys-38-9435",
       "bsys-38-9438",
+      "bsys-38-9449",
+      "bsys-38-9520",
+      "bsys-38-9522",
       "bsys-38-9543",
+      "bsys-38-9544",
+      "bsys-38-9643",
+      "bsys-38-9695",
+      "bsys-38-9702",
+      "bsys-38-9734",
+      "bsys-38-9788",
       "bsys-38-9808",
-      "bsys-43-10231"
+      "bsys-39-10018",
+      "bsys-39-10023",
+      "bsys-39-10046",
+      "bsys-39-9863",
+      "bsys-39-9899",
+      "bsys-40-10074",
+      "bsys-41-10131",
+      "bsys-41-10158",
+      "bsys-41-10164",
+      "bsys-43-10227",
+      "bsys-43-10231",
+      "bsys-43-10248",
+      "bsys-44-10304",
+      "bsys-44-10326",
+      "bsys-50-10459",
+      "bsys-50-10468",
+      "bsys-51-10481",
+      "bsys-53-10581",
+      "bsys-53-10598",
+      "bsys-53-10611",
+      "bsys-60-10784",
+      "bsys-60-10810",
+      "bsys-61-10843",
+      "bsys-61-10896",
+      "bsys-62-11012",
+      "bsys-63-11190",
+      "bsys-63-11285",
+      "bsys-63-11338",
+      "bsys-63-11354",
+      "bsys-70-11591",
+      "bsys-70-11700",
+      "bsys-72-11860",
+      "bsys-72-11914",
+      "bsys-73-11948",
+      "bsys-73-12047",
+      "bsys-73-12068",
+      "bsys-74-12274",
+      "bsys-75-12380",
+      "bsys-76-12437",
+      "bsys-79-12487",
+      "bsys-80-12525",
+      "bsys-82-13090",
+      "bsys-83-13467",
+      "bsys-83-13600",
+      "bsys-83-13607",
+      "bsys-83-13634",
+      "bsys-83-13665"
     ],
     "type": "village",
     "years": {
@@ -3888,15 +3939,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 34
+        "null": 37
       },
       "byPerformance": {
-        "unknown": 34
+        "unknown": 37
       },
       "bySite": {
-        "bsys": 34
+        "bsys": 37
       },
-      "total": 34
+      "total": 37
     },
     "county": null,
     "countyHistorical": "Heves",
@@ -3935,13 +3986,16 @@
       "bsys-34-7422",
       "bsys-34-7509",
       "bsys-34-7976",
+      "bsys-36-8524",
+      "bsys-37-8694",
       "bsys-38-9491",
       "bsys-38-9591",
       "bsys-39-9890",
       "bsys-40-10083",
       "bsys-40-10097",
       "bsys-45-10360",
-      "bsys-61-10883"
+      "bsys-61-10883",
+      "bsys-62-11022"
     ],
     "type": "village",
     "years": {
@@ -3991,15 +4045,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 11
+        "null": 6
       },
       "byPerformance": {
-        "unknown": 11
+        "unknown": 6
       },
       "bySite": {
-        "bsys": 11
+        "bsys": 6
       },
-      "total": 11
+      "total": 6
     },
     "county": null,
     "countyHistorical": "Zala",
@@ -4016,17 +4070,12 @@
       "bsys-34-7312",
       "bsys-34-7788",
       "bsys-34-7975",
-      "bsys-35-8310",
-      "bsys-36-8628",
-      "bsys-37-9271",
-      "bsys-38-9470",
-      "bsys-43-10279",
-      "bsys-62-11015"
+      "bsys-37-9271"
     ],
     "type": "village",
     "years": {
       "max": 1935,
-      "min": 1932
+      "min": 1935
     }
   },
   {
@@ -4035,15 +4084,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 5
+        "null": 3
       },
       "byPerformance": {
-        "unknown": 5
+        "unknown": 3
       },
       "bySite": {
-        "bsys": 5
+        "bsys": 3
       },
-      "total": 5
+      "total": 3
     },
     "county": null,
     "countyHistorical": "Borsod",
@@ -4057,9 +4106,7 @@
     "songIds": [
       "bsys-14-1157",
       "bsys-23-3983",
-      "bsys-25-4819",
-      "bsys-38-9618",
-      "bsys-83-13791"
+      "bsys-25-4819"
     ],
     "type": "village",
     "years": {
@@ -4200,15 +4247,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 125
+        "null": 126
       },
       "byPerformance": {
-        "unknown": 125
+        "unknown": 126
       },
       "bySite": {
-        "bsys": 125
+        "bsys": 126
       },
-      "total": 125
+      "total": 126
     },
     "county": null,
     "countyHistorical": "Fejér",
@@ -4331,6 +4378,7 @@
       "bsys-74-12276",
       "bsys-75-12348",
       "bsys-75-12381",
+      "bsys-75-12382",
       "bsys-77-12455",
       "bsys-77-12464",
       "bsys-78-12476",
@@ -4626,7 +4674,8 @@
         "null": 327
       },
       "byPerformance": {
-        "unknown": 327
+        "instrumental": 4,
+        "unknown": 323
       },
       "bySite": {
         "bsys": 327
@@ -6382,7 +6431,8 @@
         "null": 25
       },
       "byPerformance": {
-        "unknown": 25
+        "instrumental": 1,
+        "unknown": 24
       },
       "bySite": {
         "bsys": 25
@@ -7198,15 +7248,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 8
+        "null": 9
       },
       "byPerformance": {
-        "unknown": 8
+        "unknown": 9
       },
       "bySite": {
-        "bsys": 8
+        "bsys": 9
       },
-      "total": 8
+      "total": 9
     },
     "county": null,
     "countyHistorical": "Csongrád",
@@ -7225,6 +7275,7 @@
       "bsys-41-10121",
       "bsys-72-11766",
       "bsys-75-12361",
+      "bsys-83-13595",
       "bsys-83-13682"
     ],
     "type": "village",
@@ -9129,6 +9180,40 @@
     "years": {
       "max": 1931,
       "min": 1910
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "HU",
+    "counts": {
+      "byGenre": {
+        "null": 1
+      },
+      "byPerformance": {
+        "unknown": 1
+      },
+      "bySite": {
+        "bsys": 1
+      },
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Zala",
+    "id": "hu/unresolved/kiskomarom-galambok",
+    "lat": null,
+    "lng": null,
+    "name": "Kiskomárom , Galambok",
+    "nameHistorical": "Kiskomárom , Galambok",
+    "parent": "hu/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-70-11677"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1923,
+      "min": 1923
     }
   },
   {
@@ -11863,15 +11948,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 95
+        "null": 93
       },
       "byPerformance": {
-        "unknown": 95
+        "unknown": 93
       },
       "bySite": {
-        "bsys": 95
+        "bsys": 93
       },
-      "total": 95
+      "total": 93
     },
     "county": null,
     "countyHistorical": "Somogy",
@@ -11948,7 +12033,6 @@
       "bsys-59-10677",
       "bsys-59-10705",
       "bsys-62-10993",
-      "bsys-62-11012",
       "bsys-62-11013",
       "bsys-63-11303",
       "bsys-68-11492",
@@ -11976,7 +12060,6 @@
       "bsys-75-12340",
       "bsys-75-12341",
       "bsys-75-12342",
-      "bsys-80-12525",
       "bsys-83-13813"
     ],
     "type": "village",
@@ -12202,41 +12285,6 @@
     "years": {
       "max": 1934,
       "min": 1934
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 2
-      },
-      "byPerformance": {
-        "unknown": 2
-      },
-      "bySite": {
-        "bsys": 2
-      },
-      "total": 2
-    },
-    "county": null,
-    "countyHistorical": "Szabolcs",
-    "id": "hu/unresolved/nyirvaja",
-    "lat": null,
-    "lng": null,
-    "name": "Nyírvaja",
-    "nameHistorical": "Nyírvaja",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-36-8627",
-      "bsys-37-8968"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
     }
   },
   {
@@ -12717,40 +12765,6 @@
     "years": {
       "max": 1899,
       "min": 1899
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Veszprém",
-    "id": "hu/unresolved/papkeszi",
-    "lat": null,
-    "lng": null,
-    "name": "Papkeszi",
-    "nameHistorical": "Papkeszi",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-72-11787"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1912,
-      "min": 1912
     }
   },
   {
@@ -13717,40 +13731,6 @@
     },
     "county": null,
     "countyHistorical": "Borsod",
-    "id": "hu/unresolved/rudabanya",
-    "lat": null,
-    "lng": null,
-    "name": "Rudabánya",
-    "nameHistorical": "Rudabánya",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-83-13463"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Borsod",
     "id": "hu/unresolved/sajoivanka",
     "lat": null,
     "lng": null,
@@ -13968,42 +13948,6 @@
     "years": {
       "max": 1936,
       "min": 1935
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 3
-      },
-      "byPerformance": {
-        "unknown": 3
-      },
-      "bySite": {
-        "bsys": 3
-      },
-      "total": 3
-    },
-    "county": null,
-    "countyHistorical": "Borsod",
-    "id": "hu/unresolved/sarud",
-    "lat": null,
-    "lng": null,
-    "name": "Sarud",
-    "nameHistorical": "Sarud",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-36-8555",
-      "bsys-37-8882",
-      "bsys-37-9324"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
     }
   },
   {
@@ -14604,15 +14548,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 46
+        "null": 47
       },
       "byPerformance": {
-        "unknown": 46
+        "unknown": 47
       },
       "bySite": {
-        "bsys": 46
+        "bsys": 47
       },
-      "total": 46
+      "total": 47
     },
     "county": null,
     "countyHistorical": "Csongrád",
@@ -14669,46 +14613,13 @@
       "bsys-73-12135",
       "bsys-73-12194",
       "bsys-73-12200",
-      "bsys-78-12481"
+      "bsys-78-12481",
+      "bsys-83-13669"
     ],
     "type": "village",
     "years": {
       "max": 1936,
       "min": 1898
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Tolna",
-    "id": "hu/unresolved/szekszard",
-    "lat": null,
-    "lng": null,
-    "name": "Szekszárd",
-    "nameHistorical": "Szekszárd",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-38-9703"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
     }
   },
   {
@@ -14849,8 +14760,8 @@
         "null": 23
       },
       "byPerformance": {
-        "instrumental": 3,
-        "unknown": 18,
+        "instrumental": 6,
+        "unknown": 15,
         "vocal": 2
       },
       "bySite": {
@@ -15377,15 +15288,15 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 20
+        "null": 25
       },
       "byPerformance": {
-        "unknown": 20
+        "unknown": 25
       },
       "bySite": {
-        "bsys": 20
+        "bsys": 25
       },
-      "total": 20
+      "total": 25
     },
     "county": null,
     "countyHistorical": "Zala",
@@ -15411,11 +15322,16 @@
       "bsys-34-7464",
       "bsys-34-7811",
       "bsys-34-7896",
+      "bsys-35-8310",
+      "bsys-36-8628",
+      "bsys-38-9470",
       "bsys-38-9513",
       "bsys-38-9547",
       "bsys-39-9849",
       "bsys-39-9850",
+      "bsys-43-10279",
       "bsys-53-10615",
+      "bsys-62-11015",
       "bsys-62-11016"
     ],
     "type": "village",
@@ -16196,40 +16112,6 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Hajdú",
-    "id": "hu/unresolved/tiszacsege",
-    "lat": null,
-    "lng": null,
-    "name": "Tiszacsege",
-    "nameHistorical": "Tiszacsege",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-39-9863"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1937,
-      "min": 1937
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
         "null": 3
       },
       "byPerformance": {
@@ -16808,16 +16690,16 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 18
+        "null": 17
       },
       "byPerformance": {
         "instrumental": 1,
-        "unknown": 17
+        "unknown": 16
       },
       "bySite": {
-        "bsys": 18
+        "bsys": 17
       },
-      "total": 18
+      "total": 17
     },
     "county": null,
     "countyHistorical": "Szatmár",
@@ -16842,7 +16724,6 @@
       "bsys-34-7847",
       "bsys-37-8904",
       "bsys-43-10212",
-      "bsys-62-11104",
       "bsys-73-11986",
       "bsys-73-12138",
       "bsys-75-12367",
@@ -16851,7 +16732,7 @@
     "type": "village",
     "years": {
       "max": 1934,
-      "min": 1916
+      "min": 1934
     }
   },
   {
@@ -17934,20 +17815,20 @@
         "colinda": 497,
         "doina": 9,
         "joc": 113,
-        "null": 3242,
+        "null": 3185,
         "other": 17
       },
       "byPerformance": {
-        "instrumental": 288,
-        "unknown": 3009,
+        "instrumental": 345,
+        "unknown": 2895,
         "vocal": 775
       },
       "bySite": {
-        "bsys": 3155,
+        "bsys": 3098,
         "fmbc": 87,
         "rfm": 830
       },
-      "total": 4072
+      "total": 4015
     },
     "county": null,
     "countyHistorical": null,
@@ -19307,19 +19188,19 @@
     "counts": {
       "byGenre": {
         "colinda": 131,
-        "null": 471
+        "null": 414
       },
       "byPerformance": {
-        "instrumental": 11,
-        "unknown": 444,
+        "instrumental": 14,
+        "unknown": 384,
         "vocal": 147
       },
       "bySite": {
-        "bsys": 452,
+        "bsys": 395,
         "fmbc": 19,
         "rfm": 131
       },
-      "total": 602
+      "total": 545
     },
     "county": null,
     "countyHistorical": null,
@@ -19333,7 +19214,7 @@
     "songIds": [],
     "type": "region",
     "years": {
-      "max": 1920,
+      "max": 1918,
       "min": 1906
     }
   },
@@ -19807,19 +19688,19 @@
     "counts": {
       "byGenre": {
         "colinda": 103,
-        "null": 333
+        "null": 340
       },
       "byPerformance": {
-        "instrumental": 10,
-        "unknown": 311,
+        "instrumental": 13,
+        "unknown": 315,
         "vocal": 115
       },
       "bySite": {
-        "bsys": 318,
+        "bsys": 325,
         "fmbc": 15,
         "rfm": 103
       },
-      "total": 436
+      "total": 443
     },
     "county": "Bihor",
     "countyHistorical": "Bihar",
@@ -20595,16 +20476,16 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 270
+        "null": 277
       },
       "byPerformance": {
         "instrumental": 6,
-        "unknown": 264
+        "unknown": 271
       },
       "bySite": {
-        "bsys": 270
+        "bsys": 277
       },
-      "total": 270
+      "total": 277
     },
     "county": "Bihor",
     "countyHistorical": "Bihar",
@@ -20776,11 +20657,13 @@
       "bsys-34-7986",
       "bsys-34-8037",
       "bsys-34-8083",
+      "bsys-34-8132",
       "bsys-34-8133",
       "bsys-35-8227",
       "bsys-35-8233",
       "bsys-35-8243",
       "bsys-35-8256",
+      "bsys-35-8278",
       "bsys-35-8295",
       "bsys-35-8303",
       "bsys-35-8324",
@@ -20801,8 +20684,10 @@
       "bsys-37-8917",
       "bsys-37-8996",
       "bsys-37-9002",
+      "bsys-37-9003",
       "bsys-37-9013",
       "bsys-37-9031",
+      "bsys-37-9076",
       "bsys-37-9226",
       "bsys-37-9258",
       "bsys-37-9307",
@@ -20816,6 +20701,8 @@
       "bsys-38-9465",
       "bsys-38-9521",
       "bsys-38-9581",
+      "bsys-38-9616",
+      "bsys-38-9617",
       "bsys-38-9660",
       "bsys-38-9679",
       "bsys-38-9705",
@@ -20831,6 +20718,7 @@
       "bsys-41-10125",
       "bsys-41-10132",
       "bsys-41-10141",
+      "bsys-42-10196",
       "bsys-43-10247",
       "bsys-43-10250",
       "bsys-43-10292",
@@ -21048,8 +20936,8 @@
         "null": 35
       },
       "byPerformance": {
-        "instrumental": 1,
-        "unknown": 33,
+        "instrumental": 4,
+        "unknown": 30,
         "vocal": 1
       },
       "bySite": {
@@ -21230,18 +21118,18 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 53
+        "null": 48
       },
       "byPerformance": {
         "instrumental": 1,
-        "unknown": 51,
+        "unknown": 46,
         "vocal": 1
       },
       "bySite": {
-        "bsys": 52,
+        "bsys": 47,
         "fmbc": 1
       },
-      "total": 53
+      "total": 48
     },
     "county": "Sălaj",
     "countyHistorical": "Szilágy",
@@ -21265,18 +21153,18 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 45
+        "null": 44
       },
       "byPerformance": {
         "instrumental": 1,
-        "unknown": 43,
+        "unknown": 42,
         "vocal": 1
       },
       "bySite": {
-        "bsys": 44,
+        "bsys": 43,
         "fmbc": 1
       },
-      "total": 45
+      "total": 44
     },
     "county": "Sălaj",
     "countyHistorical": "Szilágy",
@@ -21318,7 +21206,6 @@
       "bsys-35-8465",
       "bsys-37-8949",
       "bsys-37-9042",
-      "bsys-38-9616",
       "bsys-38-9796",
       "bsys-43-10264",
       "bsys-44-10327",
@@ -21336,8 +21223,43 @@
     ],
     "type": "village",
     "years": {
-      "max": 1916,
+      "max": 1914,
       "min": 1914
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "RO",
+    "counts": {
+      "byGenre": {
+        "null": 2
+      },
+      "byPerformance": {
+        "unknown": 2
+      },
+      "bySite": {
+        "bsys": 2
+      },
+      "total": 2
+    },
+    "county": "Sălaj",
+    "countyHistorical": "Szilágy",
+    "id": "ro/crisana/salaj/szilagynagyfalu",
+    "lat": null,
+    "lng": null,
+    "name": "Szilágynagyfalu",
+    "nameHistorical": "Szilágynagyfalu",
+    "parent": "ro/crisana/salaj",
+    "region": "Crișana",
+    "songIds": [
+      "bsys-42-10201",
+      "bsys-62-11097"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1916,
+      "min": 1916
     }
   },
   {
@@ -21358,76 +21280,6 @@
     },
     "county": "Sălaj",
     "countyHistorical": "Szilágy",
-    "id": "ro/crisana/salaj/kraszna",
-    "lat": null,
-    "lng": null,
-    "name": "Kraszna",
-    "nameHistorical": "Kraszna",
-    "parent": "ro/crisana/salaj",
-    "region": "Crișana",
-    "songIds": [
-      "bsys-38-9617"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "RO",
-    "counts": {
-      "byGenre": {
-        "null": 3
-      },
-      "byPerformance": {
-        "unknown": 3
-      },
-      "bySite": {
-        "bsys": 3
-      },
-      "total": 3
-    },
-    "county": "Sălaj",
-    "countyHistorical": "Szilágy",
-    "id": "ro/crisana/salaj/szilagynagyfalu",
-    "lat": null,
-    "lng": null,
-    "name": "Szilágynagyfalu",
-    "nameHistorical": "Szilágynagyfalu",
-    "parent": "ro/crisana/salaj",
-    "region": "Crișana",
-    "songIds": [
-      "bsys-37-9003",
-      "bsys-42-10201",
-      "bsys-62-11097"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "RO",
-    "counts": {
-      "byGenre": {
-        "null": 3
-      },
-      "byPerformance": {
-        "unknown": 3
-      },
-      "bySite": {
-        "bsys": 3
-      },
-      "total": 3
-    },
-    "county": "Sălaj",
-    "countyHistorical": "Szilágy",
     "id": "ro/crisana/salaj/szilagyperecsen",
     "lat": null,
     "lng": null,
@@ -21436,9 +21288,7 @@
     "parent": "ro/crisana/salaj",
     "region": "Crișana",
     "songIds": [
-      "bsys-34-8132",
-      "bsys-38-9388",
-      "bsys-42-10196"
+      "bsys-38-9388"
     ],
     "type": "village",
     "years": {
@@ -21487,17 +21337,17 @@
     "counts": {
       "byGenre": {
         "colinda": 11,
-        "null": 71
+        "null": 12
       },
       "byPerformance": {
-        "unknown": 71,
+        "unknown": 12,
         "vocal": 11
       },
       "bySite": {
-        "bsys": 71,
+        "bsys": 12,
         "rfm": 11
       },
-      "total": 82
+      "total": 23
     },
     "county": "Satu Mare",
     "countyHistorical": "Szatmár",
@@ -21511,7 +21361,7 @@
     "songIds": [],
     "type": "county",
     "years": {
-      "max": 1920,
+      "max": 1918,
       "min": 1912
     }
   },
@@ -21557,15 +21407,15 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 71
+        "null": 12
       },
       "byPerformance": {
-        "unknown": 71
+        "unknown": 12
       },
       "bySite": {
-        "bsys": 71
+        "bsys": 12
       },
-      "total": 71
+      "total": 12
     },
     "county": "Satu Mare",
     "countyHistorical": "Szatmár",
@@ -21580,78 +21430,19 @@
       "bsys-23-4039",
       "bsys-34-7315",
       "bsys-34-7618",
-      "bsys-35-8146",
-      "bsys-35-8183",
       "bsys-35-8207",
-      "bsys-35-8263",
       "bsys-35-8281",
-      "bsys-35-8360",
-      "bsys-35-8363",
       "bsys-35-8424",
-      "bsys-35-8462",
-      "bsys-35-8471",
       "bsys-36-8498",
-      "bsys-36-8501",
-      "bsys-36-8515",
       "bsys-36-8583",
-      "bsys-36-8601",
-      "bsys-37-8644",
-      "bsys-37-8650",
-      "bsys-37-8672",
-      "bsys-37-8765",
-      "bsys-37-8796",
-      "bsys-37-8835",
-      "bsys-37-8853",
       "bsys-37-8930",
-      "bsys-37-8954",
-      "bsys-37-8964",
-      "bsys-37-8967",
-      "bsys-37-8975",
-      "bsys-37-9004",
-      "bsys-37-9241",
-      "bsys-37-9351",
-      "bsys-38-9449",
-      "bsys-38-9522",
-      "bsys-38-9544",
-      "bsys-38-9643",
-      "bsys-38-9695",
-      "bsys-38-9702",
       "bsys-38-9787",
-      "bsys-38-9788",
-      "bsys-39-10018",
-      "bsys-39-10046",
-      "bsys-39-9899",
-      "bsys-40-10074",
-      "bsys-41-10131",
-      "bsys-41-10164",
-      "bsys-43-10248",
-      "bsys-44-10326",
-      "bsys-50-10459",
-      "bsys-50-10468",
-      "bsys-53-10598",
-      "bsys-53-10611",
-      "bsys-60-10810",
-      "bsys-61-10843",
-      "bsys-63-11190",
-      "bsys-70-11591",
-      "bsys-70-11700",
-      "bsys-72-11914",
-      "bsys-73-11948",
-      "bsys-73-12047",
-      "bsys-73-12068",
-      "bsys-74-12274",
-      "bsys-76-12437",
-      "bsys-79-12487",
-      "bsys-83-13467",
       "bsys-83-13599",
-      "bsys-83-13600",
-      "bsys-83-13607",
-      "bsys-83-13634",
       "bsys-83-13649"
     ],
     "type": "village",
     "years": {
-      "max": 1920,
+      "max": 1918,
       "min": 1917
     }
   },
@@ -23706,8 +23497,8 @@
         "null": 2094
       },
       "byPerformance": {
-        "instrumental": 135,
-        "unknown": 1906,
+        "instrumental": 189,
+        "unknown": 1852,
         "vocal": 319
       },
       "bySite": {
@@ -24415,19 +24206,19 @@
     "counts": {
       "byGenre": {
         "colinda": 9,
-        "null": 275
+        "null": 276
       },
       "byPerformance": {
-        "instrumental": 15,
-        "unknown": 257,
+        "instrumental": 19,
+        "unknown": 254,
         "vocal": 12
       },
       "bySite": {
-        "bsys": 272,
+        "bsys": 273,
         "fmbc": 3,
         "rfm": 9
       },
-      "total": 284
+      "total": 285
     },
     "county": "Cluj",
     "countyHistorical": "Kolozs",
@@ -24761,7 +24552,8 @@
         "null": 71
       },
       "byPerformance": {
-        "unknown": 70,
+        "instrumental": 4,
+        "unknown": 66,
         "vocal": 1
       },
       "bySite": {
@@ -24864,15 +24656,15 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 2
+        "null": 3
       },
       "byPerformance": {
-        "unknown": 2
+        "unknown": 3
       },
       "bySite": {
-        "bsys": 2
+        "bsys": 3
       },
-      "total": 2
+      "total": 3
     },
     "county": "Cluj",
     "countyHistorical": "Kolozs",
@@ -24885,12 +24677,13 @@
     "region": "Transylvania",
     "songIds": [
       "bsys-25-4467",
+      "bsys-63-11241",
       "bsys-70-11645"
     ],
     "type": "village",
     "years": {
-      "max": null,
-      "min": null
+      "max": 1906,
+      "min": 1906
     }
   },
   {
@@ -25621,19 +25414,19 @@
     "counts": {
       "byGenre": {
         "colinda": 2,
-        "null": 1357
+        "null": 1353
       },
       "byPerformance": {
-        "instrumental": 92,
-        "unknown": 1240,
+        "instrumental": 97,
+        "unknown": 1231,
         "vocal": 27
       },
       "bySite": {
-        "bsys": 1331,
+        "bsys": 1327,
         "fmbc": 26,
         "rfm": 2
       },
-      "total": 1359
+      "total": 1355
     },
     "county": "Harghita",
     "countyHistorical": "Udvarhely",
@@ -25876,17 +25669,17 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 12
+        "null": 9
       },
       "byPerformance": {
-        "unknown": 11,
+        "unknown": 8,
         "vocal": 1
       },
       "bySite": {
-        "bsys": 11,
+        "bsys": 8,
         "fmbc": 1
       },
-      "total": 12
+      "total": 9
     },
     "county": "Harghita",
     "countyHistorical": "Udvarhely",
@@ -25904,9 +25697,6 @@
       "bsys-16-2645",
       "bsys-19-3248",
       "bsys-19-3414",
-      "bsys-37-9011",
-      "bsys-37-9012",
-      "bsys-40-10075",
       "bsys-59-10770",
       "bsys-73-12077",
       "fmbc-BB106-L308-04"
@@ -27532,15 +27322,15 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 23
+        "null": 22
       },
       "byPerformance": {
-        "unknown": 23
+        "unknown": 22
       },
       "bySite": {
-        "bsys": 23
+        "bsys": 22
       },
-      "total": 23
+      "total": 22
     },
     "county": "Harghita",
     "countyHistorical": "Csík",
@@ -27573,8 +27363,7 @@
       "bsys-25-4797",
       "bsys-39-9842",
       "bsys-52-10520",
-      "bsys-73-11959",
-      "bsys-83-13665"
+      "bsys-73-11959"
     ],
     "type": "village",
     "years": {
@@ -28644,8 +28433,8 @@
         "null": 72
       },
       "byPerformance": {
-        "instrumental": 4,
-        "unknown": 63,
+        "instrumental": 6,
+        "unknown": 61,
         "vocal": 5
       },
       "bySite": {
@@ -29413,8 +29202,8 @@
         "null": 59
       },
       "byPerformance": {
-        "instrumental": 1,
-        "unknown": 58
+        "instrumental": 4,
+        "unknown": 55
       },
       "bySite": {
         "bsys": 58,
@@ -30109,19 +29898,19 @@
     "counts": {
       "byGenre": {
         "colinda": 113,
-        "null": 346
+        "null": 349
       },
       "byPerformance": {
-        "instrumental": 17,
-        "unknown": 314,
+        "instrumental": 62,
+        "unknown": 272,
         "vocal": 128
       },
       "bySite": {
-        "bsys": 329,
+        "bsys": 332,
         "fmbc": 17,
         "rfm": 113
       },
-      "total": 459
+      "total": 462
     },
     "county": "Mureș",
     "countyHistorical": "Maros-Torda",
@@ -30354,7 +30143,7 @@
     ],
     "type": "village",
     "years": {
-      "max": 1906,
+      "max": 1907,
       "min": 1904
     }
   },
@@ -30568,8 +30357,8 @@
         "null": 41
       },
       "byPerformance": {
-        "instrumental": 1,
-        "unknown": 40
+        "instrumental": 17,
+        "unknown": 24
       },
       "bySite": {
         "bsys": 41
@@ -30677,7 +30466,8 @@
         "null": 14
       },
       "byPerformance": {
-        "unknown": 14
+        "instrumental": 9,
+        "unknown": 5
       },
       "bySite": {
         "bsys": 14
@@ -30776,7 +30566,8 @@
         "null": 19
       },
       "byPerformance": {
-        "unknown": 19
+        "instrumental": 5,
+        "unknown": 14
       },
       "bySite": {
         "bsys": 19
@@ -31026,7 +30817,8 @@
         "null": 30
       },
       "byPerformance": {
-        "unknown": 29,
+        "instrumental": 11,
+        "unknown": 18,
         "vocal": 1
       },
       "bySite": {
@@ -31332,7 +31124,8 @@
         "null": 44
       },
       "byPerformance": {
-        "unknown": 40,
+        "instrumental": 1,
+        "unknown": 39,
         "vocal": 4
       },
       "bySite": {
@@ -31476,15 +31269,15 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "null": 16
+        "null": 19
       },
       "byPerformance": {
-        "unknown": 16
+        "unknown": 19
       },
       "bySite": {
-        "bsys": 16
+        "bsys": 19
       },
-      "total": 16
+      "total": 19
     },
     "county": "Mureș",
     "countyHistorical": "Maros-Torda",
@@ -31509,6 +31302,9 @@
       "bsys-33-6433",
       "bsys-33-6535",
       "bsys-33-6606",
+      "bsys-37-9011",
+      "bsys-37-9012",
+      "bsys-40-10075",
       "bsys-63-11295",
       "bsys-83-13656",
       "bsys-83-13658"
@@ -31750,7 +31546,8 @@
         "null": 20
       },
       "byPerformance": {
-        "unknown": 19,
+        "instrumental": 3,
+        "unknown": 16,
         "vocal": 1
       },
       "bySite": {
@@ -32147,18 +31944,18 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 1210
+        "null": 1225
       },
       "byPerformance": {
         "instrumental": 4,
-        "unknown": 1150,
+        "unknown": 1165,
         "vocal": 56
       },
       "bySite": {
-        "bsys": 1152,
+        "bsys": 1167,
         "fmbc": 58
       },
-      "total": 1210
+      "total": 1225
     },
     "county": null,
     "countyHistorical": null,
@@ -32182,18 +31979,18 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 1210
+        "null": 1225
       },
       "byPerformance": {
         "instrumental": 4,
-        "unknown": 1150,
+        "unknown": 1165,
         "vocal": 56
       },
       "bySite": {
-        "bsys": 1152,
+        "bsys": 1167,
         "fmbc": 58
       },
-      "total": 1210
+      "total": 1225
     },
     "county": null,
     "countyHistorical": null,
@@ -32715,15 +32512,15 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 27
+        "null": 38
       },
       "byPerformance": {
-        "unknown": 27
+        "unknown": 38
       },
       "bySite": {
-        "bsys": 27
+        "bsys": 38
       },
-      "total": 27
+      "total": 38
     },
     "county": null,
     "countyHistorical": "Zólyom",
@@ -32748,19 +32545,30 @@
       "bsys-34-7722",
       "bsys-34-7882",
       "bsys-34-8123",
+      "bsys-35-8245",
       "bsys-36-8582",
       "bsys-37-8711",
+      "bsys-37-8775",
       "bsys-37-9050",
       "bsys-37-9133",
       "bsys-37-9195",
+      "bsys-37-9196",
       "bsys-37-9221",
+      "bsys-37-9274",
+      "bsys-37-9287",
+      "bsys-38-9425",
       "bsys-38-9492",
+      "bsys-38-9542",
       "bsys-38-9590",
+      "bsys-38-9675",
+      "bsys-38-9690",
       "bsys-38-9777",
       "bsys-38-9809",
       "bsys-38-9821",
+      "bsys-42-10194",
       "bsys-42-10197",
       "bsys-43-10234",
+      "bsys-62-11108",
       "bsys-83-13648"
     ],
     "type": "village",
@@ -33126,6 +32934,40 @@
     "type": "village",
     "years": {
       "max": 1918,
+      "min": 1905
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "SK",
+    "counts": {
+      "byGenre": {
+        "null": 1
+      },
+      "byPerformance": {
+        "unknown": 1
+      },
+      "bySite": {
+        "bsys": 1
+      },
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Pozsony",
+    "id": "sk/unresolved/felsoszeli-pered-zsigard",
+    "lat": null,
+    "lng": null,
+    "name": "Felsőszeli , Pered , Zsigárd",
+    "nameHistorical": "Felsőszeli , Pered , Zsigárd",
+    "parent": "sk/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-39-10004"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1905,
       "min": 1905
     }
   },
@@ -33716,15 +33558,15 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 15
+        "null": 14
       },
       "byPerformance": {
-        "unknown": 15
+        "unknown": 14
       },
       "bySite": {
-        "bsys": 15
+        "bsys": 14
       },
-      "total": 15
+      "total": 14
     },
     "county": null,
     "countyHistorical": "Pozsony",
@@ -33746,7 +33588,6 @@
       "bsys-34-7633",
       "bsys-37-8994",
       "bsys-38-9579",
-      "bsys-75-12382",
       "bsys-76-12426",
       "bsys-83-13629",
       "bsys-83-13631",
@@ -33866,15 +33707,15 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 36
+        "null": 35
       },
       "byPerformance": {
-        "unknown": 36
+        "unknown": 35
       },
       "bySite": {
-        "bsys": 36
+        "bsys": 35
       },
-      "total": 36
+      "total": 35
     },
     "county": null,
     "countyHistorical": "Nyitra",
@@ -33914,7 +33755,6 @@
       "bsys-33-5980",
       "bsys-33-6670",
       "bsys-34-7743",
-      "bsys-63-11241",
       "bsys-64-11394",
       "bsys-69-11516",
       "bsys-70-11640",
@@ -34168,15 +34008,49 @@
     "country": "SK",
     "counts": {
       "byGenre": {
-        "null": 121
+        "null": 1
       },
       "byPerformance": {
-        "unknown": 121
+        "unknown": 1
       },
       "bySite": {
-        "bsys": 121
+        "bsys": 1
       },
-      "total": 121
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Nyitra",
+    "id": "sk/unresolved/menyhe-pograny",
+    "lat": null,
+    "lng": null,
+    "name": "Menyhe , Pográny",
+    "nameHistorical": "Menyhe , Pográny",
+    "parent": "sk/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-59-10681"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1909,
+      "min": 1909
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "SK",
+    "counts": {
+      "byGenre": {
+        "null": 122
+      },
+      "byPerformance": {
+        "unknown": 122
+      },
+      "bySite": {
+        "bsys": 122
+      },
+      "total": 122
     },
     "county": null,
     "countyHistorical": "Bars",
@@ -34293,6 +34167,7 @@
       "bsys-70-11635",
       "bsys-70-11661",
       "bsys-70-11671",
+      "bsys-72-11787",
       "bsys-72-11799",
       "bsys-72-11806",
       "bsys-72-11841",
@@ -34343,6 +34218,40 @@
     "region": null,
     "songIds": [
       "bsys-23-4045"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1905,
+      "min": 1905
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "SK",
+    "counts": {
+      "byGenre": {
+        "null": 1
+      },
+      "byPerformance": {
+        "unknown": 1
+      },
+      "bySite": {
+        "bsys": 1
+      },
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Pozsony",
+    "id": "sk/unresolved/nadszeg-pered",
+    "lat": null,
+    "lng": null,
+    "name": "Nádszeg , Pered",
+    "nameHistorical": "Nádszeg , Pered",
+    "parent": "sk/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-35-8221"
     ],
     "type": "village",
     "years": {
@@ -34654,6 +34563,40 @@
     "type": "village",
     "years": {
       "max": 1908,
+      "min": 1905
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "SK",
+    "counts": {
+      "byGenre": {
+        "null": 1
+      },
+      "byPerformance": {
+        "unknown": 1
+      },
+      "bySite": {
+        "bsys": 1
+      },
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Pozsony",
+    "id": "sk/unresolved/pered-galanta",
+    "lat": null,
+    "lng": null,
+    "name": "Pered , Galánta",
+    "nameHistorical": "Pered , Galánta",
+    "parent": "sk/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-37-8734"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1905,
       "min": 1905
     }
   },
@@ -35121,6 +35064,40 @@
     "type": "village",
     "years": {
       "max": 1915,
+      "min": 1905
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "SK",
+    "counts": {
+      "byGenre": {
+        "null": 1
+      },
+      "byPerformance": {
+        "unknown": 1
+      },
+      "bySite": {
+        "bsys": 1
+      },
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": "Pozsony",
+    "id": "sk/unresolved/taksonyfalva-felsoszeli-zsigard-pered",
+    "lat": null,
+    "lng": null,
+    "name": "Taksonyfalva , Felsőszeli , Zsigárd , Pered",
+    "nameHistorical": "Taksonyfalva , Felsőszeli , Zsigárd , Pered",
+    "parent": "sk/unresolved",
+    "region": null,
+    "songIds": [
+      "bsys-38-9448"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1905,
       "min": 1905
     }
   },
@@ -35910,18 +35887,18 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 2646
+        "null": 2615
       },
       "byPerformance": {
-        "instrumental": 28,
-        "unknown": 2594,
+        "instrumental": 82,
+        "unknown": 2509,
         "vocal": 24
       },
       "bySite": {
-        "bsys": 2622,
+        "bsys": 2591,
         "fmbc": 24
       },
-      "total": 2646
+      "total": 2615
     },
     "county": null,
     "countyHistorical": null,
@@ -35945,18 +35922,18 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 2646
+        "null": 2615
       },
       "byPerformance": {
-        "instrumental": 28,
-        "unknown": 2594,
+        "instrumental": 82,
+        "unknown": 2509,
         "vocal": 24
       },
       "bySite": {
-        "bsys": 2622,
+        "bsys": 2591,
         "fmbc": 24
       },
-      "total": 2646
+      "total": 2615
     },
     "county": null,
     "countyHistorical": null,
@@ -36914,40 +36891,6 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Zemplén",
-    "id": "xx/unresolved/boly",
-    "lat": null,
-    "lng": null,
-    "name": "Boly",
-    "nameHistorical": "Boly",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-83-13477"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
         "null": 9
       },
       "byPerformance": {
@@ -37708,74 +37651,6 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Szolnok-Doboka, Szolnok-Doboka",
-    "id": "xx/unresolved/des-mezoveresegyhaza",
-    "lat": null,
-    "lng": null,
-    "name": "Dés, Mezőveresegyháza",
-    "nameHistorical": "Dés, Mezőveresegyháza",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-37-9076"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Szilágy, Szilágy",
-    "id": "xx/unresolved/diosad-kraszna",
-    "lat": null,
-    "lng": null,
-    "name": "Diósad, Kraszna",
-    "nameHistorical": "Diósad, Kraszna",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-35-8278"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
         "null": 3
       },
       "byPerformance": {
@@ -37850,15 +37725,15 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 41
+        "null": 24
       },
       "byPerformance": {
-        "unknown": 41
+        "unknown": 24
       },
       "bySite": {
-        "bsys": 41
+        "bsys": 24
       },
-      "total": 41
+      "total": 24
     },
     "county": null,
     "countyHistorical": "Nógrád",
@@ -37889,27 +37764,10 @@
       "bsys-34-7398",
       "bsys-34-7774",
       "bsys-34-7835",
-      "bsys-35-8140",
-      "bsys-35-8255",
-      "bsys-35-8339",
-      "bsys-36-8561",
       "bsys-37-8743",
-      "bsys-37-8748",
-      "bsys-38-9435",
-      "bsys-38-9520",
-      "bsys-38-9734",
-      "bsys-39-10023",
       "bsys-40-10072",
-      "bsys-41-10158",
-      "bsys-43-10227",
-      "bsys-44-10304",
-      "bsys-53-10581",
-      "bsys-60-10784",
-      "bsys-61-10896",
       "bsys-62-11052",
-      "bsys-63-11354",
       "bsys-73-12143",
-      "bsys-75-12380",
       "bsys-83-13788"
     ],
     "type": "village",
@@ -38390,12 +38248,12 @@
       "total": 1
     },
     "county": null,
-    "countyHistorical": "Gömör és Kis-Hont, Gömör és Kis-Hont",
+    "countyHistorical": "Gömör és Kis-Hont",
     "id": "xx/unresolved/felsoras-kisvisnyo",
     "lat": null,
     "lng": null,
-    "name": "Felsőrás, Kisvisnyó",
-    "nameHistorical": "Felsőrás, Kisvisnyó",
+    "name": "Felsőrás , Kisvisnyó",
+    "nameHistorical": "Felsőrás , Kisvisnyó",
     "parent": "xx/unresolved",
     "region": null,
     "songIds": [
@@ -38405,40 +38263,6 @@
     "years": {
       "max": 1913,
       "min": 1913
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Pozsony, Pozsony, Pozsony",
-    "id": "xx/unresolved/felsoszeli-pered-zsigard",
-    "lat": null,
-    "lng": null,
-    "name": "Felsőszeli, Pered, Zsigárd",
-    "nameHistorical": "Felsőszeli, Pered, Zsigárd",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-39-10004"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1905,
-      "min": 1905
     }
   },
   {
@@ -39188,40 +39012,6 @@
       "total": 1
     },
     "county": null,
-    "countyHistorical": "Csongrád, Csongrád",
-    "id": "xx/unresolved/hodmezovasarhely-csicsater-hodmezovasarhely-kulsoszorhat",
-    "lat": null,
-    "lng": null,
-    "name": "Hódmezővásárhely – Csicsatér, Hódmezővásárhely – Külsőszőrhát",
-    "nameHistorical": "Hódmezővásárhely – Csicsatér, Hódmezővásárhely – Külsőszőrhát",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-83-13595"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1932,
-      "min": 1932
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
     "countyHistorical": "Nógrád",
     "id": "xx/unresolved/hugyag",
     "lat": null,
@@ -39417,8 +39207,8 @@
         "null": 57
       },
       "byPerformance": {
-        "instrumental": 2,
-        "unknown": 55
+        "instrumental": 49,
+        "unknown": 8
       },
       "bySite": {
         "bsys": 57
@@ -39978,15 +39768,15 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 133
+        "null": 142
       },
       "byPerformance": {
-        "unknown": 133
+        "unknown": 142
       },
       "bySite": {
-        "bsys": 133
+        "bsys": 142
       },
-      "total": 133
+      "total": 142
     },
     "county": null,
     "countyHistorical": "Abaúj-Torna",
@@ -40072,8 +39862,10 @@
       "bsys-35-8472",
       "bsys-36-8497",
       "bsys-36-8505",
+      "bsys-36-8555",
       "bsys-36-8579",
       "bsys-36-8585",
+      "bsys-36-8627",
       "bsys-37-8689",
       "bsys-37-8767",
       "bsys-37-8768",
@@ -40082,9 +39874,11 @@
       "bsys-37-8840",
       "bsys-37-8877",
       "bsys-37-8878",
+      "bsys-37-8882",
       "bsys-37-8893",
       "bsys-37-8959",
       "bsys-37-8961",
+      "bsys-37-8968",
       "bsys-37-8976",
       "bsys-37-8992",
       "bsys-37-9014",
@@ -40093,6 +39887,8 @@
       "bsys-37-9224",
       "bsys-37-9282",
       "bsys-37-9306",
+      "bsys-37-9324",
+      "bsys-37-9344",
       "bsys-37-9345",
       "bsys-37-9360",
       "bsys-38-9378",
@@ -40111,6 +39907,7 @@
       "bsys-38-9666",
       "bsys-38-9677",
       "bsys-38-9691",
+      "bsys-38-9703",
       "bsys-38-9780",
       "bsys-38-9823",
       "bsys-39-10022",
@@ -40123,12 +39920,14 @@
       "bsys-51-10482",
       "bsys-53-10626",
       "bsys-61-10897",
+      "bsys-62-11104",
       "bsys-72-11780",
       "bsys-72-11852",
       "bsys-72-11912",
       "bsys-75-12402",
       "bsys-76-12450",
       "bsys-83-13462",
+      "bsys-83-13477",
       "bsys-83-13647",
       "bsys-83-13781"
     ],
@@ -40522,40 +40321,6 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Zala, Zala",
-    "id": "xx/unresolved/kiskomarom-galambok",
-    "lat": null,
-    "lng": null,
-    "name": "Kiskomárom, Galambok",
-    "nameHistorical": "Kiskomárom, Galambok",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-70-11677"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1923,
-      "min": 1923
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
         "null": 17
       },
       "byPerformance": {
@@ -40641,44 +40406,6 @@
     "years": {
       "max": 1909,
       "min": 1909
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 5
-      },
-      "byPerformance": {
-        "unknown": 5
-      },
-      "bySite": {
-        "bsys": 5
-      },
-      "total": 5
-    },
-    "county": null,
-    "countyHistorical": "Vas",
-    "id": "xx/unresolved/kisunyom",
-    "lat": null,
-    "lng": null,
-    "name": "Kisunyom",
-    "nameHistorical": "Kisunyom",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-35-8300",
-      "bsys-51-10481",
-      "bsys-63-11285",
-      "bsys-63-11338",
-      "bsys-72-11860"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1913,
-      "min": 1913
     }
   },
   {
@@ -41273,40 +41000,6 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Nyitra, Nyitra",
-    "id": "xx/unresolved/menyhe-pograny",
-    "lat": null,
-    "lng": null,
-    "name": "Menyhe, Pográny",
-    "nameHistorical": "Menyhe, Pográny",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-59-10681"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1909,
-      "min": 1909
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
         "null": 7
       },
       "byPerformance": {
@@ -41373,40 +41066,6 @@
     "years": {
       "max": 1891,
       "min": 1891
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Pozsony, Pozsony",
-    "id": "xx/unresolved/nadszeg-pered",
-    "lat": null,
-    "lng": null,
-    "name": "Nádszeg, Pered",
-    "nameHistorical": "Nádszeg, Pered",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-35-8221"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1905,
-      "min": 1905
     }
   },
   {
@@ -41490,7 +41149,8 @@
         "null": 87
       },
       "byPerformance": {
-        "unknown": 87
+        "instrumental": 7,
+        "unknown": 80
       },
       "bySite": {
         "bsys": 87
@@ -42551,40 +42211,6 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Pozsony, Pozsony",
-    "id": "xx/unresolved/pered-galanta",
-    "lat": null,
-    "lng": null,
-    "name": "Pered, Galánta",
-    "nameHistorical": "Pered, Galánta",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-37-8734"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1905,
-      "min": 1905
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
         "null": 23
       },
       "byPerformance": {
@@ -42783,50 +42409,6 @@
     "years": {
       "max": 1922,
       "min": 1922
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 11
-      },
-      "byPerformance": {
-        "unknown": 11
-      },
-      "bySite": {
-        "bsys": 11
-      },
-      "total": 11
-    },
-    "county": null,
-    "countyHistorical": "Nógrád",
-    "id": "xx/unresolved/pinc",
-    "lat": null,
-    "lng": null,
-    "name": "Pinc",
-    "nameHistorical": "Pinc",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-35-8245",
-      "bsys-37-8775",
-      "bsys-37-9196",
-      "bsys-37-9274",
-      "bsys-37-9287",
-      "bsys-38-9425",
-      "bsys-38-9542",
-      "bsys-38-9675",
-      "bsys-38-9690",
-      "bsys-42-10194",
-      "bsys-62-11108"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1916,
-      "min": 1916
     }
   },
   {
@@ -43175,15 +42757,15 @@
     "country": null,
     "counts": {
       "byGenre": {
-        "null": 32
+        "null": 35
       },
       "byPerformance": {
-        "unknown": 32
+        "unknown": 35
       },
       "bySite": {
-        "bsys": 32
+        "bsys": 35
       },
-      "total": 32
+      "total": 35
     },
     "county": null,
     "countyHistorical": "Abaúj-Torna",
@@ -43223,10 +42805,13 @@
       "bsys-35-8267",
       "bsys-37-9044",
       "bsys-37-9352",
+      "bsys-38-9618",
       "bsys-38-9676",
       "bsys-53-10619",
       "bsys-62-11098",
-      "bsys-83-13780"
+      "bsys-83-13463",
+      "bsys-83-13780",
+      "bsys-83-13791"
     ],
     "type": "village",
     "years": {
@@ -44205,40 +43790,6 @@
     "years": {
       "max": 1906,
       "min": 1906
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": null,
-    "counts": {
-      "byGenre": {
-        "null": 1
-      },
-      "byPerformance": {
-        "unknown": 1
-      },
-      "bySite": {
-        "bsys": 1
-      },
-      "total": 1
-    },
-    "county": null,
-    "countyHistorical": "Pozsony, Pozsony, Pozsony, Pozsony",
-    "id": "xx/unresolved/taksonyfalva-felsoszeli-zsigard-pered",
-    "lat": null,
-    "lng": null,
-    "name": "Taksonyfalva, Felsőszeli, Zsigárd, Pered",
-    "nameHistorical": "Taksonyfalva, Felsőszeli, Zsigárd, Pered",
-    "parent": "xx/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-38-9448"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1905,
-      "min": 1905
     }
   },
   {
