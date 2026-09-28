@@ -1,68 +1,50 @@
-// MapPanel (FRONTEND-SPEC 7, MAP-SPEC): MapView + controls, legend, hover card, accessible list,
-// not-mapped notice. County mode at zoom <= 7 with no county selected, village mode otherwise.
+// MapPanel (FRONTEND-SPEC 7, MAP-SPEC): MapView + zoom / reset controls, the borders toggle
+// (then | now | compare, shared with the journey map), a two-line legend, a three-line hover
+// card, the accessible list and the touch sheet. County mode at zoom <= 8 with no county
+// selected, village mode otherwise. County click = zoom + select, village click = select,
+// Esc or Reset = clear; the results panel follows the Query.
 import type L from 'leaflet'
-import { useCallback, useMemo, useState } from 'react'
-import { Link } from 'react-router'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useCatalogReady } from '../../app/catalog'
-import { usePrefs } from '../../app/prefs'
 import { useDerived, useQuery } from '../../app/query'
-import { genreLabel, t } from '../../i18n/en'
-import { placeText } from '../../state/placeName'
-import { applyPatch, GENRE_ORDER, type GenreId } from '../../state/query'
+import { t } from '../../i18n/en'
+import { explorerEra } from '../../state/journeys'
+import { countryName, placeText } from '../../state/placeName'
+import type { BordersMode } from '../../state/query'
 import { buildMapPoints, countryPredicate, filterSongs, type MapPoint } from '../../state/selectors'
-import { countryName } from '../../state/placeName'
-import { toSearch } from '../../state/urlCodec'
-import { GenreBar, GenreSwatch } from '../Genre'
+import { BorderToggle } from '../journey/BorderToggle'
+import { useBorderLayers } from '../journey/borderLayers'
+import { CompareDivider } from '../journey/CompareDivider'
+import { availableEras } from '../journey/useJourneyData'
 import { PlaceLabel } from '../PlaceLabel'
 import { EmptyState } from '../States'
 import { MapPointSheet } from '../phone/MapPointSheet'
-import { MapView, pointAriaLabel, ROMANIA_BOUNDS, type HoverInfo, type TileProvider } from './MapView'
+import { MapView, pointAriaLabel, ROMANIA_BOUNDS, type HoverInfo } from './MapView'
+import { diameter, LABEL_MIN_D } from './markerSize'
 
 // Below this zoom (with no county selected) the map shows county bubbles; above it, village dots.
 const COUNTY_ZOOM_MAX = 8
 // Never render more DOM markers than this in the zoom-driven village mode (MAP-SPEC D7).
 const VILLAGE_DOM_LIMIT = 2000
 
-function yearSpan(p: MapPoint): string {
-  if (p.yearMin === undefined || p.yearMax === undefined) return t('facet.noDate')
-  const span = p.yearMin === p.yearMax ? String(p.yearMin) : t('map.yearSpan', { from: p.yearMin, to: p.yearMax })
-  return p.unknownYear > 0 ? `${span} and ${t('facet.noDate')}` : span
-}
-
-/** The card body shared by the desktop hover card and the touch MapPointSheet. */
+/** The card body shared by the desktop hover card and the touch MapPointSheet: place, count, hint. */
 function PointCard({ p, hint }: { p: MapPoint; hint?: boolean }) {
-  const top3 = GENRE_ORDER.map((g) => ({ g, n: p.genreCounts[g] ?? 0 }))
-    .filter((x) => x.n > 0)
-    .sort((a, b) => b.n - a.n)
-    .slice(0, 3)
-  const path = [p.level === 'village' ? p.place.county : null, p.place.region, p.place.country].filter(Boolean).join(' / ')
   return (
     <>
       <div className="hover-card__name">
         <PlaceLabel place={p.place} showMarkers />
+        {p.level === 'village' && p.place.county && <span className="hover-card__path"> {p.place.county}</span>}
       </div>
-      {path && <div className="hover-card__path">{path}</div>}
       <div className="hover-card__count">{p.level === 'county' ? t('map.melodiesIn', { n: p.count, v: p.villageCount ?? 0 }) : t('results.count', { n: p.count })}</div>
-      <div className="hover-card__genres">
-        <div style={{ width: 80 }}>
-          <GenreBar counts={p.genreCounts} total={p.count} height={8} width={80} />
-        </div>
-        <span>{top3.length ? top3.map((x) => `${genreLabel(x.g).split(' / ')[0]} ${x.n}`).join(', ') : t('facet.noGenre')}</span>
-      </div>
-      <div>{yearSpan(p)}</div>
-      {(p.audioCount > 0 || p.notationCount > 0) && (
-        <div>{[p.audioCount > 0 ? t('map.recordings', { n: p.audioCount }) : null, p.notationCount > 0 ? t('map.notations', { n: p.notationCount }) : null].filter(Boolean).join(', ')}</div>
-      )}
-      {p.level === 'county' && (p.unmappedVillages ?? 0) > 0 && <div>{t('map.villagesNotMapped', { n: p.unmappedVillages })}</div>}
-      {hint && <div className="hover-card__hint">{p.selected ? t('map.clickClear') : p.level === 'county' ? t('map.clickCounty') : t('map.clickVillage')}</div>}
+      {hint && <div className="hover-card__hint">{p.selected ? t('map.clickClear') : t('map.clickOpen')}</div>}
     </>
   )
 }
 
 function HoverCard({ info, width, height }: { info: HoverInfo; width: number; height: number }) {
-  const cardW = 260
+  const cardW = 240
   const left = Math.max(8, Math.min(width - cardW - 8, info.x - cardW / 2))
-  const flip = info.y < 190
+  const flip = info.y < 120
   const style = flip ? { left, top: info.y + 20 } : { left, bottom: height - info.y + 16 }
   return (
     <div className="hover-card" role="tooltip" id="map-hover-card" style={style}>
@@ -86,23 +68,29 @@ export function MapPanel({
   const derived = useDerived()
   const { query, setQuery, search } = useQuery()
   const [sheetPoint, setSheetPoint] = useState<MapPoint | null>(null)
-  const { colourByGenre, setColourByGenre } = usePrefs()
   const [zoom, setZoom] = useState(6)
   const [map, setMap] = useState<L.Map | null>(null)
   const [hover, setHover] = useState<HoverInfo | null>(null)
-  const [provider, setProvider] = useState<TileProvider>('carto')
   const [size, setSize] = useState({ width: 800, height: 500 })
+  const [compare, setCompare] = useState(50)
+  const panelRef = useRef<HTMLDivElement>(null)
 
   const placeSelected = Boolean(query.county || query.village)
   const zoomedIn = zoom > COUNTY_ZOOM_MAX
   const level: 'county' | 'village' = placeSelected || zoomedIn ? 'village' : 'county'
   const selectedId = level === 'village' ? query.village : query.county
 
-  // Drill-down point set (owner feedback): with a county selected, its village dots plus the
-  // other counties' bubbles (counted over every filter except place) and a hollow ring for the
-  // selected county, so any circle stays clickable: another county re-selects, a village narrows,
-  // the selected item deselects.
-  const { points, unmappedCount } = useMemo(() => {
+  // Borders (owner feedback b): the journey map's then / now / compare on the explorer too.
+  const eras = useMemo(() => availableEras(), [])
+  const era = explorerEra(query.yearFrom, query.yearTo, eras)
+  const borders: BordersMode = query.borders ?? 'now'
+  const borderState = useBorderLayers({ map, borders, era, compare, compareMode: 'swipe' })
+  const onBorders = useCallback((mode: BordersMode) => setQuery({ borders: mode }, { replace: true }), [setQuery])
+
+  // Drill-down point set: with a county selected, its village dots plus the other counties'
+  // bubbles (counted over every filter except place), so a neighbouring county is one click
+  // away. The selected county itself is not drawn as a bubble: its villages stand for it.
+  const { points } = useMemo(() => {
     if (!catalog || !derived) return { points: [] as MapPoint[], unmappedCount: 0 }
     const villages =
       level === derived.mapLevel
@@ -116,7 +104,7 @@ export function MapPanel({
     if (!county) return villages
     const inCountry = countryPredicate(query)
     const exceptPlace = filterSongs(catalog.index.songs, derived.predicates, 'place').filter(inCountry)
-    const counties = buildMapPoints(exceptPlace, catalog.index, 'county', county, undefined).points
+    const counties = buildMapPoints(exceptPlace, catalog.index, 'county', undefined, undefined).points.filter((p) => p.placeId !== county)
     // Every village of the selected county stays visible (and clickable) while one is selected.
     const inCounty = exceptPlace.filter((s) => s.location.placeId === county || s.location.placeId?.startsWith(county + '/'))
     const countyVillages = buildMapPoints(inCounty, catalog.index, 'village', query.village, undefined).points
@@ -166,23 +154,16 @@ export function MapPanel({
     return { fitBounds: ROMANIA_BOUNDS, fitKey: country ?? 'all' }
   }, [catalog, query.county, query.country])
 
-  const fitLabel = query.county
-    ? t('map.fitCounty')
-    : query.country === 'ro'
-      ? t('map.fitRomania')
-      : query.country
-        ? t('map.fitCountry', { name: countryName(query.country) })
-        : t('map.fitAll')
+  const resetTitle = query.country === 'ro' ? t('map.fitRomania') : query.country ? t('map.fitCountry', { name: countryName(query.country) }) : t('map.fitAll')
 
-  // Drill-down: a county bubble selects that county (the map fits it and shows its villages);
-  // the selected county's ring deselects it (fit back out); a village dot selects the village,
-  // the selected village deselects it and the county stays.
+  // County click = zoom + select (the map fits the county and shows its villages); village
+  // click = select, click again = clear the village (the county stays).
   const select = useCallback(
     (p: MapPoint) => {
-      if (p.level === 'county') setQuery({ county: p.placeId === query.county ? undefined : p.placeId })
+      if (p.level === 'county') setQuery({ county: p.placeId })
       else setQuery({ village: p.placeId === query.village ? undefined : p.placeId })
     },
-    [query.county, query.village, setQuery],
+    [query.village, setQuery],
   )
   const onSelect = useCallback(
     (p: MapPoint) => {
@@ -192,6 +173,17 @@ export function MapPanel({
     },
     [touchSheet, select],
   )
+  // Esc clears the deepest selection; Reset clears the place and fits the country again.
+  const onEscape = useCallback(() => {
+    if (query.village) setQuery({ village: undefined })
+    else if (query.county) setQuery({ county: undefined })
+  }, [query.village, query.county, setQuery])
+  const reset = useCallback(() => {
+    // clearing the county clears the village with it (applyPatch applies the deepest level only)
+    if (query.county) setQuery({ county: undefined })
+    else if (query.village) setQuery({ village: undefined })
+    else map?.fitBounds(fitBounds, { padding: [24, 24] })
+  }, [query.county, query.village, setQuery, map, fitBounds])
   const onHover = useCallback((info: HoverInfo | null) => setHover(touchSheet ? null : info), [touchSheet])
   const closeSheet = useCallback(() => setSheetPoint(null), [])
   const showMelodies = useCallback(
@@ -240,23 +232,22 @@ export function MapPanel({
 
   const legendLevel: 'county' | 'village' = query.county ? 'village' : level
   const nMax = points.reduce((m, p) => (p.level === legendLevel ? Math.max(m, p.count) : m), 0)
-  const selectedUnmapped = selectedId && !points.some((p) => p.placeId === selectedId) && catalog.index.placeById.get(selectedId)?.lat === null
-  const unmappedSearch = toSearch(applyPatch(query, { unmapped: true }))
+  const legendD = legendLevel === 'county' ? Math.max(LABEL_MIN_D, diameter({ level: 'county', count: nMax }, nMax) * 0.6) : diameter({ level: 'village', count: nMax }, nMax) * 0.7
+  const selectedUnmapped = Boolean(selectedId && !points.some((p) => p.placeId === selectedId) && catalog.index.placeById.get(selectedId)?.lat === null)
 
   return (
-    <div className="map-panel">
+    <div className="map-panel" ref={panelRef}>
       <MapView
         points={points}
         level={level}
         selectedId={selectedId}
         highlightId={highlightPlaceId}
-        colourByGenre={colourByGenre}
         fitBounds={fitBounds}
         fitKey={fitKey}
         onSelect={onSelect}
         onHover={onHover}
         onZoom={setZoom}
-        onTileFallback={setProvider}
+        onEscape={onEscape}
         onReady={onReady}
       />
       <div className="map-controls">
@@ -266,60 +257,43 @@ export function MapPanel({
         <button type="button" className="map-ctl" aria-label={t('map.zoomOut')} title={t('map.zoomOut')} onClick={() => map?.zoomOut()}>
           &minus;
         </button>
-        <button type="button" className="map-ctl" aria-label={fitLabel} title={fitLabel} onClick={() => map?.fitBounds(fitBounds, { padding: [24, 24] })}>
-          <svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">
-            <path d="M2 6V2h4M12 2h4v4M16 12v4h-4M6 16H2v-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
+        <button type="button" className="map-ctl map-ctl--text" title={resetTitle} onClick={reset}>
+          {t('map.resetView')}
         </button>
       </div>
       <div className="map-controls map-controls--right">
-        <button type="button" className="map-ctl" aria-pressed={colourByGenre} aria-label={t('colourByGenre')} title={t('colourByGenre')} onClick={() => setColourByGenre(!colourByGenre)}>
-          <svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">
-            <circle cx="6" cy="6" r="3.5" fill="var(--genre-colinda)" />
-            <circle cx="12" cy="6" r="3.5" fill="var(--genre-joc)" />
-            <circle cx="9" cy="12" r="3.5" fill="var(--genre-cantec)" />
-          </svg>
-        </button>
+        <BorderToggle compact value={borders} era={era} eras={eras} disabled={borderState.unavailable} loading={borderState.loading} onChange={onBorders} />
       </div>
-      {provider === 'osm' && <div className="map-tiles-notice">{t('map.osmFallback')}</div>}
+      {borders === 'both' && !borderState.unavailable && <CompareDivider compare={compare} onCompare={setCompare} boundsRef={panelRef} />}
       <div className="map-legend" aria-label={t('map.legend')}>
-        {colourByGenre ? (
-          <>
-            <div className="map-legend__row">{t('map.legendGenre')}</div>
-            {GENRE_ORDER.map((g) => (
-              <button
-                key={g}
-                type="button"
-                className="map-legend__genre"
-                aria-pressed={query.genre.includes(g)}
-                onClick={() => setQuery({ genre: query.genre.includes(g) ? query.genre.filter((x) => x !== g) : [...query.genre, g] })}
-              >
-                <GenreSwatch genre={g as GenreId} size={8} />
-                <span>{genreLabel(g).split(' / ')[0]}</span>
-              </button>
-            ))}
-          </>
-        ) : (
-          <>
-            <div className="map-legend__row">{t('map.legendSize')}</div>
-            {[1, Math.max(1, Math.round(nMax / 2)), Math.max(1, nMax)].map((n, i) => {
-              const r = Math.sqrt(n / Math.max(1, nMax))
-              const d = legendLevel === 'county' ? 10 + 30 * r : 4 + 18 * r
-              return (
-                <div key={i} className="map-legend__row">
-                  <span className="map-legend__dot" style={{ width: d, height: d }} />
-                  <span>{n.toLocaleString('en')}</span>
-                </div>
-              )
-            })}
-          </>
+        <div className="map-legend__row">
+          <span className={`map-legend__dot map-legend__dot--${legendLevel}`} style={{ width: legendD, height: legendD }} aria-hidden="true">
+            {legendLevel === 'county' ? nMax.toLocaleString('en') : ''}
+          </span>
+          <span>{legendLevel === 'county' ? t('map.legendCounty') : t('map.legendVillage')}</span>
+        </div>
+        <div className="map-legend__row">
+          {legendLevel === 'county' ? (
+            <>
+              <span className="map-legend__dot map-legend__dot--county" style={{ width: 12, height: 12 }} aria-hidden="true" />
+              <span>{t('map.legendClickCounty')}</span>
+            </>
+          ) : (
+            <>
+              <span className="map-legend__dot map-legend__dot--selected" style={{ width: 12, height: 12 }} aria-hidden="true" />
+              <span>{t('map.legendSelected')}</span>
+            </>
+          )}
+        </div>
+        {borderState.underPointer && (borderState.underPointer.then || borderState.underPointer.now) && (
+          <div className="map-legend__row map-legend__pointer mono">
+            {borderState.underPointer.then && borderState.thenSet ? `${borderState.underPointer.then} (${borderState.thenSet})` : ''}
+            {borderState.underPointer.then && borderState.underPointer.now ? ' / ' : ''}
+            {borderState.underPointer.now ? `${borderState.underPointer.now} (now)` : ''}
+          </div>
         )}
       </div>
-      {(unmappedCount > 0 || selectedUnmapped) && (
-        <Link className="map-notice" to={{ pathname: '/', search: unmappedSearch }}>
-          {selectedUnmapped ? t('map.selectedNotMapped') : unmappedCount === 1 ? t('map.notMappedOne') : t('map.notMapped', { n: unmappedCount })}
-        </Link>
-      )}
+      {selectedUnmapped && <div className="map-notice">{t('map.selectedNotMapped')}</div>}
       {hover && !touchSheet && <HoverCard info={hover} width={size.width} height={size.height} />}
       {sheetPoint && touchSheet && (
         <MapPointSheet point={sheetPoint} search={search} onClose={closeSheet} onShowMelodies={showMelodies}>
@@ -362,8 +336,7 @@ export function MapAccessibleList() {
             </button>
             {focused?.placeId === p.placeId && (
               <div id="map-list-card" className="muted" style={{ padding: '0 8px 8px', fontSize: 'var(--fs-12)' }}>
-                {yearSpan(p)}
-                {p.level === 'county' ? `, ${t('map.melodiesIn', { n: p.count, v: p.villageCount ?? 0 })}` : ''}
+                {p.level === 'county' ? t('map.melodiesIn', { n: p.count, v: p.villageCount ?? 0 }) : t('results.count', { n: p.count })}
               </div>
             )}
           </li>

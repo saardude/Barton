@@ -1,4 +1,5 @@
-/* Map panel (MAP-SPEC). Leaflet's own stylesheet is imported from the package. */
+/* Map panel (MAP-SPEC). Leaflet's own stylesheet is imported from the package. One marker
+   type per level (county bubble, village dot), one selected state (filled accent + halo). */
 
 .map-panel {
   position: relative;
@@ -49,6 +50,13 @@
   border: 0;
 }
 
+/* base.css caps every svg at max-width 100%; Leaflet exempts only its overlay pane, so the
+   renderers of the custom panes (borders, route) need the same exemption. */
+.map-view .leaflet-pane > svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
 .map-view:focus-visible {
   outline: var(--focus-ring);
   outline-offset: -2px;
@@ -84,43 +92,33 @@
 }
 
 .dot--county::before {
-  background: color-mix(in srgb, var(--fill, var(--surface)) 85%, transparent);
+  background: color-mix(in srgb, var(--fill, var(--surface)) 90%, transparent);
   border: 1.5px solid var(--ink-2);
 }
 
-/* the selected county while its villages are shown: a hollow ring behind the dots */
-.dot--county-hollow::before {
-  background: transparent;
-  border: 2px dashed var(--map-select);
-}
-
-.dot--county-hollow .dot__label {
-  display: none;
-}
-
+/* hover / focus / row highlight: one ring in ink */
 .dot:hover::before,
-.dot:focus-visible::before {
-  box-shadow:
-    0 0 0 2px var(--map-halo),
-    0 0 0 3px var(--ink-2);
+.dot:focus-visible::before,
+.dot--highlight::before {
+  box-shadow: 0 0 0 2px var(--ink-2);
 }
 
-.dot[aria-pressed='true']::before {
-  box-shadow:
-    0 0 0 2px var(--map-halo),
-    0 0 0 4px var(--map-select);
+/* selected: filled accent with a halo; unmistakable, no second ring */
+.dot--selected::before,
+.dot--selected:hover::before {
+  background: var(--accent);
+  border: 2px solid var(--map-halo);
+  box-shadow: none;
+}
+
+.dot--selected .dot__label {
+  color: var(--accent-ink);
 }
 
 .dot:focus-visible {
   outline: var(--focus-ring);
   outline-offset: 2px;
   border-radius: 50%;
-}
-
-.dot--highlight::before {
-  box-shadow:
-    0 0 0 2px var(--map-halo),
-    0 0 0 3px var(--ink-2);
 }
 
 .dot__label {
@@ -130,15 +128,10 @@
   transform: translate(-50%, -50%);
   font-family: var(--font-mono);
   font-size: var(--fs-11);
+  font-weight: var(--fw-medium);
   color: var(--label-ink, var(--ink));
   pointer-events: none;
   white-space: nowrap;
-}
-
-.dot__label--beside {
-  left: calc(50% + var(--d) / 2 + 4px);
-  transform: translateY(-50%);
-  color: var(--ink);
 }
 
 @media (pointer: coarse) {
@@ -161,6 +154,7 @@
 .map-controls--right {
   left: auto;
   right: var(--space-2);
+  align-items: flex-end;
 }
 
 .map-ctl {
@@ -176,11 +170,20 @@
   font-size: var(--fs-16);
 }
 
+.map-ctl--text {
+  width: auto;
+  padding: 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  white-space: nowrap;
+}
+
 .map-ctl svg {
   width: 18px;
   height: 18px;
 }
 
+/* legend: two lines, plain words */
 .map-legend {
   position: absolute;
   left: var(--space-2);
@@ -191,6 +194,7 @@
   border: var(--border-strong);
   font-size: var(--fs-11);
   font-family: var(--font-mono);
+  color: var(--ink);
 }
 
 .map-legend__row {
@@ -202,26 +206,32 @@
 
 .map-legend__dot {
   flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background: var(--map-dot);
   border: 1px solid var(--map-dot-stroke);
+  box-sizing: border-box;
+  font-size: 9px;
+  line-height: 1;
 }
 
-.map-legend__genre {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: 24px;
-  padding: 0 var(--space-1);
-  border: 1px solid transparent;
-  background: transparent;
-  font: inherit;
-  color: var(--ink);
+.map-legend__dot--county {
+  background: var(--surface);
+  border: 1.5px solid var(--ink-2);
 }
 
-.map-legend__genre[aria-pressed='true'] {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+.map-legend__dot--selected {
+  background: var(--accent);
+  border: 2px solid var(--map-halo);
+}
+
+.map-legend__pointer {
+  border-top: var(--border);
+  margin-top: var(--space-1);
+  padding-top: var(--space-1);
+  color: var(--ink-2);
 }
 
 .map-notice {
@@ -250,27 +260,12 @@
   background: var(--ground);
 }
 
-.map-tiles-notice {
-  position: absolute;
-  top: var(--space-2);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-map-ctl);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  background: var(--surface);
-  border: var(--border-strong);
-  font-size: var(--fs-12);
-}
-
-/* hover card */
+/* hover card: place, count, hint */
 .hover-card {
   position: absolute;
   z-index: var(--z-hover);
-  width: 260px;
-  padding: var(--space-3);
+  width: 240px;
+  padding: var(--space-2) var(--space-3);
   background: var(--surface);
   border: var(--border-strong);
   box-shadow: var(--shadow-pop);
@@ -285,25 +280,19 @@
 
 .hover-card__path {
   color: var(--muted);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-12);
 }
 
 .hover-card__count {
   font-family: var(--font-mono);
-  font-size: var(--fs-16);
-  margin: var(--space-1) 0;
-}
-
-.hover-card__genres {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
+  font-size: var(--fs-14);
   margin: var(--space-1) 0;
 }
 
 .hover-card__hint {
   font-size: var(--fs-11);
   color: var(--muted);
-  margin-top: var(--space-1);
 }
 
 /* accessible list after the map */

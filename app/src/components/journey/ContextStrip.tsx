@@ -10,7 +10,7 @@ function eventDate(e: EventInWindow['event']): string {
   return e.dateConfidence === 'approximate' ? `${a} (approximate)` : a
 }
 
-export function ContextStrip({ events, title }: { events: EventInWindow[]; title?: string }) {
+export function ContextStrip({ events, title, headless = false }: { events: EventInWindow[]; title?: string; /** Rendered inside a disclosure that already carries the heading. */ headless?: boolean }) {
   const listRef = useRef<HTMLDivElement>(null)
   const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
@@ -23,10 +23,12 @@ export function ContextStrip({ events, title }: { events: EventInWindow[]; title
     next?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' })
   }
   return (
-    <section className="context-strip" aria-labelledby="context-title">
-      <h2 id="context-title" className="panel-title">
-        {title ?? t('journey.context')}
-      </h2>
+    <section className="context-strip" aria-labelledby={headless ? undefined : 'context-title'} aria-label={headless ? (title ?? t('journey.context')) : undefined}>
+      {!headless && (
+        <h2 id="context-title" className="panel-title">
+          {title ?? t('journey.context')}
+        </h2>
+      )}
       {events.length === 0 ? (
         <p className="muted context-strip__empty">{t('journey.contextEmpty')}</p>
       ) : (

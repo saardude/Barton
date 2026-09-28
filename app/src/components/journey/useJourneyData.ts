@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useCatalogReady } from '../../app/catalog'
 import { manifest } from '../../app/manifest'
-import { buildVillageLookup, isJourney, type BorderFile, type ContextEvent, type ContextEventsFile, type Era, type Journey, type VillageLookup, type VillagesFile } from '../../state/journeys'
+import { buildCuratedLookup, buildVillageLookup, isJourney, type BorderFile, type ContextEvent, type ContextEventsFile, type CuratedFile, type CuratedJourney, type Era, type Journey, type VillageLookup, type VillagesFile } from '../../state/journeys'
 
 const cache = new Map<string, Promise<unknown>>()
 
@@ -67,6 +67,12 @@ export function useContextEvents(): Loaded<ContextEvent[]> {
   const file = useJson<ContextEventsFile | ContextEvent[]>(manifest['context-events'] ? 'context-events' : null)
   const events = useMemo(() => (file.data ? (Array.isArray(file.data) ? file.data : (file.data.events ?? [])) : null), [file.data])
   return { data: events, error: file.error, loading: file.loading }
+}
+
+/** Hand-researched itineraries (data/journeys-curated.json) when the build ships them; empty otherwise. */
+export function useCuratedJourneys(): Map<string, CuratedJourney> {
+  const file = useJson<CuratedFile | CuratedJourney[]>(manifest['journeys-curated'] ? 'journeys-curated' : null)
+  return useMemo(() => buildCuratedLookup(file.data), [file.data])
 }
 
 export function borderFileName(set: Era | 'now'): string {

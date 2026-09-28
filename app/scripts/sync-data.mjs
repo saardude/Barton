@@ -45,7 +45,7 @@ if (existsSync(slimPath) && statSync(slimPath).mtimeMs >= statSync(songsPath).mt
 
 // the other files: required ones fail, optional ones are skipped when absent
 const required = ['places', 'facets']
-const optional = ['journeys', 'villages', 'context-events']
+const optional = ['journeys', 'journeys-curated', 'villages', 'context-events']
 for (const name of [...required, ...optional]) {
   const p = join(dataDir, `${name}.json`)
   if (!existsSync(p)) {

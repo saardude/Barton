@@ -90,7 +90,8 @@ test.describe('Keyboard', () => {
       testInfo.annotations.push({ type: 'fixme', description: '/song is a stub: prev/next and Raw JSON tab not yet keyboard-tested' })
       return
     }
-    const prevNext = page.getByRole('link', { name: /Previous melody|Next melody/ }).or(page.getByRole('button', { name: /Previous melody|Next melody/ }))
+    // at the ends the unavailable direction is a disabled button; the available one is a link
+    const prevNext = page.getByRole('link', { name: /Previous melody|Next melody/ })
     await expect(prevNext.first()).toBeVisible()
     await prevNext.first().focus()
     await page.keyboard.press('Shift+Tab')

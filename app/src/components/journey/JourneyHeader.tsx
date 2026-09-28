@@ -1,8 +1,9 @@
-// JourneyHeader (FRONTEND-SPEC 14.4, AC-42): label verbatim, dates to their precision, stops /
-// melodies / km, departure line, the "then" polity and "now" country, index link, Romanian
-// material flag, the no-records-online state, and the journey export.
+// JourneyHeader (FRONTEND-SPEC 14.4, AC-42): the trip's title, then two plain lists, "Known"
+// (what the source states: index label, dates and their precision, records) and "Inferred"
+// (what the viewer adds: departure, order of visits, straight-line travel, attached records,
+// the state at the time), the counts, the curated sources when present, and the export.
 import { melodies, t } from '../../i18n/en'
-import { buildJourneyExport, journeyDateText, journeyFileName, journeyPolities, type VillageLookup } from '../../state/journeys'
+import { buildJourneyExport, journeyDateText, journeyFileName, journeyPolities, journeyQuality, qualityLabel, type CuratedJourney, type VillageLookup } from '../../state/journeys'
 import { sortKeys } from '../../app/exportJson'
 import { countryName } from '../../state/placeName'
 import { journeyTitle, type JourneyView } from './journeyView'
@@ -22,63 +23,91 @@ function download(name: string, data: unknown): void {
 export interface JourneyHeaderProps {
   view: JourneyView
   villages: VillageLookup | null
+  curated?: CuratedJourney | null
   borderAttributions: string[]
   onClearFilters?: () => void
 }
 
-export function JourneyHeader({ view, villages, borderAttributions, onClearFilters }: JourneyHeaderProps) {
+export function JourneyHeader({ view, villages, curated, borderAttributions, onClearFilters }: JourneyHeaderProps) {
   const j = view.journey
   const date = journeyDateText(j)
   const unmappedRecords = view.unresolved.reduce((n, s) => n + s.recordCount, 0)
   const polities = journeyPolities(j)
+  const quality = journeyQuality(j, curated)
   const rm = j.romanianMaterial
   const rmKey = rm ? (rm.value === true ? (rm.confidence === 'documented' ? 'documented' : 'inferred') : rm.value === false ? 'notRomanian' : 'unknown') : null
   const noMatch = view.filtersActive && view.songs.length > 0 && view.matchingSongs.length === 0
+  const placesWithRecords = j.stops.filter((s) => s.recordCount > 0).length
+
+  const known: React.ReactNode[] = []
+  if (j.derivedFrom === 'gyuj-collections' && j.label) known.push(<span lang="hu">{t('journey.knownIndex', { label: j.label })}</span>)
+  known.push(t('journey.knownDates', { text: date.text, wording: date.wording }))
+  if (j.recordCount > 0) known.push(t('journey.knownRecords', { n: j.recordCount, v: placesWithRecords }))
+  else known.push(t('journey.noRecordsOnline'))
+  if (j.recordCount === 0 && j.nowIn.length > 0) known.push(`${t('journey.nowIn')}: ${j.nowIn.map((c) => countryName(c)).join(', ')}`)
+  if (curated?.sources?.length) known.push(t('journey.knownCurated'))
+  if (rmKey === 'documented') known.push(t('journey.romanianMaterial.documented'))
+
+  const inferred: string[] = []
+  if (j.departure.confidence === 'assumed') inferred.push(t('journey.inferredDeparture', { name: j.departure.name }))
+  if (j.kind === 'cluster' && j.stops.length > 1) inferred.push(t('journey.inferredOrder'))
+  if (j.kind === 'route' && view.legs.length > 0) inferred.push(t('journey.inferredRoute'))
+  if (!j.recordsOnline && j.recordCount > 0) inferred.push(t('journey.inferredAttached'))
+  if (polities.then.length) inferred.push(t('journey.inferredPolity', { then: polities.then.join(' / ') }))
+  if (rmKey && rmKey !== 'documented') inferred.push(t(`journey.romanianMaterial.${rmKey}`))
+
   return (
     <header className="journey-header">
       <div className="journey-header__kind caps-label">
+        <span className="badge-text" title={t(`journey.qualityTitle.${quality}`)}>
+          {qualityLabel(quality)}
+        </span>{' '}
         {j.derivedFrom === 'gyuj-collections' ? t('journey.indexEntry') : t('journey.markerGap')}
         {j.kind === 'cluster' && <span className="badge-text"> {t('journey.approximate')}</span>}
       </div>
-      <h1 className="journey-header__title">{journeyTitle(j)}</h1>
-      <p className="journey-header__dates">
-        <span className="mono">{date.text}</span> <span className="muted">({date.wording})</span>
-      </p>
+      <h1 className="journey-header__title">{curated?.title ?? journeyTitle(j)}</h1>
       <p className="journey-header__stats">
         {t('journey.headerStats', { stops: j.stops.length, unmapped: unmappedRecords })}
         {'; '}
         {j.distanceKm !== null ? t('journey.headerMelodies', { n: j.recordCount, km: Math.round(j.distanceKm) }) : t('journey.headerMelodiesNoKm', { n: j.recordCount })}
       </p>
-      <p className="journey-header__departure">
-        {j.departure.confidence === 'assumed' ? t('journey.departureAssumed', { name: j.departure.name }) : t('journey.departureLine', { name: j.departure.name })}
-      </p>
-      <dl className="journey-header__polity" title={t('journey.polityNote')}>
+      <dl className="journey-header__facts">
         <div>
-          <dt>{t('journey.polityThen')}</dt>
-          <dd>{polities.then.join(' / ') || t('facet.unknown')}</dd>
+          <dt>{t('journey.known')}</dt>
+          <dd>
+            <ul>
+              {known.map((k, i) => (
+                <li key={i}>{k}</li>
+              ))}
+            </ul>
+          </dd>
         </div>
         <div>
-          <dt>{t('journey.polityNow')}</dt>
-          <dd>{polities.now.join(' / ') || t('facet.unknown')}</dd>
+          <dt>{t('journey.inferred')}</dt>
+          <dd>
+            <ul>{inferred.length ? inferred.map((k) => <li key={k}>{k}</li>) : <li>{t('journey.inferredNone')}</li>}</ul>
+          </dd>
         </div>
       </dl>
-      {!j.recordsOnline && (
-        <div className="journey-header__notice">
-          <p>{j.recordCount > 0 ? t('journey.recordsAttached', { n: j.recordCount }) : t('journey.noRecordsOnline')}</p>
-          {j.labelPlaceRaw && (
-            <p>
-              <span className="caps-label">{t('journey.placesNamed')}</span> <span lang="hu">{j.labelPlaceRaw}</span>
-            </p>
-          )}
-          {j.nowIn.length > 0 && (
-            <p>
-              <span className="caps-label">{t('journey.nowIn')}</span> {j.nowIn.map((c) => countryName(c)).join(', ')}
-            </p>
-          )}
+      {curated?.summary && <p className="journey-header__summary">{curated.summary}</p>}
+      {curated?.sources && curated.sources.length > 0 && (
+        <div className="journey-header__sources">
+          <span className="caps-label">{t('journey.curatedSources')}</span>
+          <ul>
+            {curated.sources.map((s, i) => (
+              <li key={i}>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">
+                    {s.citation}
+                  </a>
+                ) : (
+                  s.citation
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
-      {j.recordsOnline && j.recordCount === 0 && <p className="journey-header__notice">{t('journey.noRecordsOnline')}</p>}
-      {rmKey && <p className={`journey-header__flag journey-header__flag--${rmKey}`}>{t(`journey.romanianMaterial.${rmKey}`)}</p>}
       {noMatch && (
         <p className="journey-header__notice" role="status">
           {t('journey.noMatch', { n: view.songs.length })}{' '}

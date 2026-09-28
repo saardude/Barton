@@ -18,6 +18,9 @@ export function TopBar() {
   const { query, setQuery, search } = useQuery()
   const { colourByGenre, setColourByGenre, theme, setTheme } = usePrefs()
   const onExplorer = pathname === '/'
+  // Colour by genre only affects the county page (local map dots, timeline stacks); the explorer
+  // map is monochrome by design, so the toggle is offered where it does something.
+  const onCounty = pathname.startsWith('/county/')
   return (
     <header className="topbar">
       <NavLink className={`topbar__masthead${onExplorer ? ' topbar__masthead--large' : ''}`} to={{ pathname: '/', search }} aria-label={t('app.title')}>
@@ -34,7 +37,7 @@ export function TopBar() {
         <SearchInput value={query.q} onChange={(q) => setQuery({ q }, { replace: true })} />
       </div>
       <div className="topbar__tools">
-        {onExplorer && (
+        {onCounty && (
           <button type="button" className="toggle" aria-pressed={colourByGenre} onClick={() => setColourByGenre(!colourByGenre)}>
             {t('colourByGenre')}
           </button>

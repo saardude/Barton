@@ -60,12 +60,19 @@ test.describe('Accessibility (axe)', () => {
 
   test('journeys page', async ({ page }, testInfo) => {
     await page.goto('/journeys')
-    await expect(page.getByRole('region', { name: 'Timeline' })).toBeVisible()
-    await scan(page, testInfo, '/journeys (no trip)')
+    await expect(page.getByRole('main')).toBeVisible()
+    await expect(page.getByText('Loading the collection...')).toHaveCount(0)
+    await scan(page, testInfo, '/journeys (default)')
+    // the trip picker: a "Journey" select in the timeline design, a "Journeys (n)" button in the redesign
     const pick = page.getByRole('combobox', { name: 'Journey' })
-    await pick.selectOption({ index: 5 })
-    await expect(page.locator('h1')).toBeVisible()
-    await scan(page, testInfo, '/journeys (trip selected)')
+    const picker = page.getByRole('button', { name: /^Journeys \(\d+\)/ })
+    if (await pick.count()) {
+      await pick.selectOption({ index: 5 })
+      await scan(page, testInfo, '/journeys (trip selected)')
+    } else if (await picker.count()) {
+      await picker.first().click()
+      await scan(page, testInfo, '/journeys (trip picker open)')
+    }
   })
 
   test('not found and about', async ({ page }, testInfo) => {

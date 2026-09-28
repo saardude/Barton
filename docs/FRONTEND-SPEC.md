@@ -368,8 +368,9 @@ section 10.
     <FacetGroup id="year"><YearRange/></FacetGroup>
     <ClearAllButton/>
   </FilterRail>
-  <MapPanel>                                       MAP-SPEC
-    <MapView/> <MapLegend/> <MapHoverCard/> <MapAccessibleList/> <NotMappedNotice/>
+  <MapPanel>                                       MAP-SPEC (simplified 2026-09-28)
+    <MapView/> zoom +/- and "Reset view", <BorderToggle compact/> + <CompareDivider/>,
+    two-line legend, three-line hover card; <MapAccessibleList/> after the panel
   </MapPanel>
   <ResultsPanel>
     <ResultsHeader> <ResultCount/> <SortSelect/> <ExportButton/> <ActiveFilterChips/> </ResultsHeader>
@@ -446,7 +447,8 @@ hidden text. Min height 56 px; the title link covers the row except the source l
 | type in search                           | `q`, debounced, replaceState; list, map and counts update within 300 ms |
 | change country switch                    | `country`, clears deeper levels; tree re-roots                         |
 | select a tree node                       | place level set, pushState, map fits to that place                      |
-| click county bubble / village dot        | same as tree select (MAP-SPEC section 5)                                |
+| click county bubble / village dot        | same as tree select (MAP-SPEC section 5); Esc or "Reset view" clears     |
+| borders then / now / compare (map)       | `borders` (omitted when `now`); era from the year filter, else 1910      |
 | toggle a facet value                     | facet updated, page 1                                                   |
 | change year                              | bounds, page 1                                                          |
 | change sort                              | `sort` / `dir`, page unchanged                                          |
@@ -756,30 +758,51 @@ value explicitly (`borders=1910` or `borders=1920`) so a shared link shows the s
 ### 14.4 Components
 
 ```
-<JourneyPage>
-  <JourneyTimeline/>                         top strip, full width
-  <JourneyMap>                               centre (MAP-SPEC section 11)
-    <BorderToggle/> <JourneyLegend/> <JourneyAccessibleList/>
+<JourneyPage>                                 (revised 2026-09-28: the list is the primary control)
+  <JourneyList>                               left column, 240-300 px (a sheet under 1024 px)
+    search, "Show all derived trips" toggle, <JourneyTimeline/> (collapsible year strip),
+    listbox "Trips by date" grouped by year: place, dates, melodies, stops, quality badge
+  </JourneyList>
+  <JourneyMap>                                centre (MAP-SPEC section 11): route, numbered stops, departure, borders
+    <BorderToggle/> <CompareDivider/> <JourneyLegend/> <JourneyAccessibleList/>
   </JourneyMap>
-  <JourneyPanel>                             right, --results-w + 80
-    <JourneyHeader/> <StopList/> <ContextStrip/>
+  <JourneyPanel>                              right, --results-w + 40
+    <JourneyHeader/> (known / inferred) <StopList/> <details "Context (n)"><ContextStrip headless/></details>
   </JourneyPanel>
+</JourneyPage>
 ```
 
-**JourneyTimeline** `{ journeys: Journey[]; selectedId?; date?; unmappedCount: number; onSelect(id); onDate(date) }`:
-an inline SVG track from the earliest to the latest `dateFrom` (years as ticks, `--fs-11`
-mono; two labelled reference ticks at 1914 and 1920 drawn in `--line-strong`, their
-labels taken from the matching `context-events.json` entries) with one marker per trip (a bar spanning `dateFrom` to `dateTo`, min width 6 px,
-fuzzy trips hatched, selected in `--accent` with the two-ring halo). The markers are a
-`role="listbox"` (`aria-label="Journeys"`) of `role="option"` elements with
-`aria-selected`; keyboard: Left / Right (or Up / Down) move the active option, Home / End,
-Enter or Space select, Esc clears the selection; type-ahead by year digits. Next to the
-track: `<input type="date">` labelled "Go to date" (min / max from the data) and a
-`<select>` "Journey" listing every journey ("Bihor, July 1909 (38 melodies)") for people
-who prefer a list to a track, and an "Unmapped (n)" button at the end of the track that
-opens the list of year-only records (AC-42). Hovering or focusing a marker shows a small
-card (label, dates, stops count, melodies count). Under 768 px the track scrolls horizontally with the
-selected marker centred, and the select is the primary control.
+**JourneyList** `{ journeys; curated: Map<id, CuratedJourney>; selectedId?; featuredId?; onSelect(id); compactStrip?; footer? }`:
+the left-hand list. A search box ("Place or year", folded match on the index label, the
+counties and the stop names), a checkbox "Show all derived trips (n hidden)" that reveals
+the date-gap trips one record or one stop wide (`isMinorDerived`; hidden by default so the
+list is not flooded with machine-made trips; a selected trip is always listed), the year
+strip, then a `role="listbox"` named "Trips by date" of `role="option"` rows inside
+`role="group"`s labelled by year. Each row: the place named on the index (or the
+historical counties), the date wording, "n melodies", "n stops" when more than one, a
+"Featured trip" badge on the default trip, and a text data-quality badge from
+`journeyQuality`: "sourced itinerary" (a `journeys-curated.json` entry with citations),
+"documented itinerary" (index entry with records), "dates only" (date-gap trip), "index
+only" (index entry without any record online); the badge's `title` explains it. Keyboard:
+roving tabindex, Up / Down / Home / End move, Enter or Space select, type-ahead by year
+digits or the first letters of the place. Under 1024 px the list opens in
+`JourneyListSheet` (`role="dialog"`, Escape closes) from a "Journeys (n)" button in a bar
+above the map that also names the open trip.
+
+**JourneyTimeline** (year strip) `{ journeys; year?; onYear(year | undefined); open? }`: a
+`<section aria-label="Timeline">` holding a `<details>` (open on desktop, collapsed in the
+sheet) with one 44 px button per year from the first to the last trip, a bar proportional
+to the number of trips, `aria-pressed` for the active year and "All years" to clear. It
+narrows the list; it is no longer the primary control and no longer carries lanes, a date
+input or a select.
+
+**Data quality and the featured trip** (`state/journeys.ts`): `journeyQuality`,
+`isMinorDerived`, `featuredJourney` (a curated `featured: true` entry, else the trip with
+the best quality, most records and most stops: currently the March 1913 Máramaros trip with
+367 melodies), `visibleJourneys`, `groupJourneysByYear`, `journeysPerYear`, `explorerEra`.
+`data/journeys-curated.json` is optional and loaded through the manifest
+(`useCuratedJourneys`): `{ journeys: [{ id, featured?, title?, summary?, itinerary?: [{ date?, place, placeNow?, note? }], sources: [{ citation, url? }] }] }`,
+keyed by the `journeys.json` id; the header shows its summary and sources when present.
 
 **JourneyMap** `{ journey?: JourneyDerived; borders: '1910' | '1920' | 'now' | 'both'; era; selectedStop?; onStop(order); highlightStop? }`:
 `MapView` with the route and border layers of MAP-SPEC section 11; fits to the route
@@ -800,10 +823,18 @@ from 1918: 1920, AC-40) and is stated in the button text and the legend; a `titl
 explains "1910 counties and the Austria-Hungary frontier" / "1920 borders after the Treaty
 of Trianon".
 
-**JourneyHeader** `{ journey }`: label `--fs-24`, dates (formatted to the precision:
-"3 to 21 July 1909", "July 1909", "1909, approximate"), "n stops, m unmapped records"
-(AC-42) and "k melodies, d km" (distance omitted when null), departure line "Departure: Budapest (assumed)" with the
-`assumed` marker, `ExportButton` for the journey's songs, "Copy link".
+**JourneyHeader** `{ view; villages; curated?; borderAttributions; onClearFilters? }`: the
+quality badge and kind line, the title `--fs-24`, "n stops, m unmapped records; k melodies,
+d km" (AC-42; distance omitted when null), then two plain lists that state what is known
+and what is inferred. Known: 'listed on the trip index as "..."', "dates: ... (dated to
+the day / month known, days unknown / ...)", "n records with a date and a place, at v
+places" or "No melodies online for this trip", "itinerary from cited sources" when
+curated. Inferred: "departure from Budapest (not documented)", "order of visits (the
+source gives no itinerary)" for clusters, "travel between stops (straight lines)",
+"records attached by date and county, not listed under this entry", "state at the time:
+Kingdom of Hungary (Austria-Hungary) (from the date and present-day country)", the
+Romanian-material flag when inferred. Then the curated summary and sources, the filter
+notices, the index link and the journey export.
 
 **StopList** `{ stops; selectedOrder?; onSelect(order); onHover(order | undefined) }`: an
 `<ol>` (the same order as the route) of stop rows: number, then-and-now name line
@@ -824,8 +855,9 @@ badge (uppercase mono `--fs-11`, `--border-strong`, no colour coding) reading "e
 "renamed", "merged into {name}", "abandoned" or "status unknown"; `title` = `note` when
 present. Never colour-only.
 
-**ContextStrip** `{ events: ContextEvent[]; range: [string, string] }`: a horizontal strip
-(desktop) or a vertical list (phone) of dated cards ordered by date, each: date, type
+**ContextStrip** `{ events: EventInWindow[]; headless? }`: rendered inside a collapsible
+`<details>` "Context (n)" after the stop list (closed by default; `headless` drops its own
+heading). A vertical list of dated cards ordered by date, each: date, type
 label ("Border change", "Publication", "Statement", "Press"), title, one-sentence summary,
 and the citation "Source: {author}, {title} ({year}), {locator}" linked to `citation.url`
 when present (`rel="noopener noreferrer"`). Only events dated within the trip's start
@@ -845,8 +877,9 @@ It is also the whole map replacement when tiles and the SVG fallback are both un
 
 | Action                               | Effect                                                                      |
 |--------------------------------------|-----------------------------------------------------------------------------|
-| select a trip (timeline, select)     | `trip` set, `date` and `stop` cleared, map fits the route, panel fills, results narrow |
-| pick a date                          | journey containing it selected, else `date` set and the map shows borders for that date with all stops of that year dimmed |
+| select a trip (list, keyboard)       | `trip` set, `date` and `stop` cleared, map fits the route, panel fills, results narrow; the sheet closes |
+| press a year in the strip            | the list narrows to that year (local state); "All years" clears                |
+| `date=` in the URL                   | journey containing it selected, else the nearest with the "No trip on ..." notice |
 | click a stop (map, list)             | `stop=<n>` set (pushState), marker highlighted, list scrolls, card shows (AC-39) |
 | click a stop again                   | `stop` cleared                                                              |
 | "Show melodies" on a stop            | `/` with `village` set to the stop's placeId and `journey` kept              |
@@ -869,7 +902,7 @@ both, and the compare handle has a visible focus ring.
 | State                                   | Behaviour                                                                                                    |
 |-----------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | `journeys.json` missing or empty        | `EmptyState` "No trips could be reconstructed: no dated records." + "Back to explorer"; the nav entry stays |
-| no trip selected                        | timeline and map (Romania, borders now) with the prompt "Pick a trip on the timeline or enter a date"; panel shows the list of trips as cards |
+| no trip in the URL                      | the featured trip is open (`featuredJourney`), the list marks it "Featured trip", the URL stays clean; the prompt only shows when there are no journeys |
 | date with no trip                       | map shows the era's borders for that date; panel says "No trip on {date}. Nearest: {label} ({from})" with a link |
 | trip with unresolved coordinates        | route drawn between resolved stops only; a dashed gap marker "n stops without coordinates" in the legend; unresolved stops listed with "location unknown"; if fewer than 2 resolved points, no route and the notice "Route cannot be drawn: fewer than two located stops" |
 | fuzzy trip                              | header badge "approximate dates", route dotted, stops ordered by best-known date then by source order         |
@@ -881,12 +914,11 @@ both, and the compare handle has a visible focus ring.
 
 ### 14.8 Phone layout
 
-Under 768 px: `PhoneHeader` (masthead + "Trip" select), the timeline as a horizontal
-scroller (56 px), then bottom tabs Map / Stops / Context. Map tab: `JourneyMap` full
-height with `BorderToggle` collapsed into a single 44 px "Borders" button that opens a small
-sheet (then / now / compare + range). Stops tab: `JourneyHeader` + `StopList`. Context
-tab: `ContextStrip` as a vertical list. Tapping a stop marker opens a bottom sheet with
-the stop row content and "Show melodies".
+Under 1024 px: a bar above the map with a "Journeys (n)" button that opens the list as a
+bottom sheet (`JourneyListSheet`, the year strip collapsed inside it) and the open trip's
+place and date; the map (440 px), then the panel (header, stops, collapsible context)
+stacked below. Picking a trip closes the sheet. The border toggle keeps its three buttons
+with short labels under 768 px.
 
 ## 15. Cross-cutting: source identifiers and attribution (AC-36, AC-37)
 

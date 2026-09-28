@@ -26,18 +26,28 @@ test.describe('Explorer', () => {
     // 3. sort by style
     await page.getByLabel('Sort by').selectOption('style')
     await expect.poll(() => query(page).get('sort')).toBe('style')
-    const firstId = await page.locator('.song-row').first().getAttribute('data-song-id')
-    const first = data.songs.find((s) => s.id === firstId)
-    expect(first).toBeTruthy()
-    if (data.under(data.countyId('Arad')).some((s) => s.style !== null)) expect(first?.style).not.toBeNull()
+    // known styles sort first (roBase collation), unknown last: the first row has a style
+    if (data.under(data.countyId('Arad')).some((s) => s.style !== null)) {
+      await expect
+        .poll(async () => {
+          const id = await page.locator('.song-row').first().getAttribute('data-song-id')
+          return data.songs.find((s) => s.id === id)?.style ?? null
+        })
+        .not.toBeNull()
+    }
 
-    // remember the results scroll position, then open the first song
+    // 4. scroll the results, then open a row that is visible at that scroll position
+    //    (clicking a row scrolled out of view would scroll the list back to it)
     const results = page.locator('.results')
     await results.evaluate((el) => el.scrollTo(0, 300))
-    const scrollBefore = await results.evaluate((el) => el.scrollTop)
-    await page.locator('.song-row a.song-row__main').first().click()
-    await expect(page).toHaveURL(new RegExp(`/song/${firstId}\\?.*county=`))
-    await expect(page.locator('h1')).toContainText(first?.title?.trim() || first?.incipit?.trim() || 'Untitled')
+    await expect.poll(() => results.evaluate((el) => el.scrollTop)).toBe(300)
+    const scrollBefore = 300
+    const rowIndex = 8
+    const rowId = await page.locator('.song-row').nth(rowIndex).getAttribute('data-song-id')
+    const row = data.songs.find((s) => s.id === rowId)
+    await page.locator('.song-row a.song-row__main').nth(rowIndex).click()
+    await expect(page).toHaveURL(new RegExp(`/song/${rowId}\\?.*county=`))
+    await expect(page.locator('h1')).toContainText(row?.title?.trim() || row?.incipit?.trim() || 'Untitled')
 
     // 5. back keeps county chip, sort, count and scroll position
     await page.goBack()

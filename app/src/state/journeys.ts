@@ -343,6 +343,16 @@ export function layerForYear(y: number): Era {
   return y <= 1913 ? '1910' : y <= 1918 ? '1914' : '1920'
 }
 
+/** The historical border set for the explorer: from the year filter when set, else 1910 (AC-40). */
+export function explorerEra(yearFrom: number | undefined, yearTo: number | undefined, eras: Era[]): Era {
+  const y = yearFrom ?? yearTo
+  if (y === undefined) return eras.includes('1910') ? '1910' : (eras[0] ?? '1910')
+  const fine = layerForYear(y)
+  if (eras.includes(fine)) return fine
+  const coarse = eraForDate(String(y))
+  return eras.includes(coarse) ? coarse : (eras[0] ?? coarse)
+}
+
 /** The default `borders` value: the trip's era when a trip or date is selected, else `now`. */
 export function bordersDefault(sel: { journey?: Journey; date?: string }): BordersMode {
   if (sel.journey) return eraForDate(sel.journey.dateStart)
@@ -730,4 +740,125 @@ export function isJourney(x: unknown): x is Journey {
   if (!x || typeof x !== 'object') return false
   const j = x as Record<string, unknown>
   return typeof j.id === 'string' && typeof j.dateStart === 'string' && typeof j.dateEnd === 'string' && Array.isArray(j.stops) && typeof j.departure === 'object' && j.departure !== null
+}
+
+// ---- Journey list: data quality, featured trip, grouping (owner feedback, FRONTEND-SPEC 14.4) ----
+
+/**
+ * Optional hand-researched itineraries (data/journeys-curated.json), keyed by the journeys.json
+ * id. Designed for the research agent's output; every field is optional so a partial file works.
+ */
+export interface CuratedJourney {
+  id: string
+  featured?: boolean
+  title?: string
+  summary?: string
+  itinerary?: { date?: string | null; place: string; placeNow?: string | null; note?: string | null }[]
+  sources?: { citation: string; url?: string | null }[]
+}
+
+export interface CuratedFile {
+  _meta?: Record<string, unknown>
+  journeys: CuratedJourney[]
+}
+
+export type JourneyQuality = 'sourced' | 'documented' | 'dates' | 'index'
+
+export function buildCuratedLookup(file: CuratedFile | CuratedJourney[] | null | undefined): Map<string, CuratedJourney> {
+  const list = Array.isArray(file) ? file : (file?.journeys ?? [])
+  return new Map(list.filter((c) => c && typeof c.id === 'string').map((c) => [c.id, c]))
+}
+
+/**
+ * What the data can vouch for: `sourced` (a curated itinerary with citations), `documented`
+ * (a trip index entry with records), `index` (an index entry without any record online) or
+ * `dates` (a run of record dates only, no itinerary source). Text badges, never colour-coded.
+ */
+export function journeyQuality(j: Journey, curated?: CuratedJourney | null): JourneyQuality {
+  if (curated && (curated.sources?.length ?? 0) > 0) return 'sourced'
+  if (j.derivedFrom === 'date-gap') return 'dates'
+  return j.recordCount > 0 ? 'documented' : 'index'
+}
+
+export function qualityLabel(q: JourneyQuality): string {
+  return t(`journey.quality.${q}`)
+}
+
+/** Machine-made date-gap trips with one record or one stop: hidden behind "Show all derived trips". */
+export function isMinorDerived(j: Journey): boolean {
+  return j.derivedFrom === 'date-gap' && (j.recordCount <= 1 || j.stops.length <= 1)
+}
+
+/** The trip to open on arrival: a curated `featured` entry, else the best-documented trip. */
+export function featuredJourney(journeys: Journey[], curated?: Map<string, CuratedJourney>): Journey | undefined {
+  const flagged = journeys.filter((j) => curated?.get(j.id)?.featured)
+  if (flagged.length) return flagged.sort((a, b) => b.recordCount - a.recordCount)[0]
+  const rank = (j: Journey) => {
+    const q = journeyQuality(j, curated?.get(j.id))
+    return q === 'sourced' ? 3 : q === 'documented' ? 2 : q === 'dates' && !isMinorDerived(j) ? 1 : 0
+  }
+  return [...journeys].sort((a, b) => rank(b) - rank(a) || b.recordCount - a.recordCount || b.stops.length - a.stops.length || startDay(a.dateStart) - startDay(b.dateStart))[0]
+}
+
+/** The list row's title: the place named on the index, else the historical counties, else the label. */
+export function journeyPlaceTitle(j: Journey): string {
+  if (j.labelPlaceRaw) return j.labelPlaceRaw
+  const counties = j.facts.countiesHistorical.length ? j.facts.countiesHistorical : j.facts.counties
+  if (counties.length) return counties.join(', ')
+  const places = [...new Set(j.stops.map((s) => s.villageHistorical ?? s.village).filter((n): n is string => Boolean(n)))]
+  return places.length ? places.slice(0, 3).join(', ') : j.label || j.id
+}
+
+function searchText(j: Journey): string {
+  return normalize(
+    [j.label, j.labelPlaceRaw, j.labelDateRaw, j.dateStart.slice(0, 4), ...j.facts.counties, ...j.facts.countiesHistorical, ...j.stops.map((s) => `${s.village ?? ''} ${s.villageHistorical ?? ''}`)]
+      .filter(Boolean)
+      .join(' '),
+  )
+}
+
+export interface JourneyListFilter {
+  showAll: boolean
+  search: string
+  year?: number
+  /** Always kept in the list (the selected trip), even when it would otherwise be hidden. */
+  keepId?: string
+}
+
+/** The trips the list shows, in date order. */
+export function visibleJourneys(journeys: Journey[], f: JourneyListFilter): Journey[] {
+  const q = normalize(f.search.trim())
+  return [...journeys]
+    .filter((j) => {
+      if (j.id === f.keepId) return true
+      if (!f.showAll && isMinorDerived(j)) return false
+      if (f.year !== undefined && yearOf(j.dateStart) !== f.year) return false
+      if (q && !searchText(j).includes(q)) return false
+      return true
+    })
+    .sort((a, b) => startDay(a.dateStart) - startDay(b.dateStart) || a.id.localeCompare(b.id))
+}
+
+export function groupJourneysByYear(journeys: Journey[]): { year: number; journeys: Journey[] }[] {
+  const groups = new Map<number, Journey[]>()
+  for (const j of journeys) {
+    const y = yearOf(j.dateStart)
+    const list = groups.get(y)
+    if (list) list.push(j)
+    else groups.set(y, [j])
+  }
+  return [...groups.entries()].sort((a, b) => a[0] - b[0]).map(([year, list]) => ({ year, journeys: list }))
+}
+
+/** Trips per year for the compact year strip (every year from the first to the last). */
+export function journeysPerYear(journeys: Journey[]): { year: number; n: number }[] {
+  const { yearMin, yearMax } = journeyYearRange(journeys)
+  const counts = new Map<number, number>()
+  for (const j of journeys) {
+    const y = yearOf(j.dateStart)
+    if (!Number.isNaN(y)) counts.set(y, (counts.get(y) ?? 0) + 1)
+  }
+  const out: { year: number; n: number }[] = []
+  for (let y = yearMin; y <= yearMax; y++) out.push({ year: y, n: counts.get(y) ?? 0 })
+  return out
 }

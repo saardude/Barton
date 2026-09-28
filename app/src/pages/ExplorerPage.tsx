@@ -40,7 +40,10 @@ export function ExplorerPage() {
     const storageKey = `bartok.scroll.${locationKey}`
     try {
       const saved = window.sessionStorage.getItem(storageKey)
-      if (saved) el.scrollTop = Number(saved)
+      if (saved) {
+        el.scrollTop = Number(saved)
+        el.dataset.scrollRestored = saved
+      }
     } catch {
       // storage unavailable: no restoration
     }
@@ -69,17 +72,21 @@ export function ExplorerPage() {
   if (phone) {
     return (
       <div className="explorer explorer--phone">
-        <div className="phone-header">
-          {filtersButton}
-          {derived && (
-            <span className="phone-header__count mono muted" aria-hidden="true">
-              {melodiesOf(resultCount, derived.total)}
-            </span>
-          )}
-        </div>
         <main className="explorer__main">
+          <h1 className="visually-hidden">{t('nav.explorer')}</h1>
+          <div className="phone-header">
+            {filtersButton}
+            {derived && (
+              <span className="phone-header__count mono muted" aria-hidden="true">
+                {melodiesOf(resultCount, derived.total)}
+              </span>
+            )}
+          </div>
           {tab === 'map' && (
             <div id={panelId('map')} role="tabpanel" aria-labelledby={tabId('map')} className="phone-panel phone-panel--map">
+              <span id="results" tabIndex={-1} className="visually-hidden">
+                {t('phone.tab.map')}
+              </span>
               <section className="map-section map-section--full" aria-label="Map">
                 <MapPanel highlightPlaceId={highlightPlaceId} touchSheet onShowMelodies={showList} />
               </section>
@@ -101,6 +108,9 @@ export function ExplorerPage() {
           )}
           {tab === 'places' && (
             <div id={panelId('places')} role="tabpanel" aria-labelledby={tabId('places')} className="phone-panel phone-panel--places">
+              <span id="results" tabIndex={-1} className="visually-hidden">
+                {t('phone.tab.places')}
+              </span>
               <aside className="rail rail--phone" aria-label={t('facet.place')}>
                 <PlaceFacet onSelect={showList} />
               </aside>
@@ -117,6 +127,7 @@ export function ExplorerPage() {
     <div className="explorer">
       <FilterRail />
       <main className="explorer__main">
+        <h1 className="visually-hidden">{t('nav.explorer')}</h1>
         {filtersButton}
         <section className="map-section" aria-label="Map">
           <MapPanel highlightPlaceId={highlightPlaceId} touchSheet={coarse} onShowMelodies={undefined} />

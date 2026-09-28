@@ -1,6 +1,7 @@
 // jsdom smoke test of /journeys over the 40-record fixture and a small journeys fixture
-// (AC-39, AC-41, AC-42, AC-43, AC-44). The Leaflet map is replaced by a stub that exposes the
-// stop buttons and the border mode; the data files are served by a fetch mock.
+// (AC-39, AC-41, AC-42, AC-43, AC-44; owner feedback: land on a real trip). The Leaflet map is
+// replaced by a stub that exposes the stop buttons and the border mode; the data files are
+// served by a fetch mock.
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -86,6 +87,8 @@ function renderAt(url: string) {
 }
 
 const status = () => screen.getByRole('status', { name: 'Query status' })
+const listbox = () => screen.getByRole('listbox', { name: 'Trips by date' })
+const options = () => within(listbox()).getAllByRole('option')
 
 describe('/journeys', () => {
   beforeEach(() => {
@@ -98,26 +101,46 @@ describe('/journeys', () => {
   })
   afterEach(() => vi.unstubAllGlobals())
 
-  it('renders the timeline listbox with one option per trip, the prompt and the footer', async () => {
+  it('lands on the featured trip: the list is grouped by year with quality badges, minor derived trips hidden, the URL clean', async () => {
     renderAt('/journeys')
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
-    const listbox = await screen.findByRole('listbox', { name: 'Trips by date' })
-    expect(within(listbox).getAllByRole('option').length).toBe(fixtureJourneys.length)
-    expect(screen.getByText('Pick a trip on the timeline or enter a date.')).toBeInTheDocument()
-    expect(screen.getByLabelText('Go to date')).toBeInTheDocument()
-    expect(screen.getByLabelText('Journey')).toBeInTheDocument()
-    // the border toggle defaults to "now" while nothing is selected
-    expect(screen.getByTestId('journey-map-stub')).toHaveAttribute('data-borders', 'now')
+    // the best-documented trip is open without a trip= param
+    await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
+    expect(status()).toHaveTextContent('/')
+    expect(status()).not.toHaveTextContent('trip=')
+    // list: three visible trips (two date-gap trips one record / one stop wide are hidden)
+    const opts = options()
+    expect(opts.map((o) => o.getAttribute('data-id'))).toEqual(['gyuj-50', 'J-1910-07-01', 'J-1913-03-01'])
+    const selected = opts.find((o) => o.getAttribute('aria-selected') === 'true')!
+    expect(selected).toHaveAttribute('data-id', 'J-1913-03-01')
+    expect(within(selected).getByText('Featured trip')).toBeInTheDocument()
+    expect(within(selected).getByText('dates only')).toBeInTheDocument()
+    expect(within(opts[0]).getByText('index only')).toBeInTheDocument()
+    for (const year of ['1909', '1910', '1913']) expect(within(listbox()).getByRole('group', { name: year })).toBeInTheDocument()
+    expect(within(listbox()).queryByRole('group', { name: '1918' })).toBeNull()
+    // the year strip is the collapsible timeline
+    expect(screen.getByRole('region', { name: 'Timeline' })).toBeInTheDocument()
+    // "Show all derived trips" reveals the hidden ones
+    fireEvent.click(screen.getByLabelText('Show all derived trips (2 hidden)'))
+    expect(options().map((o) => o.getAttribute('data-id'))).toEqual(['gyuj-50', 'J-1910-00-01', 'J-1910-07-01', 'J-1913-03-01', 'J-1918-05-01'])
+    // the border toggle defaults to the trip's era
+    expect(screen.getByTestId('journey-map-stub')).toHaveAttribute('data-borders', '1910')
   })
 
-  it('?trip= selects a route: header, numbered stops with then -> now names and badges, unmapped stop kept, context with citations, era 1910', async () => {
+  it('?trip= selects a route: header states known and inferred, numbered stops with then -> now names and badges, unmapped stop kept, context with citations', async () => {
     renderAt('/journeys?trip=J-1913-03-01')
     await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
-    expect(screen.getByText('15 to 17 March 1913')).toBeInTheDocument()
     expect(screen.getByText(/3 stops, 1 unmapped records/)).toBeInTheDocument()
     expect(screen.getByText(/4 melodies, 308 km/)).toBeInTheDocument()
+    // known / inferred, stated plainly
+    expect(screen.getByText('Known')).toBeInTheDocument()
+    expect(screen.getByText('dates: 15 to 17 March 1913 (dated to the day)')).toBeInTheDocument()
+    expect(screen.getByText('4 records with a date and a place, at 3 places')).toBeInTheDocument()
+    expect(screen.getByText('Inferred')).toBeInTheDocument()
+    expect(screen.getByText('departure from Budapest (not documented)')).toBeInTheDocument()
+    expect(screen.getByText('travel between stops (straight lines)')).toBeInTheDocument()
+    expect(screen.getByText(/state at the time: Kingdom of Hungary \(Austria-Hungary\)/)).toBeInTheDocument()
     expect(screen.getAllByText('Departure: Budapest (assumed)').length).toBeGreaterThan(0)
-    expect(screen.getByText('Kingdom of Hungary (Austria-Hungary)')).toBeInTheDocument()
 
     const stops = screen.getByRole('button', { name: /^Stop 1 of 3: Belényes \(1913\), now Beiuș; 2 melodies, 15 March 1913/ })
     expect(stops).toHaveAttribute('aria-pressed', 'false')
@@ -135,7 +158,8 @@ describe('/journeys', () => {
     const links = screen.getAllByRole('link', { name: /^Open original record on / })
     expect(links.length).toBeGreaterThan(0)
     expect(links[0]).toHaveAttribute('rel', 'noopener noreferrer')
-    // context strip: 1913 events within +/- 2 years, uncited never shown, citation visible
+    // context: a collapsible section; 1913 events within +/- 2 years, uncited never shown, citation visible
+    expect(screen.getByText(/^Context \(\d+\)$/)).toBeInTheDocument()
     expect(screen.getByText('Chansons populaires roumaines du departement Bihar published')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Chansons populaires roumaines du departement Bihar \(Bucharest/ })).toHaveAttribute('href', 'https://example.org/bihar-1913')
     expect(screen.getByText('First World War: fieldwork curtailed')).toBeInTheDocument()
@@ -164,17 +188,20 @@ describe('/journeys', () => {
     expect(screen.getByTestId('journey-map-stub')).toHaveAttribute('data-borders', 'now')
   })
 
-  it('a trip from 1918 defaults to the 1920 set; a trip without online records shows the label, places and the flag', async () => {
+  it('a hidden derived trip from the URL is shown and selected; a trip from 1918 defaults to the 1920 set; picking an index-only trip states what is known', async () => {
     renderAt('/journeys?trip=J-1918-05-01')
     await screen.findByRole('heading', { level: 1 })
     expect(screen.getByTestId('journey-map-stub')).toHaveAttribute('data-borders', '1920')
     expect(screen.getByText(/1 stops, 1 unmapped records/)).toBeInTheDocument()
+    const selected = options().find((o) => o.getAttribute('aria-selected') === 'true')!
+    expect(selected).toHaveAttribute('data-id', 'J-1918-05-01')
 
-    fireEvent.change(screen.getByLabelText('Journey'), { target: { value: 'gyuj-50' } })
+    fireEvent.click(within(listbox()).getByRole('option', { name: /^Upper region of the river Fekete-Koros/ }))
     await screen.findByRole('heading', { level: 1, name: 'July-August, 1909. Upper region of the river Fekete-Koros' })
     expect(screen.getByText('No melodies online for this trip: the source databases list the entry without records.')).toBeInTheDocument()
-    expect(screen.getByText('Upper region of the river Fekete-Koros')).toBeInTheDocument()
+    expect(screen.getByText('listed on the trip index as "July-August, 1909. Upper region of the river Fekete-Koros"')).toBeInTheDocument()
     expect(screen.getByText('Romanian material: documented (Rumanian Folk Music chronology)')).toBeInTheDocument()
+    expect(screen.getAllByText('index only').length).toBeGreaterThan(0)
     expect(screen.getByText('approximate dates')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Open this entry on the trip index' })).toHaveAttribute('href', 'https://bartok-gyujtesek.zti.hu/en/browse/50')
     expect(status()).toHaveTextContent('?trip=gyuj-50')
@@ -184,27 +211,35 @@ describe('/journeys', () => {
     renderAt('/journeys?date=1913-03')
     await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
     expect(screen.queryByText(/^No trip on/)).toBeNull()
+  })
 
-    fireEvent.change(screen.getByLabelText('Go to date'), { target: { value: '1911-02' } })
-    await waitFor(() => expect(status()).toHaveTextContent('?date=1911-02'))
+  it('a date no trip covers shows the nearest trip with a notice', async () => {
+    renderAt('/journeys?date=1911-02')
     // the nearest trip is the 1910 year cluster (ends 31 December 1910)
     await screen.findByText(/^No trip on February 1911\. Nearest: 1910: Kolozs \(1910\)\./)
     expect(screen.getByRole('heading', { level: 1, name: '1910: Kolozs' })).toBeInTheDocument()
-    expect(screen.getByText('1910, approximate')).toBeInTheDocument()
+    expect(screen.getByText('dates: 1910, approximate (year known only)')).toBeInTheDocument()
   })
 
-  it('keyboard: arrow keys on the timeline listbox move and select trips (AC-44)', async () => {
-    renderAt('/journeys?trip=gyuj-50')
-    const listbox = await screen.findByRole('listbox', { name: 'Trips by date' })
-    const options = within(listbox).getAllByRole('option')
-    const selected = options.find((o) => o.getAttribute('aria-selected') === 'true')!
+  it('keyboard: arrows move through the list, Enter selects (AC-44); the year strip narrows the list', async () => {
+    renderAt('/journeys')
+    await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
+    const selected = options().find((o) => o.getAttribute('aria-selected') === 'true')!
     expect(selected).toHaveAttribute('tabindex', '0')
     selected.focus()
-    fireEvent.keyDown(selected, { key: 'ArrowRight' })
-    await waitFor(() => expect(status()).toHaveTextContent('?trip=J-1910-00-01'))
-    const now = within(listbox).getAllByRole('option').find((o) => o.getAttribute('aria-selected') === 'true')!
-    fireEvent.keyDown(now, { key: 'Escape' })
-    await waitFor(() => expect(status()).toHaveTextContent('/'))
-    expect(screen.getByText('Pick a trip on the timeline or enter a date.')).toBeInTheDocument()
+    fireEvent.keyDown(selected, { key: 'ArrowUp' })
+    const focused = document.activeElement as HTMLElement
+    expect(focused).toHaveAttribute('data-id', 'J-1910-07-01')
+    fireEvent.keyDown(focused, { key: 'Enter' })
+    await waitFor(() => expect(status()).toHaveTextContent('?trip=J-1910-07-01'))
+    await screen.findByRole('heading', { level: 1, name: '3 to 8 July 1910: Bihar' })
+    // year strip: pressing 1909 keeps only that year (plus the selected trip)
+    fireEvent.click(screen.getByRole('button', { name: '1909: 1 trips' }))
+    expect(options().map((o) => o.getAttribute('data-id'))).toEqual(['gyuj-50', 'J-1910-07-01'])
+    fireEvent.click(screen.getByRole('button', { name: 'All years' }))
+    expect(options().length).toBe(3)
+    // search narrows by place
+    fireEvent.change(screen.getByLabelText('Search journeys'), { target: { value: 'fekete' } })
+    expect(options().map((o) => o.getAttribute('data-id'))).toEqual(['gyuj-50', 'J-1910-07-01'])
   })
 })

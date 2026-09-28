@@ -1,6 +1,7 @@
-// /journeys (FRONTEND-SPEC 14, wireframe artboard 5): timeline strip, route map with border
-// toggle, and the panel (header, stops, context). The URL is the state: trip, stop, date,
-// borders (AC-39, AC-40); everything shown comes from the data files.
+// /journeys (FRONTEND-SPEC 14): journeys list (left) | route map with border toggle (centre) |
+// panel with the header, the numbered stops and a collapsible context section (right). A
+// featured, well-documented trip is open on arrival; the URL carries trip, stop, date and
+// borders (AC-39, AC-40). Under 1024 px the list opens as a sheet from a "Journeys" button.
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router'
 import { useCatalogReady } from '../app/catalog'
@@ -8,20 +9,23 @@ import { useDerived, useQuery } from '../app/query'
 import { ContextStrip } from '../components/journey/ContextStrip'
 import { JourneyAccessibleList } from '../components/journey/JourneyAccessibleList'
 import { JourneyHeader } from '../components/journey/JourneyHeader'
+import { JourneyList } from '../components/journey/JourneyList'
+import { JourneyListSheet } from '../components/journey/JourneyListSheet'
 import { JourneyMap } from '../components/journey/JourneyMap'
-import { JourneyTimeline } from '../components/journey/JourneyTimeline'
 import { StopList } from '../components/journey/StopList'
 import { buildJourneyView, journeyTitle, type JourneyView } from '../components/journey/journeyView'
-import { useContextEvents, useJourneys, useVillages } from '../components/journey/useJourneyData'
+import { useContextEvents, useCuratedJourneys, useJourneys, useVillages } from '../components/journey/useJourneyData'
+import { useMediaQuery } from '../components/phone/useMediaQuery'
 import { songDisplayTitle } from '../components/SongRow'
 import { SourceLink } from '../components/SourceLink'
 import { EmptyState } from '../components/States'
-import { melodies, t } from '../i18n/en'
-import { bordersDefault, eraForDate, formatIsoDate, journeyDateText, selectTrip, undatedBartokSongs, type Era } from '../state/journeys'
+import { t } from '../i18n/en'
+import { bordersDefault, eraForDate, featuredJourney, formatIsoDate, journeyPlaceTitle, selectTrip, undatedBartokSongs, type Era, type TripSelection } from '../state/journeys'
 import { FACET_KEYS, type FacetKey } from '../state/selectors'
 import type { BordersMode } from '../state/query'
 
 const UNMAPPED_SHOWN = 100
+const NARROW_QUERY = '(max-width: 1023px)'
 
 export function JourneysPage() {
   const catalog = useCatalogReady()
@@ -30,12 +34,21 @@ export function JourneysPage() {
   const journeys = useJourneys()
   const villages = useVillages()
   const events = useContextEvents()
+  const curated = useCuratedJourneys()
+  const narrow = useMediaQuery(NARROW_QUERY)
   const [highlightSeq, setHighlightSeq] = useState<number | undefined>(undefined)
   const [showUnmapped, setShowUnmapped] = useState(false)
+  const [listOpen, setListOpen] = useState(false)
   const [eraOverride, setEraOverride] = useState<Era | undefined>(undefined)
   const [borderAttributions, setBorderAttributions] = useState<string[]>([])
 
-  const selection = useMemo(() => selectTrip(journeys, { trip: query.trip, date: query.date }), [journeys, query.trip, query.date])
+  // The trip to show: the URL's, else the featured one (a real, documented trip on arrival).
+  const featured = useMemo(() => featuredJourney(journeys, curated), [journeys, curated])
+  const selection = useMemo<TripSelection | undefined>(() => {
+    const sel = selectTrip(journeys, { trip: query.trip, date: query.date })
+    if (sel) return sel
+    return featured ? { journey: featured, by: 'trip' } : undefined
+  }, [journeys, query.trip, query.date, featured])
 
   // Filters other than the trip and the default country narrow the trip's records (14.2).
   const placeActive = Boolean(query.region || query.county || query.village || (query.country && query.country !== 'ro' && query.country !== 'all'))
@@ -66,14 +79,12 @@ export function JourneysPage() {
 
   const undated = useMemo(() => (catalog ? undatedBartokSongs(catalog.songs) : []), [catalog])
 
-  const onSelect = useCallback((id: string | undefined) => setQuery({ trip: id, date: undefined }), [setQuery])
-  const onDate = useCallback(
-    (date: string) => {
-      const sel = selectTrip(journeys, { date })
-      if (sel && sel.by === 'date') setQuery({ trip: sel.journey.id, date: undefined })
-      else setQuery({ trip: undefined, date })
+  const onSelect = useCallback(
+    (id: string) => {
+      setListOpen(false)
+      setQuery({ trip: id, date: undefined })
     },
-    [journeys, setQuery],
+    [setQuery],
   )
   const onStop = useCallback((seq: number | undefined) => setQuery({ stop: seq }), [setQuery])
   const onBorders = useCallback(
@@ -90,6 +101,7 @@ export function JourneysPage() {
     },
     [borders, setQuery],
   )
+  const closeList = useCallback(() => setListOpen(false), [])
 
   if (!catalog) return <div className="page">{t('loadingCollection')}</div>
   if (journeys.length === 0) {
@@ -107,28 +119,60 @@ export function JourneysPage() {
     )
   }
 
-  const nIndex = journeys.filter((j) => j.derivedFrom === 'gyuj-collections').length
+  const selectedId = view?.journey.id
+  const listFooter =
+    undated.length > 0 ? (
+      <button type="button" className="btn btn--link journey-list__undated" aria-pressed={showUnmapped} onClick={() => setShowUnmapped((v) => !v)}>
+        {t('journey.undatedRecords', { n: undated.length })}
+      </button>
+    ) : null
+  const list = (compact: boolean) => <JourneyList journeys={journeys} curated={curated} selectedId={selectedId} featuredId={featured?.id} onSelect={onSelect} compactStrip={compact} footer={listFooter} />
 
   return (
     <div className="journeys">
-      <section className="journeys__timeline" aria-label={t('journey.timeline')}>
-        <JourneyTimeline
-          journeys={journeys}
-          events={events.data ?? []}
-          selectedId={view?.by === 'trip' ? view.journey.id : undefined}
-          date={query.date}
-          unmappedCount={undated.length}
-          onSelect={onSelect}
-          onDate={onDate}
-          onUnmapped={() => setShowUnmapped((v) => !v)}
-        />
-      </section>
       <main className="journeys__body">
+        {!narrow && (
+          <aside className="journeys__list" aria-label={t('journey.list')}>
+            {list(false)}
+          </aside>
+        )}
         <section className="journeys__map" aria-label={t('journey.mapLabel')}>
+          {narrow && (
+            <div className="journeys__bar">
+              <button type="button" className="btn" onClick={() => setListOpen(true)} aria-haspopup="dialog">
+                {t('journey.openList')} ({journeys.length})
+              </button>
+              {view && (
+                <span className="journeys__bar-title" title={journeyTitle(view.journey)}>
+                  {journeyPlaceTitle(view.journey)}, {formatIsoDate(view.journey.dateStart)}
+                </span>
+              )}
+            </div>
+          )}
           <JourneyMap view={view} borders={borders} era={era} selectedSeq={selectedSeq} highlightSeq={highlightSeq} onStop={onStop} onBorders={onBorders} onEra={onEra} onAttributions={setBorderAttributions} />
           {view && <JourneyAccessibleList view={view} onSelectStop={onStop} />}
         </section>
         <aside className="journeys__panel" id="results" aria-label={t('journey.trip')}>
+          {view ? (
+            <>
+              {view.by === 'nearest' && view.date && (
+                <p className="journey-prompt" role="status">
+                  {t('journey.noTripOnDate', { date: formatIsoDate(view.date), label: journeyTitle(view.journey), from: formatIsoDate(view.journey.dateStart) })}{' '}
+                  <button type="button" className="btn btn--link" onClick={() => onSelect(view.journey.id)}>
+                    {t('journey.tripCard')}
+                  </button>
+                </p>
+              )}
+              <JourneyHeader view={view} villages={villages.data} curated={curated.get(view.journey.id)} borderAttributions={borderAttributions} onClearFilters={reset} />
+              <StopList view={view} query={query} selectedSeq={selectedSeq} onSelect={onStop} onHover={setHighlightSeq} />
+              <details className="context-section">
+                <summary className="panel-title context-section__summary">{t('journey.contextSection', { n: view.events.length })}</summary>
+                <ContextStrip events={view.events} headless />
+              </details>
+            </>
+          ) : (
+            <p className="journey-prompt">{t('journey.prompt')}</p>
+          )}
           {showUnmapped && (
             <section className="journey-unmapped" aria-labelledby="journey-unmapped-title">
               <h2 id="journey-unmapped-title" className="panel-title">
@@ -145,41 +189,13 @@ export function JourneysPage() {
               {undated.length > UNMAPPED_SHOWN && <p className="muted">{t('journey.recordsMore', { n: undated.length - UNMAPPED_SHOWN })}</p>}
             </section>
           )}
-          {view ? (
-            <>
-              {view.by === 'nearest' && view.date && (
-                <p className="journey-prompt" role="status">
-                  {t('journey.noTripOnDate', { date: formatIsoDate(view.date), label: journeyTitle(view.journey), from: formatIsoDate(view.journey.dateStart) })}{' '}
-                  <button type="button" className="btn btn--link" onClick={() => onSelect(view.journey.id)}>
-                    {t('journey.tripCard')}
-                  </button>
-                </p>
-              )}
-              <JourneyHeader view={view} villages={villages.data} borderAttributions={borderAttributions} onClearFilters={reset} />
-              <StopList view={view} query={query} selectedSeq={selectedSeq} onSelect={onStop} onHover={setHighlightSeq} />
-              <ContextStrip events={view.events} />
-            </>
-          ) : (
-            <>
-              <div className="journey-prompt">
-                <p>{t('journey.prompt')}</p>
-                <p className="muted">{t('journey.tripsCount', { n: journeys.length, index: nIndex, gap: journeys.length - nIndex })}</p>
-              </div>
-              <div className="journey-cards">
-                {journeys.map((j) => (
-                  <button key={j.id} type="button" className="journey-card" onClick={() => onSelect(j.id)} aria-label={`${t('journey.tripCard')}: ${journeyTitle(j)}`}>
-                    <div className="journey-card__title">{journeyTitle(j)}</div>
-                    <div className="journey-card__meta mono">
-                      {journeyDateText(j).text} / {t('journey.hoverStops', { n: j.stops.length })} / {melodies(j.recordCount)}
-                      {!j.recordsOnline && ` / ${t('facet.notMapped')}`}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
         </aside>
       </main>
+      {narrow && (
+        <JourneyListSheet open={listOpen} onClose={closeList}>
+          {list(true)}
+        </JourneyListSheet>
+      )}
     </div>
   )
 }

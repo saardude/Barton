@@ -1,12 +1,14 @@
-// MapView (MAP-SPEC 1 to 5): Leaflet 1.9 with CARTO Positron tiles and an OpenStreetMap fallback,
-// county bubbles and village dots as accessible <button>s inside divIcon markers, two-ring
-// selection, hover / focus reporting for the hover card. Provider-independent inputs: MapPoint[].
+// MapView (MAP-SPEC 1 to 5): Leaflet 1.9 with CARTO Positron tiles and an OpenStreetMap fallback.
+// One marker type per level: county bubbles (count inside when the bubble is large enough) and
+// village dots, both accessible <button>s inside divIcon markers. One selected state: filled
+// accent with a halo. Provider-independent inputs: MapPoint[].
 import L from 'leaflet'
 import { useEffect, useRef } from 'react'
 import { genreLabel, t } from '../../i18n/en'
 import { placeText } from '../../state/placeName'
 import type { GenreId } from '../../state/query'
 import type { MapPoint } from '../../state/selectors'
+import { diameter, LABEL_MIN_D } from './markerSize'
 
 export const ROMANIA_BOUNDS: L.LatLngBoundsLiteral = [
   [43.6, 20.2],
@@ -54,7 +56,8 @@ export interface MapViewProps {
   level: 'county' | 'village'
   selectedId?: string
   highlightId?: string | null
-  colourByGenre: boolean
+  /** Fill dots by dominant genre (county page local map); the explorer leaves it off. */
+  colourByGenre?: boolean
   /** Bounds to fit; the map refits whenever `fitKey` changes. */
   fitBounds: L.LatLngBoundsLiteral
   fitKey: string
@@ -62,7 +65,9 @@ export interface MapViewProps {
   onHover: (info: HoverInfo | null) => void
   onZoom?: (zoom: number) => void
   onTileFallback?: (provider: TileProvider) => void
-  /** Exposes the map for the zoom / fit controls. */
+  /** Escape pressed while the map has focus (after the hover card is hidden). */
+  onEscape?: () => void
+  /** Exposes the map for the zoom / reset controls and the border layers. */
   onReady?: (map: L.Map) => void
 }
 
@@ -77,24 +82,12 @@ export function pointAriaLabel(p: MapPoint): string {
   return county ? t('map.pointLabel', { name, county, n: p.count }) : `${name}: ${t('results.count', { n: p.count })}`
 }
 
-function diameter(p: MapPoint, nMax: number): number {
-  const r = Math.sqrt(p.count / Math.max(1, nMax))
-  return p.level === 'county' ? Math.min(40, Math.max(10, 10 + 30 * r)) : Math.min(22, Math.max(4, 4 + 18 * r))
-}
-
-function markerHtml(p: MapPoint, d: number, colourByGenre: boolean, selected: boolean, highlighted: boolean, hollow: boolean): string {
+function markerHtml(p: MapPoint, d: number, colourByGenre: boolean, selected: boolean, highlighted: boolean): string {
   const genre: GenreId | null = colourByGenre ? p.dominantGenre : null
   const fill = colourByGenre ? `var(--genre-${genre ?? 'other'})` : p.level === 'county' ? 'var(--surface)' : 'var(--map-dot)'
   const labelInk = colourByGenre ? 'var(--genre-label-ink)' : 'var(--ink)'
-  const cls = ['dot', p.level === 'county' ? 'dot--county' : 'dot--village', highlighted ? 'dot--highlight' : '', hollow ? 'dot--county-hollow' : '']
-    .filter(Boolean)
-    .join(' ')
-  const label =
-    p.level === 'county'
-      ? d >= 22
-        ? `<span class="dot__label" aria-hidden="true">${p.count}</span>`
-        : `<span class="dot__label dot__label--beside" aria-hidden="true">${p.count}</span>`
-      : ''
+  const cls = ['dot', p.level === 'county' ? 'dot--county' : 'dot--village', selected ? 'dot--selected' : '', highlighted ? 'dot--highlight' : ''].filter(Boolean).join(' ')
+  const label = p.level === 'county' && d >= LABEL_MIN_D ? `<span class="dot__label" aria-hidden="true">${p.count}</span>` : ''
   const title = genre ? ` title="${esc(genreLabel(genre))}"` : ''
   return `<button type="button" class="${cls}" data-place-id="${esc(p.placeId)}" aria-label="${esc(pointAriaLabel(p))}" aria-pressed="${selected}" aria-describedby="map-hover-card"${title} style="--d:${d}px;--fill:${fill};--label-ink:${labelInk}">${label}</button>`
 }
@@ -126,7 +119,8 @@ export function MapView(props: MapViewProps) {
       maxBoundsViscosity: 0.8,
       keyboard: true,
     })
-    map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a>')
+    // Only the data credits are shown; the library prefix is noise for a first-time reader.
+    map.attributionControl.setPrefix(false)
     el.setAttribute('role', 'application')
     el.setAttribute('aria-roledescription', 'map')
     el.setAttribute('aria-label', t('map.label'))
@@ -203,9 +197,9 @@ export function MapView(props: MapViewProps) {
       if (findPoint(e.target)) hover(undefined)
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') hover(undefined)
-      if ((e.key === 'Enter' || e.key === ' ') && findPoint(e.target)) {
-        // native button activation fires click; nothing extra
+      if (e.key === 'Escape') {
+        hover(undefined)
+        propsRef.current.onEscape?.()
       }
     }
     el.addEventListener('click', onClick, true)
@@ -228,6 +222,11 @@ export function MapView(props: MapViewProps) {
       mapRef.current = null
       layerRef.current = null
       map.stop()
+      // Leaflet 1.9 finishes a CSS zoom through a 250 ms setTimeout fallback (_onZoomTransitionEnd)
+      // that remove() does not cancel; on a removed map it reads the deleted pane (_leaflet_pos).
+      const anim = map as unknown as { _animatingZoom?: boolean; _onZoomTransitionEnd?: () => void }
+      anim._animatingZoom = false
+      anim._onZoomTransitionEnd = () => {}
       map.remove()
       markers.clear()
     }
@@ -245,7 +244,7 @@ export function MapView(props: MapViewProps) {
   // change. Depending on the whole props object here re-created every icon on each parent
   // re-render (a hover state change), which replaced the hovered button, fired mouseout, and
   // flickered the card and the markers.
-  const { points, selectedId, highlightId, colourByGenre } = props
+  const { points, selectedId, highlightId, colourByGenre = false } = props
   useEffect(() => {
     const map = mapRef.current
     const layer = layerRef.current
@@ -260,28 +259,25 @@ export function MapView(props: MapViewProps) {
     const markers = markersRef.current
     const seen = new Set<string>()
     pointsRef.current = new Map(points.map((p) => [p.placeId, p]))
-    const hasVillages = nMaxVillage > 0
     for (const p of points) {
       seen.add(p.placeId)
       const d = diameter(p, p.level === 'county' ? nMaxCounty : nMaxVillage)
       const selected = p.placeId === selectedId || p.selected
       const highlighted = !selected && p.placeId === highlightId
-      // The selected county keeps a hollow ring behind its village dots (drill-down state).
-      const hollow = p.level === 'county' && selected && hasVillages
       const hit = Math.max(24, Math.ceil(d) + 8)
       const icon = L.divIcon({
         className: '',
-        html: markerHtml(p, d, colourByGenre, selected, highlighted, hollow),
+        html: markerHtml(p, d, colourByGenre, selected, highlighted),
         iconSize: [hit, hit],
         iconAnchor: [hit / 2, hit / 2],
       })
-      const z = hollow ? -1000 : selected ? 1000 : highlighted ? 500 : 0
+      const z = selected ? 1000 : highlighted ? 500 : 0
       const existing = markers.get(p.placeId)
       if (existing) {
         existing.setIcon(icon)
         existing.setZIndexOffset(z)
       } else {
-        const m = L.marker([p.lat, p.lon], { icon, keyboard: false, zIndexOffset: z, riseOnHover: !hollow })
+        const m = L.marker([p.lat, p.lon], { icon, keyboard: false, zIndexOffset: z, riseOnHover: true })
         m.addTo(layer)
         markers.set(p.placeId, m)
       }

@@ -1,10 +1,12 @@
 // StatusBar (FRONTEND-SPEC 6, AC-22): canonical query string, Copy link, "N of M melodies",
-// "N not mapped", Export JSON. role="status"; desktop only (CSS hides it under 768 px).
+// "N not mapped" (a link to the unmapped view, the map itself no longer carries it), Export JSON. role="status"; desktop only (CSS hides it under 768 px).
 import { useRef } from 'react'
+import { Link } from 'react-router'
 import { useDerived, useQuery } from '../app/query'
 import { useToast } from '../app/toast'
 import { melodiesOf, t } from '../i18n/en'
-import { encodeQuery } from '../state/urlCodec'
+import { applyPatch } from '../state/query'
+import { encodeQuery, toSearch } from '../state/urlCodec'
 import { ExportButton } from './ExportButton'
 
 export function StatusBar() {
@@ -42,7 +44,14 @@ export function StatusBar() {
       {derived && (
         <span className="statusbar__count">
           {melodiesOf(derived.filteredSongs.length, derived.total)}
-          {derived.unmappedCount > 0 && `, ${t('map.notMapped', { n: derived.unmappedCount })}`}
+          {derived.unmappedCount > 0 && !query.unmapped && (
+            <>
+              {', '}
+              <Link to={{ pathname: '/', search: toSearch(applyPatch(query, { unmapped: true })) }} title={t('map.unmappedBody')}>
+                {t('map.notMapped', { n: derived.unmappedCount })}
+              </Link>
+            </>
+          )}
         </span>
       )}
       <ExportButton songs={derived?.sortedSongs ?? []} query={query} small />

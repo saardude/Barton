@@ -7,7 +7,13 @@ import {
   buildVillageLookup,
   contextEventsInWindow,
   eraForDate,
+  featuredJourney,
   formatDateRange,
+  groupJourneysByYear,
+  isMinorDerived,
+  journeyPlaceTitle,
+  journeyQuality,
+  journeysPerYear,
   journeyDateText,
   journeyPolities,
   layerForYear,
@@ -17,6 +23,7 @@ import {
   statusBadgeText,
   stopStatus,
   timelineLayout,
+  visibleJourneys,
   type ContextEvent,
   type Journey,
   type JourneyStop,
@@ -212,5 +219,49 @@ describe('route legs and timeline layout', () => {
     // the July 1910 route overlaps the 1910 year cluster, so it sits on another lane
     const route = layout.marks.find((m) => m.id === 'J-1910-07-01')!
     expect(route.lane).not.toBe(cluster.lane)
+  })
+})
+
+describe('journey list helpers (owner feedback: find a real trip)', () => {
+  it('rates data quality from the fields: index with records, index only, dates only, sourced when curated with citations', () => {
+    expect(journeyQuality(byId('gyuj-50'))).toBe('index')
+    expect(journeyQuality({ ...byId('gyuj-50'), recordCount: 12 })).toBe('documented')
+    expect(journeyQuality(byId('J-1913-03-01'))).toBe('dates')
+    expect(journeyQuality(byId('J-1913-03-01'), { id: 'J-1913-03-01', sources: [{ citation: 'Letter of 20 March 1913' }] })).toBe('sourced')
+    expect(journeyQuality(byId('J-1913-03-01'), { id: 'J-1913-03-01', sources: [] })).toBe('dates')
+  })
+  it('hides date-gap trips one record or one stop wide unless asked; the selected trip always stays', () => {
+    expect(journeys.filter(isMinorDerived).map((j) => j.id)).toEqual(['J-1910-00-01', 'J-1918-05-01'])
+    const shown = visibleJourneys(journeys, { showAll: false, search: '' }).map((j) => j.id)
+    expect(shown).toEqual(['gyuj-50', 'J-1910-07-01', 'J-1913-03-01'])
+    expect(visibleJourneys(journeys, { showAll: true, search: '' }).length).toBe(journeys.length)
+    expect(visibleJourneys(journeys, { showAll: false, search: '', keepId: 'J-1918-05-01' }).map((j) => j.id)).toContain('J-1918-05-01')
+  })
+  it('searches place and year (folded), and narrows to a year', () => {
+    expect(visibleJourneys(journeys, { showAll: true, search: 'belenyes' }).map((j) => j.id)).toEqual(['J-1910-07-01', 'J-1913-03-01'])
+    expect(visibleJourneys(journeys, { showAll: true, search: '1918' }).map((j) => j.id)).toEqual(['J-1918-05-01'])
+    expect(visibleJourneys(journeys, { showAll: true, search: '', year: 1910 }).map((j) => j.id)).toEqual(['J-1910-00-01', 'J-1910-07-01'])
+  })
+  it('groups by year in date order and counts trips per year across the whole span', () => {
+    expect(groupJourneysByYear(journeys).map((g) => [g.year, g.journeys.length])).toEqual([
+      [1909, 1],
+      [1910, 2],
+      [1913, 1],
+      [1918, 1],
+    ])
+    const per = journeysPerYear(journeys)
+    expect(per[0]).toEqual({ year: 1909, n: 1 })
+    expect(per.find((y) => y.year === 1911)).toEqual({ year: 1911, n: 0 })
+    expect(per[per.length - 1]).toEqual({ year: 1918, n: 1 })
+  })
+  it('features a curated flag first, else the best-documented trip with the most records and stops', () => {
+    expect(featuredJourney(journeys)?.id).toBe('J-1913-03-01')
+    expect(featuredJourney(journeys, new Map([['gyuj-50', { id: 'gyuj-50', featured: true }]]))?.id).toBe('gyuj-50')
+    const documented = journeys.map((j) => (j.id === 'gyuj-50' ? { ...j, recordCount: 3 } : j))
+    expect(featuredJourney(documented)?.id).toBe('gyuj-50')
+  })
+  it('titles a list row by the place named on the index, else the historical counties', () => {
+    expect(journeyPlaceTitle(byId('gyuj-50'))).toBe('Upper region of the river Fekete-Koros')
+    expect(journeyPlaceTitle(byId('J-1913-03-01'))).toBe('Bihar')
   })
 })

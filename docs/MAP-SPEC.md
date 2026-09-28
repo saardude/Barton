@@ -72,11 +72,13 @@ Two implementations behind one prop `countyLayer: 'bubbles' | 'choropleth'`:
 
 - **Centroid bubbles (phase 1, default)**: one circle per county at the county place's
   `lat/lon` (the scraper writes county centroids into `places.json`). Diameter
-  `d = 10 + 30 * sqrt(n / nMax)`, clamped to [10, 40] px, where `nMax` is the largest
-  county count among the current `mapPoints`. Fill `--surface` at 85% opacity, stroke
-  1.5 px `--ink-2`; in colour-by-genre mode the fill is the dominant genre colour at 85%
-  and the count label switches to `--genre-label-ink`. Count label centred in mono
-  `--fs-11` when `d >= 22`, otherwise beside the bubble.
+  `d = 12 + 32 * sqrt(n / nMax)`, clamped to [12, 44] px, where `nMax` is the largest
+  county count among the current `mapPoints`. Fill `--surface` at 90% opacity, stroke
+  1.5 px `--ink-2`. Count label centred in mono `--fs-11` medium when `d >= 24`; smaller
+  bubbles carry no label (the hover card and the accessible list give the count). The
+  explorer map is monochrome: colour-by-genre exists only on the County page's local map
+  (`MapView` keeps the `colourByGenre` prop for it), because 94% of records carry no genre
+  label and the colouring painted almost every marker "other" (revision 2026-09-28).
 - **Choropleth (phase 2)**: needs a county-boundary GeoJSON (section 9). Five-class
   quantile fill of `--ink` at 6 / 12 / 20 / 30 / 42% opacity (light) or `--ink` at
   8 / 16 / 26 / 38 / 50% (dark), stroke `--map-county-stroke` 1 px, hover fill
@@ -85,10 +87,10 @@ Two implementations behind one prop `countyLayer: 'bubbles' | 'choropleth'`:
 
 ### 3.2 Village dots
 
-One dot per village point in `mapPoints`. Diameter `d = 4 + 18 * sqrt(n / nMax)`, clamped
-to [4, 22] px, `nMax` = largest village count among the current points (so a small
-filtered set still uses the full range; noted as decision D1). Fill `--map-dot` (mono) or
-the dominant genre colour (colour-by-genre), stroke 1 px `--map-dot-stroke`. Dots are
+One dot per village point in `mapPoints`. Diameter `d = 6 + 16 * sqrt(n / nMax)`, clamped
+to [6, 22] px, `nMax` = largest village count among the current points (so a small
+filtered set still uses the full range; noted as decision D1). Fill `--map-dot`, stroke
+1 px `--map-dot-stroke` (the County page's local map may colour by dominant genre). Dots are
 `L.marker` with a `divIcon` containing a `<button>` (for keyboard focus and `aria-label`)
 rather than `L.circleMarker`, so they participate in the accessibility model in
 FRONTEND-SPEC section 12. The button's hit area is padded to 24 px (fine pointer) or
@@ -117,25 +119,47 @@ genre places; the hover card's genre bar carries that information.
 
 ### 3.4 Selected state
 
-The selected point (the `Query.village`, or the `Query.county` bubble in county mode)
-gets the two-ring treatment: inner halo 2 px `--map-halo` and outer ring 2 px
-`--map-select`, both drawn as `box-shadow` on the button so the visible circle keeps its
-size: `box-shadow: 0 0 0 2px var(--map-halo), 0 0 0 4px var(--map-select)`. The selected
-marker is raised (`zIndexOffset` 1000) and is never clustered (it is added to a separate
-non-cluster layer while selected). A hovered or focused, unselected dot gets
-`box-shadow: 0 0 0 2px var(--map-halo), 0 0 0 3px var(--ink-2)`.
+One selected state, unmistakable (revision 2026-09-28): the selected point (the
+`Query.village`, or the `Query.county` bubble in county mode) is filled `--accent` with a
+2 px `--map-halo` border (`.dot--selected`); a county bubble's count label switches to
+`--accent-ink`. No second ring. The selected marker is raised (`zIndexOffset` 1000) and is
+never clustered. A hovered, focused or row-highlighted unselected dot gets one ring,
+`box-shadow: 0 0 0 2px var(--ink-2)`. In the drill-down (a county selected, its villages
+shown) the selected county is not drawn as a bubble at all: its villages stand for it, and
+the other counties' bubbles stay so a neighbour is one click away; there is no dashed
+county ring any more.
 
 Hovering a result row (FRONTEND-SPEC section 7) applies the hover style to that row's
 village dot via `highlightPlaceId`, and pans only if the dot is off-screen (no zoom).
 
 ### 3.5 Legend and controls
 
-`MapLegend` (bottom-left, `--z-map-ctl`): in mono mode a size key of three dots labelled
-with counts (1, mid, `nMax`); in colour-by-genre mode the six genre swatches with names
-(clicking a swatch toggles that genre in the Query, `aria-pressed`). Controls top-left:
-zoom in, zoom out, "Fit to Romania" (or "Fit to county"), county layer toggle when the
-choropleth exists. Top-right: "Colour by genre" (mirrors the TopBar toggle on desktop; on
-phone this is the only place it lives). All controls are 44 px squares with tokens.
+`MapLegend` (bottom-left, `--z-map-ctl`): two lines, plain words. County mode: a sample
+bubble with `nMax` inside, "Circle: county; number = melodies", then "Click a county to
+see its villages". Village mode: a sample dot, "Dot: village; size = melodies", then a
+filled accent sample, "Filled = selected; Esc or Reset clears". When a border set is on and
+the pointer is over a county polygon a third mono line names it then / now ("Bihar (1910)
+/ Bihor (now)"). Controls top-left: zoom in, zoom out (44 px squares) and one text button
+"Reset view" (clears the selected county and village and refits the country). Top-right:
+the compact `BorderToggle` (section 3.6). Nothing else: no colour toggle, no layer toggle,
+no tile-fallback notice (the CARTO to OSM fallback still happens, silently), no
+"n not mapped" pill (that count is a link in the StatusBar now). The Leaflet attribution
+control shows the tile and border credits only; the "Leaflet" prefix is off.
+
+### 3.6 Borders on the explorer (then | now | compare)
+
+The journey map's border layers (section 11.4) are drawn on the explorer map by the shared
+hook `useBorderLayers` (`components/journey/borderLayers.tsx`), which creates the two panes
+on any Leaflet map, loads the GeoJSON lazily, adds the dataset attribution and applies the
+compare clip or fade. The control is `BorderToggle` in its `compact` form: a segmented
+control "1910 | Now | Compare" (accessible names "Borders then (1910)", "Borders now",
+"Compare"; `role="radiogroup"` named "Borders") top-right of the map. The era comes from
+the year filter when one is set (`layerForYear(from ?? to)`: 1910 up to 1913, 1914 for
+1914-1918, 1920 after) and is 1910 otherwise. Default mode is `now`; the value is the
+`borders` Query field, omitted from the URL when it equals the default, so the choice
+survives filtering and sharing. Compare shows the same on-map divider (`CompareDivider`,
+`role="slider"`, arrow keys 2%, Shift 10%). When neither border file loads the control is
+disabled with "Border layers unavailable".
 
 ## 4. Hover card
 
@@ -147,21 +171,17 @@ point opens the phone `MapPointSheet` with the same content plus the actions "Sh
 melodies" (applies the place filter and switches to the list tab, AC-25) and "Open county
 page".
 
-Village card:
+Three lines (revision 2026-09-28), 240 px wide:
 
 ```
-Beius (Belenyes)                     <- PlaceLabel, --fs-14 medium; historical in muted mono
-Bihor (Bihar) / Crisana / Romania     <- --fs-12 muted
-24 melodies                           <- --fs-16 mono
-[####genre bar 8px####]  colinda 12, joc 7, cantec 5   <- top 3 genres as text
-1909-1917                             <- year span, "n.d." when none; "1912 and n.d." when mixed
-8 recordings, 24 notations            <- audio/notation counts, omit a zero
-Click to filter to this village       <- hint line, --fs-11 muted
+Beius (Belenyes)  Bihor               <- PlaceLabel (modern, historical in muted mono), county for a village
+24 melodies                           <- --fs-14 mono; county: "312 melodies in 34 villages"
+Click to open                         <- hint, --fs-11 muted; "Click to clear this filter" when selected
 ```
 
-County card (county mode): county `PlaceLabel`, region / country, "312 melodies in 34
-villages", genre bar with top 3, year span, "18 villages not mapped" if any, hint "Click to
-zoom to this county". Cluster: no card (the cluster icon carries the count).
+Genre bars, year spans, media counts and unmapped-village counts were removed from the
+card: they belong to the results panel and the County page, and the card's job is to say
+where and how much. Cluster: no card (the cluster icon carries the count).
 
 The card is also what the `MapAccessibleList` items expand to when focused (same
 component, rendered inline under the list item rather than positioned). That list is the
@@ -172,11 +192,12 @@ component, rendered inline under the list item rather than positioned). That lis
 | Target                      | Effect on Query                                                            | View                              |
 |-----------------------------|----------------------------------------------------------------------------|-----------------------------------|
 | county bubble               | `setQuery({ county: id })` (ancestors filled, village cleared)             | fit to county bbox -> village mode |
-| county bubble when selected | `setQuery({ county: undefined })`                                          | fit to Romania                    |
 | village dot                 | `setQuery({ village: id })` (ancestors filled)                             | no zoom; pan only if off-screen   |
 | village dot when selected   | `setQuery({ village: undefined })` (county stays)                          | none                              |
+| Esc (map focused)           | clears the village, else the county                                        | refit when the county clears      |
+| "Reset view"                | clears county and village; with nothing selected refits the country        | fit to country / all places       |
 | cluster                     | none                                                                       | zoom to cluster bounds            |
-| empty map                   | none (does not clear selection; the chip does)                              | none                              |
+| empty map                   | none (does not clear selection; the chip, Esc or Reset does)                | none                              |
 | "Open county page" in card  | navigate `/county/:id?<query>`                                             |                                   |
 
 Double-click on a point is a normal double-click zoom (Leaflet default) and does not
@@ -239,10 +260,11 @@ county has no centroid, are never on the map. Places with `confidence: 'low'` or
 `coordSource: 'gazetteer-approx'` are mapped but carry the "location uncertain" text
 marker in the hover card and the tree (`PlaceLabel`).
 
-- `unmappedCount` is shown in three places: the `NotMappedNotice` inside the map panel
-  (bottom-right above attribution, `--surface` pill: "312 not mapped"), the StatusBar
-  ("1,204 melodies, 312 not mapped"), and the county hover card ("18 villages not mapped").
-- The notice is a link to the same Explorer with `unmapped=1`. In that mode the map panel
+- `unmappedCount` is shown in the StatusBar ("1,204 melodies, 312 not mapped"), where the
+  count is the link to the same Explorer with `unmapped=1` (revision 2026-09-28: the map
+  pill and the hover-card line were removed to keep the map to its markers). The map panel
+  keeps one notice, "Selected place is not mapped", for a selected place without
+  coordinates. In that mode the map panel
   is replaced by an `EmptyState` ("Showing 312 melodies without coordinates. These places
   could not be located; they are still listed in the place tree.") with "Back to map"
   (clears `unmapped`), and the results list shows only those songs. All other filters
@@ -346,11 +368,9 @@ insertion order: `pane-borders-now` 410, `pane-borders-then` 415, `pane-route` 4
 - Leg kinds: `known` solid; `assumed` (departure or return flagged `assumed: true`)
   dashed `8 6`; the whole route of a `fuzzy` trip dotted `2 6`; the return leg at 60%
   opacity. The legend names all three patterns.
-- Direction arrows: an arrowhead every 96 px of screen length (recomputed on `zoomend`),
-  drawn as `divIcon` markers (12 px SVG chevron in `--accent` with a 1 px `--surface`
-  outline) rotated to the leg bearing; `interactive: false`, `aria-hidden`. Not drawn on
-  legs shorter than 48 px on screen. (Implementation: a small custom layer; do not add
-  `leaflet-polylinedecorator` unless the custom one proves harder than 60 lines.)
+- Direction: given by the stop numbers; no arrowheads, no convex hull for cluster trips
+  and no region circles (revision 2026-09-28: the map shows only the route, the numbered
+  stops, the departure square and the border layer).
 - Distance label: none on the map; the km figure lives in the header and the stop list.
 
 ### 11.3 Stop markers
@@ -364,10 +384,9 @@ insertion order: `pane-borders-now` 410, `pane-borders-then` 415, `pane-route` 4
   filters".
 - Two stops at the same coordinates (a place visited twice) are offset by 8 px along the
   route bearing so both numbers show; the hover card lists both visits.
-- Hover / focus card: number, "Belényes (1909) -> Beiuș (today)" with `lang` spans,
-  `VillageStatusBadge`, modern county, dates, "12 melodies", top three genres, stated
-  ethnicities, instruments, "Show melodies" and "Select stop" actions (touch: bottom
-  sheet). Village status comes from `villages.json`; missing entries show "status unknown"
+- Hover / focus card: four lines: "3/9 Belényes (1909) -> Beiuș (today)" with `lang`
+  spans, the dates, "12 melodies", "Select stop". Status, genres, ethnicities, instruments
+  and the records live in the stop list. Village status comes from `villages.json`; missing entries show "status unknown"
   (AC-41).
 - No clustering on this map. If a trip has more than 60 stops, numbers are hidden below
   zoom 8 and shown again above it.
@@ -407,11 +426,13 @@ only the modern set; `both` shows both with the compare control:
 
 ### 11.5 Legend and controls
 
-`JourneyLegend` (bottom-left) lists: route line (solid known, dashed assumed, dotted
-approximate, lighter return), arrow meaning, stop marker sample, departure / return
-square, the active border set(s) with their line samples, and, when relevant, "n stops
-without coordinates". Controls: zoom in / out, "Fit to route", `BorderToggle` (top-right),
-"List route (n stops)" disclosure after the map (the ordered-list fallback, AC-44).
+`JourneyLegend` (bottom-left) lists: the border title, the route line (solid known,
+dashed assumed) when a route is drawn, the stop and departure samples on one line, one
+line per active border set (state and county samples described together), and, when
+relevant, "n stops without coordinates" or "Route cannot be drawn". Controls: zoom in /
+out, a text "Fit route" button, `BorderToggle` (top-right, full form with the era select
+and the compare range), "List route (n stops)" disclosure after the map (the ordered-list
+fallback, AC-44).
 
 ### 11.6 Attribution
 
@@ -427,7 +448,8 @@ definitive list and licence wording is `GEO-SOURCES.md`. The footer repeats the 
 
 - SVG fallback (section 9) draws the route, arrows, numbered stops and border polygons
   with the same styles; the swipe divider becomes a fade (opacity) control only.
-- No trip selected: Romania fit, modern borders, no route; the prompt is in the panel.
+- No trip in the URL: the featured trip is shown (FRONTEND-SPEC 14.7); the "no trip"
+  state only occurs when `journeys.json` is empty.
 - Fewer than two resolved points: no route, markers for the resolved points only, legend
   note "Route cannot be drawn: fewer than two located stops".
 - Border file failed to load: border layers off, `BorderToggle` disabled with "Border
