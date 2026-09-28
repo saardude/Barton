@@ -90,8 +90,10 @@ function parseArgs(argv) {
     strict: false,
     help: false,
   };
+  const explicit = new Set();
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
+    explicit.add(a.split('=')[0]);
     const next = () => {
       const v = argv[++i];
       if (v === undefined) throw new Error(`Missing value for ${a}`);
@@ -111,6 +113,7 @@ function parseArgs(argv) {
     else if (a === '--help' || a === '-h') args.help = true;
     else throw new Error(`Unknown argument: ${a}`);
   }
+  args.explicit = explicit;
   return args;
 }
 
@@ -536,7 +539,7 @@ const GATES = [
 
   gate('journeys-valid', true, 'journeys.json validates against journey.schema.json; song ids exist (or are alternates of a merged record); route stops in date order; date-gap routes respect derivation.gapDays', async (records, ctx) => {
     if (!ctx.journeys) {
-      return { status: 'skip', metric: 'data/journeys.json missing', details: [`${rel(ctx.journeysPath)} not found; gate skipped until the journey mapper data exists.`] };
+      return { status: 'skip', metric: ctx.crossFileNote ? 'skipped in sample mode' : 'data/journeys.json missing', details: [ctx.crossFileNote ?? `${rel(ctx.journeysPath)} not found; gate skipped until the journey mapper data exists.`] };
     }
     const journeys = journeyList(ctx.journeys);
     const details = [];   // blocking
@@ -591,7 +594,7 @@ const GATES = [
       // 3. dates: journey span, route stop order, gap rule
       if (cmpIsoPrefix(t?.dateStart, t?.dateEnd) > 0) details.push(`${tid}: dateStart ${t.dateStart} after dateEnd ${t.dateEnd}`);
       if (t?.kind === 'route') {
-        let prevDep = null; let prevSeq = 0;
+        let prevDep = null; let prevArr = null; let prevSeq = 0;
         const gapDays = Number.isInteger(t?.derivation?.gapDays) ? t.derivation.gapDays : TRIP_MAX_GAP_DAYS;
         const gapRule = t?.derivedFrom === 'date-gap';
         list.forEach((st, si) => {
@@ -599,12 +602,13 @@ const GATES = [
           if (Number.isInteger(st?.seq) && st.seq <= prevSeq) details.push(`${label_}: seq not increasing`);
           prevSeq = st?.seq ?? prevSeq;
           if (cmpIsoPrefix(st?.arrival, st?.departure) > 0) details.push(`${label_}: departure ${st.departure} before arrival ${st.arrival}`);
-          if (prevDep !== null && cmpIsoPrefix(prevDep, st?.arrival) > 0) details.push(`${label_}: arrival ${st.arrival} before previous stop's departure ${prevDep}`);
+          if (prevArr !== null && cmpIsoPrefix(prevArr, st?.arrival) > 0) details.push(`${label_}: arrival ${st.arrival} before previous stop's arrival ${prevArr} (route stops must be ordered in time)`);
           if (gapRule && prevDep !== null) {
             const gap = daysBetween(prevDep, st?.arrival);
             if (gap !== null && gap > gapDays) details.push(`${label_}: ${gap} days after previous stop, more than derivation.gapDays ${gapDays} (should be a new trip)`);
           }
           if (!isNil(st?.departure)) prevDep = st.departure;
+          if (!isNil(st?.arrival)) prevArr = st.arrival;
         });
       }
     });
@@ -623,7 +627,7 @@ const GATES = [
 
   gate('villages-valid', true, 'villages.json: status in vocabulary, names non-empty, every journey stop place has an entry', (records, ctx) => {
     if (!ctx.villages) {
-      return { status: 'skip', metric: 'data/villages.json missing', details: [`${rel(ctx.villagesPath)} not found; gate skipped until the journey mapper data exists.`] };
+      return { status: 'skip', metric: ctx.crossFileNote ? 'skipped in sample mode' : 'data/villages.json missing', details: [ctx.crossFileNote ?? `${rel(ctx.villagesPath)} not found; gate skipped until the journey mapper data exists.`] };
     }
     const doc = ctx.villages;
     const container = Array.isArray(doc) ? doc
@@ -649,9 +653,10 @@ const GATES = [
       const missing = new Set();
       for (const t of journeyList(ctx.journeys)) for (const st of (Array.isArray(t?.stops) ? t.stops : [])) {
         const pid = st?.placeId;
-        if (!isNil(pid) && !known.has(String(pid))) missing.add(String(pid));
+        if (isNil(pid) || st?.locationConfidence === 'unresolved' || /\/unresolved\//.test(String(pid))) continue;
+        if (!known.has(String(pid))) missing.add(String(pid));
       }
-      if (missing.size) details.push(`${missing.size} journey stop place(s) missing from villages.json: ${[...missing].slice(0, 5).join(', ')}${missing.size > 5 ? ', ...' : ''}`);
+      if (missing.size) details.push(`${missing.size} resolved journey stop place(s) missing from villages.json (unresolved stops exempt): ${[...missing].slice(0, 5).join(', ')}${missing.size > 5 ? ', ...' : ''}`);
     }
     return { status: details.length ? 'fail' : 'pass', metric: `${list.length} village(s), ${details.length} problem(s)`, details };
   }),
@@ -727,7 +732,12 @@ async function main() {
       }
     } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
   }
-  for (const [key, path] of [['journeys', args.journeys], ['villages', args.villages]]) {
+  // journeys.json and villages.json are cross-file checks against the full songs.json; when the
+  // songs file is a sample (--file) they only run if --journeys / --villages are passed explicitly.
+  const sampleMode = (args.explicit.has('--file') || args.explicit.has('-f'));
+  ctx.crossFileNote = null;
+  for (const [key, flag, path] of [['journeys', '--journeys', args.journeys], ['villages', '--villages', args.villages]]) {
+    if (sampleMode && !args.explicit.has(flag)) { ctx.crossFileNote = `--file given without ${flag}: cross-file gate skipped (it would compare ${key}.json against a sample)`; continue; }
     if (existsSync(path)) {
       try { ctx[key] = loadJson(path, key); } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
     }

@@ -9,6 +9,15 @@
       "referenceCode": "A 204",
       "volume": null,
       "number": "A204",
+      "alternates": [
+        {
+          "site": "gyuj",
+          "siteName": "Béla Bartók, the Ethnomusicologist",
+          "siteId": "1-204",
+          "url": "https://bartok-gyujtesek.zti.hu/en/browse/1/204",
+          "id": "gyuj-1-204"
+        }
+      ],
       "siteRecordId": "A204",
       "fetchedAt": null
     },
@@ -17,6 +26,7 @@
     "genre": "cantec",
     "genreRaw": "lyric song",
     "style": "old style",
+    "styleRaw": "Class: old style",
     "performance": "vocal",
     "instrument": [],
     "performer": {
@@ -69,6 +79,7 @@
     "remarks": "Phonograph cylinder MF 1234a.",
     "related": [],
     "composition": [],
+    "journey": null,
     "rawFields": {
       "Sys.": "A 204",
       "Place": "Borosjeno (Arad)",
@@ -85,6 +96,7 @@
       "referenceCode": "RFM II 81",
       "volume": "RFM II",
       "number": "81",
+      "alternates": [],
       "siteRecordId": "517",
       "fetchedAt": null
     },
@@ -93,6 +105,7 @@
     "genre": "colinda",
     "genreRaw": "colinda",
     "style": null,
+    "styleRaw": null,
     "performance": "vocal",
     "instrument": [],
     "performer": {
@@ -159,6 +172,7 @@
         "raw": "Colinde, I/4 (Sz. 57)"
       }
     ],
+    "journey": null,
     "rawFields": null
   },
   {
@@ -171,6 +185,7 @@
       "referenceCode": null,
       "volume": null,
       "number": "5398",
+      "alternates": [],
       "siteRecordId": "21/5398",
       "fetchedAt": null
     },
@@ -179,6 +194,7 @@
     "genre": "joc",
     "genreRaw": "dance (ardeleana)",
     "style": null,
+    "styleRaw": null,
     "performance": "instrumental",
     "instrument": [
       "violin"
@@ -233,6 +249,13 @@
     "remarks": "Instrumental; no text.",
     "related": [],
     "composition": [],
+    "journey": {
+      "collectionId": "21",
+      "label": "May, 1912. Maros-Torda",
+      "dateRaw": "May, 1912",
+      "place": "Maros-Torda",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/21"
+    },
     "rawFields": null
   }
 ]

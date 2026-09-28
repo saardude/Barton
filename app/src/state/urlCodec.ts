@@ -47,7 +47,6 @@ const PARAM_ORDER = [
   'date',
   'borders',
 ] as const
-const LIST_PARAMS = new Set(['genre', 'style', 'instr'])
 const KNOWN = new Set<string>(PARAM_ORDER)
 
 function enc(v: string): string {
@@ -142,6 +141,8 @@ export function decodeQuery(search: string, opts: DecodeOptions = {}): DecodeRes
   }
 
   const patch: Partial<Query> = {}
+  const q = single('q')
+  if (q !== undefined) patch.q = q
 
   // Place: the deepest wins; shallower params that disagree are ignored with a warning.
   const placeOk = (id: string) => (opts.placeExists ? opts.placeExists(id) : true)

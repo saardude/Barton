@@ -35,6 +35,10 @@ function knownFirst<T>(a: T | null | undefined, b: T | null | undefined, dir: So
 }
 
 function byTitle(a: Song, b: Song, dir: SortDir): number {
+  // 1. null or empty title last in both directions (AC-14); the incipit only orders those among themselves.
+  const ha = a.title && a.title.trim() ? 0 : 1
+  const hb = b.title && b.title.trim() ? 0 : 1
+  if (ha !== hb) return ha - hb
   const ka = tkey(a)
   const kb = tkey(b)
   let r = knownFirst(ka, kb, dir, (x, y) => roBase.compare(x, y))
@@ -56,12 +60,16 @@ function placeName(p: Place | undefined): string | null {
   return p.name || p.nameHistorical || null
 }
 
+const LEVEL_INDEX: Record<Place['type'], number> = { country: 0, region: 1, county: 2, village: 3 }
+
+/** [country, region, county, village] names from the place nodes on the record's path (by node type, not depth). */
 function levelNames(s: Song, lookup: PlaceLookup): (string | null)[] {
   const id = s.location.placeId
   const parts = id ? id.split('/') : []
   const names: (string | null)[] = [null, null, null, null]
-  for (let i = 0; i < 4; i++) {
-    if (i < parts.length) names[i] = placeName(lookup(parts.slice(0, i + 1).join('/')))
+  for (let i = 0; i < parts.length; i++) {
+    const p = lookup(parts.slice(0, i + 1).join('/'))
+    if (p) names[LEVEL_INDEX[p.type]] = placeName(p)
   }
   // Fall back to the record's own names when the place node is missing.
   if (!names[2] && s.location.county) names[2] = s.location.county
