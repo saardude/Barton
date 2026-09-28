@@ -34,7 +34,7 @@ describe('Song record route', () => {
 
     // breadcrumb: Romania > Crișana > Bihor (Bihar) > Beiuș (Belényes) > title
     const crumb = screen.getByRole('navigation', { name: 'Breadcrumb' })
-    expect(within(crumb).getByRole('link', { name: 'Romania' })).toHaveAttribute('href', '/')
+    expect(within(crumb).getByRole('link', { name: 'Romania' })).toHaveAttribute('href', '/?country=ro')
     expect(within(crumb).getByRole('link', { name: /Bihor/ })).toHaveAttribute('href', '/?county=ro/crisana/bihor')
     expect(within(crumb).getByRole('link', { name: /Beiuș/ })).toHaveAttribute('href', '/?village=ro/crisana/bihor/beius')
 
@@ -88,7 +88,7 @@ describe('Song record route', () => {
   })
 
   it('a record outside the current filter says so and offers "Show in explorer"', async () => {
-    renderApp('/song/bsys-26') // Hungarian locality, outside the default country = ro set
+    renderApp('/song/bsys-26?country=ro') // Hungarian locality, outside the country = ro set
     await screen.findByRole('heading', { level: 1, name: 'Hej, Dunáról' })
     expect(screen.getByText('This record is outside the current filter.')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Show in explorer' })).toHaveAttribute('href', '/?county=hu/unresolved/ujszasz')

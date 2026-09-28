@@ -84,14 +84,14 @@ describe('filter logic (QA 3.2)', () => {
     expect(await find('sculati boieri')).toEqual(['bsys-8']) // tokens AND
     expect(await find('sculati nomatchxyz')).toEqual([])
     expect(await search.search('s')).toBeNull() // too short: no filter
-    expect(run({ q: '' }).filteredSongs.length).toBe(inRO.length)
+    expect(run({ q: '' }).filteredSongs.length).toBe(fixtureSongs.length)
   })
 
   it('clear-all returns the full default set and the canonical empty query', () => {
     const q = applyPatch(DEFAULT_QUERY, { county: 'ro/crisana/bihor', genre: ['joc'], q: 'x', sort: 'year', dir: 'desc' })
     const reset = resetQuery(q)
     expect(encodeQuery(reset)).toBe('sort=year&dir=desc')
-    expect(derive({ query: reset, index, searchIds: null }).filteredSongs.length).toBe(inRO.length)
+    expect(derive({ query: reset, index, searchIds: null }).filteredSongs.length).toBe(fixtureSongs.length)
     expect(encodeQuery(resetQuery(DEFAULT_QUERY))).toBe('')
   })
 

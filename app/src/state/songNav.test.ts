@@ -26,14 +26,14 @@ describe('prevNext (AC-19)', () => {
   })
   it('follows the filtered and sorted set of the default query over the fixture', () => {
     const index = fixtureIndex()
-    const derived = derive({ query: { ...DEFAULT_QUERY, sort: 'year', dir: 'desc' }, index, searchIds: null })
+    const derived = derive({ query: { ...DEFAULT_QUERY, country: 'ro', sort: 'year', dir: 'desc' }, index, searchIds: null })
     const sortedIds = derived.sortedSongs.map((s) => s.id)
     const first = sortedIds[0]
     const pos = prevNext(first, sortedIds)
     expect(pos?.prevId).toBeNull()
     expect(pos?.nextId).toBe(sortedIds[1])
     expect(pos?.total).toBe(derived.filteredSongs.length)
-    // the Hungarian record is outside the default (country = ro) set
+    // the Hungarian record is outside the country = ro set
     const hu = fixtureSongs.find((s) => s.location.placeId === 'hu/unresolved/ujszasz')
     expect(hu).toBeDefined()
     expect(prevNext(hu!.id, sortedIds)).toBeNull()

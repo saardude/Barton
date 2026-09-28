@@ -74,7 +74,7 @@ describe('place tree building (QA 3.5)', () => {
   })
 
   it('map points: county mode groups by county centroid; unmapped villages are counted', () => {
-    const d = derive({ query: DEFAULT_QUERY, index, searchIds: null })
+    const d = derive({ query: { ...DEFAULT_QUERY, country: 'ro' }, index, searchIds: null })
     expect(d.mapLevel).toBe('county')
     expect(d.mapPoints.map((p) => p.placeId).sort()).toEqual(['ro/crisana/bihor', 'ro/transylvania/cluj', 'ro/transylvania/harghita'])
     const bihor = d.mapPoints.find((p) => p.placeId === 'ro/crisana/bihor')!
@@ -82,6 +82,10 @@ describe('place tree building (QA 3.5)', () => {
     expect(bihor.unmappedVillages).toBe(1) // Tărcaia has no coordinates
     expect(bihor.villageCount).toBe(3)
     expect(d.unmappedCount).toBe(0)
+    // no country (the default): the same county bubbles, plus the non-RO records with no county node counted as unmapped
+    const all = derive({ query: DEFAULT_QUERY, index, searchIds: null })
+    expect(all.mapPoints.map((p) => p.placeId).sort()).toEqual(d.mapPoints.map((p) => p.placeId).sort())
+    expect(all.unmappedCount).toBe(fixtureSongs.filter((s) => !s.location.placeId?.startsWith('ro/')).length)
     const v = derive({ query: { ...DEFAULT_QUERY, county: 'ro/crisana/bihor', region: 'ro/crisana' }, index, searchIds: null })
     expect(v.mapLevel).toBe('village')
     expect(v.mapPoints.map((p) => p.placeId).sort()).toEqual(['ro/crisana/bihor/beius', 'ro/crisana/bihor/ineu'])
