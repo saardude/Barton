@@ -339,6 +339,27 @@
         },
         "generator": {
           "type": "string"
+        },
+        "attachedRecords": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "byMembership",
+            "byDateCounty"
+          ],
+          "properties": {
+            "byMembership": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Records attached through their collection id (journey.collectionId, gyuj alternate id/url, record url/id)."
+            },
+            "byDateCounty": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Records (rfm volumes) attached because exactly one index entry overlaps their month and names their county/region; the umbrella entry wins when several do."
+            }
+          },
+          "description": "Present on index journeys only."
         }
       }
     },

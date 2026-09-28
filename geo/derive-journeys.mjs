@@ -83,11 +83,58 @@ function addCount(map, key) {
   if (key == null || key === '') return;
   map[key] = (map[key] || 0) + 1;
 }
+const COLL_URL = /bartok-gyujtesek\.zti\.hu\/(?:en|hu)\/browse\/(\d+)(?:\/\d+)?/;
+const COLL_ID = /^gyuj-(\d+)-\d+$/;
+/** Collection membership: the merged record's `journey.collectionId`, then any gyuj alternate id/url, then the record's own url/id. */
 export function collectionIdOf(song) {
-  const m = String(song.source && song.source.url || '').match(/bartok-gyujtesek\.zti\.hu\/(?:en|hu)\/browse\/(\d+)\/\d+/);
-  if (m) return m[1];
-  const m2 = String(song.id || '').match(/^gyuj-(\d+)-\d+$/);
-  return m2 ? m2[1] : null;
+  if (song.journey && song.journey.collectionId != null) return String(song.journey.collectionId);
+  if (song.journey && song.journey.url) { const m = String(song.journey.url).match(COLL_URL); if (m) return m[1]; }
+  for (const a of (song.source && song.source.alternates) || []) {
+    const m = String(a.id || '').match(COLL_ID) || String(a.url || '').match(COLL_URL);
+    if (m) return m[1];
+  }
+  const m = String(song.source && song.source.url || '').match(COLL_URL) || String(song.id || '').match(COLL_ID);
+  return m ? m[1] : null;
+}
+
+// Records printed in the Rumanian Folk Music volumes (site "rfm") carry no collection id;
+// only they are attached by date and county: to an index entry when exactly one entry overlaps the record's month
+// and names the record's county (modern or historical) or a region containing it.
+const REGION_COUNTIES = {
+  Banat: ['Timiș', 'Caraș-Severin', 'Arad'], 'Transylvanian Plain': ['Cluj', 'Mureș', 'Bistrița-Năsăud'],
+  'Land of the Moți (Munții Apuseni)': ['Alba', 'Cluj', 'Bihor', 'Arad', 'Hunedoara'], 'Someșul Mic valley': ['Cluj'],
+  'Upper Mureș valley': ['Mureș'], 'Niraj valley': ['Mureș'], 'Crișul Negru valley': ['Bihor'], 'Upper Crișul Negru valley (Beiuș and Vașcău districts)': ['Bihor']
+};
+function monthWindow(c) {
+  const y = c.year, m = c.month;
+  const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return [`${y}-${pad(m)}-01`, `${y}-${pad(m)}-${pad(last)}`];
+}
+function isoEndOf(iso) {
+  if (/^\d{4}$/.test(iso)) return iso + '-12-31';
+  if (/^\d{4}-\d{2}$/.test(iso)) { const [y, m] = iso.split('-').map(Number); return `${iso}-${pad(new Date(Date.UTC(y, m, 0)).getUTCDate())}`; }
+  return iso;
+}
+function isoStartOf(iso) { return /^\d{4}$/.test(iso) ? iso + '-01-01' : /^\d{4}-\d{2}$/.test(iso) ? iso + '-01' : iso; }
+function placeCoversCounty(pl, county, countyHist) {
+  if (county && pl.county === county) return true;
+  if (countyHist && pl.countyHistorical && fold(pl.countyHistorical).split(' / ').some((h) => h === fold(countyHist)) ) return true;
+  if (countyHist && pl.countyHistorical && fold(pl.countyHistorical).includes(fold(countyHist))) return true;
+  const rc = REGION_COUNTIES[pl.name];
+  return !!(rc && county && rc.includes(county));
+}
+export function attachByDateCounty(song, collections) {
+  const c = song.collected;
+  if (!c || c.year == null || c.month == null) return null;
+  const [ws, we] = c.day ? [isoOf(c), isoOf(c)] : monthWindow(c);
+  const county = song.location.county, countyHist = song.location.countyHistorical;
+  if (!county && !countyHist) return null;
+  const hits = collections.filter((coll) => isoStartOf(coll.date.start) <= we && isoEndOf(coll.date.end) >= ws && coll.places.some((pl) => placeCoversCounty(pl, county, countyHist)));
+  if (!hits.length) return null;
+  if (hits.length === 1) return hits[0].id;
+  // several entries in the same month and county: prefer the entry whose place is the county/region (the umbrella), else the earliest id
+  const umbrella = hits.filter((coll) => coll.places.some((pl) => pl.kind === 'county' || pl.kind === 'region'));
+  return (umbrella.length ? umbrella : hits).sort((a, b) => +a.id - +b.id)[0].id;
 }
 const PRECISION_RANK = { day: 0, phrase: 1, month: 2, season: 3, year: 4 };
 
@@ -225,7 +272,13 @@ function collectionJourney(coll, records, cfg) {
     songIds: records.map((s) => s.id).sort(),
     nowIn: coll.nowIn,
     romanianMaterial: coll.romanianMaterial,
-    derivation: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: ['collection'], generator: GENERATOR }
+    derivation: {
+      gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: ['collection'], generator: GENERATOR,
+      attachedRecords: {
+        byMembership: records.filter((s) => (cfg._attachment || new Map()).get(s.id) !== 'date-county').length,
+        byDateCounty: records.filter((s) => (cfg._attachment || new Map()).get(s.id) === 'date-county').length
+      }
+    }
   });
 }
 
@@ -313,7 +366,9 @@ export function deriveJourneys(songs, config = {}) {
   // Records of an index entry are Bartok's by definition (the index is his collecting
   // trips), even when the record page prints no collector; count how often we rely on that.
   let collectorAssumedFromIndex = 0;
+  let rfmRecords = 0;
   const bartok = songs.filter((s) => {
+    if (s.source && s.source.site === 'rfm') { rfmRecords++; return true; } // Bartok's own printed collection
     if (s.collector && cfg.collectorPattern.test(s.collector)) return true;
     if (!s.collector && collIds.has(collectionIdOf(s))) { collectorAssumedFromIndex++; return true; }
     return false;
@@ -321,16 +376,23 @@ export function deriveJourneys(songs, config = {}) {
   const byColl = new Map();
   const rest = [];
   let orphanCollectionRecords = 0;
+  let attachedByDateCounty = 0;
+  const attachment = new Map(); // song id -> 'membership' | 'date-county'
   for (const s of bartok) {
-    const cid = collectionIdOf(s);
+    let cid = collectionIdOf(s);
+    let how = 'membership';
+    if (!cid && s.source && s.source.site === 'rfm') { cid = attachByDateCounty(s, collections); how = 'date-county'; }
     if (cid && collIds.has(cid)) {
       if (!byColl.has(cid)) byColl.set(cid, []);
       byColl.get(cid).push(s);
+      attachment.set(s.id, how);
+      if (how === 'date-county') attachedByDateCounty++;
     } else {
       if (cid) orphanCollectionRecords++;
       rest.push(s);
     }
   }
+  cfg._attachment = attachment;
   const primary = collections.map((c) => collectionJourney(c, (byColl.get(c.id) || []).sort((a, b) => (a.id < b.id ? -1 : 1)), cfg));
   const dated = rest.filter((s) => s.collected && s.collected.year != null);
   const fallback = gapJourneys(dated, cfg);
@@ -350,6 +412,8 @@ export function deriveJourneys(songs, config = {}) {
         inputRecords: songs.length,
         bartokRecords: bartok.length,
         collectorAssumedFromIndex,
+        rfmRecords,
+        attachedByDateCounty,
         recordsInCollections: bartok.length - rest.length,
         recordsOutsideCollections: rest.length,
         orphanCollectionRecords,
