@@ -385,7 +385,7 @@ const GATES = [
     };
   }),
 
-  gate('no-html', true, 'no HTML tags or entities in text fields (raw subtree and url fields excluded)', (records) => {
+  gate('no-html', true, 'no HTML tags or entities in text fields (rawFields and url-like fields excluded)', (records) => {
     const details = [];
     records.forEach((r, i) => {
       for (const { path, value } of stringFields(r)) {

@@ -15,7 +15,7 @@ Assumed URL parameter names (until FRONTEND-SPEC.md fixes them): `country`, `reg
 **AC-01 Default country**
 Given a fresh visit to `/`
 When the explorer loads
-Then only records whose modern country is Romania are in the filtered set, the place tree
+Then only records whose `location.country` is `RO` are in the filtered set, the place tree
 shows "Romania" expanded to its regions with counts, and a country switch exposes other
 countries without reloading the page. (unit 3.2, E2E-01)
 
@@ -54,7 +54,8 @@ E2E-02)
 
 **AC-06 Style**
 Given the explorer
-When the user selects one or more style chips (old, new, mixed, ...)
+When the user selects one or more style chips (the distinct `style` strings in the data,
+for example "old style", "new style", "parlando")
 Then records with any selected style are shown, counts on chips follow AC-05's rule,
 records with null style are excluded while any style chip is active, and the URL contains
 `style=`. (unit 3.2, 3.3)
@@ -75,7 +76,7 @@ empty array are excluded while an instrument chip is active; the URL contains `i
 **AC-09 Year range**
 Given the explorer with the year range at its defaults (data min and max)
 When the user sets from=1909 and to=1912
-Then records with 1909 <= year <= 1912 are shown, records with null year are excluded, the
+Then records with 1909 <= `collected.year` <= 1912 are shown, records with null year are excluded, the
 chip reads "1909-1912", and the URL contains `from=1909&to=1912`. Setting only one end is
 allowed (`from` alone or `to` alone). Resetting both ends removes the chip and the
 parameters, and null-year records return. (unit 3.2, E2E-02)
@@ -106,7 +107,7 @@ Given the explorer
 When the user types at least two characters into the search box
 Then within 300 ms the filtered set narrows to records where every whitespace-separated
 token matches, case-insensitively, the title, incipit, text, modern or historical village
-name, or informant name; the URL contains `q=<text>`; the count updates in the live region.
+name, or performer name; the URL contains `q=<text>`; the count updates in the live region.
 Clearing the box restores the previous set. (unit 3.2, E2E-04)
 
 **AC-13 Diacritic-insensitive search**
@@ -128,9 +129,9 @@ records with a missing title last in both directions, and the URL contains `sort
 **AC-15 Sort by style**
 Given any filtered set
 When the user chooses "Style"
-Then records are grouped in the style vocabulary order (old, new, mixed, then others),
-unknown or null style last in both directions, ties broken by title; the URL contains
-`sort=style`. (unit 3.4, E2E-01)
+Then records are ordered by the `style` string with the AC-14 collator (or by the
+vocabulary order if FRONTEND-SPEC.md defines one), null style last in both directions, ties
+broken by title; the URL contains `sort=style`. (unit 3.4, E2E-01)
 
 **AC-16 Sort by location**
 Given any filtered set
@@ -148,8 +149,9 @@ directions; the URL contains `sort=year`. (unit 3.4, E2E-02)
 **AC-18 Sort by source number**
 Given any filtered set
 When the user chooses "Source number"
-Then records are ordered by site key then by natural-sorted record id ("A 9" before "A 10"
-before "A 204"; "21/612" before "21/5398"), null last; the URL contains `sort=source`.
+Then records are ordered by site key then by natural-sorted `source.referenceCode`
+(fallback `source.number`) ("A 9" before "A 10" before "A 204"; "RFM I 12" before
+"RFM I 112"; "21/612" before "21/5398"), null last; the URL contains `sort=source`.
 The sort is stable: equal keys keep their previous relative order. (unit 3.4)
 
 ## Song navigation
@@ -168,8 +170,8 @@ E2E-07)
 **AC-20 Raw JSON tab**
 Given a song record
 When the user opens the "Raw JSON" tab
-Then the record is shown pretty-printed with sorted keys, byte-equal to the record in
-`songs.json` (same id), with a "Copy" button that copies the JSON, and the tab is reflected
+Then the record is shown pretty-printed with sorted keys, deep-equal to the record in
+`songs.json` (same id, including `rawFields`), with a "Copy" button that copies the JSON, and the tab is reflected
 in the URL (`#raw` or `?tab=raw`) so reload keeps it. (E2E-06, manual 7.3)
 
 ## Export and sharing

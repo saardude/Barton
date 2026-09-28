@@ -37,27 +37,31 @@ node qa/checks/data-gates.mjs --report qa/out/gates.json       # full offender l
 node qa/checks/data-gates.mjs --strict                         # warnings fail too (release branch)
 ```
 
-### 1.1 Record shape assumed by the gates
+### 1.1 Record shape the gates read
 
-The gates use tolerant accessors (`place.county` or `place.modernCounty` or `county`, and so
-on) until DATA-SCHEMA.md is final. The shape the fixture and the gates assume:
+`data/schema/song.schema.json` is authoritative; the gates read these fields from it
+(the accessors also tolerate the pre-schema draft names `place.*`, `year`, `informant` so a
+stale sample does not crash the script):
 
 ```
-id                  string, unique, stable across runs (site prefix + site record id)
-source.site         "fmbc" | "bsys" | "gyujtesek"   (assumed: the CLI site keys in PLAN.md)
-source.recordId     the record id as the source site prints it
-source.url          absolute http(s) URL of the source record page
-title, incipit      strings (incipit nullable)
-genre               string from the genre vocabulary (schema enum; fallback data/facets.json)
-style, performance  string | null
-instrument          string[]
-year                integer | null
-place.village, place.villageHistorical, place.county (modern, null when unresolved),
-place.countyHistorical, place.region, place.country, place.lat, place.lng (both or neither)
-collector, informant {name, age} | null, ethnicity, text, remarks
-notationImage, audio  absolute URL | null
-raw                 untouched source fields; never scanned for HTML
+id                    ^(fmbc|bsys|gyuj)-...  unique, stable across runs
+source.site           "fmbc" | "bsys" | "gyuj"
+source.url            absolute http(s) URL of the source record page (format: uri)
+source.siteRecordId   raw record id (fallback: source.number, source.referenceCode)
+title, incipit        string | null
+genre                 enum: colinda, doina, bocet, cantec, joc, nunta, other, null
+collected.year        integer 1880..1945 | null (schema); 1904..1918 expected (gate G6)
+location.country      ISO alpha-2 derived from the modern county; null when unresolved
+location.county       modern county; null when unresolved
+location.countyHistorical, location.village, location.villageHistorical, location.raw
+location.lat, location.lng   both numbers or both null
+media.notation[], media.audio[]   {url, type, caption}
+rawFields             verbatim label -> value pairs; never scanned for HTML
 ```
+
+The e2e and unit fixtures in section 3 and 4 use the same shape. `qa/fixtures/songs.sample.json`
+is a 3-record sample that validates against the schema (one record per site, one with null
+year, one with null coordinates, one instrumental with no text).
 
 ### 1.2 Gates
 
@@ -66,16 +70,22 @@ raw                 untouched source fields; never scanned for HTML
 | G1 | `schema-valid` | Every record validates against `data/schema/song.schema.json` (Ajv 2020-12, `allErrors`, formats via ajv-formats) | 100 % valid | Blocks. Skipped with a warning while the schema file or `ajv` is missing; once the schema exists this must never skip in CI |
 | G2 | `id-unique` | `id` present, non-empty, unique across the whole file | 0 duplicates, 0 missing | Blocks |
 | G3 | `source-url` | `source.url` is an absolute `http(s)://` URL | 100 % of records | Blocks |
-| G4 | `county-resolved` | `place.county` (modern county) is a non-empty string | >= 95 % of records | Blocks below 95 %; between 95 % and 100 % the unresolved list is printed as a warning for gazetteer work |
-| G5 | `coords-in-romania` | `lat` 43.6..48.3 and `lng` 20.2..29.7, or both null. One of the pair null, or non-numeric, is an error | 0 violations | Blocks |
-| G6 | `year-range` | `year` is an integer 1904..1918 or null | 0 out of range is the target; any out-of-range or null year is listed | Warns only. The listed ids feed the data engineer's review; records from other collectors or later dates are legitimate and are kept |
-| G7 | `genre-vocab` | `genre` is in the vocabulary: the schema's `genre` enum, else `data/facets.json`, else the built-in fallback list in the script (with a warning) | 100 % in vocabulary | Blocks |
-| G8 | `no-html` | No `<tag>` or `&entity;` in any string field except `raw.*` and keys matching `url/href/src/image/audio/link` | 0 offending fields | Blocks |
-| G9 | `dup-site-record` | Same `source.site` + normalised `source.recordId` appears twice | 0 | Blocks (means the crawler visited a record twice or ids collide) |
+| G4 | `county-resolved` | `location.county` (modern county) is a non-empty string | >= 95 % of records | Blocks below 95 %; between 95 % and 100 % the unresolved list is printed as a warning for gazetteer work |
+| G5 | `coords-in-romania` | For records with `location.country` = `RO`: `lat` 43.6..48.3 and `lng` 20.2..29.7, or both null. One of the pair null, or non-numeric, is an error for any record. Records with another country are exempt (counted); records with null country but coordinates outside the box are listed as suspicious | 0 violations | Blocks on RO violations and half-set pairs; warns on null-country outliers |
+| G6 | `year-range` | `collected.year` is an integer 1904..1918 or null | 0 out of range is the target; any out-of-range or null year is listed | Warns only. The listed ids feed the data engineer's review; records from other collectors or later dates are legitimate and are kept |
+| G7 | `genre-vocab` | `genre` is in the vocabulary: the schema's `genre` enum (which allows null), else `data/facets.json`, else the built-in fallback list in the script (with a warning). Null is counted, not failed, when the vocabulary allows it. More than 25 % of records mapped to `other` is reported | 100 % in vocabulary | Blocks on unknown values; warns when `other` exceeds 25 % |
+| G8 | `no-html` | No `<tag>` or `&entity;` in any string field except `rawFields.*` and keys matching `url/href/src/image/audio/link` | 0 offending fields | Blocks |
+| G9 | `dup-site-record` | Same `source.site` + normalised `source.siteRecordId` (fallback `number`, `referenceCode`) appears twice | 0 | Blocks (means the crawler visited a record twice or ids collide) |
 | G10 | `dup-cross-site` | Same normalised title + village + year appears under different sites (report), and repeated within one site (count) | 0 is ideal | Warns only. Cross-site duplicates are expected (the sites overlap); the report is the input for a later "related melodies" link, not for dropping records |
 
 Normalisation for G9/G10: NFD, strip combining marks, lower-case, collapse non-alphanumerics
 to single spaces. "Borosjenő" and "Borosjeno" compare equal.
+
+G4's denominator is all records, whatever their country, because a record without a modern
+county gets no country and therefore vanishes from the default (Romania) view; that is the
+user-visible harm the gate protects against. The metric line prints a per-country breakdown
+so the data engineer can see whether the misses are Romanian localities missing from the
+gazetteer or out-of-scope material.
 
 ### 1.3 Additional gates to add once `places.json` and `facets.json` exist
 
@@ -83,7 +93,7 @@ These are specified now and will be added to the same script when the files exis
 
 | Check name | What | Threshold | Blocks |
 | --- | --- | --- | --- |
-| `places-referential` | every `place.county` / `place.village` in songs.json exists in places.json and vice versa (no orphan nodes) | 100 % | Blocks |
+| `places-referential` | every `location.county` / `location.village` in songs.json exists in places.json and vice versa (no orphan nodes) | 100 % | Blocks |
 | `facets-counts` | facet counts in facets.json equal counts recomputed from songs.json | exact | Blocks |
 | `deterministic-output` | keys sorted, `\n` line endings, trailing newline, records sorted by id | exact | Blocks |
 | `payload-size` | `songs.json` gzip size (as Vercel serves it) | <= 2.5 MB gzip; warn above 1.5 MB | Blocks (also enforced in section 6) |
@@ -103,8 +113,9 @@ editing the data (or the gazetteer) rather than ignored.
 
 ## 2. Scraper tests (`scraper/tests`, `node --test`)
 
-Site module names below follow PLAN.md (`fmbc`, `bsys`, `gyujtesek`); adjust to
-SCRAPER.md if it renames them.
+Site keys follow the schema (`fmbc`, `bsys`, `gyuj`); PLAN.md's CLI spells the third one
+`gyujtesek` as a crawl target, which is fine as long as the emitted `source.site` and id
+prefix are `gyuj`.
 
 ### 2.1 Fixture-based parser tests
 
@@ -115,15 +126,15 @@ record with audio and remarks, one sparse record with missing fields).
 | Test | Expectation |
 | --- | --- |
 | `parse list page` | returns the record URLs in document order, absolute, de-duplicated; pagination link detected or `null` on the last page |
-| `parse rich record` | output deep-equals `expected.json`: title, incipit, genre, performance, informant name and age, collector, place strings (historical and as printed), date -> year, audio URL, notation image URL, remarks |
+| `parse rich record` | output deep-equals `expected.json`: title, incipit, genre and genreRaw, performance, performer name/age/sex/ethnicity, collector, `location.raw` and historical names, `collected.{year,month,day,raw}`, `media.audio[].url`, `media.notation[].url`, music fields, remarks, composition (fmbc) |
 | `parse sparse record` | missing fields are `null` / `[]`, never `undefined` or `""`; parser does not throw |
 | `strips markup` | text fields contain no tags or entities; `<br>` becomes `\n`; `&nbsp;` becomes a space; whitespace collapsed; leading/trailing trimmed |
-| `keeps raw` | `raw` holds the label -> value pairs as printed (for the Raw JSON tab), keys sorted |
-| `locality "A / B" split` (bsys) | collection place and informant origin split into two fields; single-value case gives origin `null` |
-| `date parsing` | "1910. jan." -> 1910; "1910-12" -> 1910; "?" and "" -> `null`; a century-only or clearly wrong date -> `null` plus a `warnings[]` entry on the record |
+| `keeps rawFields` | `rawFields` holds the label -> value pairs as printed (for the Raw JSON tab), keys sorted; values are strings or null |
+| `locality "A / B" split` (bsys) | collection place goes to `location.*`, informant origin to `location.origin`; single-value case gives `origin: null`; `location.raw` keeps the full string |
+| `date parsing` | "1910. jan." -> `{year:1910, month:1, day:null}`; "1910-12" -> year 1910, month 12; "?" and "" -> all null; `collected.raw` always keeps the printed string; a year outside 1880..1945 -> null year plus a run-log warning (the schema rejects it otherwise) |
 | `place normalisation` | historical name resolves via `data/gazetteer.json` to modern village, county, region, country RO, lat/lng; unknown name gives `county: null` and the name is appended to the unresolved report, not dropped |
-| `id derivation` | id is `<site>-<slug(recordId)>`, stable, URL-safe, and identical for the same input on every run |
-| `genre mapping` | source labels (HU/EN/RO variants) map into the genre vocabulary; unknown label -> `"other"` plus a warning, so that G7 cannot fail on mapping drift silently |
+| `id derivation` | id matches `^(fmbc|bsys|gyuj)-[A-Za-z0-9][A-Za-z0-9._-]*$`, is derived from `siteRecordId`, stable, and identical for the same input on every run |
+| `genre mapping` | source labels (HU/EN/RO variants) map into the enum (colinda, doina, bocet, cantec, joc, nunta); unknown label -> `"other"` with `genreRaw` kept and a run-log warning; no label at all -> `null` |
 | `unicode` | diacritics survive round-trip (ș, ț, ő, ű), NFC normalised on output |
 
 ### 2.2 Fetcher tests (mock HTTP; no network in tests)
@@ -154,9 +165,10 @@ Use a local `http.createServer` on an ephemeral port or inject a fake `fetch`.
 
 Test data: a hand-written 40 record fixture at `app/src/test/fixtures/songs.small.json`
 generated deterministically (seeded) from `qa/fixtures/songs.sample.json` shapes, covering:
-3 counties, 6 villages, every genre, every style, records with null year, null county,
+3 counties, 6 villages, every genre including null and `other`, several style strings,
+records with null `collected.year`, null `location.county`, one non-RO record (country HU),
 diacritics in titles (Ș, ș, Ț, ț, Ő, ő, Ű, ű, Â, Î), same title in two villages, one record
-with all fields null except id/source/title.
+with every nullable field null.
 
 URL parameter names below are assumed until FRONTEND-SPEC.md fixes the codec:
 `country`, `region`, `county`, `village`, `genre`, `style`, `perf`, `instr`, `from`, `to`,
@@ -187,7 +199,7 @@ percent-encoded, and the canonical string has params in that fixed order.
   and included when it is not.
 - Instrument filter matches any element of `instrument[]`.
 - Search `q`: case-insensitive, diacritic-insensitive (`sculati` matches `Sculați`), matches
-  title, incipit, text, village (modern and historical), informant name; tokens AND; empty
+  title, incipit, text, village (modern and historical), performer name; tokens AND; empty
   `q` is no filter.
 - Clear-all returns the full set and the canonical empty query.
 - Combined: county + genre + year + q reduce monotonically (each additional filter yields a
@@ -212,8 +224,9 @@ descending:
   `Adio < Ardeleana < Ârsul < Bade < Șapte < Sara < Ț...` must place diacritic letters
   next to their base letters (Ș between S entries), not after Z; case-insensitive; empty or
   null title last in both directions.
-- `style`: vocabulary order (old, new, mixed) rather than alphabetical if
-  FRONTEND-SPEC.md says so; unknown/null last in both directions; ties broken by title.
+- `style`: `style` is a verbatim string in the schema, so collator order (same as title)
+  unless FRONTEND-SPEC.md defines a vocabulary order; null last in both directions; ties
+  broken by title.
 - `location`: county, then village, then title, collator as above; null county last.
 - `year`: numeric; null last in both directions; ties broken by title.
 - `source number`: natural sort (`A 9 < A 10 < A 204 < B 1`; `21/5398` after `21/612`);
@@ -257,7 +270,7 @@ never fires (a shared fixture in `e2e/fixtures.ts`).
 | E2E-03 | Clear all | From E2E-02 state, click "Clear all"; URL is `/`; count equals full size; no chips. |
 | E2E-04 | Search | Type `sculati` in search; results contain the colinda; type `zzzz` -> empty state with a "Clear search" action that restores results. |
 | E2E-05 | County drill-down | Click county header link from results or map; drill-down shows counts, villages table sorted by name; sort by melodies desc reorders; tab switch keeps URL in sync; back returns to explorer with filters intact. |
-| E2E-06 | Song record | Notation image renders (natural width > 0) or placeholder shown when null; audio element present when `audio` non-null with `controls`; Raw JSON tab shows the record with the same `id`; "Source" link has `href` equal to `source.url` and `rel="noopener"`; attribution footer visible. |
+| E2E-06 | Song record | First `media.notation[]` image renders (natural width > 0) or placeholder shown when the array is empty; an `<audio controls>` element per `media.audio[]` item, or a "no recording" line when empty; Raw JSON tab shows the record with the same `id`; "Source" link has `href` equal to `source.url` and `rel="noopener"`; attribution footer visible. |
 | E2E-07 | Prev/next within filtered set | Open `/?county=Arad&sort=title` then the second result; "Previous" opens the first, "Next" the third; at the last result "Next" is disabled (or wraps, per spec); URL keeps the query string on the song route. |
 | E2E-08 | Export JSON | With a filter active, click "Export JSON"; the download event's suggested filename contains the count; the file parses; its length equals the shown count; each item has an `id` present in the results. |
 | E2E-09 | Phone viewport journey | On `phone-chromium`: `/` shows search, small map, list, bottom tabs; open filter sheet, pick genre, close; count updates; open a song; the metadata rail is stacked below the text (no horizontal scroll: `document.documentElement.scrollWidth <= innerWidth`); bottom tab "Map" shows the map full-width. |
@@ -348,7 +361,7 @@ phone (iOS Safari or Android Chrome). Reference the AC ids in ACCEPTANCE-CRITERI
 - [ ] Notation image zoomable; placeholder when absent; alt text present
 - [ ] Audio player when audio exists; otherwise a "no recording" line, not an empty player
 - [ ] Text with preserved line breaks; historical and modern place names both shown in Where
-- [ ] Who/when: collector, informant, age, ethnicity, year; Music: style, cadences, rhythm if available; Source: site, record id, link to source record opens in new tab
+- [ ] Who/when: collector, performer name, age, sex, ethnicity, collected date (`collected.raw` shown verbatim next to the parsed year); Music: style, system position, cadences, rhythm, mode, ambitus, syllables, form when present; Source: site, reference code, volume/number, link to source record opens in new tab
 - [ ] Related melodies list (same village or cross-site duplicate from gate G10) opens records
 - [ ] Raw JSON tab shows the record verbatim, copyable (AC-20)
 - [ ] Prev/next within the filtered set with position "n of N" (AC-19)
@@ -392,14 +405,14 @@ followed. Replace `<preview>` and `<prod>` with the URLs `vercel` prints.
    - [ ] `curl -sI https://<preview>/` -> `x-content-type-options: nosniff`,
      `referrer-policy` set, `strict-transport-security` present (Vercel default)
 3. Deep links and 404 handling:
-   - [ ] `curl -s -o /dev/null -w '%{http_code}\n' https://<preview>/song/bsys-a204` -> `200`
+   - [ ] `curl -s -o /dev/null -w '%{http_code}\n' https://<preview>/song/bsys-A204` -> `200`
      (SPA rewrite) and the page renders the song
    - [ ] `curl -s -o /dev/null -w '%{http_code}\n' https://<preview>/song/does-not-exist` ->
      `200` with the in-app not-found view (or `404` if DEPLOY.md chooses a prerendered 404;
      either way the user sees the not-found screen with a link home)
    - [ ] `curl -s -o /dev/null -w '%{http_code}\n' https://<preview>/data/missing.json` ->
      `404`, JSON or plain text, not the SPA HTML (rewrite must exclude `/data/` and `/assets/`)
-   - [ ] Trailing slash variants (`/song/bsys-a204/`) redirect or render, never 404
+   - [ ] Trailing slash variants (`/song/bsys-A204/`) redirect or render, never 404
 4. Production (`npx vercel --prod`):
    - [ ] Repeat steps 1 to 3 against `<prod>`
    - [ ] `curl -sI https://<prod>/ | grep -i x-vercel-id` present; deployment id matches the
