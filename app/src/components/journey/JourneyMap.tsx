@@ -93,6 +93,8 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
   const thenRef = useRef<L.GeoJSON | null>(null)
   const nowRef = useRef<L.GeoJSON | null>(null)
   const legsRef = useRef<{ from: L.LatLng; to: L.LatLng }[]>([])
+  const fitRef = useRef<L.LatLngBounds | null>(null)
+  const pendingFocusRef = useRef<number | null>(null)
   const attributionsRef = useRef<Set<string>>(new Set())
   const propsRef = useRef({ view, onStop, selectedSeq })
   useEffect(() => {
@@ -180,6 +182,10 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
     }
     updateSize()
     map.on('resize', updateSize)
+    // The panel and timeline settle their heights after mount; keep the route in view.
+    map.on('resize', () => {
+      if (fitRef.current) map.fitBounds(fitRef.current, { padding: [32, 32], animate: false, maxZoom: 10 })
+    })
 
     // Stop buttons: event delegation.
     const findSeq = (target: EventTarget | null): number | undefined => {
@@ -227,9 +233,8 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
         const i = cur === undefined ? -1 : seqs.indexOf(cur)
         const next = e.key === ']' ? seqs[Math.min(seqs.length - 1, i + 1)] : seqs[Math.max(0, i <= 0 ? 0 : i - 1)]
         e.preventDefault()
+        pendingFocusRef.current = next
         propsRef.current.onStop(next)
-        const btn = el.querySelector<HTMLButtonElement>(`button.stop-marker[data-seq="${next}"]`)
-        btn?.focus()
       }
     }
     el.addEventListener('click', onClick, true)
@@ -305,6 +310,7 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
     group.clearLayers()
     legsRef.current = []
     if (!view) {
+      fitRef.current = null
       map.fitBounds(ROMANIA_BOUNDS, { padding: [24, 24] })
       drawArrows()
       return
@@ -328,7 +334,8 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
     const pts: L.LatLngTuple[] = view.resolved.map((s) => [s.lat as number, s.lng as number])
     pts.push([j.departure.lat, j.departure.lng])
     const b = L.latLngBounds(pts)
-    if (b.isValid()) map.fitBounds(b.pad(0.15), { padding: [32, 32], animate: !window.matchMedia('(prefers-reduced-motion: reduce)').matches, maxZoom: 10 })
+    fitRef.current = b.isValid() ? b.pad(0.15) : null
+    if (fitRef.current) map.fitBounds(fitRef.current, { padding: [32, 32], animate: !window.matchMedia('(prefers-reduced-motion: reduce)').matches, maxZoom: 10 })
     drawArrows()
   }, [view, ready, drawArrows])
 
@@ -356,6 +363,12 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
       const hit = 34
       const icon = L.divIcon({ className: '', html: stopMarkerHtml(s, n, selected, highlighted, dimmed), iconSize: [hit, hit], iconAnchor: [hit / 2 - dup * 8, hit / 2 + dup * 8] })
       L.marker([stop.lat as number, stop.lng as number], { icon, pane: PANES.stops, keyboard: false, zIndexOffset: selected ? 1000 : highlighted ? 500 : 0, riseOnHover: true }).addTo(group)
+    }
+    // Keyboard navigation ([ / ]) rebuilds the buttons: move focus to the newly selected stop.
+    const pending = pendingFocusRef.current
+    if (pending !== null) {
+      pendingFocusRef.current = null
+      containerRef.current?.querySelector<HTMLButtonElement>(`button.stop-marker[data-seq="${pending}"]`)?.focus()
     }
   }, [view, selectedSeq, highlightSeq, ready])
 

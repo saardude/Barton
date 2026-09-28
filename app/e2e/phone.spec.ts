@@ -1,5 +1,5 @@
 // E2E-09 phone viewport journey (AC-28, AC-29) plus the MapPointSheet (AC-25).
-import { expect, gotoApp, query, readCount, searchBox, test, waitForCatalog } from './fixtures'
+import { expect, gotoApp, query, readCount, searchBox, test, waitForCatalog, waitForMapIdle } from './fixtures'
 
 test.describe('Phone explorer', () => {
   test.beforeEach(({}, testInfo) => {
@@ -38,7 +38,8 @@ test.describe('Phone explorer', () => {
     await expect(sheet).toBeVisible()
     await expect(sheet.locator('*:focus')).toHaveCount(1)
     const colinda = sheet.getByRole('checkbox', { name: /colind/ })
-    await colinda.check()
+    await colinda.click()
+    await expect(colinda).toBeChecked()
     await expect(sheet.getByRole('button', { name: /^Show [\d,]+ melod/ })).toBeVisible()
     await expect.poll(() => query(page).get('genre')).toBe('colinda')
     await expect(sheet.getByRole('button', { name: /^Show [\d,]+ melod/ })).not.toHaveText(/Show 0 /)
@@ -85,7 +86,8 @@ test.describe('Phone explorer', () => {
   test('MapPointSheet: tapping a dot opens a bottom sheet with the card and actions', async ({ page, data }) => {
     await gotoApp(page, '/')
     await page.getByRole('tab', { name: 'Map' }).click()
-    const dot = page.locator('.map-view .dot--county[aria-label^="Bihor:"]')
+    await waitForMapIdle(page)
+    const dot = page.locator('.map-view .dot--county[aria-label^="Bihor ("]')
     await expect(dot).toBeVisible()
     expect((await dot.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44)
     await dot.tap()

@@ -1,7 +1,7 @@
 // Route-level journeys: E2E-05 county, E2E-06 song, E2E-07 prev/next, E2E-11 404s, E2E-12 loading
 // and error, E2E-14 console cleanliness, E2E-15 source links, E2E-16 journeys.
 // Song / county / journeys specs mark themselves fixme while the route still renders the stub.
-import { expect, gotoApp, isStub, query, readCount, seededSample, test, waitForCatalog } from './fixtures'
+import { expect, expectOnlyCatalogError, gotoApp, isStub, query, readCount, seededSample, test, waitForCatalog } from './fixtures'
 
 test.describe('Routes', () => {
   test('E2E-05 county drill-down', async ({ page, data }) => {
@@ -13,12 +13,22 @@ test.describe('Routes', () => {
     test.fixme(await isStub(page), '/county is still a stub: villages table, tabs and sorting not implemented yet')
     const table = page.getByRole('table').first()
     await expect(table).toBeVisible()
-    const names = await table.locator('tbody tr td:first-child').allTextContents()
+    const names = await table.locator('tbody tr').evaluateAll((rows) => rows.map((r) => r.querySelector('th, td')?.textContent?.trim() ?? ''))
     expect(names.length).toBeGreaterThan(1)
-    await table.getByRole('button', { name: /Sort by Melodies/ }).click()
-    await expect.poll(() => table.locator('tbody tr td:first-child').first().textContent()).not.toBe(names[0])
+    // default: sorted by village name (locale-aware, so compare with the Romanian collation)
+    const sorted = [...names].sort((a, b) => a.localeCompare(b, 'ro', { sensitivity: 'base' }))
+    expect(names.map((n) => n.slice(0, 3))).toEqual(sorted.map((n) => n.slice(0, 3)))
+    const melodiesHeader = table.getByRole('button', { name: /Sort by Melodies/ })
+    await melodiesHeader.click()
+    await melodiesHeader.click()
+    await expect(table.locator('th[aria-sort]').filter({ has: melodiesHeader })).toHaveAttribute('aria-sort', 'descending')
+    const counts = await table.locator('tbody tr').evaluateAll((rows) =>
+      rows.slice(0, 5).map((r) => Number((Array.from(r.querySelectorAll('td, th'))[1]?.textContent ?? '').replace(/[^\d]/g, ''))),
+    )
+    for (let i = 1; i < counts.length; i++) expect(counts[i - 1]).toBeGreaterThanOrEqual(counts[i])
     await page.getByRole('tab', { name: 'By genre' }).click()
-    await expect.poll(() => query(page).get('tab')).toBe('genre')
+    await expect.poll(() => query(page).get('tab')).toMatch(/genre/)
+    await expect(page.getByRole('tab', { name: 'By genre' })).toHaveAttribute('aria-selected', 'true')
     await page.goBack()
     await page.goBack()
     await waitForCatalog(page)
@@ -40,7 +50,7 @@ test.describe('Routes', () => {
     await expect(notation).toBeVisible()
     await expect(page.locator('audio[controls]')).toHaveCount(song.media.audio.length)
     await page.getByRole('tab', { name: 'Raw JSON' }).click()
-    await expect(page.locator('pre, code').filter({ hasText: `"id": "${song.id}"` }).first()).toBeVisible()
+    await expect(page.getByRole('tabpanel')).toContainText(`"${song.id}"`)
   })
 
   test('E2E-07 prev / next within the filtered set', async ({ page, data }) => {
@@ -77,7 +87,7 @@ test.describe('Routes', () => {
     await waitForCatalog(page)
   })
 
-  test('E2E-12 loading skeleton, error state with retry', async ({ page, data }) => {
+  test('E2E-12 loading skeleton, error state with retry', async ({ page, data, consoleLog }) => {
     // slow songs -> the loading state is observable
     let release: () => void = () => {}
     const gate = new Promise<void>((r) => (release = r))
@@ -106,6 +116,7 @@ test.describe('Routes', () => {
     await alert.getByRole('button', { name: 'Retry' }).click()
     await waitForCatalog(page)
     await expect(page.getByRole('button', { name: /Remove filter: Bihor/ })).toBeVisible()
+    expectOnlyCatalogError(consoleLog)
   })
 
   test('E2E-14 no console errors on every route', async ({ page, data, consoleLog }) => {
@@ -156,18 +167,41 @@ test.describe('Routes', () => {
     }
   })
 
-  test('E2E-16 journey mapper', async ({ page }) => {
-    await page.goto('/journeys')
-    await expect(page.locator('h1')).toContainText('Journeys')
+  test('E2E-16 journey mapper', async ({ page, data }) => {
+    await page.goto(`/journeys?county=${data.countyId('Bihor')}`)
     await expect(page.getByRole('contentinfo')).toBeVisible()
     test.fixme(await isStub(page), '/journeys is still a stub: timeline, trip route, borders and stops not implemented yet')
-    const listbox = page.getByRole('listbox').first()
-    await expect(listbox).toBeVisible()
-    await listbox.getByRole('option').first().click()
-    await expect.poll(() => query(page).get('trip')).not.toBeNull()
-    await expect(page.locator('ol').filter({ hasText: /1/ }).first()).toBeVisible()
-    await page.getByRole('button', { name: /now/i }).click()
+    // timeline lists trips by date; the Journey select picks one
+    const timeline = page.getByRole('region', { name: 'Timeline' })
+    await expect(timeline).toBeVisible()
+    const trips = page.getByRole('listbox', { name: 'Trips by date' })
+    await expect(trips.getByRole('option').first()).toBeVisible()
+    const pick = page.getByRole('combobox', { name: 'Journey' })
+    const options = await pick.locator('option').evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).value).filter(Boolean))
+    expect(options.length).toBeGreaterThan(1)
+    const tripId = options[Math.min(6, options.length - 1)]
+    await pick.selectOption(tripId)
+    await expect.poll(() => query(page).get('trip')).toBe(tripId)
+    // header, ordered stops and numbered markers
+    await expect(page.locator('h1')).toBeVisible()
+    const stops = page.locator('ol.stop-list__items')
+    await expect(stops).toBeVisible()
+    const stopCount = await stops.locator('li').count()
+    expect(stopCount).toBeGreaterThan(0)
+    // borders: then / now / compare update the URL
+    const borders = page.getByRole('radiogroup', { name: 'Borders' })
+    await expect(borders).toBeVisible()
+    await borders.getByRole('radio', { name: /Borders now/ }).click()
     await expect.poll(() => query(page).get('borders')).toBe('now')
+    await borders.getByRole('radio', { name: /Compare/ }).click()
+    await expect.poll(() => query(page).get('borders')).toBe('both')
+    // opening a stop selects it in the URL
+    await stops.locator('li').first().locator('button, a').first().click()
+    await expect.poll(() => query(page).get('stop')).not.toBeNull()
+    // back to the explorer keeps the Query
+    await page.getByRole('link', { name: 'Bartok / Romania' }).click()
+    await waitForCatalog(page)
+    expect(query(page).get('county')).toBe(data.countyId('Bihor'))
   })
 
   test('explorer count is consistent with the county page', async ({ page, data }) => {

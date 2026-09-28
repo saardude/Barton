@@ -22,6 +22,11 @@ export default tseslint.config(
     },
   },
   {
+    // Playwright fixtures destructure `use`, which is not a React hook.
+    files: ['e2e/**/*.ts'],
+    rules: { 'react-hooks/rules-of-hooks': 'off' },
+  },
+  {
     files: ['scripts/**/*.mjs', 'eslint.config.js'],
     extends: [js.configs.recommended],
     languageOptions: { ecmaVersion: 2023, sourceType: 'module', globals: { ...globals.node } },

@@ -115,12 +115,25 @@ const COUNT_RE = /([\d,]+) of ([\d,]+) melodies/
 
 /** Waits until the catalogue is loaded and the results header shows "N of M melodies". */
 export async function waitForCatalog(page: Page): Promise<void> {
-  await expect(page.locator('.results__count').first()).toHaveText(COUNT_RE, { timeout: 60_000 })
+  await expect(countLocator(page)).toHaveText(COUNT_RE, { timeout: 60_000 })
+}
+
+/** The results header on desktop / the Songs tab, or the phone header on the Map and Places tabs. */
+function countLocator(page: Page): Locator {
+  return page.locator('.results__count, .phone-header__count').first()
+}
+
+/** Leaflet animates the initial fit; MapView ignores clicks within 300 ms of a zoom, so settle first. */
+export async function waitForMapIdle(page: Page): Promise<void> {
+  const map = page.locator('.map-view.leaflet-container').first()
+  if ((await map.count()) === 0) return
+  await expect(map).not.toHaveClass(/leaflet-zoom-anim/)
+  await page.waitForTimeout(400)
 }
 
 /** Parses "1,204 of 13,212 melodies" from the results header. */
 export async function readCount(page: Page): Promise<{ n: number; m: number }> {
-  const el = page.locator('.results__count').first()
+  const el = countLocator(page)
   await expect(el).toHaveText(COUNT_RE)
   const m = COUNT_RE.exec((await el.textContent()) ?? '')
   if (!m) throw new Error('count not found')
@@ -130,10 +143,19 @@ export async function readCount(page: Page): Promise<{ n: number; m: number }> {
 export async function gotoApp(page: Page, path: string): Promise<void> {
   await page.goto(path)
   await waitForCatalog(page)
+  await waitForMapIdle(page)
+}
+
+/** Tests that break the catalogue on purpose expect exactly one structured console.error (AC-32). */
+export function expectOnlyCatalogError(log: ConsoleLog): void {
+  expect(log.errors).toEqual([expect.stringMatching(/^catalog: load failed/)])
+  expect(log.pageErrors).toEqual([])
+  log.errors.length = 0
 }
 
 export function countyDot(page: Page, name: string): Locator {
-  return page.locator(`.map-view .dot--county[aria-label^="${name}:"]`)
+  // labels read "Arad: 31 melodies..." or "Bihor (Bihar): 436 melodies..."
+  return page.locator(`.map-view .dot--county[aria-label^="${name}:"], .map-view .dot--county[aria-label^="${name} ("]`)
 }
 
 export function searchBox(page: Page): Locator {

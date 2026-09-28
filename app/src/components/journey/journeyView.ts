@@ -4,6 +4,7 @@
 import type { CatalogIndex } from '../../data/catalogIndex'
 import {
   bordersDefault,
+  formatDateRange,
   contextEventsInWindow,
   eraForDate,
   resolvedStops,
@@ -103,5 +104,6 @@ export function buildJourneyView(
 export function journeyTitle(j: Journey): string {
   if (j.label) return j.label
   const places = j.facts.countiesHistorical.length ? j.facts.countiesHistorical.join(', ') : j.facts.counties.join(', ')
-  return places ? `${j.dateStart}${j.dateEnd !== j.dateStart ? ` to ${j.dateEnd}` : ''}: ${places}` : j.id
+  const dates = formatDateRange(j.dateStart, j.dateEnd)
+  return places ? `${dates}: ${places}` : `${dates} (${j.id})`
 }

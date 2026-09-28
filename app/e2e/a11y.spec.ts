@@ -3,7 +3,7 @@
 // as annotations.
 import AxeBuilder from '@axe-core/playwright'
 import type { Page, TestInfo } from '@playwright/test'
-import { expect, gotoApp, test, waitForCatalog } from './fixtures'
+import { expect, expectOnlyCatalogError, gotoApp, test, waitForCatalog, waitForMapIdle } from './fixtures'
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21aa', 'best-practice']
 
@@ -34,6 +34,7 @@ test.describe('Accessibility (axe)', () => {
     if (testInfo.project.name === 'phone-chromium') {
       await page.getByRole('tab', { name: 'Map' }).click()
       await scan(page, testInfo, '/ phone map tab')
+      await waitForMapIdle(page)
       await page.locator('.map-view .dot').first().tap()
       await expect(page.getByRole('dialog')).toBeVisible()
       await scan(page, testInfo, '/ phone map point sheet')
@@ -71,7 +72,7 @@ test.describe('Accessibility (axe)', () => {
     await scan(page, testInfo, '/about')
   })
 
-  test('error state', async ({ page }, testInfo) => {
+  test('error state', async ({ page, consoleLog }, testInfo) => {
     await page.route('**/data/songs*.json', (route) => route.abort('failed'))
     await page.goto('/')
     await expect(page.getByRole('alert')).toBeVisible()
@@ -79,5 +80,6 @@ test.describe('Accessibility (axe)', () => {
     await page.unroute('**/data/songs*.json')
     await page.getByRole('button', { name: 'Retry' }).click()
     await waitForCatalog(page)
+    expectOnlyCatalogError(consoleLog)
   })
 })

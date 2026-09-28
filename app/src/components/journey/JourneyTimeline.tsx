@@ -8,10 +8,10 @@ import { melodies, t } from '../../i18n/en'
 import { formatIsoDate, journeyDateText, referenceEvents, startDay, timelineLayout, timelinePosition, type ContextEvent, type Journey } from '../../state/journeys'
 import { journeyTitle } from './journeyView'
 
-const LANE_H = 9
-const LANE_GAP = 2
+const LANE_H = 7
+const LANE_GAP = 1
 const AXIS_H = 18
-const GROUP_GAP = 8
+const GROUP_GAP = 10
 const MIN_BAR_PX = 6
 
 export interface JourneyTimelineProps {
@@ -147,7 +147,7 @@ export function JourneyTimeline({ journeys, events, selectedId, date, unmappedCo
             <option value="">{t('journey.pickTripNone')}</option>
             {sorted.map((j) => (
               <option key={j.id} value={j.id}>
-                {journeyDateText(j).text}: {journeyTitle(j)} ({melodies(j.recordCount)})
+                {journeyTitle(j)} ({melodies(j.recordCount)})
               </option>
             ))}
           </select>
@@ -179,12 +179,12 @@ export function JourneyTimeline({ journeys, events, selectedId, date, unmappedCo
           <div className="timeline__lane-labels" aria-hidden="true">
             {layout.lanes.index > 0 && (
               <span className="timeline__lane-label" style={{ top: indexTop }} title={t('journey.laneIndex')}>
-                {t('journey.markerIndex')}
+                {t('journey.laneIndexShort')}
               </span>
             )}
             {layout.lanes.gap > 0 && (
               <span className="timeline__lane-label" style={{ top: gapTop }} title={t('journey.laneGap')}>
-                {t('journey.markerGap')}
+                {t('journey.laneGapShort')}
               </span>
             )}
           </div>

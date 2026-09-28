@@ -10,7 +10,7 @@ import { MapAccessibleList, MapPanel } from '../components/map/MapPanel'
 import { BottomTabs, panelId, tabId, type PhoneTab } from '../components/phone/BottomTabs'
 import { COARSE_POINTER_QUERY, PHONE_QUERY, useMediaQuery } from '../components/phone/useMediaQuery'
 import { ResultsPanel } from '../components/ResultsPanel'
-import { melodies, t } from '../i18n/en'
+import { melodiesOf, t } from '../i18n/en'
 
 export function ExplorerPage() {
   const catalog = useCatalogReady()
@@ -45,7 +45,7 @@ export function ExplorerPage() {
           {filtersButton}
           {derived && (
             <span className="phone-header__count mono muted" aria-hidden="true">
-              {melodies(resultCount)}
+              {melodiesOf(resultCount, derived.total)}
             </span>
           )}
         </div>

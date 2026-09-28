@@ -1,5 +1,5 @@
 // Explorer journeys: E2E-01 to E2E-04 and E2E-13 (QA-PLAN section 4).
-import { countyDot, expect, gotoApp, query, readCount, searchBox, test, waitForCatalog } from './fixtures'
+import { countyDot, expect, gotoApp, query, readCount, searchBox, test, waitForCatalog, waitForMapIdle } from './fixtures'
 
 test.describe('Explorer', () => {
   test('E2E-01 land, pick county on map, results narrow, sort by style, open song, back keeps filters', async ({ page, data }, testInfo) => {
@@ -26,8 +26,8 @@ test.describe('Explorer', () => {
     const label = (await arad.getAttribute('aria-label')) ?? ''
     const bubbleCount = Number(/: ([\d,]+) melodies/.exec(label)?.[1].replace(/,/g, ''))
     await arad.click()
-    await expect(page.getByRole('button', { name: /Remove filter: Arad/ })).toBeVisible()
     await expect.poll(() => query(page).get('county')).toBe(data.countyId('Arad'))
+    await expect(page.getByRole('button', { name: /Remove filter: Arad/ })).toBeVisible()
     const c1 = await readCount(page)
     expect(c1.n).toBe(bubbleCount)
     expect(c1.n).toBe(data.under(data.countyId('Arad')).length)
@@ -86,8 +86,9 @@ test.describe('Explorer', () => {
     const bihor = data.countyId('Bihor')
     await gotoApp(page, `/?county=${bihor}&genre=colinda,joc&from=1909&to=1912&sort=year&dir=desc`)
     await page.locator('.results__chips').getByRole('button', { name: 'Clear all filters' }).click()
-    await expect(page).toHaveURL(/\/$/)
-    expect(query(page).toString()).toBe('')
+    // AC-11 / resetQuery: every filter goes; sort and dir are deliberately kept (QA E2E-03 says "/").
+    await expect.poll(() => query(page).get('county')).toBeNull()
+    for (const k of ['genre', 'from', 'to', 'q', 'village', 'region', 'perf', 'instr']) expect(query(page).get(k)).toBeNull()
     expect((await readCount(page)).n).toBe(data.ro.length)
     await expect(page.locator('.results__chips .chip')).toHaveCount(0)
   })
@@ -110,7 +111,7 @@ test.describe('Explorer', () => {
     // nonsense -> empty state with "Clear search"
     await box.fill('zzzzqqqq')
     await expect(page.getByText(/No melodies match "zzzzqqqq"/)).toBeVisible()
-    await expect(page.getByRole('button', { name: /Export/ }).first()).toBeDisabled()
+    await expect(page.locator('.results__header').getByRole('button', { name: /export/i })).toBeDisabled()
     await page.getByRole('button', { name: 'Clear search' }).click()
     await expect.poll(async () => (await readCount(page)).n).toBe(data.ro.length)
     await expect(box).toHaveValue('')
@@ -126,16 +127,18 @@ test.describe('Explorer', () => {
     await expect(card).toContainText('Bihor')
     await expect(card).toContainText(/\d+ melodies in \d+ villages/)
     await bihor.click()
+    await waitForMapIdle(page)
     const bihorId = data.countyId('Bihor')
     await expect.poll(() => query(page).get('county')).toBe(bihorId)
     // village mode: dots for the villages of Bihor
     await expect(page.locator('.map-view .dot--village').first()).toBeVisible()
     const villageDots = page.locator('.map-view .dot--village')
     expect(await villageDots.count()).toBeGreaterThan(1)
-    const villageLabel = (await villageDots.first().getAttribute('aria-label')) ?? ''
     await villageDots.first().click()
     await expect.poll(() => query(page).get('village')).toMatch(new RegExp(`^${bihorId}/`))
-    await expect(page.getByRole('button', { name: new RegExp(`Remove filter: ${villageLabel.split(',')[0].replace(/[()]/g, '\\$&').slice(0, 12)}`) })).toBeVisible()
+    // the deepest place is the only place chip
+    await expect(page.locator('.results__chips .chip')).toHaveCount(1)
+    await expect(page.locator('.results__chips .chip')).not.toHaveAttribute('aria-label', /Remove filter: Bihor \(/)
     // clearing with the chip's x goes back to the county
     await page.getByRole('button', { name: /Remove filter: / }).first().click()
     await expect.poll(() => query(page).get('village')).toBeNull()

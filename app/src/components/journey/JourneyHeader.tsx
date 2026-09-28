@@ -64,7 +64,7 @@ export function JourneyHeader({ view, villages, borderAttributions, onClearFilte
       </dl>
       {!j.recordsOnline && (
         <div className="journey-header__notice">
-          <p>{t('journey.noRecordsOnline')}</p>
+          <p>{j.recordCount > 0 ? t('journey.recordsAttached', { n: j.recordCount }) : t('journey.noRecordsOnline')}</p>
           {j.labelPlaceRaw && (
             <p>
               <span className="caps-label">{t('journey.placesNamed')}</span> <span lang="hu">{j.labelPlaceRaw}</span>

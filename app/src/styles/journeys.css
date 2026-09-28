@@ -94,8 +94,14 @@
   gap: 2px;
 }
 
+.timeline__control {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .timeline__control .select {
-  max-width: 420px;
+  width: 100%;
+  max-width: min(420px, calc(100vw - 2 * var(--gutter)));
 }
 
 .timeline__unmapped {
@@ -110,7 +116,7 @@
 .timeline__track {
   position: relative;
   min-width: 720px;
-  margin-left: 96px;
+  margin-left: 110px;
 }
 
 .timeline__axis {
@@ -167,8 +173,8 @@
 
 .timeline__lane-labels {
   position: absolute;
-  left: -96px;
-  width: 92px;
+  left: -110px;
+  width: 104px;
   top: 0;
 }
 
@@ -183,7 +189,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 92px;
+  max-width: 104px;
 }
 
 .timeline__marks {
@@ -194,6 +200,7 @@
 .timeline__mark {
   position: absolute;
   min-width: 6px;
+  min-height: 7px;
   background: var(--ink-2);
   border: 1px solid var(--surface);
   cursor: pointer;
@@ -208,6 +215,7 @@
 .timeline__mark--fuzzy {
   background-image: repeating-linear-gradient(135deg, var(--ink-2) 0 2px, transparent 2px 5px);
   background-color: var(--surface);
+  border: 1px solid var(--ink-2);
 }
 
 .timeline__mark--offline {
@@ -257,12 +265,36 @@
   .timeline__track {
     min-width: 1200px;
   }
+  .border-toggle__btn {
+    padding: 0 var(--space-2);
+    font-size: var(--fs-11);
+  }
+  .border-toggle__range input[type='range'] {
+    width: 120px;
+  }
+  .journey-map .map-tiles-notice {
+    left: var(--space-2);
+    transform: none;
+    top: auto;
+    bottom: var(--space-2);
+    max-width: 60%;
+  }
+  .journey-legend {
+    bottom: 44px;
+  }
 }
 
 /* ---- Map: route, stops, borders ------------------------------------------------ */
 .journey-map__view {
   width: 100%;
   height: 100%;
+}
+
+/* base.css caps every svg at max-width 100%; Leaflet exempts only its overlay pane, so the
+   renderers of the custom panes (borders, route) need the same exemption. */
+.journey-map .leaflet-pane > svg {
+  max-width: none !important;
+  max-height: none !important;
 }
 
 .journey-map__toggle {

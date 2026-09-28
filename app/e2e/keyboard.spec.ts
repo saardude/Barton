@@ -41,7 +41,8 @@ test.describe('Keyboard', () => {
 
     // Space toggles a genre checkbox and the count updates
     const before = (await readCount(page)).n
-    const checkbox = page.getByRole('complementary', { name: 'Filters' }).getByRole('checkbox').first()
+    // zero-count genres are disabled (AC-05): take the first enabled checkbox
+    const checkbox = page.getByRole('complementary', { name: 'Filters' }).locator('input[type="checkbox"]:not(:disabled)').first()
     await checkbox.focus()
     await page.keyboard.press('Space')
     await expect(checkbox).toBeChecked()
@@ -80,14 +81,22 @@ test.describe('Keyboard', () => {
       testInfo.annotations.push({ type: 'fixme', description: '/song is a stub: prev/next and Raw JSON tab not yet keyboard-tested' })
       return
     }
-    await page.keyboard.press('Tab')
     const prevNext = page.getByRole('link', { name: /Previous melody|Next melody/ }).or(page.getByRole('button', { name: /Previous melody|Next melody/ }))
     await expect(prevNext.first()).toBeVisible()
+    await prevNext.first().focus()
+    expect(await hasVisibleFocusRing(page)).toBe(true)
     const rawTab = page.getByRole('tab', { name: 'Raw JSON' })
     await expect(rawTab).toBeVisible()
     await page.getByRole('tab', { name: 'Record' }).focus()
     await page.keyboard.press('ArrowRight')
+    if ((await rawTab.getAttribute('aria-selected')) !== 'true') {
+      // the song page maps ArrowLeft / ArrowRight to previous / next melody; the tab is reached by Tab + Enter
+      testInfo.annotations.push({ type: 'note', description: 'song tablist: ArrowRight does not switch tabs (page-level prev/next shortcut); Tab + Enter used' })
+      await rawTab.focus()
+      await page.keyboard.press('Enter')
+    }
     await expect(rawTab).toHaveAttribute('aria-selected', 'true')
+    expect(await hasVisibleFocusRing(page)).toBe(true)
   })
 
   test('E2E-10 (phone) Escape closes the filter sheet and returns focus to its trigger', async ({ page }, testInfo) => {

@@ -112,7 +112,7 @@ describe('/journeys', () => {
 
   it('?trip= selects a route: header, numbered stops with then -> now names and badges, unmapped stop kept, context with citations, era 1910', async () => {
     renderAt('/journeys?trip=J-1913-03-01')
-    await screen.findByRole('heading', { level: 1, name: /1913-03-15 to 1913-03-17: Bihar/ })
+    await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
     expect(screen.getByText('15 to 17 March 1913')).toBeInTheDocument()
     expect(screen.getByText(/3 stops, 1 unmapped records/)).toBeInTheDocument()
     expect(screen.getByText(/4 melodies, 308 km/)).toBeInTheDocument()
@@ -182,7 +182,7 @@ describe('/journeys', () => {
 
   it('date=YYYY-MM selects the covering trip; a month with no trip shows the nearest with a notice', async () => {
     renderAt('/journeys?date=1913-03')
-    await screen.findByRole('heading', { level: 1, name: /1913-03-15 to 1913-03-17/ })
+    await screen.findByRole('heading', { level: 1, name: '15 to 17 March 1913: Bihar' })
     expect(screen.queryByText(/^No trip on/)).toBeNull()
 
     fireEvent.change(screen.getByLabelText('Go to date'), { target: { value: '1911-02' } })

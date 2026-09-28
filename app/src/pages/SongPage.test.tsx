@@ -30,7 +30,8 @@ describe('Song record route', () => {
     renderApp('/song/bsys-1')
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
     await screen.findByRole('heading', { level: 1, name: 'Adio, dragă, adio' })
-    expect(document.title).toBe('Adio, dragă, adio · Bartók in Romania')
+    // the title is set in an effect; under a loaded test pool it can lag the heading by a tick
+    await waitFor(() => expect(document.title).toBe('Adio, dragă, adio · Bartók in Romania'))
 
     // breadcrumb: Romania > Crișana > Bihor (Bihar) > Beiuș (Belényes) > title
     const crumb = screen.getByRole('navigation', { name: 'Breadcrumb' })
