@@ -23,7 +23,7 @@
  *
  *   {
  *     id: "bsys-A204",                         // ^(fmbc|bsys|gyuj)-...; unique
- *     source: { site: "bsys", url, referenceCode, volume, number, siteRecordId?, fetchedAt? },
+ *     source: { site: "bsys", siteName, siteId, url, referenceCode, volume, number, siteRecordId?, fetchedAt? },
  *     title, incipit,                          // string | null
  *     genre: "colinda"|"doina"|"bocet"|"cantec"|"joc"|"nunta"|"other"|null,
  *     genreRaw, style,                         // string | null
@@ -64,6 +64,11 @@ const DEFAULT_GENRE_VOCAB = ['colinda', 'doina', 'bocet', 'cantec', 'joc', 'nunt
 // String fields under these keys are URLs or opaque, so they are not HTML-scanned.
 const URL_LIKE_KEY = /url|href|src|image|audio|link|thumbnail/i;
 
+// Source record pages must live on one of the three ZTI databases (academic integrity, AC-36).
+const SOURCE_HOSTS = new Set(['bartok-nepzene.zti.hu', 'systems.zti.hu', 'sys.zti.hu', 'bartok-gyujtesek.zti.hu']);
+const VILLAGE_STATUSES = new Set(['existing', 'renamed', 'merged', 'abandoned', 'unknown']);
+const TRIP_MAX_GAP_DAYS = 10;
+
 // ---------------------------------------------------------------------------
 // CLI
 // ---------------------------------------------------------------------------
@@ -73,6 +78,8 @@ function parseArgs(argv) {
     file: resolve(REPO_ROOT, 'data', 'songs.json'),
     schema: resolve(REPO_ROOT, 'data', 'schema', 'song.schema.json'),
     facets: resolve(REPO_ROOT, 'data', 'facets.json'),
+    journeys: resolve(REPO_ROOT, 'data', 'journeys.json'),
+    villages: resolve(REPO_ROOT, 'data', 'villages.json'),
     report: null,
     strict: false,
     help: false,
@@ -89,6 +96,8 @@ function parseArgs(argv) {
     else if (a === '--schema' || a === '-s') args.schema = resolve(next());
     else if (a.startsWith('--schema=')) args.schema = resolve(a.slice(9));
     else if (a === '--facets') args.facets = resolve(next());
+    else if (a === '--journeys') args.journeys = resolve(next());
+    else if (a === '--villages') args.villages = resolve(next());
     else if (a === '--report' || a === '-r') args.report = resolve(next());
     else if (a === '--strict') args.strict = true;
     else if (a === '--help' || a === '-h') args.help = true;
@@ -100,7 +109,8 @@ function parseArgs(argv) {
 function usage() {
   return [
     'Usage: node qa/checks/data-gates.mjs [--file data/songs.json] [--schema data/schema/song.schema.json]',
-    '                                   [--facets data/facets.json] [--report out.json] [--strict]',
+    '                                   [--facets data/facets.json] [--journeys data/journeys.json]',
+    '                                   [--villages data/villages.json] [--report out.json] [--strict]',
     '',
     'Exit codes: 0 all blocking gates passed, 1 a blocking gate failed (or a warning under --strict),',
     '            2 usage or input error.',
@@ -148,7 +158,8 @@ const loc = (r) => r?.location ?? r?.place ?? null;
 const get = {
   id: (r) => r?.id,
   site: (r) => r?.source?.site ?? r?.site ?? null,
-  siteRecordId: (r) => r?.source?.siteRecordId ?? r?.source?.number ?? r?.source?.referenceCode ?? r?.source?.recordId ?? null,
+  siteRecordId: (r) => r?.source?.siteRecordId ?? r?.source?.siteId ?? r?.source?.number ?? r?.source?.referenceCode ?? r?.source?.recordId ?? null,
+  siteIdStrict: (r) => r?.source?.siteId ?? r?.source?.siteRecordId ?? null,
   sourceUrl: (r) => r?.source?.url ?? r?.sourceUrl ?? null,
   country: (r) => loc(r)?.country ?? null,
   county: (r) => loc(r)?.county ?? null,
@@ -284,13 +295,22 @@ const GATES = [
     return { status: details.length ? 'fail' : 'pass', metric: `${dups} duplicate, ${missing} missing`, details };
   }),
 
-  gate('source-url', true, 'every record has an absolute http(s) source url', (records) => {
+  gate('source-url', true, 'every record has an absolute http(s) source url on a zti.hu source host and a non-empty source.siteId', (records) => {
     const details = [];
     records.forEach((r, i) => {
       const u = get.sourceUrl(r);
-      if (typeof u !== 'string' || !/^https?:\/\/\S+$/.test(u)) details.push(`${label(r, i)}: ${JSON.stringify(u)}`);
+      let host = null;
+      if (typeof u !== 'string' || !/^https?:\/\/\S+$/.test(u)) {
+        details.push(`${label(r, i)}: url ${JSON.stringify(u)}`);
+      } else {
+        try { host = new URL(u).hostname.toLowerCase(); } catch { host = null; }
+        if (!host || !SOURCE_HOSTS.has(host)) details.push(`${label(r, i)}: host ${JSON.stringify(host)} not in ${[...SOURCE_HOSTS].join(', ')}`);
+      }
+      const sid = get.siteIdStrict(r);
+      if (typeof sid !== 'string' || sid.trim() === '') details.push(`${label(r, i)}: source.siteId ${JSON.stringify(sid)} is empty`);
     });
-    return { status: details.length ? 'fail' : 'pass', metric: `${records.length - details.length}/${records.length} have a url`, details };
+    const badRecords = new Set(details.map((d) => d.split(':')[0])).size;
+    return { status: details.length ? 'fail' : 'pass', metric: `${records.length - badRecords}/${records.length} records ok (${details.length} problem(s))`, details };
   }),
 
   gate('county-resolved', true, `>= ${COUNTY_RESOLUTION_MIN * 100}% of records resolve to a modern county`, (records) => {
@@ -438,6 +458,82 @@ const GATES = [
       details: all,
     };
   }),
+
+  gate('journeys-valid', true, 'journeys.json: unique trip ids, stops reference existing record ids, dates ordered, gaps <= 10 days, unmapped ids exist', (records, ctx) => {
+    if (!ctx.journeys) {
+      return { status: 'skip', metric: 'data/journeys.json missing', details: [`${rel(ctx.journeysPath)} not found; gate skipped until the journey mapper data exists.`] };
+    }
+    const ids = new Set(records.map((r) => get.id(r)).filter((x) => !isNil(x)).map(String));
+    const trips = Array.isArray(ctx.journeys) ? ctx.journeys : (ctx.journeys.trips ?? ctx.journeys.journeys ?? []);
+    const unmapped = Array.isArray(ctx.journeys) ? [] : (ctx.journeys.unmapped ?? []);
+    const details = [];
+    const tripIds = new Set();
+    const stopped = new Set();
+    let stops = 0;
+    const parseDate = (d) => {
+      if (typeof d !== 'string' || !/^\d{4}-\d{2}(-\d{2})?$/.test(d)) return null;
+      const t = Date.parse(d.length === 7 ? `${d}-01` : d);
+      return Number.isNaN(t) ? null : t;
+    };
+    trips.forEach((t, ti) => {
+      const tid = isNil(t?.id) ? `#${ti}` : String(t.id);
+      if (tripIds.has(tid)) details.push(`trip ${tid}: duplicate id`);
+      tripIds.add(tid);
+      const list = Array.isArray(t?.stops) ? t.stops : [];
+      if (!list.length) details.push(`trip ${tid}: no stops`);
+      let prev = null;
+      list.forEach((s, si) => {
+        stops++;
+        const d = parseDate(s?.date);
+        if (d === null) details.push(`trip ${tid} stop ${si + 1}: bad date ${JSON.stringify(s?.date)}`);
+        else if (prev !== null) {
+          if (d < prev) details.push(`trip ${tid} stop ${si + 1}: date ${s.date} before previous stop`);
+          else if ((d - prev) / 86400000 > TRIP_MAX_GAP_DAYS) details.push(`trip ${tid} stop ${si + 1}: gap > ${TRIP_MAX_GAP_DAYS} days (should be a new trip)`);
+        }
+        if (d !== null) prev = d;
+        const rids = Array.isArray(s?.recordIds) ? s.recordIds : [];
+        if (!rids.length) details.push(`trip ${tid} stop ${si + 1}: no recordIds`);
+        for (const rid of rids) {
+          if (!ids.has(String(rid))) details.push(`trip ${tid} stop ${si + 1}: unknown record id ${JSON.stringify(rid)}`);
+          stopped.add(String(rid));
+        }
+      });
+      const first = list[0]?.date; const last = list[list.length - 1]?.date;
+      if (list.length && t?.start !== undefined && t.start !== first) details.push(`trip ${tid}: start ${t.start} != first stop ${first}`);
+      if (list.length && t?.end !== undefined && t.end !== last) details.push(`trip ${tid}: end ${t.end} != last stop ${last}`);
+    });
+    unmapped.forEach((u) => {
+      const rid = typeof u === 'string' ? u : u?.id;
+      if (!ids.has(String(rid))) details.push(`unmapped: unknown record id ${JSON.stringify(rid)}`);
+      else if (stopped.has(String(rid))) details.push(`unmapped: ${rid} is also placed on a stop`);
+    });
+    return { status: details.length ? 'fail' : 'pass', metric: `${trips.length} trip(s), ${stops} stop(s), ${unmapped.length} unmapped, ${details.length} problem(s)`, details };
+  }),
+
+  gate('villages-valid', true, 'villages.json: status in vocabulary, names non-empty, every journey stop place has an entry', (records, ctx) => {
+    if (!ctx.villages) {
+      return { status: 'skip', metric: 'data/villages.json missing', details: [`${rel(ctx.villagesPath)} not found; gate skipped until the journey mapper data exists.`] };
+    }
+    const list = Array.isArray(ctx.villages) ? ctx.villages : Object.entries(ctx.villages).map(([id, v]) => ({ id, ...v }));
+    const details = [];
+    const known = new Set();
+    list.forEach((v, i) => {
+      const id = isNil(v?.id) ? `#${i}` : String(v.id);
+      known.add(id);
+      if (!VILLAGE_STATUSES.has(v?.status)) details.push(`${id}: status ${JSON.stringify(v?.status)} not in ${[...VILLAGE_STATUSES].join(', ')}`);
+      const hist = v?.historicalName ?? v?.villageHistorical; const mod = v?.modernName ?? v?.village;
+      if (typeof hist !== 'string' || !hist.trim()) details.push(`${id}: historical name empty`);
+      if (typeof mod !== 'string' || !mod.trim()) details.push(`${id}: modern name empty`);
+    });
+    if (ctx.journeys) {
+      const trips = Array.isArray(ctx.journeys) ? ctx.journeys : (ctx.journeys.trips ?? ctx.journeys.journeys ?? []);
+      for (const t of trips) for (const s of (t?.stops ?? [])) {
+        const pid = s?.placeId ?? s?.villageId;
+        if (!isNil(pid) && !known.has(String(pid))) details.push(`trip ${t?.id}: stop place ${JSON.stringify(pid)} missing from villages.json`);
+      }
+    }
+    return { status: details.length ? 'fail' : 'pass', metric: `${list.length} village(s), ${details.length} problem(s)`, details };
+  }),
 ];
 
 // ---------------------------------------------------------------------------
@@ -491,7 +587,15 @@ async function main() {
     return 2;
   }
 
-  const ctx = { schemaPath: args.schema, schema: null, genreVocab: null, genreVocabSource: '' };
+  const ctx = {
+    schemaPath: args.schema, schema: null, genreVocab: null, genreVocabSource: '',
+    journeysPath: args.journeys, journeys: null, villagesPath: args.villages, villages: null,
+  };
+  for (const [key, path] of [['journeys', args.journeys], ['villages', args.villages]]) {
+    if (existsSync(path)) {
+      try { ctx[key] = loadJson(path, key); } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
+    }
+  }
   const preamble = [];
   if (existsSync(args.schema)) {
     try {

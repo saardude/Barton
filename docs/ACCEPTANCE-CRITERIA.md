@@ -295,3 +295,85 @@ Given any of the journeys in QA-PLAN.md section 4
 When they run in Chromium
 Then no `console.error` entries and no uncaught page errors are recorded, on desktop and
 phone projects. (E2E-14 and shared fixture)
+
+## Academic integrity (owner requirement)
+
+**AC-36 Source identifier is a visible link on every row and record page**
+Given any result row (explorer list, county melodies table, journey stop list) and any
+song record page
+When it renders
+Then the record's source identifier (`source.referenceCode`, falling back to
+`source.siteId`) is shown as a visible link in mono type, its `href` equals the
+record's `source.url` exactly, it opens the original record on the source database in a new
+tab (`target="_blank"`, `rel="noopener noreferrer"`), and its accessible name reads
+"Open <identifier> on <site name>". A record whose `source.url` fails gate G3 never reaches
+the app. (unit 3.6, E2E-15, gate `source-url`)
+
+**AC-37 Attribution footer with links to the three source databases on every page**
+Given any screen, including journey mapper, not-found and error screens, desktop and phone
+When it renders
+Then the footer names HUN-REN BTK Institute for Musicology (Budapest) as the data owner and
+links to the three source databases: Folk Music in Bartók's Compositions
+(`https://bartok-nepzene.zti.hu/en/`), The Bartók System (`https://systems.zti.hu/br/en`)
+and Béla Bartók, the Ethnomusicologist (`https://bartok-gyujtesek.zti.hu/en`); the footer is
+in the DOM before data loads and is not hidden at any viewport. (E2E-14, E2E-15)
+
+## Journey mapper
+
+Spec: docs/JOURNEY-SPEC.md. Until it lands, the rules below are the contract.
+
+**AC-38 Trips derived from dated records**
+Given the records with a non-null `collected.year` and month (day optional), sorted by date
+When the journeys data is built
+Then consecutive dated records are grouped into one trip while the gap between successive
+record dates is 10 days or less, and a gap greater than 10 days starts a new trip; each trip
+has an id, a start and end date, an ordered list of stops (one per distinct place per
+visit), and the record ids at each stop; records with year only (no month) are attached to
+no trip and are reported as unmapped (AC-42). (unit 3.7, gate `journeys-valid`)
+
+**AC-39 Selecting a trip draws the route**
+Given the journey timeline listing trips by date
+When the user selects a trip
+Then the map draws a route through its stops in date order with numbered markers (1..n),
+the stop list beside the map shows the same numbers, dates and place names, selecting a
+stop highlights its marker and scrolls the list, and the URL contains `trip=<id>` (and
+`stop=<n>` when a stop is selected) so the view is shareable (AC-23). (E2E-16)
+
+**AC-40 Historical border layer defaults to the trip's era**
+Given a selected trip
+When the map renders
+Then the border layer defaults to the historical border set matching the trip date: the
+1910 set for trips dated before 1918, the 1920 set for trips from 1918 onwards; a control
+lets the user switch to "now" or "both", the choice is kept in the URL (`borders=1910|1920|
+now|both`), and the legend names the active set with its year. (unit 3.7, E2E-16)
+
+**AC-41 Stop shows historical and modern names and a status badge**
+Given a stop on the route
+When its marker or list entry is opened
+Then it shows the historical village name (as printed on the source) and the modern name,
+the modern county, and a status badge with one of `existing`, `renamed`, `merged`,
+`abandoned`, `unknown` sourced from `data/villages.json`; a village missing from
+villages.json shows `unknown`, never an empty badge. (unit 3.7, gate `villages-valid`)
+
+**AC-42 Undated or unresolved stops are listed as unmapped**
+Given records that have no usable date or whose place has no coordinates
+When a trip (or the "unmapped" section of the timeline) renders
+Then those records appear in a clearly labelled "Unmapped" list with the reason ("no date",
+"place not located") and links to their record pages; they are never dropped from the
+count, and the trip header reads "n stops, m unmapped records". (E2E-16, gate
+`journeys-valid`)
+
+**AC-43 Context events within the trip window**
+Given the context events dataset (each event with date, text and citation)
+When a trip is selected
+Then only events dated within the trip's start minus 2 years to end plus 2 years are shown
+on the timeline strip, each with its citation visible (author, title, year, link when
+available), and events without a citation are not shown. (unit 3.7, E2E-16)
+
+**AC-44 Keyboard-only journey view with ordered-list fallback**
+Given a keyboard-only user or a user with the map unavailable
+When they open the journey mapper
+Then the trip timeline is a listbox navigable with arrow keys, the stops are an ordered
+list (`<ol>`) in date order that works without the map, each stop is focusable with Enter
+opening its details, border and era controls are reachable by Tab, focus is visible, and
+the same URL state is produced as with the mouse. (E2E-10, E2E-16)

@@ -47,7 +47,7 @@ stale sample does not crash the script):
 id                    ^(fmbc|bsys|gyuj)-...  unique, stable across runs
 source.site           "fmbc" | "bsys" | "gyuj"
 source.url            absolute http(s) URL of the source record page (format: uri)
-source.siteRecordId   raw record id (fallback: source.number, source.referenceCode)
+source.siteId         the site's own record id (required); source.siteRecordId raw id as in the URL
 title, incipit        string | null
 genre                 enum: colinda, doina, bocet, cantec, joc, nunta, other, null
 collected.year        integer 1880..1945 | null (schema); 1904..1918 expected (gate G6)
@@ -69,7 +69,7 @@ year, one with null coordinates, one instrumental with no text).
 | --- | --- | --- | --- | --- |
 | G1 | `schema-valid` | Every record validates against `data/schema/song.schema.json` (Ajv 2020-12, `allErrors`, formats via ajv-formats) | 100 % valid | Blocks. Skipped with a warning while the schema file or `ajv` is missing; once the schema exists this must never skip in CI |
 | G2 | `id-unique` | `id` present, non-empty, unique across the whole file | 0 duplicates, 0 missing | Blocks |
-| G3 | `source-url` | `source.url` is an absolute `http(s)://` URL | 100 % of records | Blocks |
+| G3 | `source-url` | `source.url` is an absolute `https?://` URL whose host is one of `bartok-nepzene.zti.hu`, `systems.zti.hu` (alias `sys.zti.hu`), `bartok-gyujtesek.zti.hu`, and `source.siteId` (fallback `source.siteRecordId`) is a non-empty string | 100 % of records | Blocks |
 | G4 | `county-resolved` | `location.county` (modern county) is a non-empty string | >= 95 % of records | Blocks below 95 %; between 95 % and 100 % the unresolved list is printed as a warning for gazetteer work |
 | G5 | `coords-in-romania` | For records with `location.country` = `RO`: `lat` 43.6..48.3 and `lng` 20.2..29.7, or both null. One of the pair null, or non-numeric, is an error for any record. Records with another country are exempt (counted); records with null country but coordinates outside the box are listed as suspicious | 0 violations | Blocks on RO violations and half-set pairs; warns on null-country outliers |
 | G6 | `year-range` | `collected.year` is an integer 1904..1918 or null | 0 out of range is the target; any out-of-range or null year is listed | Warns only. The listed ids feed the data engineer's review; records from other collectors or later dates are legitimate and are kept |
@@ -97,6 +97,14 @@ These are specified now and will be added to the same script when the files exis
 | `facets-counts` | facet counts in facets.json equal counts recomputed from songs.json | exact | Blocks |
 | `deterministic-output` | keys sorted, `\n` line endings, trailing newline, records sorted by id | exact | Blocks |
 | `payload-size` | `songs.json` gzip size (as Vercel serves it) | <= 2.5 MB gzip; warn above 1.5 MB | Blocks (also enforced in section 6) |
+
+Journey mapper data (already implemented in `data-gates.mjs`, skipped with a warning while
+the files do not exist):
+
+| Check name | What | Threshold | Blocks |
+| --- | --- | --- | --- |
+| `journeys-valid` | `data/journeys.json`: trip ids unique; every stop `recordIds[]` entry exists in songs.json; each stop has a date `YYYY-MM` or `YYYY-MM-DD`; stops within a trip are in non-decreasing date order; trip `start`/`end` equal first/last stop; gaps between consecutive stops <= 10 days; `unmapped[]` record ids exist and are not also in a stop | 0 violations | Blocks |
+| `villages-valid` | `data/villages.json`: every stop place references an entry; `status` in `existing, renamed, merged, abandoned, unknown`; historical and modern names non-empty | 0 violations | Blocks |
 
 ### 1.4 CI wiring
 
@@ -247,6 +255,19 @@ descending:
 - Building the tree twice from the same input yields deep-equal output; building from a
   shuffled input yields the same tree.
 
+### 3.7 Journey mapper units
+
+- `splitTrips(datedRecords)`: gap of exactly 10 days stays in one trip, 11 days splits;
+  records on the same day are one stop when same place, two stops when different places;
+  year-only records are excluded and returned in `unmapped` with reason `no date`; records
+  with null coordinates are returned in `unmapped` with reason `place not located`; output
+  is deterministic for shuffled input.
+- `borderSetFor(trip)`: start date 1917-12-31 -> `1910`; 1918-01-01 -> `1920`; a trip
+  spanning the boundary uses its start date; explicit URL `borders=` overrides.
+- `contextEventsFor(trip, events)`: inclusive window start - 2 years .. end + 2 years;
+  events without citation excluded; sorted by date.
+- `villageStatus(placeId, villages)`: known -> its status; missing -> `unknown`.
+
 ### 3.6 Other units
 
 - `prevNext(id, filteredIds)` returns correct neighbours at start, middle and end; wraps or
@@ -279,6 +300,8 @@ never fires (a shared fixture in `e2e/fixtures.ts`).
 | E2E-12 | Error and loading states | Block `**/data/songs*.json` with `route.abort()`; the app shows the error state with a retry button; unblock and retry loads; while loading a skeleton/spinner with `aria-busy="true"` is visible on the results region. |
 | E2E-13 | Map interactions | Hover a county bubble shows the card with county name and count; click narrows; click the same bubble again (or the chip's x) clears it; at village zoom, village dots show and clicking one selects the village; map is keyboard reachable via a "List counties" fallback control. |
 | E2E-14 | No console errors | Shared assertion across all tests, plus a dedicated test that visits each of the four screens and waits for network idle. |
+| E2E-15 | Source links (academic integrity) | Sample 20 records at random (seeded) from the fixture: for each, open its result row and record page and assert the visible source identifier link's `href` equals `source.url`, `target="_blank"`, `rel` contains `noopener`; assert the footer contains links to the three source databases. Optional online part (tag `@online`, skipped unless `QA_ONLINE=1` and the `*.zti.hu` hosts are reachable): `fetch(href, {method:'HEAD'})` (GET fallback) returns HTTP 200 for each sampled record. |
+| E2E-16 | Journey mapper | Open `/journeys`; timeline lists trips by date; select a trip: route drawn with numbered markers matching the ordered stop list; URL has `trip=`; border legend shows 1910 for a pre-1918 trip; switch to "now" and "both" updates the legend and URL; open a stop: historical and modern names, county and a status badge from villages.json; the "Unmapped" list shows the fixture's year-only and unlocated records with reasons; context strip shows only events within +/- 2 years, each with a citation; keyboard-only pass: arrow keys move through the trip listbox, Tab reaches border controls and the `<ol>` stops, Enter opens a stop; back returns to the explorer with its filters intact. |
 
 Visual regression is out of scope for v1; if added later, use Playwright screenshots on the
 four screens at both viewports with a 0.2 % pixel threshold.
@@ -343,7 +366,8 @@ phone (iOS Safari or Android Chrome). Reference the AC ids in ACCEPTANCE-CRITERI
 - [ ] Active filter chips removable one by one (AC-11)
 - [ ] Status bar shows the canonical query string, copy button works, pasted URL restores state (AC-22..AC-23)
 - [ ] Empty state when no results, with clear action (AC-30)
-- [ ] Attribution to HUN-REN BTK Institute for Musicology visible in the footer (AC-33)
+- [ ] Attribution to HUN-REN BTK Institute for Musicology visible in the footer with links to the three source databases (AC-33, AC-37)
+- [ ] Every result row shows the source identifier as a link whose href is `source.url` (AC-36)
 - [ ] Wireframe fidelity: greyscale, ground `#f4f2ec`, ink `#1c1b18`, accent `#b5502e` only for the primary action and selection; IBM Plex Sans / Mono loaded (no FOUT longer than one frame after cache)
 
 ### 7.2 County drill-down
@@ -377,7 +401,17 @@ phone (iOS Safari or Android Chrome). Reference the AC ids in ACCEPTANCE-CRITERI
 - [ ] Song record stacks the rail below content; audio controls usable
 - [ ] Attribution present in the footer of every screen (AC-33)
 
-### 7.5 Cross-cutting
+### 7.5 Journey mapper
+
+- [ ] Timeline shows every trip with dates and stop count; selecting one draws the route with numbered stops (AC-38, AC-39)
+- [ ] Border layer defaults to 1910 / 1920 by trip date; "now" and "both" toggles work and are in the URL (AC-40)
+- [ ] Stop cards show historical and modern names and a status badge from villages.json (AC-41)
+- [ ] "Unmapped" list present with reasons; header count includes them (AC-42)
+- [ ] Context events limited to the +/- 2 year window, each with a visible citation (AC-43)
+- [ ] Keyboard-only walk and the ordered-list fallback with the map hidden (AC-44)
+- [ ] Source identifier link on every stop's record rows (AC-36); attribution footer present (AC-37)
+
+### 7.6 Cross-cutting
 
 - [ ] Keyboard-only walk through all four screens (AC-34)
 - [ ] 200 % zoom on desktop: no clipped content
