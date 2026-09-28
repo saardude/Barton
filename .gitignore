@@ -51,3 +51,6 @@ app/test-results/
 # OMR research working files
 omr/cache/
 omr/.venv/
+
+omr/.venv*/
+omr/samples/**/*.onnx
