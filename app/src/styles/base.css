@@ -574,3 +574,15 @@ ol {
   max-width: 60ch;
   margin: 0 auto;
 }
+
+/* Scroll panes must not leak their content height into the document (Chromium computes the
+   page scroll height from these when they sit in display:contents / min-height:0 grid items,
+   which let the page scroll far past the footer). Paint containment stops the propagation. */
+.results,
+.rail,
+.journeys__list,
+.journeys__panel,
+.song__rail,
+.county__main {
+  contain: paint;
+}
