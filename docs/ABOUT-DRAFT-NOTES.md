@@ -5,6 +5,8 @@ proof-reading notes were applied. Nothing has been edited in app/ and nothing is
 
 ## 0. What changed in the revision
 
+- Owner decision (later the same day): citations converted from Chicago 18 notes-and-bibliography to Chicago 18 author-date; 23 in-text parentheticals, no footnotes, a 23-entry References list (same sources; the four ZTI databases are listed under the Institute with years 2020–2025, 2021a, 2021b and n.d.; Lampert 2008a is the article, 2008b the catalogue).
+
 - "How to cite this site" removed; a one-line "Report an error" with
   tsaar@student.unimelb.edu.au replaces it. The Chicago citation-guide note is gone.
 - Body cut from about 2,600 to about 1,880 words (excluding headings); subheadings
@@ -179,8 +181,8 @@ permission for the Bartók System crawl and credit them; decide the code and dat
 
 - Voice: plain declarative sentences, cautious claims, footnoted evidence; no first-person
   research framing.
-- Chicago 18 notes-and-bibliography: full note at first citation, short form after;
-  "accessed September 28, 2026" on every web source because the pages carry no revision
-  date. Diacritics are kept in names and titles; no em-dashes; en-dashes only in page and
+- Chicago 18 author-date: parenthetical (Author Year, locator) in the text, References list
+  with the year after the author; "accessed September 28, 2026" on every web source because
+  the pages carry no revision date. Diacritics are kept in names and titles; no em-dashes; en-dashes only in page and
   year ranges, as in your footnotes.
-- Body text is about 1,880 words excluding headings (about 1,990 with them), 20 notes, 23 bibliography entries, 7 figures.
+- Body text is about 1,880 words excluding headings (about 1,990 with them), 23 in-text citations, 23 reference entries, 7 figures.
