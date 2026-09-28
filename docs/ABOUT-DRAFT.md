@@ -1,88 +1,141 @@
 # About and sources
 
-Draft for the owner's proof-reading, 28 September 2026. Replaces the "About" component in
-app/src/pages/StubPages.tsx once approved. Footnotes are Chicago Manual of Style, 18th
-edition, notes-and-bibliography; the bibliography is at the end. Nothing here is published yet.
+Revised draft after the owner's proof-reading, 28 September 2026. Replaces the "About"
+component in app/src/pages/StubPages.tsx once approved. Figure placeholders are on their own
+lines; the capture list is in the report. Chicago Manual of Style, 18th edition,
+notes-and-bibliography; bibliography at the end.
 
 ---
 
-Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. This viewer is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or the printed page that holds it. It sells nothing, carries no advertising and collects no data about its readers. Contact: [contact].
+Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. This viewer is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or printed page that holds it. It sells nothing, carries no advertising and collects no data about its readers. Contact: [contact].
 
-I built it for my own research. As an orchestral trumpeter working on Bartók's *Romanian Folk Dances*, I needed to move quickly between a melody, the village it was recorded in, the trip it was recorded on and the borders of the day. That information exists, but it is spread across three online databases and a five-volume printed edition. The viewer is a reading aid over those sources, not a new edition of anything.
+The material is spread across three online databases and a five-volume printed edition, under Hungarian, Romanian and English place names. The viewer puts it on one map, with the borders of the day, so that a melody, its village and its trip can be read together.
+
+![Figure 1. The Explorer with Bihor County selected: filter rail, map and results list.](/about/figure-1.jpg)
 
 ## What the viewer holds
 
-The record data comes from three databases of the HUN-REN BTK Institute for Musicology (Zenetudományi Intézet) in Budapest, home of the Bartók Archives. *Folk Music in Bartók's Compositions* documents the 261 folk melodies Bartók used in his own works, each with the place and date of collection, the informant and, where one exists, the phonograph recording.[^1] *The Bartók System* is Bartók's classification of his complete Hungarian folk-song collection, 13,817 record pages online; the Romanian, Slovak and other collections are named in it but not published there.[^2] *Béla Bartók, the Ethnomusicologist* holds 2,332 records arranged by collecting trip, with an index of 101 trips from 1904 to 1918.[^3]
+### The databases
 
-The online databases hold no records for Bartók's Romanian melodies as such. For those I used the printed edition, *Rumanian Folk Music*, edited by Benjamin Suchoff in five volumes, 1967 to 1975.[^4] Digitised copies of volumes IV (carols and Christmas songs) and V (Maramureș County) were consulted; only facts and incipits are indexed, and every entry links to the page consulted. Volumes I to III were not available to me. Volume V prints no dates under its melodies because, as Bartók's preface says, all come from one trip, 15 to 27 March 1913.[^5]
+The record data comes from three databases of the HUN-REN BTK Institute for Musicology (Zenetudományi Intézet) in Budapest, home of the Bartók Archives. *Folk Music in Bartók's Compositions* documents the 261 folk melodies Bartók used in his own works, with place and date of collection, informant and, where one exists, the phonograph recording.[^1] *The Bartók System* is Bartók's classification of his Hungarian folk-song collection, 13,817 record pages online; the Romanian, Slovak and other collections are named in it but not published there.[^2] *Béla Bartók, the Ethnomusicologist* holds 2,332 records arranged by collecting trip, with an index of 101 trips from 1904 to 1918.[^3]
 
-As of the crawl of 28 September 2026 the viewer indexes 14,910 melodies: 4,015 resolve to a locality in present-day Romania, 3,332 of them with coordinates, and 830 come from *Rumanian Folk Music* IV and V. The 2,330 records that the Bartók System and the Ethnomusicologist site publish twice are merged into one record each. 5,012 records have a recording on the source site, 14,899 a notation image or scanned page, 12,906 a year. The journey layer holds 178 trips, 44 of them with a sourced or documented itinerary; the rest are dated clusters of records or index entries with no records online.
+### The printed edition
 
-Every record links to its original catalogue entry, by reference code where the source prints one, otherwise by its position in the Bartók System or by site and record number. If the viewer and the source disagree, the source is right and I would like to hear about it.
+The databases hold no records for Bartók's Romanian melodies as such. For those the viewer uses the printed edition, *Rumanian Folk Music*, edited by Benjamin Suchoff in five volumes, 1967 to 1975.[^4] Digitised copies of volumes IV (carols and Christmas songs) and V (Maramureș County) were consulted; only facts and incipits are indexed, and every entry links to the page consulted. Volumes I to III are not indexed. Volume V prints no dates under its melodies because all come from one trip, 15 to 27 March 1913.[^5]
+
+### Counts
+
+As of the crawl of 28 September 2026 the viewer indexes 14,910 melodies: 4,015 resolve to a locality in present-day Romania, 3,332 of them with coordinates, and 830 come from *Rumanian Folk Music* IV and V. 5,012 records have a recording on the source site and 12,906 a year. The journey layer holds 178 trips, 44 with a sourced or documented itinerary. Every record links to its original catalogue entry, by reference code where the source prints one, otherwise by its position in the Bartók System or by site and record number.
+
+![Figure 2. A song record: notation, audio, the "Collected on" block and the link to the source entry.](/about/figure-2.jpg)
 
 ## How the data was built, and its limits
 
-Every record was parsed from its full catalogue page, not from a listing row, so the fields shown are the fields the source prints. The sites were fetched once, at one request per second, and kept in a cache. The Bartók System's site asks automated crawlers to stay away; I crawled it slowly and for this study only, and I intend to ask the Institute for a data export and for its view of this use.
+### Records
 
-None of the three databases prints a genre label. Genre is therefore known only for the 830 printed-edition entries, where the volume's own classes give it (colinda for volume IV; the class headings of volume V mapped to colinda, bocet, hora lungă, cântec, joc and instrumental). For the other 14,080 records the genre facet is empty, and the style labels (old style, new style, mixed) are the sites' own.
+Every record was parsed from its full catalogue page, not from a listing row, so the fields shown are the fields the source prints. The sites were fetched once, at one request per second, and kept in a cache.
 
-The printed-edition entries were read by optical character recognition from the digitised pages and aligned with the volumes' own indexes and cross-references. OCR loses diacritics and confuses similar glyphs, so a village name, a performer's name or a month from that pass can be wrong; each such entry keeps the raw line it was read from and links to the page. Twenty-one printed melodies have no entry because no OCR pass recovered their data line.
+### Genre
 
-Places are the hardest part. The sources give the historical Hungarian name and county of 1910 ("Belényes, Bihar"); the modern reader needs the Romanian name and present county ("Beiuș, Bihor"). The viewer holds both, keyed on the historical form, and derives the present country from the modern county. Coordinates come from the sources where they print them, otherwise from a gazetteer built for this project and checked against Wikidata, whose structured data is in the public domain.[^6] Of 1,165 village entries checked there, 673 matched an existing settlement under the same name, 86 a renamed one, one an abandoned one, and 405 could not be matched with confidence; those are marked "unknown" with the evidence, never guessed. 183 place strings, covering 2,606 records, remain unresolved; nearly all are in the Hungarian and Slovak parts of the Bartók System and are listed as "not mapped".
+None of the three databases prints a genre label. Genre is known only for the 830 printed-edition entries, where the volumes' own classes give it. For the other 14,080 records the genre facet is empty.
 
-Journeys are derived in two layers. The Institute's trip index is the primary source: each of its 101 entries becomes a trip with its records attached. Over that sits a curated layer of 63 trips, 1904 to 1918, built from the day-by-day chronology of Bartók's life compiled by his son, from Imre Kelemen's 1978 account of the Romanian trips with its list of localities and collecting months, and from the source lines and prefaces of *Rumanian Folk Music*.[^7] Records outside the index are grouped by date: a run of dated records with no gap longer than ten days is one trip. Each trip is labelled "sourced itinerary" (order of stops and dates from a cited source), "documented itinerary" (order but not every day), "dates only" (villages and dates known, order not) or "index only" (nothing beyond the Institute's label). Departures default to Budapest and are labelled "assumed"; where the sources disagree on a date, the trip keeps both readings and says so.
+### OCR
 
-The context strip beside the journey map lists dated events: border changes, Bartók's publications of Romanian material, his own statements on folk music and nationalism, and the reception of his Romanian work. Each entry summarises a cited source in neutral wording; where the Institute's *Béla Bartók Writings* database holds the entry for a text, its bibliographic data are taken from there.[^8] The 1937 essay on folk-song research and nationalism and the 1942 essay "Race Purity in Music" are cited by their first printings.[^9] Bartók's remarks on the "spirit" of peasant music belong to the arguments of his own period, as Ota has shown, and the strip presents them as documents to be weighed, not as the viewer's position.[^10]
+The printed-edition entries were read by optical character recognition and aligned with the volumes' own indexes and cross-references. OCR loses diacritics and confuses similar glyphs, so a village, a performer's name or a month from that pass can be wrong. Each entry keeps the raw line it was read from and links to the page.
+
+### Place names
+
+The sources give the historical Hungarian name and county of 1910 ("Belényes, Bihar"); the modern reader needs the Romanian name and present county ("Beiuș, Bihor"). The viewer holds both, keyed on the historical form, and derives the present country from the modern county. Coordinates come from the sources where they print them, otherwise from a gazetteer checked against Wikidata, whose structured data is in the public domain.[^6] Of 1,165 villages checked there, 673 matched an existing settlement, 86 a renamed one, one an abandoned one; 405 are marked "unknown", never guessed. 183 place strings, covering 2,606 records, remain unresolved, nearly all in the Hungarian and Slovak parts of the Bartók System.
+
+![Figure 3. A county page: villages with counts and genre bars, and the melodies table.](/about/figure-3.jpg)
+
+### Journeys
+
+The Institute's trip index is the primary source: each of its 101 entries becomes a trip with its records attached. Over that sits a curated layer of 63 trips, 1904 to 1918, built from the day-by-day chronology of Bartók's life compiled by his son, from Imre Kelemen's 1978 account of the Romanian trips, and from the source lines and prefaces of *Rumanian Folk Music*.[^7] Records outside the index are grouped by date, with a gap of more than ten days starting a new trip. Each trip is labelled "sourced itinerary", "documented itinerary", "dates only" or "index only". Departures default to Budapest and are labelled "assumed". Where the sources disagree on a date, the trip keeps both readings.
+
+![Figure 4. The Journeys page: the trip list and a sourced itinerary drawn on the 1910 county map.](/about/figure-4.jpg)
+
+### Context
+
+The context strip beside the journey map lists dated events: border changes, Bartók's publications of Romanian material, his statements on folk music and nationalism, and their reception. Each entry summarises a cited source; where the Institute's *Béla Bartók Writings* database holds the text, its bibliographic data are taken from there.[^8] The 1937 essay on folk-song research and nationalism and the 1942 essay "Race Purity in Music" are cited by their first printings.[^9] The strip presents documents; it takes no position.
+
+### Use of an AI model
+
+Claude (Fable 5.1), a large language model, was used to build this project: to write the scraping and data-building code, to resolve place names, to assemble the journey itineraries from the cited sources, and to run the optical music recognition experiment. Its output was checked against the sources and the catalogue. It was useful for speed over a large catalogue, for consistent citations across many records, and for pipelines that can be re-run with the same result. It did not write the melodies' metadata; that is the Institute's and the printed edition's, and every record still links to its original entry.
 
 ## Sources
 
-Databases. *Folk Music in Bartók's Compositions*, edited by Márton Kerékfy and Viola Biró, with an introduction abridged from Vera Lampert's printed source catalogue;[^11] *The Bartók System*; *Béla Bartók, the Ethnomusicologist*, edited by István Pávai and Pál Richter; and *Béla Bartók Writings*, edited by Viola Biró. All four are publications of the HUN-REN BTK Institute for Musicology, Budapest. Records, notation images and recordings remain the Institute's; this viewer is an independent interface and is not affiliated with it.
+### Databases
 
-Printed edition. Béla Bartók, *Rumanian Folk Music*, ed. Benjamin Suchoff, 5 vols. (The Hague: Martinus Nijhoff, 1967–75); volumes IV and V (1975) are indexed.
+*Folk Music in Bartók's Compositions*, edited by Márton Kerékfy and Viola Biró, with an introduction abridged from Vera Lampert's source catalogue;[^10] *The Bartók System*; *Béla Bartók, the Ethnomusicologist*, edited by István Pávai and Pál Richter; and *Béla Bartók Writings*, edited by Viola Biró. All four are publications of the HUN-REN BTK Institute for Musicology, Budapest. Records, notation images and recordings remain the Institute's; this viewer is an independent interface and is not affiliated with it.
 
-Scholarship used for the itineraries. The chronology of Bartók's life by his son, in its 2021 edition; Kelemen's 1978 article; and the prefaces and source lines of *Rumanian Folk Music* IV and V. Lampert's study of Bartók's transcription methods informed how the record fields are read.[^12]
+### Printed edition and itinerary scholarship
 
-Historical borders. County boundaries of the Kingdom of Hungary in 1910 are from GISta Hungarorum (OTKA K 111766), CC BY-NC; the project asks to be cited in that form and states that its maps were digitised from a 1:400,000 sheet with an inaccuracy of 0.5 to 1 km at settlement level.[^13] State borders for 1914 and 1920 are from the historical-basemaps project of Andrés Ourednik and contributors, GPL-3.0, which calls itself work in progress and asks users to verify the maps before academic use; there is no 1910 or 1918 file, so 1914 stands in for 1910 and 1920 for the post-war state.[^14] Present-day countries and Romanian counties are Natural Earth 1:10m, public domain.[^15] Trips to 1913 get the 1910 counties, 1914 to 1918 the 1914 outline, anything later the 1920 outline.
+Béla Bartók, *Rumanian Folk Music*, ed. Benjamin Suchoff, 5 vols. (The Hague: Martinus Nijhoff, 1967–75). For the itineraries: the chronology of Bartók's life by his son, 2021 edition; Kelemen's 1978 article; and the prefaces and source lines of *Rumanian Folk Music* IV and V. Lampert's study of Bartók's transcription methods informed how the record fields are read.[^11]
 
-Village data. Names, coordinates, administrative units and status from Wikidata, CC0. Map tiles: base map data © OpenStreetMap contributors, Open Database License; tiles in the Positron style © CARTO.[^16]
+### Borders, villages, tiles
+
+County boundaries of the Kingdom of Hungary in 1910 are from GISta Hungarorum (OTKA K 111766), CC BY-NC, accurate to 0.5 to 1 km at settlement level.[^12] State borders for 1914 and 1920 are from the historical-basemaps project of Andrés Ourednik and contributors, GPL-3.0, which calls itself work in progress; 1914 stands in for 1910 and 1920 for the post-war state.[^13] Present-day countries and Romanian counties are Natural Earth 1:10m, public domain.[^14] Trips to 1913 get the 1910 counties, 1914 to 1918 the 1914 outline, anything later the 1920 outline. Village names, coordinates, administrative units and status are from Wikidata, CC0. Map tiles: base map data © OpenStreetMap contributors, Open Database License; tiles in the Positron style © CARTO.[^15]
+
+![Figure 5. The Explorer's borders control in compare mode: 1910 counties left of the divider, present-day counties right.](/about/figure-5.jpg)
 
 ## Use cases
 
-Tracing one melody from village to trip to border. A record's rail gives Where, Who and when, Music and Source. "Where" links to the village, the village to the county, and the date to the trip, where one is known. The trip page draws the route on the border layer for that year, with a then-and-now toggle: a melody recorded in Bihar in January 1912 sits inside Bihar County of the Kingdom of Hungary, and one click shows the same point in Bihor County, Romania.
+### A melody, its village, its trip
 
-Comparing repertoire across neighbouring villages. The county page lists every village with its melody count and a genre bar, and its melodies table sorts by title, style, location, year or source number. For the Maramureș volume, where every melody is classed, the distribution of hore, dance melodies and colinde across the twelve villages is visible at once; for the database records the style and performance facets do the same work more coarsely.
+A record's rail gives Where, Who and when, Music and Source. "Where" links to the village and the county, and the date to the trip, where one is known. The trip page draws the route on the border layer for that year, with a then-and-now toggle: a melody recorded in Bihar in January 1912 sits inside Bihar County of the Kingdom of Hungary; one click shows the same point in Bihor County, Romania.
 
-Following an informant or a collector across trips. Performer names are indexed as printed, and the county page has a "by performer" tab. A melody published in both the Bartók System and the Ethnomusicologist site is one merged record with both catalogue links. The collector field does the same for Kodály's or Lajtha's material that shares a village with Bartók's.
+### Neighbouring villages
 
-Testing a claim in the literature against the dated record set. Kelemen re-dates the Borz songs from April to February 1914 on the evidence of cylinder numbers; the printed edition prints "IV. 1914".[^17] The viewer shows both, because the trip entry keeps the conflict, and the year filter and the sort by source number show which records fall on either side of the claim.
+The county page lists every village with its melody count and a genre bar, and its melodies table sorts by title, style, location, year or source number. For the Maramureș volume, where every melody is classed, the distribution of hore, dance melodies and colinde across the twelve villages is visible at once.
 
-Preparing an ethnographically informed performance. My own question is how Bartók's field recordings and transcriptions can inform a concert performance of *Romanian Folk Dances* on the trumpet. The 261 records from *Folk Music in Bartók's Compositions* carry the source melody, the recording where one exists, the informant's name and age and the performance type, and the viewer puts them next to the other melodies from the same village and trip. That is the context a performer needs before deciding what to imitate and what to leave alone; it is a starting point, not a method.
+### Informants and collectors
 
-Teaching with shareable filter URLs. Every filter, sort and place selection is written into the address bar. A tutor can send a link to "colinde from Hunedoara, 1913 to 1914, sorted by source number" and every student opens the same list.
+Performer names are indexed as printed, and the county page has a "by performer" tab. A melody published in both the Bartók System and the Ethnomusicologist site is one merged record with both catalogue links.
 
-Exporting a filtered set for a corpus study. The results panel, the county page and each trip page have an "Export JSON" button that writes the current records, with their source links and raw fields, to a file. A study of line-ending cadences or syllable counts across the Bartók System can start from that file.
+### Checking a date
 
-Encoding the notation. The notation images are scans of Bartók's master sheets and of typeset pages. A project note (docs/MEI-OMR-RESEARCH.md) tests whether optical music recognition can turn them into Music Encoding Initiative files, the XML standard for scholarly music encoding.[^18] The answer is yes for typeset and printed pages, where the recovered line-ending cadences can be checked against the catalogue's own cadence fields, and not yet for the handwritten sheets. That path would give searchable melodies and a correction interface. None of it is in the site yet.
+Kelemen re-dates the Borz songs from April to February 1914 on the evidence of cylinder numbers; the printed edition prints "IV. 1914".[^16] The trip entry keeps the conflict, and the year filter and the sort by source number show which records fall on either side.
+
+![Figure 6. A stop in the Maramureș trip of March 1913, with the name then and now and the village status badge.](/about/figure-6.jpg)
+
+### Shareable filters and export
+
+Every filter, sort and place selection is written into the address bar, so a link to "colinde from Hunedoara, 1913 to 1914, sorted by source number" opens the same list for everyone. The results panel, the county page and each trip page have an "Export JSON" button that writes the current records, with their source links and raw fields, to a file.
+
+![Figure 7. The results panel with active filter chips, the query string in the status bar and the Export JSON button.](/about/figure-7.jpg)
+
+### Encoding the notation
+
+The notation images are scans of Bartók's master sheets and of typeset pages. A project note (docs/MEI-OMR-RESEARCH.md) tests whether optical music recognition can turn them into Music Encoding Initiative files, the XML standard for scholarly music encoding.[^17] Typeset and digitally engraved score images could be read with high confidence; handwritten scores need additional model training before they are usable. None of it is in the site yet.
 
 ## Beyond Bartók
 
-The model here is small: a record, a place, a journey and a source, with a gazetteer of historical and modern names, cited itineraries and border layers by year. Any field collection with dated localities and record-level catalogue pages could be held the same way. The collections below are the obvious candidates; each exists and is catalogued, and none, to my knowledge, has been mapped against the borders of its own day.
+The model is small: a record, a place, a journey and a source, with a gazetteer of historical and modern names, cited itineraries and border layers by year. Other collections fit it.
 
-Zoltán Kodály and Béla Vikár, in the same Budapest archive. The Institute's Folk Music Collection, online through Hungaricana, includes Kodály's manuscript melody collection of 1905 to 1958 and copies of the Museum of Ethnography's phonograph recordings from 1896 onward, which begin with Vikár, the first European to take a phonograph into the field.[^19] Constantin Brăiloiu's Romanian recordings, split between the Archives internationales de musique populaire he founded in Geneva in 1944 and the institute that bears his name in Bucharest; the Geneva collection covers 1913 to 1953.[^20] Cecil Sharp's Appalachian collection, some 1,500 songs and tunes from three expeditions between 1915 and 1918, catalogued with his diaries at the Vaughan Williams Memorial Library in London.[^21] Percy Grainger's cylinder recordings of English, Danish, Rarotongan and Māori singers, held at the Grainger Museum of the University of Melbourne.[^22] Frances Densmore's fifty years of recording Native American music, whose papers and cylinders are at the Library of Congress.[^23] Alan Lomax's field recordings of 1946 to 1991, online through the Association for Cultural Equity.[^24] Hugh Tracey's recordings across sub-Saharan Africa, at the International Library of African Music he founded in 1954, now at Rhodes University.[^25]
+### Béla Vikár
 
-What each would need is the same: a stable link per record, a dated locality per record, and a licence that allows the facts to be indexed. What each would risk is also the same. Place names are political, in Transylvania as in Appalachia or the Eastern Cape, and a gazetteer that shows the name of 1910 next to the name of today has to say which is which and why. Rights in recordings belong to the archives and often to the communities recorded, so a viewer of this kind should index and link, not copy. A global map of field collecting is possible on those terms and on no others.
+Vikár was the first European to use the phonograph in ethnographic fieldwork; his recordings from 1896 open the Museum of Ethnography's cylinder collection in Budapest, which Bartók, Kodály and their students grew to 4,500 cylinders.[^18] His localities are the villages and counties of 1910 that the gazetteer already holds.
+
+### Zoltán Kodály
+
+Kodály's manuscript melody collection, compiled between 1905 and 1958, is part of the Institute's Folk Music Collection, online through Hungaricana with copies of the Museum of Ethnography's phonograph and gramophone recordings.[^19]
+
+### Percy Grainger
+
+Grainger's Edison cylinders of English, Danish, Rarotongan and Māori singers, made from 1906, are held at the Grainger Museum of the University of Melbourne; the folk-song manuscripts are catalogued at the Vaughan Williams Memorial Library in London.[^20] Each recording carries a date and a place, which is all the model needs.
+
+### Fieldwork today
+
+The same model applies to an ethnomusicologist's own recordings: dated, geolocated files with consent and rights metadata on each record; the record, place, journey and source structure; and an itinerary published with its sources from the start rather than reconstructed a century later. Any collection needs a stable link and a dated locality per record, and a licence that allows the facts to be indexed. Place names are political, and rights in recordings belong to the archives and the communities recorded, so a viewer of this kind should index and link, not copy.
 
 ## Licensing and access
 
-The site is for academic, non-commercial use and is publicly readable. Management functions (corrections to place resolution, annotations, flagging OCR errors) are planned for a later phase and will be gated to scholars. Two of the border datasets set the terms: the GISta Hungarorum county boundaries are CC BY-NC and the historical-basemaps state borders are GPL-3.0, both acceptable for a non-commercial academic site that shows their attribution. Records, notation images and recordings remain the Institute for Musicology's; the printed volumes remain in copyright, and the viewer reproduces neither notation nor song texts from them. The viewer's own code and derived JSON have no licence yet; until one is chosen, all rights are reserved.
+The site is for academic, non-commercial use and is publicly readable. Management functions (corrections to place resolution, annotations, flagging OCR errors) are planned for a later phase and will be gated to scholars. The CC BY-NC and GPL-3.0 border datasets are acceptable on that basis and their attribution is shown. The printed volumes remain in copyright, and the viewer reproduces neither notation nor song texts from them. The viewer's own code and derived JSON have no licence yet; until one is chosen, all rights are reserved.
 
-## How to cite this site, and how to report an error
+## Report an error
 
-Bibliography entry, Chicago 18: Saar, Thomas. *Bartók / Romania: A Field-Collection Viewer*. University of Melbourne, 2026. Accessed [date]. https://bartok-romania-viewer.vercel.app/.
-
-Note form follows the same pattern.[^26]
-
-For a melody, cite the original record on the Institute's site or the printed volume, not this viewer; the link is on every result row, stop and record page. To report an error, write to [contact] with the record's link and what the source says instead.
+Write to tsaar@student.unimelb.edu.au with the record's link and what the source says instead.
 
 ---
 
@@ -106,43 +159,29 @@ For a melody, cite the original record on the Institute's site or the printed vo
 
 [^9]: Béla Bartók, "Népdalkutatás és nacionalizmus," *Tükör* 5, no. 3 (March 1937): 166–68, entry at https://bartok-irasai.zti.hu/en/irasok/nepdalkutatas-es-nacionalizmus-2/; Béla Bartók, "Race Purity in Music," *Modern Music* 19, no. 3 (March–April 1942): 153–55, entry at https://bartok-irasai.zti.hu/en/irasok/race-purity-in-music-2/.
 
-[^10]: Mineo Ota, "Why Is the 'Spirit' of Folk Music so Important? On the Historical Background of Béla Bartók's Views of Folk Music," *International Review of the Aesthetics and Sociology of Music* 37, no. 1 (2006): 33–46.
+[^10]: Vera Lampert, *Folk Music in Bartók's Compositions: A Source Catalog; Arab, Hungarian, Romanian, Ruthenian, Serbian, and Slovak Melodies* (Budapest: Hungarian Heritage House, 2008).
 
-[^11]: Vera Lampert, *Folk Music in Bartók's Compositions: A Source Catalog; Arab, Hungarian, Romanian, Ruthenian, Serbian, and Slovak Melodies* (Budapest: Hungarian Heritage House, 2008).
+[^11]: Vera Lampert, "Bartók and the Berlin School of Ethnomusicology," *Studia Musicologica* 49, no. 3–4 (2008): 383–405, https://doi.org/10.1556/smus.49.2008.3-4.9.
 
-[^12]: Vera Lampert, "Bartók and the Berlin School of Ethnomusicology," *Studia Musicologica* 49, no. 3–4 (2008): 383–405, https://doi.org/10.1556/smus.49.2008.3-4.9.
+[^12]: "GISta Hungarorum (OTKA K 111766)," GIStory, accessed September 28, 2026, https://www.gistory.hu/g/en/gistory/otka.
 
-[^13]: "GISta Hungarorum (OTKA K 111766)," GIStory, accessed September 28, 2026, https://www.gistory.hu/g/en/gistory/otka.
+[^13]: Andrés Ourednik and contributors, "Historical Boundaries of World Countries and Cultural Regions," GitHub repository aourednik/historical-basemaps, accessed September 28, 2026, https://github.com/aourednik/historical-basemaps.
 
-[^14]: Andrés Ourednik and contributors, "Historical Boundaries of World Countries and Cultural Regions," GitHub repository aourednik/historical-basemaps, accessed September 28, 2026, https://github.com/aourednik/historical-basemaps.
+[^14]: "Terms of Use," Natural Earth, accessed September 28, 2026, https://www.naturalearthdata.com/about/terms-of-use/.
 
-[^15]: "Terms of Use," Natural Earth, accessed September 28, 2026, https://www.naturalearthdata.com/about/terms-of-use/.
+[^15]: "Copyright and License," OpenStreetMap, accessed September 28, 2026, https://www.openstreetmap.org/copyright; "Attributions," CARTO, accessed September 28, 2026, https://carto.com/attributions.
 
-[^16]: "Copyright and License," OpenStreetMap, accessed September 28, 2026, https://www.openstreetmap.org/copyright; "Attributions," CARTO, accessed September 28, 2026, https://carto.com/attributions.
+[^16]: Kelemen, "Bartók román népzenegyűjtő útjai," 411–13, note 16; Bartók, *Rumanian Folk Music*, vol. 4, source lines of the Borz melodies.
 
-[^17]: Kelemen, "Bartók román népzenegyűjtő útjai," 411–13, note 16; Bartók, *Rumanian Folk Music*, vol. 4, source lines of the Borz melodies.
+[^17]: "About," Music Encoding Initiative, accessed September 28, 2026, https://music-encoding.org/about/.
 
-[^18]: "About," Music Encoding Initiative, accessed September 28, 2026, https://music-encoding.org/about/.
+[^18]: "Folk Music Collection (Audio Materials and Transcription of Melodies)," Museum of Ethnography, Budapest, accessed September 28, 2026, http://www.neprajz.hu/en/gyujtemenyek/ethnological-archives/audio-archive/audio_archive.html.
 
-[^19]: "The Folk Music Collection of the HAS–RCH Institute for Musicology," Hungaricana, accessed September 28, 2026, https://www.hungaricana.hu/en/databases/zti/; "Folk Music Collection (Audio Materials and Transcription of Melodies)," Museum of Ethnography, Budapest, accessed September 28, 2026, http://www.neprajz.hu/en/gyujtemenyek/ethnological-archives/audio-archive/audio_archive.html.
+[^19]: "The Folk Music Collection of the HAS–RCH Institute for Musicology," Hungaricana, accessed September 28, 2026, https://www.hungaricana.hu/en/databases/zti/.
 
-[^20]: "Collection sonore Constantin Brăiloiu, Archives internationales de musique populaire (AIMP)," Memobase, Memoriav, accessed September 28, 2026, https://memobase.ch/fr/recordSet/meg-003; Institutul de Etnografie și Folclor "Constantin Brăiloiu," Academia Română, accessed September 28, 2026, https://acad.ro/ief/.
-
-[^21]: "Cecil Sharp's Appalachian Diaries," Vaughan Williams Memorial Library, English Folk Dance and Song Society, accessed September 28, 2026, https://www.vwml.org/topics/sharp-diaries; "Cecil James Sharp Collection," VWML archives catalogue CJS1, https://archives.vwml.org/records/CJS1.
-
-[^22]: Grainger Museum, University of Melbourne, accessed September 28, 2026, https://grainger.unimelb.edu.au/; "Percy Grainger Folk Song Collection," VWML archives catalogue PG, https://archives.vwml.org/records/PG.
-
-[^23]: "Frances Densmore Papers," finding aid, American Folklife Center, Library of Congress, 2022, accessed September 28, 2026, https://hdl.loc.gov/loc.afc/eadafc.af022004.
-
-[^24]: "The Lomax Digital Archive," Association for Cultural Equity, accessed September 28, 2026, https://www.culturalequity.org/archive/online-archive.
-
-[^25]: International Library of African Music, Rhodes University, accessed September 28, 2026, https://www.ru.ac.za/ilam/.
-
-[^26]: Form after *The Chicago Manual of Style*, 18th ed. (Chicago: University of Chicago Press, 2024), website examples in the online citation guide, https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html.
+[^20]: Grainger Museum, University of Melbourne, accessed September 28, 2026, https://grainger.unimelb.edu.au/; "Percy Grainger Folk Song Collection," Vaughan Williams Memorial Library archives catalogue PG, accessed September 28, 2026, https://archives.vwml.org/records/PG.
 
 ## Bibliography
-
-Association for Cultural Equity. "The Lomax Digital Archive." Accessed September 28, 2026. https://www.culturalequity.org/archive/online-archive.
 
 Bartók, Béla. "Népdalkutatás és nacionalizmus." *Tükör* 5, no. 3 (March 1937): 166–68. https://bartok-irasai.zti.hu/en/irasok/nepdalkutatas-es-nacionalizmus-2/.
 
@@ -170,19 +209,11 @@ HUN-REN BTK Institute for Musicology. "Béla Bartók Writings." Edited by Viola 
 
 HUN-REN BTK Institute for Musicology. "Folk Music in Bartók's Compositions." Edited by Márton Kerékfy and Viola Biró. 2020–25. Accessed September 28, 2026. https://bartok-nepzene.zti.hu/en/.
 
-Institutul de Etnografie și Folclor "Constantin Brăiloiu," Academia Română. Accessed September 28, 2026. https://acad.ro/ief/.
-
-International Library of African Music, Rhodes University. Accessed September 28, 2026. https://www.ru.ac.za/ilam/.
-
 Kelemen, Imre. "Bartók román népzenegyűjtő útjai." *Acta Academiae Paedagogicae Agriensis*, n.s., 14 (1978): 399–415. http://publikacio.uni-eszterhazy.hu/689/.
 
 Lampert, Vera. "Bartók and the Berlin School of Ethnomusicology." *Studia Musicologica* 49, no. 3–4 (2008): 383–405. https://doi.org/10.1556/smus.49.2008.3-4.9.
 
 Lampert, Vera. *Folk Music in Bartók's Compositions: A Source Catalog; Arab, Hungarian, Romanian, Ruthenian, Serbian, and Slovak Melodies*. Budapest: Hungarian Heritage House, 2008.
-
-Library of Congress, American Folklife Center. "Frances Densmore Papers." Finding aid, 2022. Accessed September 28, 2026. https://hdl.loc.gov/loc.afc/eadafc.af022004.
-
-Memobase (Memoriav). "Collection sonore Constantin Brăiloiu, Archives internationales de musique populaire (AIMP)." Accessed September 28, 2026. https://memobase.ch/fr/recordSet/meg-003.
 
 Museum of Ethnography, Budapest. "Folk Music Collection (Audio Materials and Transcription of Melodies)." Accessed September 28, 2026. http://www.neprajz.hu/en/gyujtemenyek/ethnological-archives/audio-archive/audio_archive.html.
 
@@ -192,15 +223,7 @@ Natural Earth. "Terms of Use." Accessed September 28, 2026. https://www.naturale
 
 OpenStreetMap. "Copyright and License." Accessed September 28, 2026. https://www.openstreetmap.org/copyright.
 
-Ota, Mineo. "Why Is the 'Spirit' of Folk Music so Important? On the Historical Background of Béla Bartók's Views of Folk Music." *International Review of the Aesthetics and Sociology of Music* 37, no. 1 (2006): 33–46.
-
 Ourednik, Andrés, and contributors. "Historical Boundaries of World Countries and Cultural Regions." GitHub repository aourednik/historical-basemaps. Accessed September 28, 2026. https://github.com/aourednik/historical-basemaps.
-
-University of Chicago Press. *The Chicago Manual of Style*. 18th ed. Chicago: University of Chicago Press, 2024. Citation guide: https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html.
-
-Vaughan Williams Memorial Library, English Folk Dance and Song Society. "Cecil James Sharp Collection." Archives catalogue CJS1. Accessed September 28, 2026. https://archives.vwml.org/records/CJS1.
-
-Vaughan Williams Memorial Library, English Folk Dance and Song Society. "Cecil Sharp's Appalachian Diaries." Accessed September 28, 2026. https://www.vwml.org/topics/sharp-diaries.
 
 Vaughan Williams Memorial Library, English Folk Dance and Song Society. "Percy Grainger Folk Song Collection." Archives catalogue PG. Accessed September 28, 2026. https://archives.vwml.org/records/PG.
 

@@ -1,9 +1,36 @@
 # Notes for the owner on ABOUT-DRAFT.md
 
-Written 28 September 2026 by the copywriter. Read this before proof-reading the draft. Nothing
-has been edited in app/ and nothing is committed.
+Written 28 September 2026 by the copywriter; updated the same day after the owner's
+proof-reading notes were applied. Nothing has been edited in app/ and nothing is committed.
 
-## 1. Claims I could not verify, and what I found instead
+## 0. What changed in the revision
+
+- "How to cite this site" removed; a one-line "Report an error" with
+  tsaar@student.unimelb.edu.au replaces it. The Chicago citation-guide note is gone.
+- Body cut from about 2,600 to about 1,880 words (excluding headings); subheadings
+  throughout; seven figure placeholders `![Figure N. ...](/about/figure-N.png)`.
+- All references to the owner's research, proposal or performance practice removed,
+  including the "ethnographically informed performance" use case. Ota is no longer cited.
+- The robots.txt sentence is gone (item 14 below is therefore moot; the recommendation to
+  ask ZTI for an export still stands in section 4).
+- "Beyond Bartók" now has three examples only (Vikár, Kodály, Grainger) plus a paragraph on
+  present-day fieldwork. Brăiloiu, Sharp, Densmore, Lomax and Tracey are cut, so items 8
+  (Densmore), 10 (Sharp), 11 (Brăiloiu), 12 (Lomax) and 13 (Chicago) below no longer apply
+  to the page; they are kept for the record.
+- The OMR paragraph now says: typeset and digitally engraved score images could be read
+  with high confidence; handwritten scores need additional model training.
+- New subsection "Use of an AI model" states that Claude (Fable 5.1) wrote the scraping and
+  data-building code, resolved place names, assembled the itineraries from the cited sources
+  and ran the OMR experiment, that its output was checked against the sources and the
+  catalogue, why it was useful, and that it did not write the melodies' metadata. It does not
+  say Claude built everything or wrote the page.
+- Vercel analytics confirmed off by the owner; "collects no data about its readers" stays.
+- Still no archive.org link on the page.
+
+Remaining items to check before publishing: 1 is moot (Ota dropped); 2, 3, 4, 5, 6, 7 and
+9 (Grainger) still apply.
+
+## 1. Claims I could not verify, and what I found instead (original list), and what I found instead
 
 1. **Ota 2006, JSTOR stable URL.** The article is real (Mineo Ota, "Why Is the 'Spirit' of
    Folk Music so Important?", IRASM 37, no. 1 (2006): 33-46; confirmed by ResearchGate and
@@ -150,14 +177,10 @@ permission for the Bartók System crawl and credit them; decide the code and dat
 
 ## 5. Style notes
 
-- Voice follows your proposal: first person where your aims are stated, plain declarative
-  sentences, cautious claims, footnoted evidence. Your phrase "a starting point rather than
-  a complete method" is echoed once ("a starting point, not a method").
+- Voice: plain declarative sentences, cautious claims, footnoted evidence; no first-person
+  research framing.
 - Chicago 18 notes-and-bibliography: full note at first citation, short form after;
   "accessed September 28, 2026" on every web source because the pages carry no revision
   date. Diacritics are kept in names and titles; no em-dashes; en-dashes only in page and
   year ranges, as in your footnotes.
-- Body text is about 2,600 words (headings included), 26 notes, 32 bibliography entries.
-- The site title in the citation ("Bartók / Romania: A Field-Collection Viewer") is built
-  from `app.title` ("Bartok / Romania") and the README's description. Rename if you have a
-  preferred title; the Vercel project name is "bartok-romania-viewer".
+- Body text is about 1,880 words excluding headings (about 1,990 with them), 20 notes, 23 bibliography entries, 7 figures.
