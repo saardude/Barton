@@ -9,8 +9,11 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          leaflet: ['leaflet', 'react-leaflet'],
+        // Function form: the object form is not accepted by the current Rolldown/Vite typings.
+        manualChunks(id: string) {
+          if (id.includes('/node_modules/leaflet/')) return 'leaflet'
+          if (id.includes('/node_modules/minisearch/')) return 'search'
+          return undefined
         },
       },
     },

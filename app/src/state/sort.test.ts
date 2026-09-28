@@ -70,9 +70,11 @@ describe('sort orders (QA 3.4)', () => {
       const seen = [...new Set(known)]
       expect(seen).toEqual(dir === 'asc' ? expected : expected.reverse())
       const bihor = sorted.filter((s) => s.location.county === 'Bihor')
+      // within a county, records with no village are last in both directions
       const villages = bihor.map((s) => s.location.village)
-      const lastVillage = villages.lastIndexOf(villages.find((v) => v !== null) ?? null)
-      expect(villages.slice(lastVillage + 1).every((v) => v === null)).toBe(true)
+      const firstNullVillage = villages.indexOf(null)
+      expect(firstNullVillage).toBeGreaterThan(0)
+      expect(villages.slice(firstNullVillage).every((v) => v === null)).toBe(true)
     }
     const asc = sortSongs(fixtureSongs, 'location', 'asc', lookup)
     const bihorVillages = [...new Set(asc.filter((s) => s.location.county === 'Bihor' && s.location.village).map((s) => s.location.village))]

@@ -275,6 +275,16 @@ export const en: Record<string, string> = {
 
   'footer.data':
     'Data: HUN-REN BTK Institute for Musicology, Budapest (Bartok Archives): "Folk Music in Bartok\'s Compositions", "The Bartok System" and "Bela Bartok, the Ethnomusicologist".',
+  'footer.dataPrefix': 'Data: HUN-REN BTK Institute for Musicology, Budapest (Bartok Archives):',
+  'footer.printPrefix': 'Printed edition: Bela Bartok, Rumanian Folk Music (ed. Benjamin Suchoff, Martinus Nijhoff, 1967-1975),',
+  'footer.printLink': 'open volumes on the Internet Archive',
+  'footer.printSuffix': '; only facts and incipits are indexed.',
+  'results.virtualised': 'Long list: rows render as you scroll',
+  'results.exportAria': 'Export {n} melodies as JSON',
+  'facet.filtersOpen': 'Filters ({n})',
+  'map.osmFallback': 'CARTO tiles unavailable; using OpenStreetMap tiles',
+  'map.legendGenre': 'Colour: dominant genre',
+  'tree.countryLabel': 'Country',
   'footer.independent':
     'Records, notation images and recordings remain the property of the Institute; this viewer is an independent interface and is not affiliated with it.',
   'footer.print':

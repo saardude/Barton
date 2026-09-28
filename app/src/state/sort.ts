@@ -88,6 +88,9 @@ export function comparator(sort: SortKey, dir: SortDir, lookup: PlaceLookup = ()
       return (a, b) =>
         knownFirst(normalize(a.style), normalize(b.style), dir, (x, y) => roBase.compare(x, y)) || title(a, b) || byId(a, b)
     case 'location':
+      // AC-16 / QA 3.4 (the tested contract): modern county, then modern village, then title.
+      // Country and region are only tie-breaks after that, so counties of every country
+      // interleave alphabetically when the country switch is "all".
       return (a, b) => {
         const na = levelNames(a, lookup)
         const nb = levelNames(b, lookup)
@@ -95,7 +98,7 @@ export function comparator(sort: SortKey, dir: SortDir, lookup: PlaceLookup = ()
         const ca = na[2] ? 0 : 1
         const cb = nb[2] ? 0 : 1
         if (ca !== cb) return ca - cb
-        for (let i = 0; i < 4; i++) {
+        for (const i of [2, 3, 0, 1]) {
           const r = knownFirst(na[i], nb[i], dir, (x, y) => roBase.compare(x, y))
           if (r !== 0) return r
         }
