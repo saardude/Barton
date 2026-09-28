@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
 import { CatalogProvider, useCatalog } from './app/catalog'
 import { PrefsProvider } from './app/prefs'
@@ -10,9 +11,11 @@ import { SkipLink, TopBar } from './components/TopBar'
 import { ExplorerPage } from './pages/ExplorerPage'
 import { CountyPage } from './pages/CountyPage'
 import { SongPage } from './pages/SongPage'
-import { AboutPage } from './pages/AboutPage'
 import { NotFoundPage } from './pages/StubPages'
 import { JourneysPage } from './routes/journeys'
+
+// The About page carries the markdown renderer; it loads in its own chunk on first visit.
+const AboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })))
 
 function Shell() {
   const { state, retry } = useCatalog()
@@ -30,7 +33,14 @@ function Shell() {
           <Route path="/county/*" element={<CountyPage />} />
           <Route path="/song/:songId" element={<SongPage />} />
           <Route path="/journeys" element={<JourneysPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/about"
+            element={
+              <Suspense fallback={<main id="main" className="page about" aria-busy="true" />}>
+                <AboutPage />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}

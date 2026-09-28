@@ -8,7 +8,7 @@ Vercel CLI 60.1.3. Architecture: ARCHITECTURE.md. Plan: PLAN.md (step 7).
 ```
 # once, from a machine (or this environment) with VERCEL_TOKEN or an interactive login
 cd /home/user/Barton
-npx vercel@60 link --yes --project bartok-romania-viewer    # creates + links the project
+npx vercel@60 link --yes --project culegeri    # creates + links the project
 npx vercel@60 deploy                                        # preview deployment
 npx vercel@60 deploy --prod                                 # production
 cat .vercel/project.json                                    # orgId / projectId for CI secrets
@@ -173,7 +173,7 @@ npm ci --prefix app && npm run build --prefix app && ls app/dist/data
 
 # 2. Create and link the project without prompts. `--yes` accepts defaults (root ".",
 #    settings from vercel.json). Creates .vercel/project.json (gitignored).
-npx vercel@60 link --yes --project bartok-romania-viewer --token "$VERCEL_TOKEN"
+npx vercel@60 link --yes --project culegeri --token "$VERCEL_TOKEN"
 #    Alternative on the first run: `npx vercel@60 --yes` creates the project named after the
 #    directory ("barton") and deploys a preview in one step; rename in the dashboard later.
 
@@ -247,7 +247,7 @@ Recommended branch protection on `main`: require `CI / App`, `CI / Scraper (test
 ## 8. Post-deploy verification
 
 ```
-URL=https://bartok-romania-viewer.vercel.app     # or the preview URL
+URL=https://culegeri.vercel.app     # or the preview URL
 curl -sI "$URL/"                              | grep -iE 'cache-control|content-security|x-frame'
 curl -sI "$URL/song/anything"                 | grep -iE '^HTTP|content-type'   # 200 text/html (SPA)
 curl -sI "$URL/data/$(curl -s $URL/ | grep -o 'songs\.[a-f0-9]*\.json' | head -1)" | grep -i cache-control  # immutable
@@ -295,14 +295,14 @@ workflows deploy regardless of this environment's policy.
 | Setting | Value |
 | --- | --- |
 | Vercel team (scope) | Tutti (`tutti3`, org id `team_pxirNsKcxcCK1zYdohIdOxc2`) |
-| Project | `bartok-romania-viewer` (project id `prj_x46xY2sd0ramFgQcPUa57zu1QdGy`) |
+| Project | `culegeri` (renamed from `bartok-romania-viewer` on 2026-09-28; project id `prj_x46xY2sd0ramFgQcPUa57zu1QdGy`) |
 | Linked from | repository root (`.vercel/project.json`, git-ignored) |
 | Node version (project setting) | 24.x at creation; the repo pins 22 in `.nvmrc` and CI, change the project setting to 22.x in the dashboard or leave both on 24 |
 | Deployments so far | none |
 
 For GitHub Actions set the repository secrets `VERCEL_TOKEN` (a token scoped to the Tutti team), `VERCEL_ORG_ID` = the org id above, `VERCEL_PROJECT_ID` = the project id above. The ids are identifiers, not secrets, but they are kept out of the workflow file so the same workflow works for a fork.
 
-The account has no personal (Hobby) scope, so the project had to live in a team. If the academic project should be separated from the Tutti workspace, create a new team in the Vercel dashboard, transfer the project to it (Project Settings, General, Transfer), and re-run `npx vercel link --yes --project bartok-romania-viewer --scope <new-team>` here.
+The account has no personal (Hobby) scope, so the project had to live in a team. If the academic project should be separated from the Tutti workspace, create a new team in the Vercel dashboard, transfer the project to it (Project Settings, General, Transfer), and re-run `npx vercel link --yes --project culegeri --scope <new-team>` here.
 
 ## Static deploy of a local build (used for the first live deployment, 2026-09-28)
 

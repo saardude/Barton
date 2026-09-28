@@ -1,4 +1,4 @@
-# Barton: Bartok Romania field-collection viewer
+# Culegeri
 
 A static, JSON-driven web app for exploring Bela Bartok's ethnographic field
 collection with a focus on localities in present-day Romania. Browse by

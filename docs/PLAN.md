@@ -171,6 +171,7 @@ counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json
 | D9 | Style sort uses collator order on the verbatim style string | No controlled vocabulary for style in the sources |
 | D10 | UI in English; Romanian and Hungarian shown as secondary labels for facets, genres and place names | Wireframe language; sources are HU/RO |
 | D12 | The project is non-commercial and academic only. The site is publicly readable; any management or editing functions (corrections, annotations, curation) are gated to scholars. CC BY-NC border data and the GPL-licensed basemaps are acceptable on that basis; the app shows their attribution. | Owner decision 2026-09-28 |
+| D13 | Project name: Culegeri (Romanian, gatherings; the word for folk-song collecting). Site at culegeri.vercel.app; "Field Atlas" reserved as a platform name if other collectors are added | Owner decision 2026-09-28 |
 | D11 | Crawl of systems.zti.hu proceeds with `--ignore-robots` at the owner's instruction, 1 req/s, cached | Owner decision 2026-09-28; recommend requesting an export from ZTI |
 
 ## Open decisions for the owner

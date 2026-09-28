@@ -14,9 +14,10 @@ describe('/about', () => {
 
   it('renders the approved text with landmarks, figures, heading ids and external links', async () => {
     renderApp('/about')
+    // the page is code-split: wait for the chunk
+    await screen.findByRole('heading', { level: 1, name: 'About and sources' })
     const main = screen.getByRole('main')
     expect(main).toHaveAttribute('id', 'main')
-    expect(within(main).getByRole('heading', { level: 1, name: 'About and sources' })).toBeInTheDocument()
     expect(document.title).toBe(ABOUT_TITLE)
     expect(within(main).getByText(/^Built by Thomas Saar \(BMus\)/)).toBeInTheDocument()
     // figures: <figure> with a lazy image whose alt is the caption, and a figcaption
