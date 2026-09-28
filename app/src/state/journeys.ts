@@ -689,11 +689,13 @@ export interface RouteLeg {
 export function routeLegs(j: Journey): RouteLeg[] {
   if (j.kind !== 'route') return []
   const legs: RouteLeg[] = []
-  let prev: { pt: [number, number]; seq: number } | null = { pt: [j.departure.lat, j.departure.lng], seq: 0 }
+  const dep = j.departure
+  let prev: { pt: [number, number]; seq: number } | null =
+    dep && dep.lat !== null && dep.lng !== null ? { pt: [dep.lat, dep.lng], seq: 0 } : null
   for (const s of j.stops) {
     if (s.lat === null || s.lng === null || s.locationConfidence === 'unresolved') continue
     const pt: [number, number] = [s.lat, s.lng]
-    if (prev) legs.push({ from: prev.pt, to: pt, kind: prev.seq === 0 && j.departure.confidence === 'assumed' ? 'assumed' : 'known', fromSeq: prev.seq, toSeq: s.seq })
+    if (prev) legs.push({ from: prev.pt, to: pt, kind: prev.seq === 0 && dep?.confidence === 'assumed' ? 'assumed' : 'known', fromSeq: prev.seq, toSeq: s.seq })
     prev = { pt, seq: s.seq }
   }
   return legs

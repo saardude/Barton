@@ -235,7 +235,7 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
       L.polyline([leg.from, leg.to], { pane: PANES.route, className: `route-line ${cls}`, interactive: false, lineCap: 'round', lineJoin: 'round' }).addTo(group)
     }
     const pts: L.LatLngTuple[] = view.resolved.map((s) => [s.lat as number, s.lng as number])
-    pts.push([j.departure.lat, j.departure.lng])
+    if (j.departure && j.departure.lat !== null && j.departure.lng !== null) pts.push([j.departure.lat, j.departure.lng])
     const b = L.latLngBounds(pts)
     fitRef.current = b.isValid() ? b.pad(0.15) : null
     if (fitRef.current) map.fitBounds(fitRef.current, { padding: [32, 32], animate: !window.matchMedia('(prefers-reduced-motion: reduce)').matches, maxZoom: 10 })
@@ -251,7 +251,7 @@ export function JourneyMap({ view, borders, era, selectedSeq, highlightSeq, onSt
     const n = j.stops.length
     const seen = new Map<string, number>()
     const dep = L.divIcon({ className: '', html: departureHtml(j.departure.name, j.departure.confidence === 'assumed'), iconSize: [24, 24], iconAnchor: [12, 12] })
-    L.marker([j.departure.lat, j.departure.lng], { icon: dep, pane: PANES.stops, keyboard: false, interactive: false }).addTo(group)
+    if (j.departure && j.departure.lat !== null && j.departure.lng !== null) L.marker([j.departure.lat, j.departure.lng], { icon: dep, pane: PANES.stops, keyboard: false, interactive: false }).addTo(group)
     for (const s of view.stops) {
       if (!s.resolved) continue
       const stop = s.stop
