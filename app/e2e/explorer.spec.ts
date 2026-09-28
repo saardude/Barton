@@ -144,6 +144,21 @@ test.describe('Explorer', () => {
     await expect.poll(() => query(page).get('village')).toBeNull()
     await page.getByRole('button', { name: /Remove filter: Bihor/ }).click()
     await expect.poll(() => query(page).get('county')).toBeNull()
+    // borders then / now / compare on the explorer map (UX pass): Compare -> both, then -> an era year
+    const borders = page.getByRole('radiogroup', { name: 'Borders' })
+    await expect(borders).toBeVisible()
+    await borders.getByRole('radio', { name: /^Compare/ }).click()
+    await expect.poll(() => query(page).get('borders')).toBe('both')
+    await borders.getByRole('radio', { name: /^Borders then/ }).click()
+    await expect.poll(() => query(page).get('borders')).toMatch(/^(1910|1914|1920)$/)
+    await borders.getByRole('radio', { name: /^Borders now/ }).click()
+    await expect.poll(() => query(page).get('borders')).toBeNull()
+    // Reset view clears a selection
+    await countyDot(page, 'Arad').click()
+    await expect.poll(() => query(page).get('county')).toBe(data.countyId('Arad'))
+    await page.getByRole('button', { name: 'Reset view' }).click()
+    await expect.poll(() => query(page).get('county')).toBeNull()
+    await waitForMapIdle(page)
     // keyboard fallback list
     const summary = page.getByText(/List counties \(\d+\)/)
     await expect(summary).toBeVisible()

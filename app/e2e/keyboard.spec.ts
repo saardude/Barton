@@ -1,6 +1,6 @@
 // E2E-10 keyboard-only journey (AC-34): skip link, tree arrows, Space on a checkbox, sort select,
 // Enter on a result, Enter on a map dot, visible focus rings; Escape closes the phone sheet.
-import { expect, gotoApp, hasVisibleFocusRing, isStub, query, readCount, test, waitForMapIdle } from './fixtures'
+import { expect, gotoApp, hasVisibleFocusRing, isStub, query, readCount, test, waitForCatalog, waitForMapIdle } from './fixtures'
 
 test.describe('Keyboard', () => {
   test('E2E-10 tab order, tree arrows, checkbox, sort, open song', async ({ page, data }, testInfo) => {
@@ -71,9 +71,14 @@ test.describe('Keyboard', () => {
     expect(await hasVisibleFocusRing(page)).toBe(true)
     await page.keyboard.press('Escape')
     await expect(page.locator('#map-hover-card')).toBeHidden()
+    // the map redesign: Escape with the map focused also clears the place selection ("Esc or Reset clears")
+    await expect.poll(() => query(page).get('county')).toBeNull()
+    await waitForCatalog(page)
+    await waitForMapIdle(page)
 
     // results: Tab to the first row, ArrowDown moves, Enter opens the song
     const firstRow = page.locator('.song-row a.song-row__main').first()
+    await expect(firstRow).toHaveAttribute('tabindex', '0')
     await firstRow.focus()
     expect(await hasVisibleFocusRing(page)).toBe(true)
     await page.keyboard.press('ArrowDown')

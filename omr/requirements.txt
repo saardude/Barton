@@ -1,0 +1,25 @@
+# omr/.venv : pipeline environment (conversion, OCR, rendering, validation glue)
+#   python3 -m venv omr/.venv && omr/.venv/bin/pip install -r omr/requirements.txt
+verovio==6.3.0
+lxml==6.1.3
+pillow==12.3.0
+numpy==2.4.6
+pypdfium2==5.13.0
+rapidocr-onnxruntime==1.4.4
+onnxruntime==1.30.0
+opencv-python-headless==5.0.0.93
+requests==2.34.2
+
+# omr/.venv-homr : homr (vision-transformer OMR, ONNX, CPU). Pins opencv<5, so keep it separate.
+#   python3 -m venv omr/.venv-homr && omr/.venv-homr/bin/pip install homr==0.7.0
+#   (first run downloads the models, ~2 min; afterwards ~10-20 s per page on 4 CPU cores)
+
+# omr/.venv-oemer : oemer (U-net OMR). Needs onnxruntime 1.16.x (newer versions reject its
+# ConvTranspose pads) and therefore numpy<2 and an older opencv.
+#   python3 -m venv omr/.venv-oemer && omr/.venv-oemer/bin/pip install oemer==0.1.8 \
+#       'onnxruntime==1.16.3' 'numpy<2' 'opencv-python-headless<4.11'
+#   omr/.venv-oemer/bin/pip uninstall -y onnxruntime-gpu
+#   omr/.venv-oemer/bin/pip install --force-reinstall --no-deps onnxruntime==1.16.3
+#   (first run downloads two ONNX checkpoints, ~110 MB; ~8 min per page on 4 CPU cores)
+
+# Audiveris 5.9.0 (Java, bundled JRE and Tesseract): no pip; see omr/README.md

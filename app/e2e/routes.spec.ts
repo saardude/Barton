@@ -174,33 +174,41 @@ test.describe('Routes', () => {
   })
 
   test('E2E-16 journey mapper', async ({ page, data }, testInfo) => {
+    const phone = testInfo.project.name === 'phone-chromium'
     await page.goto(`/journeys?county=${data.countyId('Bihor')}`)
     await expect(page.getByRole('contentinfo')).toBeVisible()
     test.fixme(await isStub(page), '/journeys is still a stub: timeline, trip route, borders and stops not implemented yet')
     await expect(page.getByText('Loading the collection...')).toHaveCount(0)
-    // timeline lists trips by date
-    const timeline = page.getByRole('region', { name: 'Timeline' })
-    test.fixme(
-      (await timeline.count()) === 0,
-      '/journeys is being redesigned (no "Timeline" region on this viewport); rewrite E2E-16 against the settled markup',
-    )
-    await expect(timeline).toBeVisible()
-    const trips = page.getByRole('listbox', { name: 'Trips by date' })
-    await expect(trips.getByRole('option').first()).toBeVisible()
-    // pick the first trip (of the first dozen) that has at least one resolved stop: through the
-    // "Journey" select when present, otherwise by clicking the timeline options
+    // a featured trip is open by default with a clean URL (no trip=)
+    await expect(page.getByRole('complementary', { name: 'Trip' }).locator('h1')).toBeVisible()
+    expect(query(page).get('trip')).toBeNull()
     const stops = page.locator('ol.stop-list__items')
-    const pick = page.getByRole('combobox', { name: 'Journey' })
-    const useSelect = (await pick.count()) > 0
-    const candidates = useSelect
-      ? await pick.locator('option').evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).value).filter(Boolean))
-      : Array.from({ length: Math.min(12, await trips.getByRole('option').count()) }, (_, i) => String(i))
-    expect(candidates.length).toBeGreaterThan(1)
+    await expect(stops).toBeVisible()
+
+    // the trip list: an aside on desktop, a sheet behind "Journeys (n)" on the phone
+    const openList = async () => {
+      if (!phone) return page.getByRole('complementary', { name: 'Journeys' })
+      const button = page.getByRole('button', { name: /^Journeys \(\d+\)/ })
+      await button.click()
+      const dialog = page.getByRole('dialog', { name: 'Journeys' })
+      await expect(dialog).toBeVisible()
+      return dialog
+    }
+    let list = await openList()
+    // the timeline is a collapsible year strip; the trips are a listbox grouped by year
+    await expect(list.getByRole('region', { name: 'Timeline' })).toBeVisible()
+    const trips = list.getByRole('listbox', { name: 'Trips by date' })
+    const optionCount = await trips.getByRole('option').count()
+    expect(optionCount).toBeGreaterThan(1)
+    // pick the first trip (of the first dozen) that has at least one resolved stop
     let tripId: string | null = null
-    for (const c of candidates.slice(0, 12)) {
-      if (useSelect) await pick.selectOption(c)
-      else await trips.getByRole('option').nth(Number(c)).click()
+    for (let i = 0; i < Math.min(12, optionCount); i++) {
+      if (phone && i > 0) list = await openList()
+      const option = list.getByRole('listbox', { name: 'Trips by date' }).getByRole('option').nth(i)
+      await option.scrollIntoViewIfNeeded()
+      await option.click()
       await expect.poll(() => query(page).get('trip')).not.toBeNull()
+      if (phone) await expect(page.getByRole('dialog', { name: 'Journeys' })).toBeHidden()
       await expect(stops).toBeVisible()
       if ((await stops.locator('li.stop-row[data-seq] button:enabled').count()) > 0) {
         tripId = query(page).get('trip')
@@ -208,10 +216,15 @@ test.describe('Routes', () => {
       }
     }
     expect(tripId, 'a trip with a resolved stop among the first twelve').not.toBeNull()
-    // header, ordered stops and numbered markers
-    await expect(page.locator('h1')).toBeVisible()
+    await expect(page.getByRole('complementary', { name: 'Trip' }).locator('h1')).toBeVisible()
     expect(await stops.locator('li').count()).toBeGreaterThan(0)
-    // borders: then / now / compare update the URL
+    // context: a collapsed details "Context (n)" that opens to a list of cited entries
+    const context = page.locator('details.context-section')
+    await expect(context.locator('summary')).toHaveText(/Context \(\d+\)/)
+    expect(await context.evaluate((el) => (el as HTMLDetailsElement).open)).toBe(false)
+    await context.locator('summary').click()
+    await expect(context).toHaveJSProperty('open', true)
+    // borders: then / now / compare update the URL when the toggle is offered here
     const borders = page.getByRole('radiogroup', { name: 'Borders' })
     if (await borders.count()) {
       await borders.getByRole('radio', { name: /Borders now/ }).click()

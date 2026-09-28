@@ -42,7 +42,7 @@ describe('County drill-down route', () => {
     expect(within(crumb).getByRole('link', { name: 'Crișana' })).toHaveAttribute('href', '/?region=ro/crisana')
 
     // villages table: 3 villages + (village unknown) last
-    const table = screen.getByRole('table', { name: /Villages in Bihor, 4/ })
+    const table = await screen.findByRole('table', { name: /Villages in Bihor, 4/ }, { timeout: 4000 })
     const rows = within(table).getAllByRole('row').slice(1)
     expect(rows.length).toBe(4)
     expect(rows[0]).toHaveTextContent('Beiuș')
@@ -78,7 +78,7 @@ describe('County drill-down route', () => {
   it('tab switches keep the URL in sync and render each panel', async () => {
     renderApp('/county/ro/crisana/bihor?tab=genre')
     await screen.findByRole('heading', { level: 1, name: /Bihor/ })
-    expect(screen.getByRole('tab', { name: 'By genre' })).toHaveAttribute('aria-selected', 'true')
+    expect(await screen.findByRole('tab', { name: 'By genre' }, { timeout: 4000 })).toHaveAttribute('aria-selected', 'true')
     expect(screen.getByRole('table', { name: 'By genre' })).toBeInTheDocument()
     expect(screen.getByRole('table', { name: 'By style' })).toBeInTheDocument()
 
@@ -101,6 +101,8 @@ describe('County drill-down route', () => {
   it('a village row click narrows the query to that village and the melodies tab', async () => {
     renderApp('/county/ro/crisana/bihor')
     const table = await screen.findByRole('table', { name: /Villages in Bihor/ }, { timeout: 4000 })
+    // the county is in the Query before the table is interactive (no race with the county effect)
+    expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?county=ro/crisana/bihor')
     fireEvent.click(within(table).getByRole('button', { name: /Filter to Ineu/ }))
     await waitFor(() => expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?village=ro/crisana/bihor/ineu'), { timeout: 4000 })
     const ineu = fixtureSongs.filter((s) => s.location.placeId === 'ro/crisana/bihor/ineu').length
