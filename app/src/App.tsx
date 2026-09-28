@@ -10,7 +10,8 @@ import { SkipLink, TopBar } from './components/TopBar'
 import { ExplorerPage } from './pages/ExplorerPage'
 import { CountyPage } from './pages/CountyPage'
 import { SongPage } from './pages/SongPage'
-import { AboutPage, NotFoundPage } from './pages/StubPages'
+import { AboutPage } from './pages/AboutPage'
+import { NotFoundPage } from './pages/StubPages'
 import { JourneysPage } from './routes/journeys'
 
 function Shell() {

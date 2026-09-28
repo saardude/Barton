@@ -15,7 +15,7 @@ const SITE_NAMES: Record<string, string> = {
   fmbc: "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
   bsys: 'The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)',
   gyuj: 'Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)',
-  rfm: 'Rumanian Folk Music (Bartok, ed. Suchoff, 1967-1975), Internet Archive scan',
+  rfm: 'Rumanian Folk Music (Bartok, ed. Suchoff, Nijhoff, 1967-1975), digitised copy; the page consulted is linked',
 }
 
 function locationFromPlace(placeId: string, place: Place | undefined, raw: Raw): Song['location'] {

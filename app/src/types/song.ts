@@ -6,7 +6,7 @@
  */
 export interface Song {
   /**
-   * Stable id: site prefix + site record id. Prefixes: fmbc (bartok-nepzene.zti.hu), bsys (systems.zti.hu/br), gyuj (bartok-gyujtesek.zti.hu), rfm (printed Rumanian Folk Music volumes via the Internet Archive scans, see docs/PRINT-SOURCES.md).
+   * Stable id: site prefix + site record id. Prefixes: fmbc (bartok-nepzene.zti.hu), bsys (systems.zti.hu/br), gyuj (bartok-gyujtesek.zti.hu), rfm (printed Rumanian Folk Music volumes, digitised copy, see docs/PRINT-SOURCES.md).
    */
   id: string
   source: {

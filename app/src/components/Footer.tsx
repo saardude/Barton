@@ -24,9 +24,7 @@ export function Footer() {
       <p>{t('footer.independent')}</p>
       <p>
         {t('footer.printPrefix')}{' '}
-        <a href={siteUrl('rfm')} target="_blank" rel="noopener noreferrer">
-          {t('footer.printLink')}
-        </a>
+        <Link to="/about#the-printed-edition">{t('footer.printLink')}</Link>
         {t('footer.printSuffix')}
       </p>
       <p>

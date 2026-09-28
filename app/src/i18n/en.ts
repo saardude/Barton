@@ -228,6 +228,7 @@ export const en: Record<string, string> = {
   'song.row.database': 'Database',
   'song.row.id': 'Record id',
   'song.openSource': 'Open record on {site}',
+  'song.openPage': 'Open the page consulted',
   'song.row.origin': "Informant's origin",
   'song.row.placeRaw': 'Place as printed',
   'song.row.sex': 'Sex',
@@ -285,7 +286,7 @@ export const en: Record<string, string> = {
     'Data: HUN-REN BTK Institute for Musicology, Budapest (Bartok Archives): "Folk Music in Bartok\'s Compositions", "The Bartok System" and "Bela Bartok, the Ethnomusicologist".',
   'footer.dataPrefix': 'Data: HUN-REN BTK Institute for Musicology, Budapest (Bartok Archives):',
   'footer.printPrefix': 'Printed edition: Bela Bartok, Rumanian Folk Music (ed. Benjamin Suchoff, Martinus Nijhoff, 1967-1975),',
-  'footer.printLink': 'open volumes on the Internet Archive',
+  'footer.printLink': 'Rumanian Folk Music, vols. IV and V (Nijhoff, 1975)',
   'footer.printSuffix': '; only facts and incipits are indexed.',
   'results.virtualised': 'Long list: rows render as you scroll',
   'results.exportAria': 'Export {n} melodies as JSON',
@@ -296,7 +297,7 @@ export const en: Record<string, string> = {
   'footer.independent':
     'Records, notation images and recordings remain the property of the Institute; this viewer is an independent interface and is not affiliated with it.',
   'footer.print':
-    'Printed edition: Bela Bartok, Rumanian Folk Music (ed. Benjamin Suchoff, Martinus Nijhoff, 1967-1975), open volumes on the Internet Archive; only facts and incipits are indexed.',
+    'Printed edition: Bela Bartok, Rumanian Folk Music, vols. IV and V (ed. Benjamin Suchoff, Martinus Nijhoff, 1975); only facts and incipits are indexed, every entry links to the page consulted.',
   'footer.map': 'Map: (c) OpenStreetMap contributors, (c) CARTO. County boundaries: Natural Earth.',
   'footer.institute.en': 'HUN-REN BTK Institute for Musicology, Budapest',
   'footer.institute.ro': 'Institutul de Muzicologie HUN-REN BTK, Budapesta',
@@ -306,7 +307,7 @@ export const en: Record<string, string> = {
   'source.site.fmbc': "Folk Music in Bartók's Compositions",
   'source.site.bsys': 'The Bartók System',
   'source.site.gyuj': 'Béla Bartók, the Ethnomusicologist',
-  'source.site.rfm': 'Rumanian Folk Music (printed edition, Internet Archive scan)',
+  'source.site.rfm': 'Rumanian Folk Music (digitised copy)',
   'source.siteShort.fmbc': 'FMBC',
   'source.siteShort.bsys': 'BS',
   'source.siteShort.gyuj': 'BBE',
@@ -316,7 +317,6 @@ export const en: Record<string, string> = {
   'source.url.fmbc': 'https://bartok-nepzene.zti.hu/en/',
   'source.url.bsys': 'https://systems.zti.hu/br/en',
   'source.url.gyuj': 'https://bartok-gyujtesek.zti.hu/en',
-  'source.url.rfm': 'https://archive.org/details/rumanianfolkmusi0004blab',
 
   // Song record and county drill-down (added with the two screens; additive)
   'app.titleSuffix': 'Bartók in Romania',

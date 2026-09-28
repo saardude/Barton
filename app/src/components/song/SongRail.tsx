@@ -258,7 +258,7 @@ export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
             label: t('song.rail.source'),
             value: song.source.url ? (
               <a href={song.source.url} target="_blank" rel="noopener noreferrer">
-                {t('song.openSource', { site: siteName(song.source.site) })}
+                {song.source.site === 'rfm' ? t('song.openPage') : t('song.openSource', { site: siteName(song.source.site) })}
               </a>
             ) : null,
           },
