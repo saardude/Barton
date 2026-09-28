@@ -4,7 +4,15 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { useQuery } from '../../app/query'
 import type { CatalogIndex } from '../../data/catalogIndex'
-import { genreLabel, genreTitle, instrumentLabel, performanceLabel, siteName, styleLabel, t } from '../../i18n/en'
+import {
+  genreLabel,
+  genreTitle,
+  instrumentLabel,
+  performanceLabel,
+  siteName,
+  styleLabel,
+  t,
+} from '../../i18n/en'
 import { countryName, placeText } from '../../state/placeName'
 import { applyPatch, type Query } from '../../state/query'
 import { toSearch } from '../../state/urlCodec'
@@ -14,6 +22,7 @@ import { GenreSwatch } from '../Genre'
 import { PlaceLabel } from '../PlaceLabel'
 import { SourceLink } from '../SourceLink'
 import { audioLabel } from './AudioPlayer'
+import { JourneyLink, useSongJourneys } from './JourneyLink'
 
 export interface RailRow {
   label: string
@@ -21,8 +30,22 @@ export interface RailRow {
   mono?: boolean
 }
 
-export function RailSection({ id, title, rows }: { id: string; title: string; rows: (RailRow | null | undefined | false)[] }) {
-  const list = rows.filter((r): r is RailRow => Boolean(r) && (r as RailRow).value !== null && (r as RailRow).value !== undefined && (r as RailRow).value !== '')
+export function RailSection({
+  id,
+  title,
+  rows,
+}: {
+  id: string
+  title: string
+  rows: (RailRow | null | undefined | false)[]
+}) {
+  const list = rows.filter(
+    (r): r is RailRow =>
+      Boolean(r) &&
+      (r as RailRow).value !== null &&
+      (r as RailRow).value !== undefined &&
+      (r as RailRow).value !== '',
+  )
   if (!list.length) return null
   return (
     <section className="rail-section" id={`rail-${id}`} aria-labelledby={`rail-${id}-h`}>
@@ -70,26 +93,67 @@ export function collectedDate(song: Song): string | null {
 
 export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
   const { query } = useQuery()
+  const journeyRefs = useSongJourneys(song)
   const loc = song.location
   const nodes = placeNodes(song, index)
   const village = nodes.village
   const county = nodes.county
   const region = nodes.region
   const country = nodes.country
-  const countryLabel = country ? placeText(country, country.id) : loc.country ? countryName(loc.country) : null
-  const villageValue = village ? placeLink(query, { village: village.id }, <PlaceLabel place={village} showMarkers />) : loc.village || loc.villageHistorical ? [loc.village, loc.villageHistorical && loc.villageHistorical !== loc.village ? `(${loc.villageHistorical})` : null].filter(Boolean).join(' ') : null
-  const countyValue = county ? placeLink(query, { county: county.id }, <PlaceLabel place={county} />) : loc.county || loc.countyHistorical ? [loc.county, loc.countyHistorical && loc.countyHistorical !== loc.county ? `(${loc.countyHistorical})` : null].filter(Boolean).join(' ') : null
-  const regionValue = region ? placeLink(query, { region: region.id }, placeText(region, region.id)) : loc.region
+  const countryLabel = country
+    ? placeText(country, country.id)
+    : loc.country
+      ? countryName(loc.country)
+      : null
+  const villageValue = village
+    ? placeLink(query, { village: village.id }, <PlaceLabel place={village} showMarkers />)
+    : loc.village || loc.villageHistorical
+      ? [
+          loc.village,
+          loc.villageHistorical && loc.villageHistorical !== loc.village
+            ? `(${loc.villageHistorical})`
+            : null,
+        ]
+          .filter(Boolean)
+          .join(' ')
+      : null
+  const countyValue = county
+    ? placeLink(query, { county: county.id }, <PlaceLabel place={county} />)
+    : loc.county || loc.countyHistorical
+      ? [
+          loc.county,
+          loc.countyHistorical && loc.countyHistorical !== loc.county ? `(${loc.countyHistorical})` : null,
+        ]
+          .filter(Boolean)
+          .join(' ')
+      : null
+  const regionValue = region
+    ? placeLink(query, { region: region.id }, placeText(region, region.id))
+    : loc.region
   const thenNow =
     loc.countyHistorical && (loc.county || countryLabel)
-      ? t('song.thenNow', { then: loc.countyHistorical, now: [loc.county ?? county?.name, countryLabel].filter(Boolean).join(', ') })
+      ? t('song.thenNow', {
+          then: loc.countyHistorical,
+          now: [loc.county ?? county?.name, countryLabel].filter(Boolean).join(', '),
+        })
       : null
   const origin = loc.origin
-  const originText = origin && (origin.village || origin.villageHistorical || origin.county) ? [origin.village ?? origin.villageHistorical, origin.county ?? origin.countyHistorical].filter(Boolean).join(', ') : null
-  const coords = loc.lat !== null && loc.lng !== null ? `${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}` : t('tree.notMapped')
-  const recording = song.media.audio.length ? song.media.audio.map((a) => audioLabel(a, song)).join(', ') : null
+  const originText =
+    origin && (origin.village || origin.villageHistorical || origin.county)
+      ? [origin.village ?? origin.villageHistorical, origin.county ?? origin.countyHistorical]
+          .filter(Boolean)
+          .join(', ')
+      : null
+  const coords =
+    loc.lat !== null && loc.lng !== null
+      ? `${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}`
+      : t('tree.notMapped')
+  const recording = song.media.audio.length
+    ? song.media.audio.map((a) => audioLabel(a, song)).join(', ')
+    : null
 
-  const sex = song.performer.sex === 'm' ? t('facet.sexM') : song.performer.sex === 'f' ? t('facet.sexF') : null
+  const sex =
+    song.performer.sex === 'm' ? t('facet.sexM') : song.performer.sex === 'f' ? t('facet.sexF') : null
   const alternates = song.source.alternates ?? []
 
   return (
@@ -103,7 +167,13 @@ export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
           { label: t('song.row.region'), value: regionValue },
           { label: t('song.row.country'), value: countryLabel },
           { label: t('song.row.thenNow'), value: thenNow },
-          { label: t('song.row.origin'), value: originText && originText !== [loc.village, loc.county].filter(Boolean).join(', ') ? originText : null },
+          {
+            label: t('song.row.origin'),
+            value:
+              originText && originText !== [loc.village, loc.county].filter(Boolean).join(', ')
+                ? originText
+                : null,
+          },
           { label: t('song.row.coordinates'), value: coords, mono: true },
           { label: t('song.row.placeRaw'), value: loc.raw, mono: true },
         ]}
@@ -113,12 +183,21 @@ export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
         title={t('song.rail.whoWhen')}
         rows={[
           { label: t('song.row.performer'), value: song.performer.name },
-          { label: t('song.row.age'), value: song.performer.age !== null ? String(song.performer.age) : null },
+          {
+            label: t('song.row.age'),
+            value: song.performer.age !== null ? String(song.performer.age) : null,
+          },
           { label: t('song.row.sex'), value: sex },
           { label: t('song.row.ethnicity'), value: song.performer.ethnicity },
           { label: t('song.row.date'), value: collectedDate(song) },
-          song.collected.raw && song.collected.year !== null ? { label: t('song.row.year'), value: String(song.collected.year), mono: true } : null,
+          song.collected.raw && song.collected.year !== null
+            ? { label: t('song.row.year'), value: String(song.collected.year), mono: true }
+            : null,
           { label: t('song.row.collector'), value: song.collector },
+          {
+            label: t('song.collectedOn'),
+            value: journeyRefs.length ? <JourneyLink refs={journeyRefs} /> : null,
+          },
           { label: t('song.row.recording'), value: recording, mono: true },
         ]}
       />
@@ -131,7 +210,9 @@ export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
             value: song.genre ? (
               <span title={genreTitle(song.genre)}>
                 <GenreSwatch genre={song.genre} size={8} /> <span lang="ro">{genreLabel(song.genre)}</span>
-                {song.genreRaw && song.genreRaw !== song.genre && <span className="mono muted"> ({song.genreRaw})</span>}
+                {song.genreRaw && song.genreRaw !== song.genre && (
+                  <span className="mono muted"> ({song.genreRaw})</span>
+                )}
               </span>
             ) : song.genreRaw ? (
               <span className="mono">{song.genreRaw}</span>
@@ -139,7 +220,10 @@ export function SongRail({ song, index }: { song: Song; index: CatalogIndex }) {
           },
           { label: t('song.row.performance'), value: performanceLabel(song.performance) },
           { label: t('song.row.style'), value: song.style ? styleLabel(song.style) : null },
-          { label: t('song.row.instruments'), value: song.instrument.length ? song.instrument.map(instrumentLabel).join(', ') : null },
+          {
+            label: t('song.row.instruments'),
+            value: song.instrument.length ? song.instrument.map(instrumentLabel).join(', ') : null,
+          },
           { label: t('song.row.system'), value: song.music.systemPosition, mono: true },
           { label: t('song.row.cadences'), value: song.music.cadences, mono: true },
           { label: t('song.row.rhythm'), value: song.music.rhythm, mono: true },

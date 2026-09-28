@@ -189,6 +189,39 @@
   background: var(--accent-soft);
 }
 
+/* ---- Journey link ----------------------------------------------------------------------- */
+.journey-link {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--fs-13);
+}
+
+.journey-link__item + .journey-link__item {
+  margin-top: var(--space-1);
+}
+
+.journey-link--compact {
+  margin-top: var(--space-3);
+}
+
+.journey-link__title {
+  font-weight: var(--fw-medium);
+}
+
+.journey-link__quality {
+  font-size: var(--fs-11);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  border: var(--border-strong);
+  padding: 0 var(--space-1);
+  white-space: nowrap;
+}
+
+.journey-link__explore {
+  white-space: nowrap;
+}
+
 /* ---- Notation ------------------------------------------------------------------------- */
 .notation__figure {
   margin: 0 0 var(--space-4);

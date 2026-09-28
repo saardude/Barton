@@ -2,11 +2,19 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockCatalogFetch, renderApp, testManifest } from '../test/appHarness'
+import { fixtureJourneys } from '../state/journeys.fixture'
 import { fixtureIndex } from '../test/fixture'
 import { DEFAULT_QUERY } from '../state/query'
 import { derive } from '../state/selectors'
 
-vi.mock('../app/manifest', () => ({ manifest: { songs: '/data/songs.test.json', places: '/data/places.test.json', facets: '/data/facets.test.json', journeys: '/data/journeys.test.json' } }))
+vi.mock('../app/manifest', () => ({
+  manifest: {
+    songs: '/data/songs.test.json',
+    places: '/data/places.test.json',
+    facets: '/data/facets.test.json',
+    journeys: '/data/journeys.test.json',
+  },
+}))
 vi.mock('../components/map/MapView', () => ({
   MapView: () => <div data-testid="map-stub" />,
   ROMANIA_BOUNDS: [
@@ -36,11 +44,19 @@ describe('Song record route', () => {
     // breadcrumb: Romania > Crișana > Bihor (Bihar) > Beiuș (Belényes) > title
     const crumb = screen.getByRole('navigation', { name: 'Breadcrumb' })
     expect(within(crumb).getByRole('link', { name: 'Romania' })).toHaveAttribute('href', '/?country=ro')
-    expect(within(crumb).getByRole('link', { name: /Bihor/ })).toHaveAttribute('href', '/?county=ro/crisana/bihor')
-    expect(within(crumb).getByRole('link', { name: /Beiuș/ })).toHaveAttribute('href', '/?village=ro/crisana/bihor/beius')
+    expect(within(crumb).getByRole('link', { name: /Bihor/ })).toHaveAttribute(
+      'href',
+      '/?county=ro/crisana/bihor',
+    )
+    expect(within(crumb).getByRole('link', { name: /Beiuș/ })).toHaveAttribute(
+      'href',
+      '/?village=ro/crisana/bihor/beius',
+    )
 
     // header SourceLink (AC-36) to the record's source.url
-    const links = screen.getAllByRole('link', { name: 'Open original record on The Bártok System'.replace('Bártok', 'Bartók') })
+    const links = screen.getAllByRole('link', {
+      name: 'Open original record on The Bártok System'.replace('Bártok', 'Bartók'),
+    })
     expect(links.length).toBeGreaterThanOrEqual(2) // header + rail
     expect(links[0]).toHaveAttribute('href', 'https://systems.zti.hu/br/en/browse/10/1')
     expect(links[0]).toHaveAttribute('target', '_blank')
@@ -50,7 +66,9 @@ describe('Song record route', () => {
     const rail = screen.getByRole('complementary', { name: 'Record details' })
     expect(within(rail).getByText('Performer').nextSibling).toHaveTextContent('Ion Pop')
     expect(within(rail).getByText('Coordinates').nextSibling).toHaveTextContent('46.6600, 22.3500')
-    expect(within(rail).getByText('Then / now').nextSibling).toHaveTextContent('Bihar (then) -> Bihor, Romania (now)')
+    expect(within(rail).getByText('Then / now').nextSibling).toHaveTextContent(
+      'Bihar (then) -> Bihor, Romania (now)',
+    )
     expect(within(rail).getByText('Record id').nextSibling).toHaveTextContent('bsys-1')
 
     // audio and no notation
@@ -59,7 +77,9 @@ describe('Song record route', () => {
 
     // related melodies carry source links
     const related = screen.getByRole('region', { name: 'Related melodies' })
-    expect(within(related).getAllByRole('link', { name: /^Open original record on/ }).length).toBeGreaterThan(0)
+    expect(within(related).getAllByRole('link', { name: /^Open original record on/ }).length).toBeGreaterThan(
+      0,
+    )
   })
 
   it('prev / next follow the filtered and sorted set, keep the query, and disable at the ends', async () => {
@@ -68,31 +88,51 @@ describe('Song record route', () => {
     await screen.findByRole('heading', { level: 1 })
     expect(screen.getByText(`1 of ${defaultSorted.length} in this filter`)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Previous melody' })).toBeDisabled()
-    expect(screen.getByRole('link', { name: 'Next melody' })).toHaveAttribute('href', `/song/${defaultSorted[1].id}`)
+    expect(screen.getByRole('link', { name: 'Next melody' })).toHaveAttribute(
+      'href',
+      `/song/${defaultSorted[1].id}`,
+    )
 
     // ] moves to the next record; [ back
     fireEvent.keyDown(window, { key: ']' })
-    await waitFor(() => expect(screen.getByText(`2 of ${defaultSorted.length} in this filter`)).toBeInTheDocument())
+    await waitFor(() =>
+      expect(screen.getByText(`2 of ${defaultSorted.length} in this filter`)).toBeInTheDocument(),
+    )
     fireEvent.keyDown(window, { key: '[' })
-    await waitFor(() => expect(screen.getByText(`1 of ${defaultSorted.length} in this filter`)).toBeInTheDocument())
+    await waitFor(() =>
+      expect(screen.getByText(`1 of ${defaultSorted.length} in this filter`)).toBeInTheDocument(),
+    )
   })
 
   it('a query on the song URL narrows the set and is kept on the neighbour links', async () => {
-    const colinda = derive({ query: { ...DEFAULT_QUERY, genre: ['colinda'], sort: 'year', dir: 'desc' }, index, searchIds: null }).sortedSongs
+    const colinda = derive({
+      query: { ...DEFAULT_QUERY, genre: ['colinda'], sort: 'year', dir: 'desc' },
+      index,
+      searchIds: null,
+    }).sortedSongs
     const last = colinda[colinda.length - 1]
     renderApp(`/song/${last.id}?genre=colinda&sort=year&dir=desc`)
     await screen.findByRole('heading', { level: 1 })
     expect(screen.getByText(`${colinda.length} of ${colinda.length} in this filter`)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Next melody' })).toBeDisabled()
-    expect(screen.getByRole('link', { name: 'Previous melody' })).toHaveAttribute('href', `/song/${colinda[colinda.length - 2].id}?genre=colinda&sort=year&dir=desc`)
-    expect(screen.getByRole('link', { name: /Back to results/ })).toHaveAttribute('href', '/?genre=colinda&sort=year&dir=desc')
+    expect(screen.getByRole('link', { name: 'Previous melody' })).toHaveAttribute(
+      'href',
+      `/song/${colinda[colinda.length - 2].id}?genre=colinda&sort=year&dir=desc`,
+    )
+    expect(screen.getByRole('link', { name: /Back to results/ })).toHaveAttribute(
+      'href',
+      '/?genre=colinda&sort=year&dir=desc',
+    )
   })
 
   it('a record outside the current filter says so and offers "Show in explorer"', async () => {
     renderApp('/song/bsys-26?country=ro') // Hungarian locality, outside the country = ro set
     await screen.findByRole('heading', { level: 1, name: 'Hej, Dunáról' })
     expect(screen.getByText('This record is outside the current filter.')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Show in explorer' })).toHaveAttribute('href', '/?county=hu/unresolved/ujszasz')
+    expect(screen.getByRole('link', { name: 'Show in explorer' })).toHaveAttribute(
+      'href',
+      '/?county=hu/unresolved/ujszasz',
+    )
     expect(screen.queryByText(/in this filter$/)).toBeNull()
   })
 
@@ -112,6 +152,28 @@ describe('Song record route', () => {
     expect(await screen.findByRole('heading', { level: 1, name: 'Ardeleana' })).toBeInTheDocument()
     expect(screen.getByAltText('Notation of Ardeleana, source A 10')).toHaveAttribute('loading', 'lazy')
     expect(screen.getByRole('button', { name: 'View full size' })).toBeInTheDocument()
+  })
+
+  it('a record on a journey shows "Collected on" with stop n of m and an "Explore this journey" link; others show nothing', async () => {
+    vi.unstubAllGlobals()
+    mockCatalogFetch({ '/data/journeys.test.json': { _meta: {}, journeys: fixtureJourneys } })
+    renderApp('/song/bsys-8?genre=colinda')
+    await screen.findByRole('heading', { level: 1, name: 'Sculați, sculați, boieri mari' })
+    const blocks = screen.getAllByRole('list', { name: 'Collected on' })
+    expect(blocks.length).toBe(2) // header line + Who / when row
+    const rail = screen.getByRole('complementary', { name: 'Record details' })
+    const row = within(rail).getByRole('list', { name: 'Collected on' })
+    expect(row).toHaveTextContent(/stop 1 of 2: Beiuș \(Belényes\)/)
+    expect(row).toHaveTextContent('dates only')
+    const link = within(row).getByRole('link', { name: 'Explore this journey' })
+    expect(link).toHaveAttribute('href', '/journeys?genre=colinda&trip=J-1910-07-01&stop=1')
+
+    vi.unstubAllGlobals()
+    mockCatalogFetch({ '/data/journeys.test.json': { _meta: {}, journeys: fixtureJourneys } })
+    renderApp('/song/bsys-1')
+    await screen.findByRole('heading', { level: 1, name: 'Adio, dragă, adio' })
+    expect(screen.queryByRole('list', { name: 'Collected on' })).toBeNull()
+    expect(screen.queryByText('Explore this journey')).toBeNull()
   })
 
   it('an unknown id renders the not-found state with the footer', async () => {
