@@ -112,9 +112,38 @@ redistributing scraped text, images and audio remains an open decision for the o
 default until then is to link to the source record for audio and notation rather than
 mirroring the files.
 
+## Journey mapper (scope added 2026-09-28)
+
+Goal: pick a date or a trip and see where Bartók departed from, where he went, in what order,
+what the borders looked like then and now, the villages' names then and now, and whether each
+village still exists, with a strip of sourced geopolitical context alongside.
+
+Data (geo engineer): `data/journeys.json` derived from dated records (collector = Bartók,
+sorted by date, split at gaps > 10 days; departure defaults to Budapest and is labelled
+"assumed"); `data/geo/borders-1910|1914|1920|now.json` from open historical GIS datasets
+(historical-basemaps, GISta Hungarorum 1910 counties, Natural Earth), simplified for the web;
+`data/villages.json` from Wikidata (status existing / renamed / merged / abandoned / unknown,
+with evidence); `data/context-events.json`, a hand-curated, cited list of border changes,
+publications, Bartók's own statements on nationalism and folk music, and press reception.
+The context layer presents sources; it does not editorialise. Spec: docs/JOURNEY-SPEC.md,
+sources and attribution: docs/GEO-SOURCES.md.
+
+UI (front-end): a Journeys screen (wireframe artboard 5): timeline of trips with the 1914 and
+1920 markers, route map with numbered stops, then/now border toggle and comparison slider,
+stop list with name-then to name-now and status badge, context strip with citations. Spec
+additions in FRONTEND-SPEC.md, MAP-SPEC.md, UI-COPY.md.
+
+Build steps: after Step 4 add "Step 4b: journeys derivation + geo layers" and after Step 5
+add "Step 5b: Journeys screen"; QA adds acceptance criteria AC-36 onwards (trip split rule,
+border year auto-selection by trip date, village status badges, citations visible).
+
+Data-gate note (from QA): the 95 % county-resolution gate applies to records whose locality is
+in present-day Romania, not to the 13,000 Hungarian records of the Bartók System.
+
 ## Open decisions for the owner
 
 1. Mirror notation images and audio, or link out to the source pages? (Legal and storage.)
 2. Default view: Romania only, or all countries with Romania preselected?
 3. Do we need the Hungarian-language record labels shown alongside English?
 4. Project name on Vercel and a custom domain, if any.
+5. Journey split rule (10-day gap) and the assumed Budapest departure: confirm or adjust.
