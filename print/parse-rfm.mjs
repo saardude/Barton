@@ -224,6 +224,24 @@ function summariseConfidence(e, volumeNote) {
   return bits.join('; ');
 }
 
+/**
+ * A re-OCR data line that sits where an Archive data line already produced an entry
+ * (first or rescue pass) is the same melody: drop it. Archive lines glued into tall
+ * blocks start well above the printed line, so the block height counts.
+ */
+function dedupeReocrEntries(entries) {
+  const archive = entries.filter((e) => e.ocrSource !== 're-ocr');
+  let dropped = 0;
+  const out = entries.filter((e) => {
+    if (e.ocrSource !== 're-ocr') return true;
+    const dup = archive.some((a) => a.page === e.page && e.y >= a.y - 120 && e.y <= a.y + (a.lineH || 0) + 120);
+    if (dup) dropped++;
+    return !dup;
+  });
+  out.dropped = dropped;
+  return out;
+}
+
 async function parseVolume4(loaded, gaz, stats) {
   const { item, pages, text, locate, fetchedAt } = loaded;
   const range = v4.ranges(pages);
@@ -232,7 +250,8 @@ async function parseVolume4(loaded, gaz, stats) {
   const notesPages = pages.slice(range.notes, range.partTwo || range.notes + 12);
   const reocr = await loadReocr(path.join(RAW_DIR, 'reocr', item.id), musicPages.map((p) => p.index));
   const reocrAdded = mergeReocr(musicPages, reocr, v4, 380);
-  const entries = v4.extractEntries(musicPages);
+  const entries = dedupeReocrEntries(v4.extractEntries(musicPages));
+  reocrAdded.duplicatesDropped = entries.dropped;
   keepMonotonicTokens(entries);
   const partTwoStart = text.indexOf('Texts and Translations');
   const labels = v4.extractLabels({ text: text.slice(partTwoStart > 0 ? partTwoStart : 0), entries, notesPages });
@@ -290,7 +309,8 @@ async function parseVolume5(loaded, gaz, stats) {
   const textPages = pages.slice(r.texts, r.end || pages.length);
   const reocr = await loadReocr(path.join(RAW_DIR, 'reocr', item.id), musicPages.map((p) => p.index));
   const reocrAdded = mergeReocr(musicPages, reocr, v5, 400);
-  const entries = v5.extractEntries(musicPages);
+  const entries = dedupeReocrEntries(v5.extractEntries(musicPages));
+  reocrAdded.duplicatesDropped = entries.dropped;
   keepMonotonicTokens(entries);
   const labels = v5.extractLabels({ entries, notesPages, textPages });
   stats.vol5 = { labels: labels.length, labelsWithVillage: labels.filter((l) => l.village).length, entries: entries.length, musicPages: [r.music, r.notes - 1], missingLabels: [], reocr: reocrAdded, reocrEngine: reocr.size ? [...reocr.values()][0].engine : null };

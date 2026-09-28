@@ -207,6 +207,7 @@ export function extractEntries(pages) {
           page: page.index,
           printedPageOcr: printedPage,
           y: line.y,
+          lineH: line.h,
           lineConf: line.conf,
           classHeading,
           numberToken: token,

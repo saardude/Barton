@@ -46,13 +46,18 @@ export function mergeReocr(pages, reocr, vol, tokenX) {
     const isToken = (l) => { const m = l.text.match(vol.NUMBER_TOKEN); return !!m && l.x < tokenX && l.words[0].text.length <= 6 && l.h >= 30; };
     const djvuData = page.lines.filter(isData);
     const djvuTokens = page.lines.filter(isToken);
-    const near = (list, y, dy) => list.some((l) => Math.abs(l.y - y) <= dy);
+    // The Archive OCR often glues a data line into a tall block whose y is the block top,
+    // so "near" means inside the block's vertical extent (plus a margin).
+    const near = (list, y, dy) => list.some((l) => y >= l.y - dy && y <= l.y + Math.max(l.h || 0, 0) + dy);
+    const refKey = (l) => { const d = vol.parseDataLine(l.text); return d && d.referenceCode && /[a-z]\)/.test(d.referenceCode) ? d.referenceCode : null; };
+    const djvuRefs = new Set(djvuData.map(refKey).filter(Boolean));
     const extra = [];
     for (const raw of doc.lines || []) {
       if ((raw.score || 0) < 0.5) continue;
       const line = toLine(raw, sx, sy, doc.engine);
       if (isData(line)) {
-        if (!near(djvuData, line.y, 150)) { extra.push(line); added.data++; }
+        const rk = refKey(line);
+        if (!near(djvuData, line.y, 150) && !(rk && djvuRefs.has(rk))) { extra.push(line); added.data++; }
       } else if (isToken(line)) {
         if (!near(djvuTokens, line.y, 110)) { extra.push(line); added.token++; }
       } else if (vol.looksLikeIncipit(line)) {
