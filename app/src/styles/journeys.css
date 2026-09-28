@@ -949,3 +949,5 @@
   flex-direction: column;
   gap: 2px;
 }
+
+.journey-header__source-note { color: var(--muted); font-size: var(--fs-12, 12px); }

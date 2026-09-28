@@ -3,7 +3,7 @@
 // (what the viewer adds: departure, order of visits, straight-line travel, attached records,
 // the state at the time), the counts, the curated sources when present, and the export.
 import { melodies, t } from '../../i18n/en'
-import { buildJourneyExport, journeyDateText, journeyFileName, journeyPolities, journeyQuality, qualityLabel, type CuratedJourney, type VillageLookup } from '../../state/journeys'
+import { buildJourneyExport, formatCitation, journeyDateText, journeyFileName, journeyPolities, journeyQuality, qualityLabel, type CuratedJourney, type VillageLookup } from '../../state/journeys'
 import { sortKeys } from '../../app/exportJson'
 import { countryName } from '../../state/placeName'
 import { journeyTitle, type JourneyView } from './journeyView'
@@ -98,11 +98,12 @@ export function JourneyHeader({ view, villages, curated, borderAttributions, onC
               <li key={i}>
                 {s.url ? (
                   <a href={s.url} target="_blank" rel="noopener noreferrer">
-                    {s.citation}
+                    {formatCitation(s)}
                   </a>
                 ) : (
-                  s.citation
+                  formatCitation(s)
                 )}
+                {s.note && <span className="journey-header__source-note"> {s.note}</span>}
               </li>
             ))}
           </ul>

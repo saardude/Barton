@@ -756,7 +756,28 @@ export interface CuratedJourney {
   title?: string
   summary?: string
   itinerary?: { date?: string | null; place: string; placeNow?: string | null; note?: string | null }[]
-  sources?: { citation: string; url?: string | null }[]
+  sources?: CuratedSource[]
+}
+
+/** A cited source as written by the research layer (data/journeys-curated.json). */
+export interface CuratedSource {
+  citation?: string | null
+  key?: string | null
+  title?: string | null
+  author?: string | null
+  year?: number | string | null
+  locator?: string | null
+  url?: string | null
+  accessed?: string | null
+  note?: string | null
+}
+
+/** Human-readable citation: "Author (year), Title, locator" or the preformatted string. */
+export function formatCitation(s: CuratedSource): string {
+  if (s.citation) return s.citation
+  const head = [s.author, s.year != null && s.year !== '' ? `(${s.year})` : null].filter(Boolean).join(' ')
+  const parts = [head || null, s.title || null, s.locator || null].filter(Boolean)
+  return parts.length ? parts.join(', ') : s.key || s.url || 'Source'
 }
 
 export interface CuratedFile {
