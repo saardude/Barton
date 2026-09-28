@@ -42,23 +42,39 @@ test('bsys fromContext: listing-only record', () => {
   assert.equal(r.fields._partial, 'listing row only; record page not fetched');
 });
 
-test('bsys parseRecord (modelled fixture, TO CONFIRM) merges page over row context', async () => {
-  const url = 'https://systems.zti.hu/br/en/browse/12/1234';
-  const r = bsys.parseRecord(await fx('bsys-record.html'), url, { brNumber: 'A 1a', incipit: 'Elindultam szép hazámbul', year: '1904' });
-  assert.equal(r.siteRecordId, '12-1234');
-  assert.equal(r.siteId, 'A 1a');
-  assert.equal(r.title, 'Elindultam szép hazámbul');
-  assert.equal(r.placeRaw, 'Gerlicepuszta (Gömör és Kis-Hont)');
-  assert.equal(r.dateRaw, '1904.11.');
-  assert.equal(r.originRaw, 'Kibéd (Maros-Torda)');
-  assert.equal(r.performerRaw, 'Dósa Lidi (18)');
+test('bsys parseRecord (real trimmed page browse/10/12559) merges page over row context', async () => {
+  const url = 'https://systems.zti.hu/br/en/browse/10/12559';
+  const r = bsys.parseRecord(await fx('bsys-record.html'), url, { category: '10', categoryLabel: bsys.CATEGORIES['10'].join(' > '), brNumber: 'C 1025a', incipit: 'Két krajcárom volt nékem', year: '1918', collector: 'Bartók Béla' });
+  assert.equal(r.siteRecordId, '10-12559');
+  assert.equal(r.siteId, 'C 1025a');
+  assert.equal(r.title, 'Két krajcárom volt nékem');
+  assert.equal(r.placeRaw, 'Újszász (Pest-Pilis-Solt-Kiskun)');
+  assert.equal(r.dateRaw, '1918.08.');
+  assert.equal(r.performerRaw, 'Pető Panna (19)');
   assert.equal(r.collectorRaw, 'Bartók Béla');
-  assert.equal(r.number, 'BR_00001');
-  assert.equal(r.cadences, '5 (b3) 1');
-  assert.deepEqual(r.audio.map((a) => a.url), ['https://systems.zti.hu/media/audio/MH_0001a.mp3']);
-  assert.deepEqual(r.notation.map((n) => n.url), ['https://systems.zti.hu/media/images/BR/BR_00001_01.jpg']);
-  assert.ok(r.related.some((x) => x.relation === 'variant' && /search\?sys=A\+1/.test(x.url)));
-  assert.ok(r.related.some((x) => x.id === 'bsys-12-1235'));
+  assert.equal(r.number, 'BR_11984');
+  assert.equal(r.cadences, '(5) 4');
+  assert.equal(r.systemPosition, 'C 1025a');
+  assert.equal(r.style, 'mixed style');
+  assert.equal(r.styleRaw, 'Class C: mixed, not unified style > III. 3-liners');
+  assert.equal(r.form, '3 lines');
+  assert.deepEqual(r.notation.map((n) => n.url), ['https://systems.zti.hu/media/images/BR/BR_11984_01.jpg']);
+  assert.ok(r.related.some((x) => x.relation === 'variant' && /search\?sys=C\+1025/.test(x.url) && x.label === 'melodic variants (2)'));
+  assert.ok(r.related.some((x) => x.id === 'bsys-10-12560'));
+  assert.equal(r.ethnicityRaw, null);
+});
+
+test('bsys style from the category tree and the BR number', () => {
+  const a = bsys.fromContext('https://systems.zti.hu/br/en/browse/15/1', { category: '15', categoryLabel: bsys.CATEGORIES['15'].join(' > '), brNumber: 'A 204a' });
+  assert.equal(a.style, 'old style');
+  assert.equal(a.rhythm, 'parlando-rubato or fixed rhythm');
+  assert.equal(a.syllables, '8');
+  assert.equal(a.form, 'isometric four-liner');
+  const b = bsys.fromContext('https://systems.zti.hu/br/en/browse/82/1', { category: '82', categoryLabel: bsys.CATEGORIES['82'].join(' > ') });
+  assert.equal(b.style, 'instrumental');
+  assert.equal(b.performanceRaw, 'instrumental');
+  const c = bsys.parseRecord('<html><body><div id="record"><p>BR number: B 12c</p></div></body></html>', 'https://systems.zti.hu/br/en/browse/31/5', {});
+  assert.equal(c.style, 'new style');
 });
 
 test('bsys parseRecord never throws on an empty page', () => {

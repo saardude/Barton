@@ -33,9 +33,9 @@ Thumbs.db
 geo/raw/
 geo/cache/
 
-# geo: raw downloads over 5 MB (see geo/README.md for how to re-download), build temp,
-# local deps and the Wikidata response cache (re-created by geo/enrich-wikidata.mjs)
-geo/raw/natural-earth/
-geo/raw/gistory/1_MO-HOR_Shp_EPSG3857/MOTel_KP.*
+# geo: mapshaper temp dir (geo/raw/ and geo/cache/ are ignored above; geo/README.md has the
+# re-download commands for every raw file)
 geo/.build-tmp/
-geo/cache/
+
+# print-source pipeline: Internet Archive OCR downloads (re-create with print/fetch.mjs)
+print/raw/

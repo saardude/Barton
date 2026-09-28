@@ -59,6 +59,8 @@ export function discover($, url) {
   return { records, listings: [] };
 }
 
+const COUNTRY_RE = /^(romania|hungary|slovakia|serbia|ukraine|austria|croatia|slovenia|bulgaria|czech republic|czechia|poland|moldova|turkey|algeria|bosnia and herzegovina|románia|magyarország|szlovákia|szerbia|ukrajna|ausztria|horvátország)$/i;
+
 /**
  * "Belényes/Beiuș (Bihar/Bihor County), February 1910, Béla Bartók"
  * "Székelyvaja (Maros-Torda County; now: Vălenii, Romania), April 1914, Béla Bartók"
@@ -87,16 +89,19 @@ export function parseCollecting(raw) {
   out.villageHistorical = names[0] || null;
   if (names[1]) out.village = names[1];
   if (parenPart) {
-    const [countyPart, nowPart] = parenPart.split(/;\s*now:\s*/i);
+    // "(Bihar/Bihor County)", "(Csík County; now: Tomeşti, Romania)", "(X County; ma: Y)", "(X; now: Y; Ukraine)"
+    const [countyPart, nowPart] = parenPart.split(/;\s*(?:now|ma|today|jelenleg):\s*/i);
     const counties = countyPart.replace(/\s*county\w*\s*$/i, '').split('/').map((s) => clean(s)).filter(Boolean);
     out.countyHistorical = counties[0] || null;
     if (counties[1]) out.county = counties[1];
     if (nowPart) {
-      const parts = nowPart.split(/,\s*/).map((s) => clean(s)).filter(Boolean);
-      if (parts.length >= 2) {
-        out.village = parts[0];
-        out.country = parts[parts.length - 1];
-      } else if (parts.length === 1) out.country = parts[0];
+      const parts = nowPart.split(/[,;]\s*/).map((s) => clean(s)).filter(Boolean);
+      for (const part of parts) {
+        const cm = part.match(/^(.*?)\s+county$/i);
+        if (cm) out.county = clean(cm[1]);
+        else if (COUNTRY_RE.test(part)) out.country = part;
+        else if (!out.village) out.village = part;
+      }
     }
   }
   if (tail) {

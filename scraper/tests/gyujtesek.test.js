@@ -37,11 +37,12 @@ test('gyuj discover: record links with row context from a real collection table 
   assert.equal(r.context.date, '1912.');
   assert.equal(r.context.informant, 'Boross Péter');
   assert.equal(r.context.sound, 'MH_1628a');
+  assert.equal(r.context.collectionUrl, 'https://bartok-gyujtesek.zti.hu/en/browse/68');
 });
 
 test('gyuj parseRecord (real trimmed page with Place of origin)', async () => {
   const url = 'https://bartok-gyujtesek.zti.hu/en/browse/1/12994';
-  const rec = gyuj.parseRecord(await fx('gyuj-record.html'), url, { collectionId: '1' });
+  const rec = gyuj.parseRecord(await fx('gyuj-record.html'), url, { collectionId: '1', collectionLabel: 'July – November, 1904. Gerlicepuszta / Kibéd (8)', collectionDate: 'July – November, 1904', collectionPlace: 'Gerlicepuszta / Kibéd' });
   assert.equal(rec.siteRecordId, '1-12994');
   assert.equal(rec.siteId, 'BR_12388');
   assert.equal(rec.number, '12994');
@@ -54,6 +55,8 @@ test('gyuj parseRecord (real trimmed page with Place of origin)', async () => {
   assert.equal(rec.referenceCode, 'C 1231a');
   assert.equal(rec.systemPosition, 'C 1231a');
   assert.equal(rec.cadences, '(1) 1');
+  assert.equal(rec.style, 'mixed style');
+  assert.equal(rec.journey.collectionId, '1');
   assert.deepEqual(rec.notation.map((m) => m.url), ['https://bartok-gyujtesek.zti.hu/media/images/BR/BR_12388_01.jpg']);
   assert.deepEqual(rec.audio, []);
   assert.ok(rec.related.some((x) => x.relation === 'variant' && x.url === 'http://sys.zti.hu/br/en/search?sys=C+1231' && x.label === 'melodic variants (3)'));

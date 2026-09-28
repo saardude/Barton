@@ -21,15 +21,16 @@
         "season": 0,
         "year": 0
       },
-      "placesResolved": 64,
-      "placesUnresolved": 47,
+      "placesResolved": 103,
+      "placesViaWikidata": 37,
+      "placesUnresolved": 8,
       "romanianDocumented": 12,
       "romanianInferred": 8
     },
     "notes": [
       "label is verbatim from the site (English index). Entry 64 is truncated on the site (\"Land of\"); entry 65 is its Hungarian cross-reference (Mocvidek).",
       "date.precision: day (explicit days), phrase (Beginning of / Middle of / End of / After: a 10-day window), month, season, year. Where the label carries no year the accordion year is used and yearFromGroup is true.",
-      "places[].resolution: gazetteer (locality in data/gazetteer.json), region-table (built-in region or county centre, approximate), ambiguous, unresolved. Region centres are for clusters, not routes.",
+      "places[].resolution: gazetteer (locality in data/gazetteer.json), region-table (built-in region or county centre, approximate), wikidata (locality outside Romania found by its Hungarian label on Wikidata, single settlement hit, coordinates from P625), ambiguous, unresolved. Region centres are for clusters, not routes.",
       "romanianMaterial: documented = matches the collecting chronology in Rumanian Folk Music (Suchoff ed.); inferred = Romanian-speaking area, not checked entry by entry; unknown = present-day Romania but language of the material not checked (Szekely and other Hungarian villages fall here too)."
     ]
   },
@@ -75,15 +76,16 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Gerlicepuszta",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         },
         {
           "confidence": "high",
           "county": "Mureș",
           "countyHistorical": "Maros-Torda",
           "kind": "village",
-          "lat": 46.47,
-          "lng": 24.94,
+          "lat": 46.5329,
+          "lng": 24.9624,
           "name": "Chibed",
           "nameAlt": null,
           "nameHu": "Kibéd",
@@ -126,22 +128,28 @@
       "id": "4",
       "journeyId": "gyuj-4",
       "label": "June – July, 1905. Vésztő (5)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Vésztő",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.925555555,
+          "lng": 21.263888888,
           "name": "Vésztő",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Vésztő",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q855066",
+          "resolution": "wikidata",
           "text": "Vésztő",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q855066"
         }
       ],
       "romanianMaterial": {
@@ -174,22 +182,28 @@
       "id": "2",
       "journeyId": "gyuj-2",
       "label": "June, 1906. Jobaháza (38)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Jobaháza",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.58,
+          "lng": 17.1884,
           "name": "Jobaháza",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Jobaháza",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q1089734",
+          "resolution": "wikidata",
           "text": "Jobaháza",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q1089734"
         }
       ],
       "romanianMaterial": {
@@ -222,22 +236,28 @@
       "id": "5",
       "journeyId": "gyuj-5",
       "label": "June, 1906. Bogyoszló (4)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Bogyoszló",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.561630555,
+          "lng": 17.1863,
           "name": "Bogyoszló",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Bogyoszló",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q833496",
+          "resolution": "wikidata",
           "text": "Bogyoszló",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q833496"
         }
       ],
       "romanianMaterial": {
@@ -270,22 +290,28 @@
       "id": "3",
       "journeyId": "gyuj-3",
       "label": "June 29 – August, 1906. Tura (155)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Tura",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.606666666,
+          "lng": 19.596666666,
           "name": "Tura",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Tura",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q1064032",
+          "resolution": "wikidata",
           "text": "Tura",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q1064032"
         }
       ],
       "romanianMaterial": {
@@ -322,6 +348,10 @@
       "placeRaw": "Gyula",
       "places": [
         {
+          "candidates": [
+            "Q214938",
+            "Q428344"
+          ],
           "county": null,
           "countyHistorical": null,
           "kind": null,
@@ -331,9 +361,10 @@
           "nameAlt": null,
           "nowIn": null,
           "placeId": null,
-          "resolution": "unresolved",
+          "resolution": "ambiguous",
           "text": "Gyula",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "2 settlements with this Hungarian label"
         }
       ],
       "romanianMaterial": {
@@ -366,22 +397,28 @@
       "id": "10",
       "journeyId": "gyuj-10",
       "label": "July, 1906. Csongrád (5)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Csongrád",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.711111111,
+          "lng": 20.140277777,
           "name": "Csongrád",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Csongrád",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q649214",
+          "resolution": "wikidata",
           "text": "Csongrád",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q649214"
         }
       ],
       "romanianMaterial": {
@@ -414,22 +451,28 @@
       "id": "11",
       "journeyId": "gyuj-11",
       "label": "July, 1906. Doboz (43)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Doboz",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.733333333,
+          "lng": 21.25,
           "name": "Doboz",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Doboz",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q907228",
+          "resolution": "wikidata",
           "text": "Doboz",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q907228"
         }
       ],
       "romanianMaterial": {
@@ -462,22 +505,28 @@
       "id": "12",
       "journeyId": "gyuj-12",
       "label": "July – August, 1906. Hajdúsámson (58)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Hajdúsámson",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.6,
+          "lng": 21.766666666,
           "name": "Hajdúsámson",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Hajdúsámson",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q911650",
+          "resolution": "wikidata",
           "text": "Hajdúsámson",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q911650"
         }
       ],
       "romanianMaterial": {
@@ -512,22 +561,28 @@
       "id": "6",
       "journeyId": "gyuj-6",
       "label": "Beginning of July, 1906. Vácszentlászló (10)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Vácszentlászló",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.57312,
+          "lng": 19.53526,
           "name": "Vácszentlászló",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Vácszentlászló",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q1186050",
+          "resolution": "wikidata",
           "text": "Vácszentlászló",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q1186050"
         }
       ],
       "romanianMaterial": {
@@ -560,22 +615,28 @@
       "id": "13",
       "journeyId": "gyuj-13",
       "label": "August, 1906. Tápiószele (31)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Tápiószele",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.333333,
+          "lng": 19.883333,
           "name": "Tápiószele",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Tápiószele",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q979340",
+          "resolution": "wikidata",
           "text": "Tápiószele",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q979340"
         }
       ],
       "romanianMaterial": {
@@ -608,22 +669,28 @@
       "id": "14",
       "journeyId": "gyuj-14",
       "label": "August, 1906. Gyulavári (19)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Gyulavári",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.6422032,
+          "lng": 21.3226045,
           "name": "Gyulavári",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Gyulavári",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q21936936",
+          "resolution": "wikidata",
           "text": "Gyulavári",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q21936936"
         }
       ],
       "romanianMaterial": {
@@ -656,22 +723,28 @@
       "id": "16",
       "journeyId": "gyuj-16",
       "label": "August, 1906. (?) / Mikosszéplak (4)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "(?) / Mikosszéplak",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.03195,
+          "lng": 16.97396,
           "name": "Mikosszéplak",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Mikosszéplak",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q765786",
+          "resolution": "wikidata",
           "text": "Mikosszéplak",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q765786"
         }
       ],
       "romanianMaterial": {
@@ -758,22 +831,28 @@
       "id": "17",
       "journeyId": "gyuj-17",
       "label": "End of August, 1906. Szentes (16)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Szentes",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.651944444,
+          "lng": 20.257222222,
           "name": "Szentes",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Szentes",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q377834",
+          "resolution": "wikidata",
           "text": "Szentes",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q377834"
         }
       ],
       "romanianMaterial": {
@@ -808,22 +887,28 @@
       "id": "18",
       "journeyId": "gyuj-18",
       "label": "End of August, 1906. Horgos (39)",
-      "nowIn": [],
+      "nowIn": [
+        "RS"
+      ],
       "placeRaw": "Horgos",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Horgos",
+          "kind": "settlement",
+          "lat": 46.155555555,
+          "lng": 19.9725,
+          "name": "Horgoš",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Horgos",
+          "nameRo": null,
+          "nowIn": "RS",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q1017610",
+          "resolution": "wikidata",
           "text": "Horgos",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q1017610"
         }
       ],
       "romanianMaterial": {
@@ -858,22 +943,28 @@
       "id": "19",
       "journeyId": "gyuj-19",
       "label": "End of August, 1906. Szeged (44)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Szeged",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.25,
+          "lng": 20.166666666,
           "name": "Szeged",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Szeged",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q81581",
+          "resolution": "wikidata",
           "text": "Szeged",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q81581"
         }
       ],
       "romanianMaterial": {
@@ -906,24 +997,25 @@
       "id": "15",
       "journeyId": "gyuj-15",
       "label": "September, 1906. Nagyszentmiklós (1)",
-      "nowIn": [],
+      "nowIn": [
+        "RO"
+      ],
       "placeRaw": "Nagyszentmiklós",
       "places": [
         {
-          "candidates": [
-            "ro/banat/timis/sannicolau-mare",
-            "ro/banat/timis/sannicolau-mare"
-          ],
-          "county": null,
-          "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Nagyszentmiklós",
+          "confidence": "high",
+          "county": "Timiș",
+          "countyHistorical": "Torontál",
+          "kind": "town",
+          "lat": 46.07,
+          "lng": 20.63,
+          "name": "Sânnicolau Mare",
           "nameAlt": null,
-          "nowIn": null,
-          "placeId": null,
-          "resolution": "ambiguous",
+          "nameHu": "Nagyszentmiklós",
+          "nameRo": "Sânnicolau Mare",
+          "nowIn": "RO",
+          "placeId": "ro/banat/timis/sannicolau-mare",
+          "resolution": "gazetteer",
           "text": "Nagyszentmiklós",
           "uncertain": false
         }
@@ -958,22 +1050,28 @@
       "id": "21",
       "journeyId": "gyuj-21",
       "label": "September, 1906. Felsőireg (66)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Felsőireg",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.6956,
+          "lng": 18.1824,
           "name": "Felsőireg",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Felsőireg",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q122700375",
+          "resolution": "wikidata",
           "text": "Felsőireg",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q122700375"
         }
       ],
       "romanianMaterial": {
@@ -1010,6 +1108,10 @@
       "placeRaw": "Dunapentele",
       "places": [
         {
+          "candidates": [
+            "Q187812",
+            "Q19289906"
+          ],
           "county": null,
           "countyHistorical": null,
           "kind": null,
@@ -1019,9 +1121,10 @@
           "nameAlt": null,
           "nowIn": null,
           "placeId": null,
-          "resolution": "unresolved",
+          "resolution": "ambiguous",
           "text": "Dunapentele",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "2 settlements with this Hungarian label"
         }
       ],
       "romanianMaterial": {
@@ -1054,22 +1157,28 @@
       "id": "23",
       "journeyId": "gyuj-23",
       "label": "September, 1906. Baracs (54)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Baracs",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.910519444,
+          "lng": 18.866388888,
           "name": "Baracs",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Baracs",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q790169",
+          "resolution": "wikidata",
           "text": "Baracs",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q790169"
         }
       ],
       "romanianMaterial": {
@@ -1102,22 +1211,28 @@
       "id": "20",
       "journeyId": "gyuj-20",
       "label": "September 1, 1906. Apátfalva",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Apátfalva",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.166666666,
+          "lng": 20.583333333,
           "name": "Apátfalva",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Apátfalva",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q774368",
+          "resolution": "wikidata",
           "text": "Apátfalva",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q774368"
         }
       ],
       "romanianMaterial": {
@@ -1152,22 +1267,28 @@
       "id": "24",
       "journeyId": "gyuj-24",
       "label": "End of September, 1906. Balatonberény (3)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Balatonberény",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.706788888,
+          "lng": 17.32095,
           "name": "Balatonberény",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Balatonberény",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q789252",
+          "resolution": "wikidata",
           "text": "Balatonberény",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q789252"
         }
       ],
       "romanianMaterial": {
@@ -1202,22 +1323,28 @@
       "id": "25",
       "journeyId": "gyuj-25",
       "label": "End of September, 1906. Keszthely (42)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Keszthely",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.7675,
+          "lng": 17.24628,
           "name": "Keszthely",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Keszthely",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q526335",
+          "resolution": "wikidata",
           "text": "Keszthely",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q526335"
         }
       ],
       "romanianMaterial": {
@@ -1302,22 +1429,28 @@
       "id": "27",
       "journeyId": "gyuj-27",
       "label": "November – December, 1906. Vésztő (19)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Vésztő",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.925555555,
+          "lng": 21.263888888,
           "name": "Vésztő",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Vésztő",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q855066",
+          "resolution": "wikidata",
           "text": "Vésztő",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q855066"
         }
       ],
       "romanianMaterial": {
@@ -1350,22 +1483,28 @@
       "id": "103",
       "journeyId": "gyuj-103",
       "label": "November, 1906. Doboz (115)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Doboz",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.733333333,
+          "lng": 21.25,
           "name": "Doboz",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Doboz",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q907228",
+          "resolution": "wikidata",
           "text": "Doboz",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q907228"
         }
       ],
       "romanianMaterial": {
@@ -1425,8 +1564,8 @@
           "county": "Mureș",
           "countyHistorical": "Maros-Torda",
           "kind": "village",
-          "lat": 46.47,
-          "lng": 24.94,
+          "lat": 46.5329,
+          "lng": 24.9624,
           "name": "Chibed",
           "nameAlt": null,
           "nameHu": "Kibéd",
@@ -1521,22 +1660,28 @@
       "id": "28",
       "journeyId": "gyuj-28",
       "label": "March 24 – April 3, 1907. Felsőireg (258)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Felsőireg",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.6956,
+          "lng": 18.1824,
           "name": "Felsőireg",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Felsőireg",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q122700375",
+          "resolution": "wikidata",
           "text": "Felsőireg",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q122700375"
         }
       ],
       "romanianMaterial": {
@@ -1571,22 +1716,28 @@
       "id": "29",
       "journeyId": "gyuj-29",
       "label": "Beginning of April, 1907. Felsőnyék (5)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Felsőnyék",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.78873,
+          "lng": 18.29088,
           "name": "Felsőnyék",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Felsőnyék",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q570191",
+          "resolution": "wikidata",
           "text": "Felsőnyék",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q570191"
         }
       ],
       "romanianMaterial": {
@@ -1619,22 +1770,28 @@
       "id": "30",
       "journeyId": "gyuj-30",
       "label": "May, 1907. Fót (11)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Fót",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.609166666,
+          "lng": 19.192777777,
           "name": "Fót",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Fót",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q830652",
+          "resolution": "wikidata",
           "text": "Fót",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q830652"
         }
       ],
       "romanianMaterial": {
@@ -1667,22 +1824,28 @@
       "id": "31",
       "journeyId": "gyuj-31",
       "label": "June 28 – July 1, 1907. Jászberény (21)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Jászberény",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.5,
+          "lng": 19.916666666,
           "name": "Jászberény",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Jászberény",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q281371",
+          "resolution": "wikidata",
           "text": "Jászberény",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q281371"
         }
       ],
       "romanianMaterial": {
@@ -1779,8 +1942,8 @@
           "county": "Harghita",
           "countyHistorical": "Csík",
           "kind": "village",
-          "lat": 46.44,
-          "lng": 25.77,
+          "lat": 46.4518,
+          "lng": 25.7606,
           "name": "Racu",
           "nameAlt": null,
           "nameHu": "Csíkrákos",
@@ -1941,8 +2104,8 @@
           "county": "Harghita",
           "countyHistorical": "Csík",
           "kind": "village",
-          "lat": 46.49,
-          "lng": 25.78,
+          "lat": 46.5333,
+          "lng": 25.7608,
           "name": "Cârța",
           "nameAlt": null,
           "nameHu": "Csíkkarcfalva",
@@ -1991,12 +2154,12 @@
       "placeRaw": "Vacsárdi",
       "places": [
         {
-          "confidence": "medium",
+          "confidence": "high",
           "county": "Harghita",
           "countyHistorical": "Csík",
           "kind": "village",
-          "lat": 46.46,
-          "lng": 25.87,
+          "lat": 46.4658,
+          "lng": 25.7985,
           "name": "Văcărești",
           "nameAlt": null,
           "nameHu": "Vacsárdi",
@@ -2049,8 +2212,8 @@
           "county": "Harghita",
           "countyHistorical": "Csík",
           "kind": "village",
-          "lat": 46.66,
-          "lng": 25.55,
+          "lat": 46.6596,
+          "lng": 25.5572,
           "name": "Suseni",
           "nameAlt": null,
           "nameHu": "Gyergyóújfalu",
@@ -2211,8 +2374,8 @@
           "county": "Harghita",
           "countyHistorical": "Csík",
           "kind": "village",
-          "lat": 46.68,
-          "lng": 25.53,
+          "lat": 46.6783,
+          "lng": 25.5179,
           "name": "Ciumani",
           "nameAlt": null,
           "nameHu": "Gyergyócsomafalva",
@@ -2267,8 +2430,8 @@
           "county": "Cluj",
           "countyHistorical": "Kolozs",
           "kind": "village",
-          "lat": 46.83,
-          "lng": 23.1,
+          "lat": 46.8384,
+          "lng": 23.1056,
           "name": "Izvoru Crișului",
           "nameAlt": null,
           "nameHu": "Körösfő",
@@ -2323,8 +2486,8 @@
           "county": "Cluj",
           "countyHistorical": "Kolozs",
           "kind": "village",
-          "lat": 46.83,
-          "lng": 23.1,
+          "lat": 46.8384,
+          "lng": 23.1056,
           "name": "Izvoru Crișului",
           "nameAlt": null,
           "nameHu": "Körösfő",
@@ -2419,22 +2582,28 @@
       "id": "42",
       "journeyId": "gyuj-42",
       "label": "November 1–2, 1907. Kánya (16)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Kánya",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.69595,
+          "lng": 18.06813,
           "name": "Kánya",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Kánya",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q727498",
+          "resolution": "wikidata",
           "text": "Kánya",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q727498"
         }
       ],
       "romanianMaterial": {
@@ -2477,8 +2646,8 @@
           "county": "Cluj",
           "countyHistorical": "Kolozs",
           "kind": "village",
-          "lat": 46.83,
-          "lng": 23.1,
+          "lat": 46.8384,
+          "lng": 23.1056,
           "name": "Izvoru Crișului",
           "nameAlt": null,
           "nameHu": "Körösfő",
@@ -2590,7 +2759,8 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Tőkésújfalu",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         },
         {
           "county": null,
@@ -2604,7 +2774,8 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Apátkolos",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         }
       ],
       "romanianMaterial": {
@@ -2649,8 +2820,8 @@
           "county": "Alba",
           "countyHistorical": "Torda-Aranyos",
           "kind": "village",
-          "lat": 46.45,
-          "lng": 23.57,
+          "lat": 46.4531,
+          "lng": 23.5676,
           "name": "Rimetea",
           "nameAlt": null,
           "nameHu": "Torockó",
@@ -2705,8 +2876,8 @@
           "county": "Alba",
           "countyHistorical": "Torda-Aranyos",
           "kind": "village",
-          "lat": 46.45,
-          "lng": 23.57,
+          "lat": 46.4531,
+          "lng": 23.5676,
           "name": "Rimetea",
           "nameAlt": null,
           "nameHu": "Torockó",
@@ -2766,22 +2937,28 @@
       "id": "49",
       "journeyId": "gyuj-49",
       "label": "February 3–4, 1909. Zobordarázs",
-      "nowIn": [],
+      "nowIn": [
+        "SK"
+      ],
       "placeRaw": "Zobordarázs",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Zobordarázs",
+          "kind": "settlement",
+          "lat": 48.3536417,
+          "lng": 18.0565564,
+          "name": "Dražovce",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Zobordarázs",
+          "nameRo": null,
+          "nowIn": "SK",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q1467571",
+          "resolution": "wikidata",
           "text": "Zobordarázs",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q1467571"
         }
       ],
       "romanianMaterial": {
@@ -2866,22 +3043,28 @@
       "id": "52",
       "journeyId": "gyuj-52",
       "label": "August, 1909. Vésztő (21)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Vésztő",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.925555555,
+          "lng": 21.263888888,
           "name": "Vésztő",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Vésztő",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q855066",
+          "resolution": "wikidata",
           "text": "Vésztő",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q855066"
         }
       ],
       "romanianMaterial": {
@@ -3023,24 +3206,25 @@
       "id": "55",
       "journeyId": "gyuj-55",
       "label": "January, 1910. Nagyszentmiklós",
-      "nowIn": [],
+      "nowIn": [
+        "RO"
+      ],
       "placeRaw": "Nagyszentmiklós",
       "places": [
         {
-          "candidates": [
-            "ro/banat/timis/sannicolau-mare",
-            "ro/banat/timis/sannicolau-mare"
-          ],
-          "county": null,
-          "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Nagyszentmiklós",
+          "confidence": "high",
+          "county": "Timiș",
+          "countyHistorical": "Torontál",
+          "kind": "town",
+          "lat": 46.07,
+          "lng": 20.63,
+          "name": "Sânnicolau Mare",
           "nameAlt": null,
-          "nowIn": null,
-          "placeId": null,
-          "resolution": "ambiguous",
+          "nameHu": "Nagyszentmiklós",
+          "nameRo": "Sânnicolau Mare",
+          "nowIn": "RO",
+          "placeId": "ro/banat/timis/sannicolau-mare",
+          "resolution": "gazetteer",
           "text": "Nagyszentmiklós",
           "uncertain": false
         }
@@ -3138,22 +3322,28 @@
       "id": "57",
       "journeyId": "gyuj-57",
       "label": "End of March – Beginning of April, November 5–6, 1910. Nagymegyer (84)",
-      "nowIn": [],
+      "nowIn": [
+        "SK"
+      ],
       "placeRaw": "Nagymegyer",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.85,
+          "lng": 17.766666666,
           "name": "Nagymegyer",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Nagymegyer",
+          "nameRo": null,
+          "nowIn": "SK",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q740469",
+          "resolution": "wikidata",
           "text": "Nagymegyer",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q740469"
         }
       ],
       "romanianMaterial": {
@@ -3198,8 +3388,8 @@
           "county": "Cluj",
           "countyHistorical": "Kolozs",
           "kind": "village",
-          "lat": 46.78,
-          "lng": 23.07,
+          "lat": 46.7743,
+          "lng": 23.0838,
           "name": "Mănăstireni",
           "nameAlt": null,
           "nameHu": "Magyargyerőmonostor",
@@ -3252,8 +3442,8 @@
           "county": "Cluj",
           "countyHistorical": "Kolozs",
           "kind": "village",
-          "lat": 46.83,
-          "lng": 23.1,
+          "lat": 46.8384,
+          "lng": 23.1056,
           "name": "Izvoru Crișului",
           "nameAlt": null,
           "nameHu": "Körösfő",
@@ -3348,23 +3538,29 @@
       "id": "61",
       "journeyId": "gyuj-61",
       "label": "November 13, 1910. Ipolyság. Shepherd’s horn and bagpipe competition (54)",
-      "nowIn": [],
+      "nowIn": [
+        "SK"
+      ],
       "placeRaw": "Ipolyság. Shepherd’s horn and bagpipe competition",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Ipolyság",
+          "kind": "settlement",
+          "lat": 48.066666666,
+          "lng": 18.966666666,
+          "name": "Šahy",
           "nameAlt": null,
+          "nameHu": "Ipolyság",
+          "nameRo": null,
           "note": "Shepherd’s horn and bagpipe competition",
-          "nowIn": null,
+          "nowIn": "SK",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q390946",
+          "resolution": "wikidata",
           "text": "Ipolyság",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q390946"
         }
       ],
       "romanianMaterial": {
@@ -3506,22 +3702,28 @@
       "id": "63",
       "journeyId": "gyuj-63",
       "label": "November 1, 1911. Nagyszőlős",
-      "nowIn": [],
+      "nowIn": [
+        "UA"
+      ],
       "placeRaw": "Nagyszőlős",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Nagyszőlős",
+          "kind": "settlement",
+          "lat": 48.139722222,
+          "lng": 23.033055555,
+          "name": "Vynohradiv",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Nagyszőlős",
+          "nameRo": null,
+          "nowIn": "UA",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q752334",
+          "resolution": "wikidata",
           "text": "Nagyszőlős",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q752334"
         }
       ],
       "romanianMaterial": {
@@ -3618,8 +3820,8 @@
           "county": "Bihor",
           "countyHistorical": "Bihar",
           "kind": "village",
-          "lat": 46.63,
-          "lng": 22.33,
+          "lat": 46.6348,
+          "lng": 22.3651,
           "name": "Tărcaia",
           "nameAlt": null,
           "nameHu": "Köröstárkány",
@@ -3828,12 +4030,12 @@
           "uncertain": false
         },
         {
-          "confidence": "medium",
+          "confidence": "high",
           "county": "Bihor",
           "countyHistorical": "Bihar",
           "kind": "village",
-          "lat": 46.86,
-          "lng": 22.55,
+          "lat": 47.0452,
+          "lng": 22.4797,
           "name": "Groși",
           "nameAlt": null,
           "nameHu": "Tőtös",
@@ -3966,22 +4168,28 @@
       "id": "72",
       "journeyId": "gyuj-72",
       "label": "End of March – Beginning of April, 1912. Rafajnaújfalu (24)",
-      "nowIn": [],
+      "nowIn": [
+        "UA"
+      ],
       "placeRaw": "Rafajnaújfalu",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Rafajnaújfalu",
+          "kind": "settlement",
+          "lat": 48.326666666,
+          "lng": 22.486944444,
+          "name": "Rafainovo",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Rafajnaújfalu",
+          "nameRo": null,
+          "nowIn": "UA",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q521010",
+          "resolution": "wikidata",
           "text": "Rafajnaújfalu",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q521010"
         }
       ],
       "romanianMaterial": {
@@ -4032,7 +4240,8 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Nagygút",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         }
       ],
       "romanianMaterial": {
@@ -4071,12 +4280,12 @@
       "placeRaw": "Mezőszabad",
       "places": [
         {
-          "confidence": "medium",
+          "confidence": "high",
           "county": "Mureș",
           "countyHistorical": "Maros-Torda",
           "kind": "village",
-          "lat": 46.6,
-          "lng": 24.57,
+          "lat": 46.6138,
+          "lng": 24.524,
           "name": "Voiniceni",
           "nameAlt": null,
           "nameHu": "Mezőszabad",
@@ -4120,22 +4329,28 @@
       "id": "75",
       "journeyId": "gyuj-75",
       "label": "After April 5, 1912. Fornos (22)",
-      "nowIn": [],
+      "nowIn": [
+        "UA"
+      ],
       "placeRaw": "Fornos",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Fornos",
+          "kind": "settlement",
+          "lat": 48.360555555,
+          "lng": 22.741666666,
+          "name": "Fornosh",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Fornos",
+          "nameRo": null,
+          "nowIn": "UA",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q714676",
+          "resolution": "wikidata",
           "text": "Fornos",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q714676"
         }
       ],
       "romanianMaterial": {
@@ -4170,22 +4385,28 @@
       "id": "76",
       "journeyId": "gyuj-76",
       "label": "After April 5, 1912. Dercen (30)",
-      "nowIn": [],
+      "nowIn": [
+        "UA"
+      ],
       "placeRaw": "Dercen",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Dercen",
+          "kind": "settlement",
+          "lat": 48.335,
+          "lng": 22.6825,
+          "name": "Dertsen",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Dercen",
+          "nameRo": null,
+          "nowIn": "UA",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q714257",
+          "resolution": "wikidata",
           "text": "Dercen",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q714257"
         }
       ],
       "romanianMaterial": {
@@ -4220,22 +4441,28 @@
       "id": "77",
       "journeyId": "gyuj-77",
       "label": "After April 5, 1912. Kincseshomok (1)",
-      "nowIn": [],
+      "nowIn": [
+        "UA"
+      ],
       "placeRaw": "Kincseshomok",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
-          "name": "Kincseshomok",
+          "kind": "settlement",
+          "lat": 48.56,
+          "lng": 22.264444444,
+          "name": "Kholmok",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Kincseshomok",
+          "nameRo": null,
+          "nowIn": "UA",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q643706",
+          "resolution": "wikidata",
           "text": "Kincseshomok",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q643706"
         }
       ],
       "romanianMaterial": {
@@ -4866,12 +5093,12 @@
       "placeRaw": "Nyárádköszvényes",
       "places": [
         {
-          "confidence": "medium",
+          "confidence": "high",
           "county": "Mureș",
           "countyHistorical": "Maros-Torda",
           "kind": "village",
-          "lat": 46.62,
-          "lng": 24.88,
+          "lat": 46.653,
+          "lng": 24.9024,
           "name": "Mătrici",
           "nameAlt": null,
           "nameHu": "Nyárádköszvényes",
@@ -4967,22 +5194,28 @@
       "id": "91",
       "journeyId": "gyuj-91",
       "label": "1915. január–február. Rákoskeresztúr (11)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Rákoskeresztúr",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 47.483333333,
+          "lng": 19.25,
           "name": "Rákoskeresztúr",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Rákoskeresztúr",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q288071",
+          "resolution": "wikidata",
           "text": "Rákoskeresztúr",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q288071"
         }
       ],
       "romanianMaterial": {
@@ -5104,16 +5337,16 @@
             "end": "1915-11",
             "precision": "month",
             "qualifiers": [],
-            "raw": "11",
+            "raw": "11. 1915",
             "start": "1915-11",
             "uncertain": false
           }
         ],
         "precision": "month",
         "start": "1915-11",
-        "yearFromGroup": true
+        "yearFromGroup": false
       },
-      "dateRaw": "11",
+      "dateRaw": "11. 1915",
       "groupYear": 1915,
       "hasOnlineRecords": false,
       "id": "94",
@@ -5122,7 +5355,7 @@
       "nowIn": [
         "SK"
       ],
-      "placeRaw": "1915 Zólyom county, Slovakian",
+      "placeRaw": "Zólyom county, Slovakian",
       "places": [
         {
           "county": null,
@@ -5138,7 +5371,7 @@
           "nowIn": "SK",
           "placeId": null,
           "resolution": "region-table",
-          "text": "1915 Zólyom county",
+          "text": "Zólyom county",
           "uncertain": false
         }
       ],
@@ -5239,7 +5472,8 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Pónik (Gömör county)",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         }
       ],
       "romanianMaterial": {
@@ -5326,22 +5560,28 @@
       "id": "104",
       "journeyId": "gyuj-104",
       "label": "07. 1918, Vésztő (31)",
-      "nowIn": [],
+      "nowIn": [
+        "HU"
+      ],
       "placeRaw": "Vésztő",
       "places": [
         {
           "county": null,
           "countyHistorical": null,
-          "kind": null,
-          "lat": null,
-          "lng": null,
+          "kind": "settlement",
+          "lat": 46.925555555,
+          "lng": 21.263888888,
           "name": "Vésztő",
           "nameAlt": null,
-          "nowIn": null,
+          "nameHu": "Vésztő",
+          "nameRo": null,
+          "nowIn": "HU",
           "placeId": null,
-          "resolution": "unresolved",
+          "qid": "Q855066",
+          "resolution": "wikidata",
           "text": "Vésztő",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataUrl": "https://www.wikidata.org/wiki/Q855066"
         }
       ],
       "romanianMaterial": {
@@ -5389,7 +5629,8 @@
           "placeId": null,
           "resolution": "unresolved",
           "text": "Felsőszászberek",
-          "uncertain": false
+          "uncertain": false,
+          "wikidataNote": "no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT"
         }
       ],
       "romanianMaterial": {

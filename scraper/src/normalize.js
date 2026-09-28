@@ -245,22 +245,20 @@ export function resolvePlace(half, gazetteer) {
   const out = { village: null, villageHistorical: half ? half.name : null, county: null, countyHistorical: half ? half.county : null, region: null, country: null, lat: null, lng: null, placeId: null, resolution: 'unresolved', confidence: null };
   if (!half || !half.name) return out;
   const countyEntry = half.county && gazetteer ? gazetteer.county(half.county) : null;
-  if (countyEntry) {
+  const hc = half.county && gazetteer ? gazetteer.historicalCounty(half.county) : null;
+  // A modern county name is unambiguous; a historical one only when it lies wholly in one country.
+  const isModernName = countyEntry && fold(stripQualifiers(half.county)) === fold(countyEntry.name);
+  if (isModernName) {
     out.county = countyEntry.name;
     out.region = countyEntry.region;
     out.country = countyEntry.country;
+  } else if (hc && hc.exclusive && hc.country) {
+    out.country = hc.country;
+    out.region = hc.region;
+    out.county = hc.county;
   }
   const hit = gazetteer ? gazetteer.lookup(half.name, { county: half.county }) : null;
-  if (!hit && gazetteer && half.county) {
-    // Village unknown: derive what the historical county alone allows.
-    const hc = gazetteer.historicalCounty(half.county);
-    if (hc && hc.exclusive && hc.country) {
-      out.country = hc.country;
-      out.region = hc.region || out.region;
-      out.county = hc.county || out.county;
-      out.resolution = 'county';
-    }
-  }
+  if (!hit && out.country) out.resolution = 'county';
   if (hit) {
     const e = hit.entry;
     out.village = e.name;
@@ -297,6 +295,18 @@ export function resolveStructuredPlace(place, gazetteer) {
   out.villageHistorical = clean(place.villageHistorical) || clean(place.village) || null;
   out.countyHistorical = clean(place.countyHistorical) || null;
   out.country = countryCode(place.country);
+  // The site may print a Romanian form of the historical county after the slash ("Maros-Torda/Mureș-Turda"):
+  // accept it as the modern county only when the gazetteer knows it as one.
+  const statedCounty = clean(place.county);
+  const statedEntry = statedCounty && gazetteer ? gazetteer.county(statedCounty) : null;
+  const statedIsModern = statedEntry && fold(statedCounty) === fold(statedEntry.name);
+  if (statedIsModern) place = { ...place, county: statedEntry.name };
+  if (statedCounty && !statedIsModern && gazetteer) {
+    const hc = gazetteer.historicalCounty(statedCounty);
+    if (hc && hc.exclusive && hc.county) place = { ...place, county: hc.county };
+    else if (statedEntry) place = { ...place, county: statedEntry.name };
+    else place = { ...place, county: null };
+  }
   const hist = { name: out.villageHistorical, county: out.countyHistorical };
   const g0 = gazetteer ? resolvePlace(hist, gazetteer) : null;
   // Use the gazetteer only when it does not contradict the country the site states.

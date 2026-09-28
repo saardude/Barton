@@ -31,6 +31,16 @@ test('fmbc parseCollecting: the three formats printed by the site', () => {
   assert.equal(c.countyHistorical, 'Gömör');
   assert.equal(c.dateRaw, '1906');
   assert.equal(c.collector, 'Béla Bartók');
+  const n1 = fmbc.parseCollecting('Várhely (Hunyad/Hunedoara County; now: Sarmisegetuza), 1914, Béla Bartók');
+  assert.equal(n1.village, 'Sarmisegetuza');
+  assert.equal(n1.county, 'Hunedoara');
+  assert.equal(n1.country, null);
+  const n2 = fmbc.parseCollecting('Egres (Torontál/Torontal County; now: Igriș, Romania), November 1912, Béla Bartók');
+  assert.deepEqual([n2.village, n2.country, n2.countyHistorical], ['Igriș', 'Romania', 'Torontál']);
+  const n3 = fmbc.parseCollecting('[Abádszalók (Jász-Nagykun-Szolnok County; ma: Abádszalók), 1918, Béla Bartók]');
+  assert.deepEqual([n3.villageHistorical, n3.village, n3.dateRaw], ['Abádszalók', 'Abádszalók', '1918']);
+  const n4 = fmbc.parseCollecting('Kiskomlós (Ugocsa County; now: Мала Копаня; Ukraine), 1912, Béla Bartók');
+  assert.deepEqual([n4.village, n4.country], ['Мала Копаня', 'Ukraine']);
   assert.equal(fmbc.parseCollecting(null).raw, null);
 });
 

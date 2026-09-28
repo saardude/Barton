@@ -2,36 +2,117 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://bartok-romania.local/schema/journey.schema.json",
   "title": "Journey",
-  "description": "One reconstructed field trip of Bela Bartok, derived from dated song records by geo/derive-journeys.mjs as specified in docs/JOURNEY-SPEC.md. journeys.json is { _meta, journeys: Journey[] } with journeys sorted by id. Nothing here is asserted beyond what the record dates and places support; every inferred value carries a confidence.",
+  "description": "One field trip of Bela Bartok, produced by geo/derive-journeys.mjs as specified in docs/JOURNEY-SPEC.md. Primary source: the curated trip index of bartok-gyujtesek.zti.hu (derivedFrom gyuj-collections, id gyuj-<collection id>, label verbatim); fallback: runs of dated records with no collection (derivedFrom date-gap, id J-YYYY-MM-nn). journeys.json is { _meta, journeys: Journey[] } sorted by dateStart then id. Nothing is asserted beyond what the index and the record dates support; every inferred value carries a confidence.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "kind", "collector", "dateStart", "dateEnd", "dateConfidence", "days", "departure", "stops", "distanceKm", "recordCount", "facts", "songIds", "derivation"],
+  "required": [
+    "id",
+    "derivedFrom",
+    "kind",
+    "collector",
+    "label",
+    "labelDateRaw",
+    "labelPlaceRaw",
+    "sourceUrl",
+    "countOnline",
+    "recordsOnline",
+    "dateStart",
+    "dateEnd",
+    "dateConfidence",
+    "datePeriods",
+    "recordDateRange",
+    "days",
+    "departure",
+    "stops",
+    "distanceKm",
+    "recordCount",
+    "facts",
+    "songIds",
+    "nowIn",
+    "romanianMaterial",
+    "derivation"
+  ],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^J-[0-9]{4}-(0[1-9]|1[0-2]|00)-[0-9]{2}$",
-      "description": "J-YYYY-MM-nn: year and month of the first stop, nn = 01-based sequence within that month. Fuzzy trips with no known month use MM = 00."
+      "pattern": "^(gyuj-[0-9]+|J-[0-9]{4}-(0[1-9]|1[0-2]|00)-[0-9]{2})$",
+      "description": "gyuj-<collection id> for index entries (stable, the site's own id). J-YYYY-MM-nn for date-gap trips: year and month of the first record, nn = 01-based sequence within that month; MM = 00 for year-only clusters."
     },
     "kind": {
       "type": "string",
-      "enum": ["route", "cluster"],
+      "enum": [
+        "route",
+        "cluster"
+      ],
       "description": "route = every record has a full date, stops are ordered in time and drawn as a polyline. cluster = only year or year+month known; stops are unordered and drawn as a cluster hull, no polyline."
     },
-    "collector": { "type": "string", "description": "Collector name as printed on the records (normalised, e.g. 'Bartok Bela')." },
-    "dateStart": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$", "description": "ISO date, month or year of the first record." },
-    "dateEnd": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$", "description": "ISO date, month or year of the last record." },
-    "dateConfidence": { "type": "string", "enum": ["day", "month", "year"], "description": "Finest date precision shared by all records in the trip." },
-    "days": { "type": ["integer", "null"], "minimum": 1, "description": "Inclusive length in days for route trips; null for clusters." },
+    "collector": {
+      "type": "string",
+      "description": "Collector name as printed on the records (normalised, e.g. 'Bartok Bela')."
+    },
+    "dateStart": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+      "description": "ISO date, month or year of the first record."
+    },
+    "dateEnd": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+      "description": "ISO date, month or year of the last record."
+    },
+    "dateConfidence": {
+      "type": "string",
+      "enum": [
+        "day",
+        "phrase",
+        "month",
+        "season",
+        "year"
+      ],
+      "description": "Coarsest precision among the label's periods (phrase = 'Beginning of' / 'Middle of' / 'End of' / 'After', a 10-day window), or, for date-gap trips, the precision shared by its records."
+    },
+    "days": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "description": "Inclusive length in days when both ends are day-precise; null otherwise."
+    },
     "departure": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "lat", "lng", "confidence", "note"],
+      "required": [
+        "name",
+        "lat",
+        "lng",
+        "confidence",
+        "note"
+      ],
       "properties": {
-        "name": { "type": "string" },
-        "lat": { "type": "number" },
-        "lng": { "type": "number" },
-        "confidence": { "type": "string", "enum": ["documented", "assumed"], "description": "'assumed' means the configured default (Budapest, Bartok's home base) was used; the UI labels it as such." },
-        "note": { "type": ["string", "null"] }
+        "name": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "assumed"
+          ],
+          "description": "'assumed' means the configured default (Budapest, Bartok's home base) was used; the UI labels it as such."
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
     },
     "stops": {
@@ -40,60 +121,401 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["seq", "placeId", "village", "villageHistorical", "county", "countyHistorical", "country", "lat", "lng", "arrival", "departure", "recordCount", "songIds", "kmFromPrevious", "locationConfidence"],
+        "required": [
+          "seq",
+          "placeId",
+          "village",
+          "villageHistorical",
+          "county",
+          "countyHistorical",
+          "country",
+          "lat",
+          "lng",
+          "arrival",
+          "departure",
+          "recordCount",
+          "songIds",
+          "kmFromPrevious",
+          "locationConfidence"
+        ],
         "properties": {
-          "seq": { "type": "integer", "minimum": 1, "description": "1-based order along the route; for clusters the order is alphabetical by village and carries no temporal meaning." },
-          "placeId": { "type": ["string", "null"], "description": "location.placeId of the records, when resolved." },
-          "village": { "type": ["string", "null"] },
-          "villageHistorical": { "type": ["string", "null"] },
-          "county": { "type": ["string", "null"] },
-          "countyHistorical": { "type": ["string", "null"] },
-          "country": { "type": ["string", "null"] },
-          "lat": { "type": ["number", "null"] },
-          "lng": { "type": ["number", "null"] },
-          "arrival": { "type": "string", "description": "Earliest record date at this stop (ISO date, month or year)." },
-          "departure": { "type": "string", "description": "Latest record date at this stop." },
-          "recordCount": { "type": "integer", "minimum": 1 },
-          "songIds": { "type": "array", "items": { "type": "string" } },
-          "kmFromPrevious": { "type": ["number", "null"], "description": "Great-circle distance from the previous stop (or from the departure point for seq 1); null for clusters or when coordinates are missing." },
-          "locationConfidence": { "type": "string", "enum": ["resolved", "unresolved"], "description": "unresolved stops have no coordinates and are listed but not drawn." }
+          "seq": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1-based order along the route; for clusters the order is alphabetical by village and carries no temporal meaning."
+          },
+          "placeId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "location.placeId of the records, when resolved."
+          },
+          "village": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "villageHistorical": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "county": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "countyHistorical": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lat": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "lng": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "arrival": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "departure": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "recordCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "songIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "kmFromPrevious": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Great-circle distance from the previous stop (or from the departure point for seq 1); null for clusters or when coordinates are missing."
+          },
+          "locationConfidence": {
+            "type": "string",
+            "enum": [
+              "resolved",
+              "label",
+              "label-region",
+              "unresolved"
+            ],
+            "description": "resolved: coordinates from the record; label: locality from the index label resolved through the gazetteer; label-region: a region or county centre from the built-in table (draw as a cluster, never as a route); unresolved: no coordinates, listed but not drawn."
+          }
         }
       }
     },
-    "distanceKm": { "type": ["number", "null"], "description": "Sum of kmFromPrevious over resolved stops (departure -> first stop -> ... -> last stop); the return leg is not included. null for clusters." },
-    "recordCount": { "type": "integer", "minimum": 1 },
+    "distanceKm": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Sum of kmFromPrevious over resolved stops for route trips (departure -> first stop -> ... -> last); null for clusters and for trips without records."
+    },
+    "recordCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Attached records; 0 for index entries whose melodies are not online (recordsOnline false) or not yet scraped."
+    },
     "facts": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["villages", "counties", "countiesHistorical", "ethnicGroups", "instruments", "genres", "performers"],
+      "required": [
+        "villages",
+        "counties",
+        "countiesHistorical",
+        "ethnicGroups",
+        "instruments",
+        "genres",
+        "performers"
+      ],
       "properties": {
-        "villages": { "type": "integer", "minimum": 0, "description": "Distinct resolved villages (stops with a placeId or village name)." },
-        "counties": { "type": "array", "items": { "type": "string" }, "description": "Distinct modern counties, sorted." },
-        "countiesHistorical": { "type": "array", "items": { "type": "string" }, "description": "Distinct historical counties as printed, sorted." },
-        "ethnicGroups": { "$ref": "#/$defs/countMap", "description": "performer.ethnicity -> record count." },
-        "instruments": { "$ref": "#/$defs/countMap", "description": "instrument -> record count." },
-        "genres": { "$ref": "#/$defs/countMap" },
-        "performers": { "type": "integer", "minimum": 0, "description": "Distinct performer names (null names not counted)." }
+        "villages": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distinct resolved villages (stops with a placeId or village name)."
+        },
+        "counties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Distinct modern counties, sorted."
+        },
+        "countiesHistorical": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Distinct historical counties as printed, sorted."
+        },
+        "ethnicGroups": {
+          "$ref": "#/$defs/countMap",
+          "description": "performer.ethnicity -> record count."
+        },
+        "instruments": {
+          "$ref": "#/$defs/countMap",
+          "description": "instrument -> record count."
+        },
+        "genres": {
+          "$ref": "#/$defs/countMap"
+        },
+        "performers": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distinct performer names (null names not counted)."
+        }
       }
     },
-    "songIds": { "type": "array", "items": { "type": "string" }, "description": "All record ids in the trip, sorted." },
+    "songIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All record ids in the trip, sorted."
+    },
     "derivation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["gapDays", "jumpKm", "splitReasons", "generator"],
+      "required": [
+        "gapDays",
+        "jumpKm",
+        "splitReasons",
+        "generator"
+      ],
       "properties": {
-        "gapDays": { "type": "integer", "description": "Configured maximum gap between consecutive dated records within one trip (default 10)." },
-        "jumpKm": { "type": "number", "description": "Configured maximum distance between stops on consecutive days before a split (default 250)." },
+        "gapDays": {
+          "type": "integer",
+          "description": "Configured maximum gap between consecutive dated records within one trip (default 10)."
+        },
+        "jumpKm": {
+          "type": "number",
+          "description": "Configured maximum distance between stops on consecutive days before a split (default 250)."
+        },
         "splitReasons": {
           "type": "array",
-          "items": { "type": "string", "enum": ["start", "gap", "jump", "precision", "year", "collector"] },
-          "description": "Why this trip starts where it does: 'start' for the first trip, 'gap' for a > gapDays gap, 'jump' for a > jumpKm move on consecutive days, 'precision' when the date precision changed, 'year' for a new year in fuzzy trips."
+          "items": {
+            "type": "string",
+            "enum": [
+              "collection",
+              "start",
+              "gap",
+              "jump",
+              "precision",
+              "year"
+            ]
+          },
+          "description": "'collection' for index entries; for date-gap trips: 'start' first trip, 'gap' > gapDays, 'jump' > jumpKm on consecutive days, 'precision' month-only cluster, 'year' year-only cluster."
         },
-        "generator": { "type": "string" }
+        "generator": {
+          "type": "string"
+        }
       }
+    },
+    "derivedFrom": {
+      "type": "string",
+      "enum": [
+        "gyuj-collections",
+        "date-gap"
+      ],
+      "description": "gyuj-collections: an entry of the trip index on bartok-gyujtesek.zti.hu with its records attached. date-gap: derived from dated records that belong to no index entry."
+    },
+    "label": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The index entry's label verbatim, e.g. 'July-August, 1909. Upper region of the river Fekete-Koros'. Null for date-gap trips."
+    },
+    "labelDateRaw": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date part of the label as printed."
+    },
+    "labelPlaceRaw": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Place part of the label as printed."
+    },
+    "sourceUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The index entry's page (/en/browse/<id>)."
+    },
+    "countOnline": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Record count printed in parentheses on the index; null when the site prints none (no records online)."
+    },
+    "recordsOnline": {
+      "type": "boolean",
+      "description": "False for index entries without a count: the trip is documented but its melodies are not online. Such trips have recordCount 0 and stops taken from the label."
+    },
+    "datePeriods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "raw",
+          "start",
+          "end",
+          "precision",
+          "qualifiers",
+          "uncertain"
+        ],
+        "properties": {
+          "raw": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "start": {
+            "type": "string"
+          },
+          "end": {
+            "type": "string"
+          },
+          "precision": {
+            "type": "string",
+            "enum": [
+              "day",
+              "phrase",
+              "month",
+              "season",
+              "year"
+            ]
+          },
+          "qualifiers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "beginning",
+                "middle",
+                "end",
+                "after"
+              ]
+            }
+          },
+          "uncertain": {
+            "type": "boolean",
+            "description": "The label carries a question mark."
+          }
+        }
+      },
+      "description": "One or more dated periods from the label ('End of March - Beginning of April, November 5-6, 1910' gives two). dateStart/dateEnd span all of them."
+    },
+    "recordDateRange": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        }
+      },
+      "description": "Earliest and latest record date actually attached; null when no records."
+    },
+    "nowIn": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "ISO 3166-1 alpha-2 of the present-day countries of the stops, sorted."
+    },
+    "romanianMaterial": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "inferred",
+            "unknown"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "description": "Whether the trip collected Romanian material: documented (matches the collecting chronology in Rumanian Folk Music, Suchoff ed.), inferred (Romanian-speaking area, not checked entry by entry), unknown (present-day Romania but language not checked). Null for date-gap trips."
     }
   },
   "$defs": {
-    "countMap": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+    "countMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
   }
 }

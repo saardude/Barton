@@ -128,16 +128,20 @@ test('normalizeRecord produces a schema-shaped record with nulls for unknowns', 
   assert.equal(rec.composition.length, 1);
 });
 
-test('normalizeRecord leaves unresolved places unresolved (never invents)', async () => {
+test('normalizeRecord derives only the country from an exclusive historical county (never invents a village)', async () => {
   const gaz = await Gazetteer.load();
   const rec = normalizeRecord({ site: 'gyuj', siteRecordId: '3-1', url: 'https://bartok-gyujtesek.zti.hu/en/browse/3/1', placeRaw: 'Tura (Pest)' }, gaz);
+  const split = normalizeRecord({ site: 'gyuj', siteRecordId: '3-2', url: 'https://bartok-gyujtesek.zti.hu/en/browse/3/2', placeRaw: 'Somewhere (Bihar)' }, gaz);
+  assert.equal(split.location.country, null, 'Bihar is split between RO and HU: nothing derived');
+  assert.equal(split.location.resolution, 'unresolved');
   assert.equal(rec.location.village, null);
   assert.equal(rec.location.villageHistorical, 'Tura');
   assert.equal(rec.location.countyHistorical, 'Pest');
-  assert.equal(rec.location.country, null);
+  assert.equal(rec.location.country, 'HU', 'Pest county lies wholly in Hungary: country derived, nothing else');
+  assert.equal(rec.location.county, null);
   assert.equal(rec.location.lat, null);
-  assert.equal(rec.location.resolution, 'unresolved');
-  assert.equal(rec.location.placeId, 'xx/unresolved/tura');
+  assert.equal(rec.location.resolution, 'county');
+  assert.equal(rec.location.placeId, 'hu/unresolved/tura');
   assert.equal(rec.performance, 'unknown');
   assert.equal(rec.genre, null);
 });

@@ -9,7 +9,8 @@ Files:
 
 | File | Produced by | Schema |
 | --- | --- | --- |
-| `data/journeys.json` | `node geo/derive-journeys.mjs` from `data/songs.json` | `data/schema/journey.schema.json` |
+| `data/collections-gyuj.json` | `node geo/parse-gyuj-collections.mjs` from the bartok-gyujtesek.zti.hu trip index | described in section 2.1 |
+| `data/journeys.json` | `node geo/derive-journeys.mjs` from `data/collections-gyuj.json` + `data/songs.json` | `data/schema/journey.schema.json` |
 | `data/villages.json` | `node geo/enrich-wikidata.mjs` from `data/gazetteer.json` (+ `data/places.json`) | described in section 5 |
 | `data/geo/borders-{1910,1914,1920,now}.json` | `node geo/build.mjs` from `geo/raw/` | GeoJSON, section 4 |
 | `data/context-events.json` | hand-curated | section 6 |
@@ -17,84 +18,121 @@ Files:
 All scripts live in `geo/` (own `package.json`; `cd geo && npm i` once). Nothing in
 `scraper/` or `data/songs.json` is touched.
 
-## 1. Input
+## 1. Inputs
 
-The canonical song record (`data/schema/song.schema.json`). The fields used:
+1. **The trip index of bartok-gyujtesek.zti.hu** (`/en/browse`): 101 entries grouped by
+   year, each a label such as "July-August, 1909. Upper region of the river Fekete-Koros"
+   or "February 3-4, 1909. Zobordarazs", with the online record count in parentheses when
+   records exist, linking to `/en/browse/<id>` (the records of that trip). This is a curated
+   index made by the Institute and is the **primary source** of journeys.
+   `geo/parse-gyuj-collections.mjs` parses it into `data/collections-gyuj.json` (label
+   verbatim, parsed dates, resolved places, flags). It reads the scraper's cached copy of
+   the page when present, otherwise fetches it once (cached under `geo/cache/gyuj/`).
+2. **The canonical song record** (`data/schema/song.schema.json`). Fields used:
+   `collector` (filter), `collected.{year,month,day}` (null when unknown; never invented),
+   `location.{placeId,village,villageHistorical,county,countyHistorical,country,lat,lng,raw}`
+   (stop identity and coordinates), `performer.ethnicity`, `instrument[]`, `genre`,
+   `performer.name` (derived facts), `id`, `source.url` (collection membership: a gyuj
+   record's URL is `/en/browse/<collection>/<record>`, and its id `gyuj-<collection>-<record>`).
+3. `data/gazetteer.json` for resolving the label's localities (historical Hungarian name,
+   modern name or alias, folded), plus a built-in table of regions and counties named in
+   the index (Fekete-Koros valley, Mezoseg, Kis-Szamos, Mocvidek, Felso-Maros mente,
+   Nyarad mente, Banat, the 1910 counties, Algeria) with approximate centres.
 
-- `collector` (string or null): filter.
-- `collected.year`, `collected.month`, `collected.day`: integers or null. The scraper never
-  invents a date, so `day` can be null while `month` is set, and `month` null while `year`
-  is set. `collected.raw` is kept in the record for display but not used here.
-- `location.placeId`, `.village`, `.villageHistorical`, `.county`, `.countyHistorical`,
-  `.country`, `.lat`, `.lng`: stop identity and coordinates.
-- `performer.ethnicity`, `instrument[]`, `genre`, `performer.name`: derived facts.
-- `id`: membership lists.
-
-## 2. Derivation algorithm
+## 2. Derivation
 
 Implemented in `geo/derive-journeys.mjs` (`deriveJourneys(songs, config)`), deterministic,
-no network.
+no network. Two passes:
+
+### 2.1 Primary pass: index entries (`derivedFrom: "gyuj-collections"`)
+
+1. **Parse the label** (`parse-gyuj-collections.mjs`): split off the trailing "(n)" count,
+   then the date expression from the place text. The site mixes English ("End of August -
+   Beginning of September. Mezoseg (Campia Transilvaniei)"), Hungarian ("1914. aprilis
+   3-10. Felso-Maros mente"), and numeric forms ("27-29. 12. 1915, Zolyom county"). The
+   date grammar: one or more comma-separated periods; each period is one endpoint or a
+   range of two; an endpoint has an optional qualifier (Beginning of / Middle of / End of
+   / After, Hungarian eleje / kozepe / vege), a month (name in either language or a number),
+   optional day or day range, optional year. Missing years come from the other endpoint or
+   from the accordion year of the index (`yearFromGroup: true`). Qualifiers map to windows:
+   beginning 1-10, middle 11-20, end 21-last day, after D = D+1 to last day. Precision per
+   period: `day`, `phrase` (a qualifier window), `month`, `season`, `year`; the trip's
+   `dateConfidence` is the coarsest of its periods. Every parsed value sits next to the
+   verbatim `label`, `labelDateRaw` and `labelPlaceRaw`.
+2. **Resolve the places**: split on " / " and ", "; strip "(?)" (kept as `uncertain`);
+   keep a parenthesised alternative name (`nameAlt`); look up the region table first,
+   then the gazetteer by folded name; a locality still unresolved (the gazetteer covers
+   present-day Romania only) is looked up on Wikidata by its Hungarian label, restricted
+   to settlements in HU/SK/UA/RS/HR/RO/AT, and accepted only as a single hit with
+   coordinates (`resolution: "wikidata"`, with `qid`, cached, 1 request/s). Results:
+   `gazetteer` (38), `region-table` (28), `wikidata` (37), `ambiguous` (2: Gyula,
+   Dunapentele, candidates listed), `unresolved` (6, kept as text: Gerlicepuszta,
+   Tokesujfalu, Apatkolos, Nagygut, Ponik, Felsoszaszberek).
+3. **Attach records**: every Bartok record whose `source.url` (or id) names a collection id
+   present in the index joins that journey. Stops are grouped by place as in 2.2; the
+   journey is a `route` when every attached record has a full date, otherwise a `cluster`.
+   `recordCount`, `songIds`, `recordDateRange` and `facts` come from the attached records;
+   `countOnline` is the count the index prints.
+4. **Entries without online records** (37 of 101; e.g. "July-August, 1909. Upper region of
+   the river Fekete-Koros") exist as journeys with `recordsOnline: false`, `recordCount: 0`
+   and stops built from the label's places (`locationConfidence: "label"` for a gazetteer
+   locality, `"label-region"` for a region or county centre, `"unresolved"` otherwise).
+   Region stops are drawn as a cluster circle at the region centre, never as a route.
+5. **Romanian material**: `romanianMaterial.value/confidence` is a curated flag
+   (`documented` = the county/region and date match the collecting chronology in Rumanian
+   Folk Music, Suchoff ed.; `inferred` = Romanian-speaking area, not checked entry by entry;
+   `unknown` = present-day Romania but language not checked, which is where the Szekely
+   Hungarian trips fall). `nowIn` lists the present-day countries of the stops so the app
+   can show the Romanian trips even where the melodies are not online.
+6. **Id** = `gyuj-<collection id>`, the site's own stable id. `sourceUrl` links the entry.
+
+### 2.2 Fallback pass: records outside the index (`derivedFrom: "date-gap"`)
+
+Records of the other two sites (and any gyuj record whose collection is not in the index,
+counted as `orphanCollectionRecords`) are grouped by the date-gap heuristic:
 
 1. **Filter collector.** Keep records whose `collector` matches `/bart[oó]k/i` (config
-   `collectorPattern`; the sites print "Bartok Bela", "Bartók Béla", "B. B."-style values
-   are not matched and are reported in `_meta.counts.skippedRecords`). Records with
-   `collected.year == null` are skipped too; they cannot be placed in time at all.
-2. **Split by date precision.** `day` precision records go to the route pass (step 3);
-   `month` and `year` precision records go to the fuzzy pass (step 4). A record is never in
-   both.
-3. **Route pass.** Sort by full date, then by stop key, then by id. Walk the sorted list and
-   start a new trip when any of these hold, recording the reason(s):
-   - `start`: the first record.
-   - `gap`: more than `gapDays` (default **10**) days since the previous record.
-   - `jump`: the previous record is on the same or the preceding day, at a different stop,
-     both stops have coordinates, and the great-circle distance is more than `jumpKm`
-     (default **250** km). Two different villages recorded 300 km apart on consecutive days
-     are two trips (or a data error) rather than one journey; this is what the threshold
-     encodes. Movement over two or more days is never split by distance.
-   Trips are therefore maximal runs of dated records with no gap larger than 10 days.
-4. **Fuzzy pass.** `month`-precision records are grouped per calendar month, `year`-precision
-   records per year. Each group is one trip of `kind: "cluster"` with `splitReasons`
-   `["precision"]` (month) or `["year"]` (year). No route order exists inside a cluster, so
-   stops are sorted alphabetically and carry `kmFromPrevious: null`; the UI draws a convex
-   hull or a bubble cluster, never a polyline (section 3).
-5. **Stops.** Inside a trip, records are grouped by stop key: `location.placeId` when
-   resolved, otherwise the folded modern village + county, otherwise the folded historical
-   village + historical county, otherwise the folded raw place string. For route trips stops
-   are ordered by first record date; `arrival` = earliest record date at the stop,
-   `departure` = latest. A village visited twice with another stop in between appears
-   twice (two stops, same placeId), which is what the record dates say. Stops without
-   coordinates get `locationConfidence: "unresolved"`, are kept in the list and skipped for
-   distances.
-6. **Departure point.** Every route trip starts from `config.departure`, default Budapest
-   (47.4979, 19.0402), Bartok's home base from 1907, with `confidence: "assumed"`. The
-   scraped records never document where a trip began, so this is a labelled assumption; if
-   a trip's start is later documented (a letter, a diary), set `confidence: "documented"`
-   and a `note` per trip by hand. `kmFromPrevious` of stop 1 is the distance from the
-   departure point; `distanceKm` sums departure -> stop 1 -> ... -> last stop (no return
-   leg). Clusters have no departure distance (`distanceKm: null`) but still carry the
-   departure object so the UI can show the base.
-7. **Ids.** `J-YYYY-MM-nn`: year and month of the first record, `nn` a 01-based sequence
-   within that year-month, route trips before clusters, then by start date. Year-only
-   clusters use `MM = 00` (`J-1912-00-01`). Ids are stable as long as the input dates are;
-   a re-scrape that adds a record inside an existing trip does not change ids, one that
-   adds an earlier trip in the same month does (the id is a key, not a permalink).
-8. **Derived facts** per trip: `villages` (distinct resolved stops), `counties` and
-   `countiesHistorical` (sorted distinct), `ethnicGroups` (performer.ethnicity -> count),
-   `instruments` (instrument -> count), `genres` (genre -> count), `performers` (distinct
-   folded names). Null values are not counted.
-9. **Output.** `{ _meta, journeys[] }`, journeys sorted by id, all object keys sorted, two
-   space indent, trailing newline. `_meta.config` repeats the thresholds and the departure
-   config, `_meta.counts` gives input/used/skipped record counts and route/cluster counts.
+   `collectorPattern`). Records with `collected.year == null` are skipped (counted).
+2. **Split by date precision.** `day` precision records go to the route pass; `month` and
+   `year` precision records to the fuzzy pass. A record is never in both.
+3. **Route pass.** Sort by full date, then stop key, then id. Start a new trip when:
+   `start` (first record); `gap` (more than `gapDays`, default **10**, since the previous
+   record); `jump` (previous record on the same or preceding day at a different stop, both
+   with coordinates, more than `jumpKm`, default **250** km, apart). Movement over two or
+   more days is never split by distance.
+4. **Fuzzy pass.** Month-precision records grouped per calendar month, year-precision per
+   year; each group is a `cluster` (section 3).
+5. **Stops.** Records grouped by stop key (`placeId`, else folded village + county, else
+   folded historical names, else the raw string). Route stops ordered by first record date
+   with `arrival`/`departure` = earliest/latest record date; a village visited twice with
+   another stop in between appears twice. Stops without coordinates are `unresolved`.
+6. **Departure point.** Route trips start from `config.departure`, default Budapest
+   (47.4979, 19.0402), `confidence: "assumed"`; `kmFromPrevious` of stop 1 is measured from
+   it and `distanceKm` sums departure -> stops (no return leg). Clusters carry the departure
+   object but no distance.
+7. **Ids** `J-YYYY-MM-nn` (year-month of the first record, 01-based sequence, routes before
+   clusters; `MM = 00` for year-only clusters). Stable while the input dates are; a
+   re-scrape that adds an earlier trip in the same month shifts `nn` (a key, not a permalink).
 
-Worked example (from `qa/fixtures` plus synthetic records, `node geo/derive-journeys.mjs
---in <file> --out <file>`): records on 18, 19, 21 July 1909 in Beius and Vascau form
-`J-1909-07-01` (2 stops, 4 days); a record on 3 August is 13 days later and starts
-`J-1909-08-01`; consecutive-day records 300 km apart start `J-1909-08-02` with reason
-`jump`; "1910. apr." records form cluster `J-1910-04-01`; "1910" records form
-`J-1910-00-01`.
+### 2.3 Common
 
-Tunables are CLI flags: `--gap 10 --jump 250 --collector "bart[oó]k"`. Changing them
-changes ids; the values used are written into each journey's `derivation` block.
+- **Facts** per trip: `villages` (resolved stops), `counties` / `countiesHistorical`
+  (records plus label stops), `ethnicGroups`, `instruments`, `genres` (counts),
+  `performers` (distinct folded names).
+- **Output** `{ _meta, journeys[] }` sorted by `dateStart` then id, keys sorted, two-space
+  indent. `_meta.counts` reports records in/outside collections, index entries with and
+  without records, and route/cluster totals.
+- Tunables: `--gap 10 --jump 250 --collector "bart[oó]k" --collections <file>
+  --no-collections`. Values used are written into each journey's `derivation`.
+
+Worked example (`node geo/derive-journeys.mjs --in <synthetic> --out <file>`): two
+records with URLs `/en/browse/32/...` join `gyuj-32` ("July, 1907. Csikszentmihaly (5)",
+cluster, month precision); index entry 50 without records becomes `gyuj-50`
+("July-August, 1909. Upper region of the river Fekete-Koros", `recordsOnline: false`, one
+`label-region` stop at the Crisul Negru valley centre, `romanianMaterial` documented);
+records with no collection on 3, 4, 5 August 1909 form `J-1909-08-01`, a record 300 km away
+on 6 August starts `J-1909-08-02` with reason `jump`; "1910. apr." records form cluster
+`J-1910-04-01`; "1910" records form `J-1910-00-01`.
 
 ## 3. Fuzzy trips (month or year only)
 
@@ -104,6 +142,8 @@ A month- or year-only trip is honest about what is known:
   every stop `kmFromPrevious: null`, `seq` is alphabetical and carries no order.
 - The UI shows the stops as a cluster (hull or bubbles) with the date label "April 1910"
   or "1910", not as a route, and says "order of visits unknown".
+- Index entries with `phrase` precision ("End of March") are clusters with a 10-day window;
+  the UI shows the label text as the date, not the window bounds.
 - When the same month also has a route trip (some records with day, some without), both
   exist side by side (`J-1910-04-01` route, `J-1910-04-02` cluster). They are not merged:
   the day-less records may or may not belong to the dated trip, and the data does not say.
@@ -163,9 +203,16 @@ layer presents documented material and does not editorialise (`_meta.note`).
 
 ## 7. Open points
 
-- Bartok's documented itineraries (letters, the Bartok Archives' chronology) could replace
-  the gap heuristic trip by trip; the schema already allows `departure.confidence:
-  "documented"` and a `note`. That is manual work and out of scope for the derivation.
+- The index is the Institute's curation; where an index entry and a date-gap trip of the
+  other sites overlap in time and place (the same 1907 Csik trip appears in the Bartok
+  System too), the app should show the index entry and list the date-gap trip as
+  "records of the same dates from other databases". A join by date window + county is
+  straightforward and left to the app.
+- 8 of the index's 111 place mentions remain unresolved or ambiguous after the gazetteer
+  and the Wikidata lookup (see 2.1); they need a manual entry (e.g. Dunapentele is today's
+  Dunaujvaros, Ponik is Poniky in Slovakia) with a source before they are drawn.
+- Bartok's documented itineraries (letters, the Bartok Archives' chronology) could refine
+  the date-gap trips; the schema allows `departure.confidence: "documented"` and a `note`.
 - Records with `collected.day` but a wrong month on the source site will produce spurious
   `jump` splits; `qa` gate G6 lists out-of-range years, and a similar warning for
   single-record trips with reason `jump` is worth adding to `qa/checks/data-gates.mjs`.

@@ -5,6 +5,7 @@
 //
 //   node geo/parse-gyuj-collections.mjs             # uses the scraper's cached page if present, else fetches (cached under geo/cache/gyuj)
 //   node geo/parse-gyuj-collections.mjs --fetch     # force a live fetch (1 request, cached)
+//   node geo/parse-gyuj-collections.mjs --no-wikidata  # skip the Wikidata lookup of non-Romanian localities
 //
 // Labels are kept verbatim. Dates are parsed into start/end with a precision and the
 // qualifiers the site uses ("Beginning of", "End of", "Middle of", "After"). Places are
@@ -207,6 +208,7 @@ export function splitLabel(label) {
   const HU_PART = '1[89]\\d\\d\\.\\s*[a-záéíóöőúüű]+(?:[–-][a-záéíóöőúüű]+)?(?:\\s*\\d{1,2}(?:[–-]\\d{1,2})?)?\\.?(?:\\s*(?:eleje|közepe|vége))?\\.?';
   let m = rest.match(new RegExp(`^(${HU_PART}(?:\\s*[–-]\\s*${HU_PART})?)\\s+(.*)$`, 'i'));
   if (!m) m = rest.match(/^(.*?\b1[89]\d\d\b(?:\s*[–-]\s*[^.,]*?\b1[89]\d\d\b)?)[.,]\s+(.*)$/);
+  if (!m) m = rest.match(/^((?:\d{1,2}[.\s-]*)*1[89]\d\d)\s+(.*)$/); // "11. 1915 Zolyom county"
   if (!m) m = rest.match(/^([^.]*?)\.\s+(.*)$/); // no year in the label ("End of August - Beginning of September. Mezoseg")
   if (!m) return { dateRaw: rest, placeRaw: null, countOnline };
   return { dateRaw: m[1].replace(/[.,]\s*$/, '').trim(), placeRaw: m[2].trim() || null, countOnline };
@@ -265,7 +267,7 @@ function loadGazetteer() {
       if (!n) continue;
       const k = fold(n);
       if (!byName.has(k)) byName.set(k, []);
-      byName.get(k).push({ ...p, id });
+      if (!byName.get(k).some((x) => x.id === id)) byName.get(k).push({ ...p, id });
     }
   }
   return { byName };
@@ -306,6 +308,63 @@ export function parsePlaces(placeRaw, gaz) {
   return places;
 }
 
+// ------------------------------------------------------------------ Wikidata fallback for unresolved localities
+
+// The gazetteer covers present-day Romania only. Localities of the index in present-day
+// Hungary, Slovakia, Ukraine, Serbia or Croatia are looked up on Wikidata by their
+// Hungarian label (1 request/s, cached under geo/cache/wikidata/, same cache as
+// enrich-wikidata.mjs). Only a single unambiguous settlement hit is accepted.
+const WD_ENDPOINT = 'https://query.wikidata.org/sparql';
+const sparqlString = (v) => '"' + String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+const WD_CACHE = join(HERE, 'cache', 'wikidata');
+const WD_COUNTRIES = { Q28: 'HU', Q214: 'SK', Q212: 'UA', Q403: 'RS', Q224: 'HR', Q218: 'RO', Q40: 'AT' };
+let wdLast = 0;
+async function wdQuery(query) {
+  const key = createHash('sha1').update(query).digest('hex');
+  const file = join(WD_CACHE, key + '.json');
+  if (existsSync(file)) return JSON.parse(readFileSync(file, 'utf8')).data;
+  const wait = wdLast + 1000 - Date.now();
+  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+  wdLast = Date.now();
+  const res = await fetch(WD_ENDPOINT + '?format=json&query=' + encodeURIComponent(query), { headers: { 'User-Agent': USER_AGENT, Accept: 'application/sparql-results+json' } });
+  if (!res.ok) throw new Error(`Wikidata HTTP ${res.status}`);
+  const data = await res.json();
+  mkdirSync(WD_CACHE, { recursive: true });
+  writeFileSync(file, JSON.stringify({ query, fetchedAt: new Date().toISOString(), data }));
+  return data;
+}
+async function resolveViaWikidata(place) {
+  const name = (place.name || place.text || '').replace(/\s*\([^)]*\)\s*/g, ' ').trim();
+  if (!name) return place;
+  const q = `SELECT ?item ?itemLabel ?country ?coord ?labelHu ?labelLocal WHERE {
+  { ?item rdfs:label ${sparqlString(name)}@hu } UNION { ?item skos:altLabel ${sparqlString(name)}@hu }
+  ?item wdt:P17 ?country . VALUES ?country { ${Object.keys(WD_COUNTRIES).map((c) => 'wd:' + c).join(' ')} }
+  ?item wdt:P31 ?inst . FILTER EXISTS { ?inst wdt:P279* wd:Q486972 }
+  OPTIONAL { ?item wdt:P625 ?coord }
+  OPTIONAL { ?item rdfs:label ?labelHu FILTER(LANG(?labelHu) = "hu") }
+  OPTIONAL { ?item wdt:P1705 ?labelLocal }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,hu" . }
+} LIMIT 50`;
+  let data;
+  try { data = await wdQuery(q); } catch (e) { return { ...place, wikidataNote: 'query failed: ' + e.message }; }
+  const items = new Map();
+  for (const b of data.results.bindings) {
+    const id = b.item.value.replace(/.*\//, '');
+    const it = items.get(id) || { qid: id, label: b.itemLabel && b.itemLabel.value, country: WD_COUNTRIES[b.country.value.replace(/.*\//, '')], coord: null, labelHu: null, local: null };
+    const m = b.coord && /Point\(([-\d.]+) ([-\d.]+)\)/.exec(b.coord.value);
+    if (m && !it.coord) it.coord = { lng: +m[1], lat: +m[2] };
+    it.labelHu = it.labelHu || (b.labelHu && b.labelHu.value);
+    it.local = it.local || (b.labelLocal && b.labelLocal.value);
+    items.set(id, it);
+  }
+  const hits = [...items.values()].filter((i) => i.coord);
+  if (hits.length === 1) {
+    const h = hits[0];
+    return { ...place, resolution: 'wikidata', kind: 'settlement', name: h.label || name, nameHu: h.labelHu || name, nameRo: null, placeId: null, qid: h.qid, wikidataUrl: 'https://www.wikidata.org/wiki/' + h.qid, lat: h.coord.lat, lng: h.coord.lng, county: null, countyHistorical: place.countyHistorical || null, nowIn: h.country };
+  }
+  return { ...place, resolution: hits.length ? 'ambiguous' : 'unresolved', candidates: hits.length ? hits.map((h) => h.qid).sort() : undefined, wikidataNote: hits.length ? `${hits.length} settlements with this Hungarian label` : 'no settlement with this Hungarian label in HU/SK/UA/RS/HR/RO/AT' };
+}
+
 // ------------------------------------------------------------------ main
 
 async function main() {
@@ -314,13 +373,17 @@ async function main() {
   const entries = parseIndex(html);
   if (entries.length < 50) throw new Error(`only ${entries.length} entries parsed; page layout changed?`);
   const gaz = loadGazetteer();
-  const collections = entries.map((e) => {
+  const collections = [];
+  for (const e of entries) {
     const { dateRaw, placeRaw, countOnline } = splitLabel(e.label);
     const date = parseDateExpression(dateRaw, e.groupYear);
-    const places = parsePlaces(placeRaw, gaz);
+    let places = parsePlaces(placeRaw, gaz);
+    if (!process.argv.includes('--no-wikidata')) {
+      places = await Promise.all(places.map((p) => (p.resolution === 'unresolved' ? resolveViaWikidata(p) : p)));
+    }
     const nowIn = [...new Set(places.map((p) => p.nowIn).filter(Boolean))].sort();
     const rm = ROMANIAN_MATERIAL[e.id];
-    return sortKeys({
+    collections.push(sortKeys({
       id: e.id,
       journeyId: `gyuj-${e.id}`,
       url: `https://bartok-gyujtesek.zti.hu/en/browse/${e.id}`,
@@ -334,8 +397,9 @@ async function main() {
       places,
       nowIn,
       romanianMaterial: rm ? { value: true, confidence: rm } : nowIn.includes('RO') ? { value: null, confidence: 'unknown', note: 'in present-day Romania; material language not checked' } : { value: false, confidence: 'inferred' }
-    });
-  }).sort((a, b) => (a.date.start < b.date.start ? -1 : a.date.start > b.date.start ? 1 : +a.id - +b.id));
+    }));
+  }
+  collections.sort((a, b) => (a.date.start < b.date.start ? -1 : a.date.start > b.date.start ? 1 : +a.id - +b.id));
   const out = {
     _meta: {
       title: "Bartok's collecting trips as indexed by bartok-gyujtesek.zti.hu (Bela Bartok, the Ethnomusicologist)",
@@ -347,7 +411,8 @@ async function main() {
         withOnlineRecords: collections.filter((c) => c.hasOnlineRecords).length,
         withoutOnlineRecords: collections.filter((c) => !c.hasOnlineRecords).length,
         precision: Object.fromEntries(['day', 'phrase', 'month', 'season', 'year'].map((p) => [p, collections.filter((c) => c.date.precision === p).length])),
-        placesResolved: collections.reduce((n, c) => n + c.places.filter((p) => p.resolution === 'gazetteer' || p.resolution === 'region-table').length, 0),
+        placesResolved: collections.reduce((n, c) => n + c.places.filter((p) => p.resolution === 'gazetteer' || p.resolution === 'region-table' || p.resolution === 'wikidata').length, 0),
+        placesViaWikidata: collections.reduce((n, c) => n + c.places.filter((p) => p.resolution === 'wikidata').length, 0),
         placesUnresolved: collections.reduce((n, c) => n + c.places.filter((p) => p.resolution === 'unresolved' || p.resolution === 'ambiguous').length, 0),
         romanianDocumented: collections.filter((c) => c.romanianMaterial.confidence === 'documented').length,
         romanianInferred: collections.filter((c) => c.romanianMaterial.confidence === 'inferred' && c.romanianMaterial.value).length
@@ -355,7 +420,7 @@ async function main() {
       notes: [
         'label is verbatim from the site (English index). Entry 64 is truncated on the site ("Land of"); entry 65 is its Hungarian cross-reference (Mocvidek).',
         'date.precision: day (explicit days), phrase (Beginning of / Middle of / End of / After: a 10-day window), month, season, year. Where the label carries no year the accordion year is used and yearFromGroup is true.',
-        'places[].resolution: gazetteer (locality in data/gazetteer.json), region-table (built-in region or county centre, approximate), ambiguous, unresolved. Region centres are for clusters, not routes.',
+        'places[].resolution: gazetteer (locality in data/gazetteer.json), region-table (built-in region or county centre, approximate), wikidata (locality outside Romania found by its Hungarian label on Wikidata, single settlement hit, coordinates from P625), ambiguous, unresolved. Region centres are for clusters, not routes.',
         'romanianMaterial: documented = matches the collecting chronology in Rumanian Folk Music (Suchoff ed.); inferred = Romanian-speaking area, not checked entry by entry; unknown = present-day Romania but language of the material not checked (Szekely and other Hungarian villages fall here too).'
       ]
     },

@@ -1,9 +1,9 @@
 # Geodata sources: borders, counties, villages
 
 What was found, downloaded and evaluated for the journey mapper on 2026-09-28, with exact
-URLs, licences, sizes and the attribution text the app must show. Raw files are under
-`geo/raw/` (large ones git-ignored, see `geo/README.md`); web-ready layers under
-`data/geo/` are produced by `geo/build.mjs`.
+URLs, licences, sizes and the attribution text the app must show. Raw files live under
+`geo/raw/` (git-ignored as a whole; `geo/README.md` has the re-download commands);
+web-ready layers under `data/geo/` are committed and produced by `geo/build.mjs`.
 
 ## Summary
 
@@ -15,6 +15,8 @@ URLs, licences, sizes and the attribution text the app must show. Raw files are 
 | Present-day countries and Romanian counties | Natural Earth 1:10m admin-0 and admin-1, version 5.1.1 | Public domain | `borders-now.json` |
 | Village existence, names, admin units, population | Wikidata (SPARQL) | CC0 1.0 | `data/villages.json` |
 | Base map tiles | OpenStreetMap (already in MAP-SPEC.md) | ODbL | tiles |
+| Trip index (101 collecting trips with dates, places, record counts) | bartok-gyujtesek.zti.hu `/en/browse` (HUN-REN BTK ZTI) | Institute's terms, see README "Data attribution" | `data/collections-gyuj.json`, primary source of `data/journeys.json` |
+| Bibliography and facsimiles of Bartok's writings | Bela Bartok Writings, bartok-irasai.zti.hu (HUN-REN BTK ZTI) | Institute's terms; texts quoted briefly with reference | citations in `data/context-events.json` |
 
 Not used: Census Mosaic / MPIDR "Austro-Hungarian Empire 1910" court-district shapefile
 (https://censusmosaic.demog.berkeley.edu/data/historical-gis-files, Rumpler and Seger)
@@ -125,6 +127,57 @@ Romanian counties and is public domain.
 - Attribution text (app, courtesy): `Village names, coordinates, administrative units and
   status: Wikidata contributors (CC0)`
 
+## 4a. Trip index: bartok-gyujtesek.zti.hu
+
+- URL: https://bartok-gyujtesek.zti.hu/en/browse (Hungarian: `/hu/browse`). 101 entries in a
+  year accordion, each an anchor `/en/browse/<id>` whose text is "<date expression>. <place>
+  (<count>)"; entries without a count have no records online. Record pages are
+  `/en/browse/<id>/<record>`.
+- Fetched once by the scraper (cached under `scraper/cache/bartok-gyujtesek.zti.hu/`);
+  `geo/parse-gyuj-collections.mjs` reads that copy or fetches the page itself (1 request,
+  cached under `geo/cache/gyuj/`). Parsed output: `data/collections-gyuj.json` (labels
+  verbatim, parsed dates with precision, resolved places, `romanianMaterial` flag).
+  Localities outside Romania (not in the gazetteer) are resolved through Wikidata by their
+  Hungarian label (section 4), 37 of 45 found, coordinates CC0.
+- Attribution text (app): the Institute credit already used for the records: `Trip index and
+  records: HUN-REN BTK Institute for Musicology, Budapest, "Bela Bartok, the
+  Ethnomusicologist" (bartok-gyujtesek.zti.hu)`.
+
+## 4b. Bela Bartok Writings: bartok-irasai.zti.hu
+
+- URL: https://bartok-irasai.zti.hu/en/ (introduction at `/en/introduction/`, list at
+  `/en/irasok/`, by year `?ev`, by genre `?mufaj`). WordPress site with a custom post type
+  `irasok`; the REST endpoint `https://bartok-irasai.zti.hu/wp-json/wp/v2/irasok?per_page=100&page=N`
+  returns all 398 entries (Hungarian and English pages, 4 pages) with title, link, HTML
+  content and taxonomy ids (`ev` year, `mufaj` genre, `nyelv` language). Fetched with a
+  custom User-Agent at 1 request/s and cached under `geo/cache/irasai/` (git-ignored).
+- What it holds: for every writing a bibliographic record (first edition with journal,
+  issue, date and pages; collected editions BOI = Bartok Bela osszegyujtott irasai, Essays =
+  Suchoff 1976, BBI = Bartok Bela irasai, Studies = Suchoff 1997; further versions and
+  translations) and a "Complete document" facsimile link (PDF, not fetched). Some entries
+  also carry the transcribed text in the page body (e.g. 'Selbstbiographie', 'Hungary in
+  the Throes of Reaction', 'Musikfolklore', 'The Relation of Folk-Song to the Development
+  of the Art Music of Our Time'); most carry only the reference. Letters are not included
+  (the 1931 letter to Octavian Beu is cited from Demeny's edition instead).
+- Entries used as primary citations in `data/context-events.json`:
+  - 'Race Purity in Music', Modern Music XIX/3 (March-April 1942) — `/en/irasok/race-purity-in-music-2/`
+    (reprints: Tempo 8, September 1944, `.../race-purity-in-music-6/`; Horizon 60, December 1944, `.../race-purity-in-music-4/`)
+  - 'Nepdalkutatas es nacionalizmus' [Folk Song Research and Nationalism], Tukor V/3 (March 1937) — `/en/irasok/nepdalkutatas-es-nacionalizmus-2/`
+    (this is the 1937 essay on nationalism the brief referred to; 'Race Purity' is 1942)
+  - 'Valasz Petranuek tamadasara' (Szep Szo, April-May 1937), 'Antwort auf einen rumaenischen Angriff' (Ungarische Jahrbuecher XVI/2-3, February 1936), 'Reponse a une attaque roumaine' (Archivum Europae Centro-Orientalis II/3-4, 1936) — `/en/irasok/valasz-petranuek-tamadasara-2/` and linked versions
+  - 'Nepzenenk es a szomszed nepek nepzeneje' (1934) — `/en/irasok/nepzenenk-es-a-szomszed-nepek-nepzeneje-2/`
+  - 'Miert es hogyan gyujtsunk nepzenet?' (1936) — `/en/irasok/miert-es-hogyan-gyujtsunk-nepzenet-2/`
+  - 'A hunyadi roman nep zenedialektusa' (Ethnographia, March 1914) — `/en/irasok/a-hunyadi-roman-nep-zenedialektusa-2/`; 'Observari despre muzica poporala romaneasca' (Convorbiri literare, July-August 1914) — `/en/irasok/observari-despre-muzica-poporala-romaneasca-2/`
+  - 'Hungary in the Throes of Reaction', Musical Courier LXXX/18 (29 April 1920) — `/en/irasok/hungary-in-the-throes-of-reaction-2/` (full text)
+  - 'Selbstbiographie' — `/en/irasok/bela-bartok-selbstbiographie-2/` (full text)
+  - Brailoiu's 1936 translations in Muzica si Poezie — `/en/irasok/muzica-populara-maghiara-si-cea-romaneasca-2/`, `.../dialectul-muzical-al-romanilor-din-hunedoara-2/`, `.../muzica-populara-romaneasca-6/`, `.../cercetarile-de-folklore-muzical-in-ungaria-2/`
+  - 'Rumaenische Volksmusik' (1933) — `/en/irasok/rumanische-volksmusik-4/`; 'Roman nepzene' (1935) — `/en/irasok/roman-nepzene-4/`
+- Not on the site: the 1913 Bihor volume and the 1923 Maramures volume themselves (the
+  database lists articles, prefaces to some Kodaly-Bartok editions, but no entry was found
+  for these two volumes by title or body search); the letters to Beu, Busitia, Brailoiu.
+- Attribution text (app): `Bibliographic data on Bartok's writings: Bela Bartok Writings,
+  HUN-REN BTK Institute for Musicology (bartok-irasai.zti.hu)`
+
 ## 5. Output layers (`data/geo/`)
 
 | File | Features | Size | Content |
@@ -146,7 +199,8 @@ Present-day borders: Made with Natural Earth (public domain).
 Historical county boundaries (1910): GISta Hungarorum, OTKA K 111766 (gistory.hu), CC BY-NC.
 Historical state borders: historical-basemaps by Andre Ourednik and contributors, GPL-3.0 (approximate, work in progress).
 Village names and status: Wikidata contributors (CC0).
-Song records: HUN-REN BTK Institute for Musicology, Budapest (see Data attribution).
+Song records and trip index: HUN-REN BTK Institute for Musicology, Budapest (see Data attribution).
+Bibliographic data on Bartok's writings: Bela Bartok Writings, HUN-REN BTK Institute for Musicology (bartok-irasai.zti.hu).
 ```
 
 ## 7. Things that could not be obtained

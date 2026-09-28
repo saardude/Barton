@@ -29,6 +29,7 @@ function usage() {
                                                   discover and fetch record pages (site: ${SITES.join('|')})
                                                   --ignore-robots: do not enforce robots.txt (needed for systems.zti.hu)
   node src/cli.js parse <site|all>                parse cached pages into raw/<site>/records.json
+  node src/cli.js gazetteer                       merge site-printed places/coordinates (fmbc) into data/gazetteer.json
   node src/cli.js build                           normalise, merge, write data/songs.json, places.json, facets.json
   node src/cli.js validate [songs.json]           validate data files against data/schema/*.schema.json
 `);
@@ -94,6 +95,12 @@ async function cmdParse(args) {
   return 0;
 }
 
+async function cmdGazetteer() {
+  const { extendGazetteer } = await import('./gazetteer-extend.js');
+  console.log(JSON.stringify(await extendGazetteer({ log: makeLogger() })));
+  return 0;
+}
+
 async function cmdBuild() {
   const { build } = await import('./build.js');
   const summary = await build({ log: makeLogger() });
@@ -122,6 +129,7 @@ async function main() {
       case 'probe': code = await cmdProbe(args); break;
       case 'crawl': code = await cmdCrawl(args); break;
       case 'parse': code = await cmdParse(args); break;
+      case 'gazetteer': code = await cmdGazetteer(args); break;
       case 'build': code = await cmdBuild(args); break;
       case 'validate': code = await cmdValidate(args); break;
       default: usage(); code = cmd ? 2 : 0;

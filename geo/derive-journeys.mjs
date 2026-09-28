@@ -1,12 +1,19 @@
 #!/usr/bin/env node
-// Derives Bartok's field trips (journeys) from dated song records.
+// Derives Bartok's field trips (journeys).
 // Specification: docs/JOURNEY-SPEC.md. Output schema: data/schema/journey.schema.json.
 //
-//   node geo/derive-journeys.mjs                       # data/songs.json -> data/journeys.json
-//   node geo/derive-journeys.mjs --in qa/fixtures/songs.sample.json --out /tmp/j.json
-//   node geo/derive-journeys.mjs --gap 10 --jump 250 --collector "Bartok"
+// Primary source: data/collections-gyuj.json, the curated trip index of
+// bartok-gyujtesek.zti.hu (101 entries, produced by geo/parse-gyuj-collections.mjs).
+// Records of data/songs.json are attached to their collection through the record URL
+// (/en/browse/<collection>/<record>). Records that belong to no collection (the other two
+// sites) fall back to the date-gap derivation (trips = runs of dated records with no gap
+// larger than gapDays and no jump larger than jumpKm on consecutive days).
 //
-// Deterministic: sorted keys, stable ids, no randomness.
+//   node geo/derive-journeys.mjs                       # data/songs.json (+ collections) -> data/journeys.json
+//   node geo/derive-journeys.mjs --in qa/fixtures/songs.sample.json --out /tmp/j.json
+//   node geo/derive-journeys.mjs --gap 10 --jump 250 --collector "bart[oó]k" --no-collections
+//
+// Deterministic: sorted keys, stable ids, no randomness, no network.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -14,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..');
+const GENERATOR = 'geo/derive-journeys.mjs';
 
 export const DEFAULT_CONFIG = {
   collectorPattern: /bart[oó]k/i,
@@ -26,7 +34,7 @@ export const DEFAULT_CONFIG = {
     confidence: 'assumed',
     note: "Default departure point: Budapest, Bartok's home base from 1907 (Academy of Music). Not documented per trip; the UI labels it as assumed."
   },
-  generator: 'geo/derive-journeys.mjs'
+  collections: null // parsed collections-gyuj.json, or null to disable
 };
 
 // ------------------------------------------------------------------ helpers
@@ -49,7 +57,7 @@ function sortKeys(v) {
 }
 const pad = (n) => String(n).padStart(2, '0');
 export function precisionOf(c) {
-  if (c.year == null) return null;
+  if (!c || c.year == null) return null;
   if (c.month == null) return 'year';
   if (c.day == null) return 'month';
   return 'day';
@@ -62,8 +70,11 @@ export function isoOf(c) {
   return `${c.year}-${pad(c.month)}-${pad(c.day)}`;
 }
 function dayNumber(c) {
-  // days since epoch for full dates (UTC, no DST issues)
   return Math.round(Date.UTC(c.year, c.month - 1, c.day) / 86400000);
+}
+function dayNumberIso(s) {
+  const [y, m, d] = s.split('-').map(Number);
+  return Math.round(Date.UTC(y, (m || 1) - 1, d || 1) / 86400000);
 }
 function stopKey(loc) {
   return loc.placeId || (loc.village ? `v:${fold(loc.village)}|${fold(loc.county)}` : loc.villageHistorical ? `h:${fold(loc.villageHistorical)}|${fold(loc.countyHistorical)}` : `raw:${fold(loc.raw)}`);
@@ -72,15 +83,155 @@ function addCount(map, key) {
   if (key == null || key === '') return;
   map[key] = (map[key] || 0) + 1;
 }
+export function collectionIdOf(song) {
+  const m = String(song.source && song.source.url || '').match(/bartok-gyujtesek\.zti\.hu\/(?:en|hu)\/browse\/(\d+)\/\d+/);
+  if (m) return m[1];
+  const m2 = String(song.id || '').match(/^gyuj-(\d+)-\d+$/);
+  return m2 ? m2[1] : null;
+}
+const PRECISION_RANK = { day: 0, phrase: 1, month: 2, season: 3, year: 4 };
 
-// ------------------------------------------------------------------ core
+// ------------------------------------------------------------------ stops and facts (shared)
 
-export function deriveJourneys(songs, config = {}) {
-  const cfg = { ...DEFAULT_CONFIG, ...config, departure: { ...DEFAULT_CONFIG.departure, ...(config.departure || {}) } };
-  const dated = songs.filter((s) => s.collector && cfg.collectorPattern.test(s.collector) && s.collected && s.collected.year != null);
-  const skipped = songs.length - dated.length;
+function groupStops(records) {
+  const byStop = new Map();
+  for (const s of records) {
+    const k = stopKey(s.location);
+    if (!byStop.has(k)) byStop.set(k, { key: k, loc: s.location, songs: [], dates: [] });
+    const st = byStop.get(k);
+    st.songs.push(s);
+    st.dates.push(isoOf(s.collected) || '');
+  }
+  for (const st of byStop.values()) st.dates.sort();
+  return [...byStop.values()];
+}
 
-  // 1. Route trips: full dates only.
+function stopsFromRecords(records, kind, cfg) {
+  const stops = groupStops(records);
+  if (kind === 'route') stops.sort((a, b) => (a.dates[0] < b.dates[0] ? -1 : a.dates[0] > b.dates[0] ? 1 : a.key < b.key ? -1 : 1));
+  else stops.sort((a, b) => (fold(a.loc.village || a.loc.villageHistorical || a.loc.raw) < fold(b.loc.village || b.loc.villageHistorical || b.loc.raw) ? -1 : 1));
+  let prevPt = kind === 'route' ? { lat: cfg.departure.lat, lng: cfg.departure.lng } : null;
+  let distance = 0;
+  let anyKm = false;
+  const out = stops.map((st, i) => {
+    const loc = st.loc;
+    const resolved = loc.lat != null && loc.lng != null;
+    let km = null;
+    if (kind === 'route' && resolved && prevPt) {
+      km = Number(haversineKm(prevPt.lat, prevPt.lng, loc.lat, loc.lng).toFixed(1));
+      distance += km;
+      anyKm = true;
+    }
+    if (resolved && kind === 'route') prevPt = { lat: loc.lat, lng: loc.lng };
+    return {
+      seq: i + 1,
+      placeId: loc.placeId ?? null,
+      village: loc.village ?? null,
+      villageHistorical: loc.villageHistorical ?? null,
+      county: loc.county ?? null,
+      countyHistorical: loc.countyHistorical ?? null,
+      country: loc.country ?? null,
+      lat: resolved ? loc.lat : null,
+      lng: resolved ? loc.lng : null,
+      arrival: st.dates[0] || null,
+      departure: st.dates[st.dates.length - 1] || null,
+      recordCount: st.songs.length,
+      songIds: st.songs.map((s) => s.id).sort(),
+      kmFromPrevious: km,
+      locationConfidence: resolved ? 'resolved' : 'unresolved'
+    };
+  });
+  return { stops: out, distanceKm: kind === 'route' && anyKm ? Number(distance.toFixed(1)) : null };
+}
+
+function stopsFromLabel(coll) {
+  return coll.places.map((p, i) => ({
+    seq: i + 1,
+    placeId: p.placeId ?? null,
+    village: p.name ?? p.text ?? null,
+    villageHistorical: p.nameHu ?? (p.resolution === 'unresolved' || p.resolution === 'ambiguous' ? p.text : null),
+    county: p.county ?? null,
+    countyHistorical: p.countyHistorical ?? null,
+    country: p.nowIn ?? null,
+    lat: p.lat ?? null,
+    lng: p.lng ?? null,
+    arrival: coll.date.start,
+    departure: coll.date.end,
+    recordCount: 0,
+    songIds: [],
+    kmFromPrevious: null,
+    locationConfidence: p.resolution === 'gazetteer' ? 'label' : p.resolution === 'region-table' ? 'label-region' : 'unresolved'
+  }));
+}
+
+function facts(records, stops) {
+  const f = { counties: new Set(), countiesHistorical: new Set(), ethnicGroups: {}, instruments: {}, genres: {}, performers: new Set() };
+  for (const s of records) {
+    if (s.location.county) f.counties.add(s.location.county);
+    if (s.location.countyHistorical) f.countiesHistorical.add(s.location.countyHistorical);
+    addCount(f.ethnicGroups, s.performer && s.performer.ethnicity);
+    for (const ins of s.instrument || []) addCount(f.instruments, ins);
+    addCount(f.genres, s.genre);
+    if (s.performer && s.performer.name) f.performers.add(fold(s.performer.name));
+  }
+  for (const st of stops) {
+    if (st.county) f.counties.add(st.county);
+    if (st.countyHistorical) f.countiesHistorical.add(st.countyHistorical);
+  }
+  return {
+    villages: stops.filter((st) => st.placeId || st.village).length,
+    counties: [...f.counties].sort(),
+    countiesHistorical: [...f.countiesHistorical].sort(),
+    ethnicGroups: f.ethnicGroups,
+    instruments: f.instruments,
+    genres: f.genres,
+    performers: f.performers.size
+  };
+}
+
+// ------------------------------------------------------------------ primary: gyuj collections
+
+function collectionJourney(coll, records, cfg) {
+  const allDay = records.length > 0 && records.every((s) => precisionOf(s.collected) === 'day');
+  const kind = allDay ? 'route' : 'cluster';
+  const fromRecords = records.length ? stopsFromRecords(records, kind, cfg) : null;
+  const stops = fromRecords ? fromRecords.stops : stopsFromLabel(coll);
+  const recDates = records.map((s) => isoOf(s.collected)).filter(Boolean).sort();
+  const dateStart = coll.date.start;
+  const dateEnd = coll.date.end;
+  const days = /^\d{4}-\d{2}-\d{2}$/.test(dateStart) && /^\d{4}-\d{2}-\d{2}$/.test(dateEnd) ? dayNumberIso(dateEnd) - dayNumberIso(dateStart) + 1 : null;
+  return sortKeys({
+    id: coll.journeyId,
+    derivedFrom: 'gyuj-collections',
+    kind,
+    collector: records[0] ? records[0].collector : 'Bartok Bela',
+    label: coll.label,
+    labelDateRaw: coll.dateRaw,
+    labelPlaceRaw: coll.placeRaw,
+    sourceUrl: coll.url,
+    countOnline: coll.countOnline,
+    recordsOnline: coll.hasOnlineRecords,
+    dateStart,
+    dateEnd,
+    dateConfidence: coll.date.precision,
+    datePeriods: coll.date.periods,
+    recordDateRange: recDates.length ? { start: recDates[0], end: recDates[recDates.length - 1] } : null,
+    days,
+    departure: { ...cfg.departure },
+    stops,
+    distanceKm: fromRecords ? fromRecords.distanceKm : null,
+    recordCount: records.length,
+    facts: facts(records, stops),
+    songIds: records.map((s) => s.id).sort(),
+    nowIn: coll.nowIn,
+    romanianMaterial: coll.romanianMaterial,
+    derivation: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: ['collection'], generator: GENERATOR }
+  });
+}
+
+// ------------------------------------------------------------------ fallback: date-gap derivation
+
+function gapJourneys(dated, cfg) {
   const full = dated.filter((s) => precisionOf(s.collected) === 'day')
     .map((s) => ({ s, day: dayNumber(s.collected), key: stopKey(s.location) }))
     .sort((a, b) => a.day - b.day || (a.key < b.key ? -1 : a.key > b.key ? 1 : 0) || (a.s.id < b.s.id ? -1 : 1));
@@ -102,8 +253,6 @@ export function deriveJourneys(songs, config = {}) {
     current.records.push(r.s);
     prev = r;
   }
-
-  // 2. Fuzzy trips: year+month records grouped per month, year-only per year, per collector.
   const fuzzy = new Map();
   for (const s of dated) {
     const p = precisionOf(s.collected);
@@ -112,8 +261,6 @@ export function deriveJourneys(songs, config = {}) {
     if (!fuzzy.has(k)) fuzzy.set(k, { records: [], reasons: [p === 'month' ? 'precision' : 'year'], precision: p });
     fuzzy.get(k).records.push(s);
   }
-
-  // 3. Assemble, assign ids (J-YYYY-MM-nn, nn per year-month across both kinds, routes first).
   const groups = [
     ...routes.map((g) => ({ ...g, kind: 'route', precision: 'day' })),
     ...[...fuzzy.values()].map((g) => ({ ...g, kind: 'cluster' }))
@@ -122,116 +269,102 @@ export function deriveJourneys(songs, config = {}) {
     return { ...g, dateStart: dates[0], dateEnd: dates[dates.length - 1] };
   }).sort((a, b) => (a.dateStart < b.dateStart ? -1 : a.dateStart > b.dateStart ? 1 : a.kind === 'route' ? -1 : 1));
   const seqByMonth = {};
-  const journeys = groups.map((g) => {
+  return groups.map((g) => {
     const ym = g.precision === 'year' ? `${g.dateStart.slice(0, 4)}-00` : g.dateStart.slice(0, 7);
     seqByMonth[ym] = (seqByMonth[ym] || 0) + 1;
-    return buildJourney(`J-${ym}-${pad(seqByMonth[ym])}`, g, cfg);
+    const { stops, distanceKm } = stopsFromRecords(g.records, g.kind, cfg);
+    const sorted = g.kind === 'route' ? g.records.map((s) => s.collected).sort((a, b) => dayNumber(a) - dayNumber(b)) : null;
+    return sortKeys({
+      id: `J-${ym}-${pad(seqByMonth[ym])}`,
+      derivedFrom: 'date-gap',
+      kind: g.kind,
+      collector: g.records[0].collector,
+      label: null,
+      labelDateRaw: null,
+      labelPlaceRaw: null,
+      sourceUrl: null,
+      countOnline: null,
+      recordsOnline: true,
+      dateStart: g.dateStart,
+      dateEnd: g.dateEnd,
+      dateConfidence: g.precision,
+      datePeriods: [{ raw: null, start: g.dateStart, end: g.dateEnd, precision: g.precision, qualifiers: [], uncertain: false }],
+      recordDateRange: { start: g.dateStart, end: g.dateEnd },
+      days: sorted ? dayNumber(sorted.at(-1)) - dayNumber(sorted[0]) + 1 : null,
+      departure: { ...cfg.departure },
+      stops,
+      distanceKm,
+      recordCount: g.records.length,
+      facts: facts(g.records, stops),
+      songIds: g.records.map((s) => s.id).sort(),
+      nowIn: [...new Set(g.records.map((s) => s.location.country).filter(Boolean))].sort(),
+      romanianMaterial: null,
+      derivation: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: g.reasons, generator: GENERATOR }
+    });
   });
+}
 
+// ------------------------------------------------------------------ entry point
+
+export function deriveJourneys(songs, config = {}) {
+  const cfg = { ...DEFAULT_CONFIG, ...config, departure: { ...DEFAULT_CONFIG.departure, ...(config.departure || {}) } };
+  const collections = cfg.collections ? cfg.collections.collections : [];
+  const collIds = new Set(collections.map((c) => c.id));
+  // Records of an index entry are Bartok's by definition (the index is his collecting
+  // trips), even when the record page prints no collector; count how often we rely on that.
+  let collectorAssumedFromIndex = 0;
+  const bartok = songs.filter((s) => {
+    if (s.collector && cfg.collectorPattern.test(s.collector)) return true;
+    if (!s.collector && collIds.has(collectionIdOf(s))) { collectorAssumedFromIndex++; return true; }
+    return false;
+  });
+  const byColl = new Map();
+  const rest = [];
+  let orphanCollectionRecords = 0;
+  for (const s of bartok) {
+    const cid = collectionIdOf(s);
+    if (cid && collIds.has(cid)) {
+      if (!byColl.has(cid)) byColl.set(cid, []);
+      byColl.get(cid).push(s);
+    } else {
+      if (cid) orphanCollectionRecords++;
+      rest.push(s);
+    }
+  }
+  const primary = collections.map((c) => collectionJourney(c, (byColl.get(c.id) || []).sort((a, b) => (a.id < b.id ? -1 : 1)), cfg));
+  const dated = rest.filter((s) => s.collected && s.collected.year != null);
+  const fallback = gapJourneys(dated, cfg);
+  const journeys = [...primary, ...fallback].sort((a, b) => (a.dateStart < b.dateStart ? -1 : a.dateStart > b.dateStart ? 1 : a.id < b.id ? -1 : 1));
   return {
     _meta: {
-      title: "Bartok's field trips reconstructed from dated records",
+      title: "Bartok's field trips: the bartok-gyujtesek.zti.hu trip index, with records attached, plus date-gap derived trips for records outside that index",
       spec: 'docs/JOURNEY-SPEC.md',
       schema: 'data/schema/journey.schema.json',
-      generator: cfg.generator,
+      generator: GENERATOR,
+      sources: {
+        primary: cfg.collections ? { file: 'data/collections-gyuj.json', ...cfg.collections._meta.source } : null,
+        fallback: 'date-gap derivation over records with no collection'
+      },
       config: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, departure: cfg.departure, collectorPattern: String(cfg.collectorPattern) },
       counts: {
         inputRecords: songs.length,
-        usedRecords: dated.length,
-        skippedRecords: skipped,
+        bartokRecords: bartok.length,
+        collectorAssumedFromIndex,
+        recordsInCollections: bartok.length - rest.length,
+        recordsOutsideCollections: rest.length,
+        orphanCollectionRecords,
+        recordsWithoutYear: rest.length - dated.length,
+        collectionJourneys: primary.length,
+        collectionJourneysWithRecords: primary.filter((j) => j.recordCount > 0).length,
+        collectionJourneysWithoutOnlineRecords: primary.filter((j) => !j.recordsOnline).length,
+        gapJourneys: fallback.length,
         routes: journeys.filter((j) => j.kind === 'route').length,
         clusters: journeys.filter((j) => j.kind === 'cluster').length
       },
-      note: 'A journey is a run of dated records, not a documented itinerary. Stops are where records were made; travel between them, the departure point and the return are inferred and labelled as such.'
+      note: 'A journey is either an entry of the curated trip index (derivedFrom gyuj-collections; label verbatim) or a run of dated records (derivedFrom date-gap). Stops are where records were made, or, for index entries without online records, the places named in the label. Travel between stops, the departure point and the return are inferred and labelled as such.'
     },
     journeys
   };
-}
-
-function buildJourney(id, g, cfg) {
-  const byStop = new Map();
-  for (const s of g.records) {
-    const k = stopKey(s.location);
-    if (!byStop.has(k)) byStop.set(k, { key: k, loc: s.location, songs: [], dates: [] });
-    const st = byStop.get(k);
-    st.songs.push(s);
-    st.dates.push(isoOf(s.collected));
-  }
-  let stops = [...byStop.values()].map((st) => {
-    st.dates.sort();
-    return st;
-  });
-  if (g.kind === 'route') {
-    stops.sort((a, b) => (a.dates[0] < b.dates[0] ? -1 : a.dates[0] > b.dates[0] ? 1 : a.key < b.key ? -1 : 1));
-  } else {
-    stops.sort((a, b) => (fold(a.loc.village || a.loc.villageHistorical) < fold(b.loc.village || b.loc.villageHistorical) ? -1 : 1));
-  }
-  let prevPt = g.kind === 'route' ? { lat: cfg.departure.lat, lng: cfg.departure.lng } : null;
-  let distance = 0;
-  let anyKm = false;
-  const outStops = stops.map((st, i) => {
-    const loc = st.loc;
-    const resolved = loc.lat != null && loc.lng != null;
-    let km = null;
-    if (g.kind === 'route' && resolved && prevPt) {
-      km = Number(haversineKm(prevPt.lat, prevPt.lng, loc.lat, loc.lng).toFixed(1));
-      distance += km;
-      anyKm = true;
-    }
-    if (resolved && g.kind === 'route') prevPt = { lat: loc.lat, lng: loc.lng };
-    return {
-      seq: i + 1,
-      placeId: loc.placeId ?? null,
-      village: loc.village ?? null,
-      villageHistorical: loc.villageHistorical ?? null,
-      county: loc.county ?? null,
-      countyHistorical: loc.countyHistorical ?? null,
-      country: loc.country ?? null,
-      lat: resolved ? loc.lat : null,
-      lng: resolved ? loc.lng : null,
-      arrival: st.dates[0],
-      departure: st.dates[st.dates.length - 1],
-      recordCount: st.songs.length,
-      songIds: st.songs.map((s) => s.id).sort(),
-      kmFromPrevious: km,
-      locationConfidence: resolved ? 'resolved' : 'unresolved'
-    };
-  });
-  const facts = { villages: 0, counties: new Set(), countiesHistorical: new Set(), ethnicGroups: {}, instruments: {}, genres: {}, performers: new Set() };
-  for (const s of g.records) {
-    if (s.location.county) facts.counties.add(s.location.county);
-    if (s.location.countyHistorical) facts.countiesHistorical.add(s.location.countyHistorical);
-    addCount(facts.ethnicGroups, s.performer && s.performer.ethnicity);
-    for (const ins of s.instrument || []) addCount(facts.instruments, ins);
-    addCount(facts.genres, s.genre);
-    if (s.performer && s.performer.name) facts.performers.add(fold(s.performer.name));
-  }
-  facts.villages = outStops.filter((st) => st.placeId || st.village).length;
-  const days = g.kind === 'route' ? dayNumber(g.records.map((s) => s.collected).sort((a, b) => dayNumber(a) - dayNumber(b)).at(-1)) - dayNumber(g.records.map((s) => s.collected).sort((a, b) => dayNumber(a) - dayNumber(b))[0]) + 1 : null;
-  return sortKeys({
-    id,
-    kind: g.kind,
-    collector: g.records[0].collector,
-    dateStart: g.dateStart,
-    dateEnd: g.dateEnd,
-    dateConfidence: g.precision,
-    days,
-    departure: { ...cfg.departure },
-    stops: outStops,
-    distanceKm: g.kind === 'route' && anyKm ? Number(distance.toFixed(1)) : null,
-    recordCount: g.records.length,
-    facts: {
-      villages: facts.villages,
-      counties: [...facts.counties].sort(),
-      countiesHistorical: [...facts.countiesHistorical].sort(),
-      ethnicGroups: facts.ethnicGroups,
-      instruments: facts.instruments,
-      genres: facts.genres,
-      performers: facts.performers.size
-    },
-    songIds: g.records.map((s) => s.id).sort(),
-    derivation: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: g.reasons, generator: cfg.generator }
-  });
 }
 
 // ------------------------------------------------------------------ CLI
@@ -241,18 +374,23 @@ function main() {
   const opt = (n, d) => { const i = args.indexOf(n); return i === -1 ? d : args[i + 1]; };
   const inPath = resolve(opt('--in', join(ROOT, 'data', 'songs.json')));
   const outPath = resolve(opt('--out', join(ROOT, 'data', 'journeys.json')));
-  if (!existsSync(inPath)) {
-    console.error(`No input at ${inPath}. Run the scraper first (data/songs.json) or pass --in.`);
-    process.exit(2);
+  const collPath = resolve(opt('--collections', join(ROOT, 'data', 'collections-gyuj.json')));
+  let songs = [];
+  if (existsSync(inPath)) {
+    const raw = JSON.parse(readFileSync(inPath, 'utf8'));
+    songs = Array.isArray(raw) ? raw : raw.songs || [];
+  } else {
+    console.error(`No records at ${inPath}; journeys will come from the collection index only.`);
   }
-  const songs = JSON.parse(readFileSync(inPath, 'utf8'));
-  const cfg = {
-    gapDays: Number(opt('--gap', DEFAULT_CONFIG.gapDays)),
-    jumpKm: Number(opt('--jump', DEFAULT_CONFIG.jumpKm))
-  };
+  const cfg = { gapDays: Number(opt('--gap', DEFAULT_CONFIG.gapDays)), jumpKm: Number(opt('--jump', DEFAULT_CONFIG.jumpKm)) };
   const coll = opt('--collector', null);
   if (coll) cfg.collectorPattern = new RegExp(coll, 'i');
-  const out = deriveJourneys(Array.isArray(songs) ? songs : songs.songs || [], cfg);
+  if (!args.includes('--no-collections') && existsSync(collPath)) cfg.collections = JSON.parse(readFileSync(collPath, 'utf8'));
+  if (!songs.length && !cfg.collections) {
+    console.error('Nothing to derive from: no songs and no collections file.');
+    process.exit(2);
+  }
+  const out = deriveJourneys(songs, cfg);
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n');
   console.log(JSON.stringify({ written: outPath, ...out._meta.counts }));

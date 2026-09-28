@@ -176,7 +176,7 @@ function base(url, context) {
     title: c.incipit || null,
     incipit: c.incipit || null,
     genreRaw: null,
-    style: styleFromSystem(c.brNumber, c.categoryLabel ? c.categoryLabel.split(' > ')[0] : null).style,
+    style: styleFromSystem(c.brNumber, c.categoryLabel || null).style,
     styleRaw: c.categoryLabel || styleFromSystem(c.brNumber, null).styleRaw,
     performanceRaw: c.categoryLabel && /instrumental/i.test(c.categoryLabel) ? 'instrumental' : null,
     instrumentRaw: null,
@@ -245,7 +245,7 @@ export function parseRecord(html, url, context = {}) {
   if (pl.placeRaw) r.placeRaw = pl.placeRaw;
   if (pl.dateRaw) r.dateRaw = pl.dateRaw;
   r.originRaw = get('origin');
-  r.performerRaw = get('informant');
+  r.performerRaw = get('informant') || r.performerRaw;
   r.collectorRaw = get('collector') || r.collectorRaw;
   r.referenceCode = get('brNumber') || r.referenceCode;
   r.systemPosition = get('brNumber') || r.systemPosition;
@@ -257,17 +257,17 @@ export function parseRecord(html, url, context = {}) {
   if (!r.style) Object.assign(r, styleFromSystem(r.systemPosition, null));
   const sound = get('sound');
   if (sound) r.fields['Sound recording'] = sound;
-  r.cadences = get('cadence');
-  r.rhythm = get('rhythm');
-  r.syllables = get('syllables');
-  r.ambitus = get('ambitus');
-  r.mode = get('mode');
-  r.form = get('form');
-  r.style = get('style');
-  r.genreRaw = get('genre');
-  r.performanceRaw = get('performance');
-  r.ethnicityRaw = get('ethnicity');
-  r.remarks = get('remarks');
+  // page labels win when present; otherwise keep what the category tree / listing row gave
+  r.cadences = get('cadence') || r.cadences;
+  r.rhythm = get('rhythm') || r.rhythm;
+  r.syllables = get('syllables') || r.syllables;
+  r.ambitus = get('ambitus') || r.ambitus;
+  r.mode = get('mode') || r.mode;
+  r.form = get('form') || r.form;
+  r.genreRaw = get('genre') || r.genreRaw;
+  r.performanceRaw = get('performance') || r.performanceRaw;
+  r.ethnicityRaw = get('ethnicity') || r.ethnicityRaw;
+  r.remarks = get('remarks') || r.remarks;
   r.notation = z.notation;
   r.audio = z.audio;
   const variantsLink = z.pairs['Number of melodic variants (link)'];
@@ -278,4 +278,4 @@ export function parseRecord(html, url, context = {}) {
   return r;
 }
 
-export default { name, host, kind, seeds, robotsNote, SELECTORS, discover, parseRecord, fromContext };
+export default { name, host, kind, seeds, robotsNote, SELECTORS, CATEGORIES, discover, parseRecord, fromContext };

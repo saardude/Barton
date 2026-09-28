@@ -1,7 +1,7 @@
 {
   "_meta": {
     "title": "Geopolitical and biographical context for Bartok's Romanian field trips",
-    "note": "This layer presents documented material for the reader to weigh. Entries summarise what a cited source says, in neutral wording, and do not editorialise or take a position on the national questions involved. Dates marked dateConfidence 'approximate' should be verified against the cited source before being shown as exact. Additions must carry a citation; uncited items are not accepted.",
+    "note": "This layer presents documented material for the reader to weigh. Entries summarise what a cited source says, in neutral wording, and do not editorialise or take a position on the national questions involved. Dates marked dateConfidence 'approximate' should be verified against the cited source before being shown as exact. Additions must carry a citation; uncited items are not accepted. Where the Bela Bartok Writings database (bartok-irasai.zti.hu) holds the entry for a text, its URL is the primary citation and the bibliographic data (journal, issue, date, pages) are taken from that entry verbatim.",
     "kinds": {
       "border": "changes of state borders or administrative status of the collecting area",
       "publication": "Bartok's publications of Romanian material",
@@ -13,7 +13,9 @@
     "abbreviations": {
       "Essays": "Bela Bartok Essays, selected and edited by Benjamin Suchoff (London: Faber and Faber, 1976; reprint Lincoln: University of Nebraska Press, 1992)",
       "Letters": "Bela Bartok Letters, collected, selected, edited and annotated by Janos Demeny (London: Faber and Faber; Budapest: Corvina, 1971)",
-      "RFM": "Bela Bartok, Rumanian Folk Music, edited by Benjamin Suchoff, 5 vols (The Hague: Martinus Nijhoff, 1967-1975)"
+      "RFM": "Bela Bartok, Rumanian Folk Music, edited by Benjamin Suchoff, 5 vols (The Hague: Martinus Nijhoff, 1967-1975)",
+      "Studies": "Bela Bartok Studies in Ethnomusicology, selected and edited by Benjamin Suchoff (Lincoln: University of Nebraska Press, 1997)",
+      "Writings": "Bela Bartok Writings (Bartok Bela irasai), online bibliographic database of Bartok's writings with facsimiles, HUN-REN BTK Institute for Musicology, https://bartok-irasai.zti.hu/en/ ; each entry gives the first edition, the collected editions (BOI, Essays, BBI) and further versions"
     }
   },
   "events": [
@@ -25,8 +27,14 @@
       "kind": "biography",
       "title": "First collecting trip in Transylvania (Csik county, Szekely villages)",
       "summary": "In the summer of 1907 Bartok made his first collecting journey in Transylvania, among the Hungarian-speaking Szekely of Csik county (today Harghita, Romania). It was there that he recorded the pentatonic 'old style' melodies that shaped his view of Hungarian peasant music. The trip established the working method he used for the Romanian collections that followed: travel by train and cart to villages, phonograph recording of selected singers, notation in the field.",
-      "source": { "citation": "Bela Bartok, 'Autobiography' (1921), in Essays, pp. 408-411; Janos Demeny (ed.), Letters, letters of July-August 1907." },
-      "places": ["Harghita"]
+      "source": {
+        "citation": "Bela Bartok, 'Selbstbiographie' (1921/1923), text on the Writings database; English version 'Autobiography' in Essays, pp. 408-411. The passage on the nationalist current of 1902-1903 and on extending the research to the Slovak and Romanian language areas is in this text.",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/bela-bartok-selbstbiographie-2/"
+      },
+      "places": [
+        "Harghita"
+      ],
+      "quote": "Zu jener Zeit entstand in Ungarn jene bekannte chauvinistische politische Stroemung, welche sich auch auf kuenstlerischem Gebiete fuehlbar machte. ... spaeter jedoch gesellte sich die nicht minder wichtige wissenschaftliche Behandlung des Materials dazu, sowie die Erstreckung der Forschung auf die Sprachgebiete der Slowaken und Rumaenen. (Selbstbiographie, as transcribed on bartok-irasai.zti.hu)"
     },
     {
       "id": "1909-bihor-collecting-begins",
@@ -36,8 +44,12 @@
       "kind": "biography",
       "title": "Romanian collecting begins in Bihor county with Ioan Busitia as guide",
       "summary": "Bartok's systematic collecting of Romanian folk music began in Bihar (Bihor) county in the summer of 1909, in the Beius (Belenyes) area, and continued in 1910. Ioan Busitia (1875-1953), a teacher at the Romanian gymnasium in Beius, guided him to villages and singers and remained a correspondent for decades; Bartok later dedicated the Romanian Folk Dances (1915) to him. The Bihor material became Bartok's first published Romanian collection.",
-      "source": { "citation": "RFM, vol. I, Introduction (Suchoff), and Bartok's preface to Chansons populaires roumaines du departement Bihar (1913); Letters (Demeny), letters to Ion Busitia 1909-1934." },
-      "places": ["Bihor"]
+      "source": {
+        "citation": "RFM, vol. I, Introduction (Suchoff), and Bartok's preface to Chansons populaires roumaines du departement Bihar (1913); Letters (Demeny), letters to Ion Busitia 1909-1934."
+      },
+      "places": [
+        "Bihor"
+      ]
     },
     {
       "id": "1913-bihor-volume",
@@ -46,8 +58,13 @@
       "kind": "publication",
       "title": "Bihor volume published by the Romanian Academy in Bucharest",
       "summary": "Bartok's first volume of Romanian folk music, 'Cantece poporale romanesti din comitatul Bihor (Ungaria) / Chansons populaires roumaines du departement Bihar (Hongrie)', with 371 melodies, was published in 1913 by the Romanian Academy (Academia Romana) in Bucharest, in Romanian and French. The publication in Bucharest, outside Hungary, by a Romanian scholarly body, is the fact later cited in the Hungarian press attacks on him (see 1920).",
-      "source": { "citation": "Bela Bartok, Cantece poporale romanesti din comitatul Bihor (Ungaria) (Bucuresti: Academia Romana, 1913); reprinted and translated in RFM, vol. I." },
-      "places": ["Bihor"]
+      "source": {
+        "citation": "Bela Bartok, Cantece poporale romanesti din comitatul Bihor (Ungaria) (Bucuresti: Academia Romana, 1913); reprinted and translated in RFM, vol. I.",
+        "note": "The Writings database lists Bartok's articles, not the volume itself; the earliest Romanian-material articles it holds are 'A hunyadi roman nep zenedialektusa' (Ethnographia XXV/2, March 1914) and 'Observari despre muzica poporala romaneasca' (Convorbiri literare XLVIII/7-8, July-August 1914), see event 1914-romanian-articles."
+      },
+      "places": [
+        "Bihor"
+      ]
     },
     {
       "id": "1913-maramures-trip",
@@ -56,8 +73,28 @@
       "kind": "biography",
       "title": "Two-week collecting trip in Maramures",
       "summary": "In March 1913 Bartok spent about two weeks collecting in Maramaros (Maramures) county, along the Iza and Viseu valleys, recording songs, laments and instrumental music. The material was published only after the war, in Munich (see 1923).",
-      "source": { "citation": "Bela Bartok, Volksmusik der Rumanen von Maramures (Munchen: Drei Masken Verlag, 1923), preface; RFM, vol. V, Introduction." },
-      "places": ["Maramures"]
+      "source": {
+        "citation": "Bela Bartok, Volksmusik der Rumanen von Maramures (Munchen: Drei Masken Verlag, 1923), preface; RFM, vol. V, Introduction."
+      },
+      "places": [
+        "Maramures"
+      ]
+    },
+    {
+      "id": "1914-romanian-articles",
+      "date": "1914-03",
+      "dateEnd": "1914-08",
+      "dateConfidence": "exact",
+      "kind": "publication",
+      "title": "First articles on Romanian folk music, in Hungarian and Romanian",
+      "summary": "Bartok's first scholarly articles on his Romanian material appeared in 1914: 'A hunyadi roman nep zenedialektusa' [The folk music dialect of the Hunedoara Romanians] in the Budapest journal Ethnographia (XXV/2, March 1914, 108-115; German version in Zeitschrift fuer Musikwissenschaft II/6, March 1920) and 'Observari despre muzica poporala romaneasca' [Observations on Romanian folk music] in the Romanian journal Convorbiri literare (XLVIII/7-8, July-August 1914, 703-709). Both were later translated into Romanian by Brailoiu (1936).",
+      "source": {
+        "citation": "Entries on the Writings database: 'A hunyadi roman nep zenedialektusa', Ethnographia XXV/2 (March 1914), 108-115 (Essays 103-114); 'Observari despre muzica poporala romaneasca', Convorbiri literare XLVIII/7-8 (July-August 1914), 703-709 (Essays 195-200).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/a-hunyadi-roman-nep-zenedialektusa-2/"
+      },
+      "places": [
+        "Hunedoara"
+      ]
     },
     {
       "id": "1914-war",
@@ -67,7 +104,9 @@
       "kind": "border",
       "title": "First World War: fieldwork curtailed",
       "summary": "Austria-Hungary declared war on Serbia on 28 July 1914. Wartime conditions restricted Bartok's travel to villages, though he continued to collect where he could (Hungarian, Slovak and Romanian material in 1914-1918, including from soldiers). The records dated 1914-1918 in this collection are the last made inside the pre-war Kingdom of Hungary; after 1918 the Romanian villages of his collection lay in another state.",
-      "source": { "citation": "Bela Bartok, 'Autobiography' (1921), in Essays; Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988), chapter on the war years." }
+      "source": {
+        "citation": "Bela Bartok, 'Autobiography' (1921), in Essays; Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988), chapter on the war years."
+      }
     },
     {
       "id": "1918-alba-iulia",
@@ -76,7 +115,10 @@
       "kind": "border",
       "title": "Alba Iulia assembly proclaims the union of Transylvania with Romania",
       "summary": "On 1 December 1918 the Romanian National Assembly at Alba Iulia (Gyulafehervar) proclaimed the union of Transylvania, Banat, Crisana and Maramures with the Kingdom of Romania. Romanian administration was extended over the area during 1919; the international settlement followed in 1920.",
-      "source": { "citation": "Keith Hitchins, Rumania 1866-1947 (Oxford: Clarendon Press, 1994), ch. 6; text of the Alba Iulia resolution, 1 December 1918.", "url": "https://en.wikipedia.org/wiki/Union_of_Transylvania_with_Romania" }
+      "source": {
+        "citation": "Keith Hitchins, Rumania 1866-1947 (Oxford: Clarendon Press, 1994), ch. 6; text of the Alba Iulia resolution, 1 December 1918.",
+        "url": "https://en.wikipedia.org/wiki/Union_of_Transylvania_with_Romania"
+      }
     },
     {
       "id": "1919-music-directorate",
@@ -86,7 +128,21 @@
       "kind": "biography",
       "title": "Hungarian Soviet Republic: Bartok on the Music Directorate",
       "summary": "During the Hungarian Soviet Republic (March-August 1919) Bartok, Kodaly and Dohnanyi served on the Music Directorate, which planned among other things a folk-music research institute. After the regime fell, Kodaly faced disciplinary proceedings at the Academy of Music and Bartok was questioned; the episode is part of the background to the press hostility of 1920.",
-      "source": { "citation": "Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988); Janos Demeny (ed.), Letters, 1919-1920." }
+      "source": {
+        "citation": "Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988); Janos Demeny (ed.), Letters, 1919-1920."
+      }
+    },
+    {
+      "id": "1920-press-attacks",
+      "date": "1920",
+      "dateConfidence": "approximate",
+      "kind": "reception",
+      "title": "Hungarian press attacks Bartok over his Romanian publications",
+      "summary": "On 29 April 1920 the New York Musical Courier printed Bartok's report 'Hungary in the Throes of Reaction' on musical life in Budapest after the fall of the Soviet Republic, in which he described the dismissal of musicians and the state of the Opera and the Academy. In the following months parts of the Budapest press, with the Academy director Jeno Hubay among the critics, attacked him as unpatriotic; the Bihor volume of 1913, published in Bucharest by the Romanian Academy, and his continued interest in Romanian folk music were cited against him at a moment when the Trianon settlement made Romania the object of intense national feeling in Hungary. Bartok did not withdraw from Romanian research.",
+      "source": {
+        "citation": "Bela Bartok, 'Hungary in the Throes of Reaction', Musical Courier LXXX/18 (29 April 1920), 42-43 (collected edition DocB/5, 33-42), the report on Budapest musical life under the 1919-1920 regime whose publication abroad preceded the press campaign against him; full text on the Writings database. Discussion of the 'Bartok affair' of 1920: Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/hungary-in-the-throes-of-reaction-2/"
+      }
     },
     {
       "id": "1920-trianon",
@@ -95,16 +151,10 @@
       "kind": "border",
       "title": "Treaty of Trianon signed",
       "summary": "The Treaty of Trianon, signed at the Grand Trianon in Versailles on 4 June 1920, fixed Hungary's post-war borders. Transylvania, the eastern Banat, Crisana and the southern part of Maramures went to Romania; the western Banat to the Kingdom of Serbs, Croats and Slovenes; the northern counties to Czechoslovakia. Every locality in this collection that lies in present-day Romania changed state at this point; the 'borders-1920' layer shows the result.",
-      "source": { "citation": "Treaty of Peace between the Allied and Associated Powers and Hungary, Trianon, 4 June 1920, Part II (Frontiers of Hungary).", "url": "https://en.wikisource.org/wiki/Treaty_of_Trianon" }
-    },
-    {
-      "id": "1920-press-attacks",
-      "date": "1920",
-      "dateConfidence": "approximate",
-      "kind": "reception",
-      "title": "Hungarian press attacks Bartok over his Romanian publications",
-      "summary": "In 1920, after Bartok's critical report on Budapest musical life appeared in the New York Musical Courier, parts of the Budapest press, with the violinist and Academy director Jeno Hubay among the critics, attacked him as unpatriotic. The Bihor volume of 1913, published in Bucharest by the Romanian Academy, and his continued interest in Romanian folk music were cited against him at a moment when the Trianon settlement made Romania the object of intense national feeling in Hungary. Bartok answered in writing and did not withdraw from Romanian research.",
-      "source": { "citation": "Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988), on the 'Bartok affair' of 1920; Janos Demeny (ed.), Letters, letters of 1920 to Ion Busitia and to Marta Ziegler." }
+      "source": {
+        "citation": "Treaty of Peace between the Allied and Associated Powers and Hungary, Trianon, 4 June 1920, Part II (Frontiers of Hungary).",
+        "url": "https://en.wikisource.org/wiki/Treaty_of_Trianon"
+      }
     },
     {
       "id": "1923-maramures-volume",
@@ -113,55 +163,12 @@
       "kind": "publication",
       "title": "Maramures volume published in Munich",
       "summary": "'Volksmusik der Rumanen von Maramures' appeared in 1923 as volume IV of the Sammelbande fur vergleichende Musikwissenschaft (Munich: Drei Masken Verlag), ten years after the collecting trip. Bartok's preface describes the villages, the instruments and the genres recorded in 1913; the German-language publication in Germany followed the failure of earlier plans to publish the material in Hungary or Romania.",
-      "source": { "citation": "Bela Bartok, Volksmusik der Rumanen von Maramures (Munchen: Drei Masken Verlag, 1923); English translation in RFM, vol. V." },
-      "places": ["Maramures"]
-    },
-    {
-      "id": "1931-letter-to-beu",
-      "date": "1931-01-10",
-      "dateConfidence": "exact",
-      "kind": "statement",
-      "title": "Letter to Octavian Beu: 'the brotherhood of peoples'",
-      "summary": "Answering the Romanian musicologist Octavian Beu, who was preparing a study of Bartok's Romanian-derived works, Bartok wrote that his guiding idea as a composer was the brotherhood of peoples 'in spite of all wars and conflicts', that he tried to serve this idea in his music, and that he therefore rejected no influence, 'be it Slovakian, Romanian, Arabic or from any other source', provided the source was 'clean, fresh and healthy'. The letter is the most quoted statement of his position.",
-      "source": { "citation": "Bela Bartok to Octavian Beu, Budapest, 10 January 1931, in Letters (Demeny), no. 180 (English edition pp. 200-202)." },
-      "quote": "My own idea, however - of which I have been fully conscious since I found myself as a composer - is the brotherhood of peoples, brotherhood in spite of all wars and conflicts. I try - to the best of my ability - to serve this idea in my music; therefore I don't reject any influence, be it Slovakian, Rumanian, Arabic or from any other source."
-    },
-    {
-      "id": "1934-neighbouring-peoples",
-      "date": "1934",
-      "dateConfidence": "exact",
-      "kind": "statement",
-      "title": "Essay: Hungarian folk music and the folk music of neighbouring peoples",
-      "summary": "In 'Nepzenenk es a szomszed nepek nepzeneje' (Budapest, 1934; German version 1935; English in Essays as 'Hungarian Folk Music and the Folk Music of Neighboring Peoples') Bartok set out, with melody comparisons, the reciprocal influences between Hungarian, Slovak, Romanian, Ruthenian and Serbo-Croatian folk music. He argued that such exchange was normal and beneficial and that claims of a nation's folk music being 'pure' were not supported by the material.",
-      "source": { "citation": "Bela Bartok, 'Hungarian Folk Music and the Folk Music of Neighboring Peoples' (1934), in Essays, pp. 173-192." }
-    },
-    {
-      "id": "1935-colinde-volume",
-      "date": "1935",
-      "dateConfidence": "exact",
-      "kind": "publication",
-      "title": "Melodien der rumanischen Colinde published in Vienna",
-      "summary": "Bartok's collection of Romanian Christmas songs (colinde), 'Melodien der rumanischen Colinde (Weihnachtslieder)', appeared in Vienna in 1935 with Universal Edition. Bartok had completed the manuscript in 1926 and had tried for years to have it published in full, with the texts, in Romania or England; in the end he published the melodies alone, largely at his own expense. The complete edition with texts appeared only in RFM vol. IV (1975).",
-      "source": { "citation": "Bela Bartok, Melodien der rumanischen Colinde (Weihnachtslieder) (Wien: Universal Edition, 1935); publication history in RFM, vol. IV, Introduction (Suchoff)." }
-    },
-    {
-      "id": "1936-why-and-how",
-      "date": "1936",
-      "dateConfidence": "exact",
-      "kind": "statement",
-      "title": "Essay: Why and how do we collect folk music?",
-      "summary": "In 'Miert es hogyan gyujtsunk nepzenet?' (Budapest, 1936; English in Essays) Bartok described the method of field collecting: the collector must know the language, record with the phonograph, note performers' names and ages, collect from several villages of a region, and treat the material of every nationality with the same care. The essay documents the practice behind the trip records in this collection.",
-      "source": { "citation": "Bela Bartok, 'Why and How Do We Collect Folk Music?' (1936), in Essays, pp. 9-24." }
-    },
-    {
-      "id": "1936-1937-petranu-dispute",
-      "date": "1936",
-      "dateEnd": "1937",
-      "dateConfidence": "approximate",
-      "kind": "reception",
-      "title": "Dispute with Coriolan Petranu over the Romanian collections",
-      "summary": "The Cluj art historian Coriolan Petranu accused Bartok, in publications of 1936-1937, of having selected and interpreted Romanian folk material so as to serve Hungarian claims about Transylvania. Bartok replied in print, in Hungarian and German, defending the collections as documentary and rejecting the political reading. Together with the Hungarian attacks of 1920 the exchange shows that the Romanian material drew criticism from both sides.",
-      "source": { "citation": "Bela Bartok, 'Valasz Petranu Coriolan roman zenekritikajara' (Reply to Coriolan Petranu's Romanian music criticism), 1937, in Bartok Bela irasai, vol. 3 (Budapest: Editio Musica, 1999); discussed in Tibor Tallian, Bela Bartok: The Man and His Work (1988)." }
+      "source": {
+        "citation": "Bela Bartok, Volksmusik der Rumanen von Maramures (Munchen: Drei Masken Verlag, 1923); English translation in RFM, vol. V."
+      },
+      "places": [
+        "Maramures"
+      ]
     },
     {
       "id": "1930s-brailoiu",
@@ -170,8 +177,96 @@
       "dateConfidence": "approximate",
       "kind": "biography",
       "title": "Working relationship with Constantin Brailoiu",
-      "summary": "Constantin Brailoiu (1893-1958), composer, ethnomusicologist and from 1928 head of the folklore archive of the Society of Romanian Composers in Bucharest, corresponded with Bartok from the mid-1920s, exchanged recordings and transcriptions with him, and supported the publication of his Romanian material. After Bartok's death Brailoiu wrote one of the first assessments of him as a folklorist, describing the Romanian collections as a foundation of Romanian ethnomusicology.",
-      "source": { "citation": "Constantin Brailoiu, 'Bela Bartok folkloriste' (1948), in Problemes d'ethnomusicologie (Geneve: Minkoff, 1973); Janos Demeny (ed.), Letters, letters to Brailoiu 1930s." }
+      "summary": "Constantin Brailoiu (1893-1958), composer, ethnomusicologist and from 1928 head of the folklore archive of the Society of Romanian Composers in Bucharest, corresponded with Bartok from the mid-1920s and exchanged recordings and transcriptions with him. In 1936 he translated four of Bartok's texts on Romanian folk music and on Hungarian-Romanian musical relations for the Bucharest journal Muzica si Poezie, the same year the Petranu polemic ran. After Bartok's death Brailoiu wrote one of the first assessments of him as a folklorist.",
+      "source": {
+        "citation": "Constantin Brailoiu's translations of Bartok into Romanian in Muzica si Poezie (Bucharest), 1936: 'Dialectul muzical al romanilor din Hunedoara' (I/4, February 1936), 'Muzica populara romaneasca' (I/5, March 1936), 'Muzica populara romaneasca si cea maghiara' (I/9-10, July-August 1936), 'Cercetarile de folklor muzical in Ungaria' (I/12, October 1936), each recorded on the Writings database with 'translated by Constantin Brailoiu'; Constantin Brailoiu, 'Bela Bartok folkloriste' (1948), in Problemes d'ethnomusicologie (Geneve: Minkoff, 1973).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/muzica-populara-maghiara-si-cea-romaneasca-2/"
+      }
+    },
+    {
+      "id": "1931-letter-to-beu",
+      "date": "1931-01-10",
+      "dateConfidence": "exact",
+      "kind": "statement",
+      "title": "Letter to Octavian Beu: 'the brotherhood of peoples'",
+      "summary": "Answering the Romanian musicologist Octavian Beu, who was preparing a study of Bartok's Romanian-derived works, Bartok wrote that his guiding idea as a composer was the brotherhood of peoples 'in spite of all wars and conflicts', that he tried to serve this idea in his music, and that he therefore rejected no influence, 'be it Slovakian, Romanian, Arabic or from any other source', provided the source was 'clean, fresh and healthy'. The letter is the most quoted statement of his position.",
+      "source": {
+        "citation": "Bela Bartok to Octavian Beu, Budapest, 10 January 1931, in Letters (Demeny), no. 180 (English edition pp. 200-202)."
+      },
+      "quote": "My own idea, however - of which I have been fully conscious since I found myself as a composer - is the brotherhood of peoples, brotherhood in spite of all wars and conflicts. I try - to the best of my ability - to serve this idea in my music; therefore I don't reject any influence, be it Slovakian, Rumanian, Arabic or from any other source."
+    },
+    {
+      "id": "1933-1935-romanian-folk-music-surveys",
+      "date": "1933-09",
+      "dateEnd": "1935",
+      "dateConfidence": "exact",
+      "kind": "publication",
+      "title": "Survey articles 'Rumaenische Volksmusik' and 'Roman nepzene'",
+      "summary": "Bartok summarised his Romanian collection for general readers in 'Rumaenische Volksmusik' (Schweizerische Saengerzeitung, September-October 1933; Romanian translation by Brailoiu in Muzica si Poezie, March 1936) and in the encyclopaedia article 'Roman nepzene' (Revai Nagy Lexikona, vol. XXI, Budapest 1935, 725-726), describing the genres (colinde, laments, doina, dance tunes) and the regions of the collection, including Bihor, Maramures and Hunedoara.",
+      "source": {
+        "citation": "Entries on the Writings database: 'Rumaenische Volksmusik', Schweizerische Saengerzeitung XXIII/17-20 (1 September to 15 October 1933) (Essays 119-127); 'Roman nepzene', Revai Nagy Lexikona XXI (1935), 725-726 (Studies 166-167).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/rumanische-volksmusik-4/"
+      }
+    },
+    {
+      "id": "1934-neighbouring-peoples",
+      "date": "1934",
+      "dateConfidence": "exact",
+      "kind": "statement",
+      "title": "Essay: Hungarian folk music and the folk music of neighbouring peoples",
+      "summary": "In 'Nepzenenk es a szomszed nepek nepzeneje' (Budapest, 1934; German version 1935; English in Studies in Ethnomusicology as 'Hungarian Folk Music and the Folk Music of Neighboring Peoples') Bartok set out, with melody comparisons, the reciprocal influences between Hungarian, Slovak, Romanian, Ruthenian and Serbo-Croatian folk music. He argued that such exchange was normal and beneficial and that claims of a nation's folk music being 'pure' were not supported by the material. The sections on Hungarian-Romanian relations were translated into Romanian by Constantin Brailoiu in 1936.",
+      "source": {
+        "citation": "Bela Bartok, Nepzenenk es a szomszed nepek nepzeneje [Hungarian Folk Music and the Folk Music of Neighboring Peoples], Nepszeru Zenefuzetek 3 (Budapest: Somlo Bela, 1934); collected editions BOI 403-461, Studies 174-240, BBI/3 210-269; German translation 'Die Volksmusik der Magyaren und der benachbarten Voelker' (Ungarische Jahrbuecher, 1935), French translation, and partial Romanian translation by Constantin Brailoiu, 'Muzica populara romaneasca si cea maghiara', Muzica si Poezie I/9-10 (July-August 1936), 18-44. Entry on the Writings database.",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/nepzenenk-es-a-szomszed-nepek-nepzeneje-2/"
+      }
+    },
+    {
+      "id": "1935-colinde-volume",
+      "date": "1935",
+      "dateConfidence": "exact",
+      "kind": "publication",
+      "title": "Melodien der rumanischen Colinde published in Vienna",
+      "summary": "Bartok's collection of Romanian Christmas songs (colinde), 'Melodien der rumanischen Colinde (Weihnachtslieder)', appeared in Vienna in 1935 with Universal Edition. Bartok had completed the manuscript in 1926 and had tried for years to have it published in full, with the texts, in Romania or England; in the end he published the melodies alone, largely at his own expense. The complete edition with texts appeared only in RFM vol. IV (1975).",
+      "source": {
+        "citation": "Bela Bartok, Melodien der rumanischen Colinde (Weihnachtslieder) (Wien: Universal Edition, 1935); publication history in RFM, vol. IV, Introduction (Suchoff)."
+      }
+    },
+    {
+      "id": "1936-why-and-how",
+      "date": "1936",
+      "dateConfidence": "exact",
+      "kind": "statement",
+      "title": "Essay: Why and how do we collect folk music?",
+      "summary": "In 'Miert es hogyan gyujtsunk nepzenet?' (Budapest, 1936; English in Essays) Bartok described the method of field collecting: the collector must know the language, record with the phonograph, note performers' names and ages, collect from several villages of a region, and treat the material of every nationality with the same care. The essay documents the practice behind the trip records in this collection.",
+      "source": {
+        "citation": "Bela Bartok, Miert es hogyan gyujtsunk nepzenet? A zenei folklore torvenykonyve [Why and How Do We Collect Folk Music], Nepszeru zenefuzetek 5 (Budapest: Somlo Bela, 1936); collected editions BOI 581-596, Essays 9-24, BBI/3 275-289. Entry on the Writings database.",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/miert-es-hogyan-gyujtsunk-nepzenet-2/"
+      }
+    },
+    {
+      "id": "1936-1937-petranu-dispute",
+      "date": "1936-02",
+      "dateEnd": "1937-05",
+      "dateConfidence": "exact",
+      "kind": "reception",
+      "title": "Dispute with Coriolan Petranu over the Romanian collections",
+      "summary": "The Cluj art historian Coriolan Petranu and others accused Bartok of having selected and interpreted Romanian folk material so as to serve Hungarian claims about Transylvania. Bartok replied in print three times: in German as 'Nachwort zu dem Volksmusik der Magyaren und der benachbarten Voelker: Antwort auf einen rumaenischen Angriff' (Ungarische Jahrbuecher XVI/2-3, February 1936, 276-284), in French as 'Reponse a une attaque roumaine' (Archivum Europae Centro-Orientalis II/3-4, 1936, 233-244) and in Hungarian as 'Valasz Petranuek tamadasara' (Szep Szo 13, April-May 1937, 263-272), defending the collections as documentary and rejecting the political reading. Together with the Hungarian attacks of 1920 the exchange shows that the Romanian material drew criticism from both sides.",
+      "source": {
+        "citation": "Bela Bartok, 'Antwort auf einen rumaenischen Angriff', Ungarische Jahrbuecher XVI/2-3 (February 1936), 276-284; 'Reponse a une attaque roumaine', Archivum Europae Centro-Orientalis II/3-4 (1936), 233-244; 'Valasz Petranuek tamadasara', Szep Szo 13 (IV/3, April-May 1937), 263-272; collected editions BOI 653-661, Essays 227-236, BBI/3 374-384. Entries on the Writings database (URL is the Hungarian version; the German and French versions are linked from it).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/valasz-petranuek-tamadasara-2/"
+      }
+    },
+    {
+      "id": "1937-folk-song-research-and-nationalism",
+      "date": "1937-03",
+      "dateConfidence": "exact",
+      "kind": "statement",
+      "title": "Article: Folk Song Research and Nationalism",
+      "summary": "In 'Nepdalkutatas es nacionalizmus' [Folk Song Research and Nationalism], published in the Budapest magazine Tukor in March 1937 (V/3, 166-168) and in French and German in La Revue Internationale de Musique in 1938, Bartok wrote that folk song research in Eastern Europe had grown out of national feeling, that the comparative study of neighbouring peoples' music was nevertheless the only scientific way to work, and that the results should not be put at the service of national rivalry. It is his most direct published statement on nationalism in his field and dates from the year of the Petranu polemic.",
+      "source": {
+        "citation": "Bela Bartok, 'Nepdalkutatas es nacionalizmus', Tukor V/3 (March 1937), 166-168; French/German version 'Du lied populaire au nationalisme / Volksliedforschung und Nationalismus', La Revue Internationale de Musique I/4 (October-November 1938), 609-615; collected editions BOI 597-600, Essays 25-28, BBI/4 307-311. Entry on the Writings database.",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/nepdalkutatas-es-nacionalizmus-2/"
+      }
     },
     {
       "id": "1940-emigration",
@@ -180,16 +275,21 @@
       "kind": "biography",
       "title": "Emigration to the United States",
       "summary": "Bartok left Hungary in October 1940 and settled in New York. Among the work he took with him was the Romanian folk music collection, which he continued to revise at Columbia University; it was still unpublished when he died on 26 September 1945.",
-      "source": { "citation": "Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988); RFM, vol. I, Introduction (Suchoff)." }
+      "source": {
+        "citation": "Tibor Tallian, Bela Bartok: The Man and His Work (Budapest: Corvina, 1988); RFM, vol. I, Introduction (Suchoff)."
+      }
     },
     {
       "id": "1942-race-purity",
-      "date": "1942",
+      "date": "1942-03",
       "dateConfidence": "exact",
       "kind": "statement",
       "title": "Essay: Race Purity in Music",
-      "summary": "In 'Race Purity in Music', published in the New York journal Modern Music in 1942, Bartok took up the question, then current in Europe, of whether 'racial purity' was desirable in folk music. Drawing on his comparative work in Eastern Europe he argued that continual exchange between neighbouring peoples' folk music had been the source of its richness, and that 'racial impurity' in this sense was beneficial. The essay is usually read together with the 1931 letter to Beu and the 1934 essay as his stated opposition to the purity idea.",
-      "source": { "citation": "Bela Bartok, 'Race Purity in Music', Modern Music XIX (1942), pp. 153-155; reprinted in Essays, pp. 29-32." }
+      "summary": "In 'Race Purity in Music', published in the New York journal Modern Music in March-April 1942 and reprinted in London in 1944, Bartok took up the question, then current in Europe, of whether 'racial purity' was desirable in folk music. Drawing on his comparative work in Eastern Europe he argued that continual exchange between neighbouring peoples' folk music had been the source of its richness, and that 'racial impurity' in this sense was beneficial. The essay is usually read together with the 1931 letter to Beu, the 1934 book and the 1937 article 'Folk Song Research and Nationalism' as his stated opposition to the purity idea. The project brief's reference to a 1937 essay on this subject matches the 1937 article, see event 1937-folk-song-research-and-nationalism.",
+      "source": {
+        "citation": "Bela Bartok, 'Race Purity in Music', Modern Music XIX/3 (March-April 1942), 153-155; reprinted in Tempo 8 (September 1944), 2-3, and Horizon 60 (December 1944), 403-406; collected editions BOI 601-603, Essays 29-32, BBI/4 270-274. Entry on the Writings database (Modern Music edition).",
+        "url": "https://bartok-irasai.zti.hu/en/irasok/race-purity-in-music-2/"
+      }
     },
     {
       "id": "1967-rfm",
@@ -199,7 +299,9 @@
       "kind": "publication",
       "title": "Rumanian Folk Music published posthumously in five volumes",
       "summary": "Bartok's complete Romanian collection, edited by Benjamin Suchoff, appeared as 'Rumanian Folk Music' in five volumes (The Hague: Martinus Nijhoff): I Instrumental Melodies, II Vocal Melodies, III Texts (1967), IV Carols and Christmas Songs (1975), V Maramures County (1975). The volumes give, for each melody, the village, county, date, performer and phonograph number that the record pages of the source databases reproduce.",
-      "source": { "citation": "Bela Bartok, Rumanian Folk Music, ed. Benjamin Suchoff, vols I-III (1967), IV-V (1975) (The Hague: Martinus Nijhoff)." }
+      "source": {
+        "citation": "Bela Bartok, Rumanian Folk Music, ed. Benjamin Suchoff, vols I-III (1967), IV-V (1975) (The Hague: Martinus Nijhoff)."
+      }
     }
   ]
 }
