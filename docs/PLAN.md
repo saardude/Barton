@@ -162,7 +162,7 @@ counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json
 | --- | --- | --- |
 | D1 | URL params: comma lists (`genre=colinda,joc`), place params carry schema path ids (`county=ro/crisana/bihor`) | Matches QA tests; ids are stable across renames |
 | D2 | `county` and `performance` are single-valued; villages, genres, styles, instruments are multi | The place tree is a drill-down; QA to adjust AC-03 and AC-07 |
-| D3 | Default `country=ro` with a country switch to `all` | Romania focus without discarding the rest |
+| D3 | Default is all countries (no `country` param); Romania is the first option in the country switch. Superseded the earlier Romania-only default on owner feedback 2026-09-28 | The map with no selection must show every collection point |
 | D4 | History: pushState for filter changes, replaceState while typing in search | Back button restores filters (AC-22); ARCHITECTURE.md updated to match |
 | D5 | Fonts self-hosted via `@fontsource/ibm-plex-sans` and `-mono`; no Google Fonts in the app | Keeps the CSP tight and works offline |
 | D6 | Tiles: CARTO Positron with OpenStreetMap fallback | Quieter base under data; both already in the CSP |
