@@ -1,327 +1,362 @@
 # Front-end specification
 
-Vite + React 18 + TypeScript, static JSON in, no server. This document turns the
-wireframe in `CONTEXT.md` into components, props, state and behaviour. Design tokens are
-in `DESIGN-TOKENS.md` / `app-tokens/tokens.css`, the map in `MAP-SPEC.md`, strings in
-`UI-COPY.md`. Nothing here is code yet; the build phase implements it.
+Vite + React + TypeScript, static JSON in, no server. This document turns the wireframe
+in `CONTEXT.md` into components, props, state and behaviour, and it fixes the URL codec
+that `QA-PLAN.md` and `ACCEPTANCE-CRITERIA.md` test against. Design tokens are in
+`DESIGN-TOKENS.md` / `app-tokens/tokens.css`, the map in `MAP-SPEC.md`, strings in
+`UI-COPY.md`, data shapes in `data/schema/*.schema.json`, loading and budgets in
+`ARCHITECTURE.md`. Nothing here is code yet; the build phase implements it.
 
-Conventions used below: `Props` blocks are TypeScript-shaped; "reads" lists the derived
-state a component consumes; "emits" lists the `Query` patches it produces.
+Conventions: `Props` blocks are TypeScript-shaped; "reads" lists the derived state a
+component consumes; "emits" lists the `Query` patches it produces. AC-nn refers to
+`ACCEPTANCE-CRITERIA.md`.
 
 ## 0. Stack and libraries
 
-| Concern        | Choice                                             | Notes                                           |
-|----------------|----------------------------------------------------|-------------------------------------------------|
-| Build          | Vite 5, React 18, TypeScript strict                | `app/` per repo layout                          |
-| Routing        | `react-router-dom` 6 (`BrowserRouter`)             | `vercel.json` rewrite `/* -> /index.html`       |
-| State          | React context + `useMemo` selectors, no store lib  | the whole state is `Query` + loaded data        |
-| URL sync       | `useSearchParams` wrapped by `useQuery()`          | one place serialises/parses (section 3)         |
-| Map            | Leaflet 1.9 + react-leaflet 4 + leaflet.markercluster | see `MAP-SPEC.md`                            |
-| Search         | in-memory normalised substring match, phase 1       | MiniSearch is the upgrade if needed             |
-| Collation      | `Intl.Collator`                                    | section 5                                       |
-| Styling        | plain CSS modules + tokens.css                     | no CSS-in-JS                                    |
-| Charts         | inline SVG (genre bars, timeline)                  | no chart library                                |
-| Tests          | Vitest + Testing Library                           | selectors and sort keys get unit tests          |
+| Concern    | Choice                                                     | Notes                                                  |
+|------------|------------------------------------------------------------|--------------------------------------------------------|
+| Build      | Vite, React 19, TypeScript strict                          | `app/` per repo layout; versions per DEPLOY.md         |
+| Routing    | `react-router-dom` 6 (`BrowserRouter`)                     | `vercel.json` rewrites every path to `index.html`      |
+| State      | React context + `useMemo` selectors, no store library      | the whole state is `Query` + the loaded catalogue      |
+| URL sync   | custom codec (section 3.1) over `useSearchParams`          | one module encodes and decodes                          |
+| Data       | `useCatalog()` + worker-built indexes (ARCHITECTURE.md)    | content-hashed URLs from `data-manifest.ts`            |
+| Map        | Leaflet 1.9 + react-leaflet 5 + leaflet.markercluster       | `MAP-SPEC.md`                                          |
+| Search     | MiniSearch with the diacritics normaliser (section 4)       | prefix + fuzzy, field boosts on title and place        |
+| Collation  | `Intl.Collator('ro')`                                       | section 5                                              |
+| Styling    | plain CSS modules + `tokens.css`                            | no CSS-in-JS                                           |
+| Fonts      | IBM Plex Sans / Mono                                        | Google Fonts per DESIGN-TOKENS.md, or `@fontsource/*` self-hosted; the CSP in DEPLOY.md must allow whichever is chosen (decision 7) |
+| Charts     | inline SVG (genre bars, timeline, journey timeline)         | no chart library                                       |
+| Tests      | Vitest + Testing Library, Playwright, axe-core             | QA-PLAN.md sections 3 to 5                              |
 
 ## 1. Data the app reads
 
-Loaded once at startup from `/data/*.json` (copied from repo `data/` into `app/public/data/`
-at build; Vercel serves them gzipped). The shapes below are what the front end assumes.
-`DATA-SCHEMA.md` is the source of truth; reconcile these interfaces against it in the build
-phase and adjust selectors, not the other way round.
+Loaded once by `useCatalog()` from the content-hashed URLs in
+`app/src/generated/data-manifest.ts`: `songs.json`, `places.json`, `facets.json`, and for
+the journey mapper (section 14) `journeys.json`, `villages.json`, `context-events.json`.
+TypeScript types are generated from `data/schema/*.schema.json` (PLAN.md step 4); the
+field names used in this document are the schema's. The parts the UI depends on:
 
-```ts
-type GenreId = 'colinda' | 'doina' | 'bocet' | 'cantec' | 'joc' | 'nunta' | 'other';
-type PerformanceId = 'vocal' | 'instrumental' | 'vocal-instrumental' | 'unknown';
+- `Song`: `id` (`fmbc-...`, `bsys-...`, `gyuj-...`); `source { site, url, referenceCode,
+  volume, number }`; `title | null`; `incipit`; `genre` (`colinda | doina | bocet | cantec |
+  joc | nunta | other | null`); `genreRaw`; `style` (verbatim string or null);
+  `performance` (`vocal | instrumental | mixed | unknown`); `instrument[]`;
+  `performer { name, age, sex, ethnicity }`; `collector`; `collected { year, month, day, raw }`;
+  `location { country, region, county, countyHistorical, village, villageHistorical, lat,
+  lng, raw, placeId, origin, resolution }`; `media { notation[], audio[] }` of
+  `{ url, type, caption }`; `music { systemPosition, cadences, rhythm, mode, ambitus,
+  syllables, form }`; `text`; `remarks`; `related[] { id, url, label, relation }`;
+  `composition[] { work, movement, catalogue, raw }`; `rawFields`.
+- `Place`: `id` is a slash path (`ro`, `ro/crisana`, `ro/crisana/bihor`,
+  `ro/crisana/bihor/beius`; unresolved localities under `<cc or xx>/unresolved/<slug>`);
+  `type`; `name` (modern); `nameHistorical`; `parent`; `country`; `region`; `county`;
+  `countyHistorical`; `lat`; `lng`; `coordSource`; `counts { total, byGenre, byPerformance,
+  bySite }`; `years { min, max }`; `songIds` (villages); `confidence`.
+- `Facets`: per facet a `value -> count` map with sorted keys, nulls under `"null"`, and
+  `_meta.songCount`. The UI uses these only for the static vocabularies (genre, style,
+  performance, instrument lists and the year bounds); live counts come from the selectors.
+- Journey files: section 14.1.
 
-interface Song {
-  id: string;                     // stable, ASCII, e.g. "bn-01234", "br-A0204"
-  source: 'bartok-nepzene' | 'bartok-system' | 'bartok-gyujtesek';
-  sourceUrl: string;              // record page on the zti.hu site
-  ref: {                          // "source number" for sorting
-    raw: string;                  // as printed, e.g. "II/157b"
-    volume?: string;              // "II"
-    number?: number;              // 157
-    suffix?: string;              // "b"
-  };
-  title: string;                  // text incipit or given title (display form)
-  incipit?: string;               // first line of text if distinct from title
-  genre: GenreId;
-  style?: string;                 // facet id from facets.json (e.g. "old", "new", "mixed")
-  performance: PerformanceId;
-  instruments: string[];          // facet ids from facets.json
-  year?: number;                  // collection year, absent when unknown
-  date?: string;                  // as recorded, free text
-  placeId: string;                // key into places.json (village level)
-  performer?: { name?: string; age?: number; ethnicity?: string };
-  collector?: string;
-  notationImage?: string;         // URL
-  audio?: string;                 // URL
-  text?: string;                  // song text, may be multi-line
-  textLang?: 'ro' | 'hu' | 'other';
-  music?: { systemPosition?: string; cadences?: string; rhythm?: string; scale?: string; remarks?: string };
-  raw: unknown;                   // untouched scraped record, shown in the Raw JSON tab
-}
+Null is the schema's value for unknown; the UI never renders the string "null" and never
+invents a value (a missing title is shown as "Untitled", a missing year as "n.d.").
 
-interface PlaceName { modern?: string; historical?: string; lang?: 'ro' | 'hu' }
-
-interface Place {
-  id: string;                     // ASCII slug, e.g. "ro-bh-beius"
-  level: 'country' | 'region' | 'county' | 'village';
-  parentId?: string;
-  name: PlaceName;                // village: modern "Beius", historical "Belenyes"
-  countryCode?: string;           // ISO 3166-1 alpha-2 of the modern country, e.g. "RO"
-  lat?: number; lon?: number;     // absent when not geocoded
-  bbox?: [number, number, number, number]; // counties only, [w, s, e, n]
-}
-
-interface Facets {
-  genre: FacetValue[]; style: FacetValue[]; performance: FacetValue[]; instrument: FacetValue[];
-  years: { min: number; max: number };
-}
-interface FacetValue { id: string; label: { en: string; ro?: string; hu?: string }; order: number }
-```
-
-The app builds these indexes once after load (all `Map`s, all in a `useMemo`):
-`songById`, `placeById`, `childrenOf(placeId)`, `ancestorsOf(placeId)` (village -> county ->
-region -> country), `songsByPlace`, and `searchKey(song)` (section 4).
+Indexes built once (in the worker above 5,000 records, on the main thread below; same
+interface): `songById`, `placeById`, `childrenOf(placeId)`, `ancestorsOf(placeId)` (from
+`parent`), `songsByPlace` (from `location.placeId`), the MiniSearch index, and
+`searchKey(song)` for the sort tie-breaks.
 
 ## 2. Routes and screens
 
-| Route                    | Screen              | Notes                                                     |
-|--------------------------|---------------------|-----------------------------------------------------------|
-| `/`                      | Explorer            | phone layout under 768 px is the Phone explorer            |
-| `/county/:countyId`      | County drill-down   | `?tab=melodies|genre|performer|timeline|map` plus Query   |
-| `/song/:songId`          | Song record         | `?tab=record|raw` plus Query (so back returns to the list) |
-| `/about`                 | About / sources     | static text, attribution                                   |
-| anything else            | NotFound            |                                                            |
+| Route                 | Screen              | Notes                                                                 |
+|-----------------------|---------------------|-----------------------------------------------------------------------|
+| `/`                   | Explorer            | phone layout under 768 px is the Phone explorer (section 10)          |
+| `/county/:countyId`   | County drill-down   | `:countyId` is the place id path, e.g. `/county/ro/crisana/bihor`; `?tab=` plus Query |
+| `/song/:songId`       | Song record         | `?tab=record|raw` plus Query (so back returns to the same list)       |
+| `/journeys`           | Journey mapper      | section 14; `?journey=`, `?date=`, `?borders=` plus Query             |
+| `/about`              | About and sources   | static text, attribution, glossary                                    |
+| anything else         | NotFound            | `<title>` "Not found", link to `/` (AC-32, E2E-11)                    |
 
-The Query string (section 3) is preserved across all routes. Navigating Explorer ->
-County -> Song never drops filters; the county page adds `county` to the Query if absent.
+The Query string (section 3) is preserved across all routes. Explorer -> County -> Song
+never drops filters; the county page adds `county` to the Query if it is absent.
 
 ## 3. Shared state: `Query`
 
 ```ts
 interface Query {
   q: string;                 // free text
-  country?: string;          // place ids (level country / region / county / village)
-  region?: string;
-  county?: string;
-  village?: string;
+  country?: string;          // place id path, e.g. "ro"; the string "all" removes the country constraint
+  region?: string;           // place id path
+  county?: string;           // place id path
+  village?: string;          // place id path
   genre: GenreId[];
-  style: string[];
-  performance?: PerformanceId;
+  style: string[];           // verbatim style strings from the data
+  performance?: Performance; // 'vocal' | 'instrumental' | 'mixed' | 'unknown'
   instrument: string[];
   yearFrom?: number;
   yearTo?: number;
   sort: 'title' | 'style' | 'location' | 'year' | 'source';
   dir: 'asc' | 'desc';
   page: number;              // 1-based
-  unmapped?: boolean;        // extension: list only songs without coordinates (MAP-SPEC section 8)
+  unmapped?: boolean;        // extension: only songs without coordinates (MAP-SPEC section 8)
+  journey?: string;          // extension: journey id (section 14)
+  date?: string;             // extension: 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD' (section 14)
+  borders?: 'then' | 'now' | 'both';  // extension: border layer on the journey map
 }
-const DEFAULT_QUERY: Query = { q: '', genre: [], style: [], instrument: [], sort: 'title', dir: 'asc', page: 1 };
+const DEFAULT_QUERY: Query = {
+  q: '', country: 'ro', genre: [], style: [], instrument: [], sort: 'title', dir: 'asc', page: 1,
+};
 const PAGE_SIZE = 50;        // fixed, not in the URL
 ```
 
-Invariants (enforced by `setQuery`, not by callers):
+Invariants (enforced by `setQuery`, never by callers):
 
-- Place levels are consistent: setting `village` also sets its county, region and country;
-  setting `county` clears `village` and sets region and country; and so on. Clearing a level
-  clears every level below it.
-- Any change other than `page` resets `page` to 1.
-- Array facets are deduplicated and sorted by the facet's `order`.
-- `yearFrom <= yearTo` when both set; if the user inverts them, they are swapped.
-- Unknown ids (a genre not in facets, a place not in places) are dropped on parse.
+- Place ids are paths, so the deepest set level implies the others: setting `village`
+  to `ro/crisana/bihor/beius` sets `county` `ro/crisana/bihor`, `region` `ro/crisana`,
+  `country` `ro`. Setting `county` clears `village`; setting `region` clears `county` and
+  `village`; setting `country` clears the rest. Clearing a level clears every level below it
+  and keeps the levels above.
+- `country` defaults to `ro` (AC-01). The country switch in the place tree sets another
+  country id or `all`; `all` means no country constraint.
+- Any change other than `page`, `sort`, `dir`, `borders` resets `page` to 1.
+- Array facets are deduplicated and sorted: genre by the fixed genre order, style and
+  instrument by `roBase` collation (section 5) so the canonical string is stable.
+- `yearFrom <= yearTo` when both are set; if the user inverts them they are swapped.
+- Ids that do not exist in the catalogue are dropped on decode and recorded in the
+  decoder's `warnings` array (QA 3.1); nothing throws.
+- `journey`, `date` and `borders` are only meaningful on `/journeys` but survive on other
+  routes so that a link back keeps the journey selected.
 
-### 3.1 URL serialisation
+### 3.1 URL codec
 
-Exact parameter names and encoding, in canonical order:
+The codec is hand-written (`app/src/state/urlCodec.ts`), not `URLSearchParams`, so that
+place-id slashes and list commas stay readable and round-trip exactly. Parameter names
+and encoding, in canonical order:
 
-| Field        | Param        | Encoding                                                    |
-|--------------|--------------|-------------------------------------------------------------|
-| q            | `q`          | trimmed; omitted when empty; `URLSearchParams` percent-encoding, space as `+` |
-| country      | `country`    | place id                                                     |
-| region       | `region`     | place id                                                     |
-| county       | `county`     | place id                                                     |
-| village      | `village`    | place id                                                     |
-| genre[]      | `genre`      | repeated: `genre=colinda&genre=joc`; one value per param     |
-| style[]      | `style`      | repeated                                                     |
-| performance  | `performance`| single id                                                    |
-| instrument[] | `instrument` | repeated                                                     |
-| yearFrom     | `from`       | integer, four digits                                         |
-| yearTo       | `to`         | integer                                                      |
-| sort         | `sort`       | omitted when `title`                                         |
-| dir          | `dir`        | omitted when `asc`                                           |
-| page         | `page`       | omitted when 1                                               |
-| unmapped     | `unmapped`   | `unmapped=1`; omitted when false                             |
+| Field        | Param      | Encoding                                                                                     |
+|--------------|------------|----------------------------------------------------------------------------------------------|
+| q            | `q`        | trimmed; omitted when empty; percent-encoded, space as `+`                                   |
+| country      | `country`  | omitted when `ro` (the default); `all` or a country place id otherwise                       |
+| region       | `region`   | place id path; written only when it is the deepest selected level                            |
+| county       | `county`   | place id path; written only when it is the deepest selected level                            |
+| village      | `village`  | place id path                                                                                |
+| genre[]      | `genre`    | comma list: `genre=colinda,joc`                                                              |
+| style[]      | `style`    | comma list of the verbatim strings, each percent-encoded; a literal comma inside a value is `%2C` |
+| performance  | `perf`     | single id                                                                                    |
+| instrument[] | `instr`    | comma list                                                                                   |
+| yearFrom     | `from`     | integer, four digits                                                                         |
+| yearTo       | `to`       | integer                                                                                      |
+| sort         | `sort`     | omitted when `title`                                                                         |
+| dir          | `dir`      | omitted when `asc`                                                                           |
+| page         | `page`     | omitted when 1                                                                               |
+| unmapped     | `unmapped` | `unmapped=1`; omitted when false                                                             |
+| journey      | `journey`  | journey id                                                                                   |
+| date         | `date`     | `YYYY`, `YYYY-MM` or `YYYY-MM-DD`                                                            |
+| borders      | `borders`  | `then`, `now` or `both`; omitted when it equals the default for the route (section 14.3)    |
 
 Rules:
 
-- Defaults are omitted so the empty query is `/` with no `?`.
-- Parameters are written in the table order; array values in facet order. Two equal
-  queries therefore always produce the same string (the status bar shows it and users
-  share it).
-- Parsing is tolerant: unknown params are ignored and dropped on the next write; `%20`
-  and `+` both read as space; repeated single-value params take the last occurrence;
-  non-integer `from`/`to`/`page` are ignored; `page` above the last page clamps to the
-  last page after filtering.
-- Place ids and facet ids are ASCII slugs, so they never need encoding; `q` is the only
-  value that may contain non-ASCII and it is encoded by `URLSearchParams`.
+- Only one place param is written, the deepest; on decode a deeper param wins and fills its
+  ancestors, and a shallower param that disagrees with it is ignored with a warning. So
+  `?county=ro/crisana/bihor` is the canonical form of "Bihor selected" and
+  `?region=ro/crisana&county=ro/crisana/bihor` decodes to the same Query.
+- Encoding: each value is `encodeURIComponent`-encoded, then `%2F` is restored to `/`
+  (RFC 3986 allows `/` in a query) and, for list params, values are joined with a raw `,`.
+  `%2C` inside a value therefore means a literal comma. Decoding splits on `&`, then on the
+  first `=`, then for list params on raw `,`, and only then percent-decodes each piece.
+  `+` and `%20` both decode to a space.
+- Defaults are omitted, so the empty query is `/` with no `?`, and `encode(decode(s)) === s`
+  for every canonical string (QA 3.1).
+- Parameters are written in table order; list values in the order given by the
+  invariants above. Two equal queries always produce the same string, which the status
+  bar shows and users share (AC-22, AC-23).
+- Tolerant decode: unknown params are ignored and dropped on the next write; repeated
+  single-value params take the last occurrence; non-integer `from`, `to`, `page` are
+  ignored; `page` beyond the last page clamps after filtering; empty list params
+  (`genre=`) mean "none". Every dropped item is named in `warnings`.
 - Route params (`:countyId`, `:songId`) are path segments; the Query stays in the search
-  string. On `/county/:countyId` the path wins if it disagrees with `?county=`.
-- History: filter changes use `replace` while the user is typing in the search box
-  (debounced 200 ms) and `push` for every other change, so Back steps through filter
-  states but not through keystrokes.
+  string. On `/county/...` the path wins if `?county=` disagrees. There is no `song`
+  query param; the song id is always the path.
+- History: typing in the search box uses `history.replaceState` (debounced 200 ms) so
+  Back does not step through keystrokes; every other filter, sort or place change uses
+  `pushState` (AC-22). Route changes push. (ARCHITECTURE.md says "filter changes use
+  replaceState"; AC-22 is the tested behaviour and wins.)
 
 ### 3.2 Hooks
 
-- `useData(): { status: 'loading' | 'ready' | 'error'; error?: Error; songs; places; facets; index }`
-- `useQuery(): [query: Query, setQuery: (patch: Partial<Query>) => void, reset: () => void]`
-- `useDerived(): Derived` (below), memoised on `[query, data]`.
+- `useCatalog(): { status: 'loading' | 'ready' | 'error'; error?: Error; songs; places;
+  facets; journeys?; villages?; contextEvents?; index; retry() }`.
+- `useQuery(): [query: Query, setQuery: (patch: Partial<Query>) => void, reset: () => void]`;
+  `reset` clears everything except `sort`, `dir`, `borders` (AC-11).
+- `useDerived(): Derived` (section 4), memoised on `[query, catalogue]`. Above 5,000
+  records the filtering step runs in the worker and returns ids; the selectors are written
+  as pure functions over ids so both paths share code.
 
 ## 4. Derived selectors
 
-All pure functions in `app/src/state/selectors.ts`, unit-tested. `Derived` is built in
-one `useMemo` chain so that a change in `page` does not recompute filtering.
+Pure functions in `app/src/state/selectors.ts`, unit-tested per QA 3.2 to 3.6. `Derived`
+is built in one `useMemo` chain so that a change in `page` does not recompute filtering.
 
 ```ts
 interface Derived {
-  predicates: Record<FacetKey, (s: Song) => boolean>;  // one per facet incl. 'place', 'q', 'year', 'unmapped'
+  predicates: Record<FacetKey, (s: Song) => boolean>;  // place, q, genre, style, performance, instrument, year, unmapped, journey
   filteredSongs: Song[];            // all predicates AND-ed
+  total: number;                    // size of the default set (country only), for "N of M"
   sortedSongs: Song[];              // filteredSongs ordered by sort/dir
-  pagedSongs: Song[];               // slice for query.page
+  pagedSongs: Song[];
   pageCount: number;
   facetCounts: { genre: Counts; style: Counts; performance: Counts; instrument: Counts };
   yearHistogram: { from: number; to: number; count: number }[];   // 5-year bins over "all but year"
   placeTree: PlaceNode[];           // with counts
-  mapPoints: MapPoint[];            // see MAP-SPEC
+  mapPoints: MapPoint[];            // MAP-SPEC section 6
   unmappedCount: number;
-  activeChips: Chip[];              // for ActiveFilterChips
+  activeChips: Chip[];
+  journey?: JourneyDerived;         // section 14.2
 }
 type Counts = Map<string, number>;
 ```
 
-- `predicates.q`: `searchKey(song).includes(normalize(query.q))` where `searchKey` is the
-  normalised concatenation of title, incipit, performer name, collector, ref.raw, and the
-  modern and historical names of the village and county. Multiple words in `q` must all
-  match (AND over whitespace-split terms).
-- `normalize(s)`: NFD, remove combining marks (U+0300-036F), then map the remaining
-  Romanian and Hungarian specials that NFD does not split (`ß`, `đ`, `ł` are not needed;
-  `ș ş ț ţ` all become `s`/`t` via NFD, `ő ű` become `o`/`u` via NFD), lowercase, collapse
-  whitespace. This is also the key for the title sort.
-- `predicates.place`: song's ancestor chain contains the deepest selected place id.
-- `predicates.genre` etc: empty array means "no constraint"; otherwise membership (OR
-  within the facet). `instrument` matches if any of the song's instruments is selected.
-- `predicates.year`: `year` between `yearFrom` and `yearTo` inclusive; songs without a
-  year are excluded only when at least one bound is set.
-- `predicates.unmapped`: place has no lat/lon (only when `query.unmapped`).
+- `normalize(s)`: NFD, strip combining marks (U+0300 to U+036F), lowercase, collapse
+  whitespace. This folds Romanian `ă â î ș ş ț ţ` and Hungarian `á é í ó ö ő ú ü ű` to
+  their base letters; comma-below and cedilla variants therefore match each other.
+  MiniSearch uses it as `processTerm` for both indexing and querying (AC-13).
+- `predicates.q`: MiniSearch over `title`, `incipit`, `text`, `location.village`,
+  `location.villageHistorical`, `location.county`, `location.countyHistorical`,
+  `performer.name`, `collector`, `source.referenceCode`, with `prefix: true`, `fuzzy: 0.1`,
+  `combineWith: 'AND'` (every whitespace token must match, AC-12) and boosts
+  `{ title: 3, village: 2, villageHistorical: 2 }`. Active only when `q.trim().length >= 2`.
+  The result is a `Set` of ids; the predicate is membership.
+- `predicates.place`: with `country = 'all'` no constraint; otherwise the song's
+  `location.placeId` starts with the deepest selected id followed by `/` or equals it.
+  Songs whose `placeId` is null but whose `location.country` matches are included at the
+  country level only (they are "(county unknown)" in the tree).
+- `predicates.genre` etc: empty array means no constraint; otherwise membership (OR within
+  a facet). `style` and `instrument` exclude null / empty records while active (AC-06,
+  AC-08). `performance` is single-valued.
+- `predicates.year`: `collected.year` between `yearFrom` and `yearTo` inclusive; null-year
+  records are excluded only when at least one bound is set (AC-09).
+- `predicates.unmapped`: `location.lat` or `location.lng` is null (only when `query.unmapped`).
+- `predicates.journey`: id is in the selected journey's `songIds` (section 14).
 - **facetCounts**: for facet F, count values over the songs that satisfy every predicate
-  except F ("what would I get if I added this value"). Values with count 0 are still
-  listed, disabled, so the rail does not jump. Performance is single-select but counted the
-  same way.
-- **placeTree**: full tree from `places.json`; each node's `count` is the number of songs
-  under it that satisfy every predicate except `place`. Nodes with count 0 are collapsed
-  and greyed, not removed, unless the whole country has 0 (then it is hidden). Counts of
-  unmapped places are included in the tree.
-- **mapPoints**: from `filteredSongs`, grouped by county (when no county is selected and
-  zoom <= 7) or by village; each point carries `placeId`, `lat`, `lon`, `count`,
-  `genreCounts`, `yearMin`, `yearMax`, `audioCount`, `notationCount`, `selected`.
-  Songs whose place has no coordinates are counted in `unmappedCount` and excluded here.
+  except F (AC-05, QA 3.3). Values with count 0 are still listed; the UI disables them.
+  The sum of genre counts equals the size of the set filtered by everything except genre.
+- **placeTree**: built from `places.json` via `parent`; children sorted with `roBase` on
+  `name`. Each node's `count` is the number of songs under it that satisfy every predicate
+  except `place`. Records that resolve to a county but not to a village appear in a
+  synthetic "(village unknown)" leaf under that county (AC-04, QA 3.5); records with a
+  country but no county appear in a "(county unknown)" leaf under the region if known, else
+  under the country. Historical names are attached to nodes, never extra nodes. Nodes with
+  count 0 are collapsed and greyed, not removed, unless a whole country has 0 (hidden) or
+  is not the selected country (collapsed). Building the tree is deterministic.
+- **mapPoints**: from `filteredSongs`, grouped by county (county mode) or by village
+  (village mode); songs whose place has no coordinates go to `unmappedCount` (MAP-SPEC 6).
+- **total**: size of the set with only the country predicate applied; the results header
+  reads "N of M melodies" (AC-10).
 
 ## 5. Sort keys
 
 `sortedSongs = [...filteredSongs].sort(comparator(sort, dir))`. `Array.prototype.sort` is
-stable, but the comparator still ends with `id` so results are deterministic across
-engines. `dir = 'desc'` reverses the comparison of known values only; records with an
-unknown key stay last in both directions.
+stable, but the comparator still ends with `id` so results are identical across engines.
+`dir = 'desc'` reverses the comparison of known values only; records with an unknown
+key stay last in both directions (AC-14 to AC-18).
 
 Collators (created once):
 
 ```ts
 const roBase = new Intl.Collator('ro', { sensitivity: 'base', numeric: true, ignorePunctuation: true });
 const roFull = new Intl.Collator('ro', { sensitivity: 'variant', numeric: true });
+const titleKey = (s: Song) => normalize(s.title ?? s.incipit ?? '');
 ```
 
-| sort       | Key, in order of comparison                                                                 |
-|------------|---------------------------------------------------------------------------------------------|
-| `title`    | 1. `roBase.compare(normalize(a.title), normalize(b.title))` (diacritics-insensitive: the strings are pre-folded because Romanian ICU tailoring treats a/ă/â as different primary letters, so `sensitivity: 'base'` alone would not fold them; `numeric` makes "Cantec 2" sort before "Cantec 10"). 2. `roFull.compare(a.title, b.title)` to keep "Sara" and "Șara" in a fixed relative order. 3. `id`. |
-| `style`    | 1. facet `order` of `style` from facets.json (unknown/absent last). 2. title key. |
-| `location` | 1. country modern name (`roBase`), 2. region, 3. county, 4. village, 5. title key. A missing level (e.g. a song known only to county level) sorts after all present values at that level. Names compare on `name.modern ?? name.historical`. |
-| `year`     | 1. `year` numeric; unknown last regardless of dir. 2. title key. |
-| `source`   | 1. `ref.volume` via `roBase` (numeric: "II" and "10" are compared as strings, Roman numerals are a display form: the scraper provides `volume` already normalised to a sortable string, e.g. zero-padded or Arabic; if it does not, the front end maps I..X to 1..10). 2. `ref.number` numeric. 3. `ref.suffix` via `roBase`. 4. `id`. Records with no `ref.number` last. |
+| sort       | Key, in order of comparison                                                                                                   |
+|------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `title`    | 1. null or empty title last (AC-14). 2. `roBase.compare(titleKey(a), titleKey(b))`: the strings are pre-folded because the Romanian ICU tailoring treats a / ă / â as distinct primary letters, so `sensitivity: 'base'` alone would not place "Șapte" among the S entries; `numeric` orders "Cantec 2" before "Cantec 10". 3. `roFull.compare(a.title, b.title)` keeps "Sara" and "Șara" in a fixed relative order. 4. `id`. |
+| `style`    | 1. null style last. 2. `roBase.compare(normalize(a.style), normalize(b.style))` (the schema keeps `style` verbatim, so there is no vocabulary order, AC-15). 3. title key. |
+| `location` | 1. country name (`roBase`, from `placeById(country).name`), 2. region, 3. county, 4. village, 5. title key. A null level sorts after all present values at that level; records with no county are last in both directions (AC-16). Names compare on `name`, falling back to `nameHistorical`. |
+| `year`     | 1. `collected.year` numeric; null last regardless of dir. 2. title key. (AC-17)               |
+| `source`   | 1. site in the fixed order `fmbc`, `bsys`, `gyuj`. 2. `source.volume` via `roBase` (numeric, so "RFM I" sorts by its Roman numeral only if the scraper normalises it; otherwise as text), null last. 3. `source.number` via `roBase` with `numeric: true` ("21/612" before "21/5398", "A 9" before "A 10"), null last. 4. `source.referenceCode` via `roBase` numeric (the fallback when volume and number are both null, AC-18). 5. `id`. |
 
-Table column sort on the County page reuses the same comparator with two extras that
-only exist there: `genre` (facet order) and `village` (village name via `roBase`, then
-title).
+County-page column sorts reuse the same comparator plus two local keys: `genre` (fixed
+genre order, null last) and `village` (village name via `roBase`, then title).
 
 ## 6. Shared components (app shell)
 
 ```
 <App>
-  <DataProvider>                 loads /data/*.json, exposes useData()
-    <QueryProvider>              URL <-> Query, exposes useQuery()/useDerived()
+  <CatalogProvider>              useCatalog(): loads the manifest URLs, exposes status
+    <QueryProvider>              URL <-> Query, exposes useQuery() / useDerived()
       <SkipLink/>                "Skip to results", first in DOM, --z-skip
       <TopBar/>
-      <Routes/>                  ExplorerPage | CountyPage | SongPage | AboutPage | NotFound
+      <Routes/>                  ExplorerPage | CountyPage | SongPage | JourneyPage | AboutPage | NotFound
       <StatusBar/>               desktop only
-      <Footer/>
+      <Footer/>                  present before data loads (AC-33)
 ```
 
-**TopBar** `{ compact?: boolean }`. Contains the masthead ("Bartok / Romania", `--fs-40`
-on Explorer, `--fs-24` elsewhere), `SearchInput`, a "Colour by genre" toggle (Explorer
-only; local state, remembered in `localStorage` key `bartok.colourByGenre`), theme toggle
-(auto / light / dark, `localStorage` key `bartok.theme`, sets `data-theme` on `<html>`),
-and a link to About. Height `--topbar-h`, sticky, `--z-sticky`.
+**TopBar** `{ compact?: boolean }`: masthead ("Bartok / Romania", `--fs-40` on the Explorer,
+`--fs-24` elsewhere), primary nav (Explorer, Journeys, About), `SearchInput`, "Colour by
+genre" toggle (Explorer only; local state remembered in `localStorage` key
+`bartok.colourByGenre`, wrapped in try/catch), theme toggle (auto / light / dark, key
+`bartok.theme`, sets `data-theme` on `<html>`). Height `--topbar-h`, sticky, `--z-sticky`.
 
-**SearchInput** `{ value: string; onChange(v: string); placeholder: string; resultCount?: number }`.
-`<input type="search">` with `aria-label`, clear button (44 px), debounced 200 ms to
-`setQuery({ q })`. Enter moves focus to the results list. Announces `"{n} melodies"` via
-`aria-live="polite"` after each change.
+**SearchInput** `{ value; onChange(v); placeholder; resultCount? }`: `<input type="search">`
+with `aria-label`, clear button (44 px), debounced 200 ms into `setQuery({ q })` with
+`replaceState`. Enter moves focus to the results list. The count is announced through the
+results `aria-live` region, not here (one announcement per change).
 
-**StatusBar** reads `query`, `filteredSongs.length`, `unmappedCount`. Shows the canonical
-query string in mono (`--fs-11`), a "Copy link" button (copies `location.href`, confirms
-with a toast "Link copied"), the result count, and "N not mapped" (MAP-SPEC section 8).
+**StatusBar** reads `query`, `filteredSongs.length`, `total`, `unmappedCount`. Shows the
+canonical query string in mono (`--fs-11`), "Copy link" (copies `location.href`, toast
+"Link copied"; on clipboard failure selects the text and shows "Press Ctrl+C to copy"),
+"N of M melodies", "N not mapped" (MAP-SPEC section 8), and `ExportButton`.
 
-**Footer**: attribution text from `UI-COPY.md` section 12, links to the three source sites.
+**ExportButton** `{ songs: Song[]; query: Query }` (AC-21): downloads
+`bartok-romania-<N>-<yyyymmdd>.json` containing `{ query: canonicalString, count, generatedAt,
+attribution, records }` with `records` in display order and each record byte-identical to
+`songs.json` (sorted keys). Disabled when N = 0; when the serialised size exceeds 10 MB a
+confirm dialog ("This export is about 14 MB. Download?") precedes the download. Built with
+a `Blob` and an object URL that is revoked after the click.
+
+**Footer**: attribution text from `UI-COPY.md` section 12 with the three source links; also
+rendered on NotFound and the error state.
 
 **ActiveFilterChips** `{ chips: Chip[]; onRemove(chip); onClearAll() }` where
 `Chip = { key: FacetKey; value: string; label: string }`. Each chip is a `<button>` with
-`aria-label="Remove filter: {label}"`, 44 px tall on touch, 28 px on desktop with a 44 px
-hit area via padding. "Clear all" is last. Chips come from `derived.activeChips` in Query
-order: place (deepest only, labelled "Bihor (Bihar)"), genre..., style..., performance,
-instrument..., year ("1909-1917", "from 1909", "to 1917"), q ("\"text\""), unmapped.
+`aria-label="Remove filter: {label}"`, 28 px tall on desktop with a 44 px hit area via
+padding, 44 px on touch. "Clear all filters" is last. Order: place (deepest only, "Bihor
+(Bihar)" or "Beiuș, Bihor" for a village per AC-04), genre..., style..., performance,
+instrument..., year ("1909-1912", "from 1909", "to 1912"), q ("\"text\""), unmapped,
+journey. Removing a chip moves focus to the next chip or to "Clear all".
 
-**GenreSwatch** `{ genre: GenreId; size?: 8 | 12 }`: coloured square with `aria-hidden`
-(the genre name is always adjacent as text).
+**GenreSwatch** `{ genre: GenreId | null; size?: 8 | 12 }`: coloured square, `aria-hidden`;
+the genre name is always adjacent as text. Null genre renders the hatched "other" swatch.
 
 **GenreBar** `{ counts: Partial<Record<GenreId, number>>; total: number; height?: 8 | 16 | 24; showLegend?: boolean }`:
 stacked horizontal bar in inline SVG, segments in fixed genre order (bocet, colinda,
 doina, joc, nunta, cantec, other), `role="img"` with `aria-label="Genres: 12 colinda, 5 joc, ..."`,
-tooltip per segment on hover/focus. Labels inside segments only at height 24 and width
->= 32 px, in `--genre-label-ink`.
+tooltip per segment on hover and focus. Labels inside segments only at height 24 and
+width >= 32 px, in `--genre-label-ink`.
 
-**Pagination** `{ page; pageCount; onPage(n) }`: Prev / "page n of m" / Next, plus a page
-number input. Hidden when `pageCount <= 1`. `aria-label="Results pages"` nav.
+**Pagination** `{ page; pageCount; onPage(n) }`: Prev / "Page n of m" / Next and a page
+input; hidden when `pageCount <= 1`; `<nav aria-label="Results pages">`.
 
-**PlaceLabel** `{ name: PlaceName; level?: Place['level'] }`: renders `Beius (Belenyes)`
-per MAP-SPEC section 7; the historical part in `--muted` mono, wrapped in
-`<span lang="hu">` when `lang` says so.
+**PlaceLabel** `{ place: Pick<Place, 'name' | 'nameHistorical' | 'confidence' | 'coordSource'>; level?: Place['type'] }`:
+renders "Beiuș (Belényes)" per MAP-SPEC section 7; the historical part in `--muted` mono
+inside `<span lang="hu">`. Adds the text marker "location uncertain" (with `title`) when
+`confidence === 'low'` or `coordSource === 'gazetteer-approx'`, and "not mapped" when
+there are no coordinates.
 
 **EmptyState** `{ title; body?; actions?: ReactNode }`, **ErrorState** `{ error; onRetry }`,
-**Skeleton** `{ rows: number }`: see section 11.
+**Skeleton** `{ rows: number }`: section 11.
 
 ## 7. Explorer
 
 Layout at >= 1024 px: three columns, `FilterRail` (`--rail-w`) | `MapPanel` (flex 1) |
 `ResultsPanel` (`--results-w`), each scrolling independently under the sticky TopBar,
-StatusBar fixed at the bottom. 768-1023 px: rail collapses into a "Filters" button that
-opens the same `FilterSheet` as the phone; map and results stack vertically. Under 768 px:
+StatusBar fixed at the bottom. 768 to 1023 px: the rail collapses into a "Filters" button
+that opens the same `FilterSheet` as the phone; map and results stack. Under 768 px:
 section 10.
 
 ```
 <ExplorerPage>
   <FilterRail>
-    <PlaceTree/>
+    <PlaceTree/>                                   with the country switch in its header
     <FacetGroup id="genre"><CheckboxFacet/></FacetGroup>
     <FacetGroup id="style"><ChipFacet/></FacetGroup>
     <FacetGroup id="performance"><ChipFacet single/></FacetGroup>
@@ -329,312 +364,526 @@ section 10.
     <FacetGroup id="year"><YearRange/></FacetGroup>
     <ClearAllButton/>
   </FilterRail>
-  <MapPanel>                       see MAP-SPEC
+  <MapPanel>                                       MAP-SPEC
     <MapView/> <MapLegend/> <MapHoverCard/> <MapAccessibleList/> <NotMappedNotice/>
   </MapPanel>
   <ResultsPanel>
-    <ResultsHeader> <ResultCount/> <SortSelect/> <ActiveFilterChips/> </ResultsHeader>
+    <ResultsHeader> <ResultCount/> <SortSelect/> <ExportButton/> <ActiveFilterChips/> </ResultsHeader>
     <SongList> <SongRow/>* </SongList>
     <Pagination/>
   </ResultsPanel>
 ```
 
-**FilterRail** `{ children }`: `<aside aria-label="Filters">`. Groups are `<details>`-like
-disclosures, all open by default on desktop; open state is local.
+**FilterRail** `{ disabled?: boolean; children }`: `<aside aria-label="Filters">`. Groups
+are disclosures, all open by default on desktop; open state is local. While the catalogue
+is loading every control is disabled (AC-31).
 
-**FacetGroup** `{ id: FacetKey; title: string; hint?: string; activeCount: number; children }`:
-heading in uppercase mono, active count badge, "clear" link when activeCount > 0.
+**FacetGroup** `{ id: FacetKey; title; hint?; activeCount; children }`: heading in uppercase
+mono, the ro / hu hint under it (UI-COPY), active-count badge, "Clear" link when
+`activeCount > 0`.
 
-**PlaceTree** `{ tree: PlaceNode[]; selected: { country?, region?, county?, village? }; onSelect(level, id | undefined) }`.
-Reads `derived.placeTree`. Emits `setQuery({ [level]: id })` (invariants fill in ancestors).
-Rendering: `role="tree"`, rows `role="treeitem"` with `aria-level`, `aria-expanded`,
-`aria-selected`; the row shows `PlaceLabel` and a mono count right-aligned; village rows
-with no coordinates get a small "not mapped" marker (text, not colour). Keyboard: Up/Down
-move, Right expands or moves into children, Left collapses or moves to parent, Home/End,
-Enter or Space selects, type-ahead by first letters. Clicking the selected row again clears
-that level. Countries expand by default when only one country has counts; the selected
-branch is always expanded. Rows are 32 px on desktop, 44 px on touch. Max depth 4.
+**PlaceTree** `{ tree: PlaceNode[]; selected: { country?, region?, county?, village? }; countryOptions: Place[]; onSelect(level, id | undefined); onCountry(id | 'all') }`.
+Reads `derived.placeTree`. Emits `setQuery({ [level]: id })` (invariants fill in the
+ancestors). Header: the country switch, a native `<select>` labelled "Country" listing the
+countries present in the data plus "All countries", default Romania (AC-01). Tree:
+`role="tree"`, rows `role="treeitem"` with `aria-level`, `aria-expanded`, `aria-selected`;
+each row shows `PlaceLabel` and a mono count right-aligned; synthetic "(village unknown)" and
+"(county unknown)" leaves are selectable like villages (they set a `placeId`-less
+predicate: county-known-village-null). Keyboard: Up/Down move, Right expands or enters
+children, Left collapses or goes to the parent, Home/End, Enter or Space selects, type-ahead
+by first letters (E2E-10). Clicking the selected row again clears that level. The selected
+branch is always expanded; the selected country is expanded to regions on load (AC-01).
+Rows are 32 px on desktop and 44 px on touch; indent 16 px per level.
 
-**CheckboxFacet** `{ facet: 'genre'; values: FacetValue[]; counts: Counts; selected: string[]; onChange(next: string[]) }`.
-Native `<input type="checkbox">` per value, label = `GenreSwatch` + label in the form
-"colindă / winter carol", count in mono. Values with count 0 are disabled unless selected.
-Emits `setQuery({ genre: next })`.
+**CheckboxFacet** `{ facet: 'genre'; values; counts; selected; onChange(next) }`: native
+`<input type="checkbox">` per value, label = `GenreSwatch` + "colindă / winter carol" +
+mono count; count 0 disables unless selected (AC-05). Includes a "no genre" value for
+null when the data has such records, keyed `null` in the URL as the literal `none`
+(decision 8).
 
-**ChipFacet** `{ facet: 'style' | 'performance' | 'instrument'; values; counts; selected: string[]; single?: boolean; onChange(next) }`.
-Toggle buttons `aria-pressed`, wrapped in a `role="group"` with the facet title as
-`aria-label`. `single` (performance) behaves like radio: pressing the active chip clears
-it. Instruments with count 0 are hidden (the list can be long) but selected ones always
-show. If more than 12 instruments have counts, show 12 and a "Show all (n)" toggle.
+**ChipFacet** `{ facet: 'style' | 'performance' | 'instrument'; values; counts; selected; single?; onChange(next) }`:
+toggle buttons with `aria-pressed` inside `role="group"` labelled by the facet title.
+`single` (performance) behaves like a radio group; pressing the active chip clears it.
+Style values are the distinct verbatim strings from `facets.json` (AC-06). Instruments
+with count 0 are hidden (the list can be long) except selected ones; above 12 visible
+values show 12 and "Show all (n)".
 
-**YearRange** `{ min: number; max: number; from?: number; to?: number; histogram: Bin[]; onChange({ from?, to? }) }`.
-Two `<input type="number">` (from / to, `inputmode="numeric"`, 44 px tall) above a 5-year
+**YearRange** `{ min; max; from?; to?; histogram: Bin[]; onChange({ from?, to? }) }`: two
+`<input type="number">` (From / To, `inputmode="numeric"`, 44 px tall) above a 5-year
 histogram (inline SVG, `role="img"` with a summary label, bins outside the range dimmed)
-and a native dual-thumb range built from two `<input type="range">` overlaid (native
-inputs keep keyboard and screen-reader behaviour). Commits on blur/Enter for the number
-inputs and on `change` for the sliders. Bounds come from `facets.years`.
+and two overlaid native `<input type="range">` for the dual thumbs (native inputs keep
+keyboard and screen-reader behaviour). Number inputs commit on blur or Enter; sliders on
+`change`. Bounds from `facets.year` keys (min and max non-null years). Setting both ends
+back to the bounds removes both params (AC-09).
 
-**ClearAllButton**: emits `reset()` (keeps `sort`/`dir`).
+**ClearAllButton**: emits `reset()`.
 
-**ResultsHeader**: `ResultCount` ("1,204 melodies", `aria-live="polite"`), `SortSelect`,
-`ActiveFilterChips`. Sticky inside ResultsPanel (`--z-sticky`).
+**ResultsHeader**: `ResultCount` ("1,204 of 13,212 melodies", `aria-live="polite"`,
+`aria-atomic`), `SortSelect`, `ExportButton`, `ActiveFilterChips`. Sticky inside
+ResultsPanel (`--z-sticky`).
 
 **SortSelect** `{ sort; dir; onChange({ sort, dir }) }`: native `<select>` with the five
-sort keys (labels in UI-COPY section 6) and a direction toggle button (`aria-pressed`,
-`aria-label="Descending"`).
+keys (UI-COPY section 6) and a direction toggle (`aria-pressed`, label "Descending").
 
-**SongList** `{ songs: Song[]; selectedId?: string }`: `<ol>` with `aria-label="Results"`,
-rows are `SongRow`. Keyboard: normal Tab through row links; Up/Down within the list move
-between rows (roving tabindex) so a long list is fast to scan. Hovering a row highlights
-the matching village dot on the map (`MapPanel` receives `highlightPlaceId`); focusing a
-row does the same.
+**SongList** `{ songs: Song[]; selectedId?: string }`: `<ol aria-label="Results">` of
+`SongRow`. Roving tabindex: Up/Down move between rows, Tab leaves the list. Hovering or
+focusing a row highlights its village dot (`MapPanel` receives `highlightPlaceId`).
 
-**SongRow** `{ song: Song; place: Place; county?: Place; showPlace?: boolean }`: link to
-`/song/:id?<query>`. Layout: line 1 title (`--fs-14`, `--fw-medium`) with genre swatch;
-line 2 `--fs-12 --muted`: village (historical) / county, year or "n.d.", `ref.raw` in mono;
-right edge: icons for audio and notation availability with visually hidden text
-("has audio"). Row min height 56 px; touch target is the whole row.
+**SongRow** `{ song; place?; showPlace?: boolean }`: link to `/song/:id?<query>`. Line 1:
+title or "Untitled" (`--fs-14 --fw-medium`) with genre swatch; line 2 `--fs-12 --muted`:
+village (historical) / county, year or "n.d.", `source.referenceCode` in mono; right edge:
+icons for `media.audio.length > 0` and `media.notation.length > 0` with visually hidden
+text. Min height 56 px; the whole row is the target.
 
 **Interactions on the Explorer**
 
-| Action                                  | Effect                                                              |
-|-----------------------------------------|---------------------------------------------------------------------|
-| type in search                          | `q`, debounced, list + map + counts update                          |
-| select tree node                        | place level set, map fits to that place (county: bbox, village: zoom 11) |
-| click county bubble / village dot       | same as tree select (MAP-SPEC section 5)                             |
-| toggle a facet value                    | facet updated, page 1                                                |
-| change year                             | year bounds, page 1                                                  |
-| change sort                             | `sort`/`dir`, page unchanged                                         |
-| click a chip                            | that value removed                                                   |
-| "Open county page" (hover card, tree row context, results header when a county is selected) | navigates to `/county/:id?<query>` |
-| click row                               | `/song/:id?<query>`                                                  |
-| Copy link                               | clipboard, toast                                                     |
+| Action                                   | Effect                                                                 |
+|------------------------------------------|------------------------------------------------------------------------|
+| type in search                           | `q`, debounced, replaceState; list, map and counts update within 300 ms |
+| change country switch                    | `country`, clears deeper levels; tree re-roots                         |
+| select a tree node                       | place level set, pushState, map fits to that place                      |
+| click county bubble / village dot        | same as tree select (MAP-SPEC section 5)                                |
+| toggle a facet value                     | facet updated, page 1                                                   |
+| change year                              | bounds, page 1                                                          |
+| change sort                              | `sort` / `dir`, page unchanged                                          |
+| click a chip                             | that value removed; "Clear all" -> `reset()`                            |
+| "Open county page"                       | `/county/<id>?<query>` (hover card, tree row action, results header when a county is selected) |
+| click a row                              | `/song/<id>?<query>`                                                    |
+| Export JSON / Copy link                  | section 6                                                               |
 
 ## 8. County drill-down
 
-Route `/county/:countyId`. Layout: `Breadcrumb` (Romania > Transilvania > Bihor), then
-`CountyHeader`, then `CountyTabs`. The filter rail is not shown; the active non-place
-filters from the Query apply and are listed as `ActiveFilterChips` under the header so the
-user knows the counts are filtered. Under 768 px the tabs become a horizontally scrollable
-tab strip and tables become card lists.
+Route `/county/:countyId`. Layout: `Breadcrumb` (Romania > Crișana > Bihor), `CountyHeader`,
+`CountyTabs`. No filter rail; the active non-place filters apply and are listed as
+`ActiveFilterChips` under the header with the note "Counts reflect the active filters".
+Under 768 px the tab strip scrolls horizontally and tables become card lists.
 
-**Breadcrumb** `{ items: { label: string; to: string }[] }`: `<nav aria-label="Breadcrumb">`,
-each ancestor links back to the Explorer with that place set.
+**Breadcrumb** `{ items: { label; to }[] }`: `<nav aria-label="Breadcrumb">`; each
+ancestor links to the Explorer with that place set.
 
-**CountyHeader** `{ county: Place; stats: CountyStats }` where `CountyStats = { melodies, villages, withAudio, withNotation, yearMin?, yearMax?, genreCounts }`.
-Title `PlaceLabel` at `--fs-24` plus the region / country line, then a stats row of four
-mono figures and a 16 px `GenreBar`. Contains "View in explorer" (back to `/` with the
-county selected) and "Copy link".
+**CountyHeader** `{ county: Place; stats: CountyStats }` with
+`CountyStats = { melodies, villages, withAudio, withNotation, yearMin?, yearMax?, genreCounts }`:
+`PlaceLabel` at `--fs-24`, region / country line, four mono figures, a 16 px `GenreBar`,
+"View in explorer", "Copy link", `ExportButton`.
 
-**CountyTabs** `{ tab: TabId; onChange(tab) }` with `TabId = 'melodies' | 'genre' | 'performer' | 'timeline' | 'map'`.
-`role="tablist"`, tabs `role="tab"` with `aria-selected`, Left/Right arrows move, panel
-`role="tabpanel"`. Tab is stored in `?tab=` (default `melodies`, omitted).
+**CountyTabs** `{ tab: TabId; onChange }` with `TabId = 'melodies' | 'genre' | 'performer' | 'timeline' | 'map'`:
+`role="tablist"`, tabs `role="tab"` with `aria-selected`, Left/Right move, `role="tabpanel"`.
+`?tab=` in the URL (default `melodies`, omitted; E2E-05 "tab switch keeps URL in sync").
 
-Above the tabs on every tab: **VillagesTable** `{ rows: VillageRow[]; sort: { key, dir }; onSort; selectedVillage?; onSelect(villageId) }`
-where `VillageRow = { place: Place; melodies: number; genreCounts; yearMin?; yearMax?; mapped: boolean }`.
-Columns: Village (`PlaceLabel`, "not mapped" marker), Melodies (mono, right), Genres
-(`GenreBar` 8 px, the bar's accessible label carries the counts), Years ("1909-1912" or
-"n.d."). Header cells are buttons with `aria-sort`; sorting is local state (not in the
-Query). Clicking a row sets `village` in the Query, which narrows every tab; the selected
-row gets the accent left border. The table is `<table>` with `<caption>` ("Villages in
-Bihor, 34"), sticky header, zebra rows using `--surface-2`.
+Above the tabs on every tab: **VillagesTable** `{ rows: VillageRow[]; sort: { key, dir }; onSort; selectedVillage?; onSelect(villageId) }`,
+`VillageRow = { place: Place; melodies; genreCounts; yearMin?; yearMax?; mapped: boolean }`.
+Columns: Village (`PlaceLabel`), Melodies (mono, right), Genres (`GenreBar` 8 px, counts in
+its accessible label), Years ("1909-1912" or "n.d."). Header cells are buttons with
+`aria-sort`; sort is local state, default village name ascending. The "(village unknown)"
+row is last. Clicking a row sets `village` in the Query (narrows every tab); the selected
+row gets the accent left border. `<table>` with `<caption>` ("Villages in Bihor, 34"),
+sticky header, zebra rows with `--surface-2`.
 
 Tab panels:
 
-- **MelodiesTable** `{ songs: Song[]; sort; onSort }`: columns Title (link), Genre,
-  Performance, Village, Year, Source (`ref.raw` mono), Audio/Notation icons. Sorting via
-  the section 5 comparators plus `genre` and `village`; column sort writes `sort`/`dir`
-  into the Query for title/style/location/year/source so the Explorer list agrees when
-  the user goes back. 50 rows per page with `Pagination`.
+- **MelodiesTable** `{ songs; sort; onSort }`: Title (link), Genre, Performance, Village,
+  Year, Source (`referenceCode` mono), audio / notation icons. Column sort writes `sort` /
+  `dir` into the Query for title / style / location / year / source; `genre` and `village`
+  are local. 50 rows per page with `Pagination`.
 - **ByGenrePanel** `{ genreCounts; total; onPick(genre) }`: one row per genre: swatch,
-  name "colindă / winter carol", horizontal bar scaled to the max (inline SVG), count and
-  percentage in mono. Clicking a row toggles that genre in the Query.
-- **ByPerformerPanel** `{ rows: PerformerRow[] }` with `PerformerRow = { name, age?, ethnicity?, village: Place, count, years }`.
-  Table sortable by name / count / village. Performer names as recorded; rows without a
-  name are grouped as "Unnamed performer (n)". Clicking a row sets `q` to the performer's
-  name (there is no performer facet).
-- **TimelinePanel** `{ perYear: { year: number; count: number; genreCounts }[]; unknownYear: number }`:
-  inline SVG column chart, one column per year from the county's min to max, stacked by
-  genre when "colour by genre" is on, otherwise `--ink-2`. Each column is focusable
-  (`tabindex=0`, `role="img"`, label "1912: 38 melodies") and clicking sets
-  `from = to = year`. A visually hidden `<table>` mirrors the data. "N melodies without a
-  year" shown under the chart as text.
+  "colindă / winter carol", bar scaled to the max (inline SVG), count and "{pct}% of
+  {total}" in mono. Clicking toggles that genre in the Query.
+- **ByPerformerPanel** `{ rows: PerformerRow[] }`, `PerformerRow = { name, age?, sex?, ethnicity?, village: Place, count, years }`:
+  sortable by name / count / village; unnamed performers grouped as "Unnamed performer
+  (n)". Clicking a row sets `q` to the performer's name.
+- **TimelinePanel** `{ perYear: { year; count; genreCounts }[]; unknownYear: number }`:
+  inline SVG column chart from the county's min to max year, stacked by genre when
+  "colour by genre" is on, otherwise `--ink-2`; columns focusable (`role="img"`, label
+  "1912: 38 melodies"); click sets `from = to = year`; a visually hidden `<table>` mirrors
+  the data; "N melodies without a year" as text.
 - **LocalMapPanel** `{ county: Place; points: MapPoint[]; selectedVillage? }`: `MapView`
-  bounded to the county bbox, village dots only, no clustering, same hover card and click
-  behaviour; height 420 px, 320 px on phone.
+  bounded to the county, village dots only, no clustering; 420 px high, 320 px on phone.
 
 ## 9. Song record
 
 Route `/song/:songId`. Layout at >= 1024 px: main column (max 760 px) + right rail
-(320 px). Below: single column, rail sections after the text.
+(320 px); below, one column with the rail sections after the text.
 
 ```
 <SongPage>
-  <Breadcrumb/>                         Romania > Bihor > Beius (Belenyes) > title
-  <SongNav/>                            Prev / Next within sortedSongs, "Back to results"
+  <Breadcrumb/>                         Romania > Bihor > Beiuș (Belényes) > title
+  <SongNav/>                            Previous / Next within sortedSongs, "n of N", Back to results
   <SongTabs tab="record|raw"/>
-  tab record:
-    <SongHeader/>
-    <NotationFigure/>
-    <AudioPlayer/>
-    <SongText/>
-    <RelatedMelodies/>
-    <SongRail>
-      <RailSection id="where"/> <RailSection id="who-when"/> <RailSection id="music"/> <RailSection id="source"/>
-    </SongRail>
-  tab raw:
-    <RawJson/>
+  record:  <SongHeader/> <NotationFigure/> <AudioPlayer/>* <SongText/> <RelatedMelodies/>
+           <SongRail> where | who-when | music | works | source </SongRail>
+  raw:     <RawJson/>
 ```
 
-**SongNav** reads `derived.sortedSongs` to find the current index; if the song is not in
-the current result set (deep link), Prev/Next are hidden and "Back to results" goes to `/`
-with the Query. Prev/Next keep the Query string. Keyboard: `[` and `]` when focus is not
-in an input.
+**SongNav** reads `derived.sortedSongs`; position "n of N"; Previous disabled on the first
+record, Next on the last (no wrap, AC-19); the Query string is kept on the song URL. A
+deep link without a query uses the default set (country `ro`) in the default sort. Keyboard:
+Left / Right arrow when focus is not in an input or the audio element. "Back to results"
+goes to `/` (or the county page it came from, via `state.from`) with the Query; the
+Explorer restores the scroll position of the list from `sessionStorage`.
 
-**SongHeader** `{ song }`: title `--fs-36` (falls back to `incipit`, then to `ref.raw`
-with a "Untitled" label), incipit under it in `--fs-16` italic when distinct, then chips
-(not buttons; `role="list"`): genre with swatch, performance, style, instruments. Each
-chip links to the Explorer with that single facet set (so "colinda" chip -> `/?genre=colinda`).
+**SongHeader** `{ song }`: title `--fs-36` (falls back to `incipit`, then "Untitled" with
+the reference code), incipit under it in `--fs-16` italic when distinct, then a
+`role="list"` of link chips: genre with swatch, performance, style, each instrument; each
+links to the Explorer with only that facet set (`/?genre=colinda`).
 
-**NotationFigure** `{ src?: string; alt: string; caption?: string }`: `<figure>` with
-`<img loading="lazy">`, `alt` = "Notation of {title}, source {ref.raw}", a "View full
-size" button opening a `Lightbox` (`role="dialog"`, `aria-modal`, focus trapped, Esc
-closes, scrim `--scrim`, `--z-sheet`). Missing image: dashed 3:2 placeholder with the text
-"No notation image for this record".
+**NotationFigure** `{ items: MediaItem[]; title: string; ref?: string }`: one `<figure>`
+per `media.notation[]` item (`<img loading="lazy">`, `alt` = "Notation for {title}"
+plus ", page n" when several, `figcaption` from `caption`), a "View full size" button
+opening `Lightbox` (`role="dialog"`, `aria-modal`, focus trapped, Esc closes, `--scrim`,
+`--z-sheet`, Left / Right between pages). PDF items render as a link "Open notation (PDF)".
+Empty array: dashed 3:2 placeholder "No notation image for this record" (E2E-06).
+`onError`: "The notation image could not be loaded" with a retry link, never a broken
+image icon.
 
-**AudioPlayer** `{ src?: string; title: string }`: native `<audio controls preload="none">`
-labelled by the title, with a "Download" link and the source note "Recording: HUN-REN BTK
-ZTI". Missing: one line "No recording available" (no player). `onError` swaps in "The
-recording could not be loaded" with a retry link.
+**AudioPlayer** `{ item: MediaItem; title; index; total }`: one native
+`<audio controls preload="none">` per `media.audio[]` item, labelled "Recording of {title}"
+(plus "n of m"), caption, "Download recording" link, credit line. Empty array: one line
+"No recording available". `onError` swaps in "The recording could not be loaded".
 
-**SongText** `{ text?: string; lang?: string }`: `<section>` with heading "Text",
-`white-space: pre-wrap`, `lang` attribute set, `--fs-16` with `max-width: 60ch`. Missing:
-"No text recorded".
+**SongText** `{ text; lang? }`: `<section>` headed "Text", `white-space: pre-wrap`,
+`lang="ro"` by default (the collection's texts are Romanian unless `performer.ethnicity`
+says otherwise), `--fs-16`, `max-width: 60ch`. Null: "No text recorded". `remarks` render
+under it as "Remarks" when present.
 
-**RelatedMelodies** `{ items: Song[]; reason: 'same-village' | 'same-performer' | 'adjacent-source' }`:
-up to 6 `SongRow`s in this priority: same performer (name match), then same village, then
-adjacent `ref.number` in the same volume. Heading names the reason ("Also from Beius").
+**RelatedMelodies** `{ song; catalogue }`: first the schema's `related[]` entries grouped by
+`relation` (variant, same-source, same-informant, same-place, cross-site, link); resolved
+ids render as `SongRow`, unresolved ones as external links with their `label`. If fewer
+than 3 result, pad with computed neighbours: same `performer.name` in the same village,
+then same village, then adjacent `source.number` in the same volume; up to 6 in total.
+Group headings name the relation ("Variants", "Also from Beiuș").
 
-**SongRail / RailSection** `{ id; title; rows: { label: string; value: ReactNode; mono?: boolean }[] }`:
-definition lists (`<dl>`), uppercase mono headings. Contents:
+**SongRail / RailSection** `{ id; title; rows: { label; value; mono? }[] }`: `<dl>` per
+section, uppercase mono headings; a row is omitted when its value is null.
 
-| Section   | Rows (omit a row when the value is absent)                                                                                     |
-|-----------|--------------------------------------------------------------------------------------------------------------------------------|
-| Where     | Village (`PlaceLabel`, link to Explorer filtered), County (`PlaceLabel`), Region, Country, Coordinates (mono, "not mapped" if none), static mini map: an 240x160 SVG from the fallback county outlines with a dot (MAP-SPEC section 9), or omitted when unmapped |
-| Who / when| Performer, Age, Ethnicity, Collector, Date (as recorded), Year                                                                   |
-| Music     | Genre, Performance, Style, Instruments, System position, Cadences, Rhythm, Scale, Remarks (all mono except Remarks)             |
-| Source    | Reference (`ref.raw`), Database (human name of `song.source`), "Open record on zti.hu" external link (`rel="noopener"`), id (mono) |
+| Section        | Rows                                                                                                                                              |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Where          | Village (`PlaceLabel`, links to the Explorer filtered), County, Region, Country, Informant's origin (from `location.origin`, when different), Coordinates (mono; "not mapped" when null), Place as printed (`location.raw`, mono), static mini map (MAP-SPEC section 9) when mapped |
+| Who / when     | Performer, Age, Sex, Ethnicity (as stated by the source), Collector, Date (`collected.raw`), Year                                                  |
+| Music          | Genre (with `genreRaw` in mono when it differs), Performance, Style, Instruments, System position, Cadences, Rhythm, Mode, Ambitus, Syllables, Form |
+| In Bartók's works | one row per `composition[]` item: "{work}, {movement}" with catalogue number in mono (site 1 only; section omitted when empty)                   |
+| Source         | Reference (`referenceCode`, mono), Volume, Number, Database (human name of `source.site`), "Open record on zti.hu" (`target="_blank" rel="noopener noreferrer"`, AC-33), Record id (mono) |
 
-**RawJson** `{ value: unknown }`: `<pre><code>` of `JSON.stringify(value, null, 2)` with
-sorted keys, "Copy JSON" button, `tabindex=0` on the `<pre>` so keyboard users can scroll
-it. Large payloads (> 200 KB) render the first 200 KB with "Show all".
+**RawJson** `{ value: Song }`: `<pre><code>` of the record with sorted keys, 2-space
+indent, deep-equal to `songs.json` including `rawFields` (AC-20); "Copy JSON" button;
+`tabindex=0` on the `<pre>`; above 200 KB render the first 200 KB with "Show all".
 
 ## 10. Phone explorer (< 768 px)
 
-Same route `/`. Single column: `PhoneHeader` (masthead compact + `SearchInput` + "Filters (n)"
-button), then the active view chosen by `BottomTabs`.
+Same route `/`. Single column: `PhoneHeader` (compact masthead, `SearchInput`, "Filters (n)"
+button) then the view chosen by `BottomTabs`.
 
-**BottomTabs** `{ tab: 'map' | 'list' | 'filters'; counts: { results: number; filters: number } }`:
-fixed bottom, `--bottomtabs-h`, three 44 px+ buttons with icon and label, `role="tablist"`.
-`map` shows `MapMini` (full height minus header/tabs) with a bottom "N melodies, view list"
-bar; `list` shows `SongList` with `ResultsHeader` (sort + chips) and `Pagination`; `filters`
-opens `FilterSheet` and returns to the previous tab on close. The tab is local state,
-default `list` (a list loads faster and works without tiles); deep links with a place set
-default to `map`.
+**BottomTabs** `{ tab: 'map' | 'list' | 'filters'; counts: { results; filters } }`: fixed
+bottom, `--bottomtabs-h`, three 44 px+ buttons with icon and label, `role="tablist"`.
+`map` shows `MapMini` full height with a "N melodies, view list" bar; `list` shows
+`SongList` with `ResultsHeader` and `Pagination`; `filters` opens `FilterSheet` and returns
+to the previous tab on close. Local state, default `list`; a deep link with a place set
+defaults to `map`. The URL scheme is identical to desktop (AC-28).
 
-**MapMini**: `MapView` with the same behaviour, cluster radius 56 px, hover card replaced
-by a bottom sheet (`MapPointSheet`) that opens on tap and holds the same content plus
-"Filter to this place" and "Open county page" buttons.
+**MapMini**: `MapView` with cluster radius 56 px; tap opens `MapPointSheet` (bottom sheet
+with the hover card content plus "Show melodies" and "Open county page", AC-25).
 
-**FilterSheet** `{ open; onClose }`: `role="dialog"` `aria-modal="true"`, slides from the
-bottom to 92% height, scrim, focus trapped, Esc and the "Close" button close it, body
-scroll locked. Contains the same `FilterRail` children; the footer has "Clear all" and a
-primary "Show N melodies" (N from `filteredSongs.length`, updates live). Facet changes are
-applied immediately to the Query (no draft state), so the count is always true.
+**FilterSheet** `{ open; onClose }`: `role="dialog" aria-modal="true"`, slides up to 92%
+height, scrim, focus trapped, background `inert`, closes on the primary button, backdrop
+tap, swipe down (a 60 px downward drag on the handle) or Escape, returning focus to the
+"Filters" tab (AC-29). Contains the same `FilterRail` children; footer has "Clear all
+filters" and the primary "Show N melodies" updating live. Changes apply immediately (no
+draft state).
 
-Touch specifics: all rows 44 px min, inputs 16 px font, the year sliders get 44 px thumbs,
-the place tree indents 16 px per level with 44 px rows.
+Touch specifics: rows 44 px min, inputs 16 px font, 44 px slider thumbs, tree rows 44 px.
 
 ## 11. States
 
-| State                    | Where                       | Behaviour                                                                                                           |
-|--------------------------|-----------------------------|---------------------------------------------------------------------------------------------------------------------|
-| Loading data             | whole app                   | TopBar renders; rail, map and list show `Skeleton` (8 rows), map area shows ground colour and "Loading the collection..."; `aria-busy="true"` on `<main>`; no layout shift when data lands (fixed column widths) |
-| Data error               | whole app                   | `ErrorState` in `<main>`: "The collection could not be loaded." + technical detail in mono + "Retry" (refetches). Nothing else renders. |
-| No results               | ResultsPanel, MapPanel      | `EmptyState`: "No melodies match these filters." Actions: "Remove last filter" (pops the most recently added chip) and "Clear all". Map keeps its position but shows no points; hover card hidden; facet counts remain (they are computed excluding each facet, so they show the way out). |
-| No results for `q`       | same                        | Title becomes "No melodies match \"{q}\"" with hint "Search matches titles, incipits, performers, collectors, reference codes and place names." |
-| Page out of range        | ResultsPanel                | clamp, no message                                                                                                    |
-| Song not found           | SongPage                    | `EmptyState` "No record with id {id}" + "Back to explorer"                                                           |
-| County not found         | CountyPage                  | same pattern                                                                                                         |
-| Not mapped               | MapPanel, StatusBar         | MAP-SPEC section 8                                                                                                   |
-| Tiles unavailable        | MapPanel                    | MAP-SPEC section 9 (SVG fallback)                                                                                    |
-| Image / audio missing    | SongPage                    | section 9 placeholders                                                                                                |
-| Image / audio failed     | SongPage                    | inline error with retry, never a broken-image icon                                                                    |
-| Clipboard denied         | StatusBar                   | select the query text instead and show "Press Ctrl+C to copy"                                                        |
-| Offline                  | app                         | if data is cached by the browser the app works; a toast "You are offline; map tiles may not load" once per session    |
-
-Loading of the map tiles is independent of data loading; the map container shows the
-ground colour until the first tile paints.
+| State                    | Where                   | Behaviour                                                                                                                                                       |
+|--------------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Loading catalogue        | whole app               | TopBar and Footer render; rail controls disabled; results region shows `Skeleton` (8 rows) with `aria-busy="true"`; map area shows the ground colour and "Loading the collection..."; fixed column widths so nothing shifts; no "0 results" flash (AC-31) |
+| Catalogue error          | whole app               | `ErrorState` in `<main>`: "The collection could not be loaded." + one structured `console.error` + "Retry" (refetches and then renders the deep-linked state); footer stays (AC-32) |
+| No results               | Results, Map            | `EmptyState` "No melodies match these filters." with the active chips listed, "Remove last filter" and "Clear all filters"; count reads "0 of M"; map shows no points; Export disabled (AC-30) |
+| No results for `q`       | same                    | title "No melodies match \"{q}\"", action "Clear search", hint on what search covers (E2E-04)                                                                   |
+| Page out of range        | Results                 | clamp silently                                                                                                                                                  |
+| Song / county not found  | SongPage, CountyPage    | `EmptyState` "No record with id {id}" / "No county with id {id}" + "Back to explorer"; `<title>` "Not found"                                                     |
+| Unknown route            | NotFound                | same, with the footer (E2E-11)                                                                                                                                  |
+| Not mapped               | Map, StatusBar          | MAP-SPEC section 8                                                                                                                                              |
+| Tiles unavailable        | Map                     | MAP-SPEC section 9                                                                                                                                              |
+| Media missing / failed   | SongPage                | section 9                                                                                                                                                       |
+| Clipboard denied         | StatusBar               | select the text and show "Press Ctrl+C to copy"                                                                                                                 |
+| Export too large         | ExportButton            | confirm dialog above 10 MB                                                                                                                                      |
+| Offline                  | app                     | if the catalogue is cached the app works; one toast "You are offline; map tiles may not load"                                                                    |
+| Journey states           | JourneyPage             | section 14.7                                                                                                                                                    |
 
 ## 12. Keyboard and accessibility
 
-- Landmarks: `<header>` (TopBar), `<nav>` (breadcrumb, pagination, bottom tabs),
-  `<aside aria-label="Filters">`, `<main>` containing the map region
-  (`<section aria-label="Map">`) and results (`<section aria-label="Results">`),
-  `<footer>`. The status bar is `role="status"`.
-- Focus order on the Explorer: skip link -> masthead link -> search -> colour-by-genre
-  toggle -> theme -> About -> filter rail top to bottom (tree, genre, style, performance,
-  instrument, year, clear) -> map (container, zoom in, zoom out, layer toggle, then the
-  accessible point list) -> results (count, sort, direction, chips, rows, pagination) ->
-  status bar (copy link) -> footer links. The skip link targets the results section.
+- Landmarks: `<header>` (TopBar), `<nav>` (primary, breadcrumb, pagination, bottom tabs),
+  `<aside aria-label="Filters">`, `<main>` with `<section aria-label="Map">` and
+  `<section aria-label="Results">`, `<footer>`; the status bar is `role="status"`.
+- Focus order on the Explorer: skip link -> masthead -> primary nav -> search ->
+  colour-by-genre -> theme -> filter rail top to bottom (country switch, tree, genre, style,
+  performance, instrument, year, clear) -> map (container, zoom in, zoom out, fit, layer
+  toggle, "List counties" / "List villages" control) -> results (count, sort, direction,
+  export, chips, rows, pagination) -> status bar (copy link, export) -> footer. The skip
+  link targets the results section (AC-34). No positive `tabindex`.
 - Focus is never lost on re-render: rows and chips are keyed by stable ids; removing a
-  chip moves focus to the next chip or to "Clear all"; closing a sheet or lightbox returns
+  chip moves focus to the next chip or "Clear all"; closing a sheet or lightbox returns
   focus to its opener.
 - Map: the Leaflet container has `tabindex=0`, `role="application"`,
-  `aria-label="Map of melodies; use the list after the map for keyboard access"` and
-  `aria-roledescription="map"`; arrow keys pan and +/- zoom (Leaflet default). Dots are
-  real `<button>` elements inside `divIcon` markers with `aria-label="Beius (Belenyes),
-  Bihor: 24 melodies"`, `aria-pressed` for selected, and they are reachable with Tab in
-  map order (north to south, then west to east). Because keyboard users cannot easily
-  discover dots, `MapAccessibleList` (a `<ul>` after the map, visually collapsed behind a
-  "List map points (n)" disclosure) lists every visible point as a button with the same
-  label and action. Clusters are buttons labelled "Cluster of n places, press to zoom".
-- Hover cards are also shown on focus, positioned relative to the marker, `role="tooltip"`,
-  linked with `aria-describedby`, dismissed on Esc.
-- Targets: every interactive element has a 44 x 44 px minimum hit area on touch devices
-  (`pointer: coarse`) and 24 x 24 px on fine pointers, including map dots (their hit area
-  is padded beyond the visible circle) and table header sort buttons. Result rows are
-  full-width links.
-- Contrast: text >= 4.5:1, UI components and dots >= 3:1, as documented in
-  `DESIGN-TOKENS.md`. Colour is never the only cue: genre also appears as text, selected
-  rows also get a border, disabled facets also get "(0)".
-- `aria-live="polite"` regions: result count, "Link copied", filter-sheet count. Never
-  more than one announcement per change (the count region is the one that speaks).
+  `aria-roledescription="map"` and `aria-label` from UI-COPY; arrow keys pan, `+` / `-`
+  zoom. Dots are `<button>`s inside `divIcon` markers with
+  `aria-label="Beiuș (Belényes), Bihor: 24 melodies"` and `aria-pressed` when selected,
+  in Tab order north to south. Because dots are hard to discover by keyboard,
+  `MapAccessibleList` ("List counties" in county mode, "List villages" in village mode,
+  AC-27) is a disclosure after the map containing a `<ul>` of buttons with the same
+  labels and actions; clusters are buttons "Cluster of n places, m melodies; press to zoom".
+- Hover cards also show on focus, `role="tooltip"`, linked by `aria-describedby`,
+  dismissed with Esc.
+- Targets: every control has a 44 x 44 px minimum hit area on `pointer: coarse` and
+  24 x 24 px on fine pointers, including map dots (padded beyond the visible circle) and
+  table header sort buttons. Result rows are full-width links.
+- Contrast: text >= 4.5:1, components and dots >= 3:1 (DESIGN-TOKENS.md, with a unit test
+  over the token pairs per QA section 5). Colour is never the only cue: genre also appears
+  as text, selected rows also get a border, disabled facets also read "(0)".
+- Live regions: result count (`polite`), toasts, the filter-sheet count. One announcement
+  per change.
 - Reduced motion honoured (tokens); no autoplay audio; no parallax.
-- Language: `<html lang="en">`; Romanian and Hungarian names and song texts get `lang`
-  attributes so screen readers switch voices.
-- Zoom: layout works at 200% browser zoom (rail collapses to the sheet at the effective
-  width) and at 320 px wide without horizontal scroll.
-- Automated checks in QA: axe-core in Vitest for each screen with fixture data, and a
-  keyboard walkthrough script in `QA-PLAN.md`.
+- Language: `<html lang="en">`; Romanian and Hungarian names and song texts get `lang`.
+- Zoom: works at 200% browser zoom and at 320 px wide without horizontal scroll.
+- Automated: axe-core in Playwright per QA section 5; E2E-10 keyboard walkthrough.
 
 ## 13. Performance notes
 
-- `songs.json` for > 13,000 records is expected around 4-8 MB raw; Vercel gzips to
-  roughly a quarter. Show the skeleton, do not block on fonts.
-- Filtering 13k records with plain predicates is a few milliseconds; memoise `searchKey`
-  and `ancestorsOf` at load so the `q` and place predicates stay O(1) per song.
-- Result list renders 50 rows per page; no virtualisation needed. The County
-  `MelodiesTable` also pages.
-- Map points are recomputed only when `filteredSongs` changes, not on pan.
+- Budgets are in ARCHITECTURE.md (3 MB gzip JSON, 300 KB gzip JS). The shell and footer
+  render before the catalogue arrives.
+- Filtering 13,000 records with plain predicates takes milliseconds; MiniSearch answers
+  in the worker above 5,000 records. `ancestorsOf` and `searchKey` are computed at load.
+- Lists page at 50 rows; no virtualisation. Map points recompute only when
+  `filteredSongs` or the level changes.
+- The journey page's border GeoJSON files load lazily on first visit to `/journeys`.
 
-## 14. Open decisions for the orchestrator
+## 14. Journey mapper
 
-1. URL params for the year bounds are `from` / `to` (short), not `yearFrom` / `yearTo`.
-2. `unmapped` is an extension of the specified `Query` shape, used for the "not mapped"
-   list view.
-3. The UI is English; Romanian and Hungarian appear as secondary labels on genres,
-   facets and place names, not as a full locale switch.
-4. Default sort is `title` ascending; page size 50.
-5. Map dot hit areas are 44 px on touch and 24 px on fine pointers (a true 44 px area on
-   every 4 px dot would overlap neighbours); clustering guarantees spacing.
-6. Data interfaces in section 1 are assumptions until `DATA-SCHEMA.md` exists.
+Route `/journeys`. Reconstructs each of Bartók's field trips from the record dates and
+shows it as a route on the map with the borders of the time, the stops in order, what was
+recorded at each stop, and a dated context strip with citations. Everything shown comes
+from data files; the UI adds no interpretation (see the copy rule in UI-COPY section 13).
+
+### 14.1 Data (assumed shapes; reconcile with the schemas the data agent writes)
+
+```ts
+interface Journey {
+  id: string;                       // "j-1909-07-bihor"
+  label: string;                    // "Bihor, July 1909"
+  dateFrom: string; dateTo: string; // ISO dates; precision says how much of them is known
+  precision: 'day' | 'month' | 'year';
+  fuzzy: boolean;                   // true when only year or month is known for most stops
+  departure: JourneyEndpoint;       // { placeId?, name, lat, lng, assumed: boolean }  default Budapest, assumed: true
+  return?: JourneyEndpoint;         // same shape; absent when unknown
+  stops: JourneyStop[];             // ordered
+  distanceKm?: number;              // null when any leg is unresolved
+  songIds: string[];
+  notes?: string;                   // how the trip was reconstructed, from the data agent
+}
+interface JourneyStop {
+  order: number;                    // 1-based
+  placeId: string | null;
+  nameThen: string;                 // "Belényes"
+  nameNow: string | null;           // "Beiuș"
+  lat: number | null; lng: number | null;
+  dateFrom: string | null; dateTo: string | null; precision: 'day' | 'month' | 'year' | null;
+  songIds: string[];
+  genres: Record<string, number>;
+  ethnicities: Record<string, number>;   // performer.ethnicity as stated by the sources
+  instruments: Record<string, number>;
+}
+interface VillageStatus {           // villages.json, keyed by placeId
+  placeId: string; status: 'existing' | 'renamed' | 'merged' | 'abandoned' | 'unknown';
+  nameThen: string; nameNow: string | null; mergedInto?: string; note?: string; source?: string;
+}
+interface ContextEvent {            // context-events.json
+  id: string; date: string; dateTo?: string;
+  type: 'border' | 'publication' | 'statement' | 'press' | 'other';
+  title: string; summary: string;   // one sentence, factual
+  citation: { source: string; url?: string; locator?: string };   // locator: page, column, issue
+  journeyIds?: string[];
+}
+```
+
+Border files (MAP-SPEC section 11): `data/geo/borders-1910.geo.json`,
+`data/geo/borders-1920.geo.json`, `data/geo/borders-now.geo.json`.
+
+### 14.2 Derived (`derived.journey`)
+
+```ts
+interface JourneyDerived {
+  journeys: Journey[];                 // all, sorted by dateFrom
+  selected?: Journey;                  // by query.journey, or the journey containing query.date
+  atDate?: string;                     // query.date when no journey matches it
+  bordersDefault: 'then' | 'now';      // 'then' when a journey or date is selected, else 'now'
+  bordersEpoch: '1910' | '1920';       // from the trip's dateFrom: < 1920-06-04 -> 1910, else 1920
+  route: RouteLeg[];                   // legs between resolved points, each { from, to, kind: 'assumed' | 'known' | 'return', fuzzy }
+  stops: (JourneyStop & { status?: VillageStatus; resolved: boolean })[];
+  unresolvedStops: number;
+  events: ContextEvent[];              // context events within [dateFrom - 1 year, dateTo + 1 year], plus those listing the journey id
+}
+```
+
+`predicates.journey` narrows `filteredSongs` to `selected.songIds`, so the existing
+results list, export and status bar work unchanged on `/journeys`. Other facets still
+apply (a genre filter dims stops with no matching songs rather than removing them).
+
+### 14.3 Query and URL
+
+Fields `journey`, `date`, `borders` (section 3). Rules: setting `journey` clears `date`;
+setting `date` clears `journey` unless a journey contains that date, in which case the
+journey is set instead. `borders` is omitted from the URL when it equals
+`bordersDefault` for the current state; on `/journeys` with a selection the default is
+`then`. The comparison handle position (section 14.4 `BorderToggle`) is local state, not
+in the URL.
+
+### 14.4 Components
+
+```
+<JourneyPage>
+  <JourneyTimeline/>                         top strip, full width
+  <JourneyMap>                               centre (MAP-SPEC section 11)
+    <BorderToggle/> <JourneyLegend/> <JourneyAccessibleList/>
+  </JourneyMap>
+  <JourneyPanel>                             right, --results-w + 80
+    <JourneyHeader/> <StopList/> <ContextStrip/>
+  </JourneyPanel>
+```
+
+**JourneyTimeline** `{ journeys: Journey[]; selectedId?; date?; onSelect(id); onDate(date) }`:
+an inline SVG track from the earliest to the latest `dateFrom` (years as ticks, `--fs-11`
+mono) with one marker per journey (a bar spanning `dateFrom` to `dateTo`, min width 6 px,
+fuzzy trips hatched, selected in `--accent` with the two-ring halo). The markers are a
+`role="listbox"` (`aria-label="Journeys"`) of `role="option"` elements with
+`aria-selected`; keyboard: Left / Right (or Up / Down) move the active option, Home / End,
+Enter or Space select, Esc clears the selection; type-ahead by year digits. Next to the
+track: `<input type="date">` labelled "Go to date" (min / max from the data) and a
+`<select>` "Journey" listing every journey ("Bihor, July 1909 (38 melodies)") for people
+who prefer a list to a track. Hovering or focusing a marker shows a small card (label,
+dates, stops count, melodies count). Under 768 px the track scrolls horizontally with the
+selected marker centred, and the select is the primary control.
+
+**JourneyMap** `{ journey?: JourneyDerived; borders: 'then' | 'now' | 'both'; epoch; selectedStop?; onStop(order); highlightStop? }`:
+`MapView` with the route and border layers of MAP-SPEC section 11; fits to the route
+bounds (departure included) when a journey is selected, else to Romania. Stop markers are
+numbered buttons (Tab order = stop order), `aria-label="Stop 3 of 9: Belényes (1909), now
+Beiuș; 12 melodies, 3 to 5 July 1909"`, `aria-pressed` when selected. `[` and `]` move
+between stops when the map has focus.
+
+**BorderToggle** `{ value: 'then' | 'now' | 'both'; epoch: '1910' | '1920'; opacity: number; onChange; onOpacity }`:
+a `role="radiogroup"` of three 44 px buttons "Borders then ({epoch})", "Borders now",
+"Compare", and in Compare mode an `<input type="range" min=0 max=100>` labelled
+"Comparison: then / now" that drives both the swipe position (a vertical divider across the
+map, MAP-SPEC 11.4) and, when the user prefers, the opacity of the "then" layer (a second
+toggle "Swipe / Fade"). The range input is the keyboard path; dragging the on-map handle
+writes back to it. The epoch is chosen automatically from the trip date and is stated in
+the button text; a `title` explains "1910 counties and the Austria-Hungary frontier" /
+"1920 borders after the Treaty of Trianon".
+
+**JourneyHeader** `{ journey }`: label `--fs-24`, dates (formatted to the precision:
+"3 to 21 July 1909", "July 1909", "1909, approximate"), "n stops, m melodies, k km"
+(distance omitted when null), departure line "Departure: Budapest (assumed)" with the
+`assumed` marker, `ExportButton` for the journey's songs, "Copy link".
+
+**StopList** `{ stops; selectedOrder?; onSelect(order); onHover(order | undefined) }`: an
+`<ol>` (the same order as the route) of stop rows: number, then-and-now name line
+"Belényes (1909) -> Beiuș (today)" rendered with `<span lang="hu">` and `<span lang="ro">`,
+`VillageStatusBadge`, dates, "12 melodies", and a details line with genres (top three as
+"colindă 8, joc 3, doină 1"), ethnicities as stated ("Romanian 11, Hungarian 1"),
+instruments. Rows are buttons (`aria-pressed`); Enter selects and pans the map; Up / Down
+move; hovering highlights the marker. Unresolved stops (no coordinates) show "location
+unknown" and are not drawn, but keep their number. Departure and return are the first and
+last items, styled as endpoints, with "(assumed)" when flagged.
+
+**VillageStatusBadge** `{ status: VillageStatus['status']; mergedInto?; note? }`: a text
+badge (uppercase mono `--fs-11`, `--border-strong`, no colour coding) reading "existing",
+"renamed", "merged into {name}", "abandoned" or "status unknown"; `title` = `note` when
+present. Never colour-only.
+
+**ContextStrip** `{ events: ContextEvent[]; range: [string, string] }`: a horizontal strip
+(desktop) or a vertical list (phone) of dated cards ordered by date, each: date, type
+label ("Border change", "Publication", "Statement", "Press"), title, one-sentence summary,
+and "Source: {citation.source}, {locator}" linked to `citation.url` when present
+(`rel="noopener noreferrer"`). Events inside the trip's date range are marked "during
+this trip". The strip is `role="list"`; cards are `role="listitem"`; the strip scrolls
+horizontally with Left / Right when a card is focused. A footer line reads "Context
+entries are quoted from the cited sources and are listed for chronology only." Copy rule:
+the UI never adds adjectives, judgements or summaries of its own to an event; it shows the
+`title`, `summary` and `citation` fields verbatim.
+
+**JourneyAccessibleList**: the non-map fallback, always rendered after the map behind a
+disclosure "List route (n stops)": an `<ol>` with departure, each stop ("3. Belényes (1909),
+now Beiuș, existing, 12 melodies, 3 to 5 July 1909, 41 km from previous stop") and return.
+It is also the whole map replacement when tiles and the SVG fallback are both unavailable.
+
+### 14.5 Interactions
+
+| Action                               | Effect                                                                      |
+|--------------------------------------|-----------------------------------------------------------------------------|
+| select a journey (timeline, select)  | `journey` set, `date` cleared, map fits the route, panel fills, results narrow |
+| pick a date                          | journey containing it selected, else `date` set and the map shows borders for that date with all stops of that year dimmed |
+| click a stop (map, list)             | stop selected (local state), map pans, list scrolls, card shows            |
+| click a stop again                   | deselect                                                                    |
+| "Show melodies" on a stop            | `/` with `village` set to the stop's placeId and `journey` kept              |
+| Borders then / now / compare         | `borders`; compare shows the handle                                          |
+| genre etc. chips (from the shell)    | still apply; stops with no matching songs render dimmed with "0 of n"        |
+| Export JSON                          | the journey's songs in stop order                                            |
+
+### 14.6 Keyboard and accessibility
+
+Focus order: skip link -> top bar -> timeline (listbox, date input, journey select) ->
+map (container, zoom, fit, border toggle, compare range, stop buttons in order, "List
+route") -> panel (header actions, stop list, context strip) -> status bar -> footer.
+Every route stop, border mode and context card is reachable by keyboard; the timeline
+listbox and the stop list use roving tabindex. Names then and now carry `lang`. Border
+line styles differ by dash pattern as well as colour (MAP-SPEC 11.3), the legend states
+both, and the compare handle has a visible focus ring.
+
+### 14.7 States
+
+| State                                   | Behaviour                                                                                                    |
+|-----------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `journeys.json` missing or empty        | `EmptyState` "No journeys could be reconstructed: no dated records." + "Back to explorer"; the nav entry stays |
+| no journey selected                     | timeline and map (Romania, borders now) with the prompt "Pick a journey on the timeline or enter a date"; panel shows the list of journeys as cards |
+| date with no journey                    | map shows borders for that date; panel says "No journey on {date}. Nearest: {label} ({from})" with a link      |
+| trip with unresolved coordinates        | route drawn between resolved stops only; a dashed gap marker "n stops without coordinates" in the legend; unresolved stops listed with "location unknown"; if fewer than 2 resolved points, no route and the notice "Route cannot be drawn: fewer than two located stops" |
+| fuzzy trip                              | header badge "approximate dates", route dotted, stops ordered by best-known date then by source order         |
+| assumed departure                       | "(assumed)" on the endpoint and a dashed first leg; the legend explains it                                     |
+| no context events in range              | strip shows "No context entries for this period."                                                            |
+| filters remove every song of a journey  | stops all dimmed; header "0 of n melodies match the active filters" with "Clear all filters"                  |
+| border files fail to load               | map without border layers; toggle disabled with "Border layers unavailable"                                   |
+
+### 14.8 Phone layout
+
+Under 768 px: `PhoneHeader` (masthead + "Journey" select), the timeline as a horizontal
+scroller (56 px), then bottom tabs Map / Stops / Context. Map tab: `JourneyMap` full
+height with `BorderToggle` collapsed into a single 44 px "Borders" button that opens a small
+sheet (then / now / compare + range). Stops tab: `JourneyHeader` + `StopList`. Context
+tab: `ContextStrip` as a vertical list. Tapping a stop marker opens a bottom sheet with
+the stop row content and "Show melodies".
+
+## 15. Open decisions for the orchestrator
+
+1. URL param names follow the QA assumptions: `perf`, `instr`, `from`, `to`, and comma
+   lists for arrays (not repeated params). QA-PLAN and ACCEPTANCE-CRITERIA already test
+   this form; the brief's "repeated params" would need both QA docs changed.
+2. Place params carry the place id path (`county=ro/crisana/bihor`), not the display name
+   used in the QA examples (`county=Bihor`); the E2E fixtures should use ids.
+3. `county` and `performance` stay single-valued as in the brief's `Query`; AC-03
+   ("selecting a second county adds it") and AC-07 (multiple performance chips) assume
+   multi-select. One of the two documents must change.
+4. `unmapped`, `journey`, `date`, `borders` extend the specified `Query` shape.
+5. Default country is `ro` (AC-01) with a country switch; `country=all` removes it.
+6. History policy follows AC-22 (replace for typing, push for other changes), not
+   ARCHITECTURE.md's "replace for filters".
+7. Fonts: Google Fonts (as briefed) requires `font-src https://fonts.gstatic.com` and
+   `style-src https://fonts.googleapis.com` added to the CSP in DEPLOY.md; self-hosting
+   via `@fontsource/ibm-plex-sans` and `@fontsource/ibm-plex-mono` avoids the CSP change
+   and the third-party request and is the designer's recommendation.
+8. A "no genre" checkbox for null-genre records, encoded as `genre=none`, is proposed but
+   optional.
+9. Map dot hit areas are 44 px on touch and 24 px on fine pointers; clustering guarantees
+   spacing (MAP-SPEC).
+10. The UI is English; Romanian and Hungarian appear as secondary labels, not as a locale
+    switch (PLAN.md open decision 3).
+11. Journey data shapes in 14.1 are assumptions until the data agent publishes schemas.
