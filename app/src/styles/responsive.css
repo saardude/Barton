@@ -39,6 +39,10 @@
     font-size: var(--fs-16);
   }
 
+  .topbar__tagline {
+    display: none;
+  }
+
   .topbar__nav {
     display: none;
   }

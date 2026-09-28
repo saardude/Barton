@@ -34,7 +34,7 @@ describe('County drill-down route', () => {
     renderApp('/county/ro/crisana/bihor')
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
     await screen.findByRole('heading', { level: 1, name: /Bihor/ })
-    expect(document.title).toBe('Bihor (Bihar) · Bartók in Romania')
+    expect(document.title).toBe('Bihor (Bihar) · Culegeri')
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Bihor (Bihar)')
     expect(screen.getByText('Bihar (then) -> Bihor, Romania (now)')).toBeInTheDocument()
 

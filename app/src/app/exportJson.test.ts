@@ -24,7 +24,7 @@ describe('export JSON (QA 3.6, AC-21)', () => {
     expect(JSON.stringify(sortKeys({ b: [{ z: 1, a: 2 }], a: null }))).toBe('{"a":null,"b":[{"a":2,"z":1}]}')
   })
 
-  it('names the file bartok-romania-<N>-<yyyymmdd>.json', () => {
-    expect(exportFileName(1204, new Date(2026, 8, 28))).toBe('bartok-romania-1204-20260928.json')
+  it('names the file culegeri-<N>-<yyyymmdd>.json', () => {
+    expect(exportFileName(1204, new Date(2026, 8, 28))).toBe('culegeri-1204-20260928.json')
   })
 })

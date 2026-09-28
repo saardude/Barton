@@ -8,7 +8,7 @@ import { useLocation } from 'react-router'
 import remarkGfm from 'remark-gfm'
 import aboutMd from '../content/about.md?raw'
 
-export const ABOUT_TITLE = 'About and sources · Bartók in Romania'
+export const ABOUT_TITLE = 'About and sources · Culegeri'
 
 /** Loose view of the hast node react-markdown hands to each component. */
 interface HNode {

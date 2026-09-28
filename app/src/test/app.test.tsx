@@ -66,7 +66,7 @@ describe('Explorer shell', () => {
 
   it('renders the masthead, footer and skeleton before data, then counts and rows with source links', async () => {
     renderAt('/')
-    expect(screen.getAllByText('Bartok / Romania').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Culegeri').length).toBeGreaterThan(0)
     const footer = screen.getByRole('contentinfo')
     expect(within(footer).getByRole('link', { name: "Folk Music in Bartók's Compositions" })).toHaveAttribute('href', 'https://bartok-nepzene.zti.hu/en/')
     expect(within(footer).getByRole('link', { name: 'The Bartók System' })).toHaveAttribute('href', 'https://systems.zti.hu/br/en')

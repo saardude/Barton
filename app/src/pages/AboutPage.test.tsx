@@ -15,7 +15,7 @@ describe('/about', () => {
   it('renders the approved text with landmarks, figures, heading ids and external links', async () => {
     renderApp('/about')
     // the page is code-split: wait for the chunk
-    await screen.findByRole('heading', { level: 1, name: 'About and sources' })
+    await screen.findByRole('heading', { level: 1, name: 'About and sources' }, { timeout: 5000 })
     const main = screen.getByRole('main')
     expect(main).toHaveAttribute('id', 'main')
     expect(document.title).toBe(ABOUT_TITLE)

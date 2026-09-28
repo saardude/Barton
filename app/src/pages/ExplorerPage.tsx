@@ -26,7 +26,7 @@ export function ExplorerPage() {
   const showList = useCallback(() => setTab('list'), [])
   const closeSheet = useCallback(() => setSheetOpen(false), [])
   useEffect(() => {
-    document.title = t('app.title')
+    document.title = `${t('app.title')} · ${t('app.tagline')}`
   }, [])
 
   // Desktop: the results column is its own scroll container, so the browser cannot restore its

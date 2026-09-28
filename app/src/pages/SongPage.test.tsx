@@ -39,7 +39,7 @@ describe('Song record route', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
     await screen.findByRole('heading', { level: 1, name: 'Adio, dragă, adio' })
     // the title is set in an effect; under a loaded test pool it can lag the heading by a tick
-    await waitFor(() => expect(document.title).toBe('Adio, dragă, adio · Bartók in Romania'))
+    await waitFor(() => expect(document.title).toBe('Adio, dragă, adio · Culegeri'))
 
     // breadcrumb: Romania > Crișana > Bihor (Bihar) > Beiuș (Belényes) > title
     const crumb = screen.getByRole('navigation', { name: 'Breadcrumb' })
@@ -140,7 +140,7 @@ describe('Song record route', () => {
     renderApp('/song/bsys-2?tab=raw')
     const tab = await screen.findByRole('tab', { name: 'Raw JSON' })
     expect(tab).toHaveAttribute('aria-selected', 'true')
-    expect(document.title).toBe('Ardeleana \u00b7 Bartók in Romania')
+    expect(document.title).toBe('Ardeleana \u00b7 Culegeri')
     const pre = screen.getByLabelText('Raw JSON, bsys-2')
     const parsed = JSON.parse(pre.textContent ?? '')
     expect(parsed.id).toBe('bsys-2')

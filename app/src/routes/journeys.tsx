@@ -70,7 +70,7 @@ export function JourneysPage() {
   }, [catalog, selection, villages.data, events.data, matching])
 
   useEffect(() => {
-    document.title = `${view ? `${journeyTitle(view.journey)} | ` : ''}${t('journey.title')} | ${t('app.title')}`
+    document.title = `${view ? `${journeyTitle(view.journey)} · ` : ''}${t('journey.title')} · ${t('app.titleSuffix')}`
   }, [view])
 
   const era: Era = eraOverride ?? (view ? view.era : eraForDate(query.date))

@@ -1,4 +1,4 @@
-# Bartok / Romania viewer (app)
+# Culegeri (app)
 
 Vite + React 19 + TypeScript, static JSON in, no server. Specs live in `../docs/`
 (FRONTEND-SPEC.md, MAP-SPEC.md, DESIGN-TOKENS.md, UI-COPY.md); the build contract is in

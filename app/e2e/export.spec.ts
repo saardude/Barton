@@ -9,7 +9,7 @@ test('E2E-08 export JSON matches the shown count and ids', async ({ page, data }
   const button = page.locator('.results__header').getByRole('button', { name: /Export/ })
   await expect(button).toBeEnabled()
   const [download] = await Promise.all([page.waitForEvent('download'), button.click()])
-  expect(download.suggestedFilename()).toMatch(new RegExp(`^bartok-romania-${n}-\\d{8}\\.json$`))
+  expect(download.suggestedFilename()).toMatch(new RegExp(`^culegeri-${n}-\\d{8}\\.json$`))
   const path = await download.path()
   expect(path).toBeTruthy()
   const { readFileSync } = await import('node:fs')

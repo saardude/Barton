@@ -8,7 +8,7 @@ import { EmptyState } from '../components/States'
 
 function useTitle(title: string) {
   useEffect(() => {
-    document.title = `${title} | ${t('app.title')}`
+    document.title = `${title} · ${t('app.titleSuffix')}`
   }, [title])
 }
 

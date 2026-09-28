@@ -40,7 +40,7 @@ export function exportFileName(count: number, now = new Date()): string {
   const y = now.getFullYear()
   const m = String(now.getMonth() + 1).padStart(2, '0')
   const d = String(now.getDate()).padStart(2, '0')
-  return `bartok-romania-${count}-${y}${m}${d}.json`
+  return `culegeri-${count}-${y}${m}${d}.json`
 }
 
 /** Serialises and triggers the download; returns false when the user declined a large export. */

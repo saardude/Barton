@@ -223,6 +223,20 @@ ol {
   font-size: var(--fs-24);
 }
 
+.topbar__masthead {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.topbar__tagline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  color: var(--muted);
+}
+
 .topbar__nav {
   display: flex;
   gap: var(--space-1);

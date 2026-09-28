@@ -238,7 +238,7 @@ test.describe('Routes', () => {
     await stops.locator('li.stop-row[data-seq] button:enabled').first().click()
     await expect.poll(() => query(page).get('stop')).not.toBeNull()
     // back to the explorer keeps the Query
-    await page.getByRole('link', { name: 'Bartok / Romania' }).click()
+    await page.getByRole('link', { name: /^Culegeri/ }).click()
     await waitForCatalog(page)
     expect(query(page).get('county')).toBe(data.countyId('Bihor'))
   })

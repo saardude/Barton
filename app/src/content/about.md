@@ -1,12 +1,12 @@
 # About and sources
 
-Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. This viewer is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or printed page that holds it. This project collects no data about its readers. Contact: tsaar@student.unimelb.edu.au.
+Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. Culegeri (Romanian: gatherings, the word for folk-song collecting) is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or printed page that holds it. This project collects no data about its readers. Contact: tsaar@student.unimelb.edu.au.
 
-The material is spread across three online databases and a five-volume printed edition, under Hungarian, Romanian and English place names. The viewer puts it on one map, with the borders of the day, so that a melody, its village and its trip can be read together.
+The material is spread across three online databases and a five-volume printed edition, under Hungarian, Romanian and English place names. Culegeri puts it on one map, with the borders of the day, so that a melody, its village and its trip can be read together.
 
 ![Figure 1. The Explorer with Bihor County selected: filter rail, map and results list.](/about/figure-1.jpg)
 
-## What the viewer holds
+## What Culegeri holds
 
 ### The databases
 
@@ -18,7 +18,7 @@ The databases hold no records for Bartók's Romanian melodies as such. For those
 
 ### Counts
 
-As of the crawl of 28 September 2026 the viewer indexes 14,910 melodies: 4,015 resolve to a locality in present-day Romania, 3,332 of them with coordinates, and 830 come from *Rumanian Folk Music* IV and V. 5,012 records have a recording on the source site and 12,906 a year. The journey layer holds 178 trips, 44 with a sourced or documented itinerary. Every record links to its original catalogue entry, by reference code where the source prints one, otherwise by its position in the Bartók System or by site and record number.
+As of the crawl of 28 September 2026 Culegeri indexes 14,910 melodies: 4,015 resolve to a locality in present-day Romania, 3,332 of them with coordinates, and 830 come from *Rumanian Folk Music* IV and V. 5,012 records have a recording on the source site and 12,906 a year. The journey layer holds 178 trips, 44 with a sourced or documented itinerary. Every record links to its original catalogue entry, by reference code where the source prints one, otherwise by its position in the Bartók System or by site and record number.
 
 ![Figure 2. A song record: notation, audio, the "Collected on" block and the link to the source entry.](/about/figure-2.jpg)
 

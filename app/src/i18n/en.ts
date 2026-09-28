@@ -2,8 +2,9 @@
 // labels for facets, genres, performance, style and instruments (decision D10).
 
 export const en: Record<string, string> = {
-  'app.title': 'Bartok / Romania',
-  'app.subtitle': "Bela Bartok's field collection, localities in present-day Romania",
+  'app.title': 'Culegeri',
+  'app.tagline': "Bartók's field collection in Romania",
+  'app.subtitle': "Bartók's field collection in Romania: localities in present-day Romania, by place, genre, style, instrument and year",
   'app.skipToResults': 'Skip to results',
   'nav.explorer': 'Explorer',
   'nav.about': 'About and sources',
@@ -319,7 +320,7 @@ export const en: Record<string, string> = {
   'source.url.gyuj': 'https://bartok-gyujtesek.zti.hu/en',
 
   // Song record and county drill-down (added with the two screens; additive)
-  'app.titleSuffix': 'Bartók in Romania',
+  'app.titleSuffix': 'Culegeri',
   'song.positionFilter': '{i} of {n} in this filter',
   'song.outsideFilter': 'This record is outside the current filter.',
   'song.showInExplorer': 'Show in explorer',

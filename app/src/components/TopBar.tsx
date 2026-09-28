@@ -23,8 +23,9 @@ export function TopBar() {
   const onCounty = pathname.startsWith('/county/')
   return (
     <header className="topbar">
-      <NavLink className={`topbar__masthead${onExplorer ? ' topbar__masthead--large' : ''}`} to={{ pathname: '/', search }} aria-label={t('app.title')}>
-        {t('app.title')}
+      <NavLink className={`topbar__masthead${onExplorer ? ' topbar__masthead--large' : ''}`} to={{ pathname: '/', search }} aria-label={`${t('app.title')}: ${t('app.tagline')}`}>
+        <span className="topbar__name">{t('app.title')}</span>
+        <span className="topbar__tagline">{t('app.tagline')}</span>
       </NavLink>
       <nav className="topbar__nav" aria-label="Primary">
         <NavLink to={{ pathname: '/', search }} end>
