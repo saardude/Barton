@@ -47,3 +47,7 @@ print/.venv/
 app/e2e-results/
 app/playwright-report/
 app/test-results/
+
+# OMR research working files
+omr/cache/
+omr/.venv/

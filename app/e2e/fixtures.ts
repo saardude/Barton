@@ -98,7 +98,7 @@ export const test = base.extend<{ consoleLog: ConsoleLog; allowConsoleErrors: bo
         if (IGNORED_CONSOLE.some((re) => re.test(text))) return
         log.errors.push(text)
       })
-      page.on('pageerror', (err) => log.pageErrors.push(String(err)))
+      page.on('pageerror', (err) => log.pageErrors.push(err.stack ? err.stack.split('\n').slice(0, 6).join(' <- ') : String(err)))
       await use(log)
       if (!allowConsoleErrors) {
         expect.soft(log.pageErrors, 'uncaught page errors').toEqual([])

@@ -181,13 +181,21 @@ test.describe('Routes', () => {
     const pick = page.getByRole('combobox', { name: 'Journey' })
     const options = await pick.locator('option').evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).value).filter(Boolean))
     expect(options.length).toBeGreaterThan(1)
-    const tripId = options[Math.min(6, options.length - 1)]
-    await pick.selectOption(tripId)
-    await expect.poll(() => query(page).get('trip')).toBe(tripId)
+    // pick the first trip (of the first dozen) that has at least one resolved stop
+    const stops = page.locator('ol.stop-list__items')
+    let tripId = ''
+    for (const id of options.slice(0, 12)) {
+      await pick.selectOption(id)
+      await expect.poll(() => query(page).get('trip')).toBe(id)
+      await expect(stops).toBeVisible()
+      if ((await stops.locator('li.stop-row[data-seq] button:enabled').count()) > 0) {
+        tripId = id
+        break
+      }
+    }
+    expect(tripId, 'a trip with a resolved stop among the first twelve').not.toBe('')
     // header, ordered stops and numbered markers
     await expect(page.locator('h1')).toBeVisible()
-    const stops = page.locator('ol.stop-list__items')
-    await expect(stops).toBeVisible()
     const stopCount = await stops.locator('li').count()
     expect(stopCount).toBeGreaterThan(0)
     // borders: then / now / compare update the URL

@@ -44,12 +44,18 @@ test.describe('Keyboard', () => {
     await expect(checkbox).toBeChecked()
     await expect.poll(async () => (await readCount(page)).n).not.toBe(before)
     expect(await hasVisibleFocusRing(page)).toBe(true)
+    await page.keyboard.press('Space')
+    await expect(checkbox).not.toBeChecked()
+    await expect.poll(async () => (await readCount(page)).n).toBe(before)
 
-    // back to the tree: Enter on the county selects it and focus stays on the tree
-    await tree.locator(`[role="treeitem"][data-id="${county}"]`).focus()
+    // back to the tree: Enter on a county with records selects it and focus stays on the tree
+    const countyRow = tree.locator('[role="treeitem"][aria-level="3"]').filter({ hasNot: page.locator('.tree__row.is-zero') }).first()
+    const countyId = await countyRow.getAttribute('data-id')
+    await countyRow.focus()
     await page.keyboard.press('Enter')
-    await expect.poll(() => query(page).get('county')).toBe(county)
+    await expect.poll(() => query(page).get('county')).toBe(countyId)
     await expect(focusedItem()).toHaveCount(1)
+    expect((await readCount(page)).n).toBeGreaterThan(0)
 
     // sort select: ArrowDown changes it
     const sort = page.getByLabel('Sort by')
