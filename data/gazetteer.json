@@ -6,12 +6,13 @@
     "countyCount": 24,
     "historicalCountiesNote": "historicalCounties maps a pre-1920 Hungarian county (as printed by the sites) to the modern country/region/county. exclusive=true means the whole county is inside present-day Romania, so a village that is not in `places` still gets country (and county when unique) with resolution 'county'. Split counties (Bihar, Szatmár, Arad, Temes, Torontál, Máramaros, Ugocsa, Csanád, Bukovina, Moldva) need a village entry. Non-Romanian counties are listed too so that country can be derived for Hungarian/Slovak localities; 'countries' lists the present-day countries a split county falls into.",
     "matching": "normalise with fold(): NFD, strip diacritics, lowercase, non-alphanumerics -> space. Lookup order: modern name, historical name, aliases; a county hint (modern or historical) breaks ties.",
-    "placeCount": 418,
+    "placeCount": 480,
     "regionNote": "Region follows the usual modern convention: Bihor, Arad, Satu Mare, Salaj -> Crisana; Timis, Caras-Severin -> Banat; Maramures -> Maramures; the rest -> Transylvania. Historical county assignment uses the pre-1920 Hungarian county the site is likely to print.",
     "siteExtended": "extended from 261 bartok-nepzene.zti.hu records: 0 added, 0 updated",
     "siteExtensionNote": "`node src/cli.js gazetteer` merges places printed by bartok-nepzene.zti.hu (modern name, country, map coordinates) into `places` with coordSource 'site:fmbc'; those coordinates are preferred over the approximate seed.",
     "status": "SEED - all coordinates are approximate (2 decimals, roughly +-1 km) and were entered from general knowledge, not from an authoritative source. Verify every entry against the scraped data (site place names, the bartok-nepzene /en/map/ page if it exposes coordinates) before relying on it for the map.",
-    "title": "Seed gazetteer of localities in present-day Romania where Bela Bartok collected"
+    "title": "Seed gazetteer of localities in present-day Romania where Bela Bartok collected",
+    "wikidataFillNote": "Entries with coordSource \"wikidata\" were added by geo/fill-gazetteer.mjs for journey stops missing from the gazetteer: coordinates from Wikidata P625 (CC0); confidence high = exact label and county match, medium = folded-name match within 20 km of the county centroid, low = within 80 km."
   },
   "counties": [
     {
@@ -1082,6 +1083,46 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q3894374); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "lat": 45.8316,
+      "lng": 23.6611,
+      "name": "Cărpiniș",
+      "nameHistorical": "Kerpenyes",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q3894374",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1910-12-01 stop 2"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q3894374); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "lat": 45.8316,
+      "lng": 23.6611,
+      "name": "Cărpiniș",
+      "nameHistorical": "Kerpenyes",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q3894374",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -1093,6 +1134,46 @@
       "nameHistorical": "Torockószentgyörgy",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q752223); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "lat": 46.1043,
+      "lng": 23.2951,
+      "name": "Feneș",
+      "nameHistorical": "Fenes",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q752223",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1910-12-01 stop 10"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q752223); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "lat": 46.1043,
+      "lng": 23.2951,
+      "name": "Feneș",
+      "nameHistorical": "Fenes",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q752223",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -1139,6 +1220,28 @@
       "nameHistorical": "Nyágra",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [
+        "Ponor"
+      ],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q937236); folded name within 80 km of Alba centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "lat": 46.3356,
+      "lng": 23.3981,
+      "name": "Ponor",
+      "nameHistorical": "Nagyponor",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q937236",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [
@@ -1314,6 +1417,27 @@
     {
       "aliases": [],
       "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1082215); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "lat": 46.05,
+      "lng": 22.3833,
+      "name": "Petriș",
+      "nameHistorical": "Marospetres",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1082215",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1917-07-01 stop 4",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
       "county": "Arad",
@@ -1352,6 +1476,71 @@
       "nameHistorical": "Világos",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q757201); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "lat": 46.014,
+      "lng": 22.3165,
+      "name": "Toc",
+      "nameHistorical": "Tok",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q757201",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1917-07-01 stop 5",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [
+        "Torjas"
+      ],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q724049); folded name within 80 km of Arad centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "lat": 46.0949,
+      "lng": 22.2979,
+      "name": "Troaș",
+      "nameHistorical": "Trojás",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q724049",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1917-07-01 stop 6",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1066840); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "lat": 46.0162,
+      "lng": 21.2157,
+      "name": "Vinga",
+      "nameHistorical": "Vinga",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1066840",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-03-01 stop 2",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -1698,6 +1887,27 @@
     {
       "aliases": [],
       "confidence": "high",
+      "coordNote": "Wikidata P625 (Q726011); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6736,
+      "lng": 22.1914,
+      "name": "Borz",
+      "nameHistorical": "Borz",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q726011",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 8",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
       "coordNote": "from bartok-nepzene.zti.hu map link",
       "coordSource": "site:fmbc",
       "country": "RO",
@@ -1723,6 +1933,27 @@
       "nameHistorical": "Csarnóháza",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1083018); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.7667,
+      "lng": 22.3667,
+      "name": "Căbești",
+      "nameHistorical": "Biharkaba",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1083018",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 3",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -1816,6 +2047,27 @@
     },
     {
       "aliases": [],
+      "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q754305); folded name within 20 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.8875,
+      "lng": 22.2367,
+      "name": "Corbești",
+      "nameHistorical": "Hollószeg",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q754305",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1911-12-01 stop 5",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "from bartok-nepzene.zti.hu map link",
       "coordSource": "site:fmbc",
@@ -1828,6 +2080,27 @@
       "nameHistorical": "Kótliget",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q755234); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.7086,
+      "lng": 22.4797,
+      "name": "Cresuia",
+      "nameHistorical": "Kereszély",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q755234",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-07-01 stop 10",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -1899,6 +2172,27 @@
       "nameHistorical": "Dragánfalva",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q4683543); folded name within 20 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.8999,
+      "lng": 22.1284,
+      "name": "Drăgești",
+      "nameHistorical": "Drágcséke",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q4683543",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1911-12-01 stop 2",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -1974,6 +2268,27 @@
       "nameHistorical": "Lehecsény",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q754969); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6201,
+      "lng": 22.4571,
+      "name": "Lelești",
+      "nameHistorical": "Lelesd",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q754969",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-07-01 stop 8",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -2078,6 +2393,27 @@
     },
     {
       "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q755182); folded name within 80 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.7012,
+      "lng": 22.4386,
+      "name": "Pocioveliște",
+      "nameHistorical": "Pócsafalva",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q755182",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 5",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -2163,6 +2499,27 @@
       "type": "town"
     },
     {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q725209); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.4339,
+      "lng": 22.5409,
+      "name": "Săliște de Vașcău",
+      "nameHistorical": "Vaskohszeleste",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q725209",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-07-01 stop 15",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
       "aliases": [
         "Nagyszalonta – Atyástanya"
       ],
@@ -2181,6 +2538,27 @@
     {
       "aliases": [],
       "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q1189411); folded name within 20 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.8015,
+      "lng": 22.2019,
+      "name": "Sâmbăta",
+      "nameHistorical": "Szombatság",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1189411",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1911-12-01 stop 1",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
       "county": "Bihor",
@@ -2191,6 +2569,27 @@
       "nameHistorical": "Szentjobb",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q724872); folded name within 80 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6907,
+      "lng": 22.3227,
+      "name": "Sânmartin de Beiuș",
+      "nameHistorical": "Belényesszentmárton",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q724872",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-07-01 stop 13",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -2205,6 +2604,27 @@
       "nameHistorical": "Segyest",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q1087801); folded name within 80 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6845,
+      "lng": 22.1202,
+      "name": "Șoimi",
+      "nameHistorical": "Sólyom",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1087801",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 4",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -2251,6 +2671,27 @@
     {
       "aliases": [],
       "confidence": "high",
+      "coordNote": "Wikidata P625 (Q755320); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.7068,
+      "lng": 22.1115,
+      "name": "Suplacu de Tinca",
+      "nameHistorical": "Tenkeszéplak",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q755320",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 7",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
       "coordNote": "from bartok-nepzene.zti.hu map link",
       "coordSource": "site:fmbc",
       "country": "RO",
@@ -2265,6 +2706,67 @@
     },
     {
       "aliases": [],
+      "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q539144); folded name within 20 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.9377,
+      "lng": 22.1252,
+      "name": "Tășad",
+      "nameHistorical": "Tasádfő",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q539144",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1911-12-01 stop 4",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q754509); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6615,
+      "lng": 22.4305,
+      "name": "Teleac",
+      "nameHistorical": "Telek",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q754509",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-07-01 stop 7"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q754509); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6615,
+      "lng": 22.4305,
+      "name": "Teleac",
+      "nameHistorical": "Telek",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q754509",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -2276,6 +2778,28 @@
       "nameHistorical": "Tenke",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q724988); folded name within 80 km of Bihor centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6903,
+      "lng": 22.1573,
+      "name": "Urviș de Beiuș",
+      "nameHistorical": "Belényesörvényes",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q724988",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-02-01 stop 1",
+        "cur-1917-07-02 stop 2",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -2350,6 +2874,49 @@
       "nameHistorical": "Beszterce",
       "region": "Transylvania",
       "type": "city"
+    },
+    {
+      "aliases": [
+        "Gyulatelke"
+      ],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q12110805); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bistrița-Năsăud",
+      "countyHistorical": "Beszterce-Naszód",
+      "lat": 47.1253,
+      "lng": 24.282,
+      "name": "Coasta",
+      "nameHistorical": "Sajókiskeresztúr",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q12110805",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q755208); folded name within 80 km of Bistrița-Năsăud centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Bistrița-Năsăud",
+      "countyHistorical": "Beszterce-Naszód",
+      "lat": 46.8316,
+      "lng": 24.3404,
+      "name": "Fântânița",
+      "nameHistorical": "Mezőköbölkút",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q755208",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 2",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -2803,6 +3370,46 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1076104); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.7833,
+      "lng": 24.1167,
+      "name": "Cămărașu",
+      "nameHistorical": "Pusztakamarás",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q1076104",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 4"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q1076104); unique exact label in Romania; county Cluj differs from the list's grouping (Mureș/Bistrița-Năsăud)",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.7833,
+      "lng": 24.1167,
+      "name": "Cămărașu",
+      "nameHistorical": "Pusztakamarás",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q1076104",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -2859,6 +3466,26 @@
       "nameHistorical": "Kolozsvár",
       "region": "Transylvania",
       "type": "city"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q823164); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.8858,
+      "lng": 23.8972,
+      "name": "Coasta",
+      "nameHistorical": "Gyulatelke",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q823164",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 3"
+      ]
     },
     {
       "aliases": [],
@@ -3118,6 +3745,46 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1006721); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 47.0078,
+      "lng": 23.9453,
+      "name": "Nicula",
+      "nameHistorical": "Füzesmikola",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q1006721",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1910-10-01 stop 4"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q2585692); folded name within 80 km of Cluj centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.5947,
+      "lng": 24.0383,
+      "name": "Pădureni",
+      "nameHistorical": "Mezőkók",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q2585692",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-08-01 stop 1"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -3227,6 +3894,26 @@
       "nameHistorical": "Ketesd",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q371050); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.5861,
+      "lng": 23.9965,
+      "name": "Tritenii de Jos",
+      "nameHistorical": "Alsódetrehem",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q371050",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1909-08-01 stop 2"
+      ]
     },
     {
       "aliases": [],
@@ -4747,6 +5434,27 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q5053438); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "lat": 45.7326,
+      "lng": 22.6973,
+      "name": "Lelese",
+      "nameHistorical": "Lelesz",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q5053438",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-12-01 stop 1",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -4786,6 +5494,67 @@
       "nameHistorical": "Nuksora",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q3891776); folded name within 80 km of Hunedoara centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "lat": 45.4953,
+      "lng": 22.9055,
+      "name": "Ohaba-Sibișel",
+      "nameHistorical": "Ohábasibisel",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q3891776",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-12-01 stop 2"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q3891776); folded name within 80 km of Hunedoara centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "lat": 45.4953,
+      "lng": 22.9055,
+      "name": "Ohaba-Sibișel",
+      "nameHistorical": "Ohábasibisel",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q3891776",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q2031984); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "lat": 45.5064,
+      "lng": 22.7549,
+      "name": "Păucinești",
+      "nameHistorical": "Paucsinesd",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q2031984",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-12-01 stop 4",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -4860,6 +5629,27 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q2943835); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "lat": 45.7767,
+      "lng": 22.6695,
+      "name": "Socet",
+      "nameHistorical": "Szocsed",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q2943835",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-12-01 stop 10",
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -4927,6 +5717,27 @@
       "nameHistorical": "Bárdfalva",
       "region": "Maramureș",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q428427); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "lat": 47.6986,
+      "lng": 24.3192,
+      "name": "Bocicoel",
+      "nameHistorical": "Kisbocskó",
+      "region": "Maramures",
+      "type": "village",
+      "wikidata": "Q428427",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-03-01 stop 5",
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -5025,6 +5836,46 @@
       "nameHistorical": "Glód",
       "region": "Maramureș",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q742060); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "lat": 47.9251,
+      "lng": 23.8254,
+      "name": "Iapa",
+      "nameHistorical": "Kabolapatak",
+      "region": "Maramures",
+      "type": "village",
+      "wikidata": "Q742060",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-01-01 stop 4"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q742060); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "lat": 47.9251,
+      "lng": 23.8254,
+      "name": "Iapa",
+      "nameHistorical": "Kabolapatak",
+      "region": "Maramures",
+      "type": "village",
+      "wikidata": "Q742060",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -5269,6 +6120,46 @@
       "type": "village"
     },
     {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q750740); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "lat": 47.7856,
+      "lng": 24.0162,
+      "name": "Văleni",
+      "nameHistorical": "Mikolapatak",
+      "region": "Maramures",
+      "type": "village",
+      "wikidata": "Q750740",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-03-01 stop 11"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q750740); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "lat": 47.7856,
+      "lng": 24.0162,
+      "name": "Văleni",
+      "nameHistorical": "Mikolapatak",
+      "region": "Maramures",
+      "type": "village",
+      "wikidata": "Q750740",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
+    },
+    {
       "aliases": [
         "Vișăul de Jos"
       ],
@@ -5343,6 +6234,26 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q789134); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.72,
+      "lng": 24.5,
+      "name": "Băla",
+      "nameHistorical": "Bala",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q789134",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-04-01 stop 19"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "low",
       "coordNote": "approximate",
       "country": "RO",
@@ -5397,6 +6308,46 @@
       "nameHistorical": "Kibéd",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q431959); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.3524,
+      "lng": 24.1832,
+      "name": "Chinciuș",
+      "nameHistorical": "Kincses",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q431959",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-04-01 stop 11"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q739992); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.7358,
+      "lng": 24.8969,
+      "name": "Comori",
+      "nameHistorical": "Kincsesfő",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q739992",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-04-01 stop 16"
+      ]
     },
     {
       "aliases": [],
@@ -5698,6 +6649,48 @@
     {
       "aliases": [],
       "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q734902); folded name within 20 km of Mureș centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.6846,
+      "lng": 24.5282,
+      "name": "Moișa",
+      "nameHistorical": "Mezőmajos",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q734902",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-04-01 stop 24"
+      ]
+    },
+    {
+      "aliases": [
+        "Maroskisfalud"
+      ],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q280266); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.5355,
+      "lng": 24.5021,
+      "name": "Nazna",
+      "nameHistorical": "Náznánfalva",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q280266",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1914-04-01 stop 23"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
       "county": "Mureș",
@@ -5782,6 +6775,26 @@
     },
     {
       "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q741142); folded name within 80 km of Mureș centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.8837,
+      "lng": 24.7113,
+      "name": "Săcalu de Pădure",
+      "nameHistorical": "Erdőszakál",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q741142",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 7"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "from bartok-nepzene.zti.hu map link",
       "coordSource": "site:fmbc",
@@ -5808,6 +6821,26 @@
       "nameHistorical": "Marosszentgyörgy",
       "region": "Transylvania",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q733821); folded name within 20 km of Mureș centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "lat": 46.6407,
+      "lng": 24.6651,
+      "name": "Sângeru de Pădure",
+      "nameHistorical": "Erdőszengyel",
+      "region": "Transylvania",
+      "type": "village",
+      "wikidata": "Q733821",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 8"
+      ]
     },
     {
       "aliases": [],
@@ -6182,6 +7215,46 @@
       "nameHistorical": "Avasújváros",
       "region": "Crișana",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1188978); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Satu Mare",
+      "countyHistorical": "Szatmár",
+      "lat": 47.6989,
+      "lng": 23.303,
+      "name": "Pomi",
+      "nameHistorical": "Remetemező",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1188978",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1916-08-01 stop 9"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q1188978); unique exact label in Romania; county Satu Mare differs from the list's grouping (Mureș/Bistrița-Năsăud)",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Satu Mare",
+      "countyHistorical": "Szatmár",
+      "lat": 47.6989,
+      "lng": 23.303,
+      "name": "Pomi",
+      "nameHistorical": "Remetemező",
+      "region": "Crisana",
+      "type": "village",
+      "wikidata": "Q1188978",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "JOURNEY-SOURCES section 6"
+      ]
     },
     {
       "aliases": [],
@@ -6655,6 +7728,26 @@
     {
       "aliases": [],
       "confidence": "high",
+      "coordNote": "Wikidata P625 (Q14758001); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.3878,
+      "lng": 21.1343,
+      "name": "Banloc",
+      "nameHistorical": "Bánlak",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q14758001",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-11-01 stop 14"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
       "county": "Timiș",
@@ -6683,6 +7776,46 @@
     {
       "aliases": [],
       "confidence": "medium",
+      "coordNote": "Wikidata P625 (Q826661); folded name within 20 km of Timiș centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.9129,
+      "lng": 21.225,
+      "name": "Cornești",
+      "nameHistorical": "Mezőzsadány",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q826661",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-02-01 stop 2"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q904045); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.3539,
+      "lng": 21.2489,
+      "name": "Denta",
+      "nameHistorical": "Denta",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q904045",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-11-01 stop 12"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
       "county": "Timiș",
@@ -6707,6 +7840,46 @@
       "nameHistorical": "Facsád",
       "region": "Banat",
       "type": "town"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1004774); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.5,
+      "lng": 20.8833,
+      "name": "Foeni",
+      "nameHistorical": "Fény",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q1004774",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1913-02-01 stop 4"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1010520); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.4667,
+      "lng": 21.15,
+      "name": "Ghilad",
+      "nameHistorical": "Gilád",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q1010520",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-11-01 stop 7"
+      ]
     },
     {
       "aliases": [],
@@ -6750,6 +7923,26 @@
       "nameHistorical": "Széphely",
       "region": "Banat",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q1089925); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.3833,
+      "lng": 21.05,
+      "name": "Livezile",
+      "nameHistorical": "Tolvád",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q1089925",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-11-01 stop 13"
+      ]
     },
     {
       "aliases": [
@@ -6843,6 +8036,26 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q598493); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.9042,
+      "lng": 21.34,
+      "name": "Pișchia",
+      "nameHistorical": "Hidasliget",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q598493",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-03-01 stop 4"
+      ]
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -6905,6 +8118,46 @@
       "type": "village"
     },
     {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q368055); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.9433,
+      "lng": 21.0397,
+      "name": "Satchinez",
+      "nameHistorical": "Temeskenéz",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q368055",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-03-01 stop 7"
+      ]
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "Wikidata P625 (Q608433); exact label + county",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 45.9771,
+      "lng": 21.3174,
+      "name": "Seceani",
+      "nameHistorical": "Temesszécsény",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q608433",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-03-01 stop 6"
+      ]
+    },
+    {
       "aliases": [
         "Temeschwar"
       ],
@@ -6947,6 +8200,26 @@
       "nameHistorical": "Végvár",
       "region": "Banat",
       "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "Wikidata P625 (Q976479); folded name within 80 km of Timiș centroid",
+      "coordSource": "wikidata",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "lat": 46.0036,
+      "lng": 20.3986,
+      "name": "Vălcani",
+      "nameHistorical": "Valkány",
+      "region": "Banat",
+      "type": "village",
+      "wikidata": "Q976479",
+      "addedBy": "geo/fill-gazetteer.mjs",
+      "addedFor": [
+        "cur-1912-11-01 stop 1"
+      ]
     }
   ]
 }

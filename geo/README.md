@@ -8,7 +8,8 @@ cd geo && npm i                     # once
 node build.mjs                      # geo/raw -> data/geo/borders-{1910,1914,1920,now}.json
 node enrich-wikidata.mjs            # data/gazetteer.json (+ data/places.json) -> data/villages.json
 node parse-gyuj-collections.mjs     # bartok-gyujtesek.zti.hu trip index -> data/collections-gyuj.json
-node derive-journeys.mjs            # data/collections-gyuj.json + data/songs.json -> data/journeys.json
+node fill-gazetteer.mjs             # curated stops / JOURNEY-SOURCES section 6 -> new data/gazetteer.json entries (Wikidata coordinates)
+node derive-journeys.mjs            # collections + journeys-curated + songs + gazetteer -> data/journeys.json
 node build.mjs --check              # verify the four layers exist, are < 500 KB and carry the required properties
 ```
 
@@ -22,6 +23,7 @@ geo/
   build.mjs             border layer pipeline (mapshaper + property mapping)
   enrich-wikidata.mjs   Wikidata SPARQL enrichment, 1 request/s, cached
   parse-gyuj-collections.mjs  trip index parser (labels verbatim, dates, places)
+  fill-gazetteer.mjs    adds missing Romanian villages to the gazetteer from Wikidata (confidence high/medium/low, unresolved listed)
   derive-journeys.mjs   journeys: index entries with records attached + date-gap fallback
   raw/                  downloads, exactly as fetched (see below)
   cache/wikidata/       SPARQL responses keyed by query hash (git-ignored)

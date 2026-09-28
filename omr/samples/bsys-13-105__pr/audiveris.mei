@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Elmegyek, elmegyek</title>
+        <respStmt>
+          <persName role="collector">Kodály Zoltán</persName>
+          <name role="encoder">omr/pipeline.py (audiveris 5.9.0 + verovio)</name>
+        </respStmt>
+      </titleStmt>
+      <pubStmt>
+        <publisher>Bartok Romania field-collection viewer (research prototype)</publisher>
+        <date isodate="2026-09-28"/>
+        <availability>
+          <useRestrict>Recognised automatically by optical music recognition; unverified. The source image is served by HUN-REN BTK ZTI (systems.zti.hu) or by the Internet Archive scan of Bartok, Rumanian Folk Music; this encoding indexes the notation and does not replace the source.</useRestrict>
+        </availability>
+      </pubStmt>
+      <sourceDesc>
+        <source>
+          <bibl>
+            <title>The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)</title>
+            <identifier type="viewer-record-id">bsys-13-105</identifier>
+            <identifier type="site-record-id">A 31</identifier>
+            <ptr target="https://systems.zti.hu/br/en/browse/13/105"/>
+            <ptr target="https://systems.zti.hu/media/images/publications/BR_00114_pr.gif"/>
+            <geogName>Kászonimpér (Csík)</geogName>
+            <date>1912.</date>
+          </bibl>
+        </source>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="5.9.0" xml:id="app.audiveris">
+          <name>audiveris</name>
+        </application>
+        <application version="6.3.0-425dd7b" xml:id="app.verovio">
+          <name>verovio</name>
+        </application>
+        <application version="1.4.4" xml:id="app.rapidocr">
+          <name>rapidocr-onnxruntime</name>
+        </application>
+      </appInfo>
+      <editorialDecl>
+        <p>Text lines read from the image by OCR (uncorrected): 31 / Kaszonimper (Csik) / Gy: Kodaly Zoltan / 1912 / 30四 / Parlando / 1. El - me-nyek,el-me-nyek, Hosszu ut - ra / menyek, / 2） / Hosszu ut po-ra-bol  Koppo- nye -  get  veszek. / Var* / 1) / 2) / 2. Buval és banattal / Kisinoroztatom, / Surukonyveimmel / Kigomboztattatom. / Kodaly-MS gepelt szoveggel (az 1. strofa kezirassal is).  P12; 76.Publ: EMN: 24; Kodaly-—Vargyas: 97. / —Kad:Feldallam?Lasd Vll [Kodaly jegyzete]. / * Egyeni variansok.</p>
+      </editorialDecl>
+      <projectDesc>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.657 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+      </projectDesc>
+    </encodingDesc>
+    <workList>
+      <work>
+        <title>Elmegyek, elmegyek</title>
+        <incip>
+          <incipText>
+            <p>Elmegyek, elmegyek</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A 31</term>
+            <term type="cadences">5 (1) VII 1</term>
+            <term type="syllables">6</term>
+            <term type="rhythm">parlando-rubato or fixed rhythm</term>
+            <term type="form">isometric four-liner</term>
+            <term type="style">old style</term>
+            <term type="performance">unknown</term>
+          </termList>
+        </classification>
+      </work>
+    </workList>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv xml:id="e107lgz6">
+        <score xml:id="f136tsw3">
+          <scoreDef xml:id="gi00azi">
+            <pgHead xml:id="l18aamrs" func="first">
+              <rend xml:id="j12t2eav" fontweight="bold">31“</rend>
+              <rend xml:id="mfbodx4">Kászonimpér (Csík) '</rend>
+              <rend xml:id="o16iwp33" fontweight="bold">'</rend>
+              <rend xml:id="q1ps4mzs" fontweight="bold">Gy: Kodály" Zoltán</rend>
+              <rend xml:id="svopc1y" fontweight="bold">1912</rend>
+              <rend xml:id="ukj58ta">ÉIEIIÉ</rend>
+              <rend xml:id="wkdrweu" fontstyle="italic">.</rend>
+              <rend xml:id="y1hjlfg6" fontweight="bold">,</rend>
+              <rend xml:id="aik7uje">_</rend>
+              <rend xml:id="cjj7as6" fontweight="bold">2. és bánattal</rend>
+              <rend xml:id="e6ucbpj">Kisinoroztatom,</rend>
+              <rend xml:id="g16syapv" fontweight="bold">Sűrű könyveimmel</rend>
+              <rend xml:id="ivdl7dk" fontweight="bold">Kigomboztattatom.</rend>
+            </pgHead>
+            <staffGrp xml:id="kla9huh">
+              <staffDef xml:id="P1" n="1" lines="5" ppq="12">
+                <label xml:id="l1rgfwfl">Voice</label>
+                <labelAbbr xml:id="ndpiout">Voice</labelAbbr>
+                <instrDef xml:id="p1hcd02u" midi.channel="0" midi.instrnum="53" midi.volume="78%"/>
+                <clef xml:id="y1mtby6w" shape="G" line="2"/>
+                <keySig xml:id="z1neheqr" sig="2f"/>
+              </staffDef>
+            </staffGrp>
+          </scoreDef>
+          <section xml:id="h14848bc">
+            <pb xml:id="i1ndsvs3"/>
+            <section xml:id="s9dkx0v">
+              <measure xml:id="a1ya5lps" metcon="false" n="1">
+                <staff xml:id="j1hkfaev" n="1">
+                  <layer xml:id="k1jljjv7" n="1">
+                    <tuplet xml:id="l1y12e17" num="3" numbase="2" num.place="above" bracket.place="above">
+                      <chord xml:id="nsxkwny" dur.ppq="8" dur="4" stem.dir="down">
+                        <verse xml:id="o16mrle1" n="1">
+                          <syl xml:id="p192g2l6" con="s" wordpos="s">El</syl>
+                        </verse>
+                        <note xml:id="mrs3o7o" oct="4" pname="c"/>
+                        <note xml:id="r12hmzh5" oct="4" pname="b" accid.ges="f"/>
+                      </chord>
+                      <chord xml:id="u6b4rar" dur.ppq="8" dur="4" stem.dir="down">
+                        <note xml:id="t1uf53" oct="4" pname="c"/>
+                        <note xml:id="vbnjg65" oct="5" pname="c"/>
+                      </chord>
+                      <chord xml:id="x180osex" dur.ppq="8" dur="4" stem.dir="down">
+                        <note xml:id="w1aeeh0g" oct="4" pname="c"/>
+                        <note xml:id="ykdphr3" oct="4" pname="c"/>
+                        <note xml:id="z4dfq84" oct="5" pname="d"/>
+                      </chord>
+                    </tuplet>
+                    <chord xml:id="bieasvb" dur.ppq="12" dur="4" stem.dir="down">
+                      <verse xml:id="cbhf3zu" n="1">
+                        <syl xml:id="d1if16wp" con="d" wordpos="i">el</syl>
+                      </verse>
+                      <note xml:id="a1w0qmn6" oct="4" pname="d"/>
+                      <note xml:id="fp3xbfr" oct="4" pname="d"/>
+                      <note xml:id="g1r541pr" oct="5" pname="d"/>
+                    </chord>
+                    <chord xml:id="i1fure9k" dur.ppq="12" dur="4" stem.dir="down">
+                      <verse xml:id="jabjyxc" n="1">
+                        <syl xml:id="k1wwsclr" con="d" wordpos="m">me</syl>
+                      </verse>
+                      <note xml:id="h4vfepj" oct="4" pname="d"/>
+                      <note xml:id="m8zglct" oct="4" pname="d"/>
+                      <note xml:id="nh5dh5" oct="5" pname="d"/>
+                    </chord>
+                    <note xml:id="o17p1vbm" dur.ppq="12" dur="4" oct="5" pname="d" stem.dir="down">
+                      <verse xml:id="p1uh787i" n="1">
+                        <syl xml:id="q67zm62" con="s" wordpos="t">nyek,</syl>
+                      </verse>
+                      <artic xml:id="t2di9rv" artic="stacc" place="above"/>
+                    </note>
+                    <note xml:id="u1izati4" dur.ppq="12" dur="4" oct="5" pname="c" stem.dir="up"/>
+                  </layer>
+                </staff>
+                <slur xml:id="s1cj8p84" startid="#o17p1vbm" endid="#u1izati4" curvedir="above"/>
+              </measure>
+              <measure xml:id="v67ev0m" metcon="false" n="2">
+                <staff xml:id="euycxk8" n="1">
+                  <layer xml:id="f18nl97z" n="1">
+                    <chord xml:id="iwdwzhw" dur.ppq="12" dur="4" stem.dir="down">
+                      <note xml:id="gm35tsj" oct="4" pname="e" accid.ges="f"/>
+                      <note xml:id="jd2tq0w" oct="4" pname="f"/>
+                      <note xml:id="kd5xb5j" oct="5" pname="e" accid.ges="f"/>
+                    </chord>
+                    <chord xml:id="n13k8xol" dur.ppq="12" dur="4" stem.dir="down">
+                      <verse xml:id="otzh5mm" n="1">
+                        <syl xml:id="p1tj7iy9" con="d" wordpos="i">út</syl>
+                      </verse>
+                      <note xml:id="mtaga6i" oct="4" pname="d"/>
+                      <note xml:id="r1wwoo3i" oct="4" pname="d"/>
+                      <note xml:id="s1ls9ssb" oct="5" pname="d"/>
+                    </chord>
+                    <note xml:id="t1uiia5m" dur.ppq="12" dur="4" oct="5" pname="c" stem.dir="down">
+                      <verse xml:id="u16rriw3" n="1">
+                        <syl xml:id="v11u7jf6" con="s" wordpos="t">ra</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="x193a910" metcon="false" n="3">
+                <staff xml:id="gt9el43" n="1">
+                  <layer xml:id="h8gvkao" n="1">
+                    <note xml:id="i1pkt7c3" dur.ppq="6" dur="8" oct="4" pname="g" stem.dir="up"/>
+                    <note xml:id="j59dhdd" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up">
+                      <artic xml:id="kyd5sa0" artic="stacc" place="above"/>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="v1ftnxuk"/>
+              <measure xml:id="lfxnapa" metcon="false" n="4">
+                <staff xml:id="u5cjpn9" n="1" visible="true">
+                  <layer xml:id="w11vf1ia" n="1">
+                    <note xml:id="x1nag53w" dur.ppq="12" dur="4" oct="5" pname="c" stem.dir="down">
+                      <verse xml:id="y1xnx9z0" n="1">
+                        <syl xml:id="z1xa7hr9" con="s" wordpos="s">Hasszú</syl>
+                      </verse>
+                    </note>
+                    <tuplet xml:id="b1mi1sna" num="3" numbase="2" num.place="below" bracket.place="below">
+                      <note xml:id="c15bkf8y" dur.ppq="8" dur="4" oct="4" pname="b" stem.dir="down" accid.ges="f"/>
+                      <note xml:id="e1haspdb" dur.ppq="8" dur="4" oct="4" pname="a" stem.dir="down">
+                        <verse xml:id="fsw7mdr" n="1">
+                          <syl xml:id="gpn6105" con="s" wordpos="s">ﬁt</syl>
+                        </verse>
+                      </note>
+                      <note xml:id="i1qk8dpa" dur.ppq="8" dur="4" oct="4" pname="b" stem.dir="down" accid.ges="f">
+                        <verse xml:id="kra6he9" n="1">
+                          <syl xml:id="l1hl4vul" con="d" wordpos="i">po</syl>
+                        </verse>
+                      </note>
+                    </tuplet>
+                    <note xml:id="nsa5ylb" dur.ppq="12" dur="4" oct="5" pname="c" stem.dir="down">
+                      <verse xml:id="o18rzz9k" n="1">
+                        <syl xml:id="pymgx29" con="s" wordpos="t">rán</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="r1kpqwgg" dur.ppq="12" dur="4" oct="4" pname="f" stem.dir="down">
+                      <verse xml:id="spkga0m" n="1">
+                        <syl xml:id="t1rys8gr" con="s" wordpos="s">ből</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="v1ejqulw" metcon="false" n="5">
+                <staff xml:id="e1let4ht" n="1">
+                  <layer xml:id="f1wiw9b0" n="1">
+                    <note xml:id="g132lzxp" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse xml:id="h1ktcs8e" n="1">
+                        <syl xml:id="ihnjiyl" con="s" wordpos="s">Köppö</syl>
+                      </verse>
+                      <artic xml:id="klhnexd" artic="stacc" place="above"/>
+                    </note>
+                    <chord xml:id="m7ij5vz" dur.ppq="12" dur="4" stem.dir="up">
+                      <note xml:id="l4jhppv" oct="4" pname="a"/>
+                      <note xml:id="nacpcir" oct="5" pname="g"/>
+                    </chord>
+                    <note xml:id="owwtqrq" dots="1" dur.ppq="9" dur="8" oct="5" pname="g" stem.dir="up"/>
+                    <note xml:id="pu0fj9t" dots="1" dur.ppq="18" dur="4" oct="4" pname="b" stem.dir="down" accid.ges="f">
+                      <verse xml:id="rpz3e6s" n="1">
+                        <syl xml:id="s1tscdib" con="d" wordpos="i">nye</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="v18m5bti" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up"/>
+                    <note xml:id="x8b1a3z" dur.ppq="12" dur="4" oct="4" pname="f" stem.dir="up">
+                      <verse xml:id="yk4k0xy" n="1">
+                        <syl xml:id="z3s7k0s" con="s" wordpos="t">gét</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+                <slur xml:id="u1cdbcs1" startid="#pu0fj9t" endid="#v18m5bti" curvedir="above"/>
+                <slur xml:id="wxu6y9a" startid="#v18m5bti" endid="#x8b1a3z" curvedir="above"/>
+              </measure>
+              <measure xml:id="bsmz4j1" right="end" metcon="false" n="6">
+                <staff xml:id="k1pzjc91" n="1">
+                  <layer xml:id="l1uz5431" n="1">
+                    <note xml:id="m150v83" dur.ppq="12" dur="4" oct="4" pname="f" stem.dir="up">
+                      <verse xml:id="n1a5s2b7" n="1">
+                        <syl xml:id="o1yxq7fs" con="s" wordpos="s">veSZek.</syl>
+                      </verse>
+                      <artic xml:id="qdfc25h" artic="stacc" place="below"/>
+                    </note>
+                    <note xml:id="raj01h4" dots="1" dur.ppq="18" dur="4" oct="4" pname="g" stem.dir="up">
+                      <artic xml:id="s1muqtdo" artic="stacc" place="above"/>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="dk2x4uj"/>
+              <measure xml:id="t1qszwga" right="dbl" metcon="false" n="7">
+                <staff xml:id="ck7ivub" n="1" visible="true">
+                  <layer xml:id="k10ky2k2" n="1">
+                    <note xml:id="l1fg1gs4" dur.ppq="12" dur="4" oct="5" pname="c" stem.dir="up"/>
+                    <note xml:id="m5f9kie" dur.ppq="12" dur="4" oct="4" pname="f" stem.dir="up">
+                      <verse xml:id="n1oifc4x" n="1">
+                        <syl xml:id="o1o9lfbr" con="s" wordpos="s">(az!</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="q1fipaib" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up"/>
+                    <chord xml:id="sb3egwo" dur.ppq="12" dur="4" stem.dir="up">
+                      <note xml:id="r1mctk3m" oct="4" pname="a"/>
+                      <note xml:id="t10mzu5q" oct="5" pname="b" accid.ges="f"/>
+                      <note xml:id="v1s0e44u" oct="5" pname="b" accid.ges="f"/>
+                    </chord>
+                    <chord xml:id="z1vb1247" dur.ppq="12" dur="4" stem.dir="up">
+                      <verse xml:id="a1i5tyhz" n="1">
+                        <syl xml:id="br6uhnh" con="s" wordpos="s">kézírássalis).</syl>
+                      </verse>
+                      <note xml:id="x28inoq" oct="4" pname="b" accid.ges="f"/>
+                      <note xml:id="d7nh4y" oct="5" pname="a"/>
+                      <note xml:id="euaxjjq" oct="5" pname="a"/>
+                    </chord>
+                    <chord xml:id="g145tfp" dur.ppq="12" dur="4" stem.dir="up">
+                      <note xml:id="f1wj7c9x" oct="4" pname="a"/>
+                      <note xml:id="humlw7b" oct="5" pname="a"/>
+                    </chord>
+                  </layer>
+                </staff>
+                <dir xml:id="e1eg8g5j" place="above" staff="1" tstamp="1" vgrp="2660">
+                  <rend xml:id="f1kdri5q" fontfam="serif" fontweight="bold">Var“</rend>
+                </dir>
+                <dir xml:id="h185nw6q" place="above" staff="1" tstamp="1" vgrp="2270">
+                  <rend xml:id="igi9n7x" fontfam="serif" fontweight="bold">1)</rend>
+                </dir>
+              </measure>
+              <measure xml:id="ider0ae" metcon="false" n="8">
+                <staff xml:id="rrmo2fp" n="1">
+                  <layer xml:id="s1v7166r" n="1">
+                    <note xml:id="t1fbses4" dur.ppq="48" dur="1" oct="5" pname="c"/>
+                    <note xml:id="ud4a09s" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse xml:id="v1g7qv2f" n="1">
+                        <syl xml:id="w168hy8y" con="s" wordpos="s">76.</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                  <layer xml:id="y1ch156" n="2">
+                    <note xml:id="z1kt94mf" dur.ppq="12" dur="4" oct="4" pname="b" stem.dir="down" accid.ges="f"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="bclaebs" right="dbl" metcon="false" n="9">
+                <staff xml:id="k2deokp" n="1">
+                  <layer xml:id="lti4vrn" n="1">
+                    <note xml:id="m1lfnfxf" dur.ppq="12" dur="4" oct="4" pname="g" stem.dir="up"/>
+                    <note xml:id="n1mbhj6u" dots="1" dur.ppq="18" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse xml:id="o1phxsb1" n="1">
+                        <syl xml:id="p1tvnuv7" con="s" wordpos="s">EMN:</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+                <fermata xml:id="r1y3lfxb" staff="1" startid="#n1mbhj6u" form="norm" place="above"/>
+              </measure>
+            </section>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

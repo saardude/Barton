@@ -1,0 +1,146 @@
+{
+ "engine": "rapidocr-onnxruntime",
+ "seconds": 1.6,
+ "lines": [
+  {
+   "text": "31",
+   "score": 1.0,
+   "x": 552,
+   "y": 16,
+   "h": 39
+  },
+  {
+   "text": "Kaszonimper (Csik)",
+   "score": 0.961,
+   "x": 41,
+   "y": 99,
+   "h": 27
+  },
+  {
+   "text": "Gy: Kodaly Zoltan",
+   "score": 0.99,
+   "x": 916,
+   "y": 98,
+   "h": 30
+  },
+  {
+   "text": "1912",
+   "score": 1.0,
+   "x": 959,
+   "y": 128,
+   "h": 26
+  },
+  {
+   "text": "30四",
+   "score": 0.543,
+   "x": 956,
+   "y": 149,
+   "h": 42
+  },
+  {
+   "text": "Parlando",
+   "score": 0.997,
+   "x": 263,
+   "y": 222,
+   "h": 32
+  },
+  {
+   "text": "1. El - me-nyek,el-me-nyek, Hosszu ut - ra",
+   "score": 0.96,
+   "x": 218,
+   "y": 316,
+   "h": 35
+  },
+  {
+   "text": "menyek,",
+   "score": 0.993,
+   "x": 771,
+   "y": 323,
+   "h": 28
+  },
+  {
+   "text": "2）",
+   "score": 0.769,
+   "x": 607,
+   "y": 364,
+   "h": 20
+  },
+  {
+   "text": "Hosszu ut po-ra-bol  Koppo- nye -  get  veszek.",
+   "score": 0.923,
+   "x": 252,
+   "y": 442,
+   "h": 35
+  },
+  {
+   "text": "Var*",
+   "score": 0.997,
+   "x": 248,
+   "y": 488,
+   "h": 29
+  },
+  {
+   "text": "1)",
+   "score": 0.947,
+   "x": 257,
+   "y": 516,
+   "h": 29
+  },
+  {
+   "text": "2)",
+   "score": 0.993,
+   "x": 562,
+   "y": 521,
+   "h": 31
+  },
+  {
+   "text": "2. Buval és banattal",
+   "score": 0.976,
+   "x": 454,
+   "y": 655,
+   "h": 27
+  },
+  {
+   "text": "Kisinoroztatom,",
+   "score": 0.998,
+   "x": 481,
+   "y": 686,
+   "h": 30
+  },
+  {
+   "text": "Surukonyveimmel",
+   "score": 0.929,
+   "x": 484,
+   "y": 719,
+   "h": 27
+  },
+  {
+   "text": "Kigomboztattatom.",
+   "score": 0.998,
+   "x": 484,
+   "y": 750,
+   "h": 30
+  },
+  {
+   "text": "Kodaly-MS gepelt szoveggel (az 1. strofa kezirassal is).  P12; 76.Publ: EMN: 24; Kodaly-—Vargyas: 97.",
+   "score": 0.969,
+   "x": 46,
+   "y": 852,
+   "h": 30
+  },
+  {
+   "text": "—Kad:Feldallam?Lasd Vll [Kodaly jegyzete].",
+   "score": 0.91,
+   "x": 44,
+   "y": 881,
+   "h": 30
+  },
+  {
+   "text": "* Egyeni variansok.",
+   "score": 0.997,
+   "x": 42,
+   "y": 932,
+   "h": 33
+  }
+ ]
+}

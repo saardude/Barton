@@ -7,7 +7,7 @@
  "records": [
   "bsys-12-10"
  ],
- "generated": "2026-09-28T13:48:00",
+ "generated": "2026-09-28T13:49:11",
  "ocr": {
   "lines": 20,
   "file": "ocr.json"
@@ -16,7 +16,7 @@
   "homr": {
    "engine": "homr",
    "musicxml": "/home/user/Barton/omr/samples/bsys-12-10__pr/homr.musicxml",
-   "seconds": 21.5,
+   "seconds": 12.4,
    "error": null,
    "version": "0.7.0",
    "engine_lyrics": 0,
@@ -159,6 +159,330 @@
      "g4",
      "g4",
      "f4",
+     "e4",
+     "e4",
+     "a4",
+     "a4",
+     "g4",
+     "f4",
+     "f4",
+     "g4",
+     "g4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-12-10__pr/audiveris.musicxml",
+   "seconds": 22.3,
+   "error": null,
+   "rec_grade": 0.854,
+   "version": "5.9.0",
+   "engine_lyrics": 57,
+   "lyrics_injected": false,
+   "mei": "audiveris.mei",
+   "render": {
+    "svg": "audiveris.svg",
+    "midi": "audiveris.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.844,
+    "weights_used": {
+     "rec": 0.15,
+     "struct": 0.25,
+     "meta": 0.6
+    },
+    "rec": {
+     "score": 0.854
+    },
+    "struct": {
+     "score": 0.943,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 0.714,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 16,
+      "notes": 50,
+      "grace_notes": 0,
+      "rests": 0,
+      "sung_units": 46,
+      "unfilled_measures": 4,
+      "empty_measures": 0,
+      "meter": "2/4",
+      "keysig": "1s",
+      "systems": 4
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 0.667,
+      "syllables": 0.87,
+      "lines": 1.0,
+      "incipit": 1.0
+     },
+     "details": {
+      "cadences_expected": [
+       "III",
+       "III",
+       "VI",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "III",
+       "V",
+       "2",
+       "V"
+      ],
+      "cadences_found_by_systems": [
+       "III",
+       "1",
+       "II",
+       "1"
+      ],
+      "cadence_matches": {
+       "strict": "1/3",
+       "tolerant": "3/3",
+       "by_systems": "1/3"
+      },
+      "final_midi": 67,
+      "strophes_notated": 2,
+      "syllables_expected": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "sung_units_found": 46,
+      "lines_expected": 4,
+      "systems_found": 4,
+      "incipit": [
+       {
+        "id": "bsys-12-10",
+        "score": 1.0,
+        "source": "ocr",
+        "incipit": "Érik a meggyfa"
+       }
+      ]
+     },
+     "score": 0.801
+    },
+    "pitches": [
+     "d3",
+     "d3",
+     "e3",
+     "d3",
+     "b2",
+     "b2",
+     "d3",
+     "d3",
+     "b2",
+     "b3",
+     "d4",
+     "e4",
+     "f4",
+     "f4",
+     "g4",
+     "e4",
+     "a4",
+     "g4",
+     "f4",
+     "g4",
+     "g4",
+     "d3",
+     "d3",
+     "d3",
+     "e3",
+     "d3",
+     "b2",
+     "b2",
+     "d3",
+     "d3",
+     "d3",
+     "e3",
+     "d3",
+     "a2",
+     "d4",
+     "d4",
+     "d4",
+     "e4",
+     "f4",
+     "g4",
+     "g4",
+     "e4",
+     "e4",
+     "e4",
+     "a4",
+     "a4",
+     "g4",
+     "f4",
+     "g4",
+     "g4"
+    ]
+   }
+  },
+  "oemer": {
+   "engine": "oemer",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-12-10__pr/oemer.musicxml",
+   "seconds": 315.2,
+   "error": null,
+   "version": "0.1.8",
+   "engine_lyrics": 0,
+   "lyrics_injected": false,
+   "mei": "oemer.mei",
+   "render": {
+    "svg": "oemer.svg",
+    "midi": "oemer.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.841,
+    "weights_used": {
+     "struct": 0.294,
+     "meta": 0.706
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 1.0,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 16,
+      "notes": 54,
+      "grace_notes": 0,
+      "rests": 2,
+      "sung_units": 54,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": "1s",
+      "systems": 4
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 0.667,
+      "syllables": 0.9,
+      "lines": 0.667,
+      "incipit": 1.0
+     },
+     "details": {
+      "cadences_expected": [
+       "III",
+       "III",
+       "VI",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "III",
+       "V",
+       "#VII",
+       "2"
+      ],
+      "cadences_found_by_systems": [
+       "III",
+       "1",
+       "III",
+       "1"
+      ],
+      "cadence_matches": {
+       "strict": "1/3",
+       "tolerant": "3/3",
+       "by_systems": "1/3"
+      },
+      "final_midi": 67,
+      "strophes_notated": 3,
+      "syllables_expected": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "sung_units_found": 54,
+      "lines_expected": 4,
+      "systems_found": 4,
+      "incipit": [
+       {
+        "id": "bsys-12-10",
+        "score": 1.0,
+        "source": "ocr",
+        "incipit": "Érik a meggyfa"
+       }
+      ]
+     },
+     "score": 0.775
+    },
+    "pitches": [
+     "d4",
+     "d4",
+     "e4",
+     "d4",
+     "b3",
+     "b3",
+     "d4",
+     "d4",
+     "e4",
+     "d4",
+     "b3",
+     "b3",
+     "d4",
+     "e4",
+     "f4",
+     "e4",
+     "f4",
+     "g4",
+     "e4",
+     "a4",
+     "g4",
+     "f4",
+     "g4",
+     "g4",
+     "d4",
+     "d4",
+     "d4",
+     "e4",
+     "d4",
+     "b3",
+     "b3",
+     "d4",
+     "d4",
+     "d4",
+     "e4",
+     "d4",
+     "b3",
+     "d4",
+     "d4",
+     "e4",
+     "f4",
+     "g4",
+     "g4",
+     "f4",
+     "e4",
      "e4",
      "e4",
      "a4",

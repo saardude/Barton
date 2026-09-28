@@ -101,6 +101,9 @@ async function resolveOne(t, counties) {
       if (near.length > 1) return { unresolved: `ambiguous within ${radius} km of ${c.name}: ${near.map((h) => h.qid).join(', ')}` };
     }
   }
+  // A single settlement in all of Romania with this exact label: the identity is not in
+  // doubt, only the list's county grouping was; accept with low confidence and say so.
+  if (items.length === 1 && items[0].county) return { ...items[0], confidence: 'low', how: `unique exact label in Romania; county ${items[0].county} differs from the list's grouping (${t.counties.join('/')})` };
   return { unresolved: items.length ? `label matches only outside the county: ${items.map((i) => i.qid + ' (' + (i.county || '?') + ')').join(', ')}` : 'no settlement with this label in Romania' };
 }
 
@@ -126,7 +129,7 @@ function targets(gaz) {
     const i = txt.indexOf('## 6.'); const e = txt.indexOf('## 7.');
     let body = txt.slice(i, e).split('\n\n')[1].replace(/\n/g, ' ');
     body = body.slice(0, body.indexOf('These need gazetteer'));
-    for (const grp of body.split(/\s*(?=[A-Z][a-z]+(?:\/[A-Z][a-z]+)?: )/)) {
+    for (const grp of body.split(/\s*(?<![A-Za-z/])(?=[A-Z][a-z]+(?:\/[A-Z][a-z]+)?: )/)) {
       const m = grp.trim().match(/^([A-Za-z/]+): (.*)$/); if (!m) continue;
       const cs = m[1].split('/').map((x) => canon(x === 'Bistrita' ? 'Bistrița-Năsăud' : x)).filter(Boolean);
       for (const it of m[2].trim().replace(/\.$/, '').split(/,\s*(?![^()]*\))/)) {
