@@ -157,22 +157,24 @@ describe('Song record route', () => {
   it('a record on a journey shows "Collected on" with stop n of m and an "Explore this journey" link; others show nothing', async () => {
     vi.unstubAllGlobals()
     mockCatalogFetch({ '/data/journeys.test.json': { _meta: {}, journeys: fixtureJourneys } })
-    renderApp('/song/bsys-8?genre=colinda')
+    const first = renderApp('/song/bsys-8?genre=colinda')
     await screen.findByRole('heading', { level: 1, name: 'Sculați, sculați, boieri mari' })
-    const blocks = screen.getAllByRole('list', { name: 'Collected on' })
+    const blocks = screen.getAllByRole('list', { name: 'Collected on' }).filter((el) => el.classList.contains('journey-link'))
     expect(blocks.length).toBe(2) // header line + Who / when row
     const rail = screen.getByRole('complementary', { name: 'Record details' })
-    const row = within(rail).getByRole('list', { name: 'Collected on' })
+    const row = blocks.find((el) => rail.contains(el))!
+    expect(row).toBeDefined()
     expect(row).toHaveTextContent(/stop 1 of 2: Beiuș \(Belényes\)/)
     expect(row).toHaveTextContent('dates only')
     const link = within(row).getByRole('link', { name: 'Explore this journey' })
     expect(link).toHaveAttribute('href', '/journeys?genre=colinda&trip=J-1910-07-01&stop=1')
 
+    first.unmount()
     vi.unstubAllGlobals()
     mockCatalogFetch({ '/data/journeys.test.json': { _meta: {}, journeys: fixtureJourneys } })
     renderApp('/song/bsys-1')
     await screen.findByRole('heading', { level: 1, name: 'Adio, dragă, adio' })
-    expect(screen.queryByRole('list', { name: 'Collected on' })).toBeNull()
+    expect(document.querySelectorAll('.journey-link').length).toBe(0)
     expect(screen.queryByText('Explore this journey')).toBeNull()
   })
 
