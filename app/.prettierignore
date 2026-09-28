@@ -1,0 +1,8 @@
+dist
+node_modules
+public
+src/generated
+src/types/song.ts
+src/types/place.ts
+src/types/facets.ts
+src/test/fixtures

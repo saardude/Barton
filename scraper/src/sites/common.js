@@ -257,6 +257,8 @@ export function parseZtiRecord($, base) {
 export function splitPlaceLine(line) {
   const t = clean(line);
   if (!t) return { placeRaw: null, dateRaw: null };
+  // a line that is only a date ("1865.", "1912.01.") carries no place
+  if (/^(?:\d{1,2}\.\s*)*1[89]\d\d\.?(?:\s*\d{1,2}\.?)*$/.test(t)) return { placeRaw: null, dateRaw: t };
   const m = t.match(/^(.*?)(?:,\s*)((?:\d{1,2}\.\s*)?(?:\d{1,2}\.\s*)?1[89]\d\d\.?(?:\s*\d{1,2}\.?)?(?:\s*\d{1,2}\.?)?)?\s*$/);
   if (m && m[2]) return { placeRaw: clean(m[1].replace(/,\s*$/, '')), dateRaw: clean(m[2]) };
   return { placeRaw: clean(t.replace(/,\s*$/, '')), dateRaw: null };

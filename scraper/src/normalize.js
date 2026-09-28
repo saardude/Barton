@@ -342,7 +342,7 @@ export function resolveStructuredPlace(place, gazetteer) {
   return out;
 }
 
-function placeIdFor(loc) {
+export function placeIdFor(loc) {
   const slug = (s) => fold(s).replace(/\s+/g, '-');
   const name = loc.village || loc.villageHistorical;
   if (!name) return null;

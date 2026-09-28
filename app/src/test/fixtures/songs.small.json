@@ -1,0 +1,2771 @@
+[
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1909. VII.",
+      "year": 1909
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-1",
+    "incipit": "Adio, dragă, adio",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [
+        {
+          "caption": null,
+          "type": "audio/mpeg",
+          "url": "https://systems.zti.hu/media/audio/bsys-1.mp3"
+        }
+      ],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 9"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": "Ion Pop",
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0009",
+      "referenceCode": "A 9",
+      "site": "bsys",
+      "siteId": "A 9",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "1",
+      "url": "https://systems.zti.hu/br/en/browse/10/1",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Adio, dragă, adio"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1910. VII.",
+      "year": 1910
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "bsys-2",
+    "incipit": "Ardeleana",
+    "instrument": [
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": [
+        {
+          "caption": null,
+          "type": "image/jpeg",
+          "url": "https://systems.zti.hu/media/images/bsys-2.jpg"
+        }
+      ]
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 10"
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0010",
+      "referenceCode": "A 10",
+      "site": "bsys",
+      "siteId": "A 10",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "2",
+      "url": "https://systems.zti.hu/br/en/browse/10/2",
+      "volume": null
+    },
+    "style": "instrumental",
+    "styleRaw": "instrumental",
+    "text": null,
+    "title": "Ardeleana"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1911. VII.",
+      "year": 1911
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "doina",
+    "genreRaw": "doina",
+    "id": "bsys-3",
+    "incipit": "Ârsul de la munte",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 204"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": "Maria Roșu",
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0204",
+      "referenceCode": "A 204",
+      "site": "bsys",
+      "siteId": "A 204",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "3",
+      "url": "https://systems.zti.hu/br/en/browse/10/3",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Ârsul de la munte"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-4",
+    "incipit": "Bade, bade",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B 1"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": "Ion Pop",
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_1001",
+      "referenceCode": "B 1",
+      "site": "bsys",
+      "siteId": "B 1",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "4",
+      "url": "https://systems.zti.hu/br/en/browse/10/4",
+      "volume": null
+    },
+    "style": "new style",
+    "styleRaw": "new style",
+    "text": null,
+    "title": "Bade, bade"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "bsys-5",
+    "incipit": "Șapte văi",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 11"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0011",
+      "referenceCode": "A 11",
+      "site": "bsys",
+      "siteId": "A 11",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "5",
+      "url": "https://systems.zti.hu/br/en/browse/10/5",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Șapte văi"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-6",
+    "incipit": "Sara pe deal",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 12"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0012",
+      "referenceCode": "A 12",
+      "site": "bsys",
+      "siteId": "A 12",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "6",
+      "url": "https://systems.zti.hu/br/en/browse/10/6",
+      "volume": null
+    },
+    "style": "new style",
+    "styleRaw": "new style",
+    "text": "Sara pe deal buciumul sună cu jale",
+    "title": "Sara pe deal"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-7",
+    "incipit": "Țara mea",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "C 5"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_2005",
+      "referenceCode": "C 5",
+      "site": "bsys",
+      "siteId": "C 5",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "7",
+      "url": "https://systems.zti.hu/br/en/browse/10/7",
+      "volume": null
+    },
+    "style": "mixed style",
+    "styleRaw": "mixed style",
+    "text": null,
+    "title": "Țara mea"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1910. VII.",
+      "year": 1910
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "bsys-8",
+    "incipit": "Sculați, sculați, boieri mari",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 13"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": "Gheorghe Țepeș",
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0013",
+      "referenceCode": "A 13",
+      "site": "bsys",
+      "siteId": "A 13",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "8",
+      "url": "https://systems.zti.hu/br/en/browse/10/8",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Sculați, sculați, boieri mari"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-9",
+    "incipit": "Cântec 2",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.9,
+      "lng": 22.3,
+      "origin": null,
+      "placeId": "ro/crisana/bihor",
+      "raw": "Bihar",
+      "region": "Crișana",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 14"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0014",
+      "referenceCode": "A 14",
+      "site": "bsys",
+      "siteId": "A 14",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "9",
+      "url": "https://systems.zti.hu/br/en/browse/10/9",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Cântec 2"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-10",
+    "incipit": "Cântec 10",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.9,
+      "lng": 22.3,
+      "origin": null,
+      "placeId": "ro/crisana/bihor",
+      "raw": "Bihar",
+      "region": "Crișana",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 15"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0015",
+      "referenceCode": "A 15",
+      "site": "bsys",
+      "siteId": "A 15",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "10",
+      "url": "https://systems.zti.hu/br/en/browse/10/10",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Cântec 10"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": null,
+      "raw": null,
+      "year": null
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "doina",
+    "genreRaw": "doina",
+    "id": "bsys-11",
+    "incipit": "Hora lungă",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 16"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0016",
+      "referenceCode": "A 16",
+      "site": "bsys",
+      "siteId": "A 16",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "11",
+      "url": "https://systems.zti.hu/br/en/browse/10/11",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Hora lungă"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1917. VII.",
+      "year": 1917
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "bocet",
+    "genreRaw": "bocet",
+    "id": "bsys-12",
+    "incipit": "Dragă mamă",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": null,
+      "lng": null,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/nomap",
+      "raw": "Tárkány (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Tărcaia",
+      "villageHistorical": "Tárkány"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 17"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0017",
+      "referenceCode": "A 17",
+      "site": "bsys",
+      "siteId": "A 17",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "12",
+      "url": "https://systems.zti.hu/br/en/browse/10/12",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": null
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "bsys-13",
+    "incipit": "Ineu joc",
+    "instrument": [
+      "fluier",
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 18"
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0018",
+      "referenceCode": "A 18",
+      "site": "bsys",
+      "siteId": "A 18",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "13",
+      "url": "https://systems.zti.hu/br/en/browse/10/13",
+      "volume": null
+    },
+    "style": "instrumental",
+    "styleRaw": "instrumental",
+    "text": null,
+    "title": "Ineu joc"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1906. VII.",
+      "year": 1906
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "other",
+    "genreRaw": "other",
+    "id": "bsys-14",
+    "incipit": "Ördög útja",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B 2"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_1002",
+      "referenceCode": "B 2",
+      "site": "bsys",
+      "siteId": "B 2",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "14",
+      "url": "https://systems.zti.hu/br/en/browse/10/14",
+      "volume": null
+    },
+    "style": "new style",
+    "styleRaw": "new style",
+    "text": null,
+    "title": "Ördög útja"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1907. VII.",
+      "year": 1907
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-15",
+    "incipit": "Őszi harmat után",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [
+        {
+          "caption": null,
+          "type": "audio/mpeg",
+          "url": "https://systems.zti.hu/media/audio/bsys-15.mp3"
+        }
+      ],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B 3"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_1003",
+      "referenceCode": "B 3",
+      "site": "bsys",
+      "siteId": "B 3",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "15",
+      "url": "https://systems.zti.hu/br/en/browse/10/15",
+      "volume": null
+    },
+    "style": "new style",
+    "styleRaw": "new style",
+    "text": null,
+    "title": "Őszi harmat után"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1908. VII.",
+      "year": 1908
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-16",
+    "incipit": "Űzött a bánat",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "C 6"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_2006",
+      "referenceCode": "C 6",
+      "site": "bsys",
+      "siteId": "C 6",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "16",
+      "url": "https://systems.zti.hu/br/en/browse/10/16",
+      "volume": null
+    },
+    "style": "mixed style",
+    "styleRaw": "mixed style",
+    "text": null,
+    "title": "Űzött a bánat"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1910. VII.",
+      "year": 1910
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-17",
+    "incipit": "Adio, dragă, adio",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 19"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0019",
+      "referenceCode": "A 19",
+      "site": "bsys",
+      "siteId": "A 19",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "17",
+      "url": "https://systems.zti.hu/br/en/browse/10/17",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Adio, dragă, adio"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1908. VII.",
+      "year": 1908
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "other",
+    "genreRaw": "other",
+    "id": "bsys-18",
+    "incipit": "Segg nóta",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.8,
+      "lng": 23.5,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj",
+      "raw": "Kolozs",
+      "region": "Transylvania",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "C 1034"
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_12010",
+      "referenceCode": "C 1034",
+      "site": "bsys",
+      "siteId": "C 1034",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "18",
+      "url": "https://systems.zti.hu/br/en/browse/10/18",
+      "volume": null
+    },
+    "style": "mixed style",
+    "styleRaw": "mixed style",
+    "text": null,
+    "title": "Segg nóta"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": null,
+      "raw": null,
+      "year": null
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": null,
+    "genreRaw": null,
+    "id": "bsys-19",
+    "incipit": "Jaj de szépen",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.8,
+      "lng": 23.5,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj",
+      "raw": "Kolozs",
+      "region": "Transylvania",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "D 1"
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_3001",
+      "referenceCode": "D 1",
+      "site": "bsys",
+      "siteId": "D 1",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "19",
+      "url": "https://systems.zti.hu/br/en/browse/10/19",
+      "volume": null
+    },
+    "style": "not classified",
+    "styleRaw": "not classified",
+    "text": null,
+    "title": "Jaj de szépen"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1907. VII.",
+      "year": 1907
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "bsys-20",
+    "incipit": "Gyergyói",
+    "instrument": [
+      "bagpipe"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.7,
+      "lng": 25.5,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita/joseni",
+      "raw": "Gyergyóalfalu (Csík)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Joseni",
+      "villageHistorical": "Gyergyóalfalu"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 20"
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0020",
+      "referenceCode": "A 20",
+      "site": "bsys",
+      "siteId": "A 20",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "20",
+      "url": "https://systems.zti.hu/br/en/browse/10/20",
+      "volume": null
+    },
+    "style": "instrumental",
+    "styleRaw": "instrumental",
+    "text": null,
+    "title": "Gyergyói"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1907. VII.",
+      "year": 1907
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-21",
+    "incipit": "Este van már",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.7,
+      "lng": 25.5,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita/joseni",
+      "raw": "Gyergyóalfalu (Csík)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Joseni",
+      "villageHistorical": "Gyergyóalfalu"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 21"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0021",
+      "referenceCode": "A 21",
+      "site": "bsys",
+      "siteId": "A 21",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "21",
+      "url": "https://systems.zti.hu/br/en/browse/10/21",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Este van már"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1907. VII.",
+      "year": 1907
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-22",
+    "incipit": "Elindultam",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.7,
+      "lng": 25.5,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita/joseni",
+      "raw": "Gyergyóalfalu (Csík)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Joseni",
+      "villageHistorical": "Gyergyóalfalu"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B 4"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_1004",
+      "referenceCode": "B 4",
+      "site": "bsys",
+      "siteId": "B 4",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "22",
+      "url": "https://systems.zti.hu/br/en/browse/10/22",
+      "volume": null
+    },
+    "style": "new style",
+    "styleRaw": "new style",
+    "text": null,
+    "title": "Elindultam"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "bsys-23",
+    "incipit": "Csomafalvi",
+    "instrument": [
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.68,
+      "lng": 25.53,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita/ciumani",
+      "raw": "Gyergyócsomafalva (Csík)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Ciumani",
+      "villageHistorical": "Gyergyócsomafalva"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 22"
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0022",
+      "referenceCode": "A 22",
+      "site": "bsys",
+      "siteId": "A 22",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "23",
+      "url": "https://systems.zti.hu/br/en/browse/10/23",
+      "volume": null
+    },
+    "style": "instrumental",
+    "styleRaw": "instrumental",
+    "text": null,
+    "title": "Csomafalvi"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-24",
+    "incipit": "Zöld erdőben",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.68,
+      "lng": 25.53,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita/ciumani",
+      "raw": "Gyergyócsomafalva (Csík)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Ciumani",
+      "villageHistorical": "Gyergyócsomafalva"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "C 7"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_2007",
+      "referenceCode": "C 7",
+      "site": "bsys",
+      "siteId": "C 7",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "24",
+      "url": "https://systems.zti.hu/br/en/browse/10/24",
+      "volume": null
+    },
+    "style": "mixed style",
+    "styleRaw": "mixed style",
+    "text": null,
+    "title": "Zöld erdőben"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": null,
+      "raw": null,
+      "year": null
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": null,
+    "genreRaw": null,
+    "id": "bsys-25",
+    "incipit": "Búza, búza",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Harghita",
+      "countyHistorical": "Csík",
+      "lat": 46.5,
+      "lng": 25.8,
+      "origin": null,
+      "placeId": "ro/transylvania/harghita",
+      "raw": "Csík",
+      "region": "Transylvania",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 23"
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0023",
+      "referenceCode": "A 23",
+      "site": "bsys",
+      "siteId": "A 23",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "25",
+      "url": "https://systems.zti.hu/br/en/browse/10/25",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Búza, búza"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1918. VII.",
+      "year": 1918
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-26",
+    "incipit": "Hej, Dunáról",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "HU",
+      "county": "Újszász",
+      "countyHistorical": "Újszász",
+      "lat": null,
+      "lng": null,
+      "origin": null,
+      "placeId": "hu/unresolved/ujszasz",
+      "raw": "Újszász",
+      "region": null,
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 24"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0024",
+      "referenceCode": "A 24",
+      "site": "bsys",
+      "siteId": "A 24",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "26",
+      "url": "https://systems.zti.hu/br/en/browse/10/26",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Hej, Dunáról"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1910. VII.",
+      "year": 1910
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "fmbc-1",
+    "incipit": "Pe loc",
+    "instrument": [
+      "fluier"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [
+        {
+          "caption": null,
+          "type": "audio/mpeg",
+          "url": "https://systems.zti.hu/media/audio/fmbc-1.mp3"
+        }
+      ],
+      "notation": [
+        {
+          "caption": null,
+          "type": "image/jpeg",
+          "url": "https://systems.zti.hu/media/images/fmbc-1.jpg"
+        }
+      ]
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "MH_0863b",
+      "referenceCode": "L 132",
+      "site": "fmbc",
+      "siteId": "L 132",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
+      "siteRecordId": "5398",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/5398",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Pe loc"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1910. VII.",
+      "year": 1910
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "fmbc-2",
+    "incipit": "Brâul",
+    "instrument": [
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "MH_0864a",
+      "referenceCode": "L 133",
+      "site": "fmbc",
+      "siteId": "L 133",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
+      "siteRecordId": "5399",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/5399",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Brâul"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "fmbc-3",
+    "incipit": "Buciumeana",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "MH_0865a",
+      "referenceCode": "L 134",
+      "site": "fmbc",
+      "siteId": "L 134",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
+      "siteRecordId": "5400",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/5400",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Buciumeana"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "fmbc-4",
+    "incipit": "Mărunțel",
+    "instrument": [
+      "fluier"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "MH_0866b",
+      "referenceCode": "L 135",
+      "site": "fmbc",
+      "siteId": "L 135",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
+      "siteRecordId": "5401",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/5401",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Mărunțel"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1912. VII.",
+      "year": 1912
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "joc",
+    "genreRaw": "joc",
+    "id": "fmbc-5",
+    "incipit": "Poarga românească",
+    "instrument": [
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "lat": 46.84,
+      "lng": 23.1,
+      "origin": null,
+      "placeId": "ro/transylvania/cluj/izvoru-crisului",
+      "raw": "Körösfő (Kolozs)",
+      "region": "Transylvania",
+      "resolution": "gazetteer",
+      "village": "Izvoru Crișului",
+      "villageHistorical": "Körösfő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "MH_0867a",
+      "referenceCode": null,
+      "site": "fmbc",
+      "siteId": "5402",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)",
+      "siteRecordId": "5402",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/5402",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Poarga românească"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "gyuj-1",
+    "incipit": "Colo-n jos",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 30"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "21/612",
+      "referenceCode": null,
+      "site": "gyuj",
+      "siteId": "A 30",
+      "siteName": "Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)",
+      "siteRecordId": "612",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/21/612",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Colo-n jos"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "gyuj-2",
+    "incipit": "Colindă de fereastră",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "21/5398",
+      "referenceCode": null,
+      "site": "gyuj",
+      "siteId": "5398",
+      "siteName": "Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)",
+      "siteRecordId": "5398",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/21/5398",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Colindă de fereastră"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "rfm-1",
+    "incipit": "Cce Sânte Mărie",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A I."
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "1a",
+      "referenceCode": "F. 1174 c)",
+      "site": "rfm",
+      "siteId": "F. 1174 c)",
+      "siteName": "Rumanian Folk Music, vol. IV (Bartok, ed. Suchoff, 1975), Internet Archive scan",
+      "siteRecordId": "94",
+      "url": "https://archive.org/details/rumanianfolkmusi0004blab/page/n94",
+      "volume": "RFM IV"
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Cce Sânte Mărie"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1914. VII.",
+      "year": 1914
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "id": "rfm-2",
+    "incipit": "Cce Sânte Mărie (variant)",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.43,
+      "lng": 21.84,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/ineu",
+      "raw": "Köröskisjenő (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Ineu",
+      "villageHistorical": "Köröskisjenő"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A I."
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "1b",
+      "referenceCode": "F. 1174 d)",
+      "site": "rfm",
+      "siteId": "F. 1174 d)",
+      "siteName": "Rumanian Folk Music, vol. IV (Bartok, ed. Suchoff, 1975), Internet Archive scan",
+      "siteRecordId": "95",
+      "url": "https://archive.org/details/rumanianfolkmusi0004blab/page/n95",
+      "volume": "RFM IV"
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Cce Sânte Mărie (variant)"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "nunta",
+    "genreRaw": "nunta",
+    "id": "rfm-3",
+    "incipit": "Nunta",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B II."
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "12",
+      "referenceCode": "F. 1200",
+      "site": "rfm",
+      "siteId": "F. 1200",
+      "siteName": "Rumanian Folk Music, vol. IV (Bartok, ed. Suchoff, 1975), Internet Archive scan",
+      "siteRecordId": "120",
+      "url": "https://archive.org/details/rumanianfolkmusi0004blab/page/n120",
+      "volume": "RFM IV"
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Nunta"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1913. VII.",
+      "year": 1913
+    },
+    "collector": null,
+    "composition": [],
+    "genre": "nunta",
+    "genreRaw": "nunta",
+    "id": "rfm-4",
+    "incipit": "Nuntă mare",
+    "instrument": [
+      "violin"
+    ],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.9,
+      "lng": 22.3,
+      "origin": null,
+      "placeId": "ro/crisana/bihor",
+      "raw": "Bihar",
+      "region": "Crișana",
+      "resolution": "county",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "B II."
+    },
+    "performance": "mixed",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "112",
+      "referenceCode": "F. 1201",
+      "site": "rfm",
+      "siteId": "F. 1201",
+      "siteName": "Rumanian Folk Music, vol. IV (Bartok, ed. Suchoff, 1975), Internet Archive scan",
+      "siteRecordId": "121",
+      "url": "https://archive.org/details/rumanianfolkmusi0004blab/page/n121",
+      "volume": "RFM IV"
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": "Nuntă mare"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1915. VII.",
+      "year": 1915
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-27",
+    "incipit": "Zăpada",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 25"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0025",
+      "referenceCode": "A 25",
+      "site": "bsys",
+      "siteId": "A 25",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "27",
+      "url": "https://systems.zti.hu/br/en/browse/10/27",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Zăpada"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 7,
+      "raw": "1916. VII.",
+      "year": 1916
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": "cantec",
+    "genreRaw": "cantec",
+    "id": "bsys-28",
+    "incipit": "Île de jos",
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.66,
+      "lng": 22.35,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes (Bihar)",
+      "region": "Crișana",
+      "resolution": "gazetteer",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 26"
+    },
+    "performance": "vocal",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": "BR_0026",
+      "referenceCode": "A 26",
+      "site": "bsys",
+      "siteId": "A 26",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "28",
+      "url": "https://systems.zti.hu/br/en/browse/10/28",
+      "volume": null
+    },
+    "style": "old style",
+    "styleRaw": "old style",
+    "text": null,
+    "title": "Île de jos"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": null,
+      "raw": null,
+      "year": null
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": null,
+    "genreRaw": null,
+    "id": "bsys-29",
+    "incipit": null,
+    "instrument": [],
+    "journey": null,
+    "location": {
+      "country": null,
+      "county": null,
+      "countyHistorical": null,
+      "lat": null,
+      "lng": null,
+      "origin": null,
+      "placeId": null,
+      "raw": null,
+      "region": null,
+      "resolution": "unresolved",
+      "village": null,
+      "villageHistorical": null
+    },
+    "media": {
+      "audio": [],
+      "notation": []
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": null,
+      "ethnicity": null,
+      "name": null,
+      "sex": null
+    },
+    "related": [],
+    "remarks": null,
+    "source": {
+      "alternates": [],
+      "fetchedAt": null,
+      "number": null,
+      "referenceCode": null,
+      "site": "bsys",
+      "siteId": "29",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "29",
+      "url": "https://systems.zti.hu/br/en/browse/10/29",
+      "volume": null
+    },
+    "style": null,
+    "styleRaw": null,
+    "text": null,
+    "title": null
+  }
+]

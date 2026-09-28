@@ -1,13 +1,14 @@
 {
   "_meta": {
     "coordinateNote": "lat/lng are approximate village centres in WGS84; confidence: high = well-known locality, unambiguous name; medium = correct locality but coordinate or Hungarian spelling to double-check; low = identification of the historical name itself should be verified.",
+    "countriesNote": "counties/places are mostly present-day Romania; a few Hungarian counties and villages are listed so that localities printed under split historical counties (Szatmár, Csanád, Bihar, Torontál) resolve to HU instead of staying ambiguous.",
     "country": "RO",
-    "countyCount": 19,
+    "countyCount": 24,
     "historicalCountiesNote": "historicalCounties maps a pre-1920 Hungarian county (as printed by the sites) to the modern country/region/county. exclusive=true means the whole county is inside present-day Romania, so a village that is not in `places` still gets country (and county when unique) with resolution 'county'. Split counties (Bihar, Szatmár, Arad, Temes, Torontál, Máramaros, Ugocsa, Csanád, Bukovina, Moldva) need a village entry. Non-Romanian counties are listed too so that country can be derived for Hungarian/Slovak localities; 'countries' lists the present-day countries a split county falls into.",
     "matching": "normalise with fold(): NFD, strip diacritics, lowercase, non-alphanumerics -> space. Lookup order: modern name, historical name, aliases; a county hint (modern or historical) breaks ties.",
-    "placeCount": 386,
+    "placeCount": 418,
     "regionNote": "Region follows the usual modern convention: Bihor, Arad, Satu Mare, Salaj -> Crisana; Timis, Caras-Severin -> Banat; Maramures -> Maramures; the rest -> Transylvania. Historical county assignment uses the pre-1920 Hungarian county the site is likely to print.",
-    "siteExtended": "extended from 261 bartok-nepzene.zti.hu records: 3 added, 5 updated",
+    "siteExtended": "extended from 261 bartok-nepzene.zti.hu records: 0 added, 0 updated",
     "siteExtensionNote": "`node src/cli.js gazetteer` merges places printed by bartok-nepzene.zti.hu (modern name, country, map coordinates) into `places` with coordSource 'site:fmbc'; those coordinates are preferred over the approximate seed.",
     "status": "SEED - all coordinates are approximate (2 decimals, roughly +-1 km) and were entered from general knowledge, not from an authoritative source. Verify every entry against the scraped data (site place names, the bartok-nepzene /en/map/ page if it exposes coordinates) before relying on it for the map.",
     "title": "Seed gazetteer of localities in present-day Romania where Bela Bartok collected"
@@ -83,6 +84,18 @@
     },
     {
       "coordNote": "approximate county centre",
+      "country": "HU",
+      "historical": [
+        "Békés",
+        "Csanád"
+      ],
+      "lat": 46.7,
+      "lng": 21,
+      "name": "Békés",
+      "region": null
+    },
+    {
+      "coordNote": "approximate county centre",
       "country": "RO",
       "historical": [
         "Krassó-Szörény"
@@ -116,6 +129,31 @@
     },
     {
       "coordNote": "approximate county centre",
+      "country": "HU",
+      "historical": [
+        "Csongrád",
+        "Csanád",
+        "Torontál"
+      ],
+      "lat": 46.4,
+      "lng": 20.2,
+      "name": "Csongrád-Csanád",
+      "region": null
+    },
+    {
+      "coordNote": "approximate county centre",
+      "country": "HU",
+      "historical": [
+        "Bihar",
+        "Hajdú"
+      ],
+      "lat": 47.4,
+      "lng": 21.5,
+      "name": "Hajdú-Bihar",
+      "region": null
+    },
+    {
+      "coordNote": "approximate county centre",
       "country": "RO",
       "historical": [
         "Csík",
@@ -136,6 +174,17 @@
       "lng": 22.9,
       "name": "Hunedoara",
       "region": "Transylvania"
+    },
+    {
+      "coordNote": "approximate county centre",
+      "country": "RO",
+      "historical": [
+        "Moldva"
+      ],
+      "lat": 47.2,
+      "lng": 27.6,
+      "name": "Iași",
+      "region": "Moldavia"
     },
     {
       "coordNote": "approximate county centre",
@@ -204,6 +253,20 @@
       "lng": 26.25,
       "name": "Suceava",
       "region": "Bukovina"
+    },
+    {
+      "coordNote": "approximate county centre",
+      "country": "HU",
+      "historical": [
+        "Szatmár",
+        "Szabolcs",
+        "Bereg",
+        "Ugocsa"
+      ],
+      "lat": 47.95,
+      "lng": 22.1,
+      "name": "Szabolcs-Szatmár-Bereg",
+      "region": null
     },
     {
       "coordNote": "approximate county centre",
@@ -1110,6 +1173,20 @@
     },
     {
       "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Alba",
+      "countyHistorical": "Torda-Aranyos",
+      "lat": 46.4,
+      "lng": 23.82,
+      "name": "Unirea",
+      "nameHistorical": "Felvinc",
+      "region": "Transylvania",
+      "type": "village"
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -1292,6 +1369,20 @@
     },
     {
       "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.47,
+      "lng": 26.94,
+      "name": "Chetriș",
+      "nameHistorical": "Ketris",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -1329,6 +1420,20 @@
       "lng": 26.87,
       "name": "Fundu Răcăciuni",
       "nameHistorical": "Külsőrekecsin",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.36,
+      "lng": 27.14,
+      "name": "Găiceana",
+      "nameHistorical": "Gajcsána",
       "region": "Moldavia",
       "type": "village"
     },
@@ -1417,7 +1522,9 @@
       "type": "village"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Ónfalva"
+      ],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -1429,6 +1536,20 @@
       "nameHistorical": "Onyest",
       "region": "Moldavia",
       "type": "city"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.17,
+      "lng": 26.9,
+      "name": "Pădureni",
+      "nameHistorical": "Szeketura",
+      "region": "Moldavia",
+      "type": "village"
     },
     {
       "aliases": [],
@@ -1460,6 +1581,48 @@
     },
     {
       "aliases": [],
+      "confidence": "low",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.48,
+      "lng": 26.87,
+      "name": "Tețcani",
+      "nameHistorical": "Kickófalva",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "low",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.22,
+      "lng": 26.85,
+      "name": "Tuta",
+      "nameHistorical": "Diószeg",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bacău",
+      "countyHistorical": "Moldva",
+      "lat": 46.45,
+      "lng": 26.9,
+      "name": "Valea Mare",
+      "nameHistorical": "Nagypatak",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -1470,6 +1633,20 @@
       "name": "Valea Seacă",
       "nameHistorical": "Bogdánfalva",
       "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Békés",
+      "countyHistorical": "Csanád",
+      "lat": 46.55,
+      "lng": 20.89,
+      "name": "Csanádapáca",
+      "nameHistorical": "Csanádapáca",
+      "region": null,
       "type": "village"
     },
     {
@@ -1986,7 +2163,9 @@
       "type": "town"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Nagyszalonta – Atyástanya"
+      ],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -2241,6 +2420,20 @@
       "nameHistorical": "Naszód",
       "region": "Transylvania",
       "type": "town"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Bistrița-Năsăud",
+      "countyHistorical": "Szolnok-Doboka",
+      "lat": 47.1,
+      "lng": 24.2,
+      "name": "Nușeni",
+      "nameHistorical": "Apanagyfalu",
+      "region": "Transylvania",
+      "type": "village"
     },
     {
       "aliases": [],
@@ -2673,6 +2866,20 @@
       "coordNote": "approximate",
       "country": "RO",
       "county": "Cluj",
+      "countyHistorical": "Torda-Aranyos",
+      "lat": 46.53,
+      "lng": 23.68,
+      "name": "Cornești",
+      "nameHistorical": "Sinfalva",
+      "region": "Transylvania",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Cluj",
       "countyHistorical": "Kolozs",
       "lat": 46.8,
       "lng": 23.25,
@@ -2793,6 +3000,20 @@
       "lng": 23.2,
       "name": "Leghia",
       "nameHistorical": "Jegenye",
+      "region": "Transylvania",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Cluj",
+      "countyHistorical": "Szolnok-Doboka",
+      "lat": 46.94,
+      "lng": 23.6,
+      "name": "Luna de Jos",
+      "nameHistorical": "Lona",
       "region": "Transylvania",
       "type": "village"
     },
@@ -3202,6 +3423,76 @@
       "name": "Zăbala",
       "nameHistorical": "Zabola",
       "region": "Transylvania",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Csongrád-Csanád",
+      "countyHistorical": "Csanád",
+      "lat": 46.17,
+      "lng": 20.58,
+      "name": "Apátfalva",
+      "nameHistorical": "Apátfalva",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Csongrád-Csanád",
+      "countyHistorical": "Csanád",
+      "lat": 46.24,
+      "lng": 20.73,
+      "name": "Csanádpalota",
+      "nameHistorical": "Csanádpalota",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Csongrád-Csanád",
+      "countyHistorical": "Torontál",
+      "lat": 46.21,
+      "lng": 20.2,
+      "name": "Szeged-Szőreg",
+      "nameHistorical": "Szőreg",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Hajdú-Bihar",
+      "countyHistorical": "Bihar",
+      "lat": 47.42,
+      "lng": 21.97,
+      "name": "Értarcsa",
+      "nameHistorical": "Értarcsa",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Hajdú-Bihar",
+      "countyHistorical": "Bihar",
+      "lat": 47.32,
+      "lng": 21.67,
+      "name": "Konyár",
+      "nameHistorical": "Kónyár",
+      "region": null,
       "type": "village"
     },
     {
@@ -4583,6 +4874,20 @@
     },
     {
       "aliases": [],
+      "confidence": "medium",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Iași",
+      "countyHistorical": "Moldva",
+      "lat": 47.07,
+      "lng": 26.85,
+      "name": "Iugani",
+      "nameHistorical": "Jugán",
+      "region": "Moldavia",
+      "type": "village"
+    },
+    {
+      "aliases": [],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -5506,6 +5811,20 @@
     },
     {
       "aliases": [],
+      "confidence": "low",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Mureș",
+      "countyHistorical": "Nagy-Küküllő",
+      "lat": 46.28,
+      "lng": 24.72,
+      "name": "Șapartoc",
+      "nameHistorical": "Sárpatak",
+      "region": "Transylvania",
+      "type": "village"
+    },
+    {
+      "aliases": [],
       "confidence": "medium",
       "coordNote": "approximate",
       "country": "RO",
@@ -6108,7 +6427,9 @@
       "type": "village"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Angrásfalva"
+      ],
       "confidence": "high",
       "coordNote": "approximate",
       "country": "RO",
@@ -6147,6 +6468,188 @@
       "name": "Vornicenii Mari",
       "nameHistorical": "Józseffalva",
       "region": "Bukovina",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.99,
+      "lng": 22.52,
+      "name": "Fehérgyarmat",
+      "nameHistorical": "Fehérgyarmat",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.94,
+      "lng": 22.77,
+      "name": "Gacsály",
+      "nameHistorical": "Gacsály",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.93,
+      "lng": 22.42,
+      "name": "Győrtelek",
+      "nameHistorical": "Györtelek",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 48.06,
+      "lng": 22.52,
+      "name": "Kisar",
+      "nameHistorical": "Kisar",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 48.04,
+      "lng": 22.8,
+      "name": "Kispalád",
+      "nameHistorical": "Kispalád",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.94,
+      "lng": 22.38,
+      "name": "Kocsord",
+      "nameHistorical": "Kocsord",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.85,
+      "lng": 22.65,
+      "name": "Komlódtótfalu",
+      "nameHistorical": "Komlódtótfalu",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.99,
+      "lng": 22.45,
+      "name": "Nábrád",
+      "nameHistorical": "Nábrád",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.92,
+      "lng": 22.27,
+      "name": "Nyírmeggyes",
+      "nameHistorical": "Nyírmeggyes",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.88,
+      "lng": 22.57,
+      "name": "Porcsalma",
+      "nameHistorical": "Porcsalma",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.96,
+      "lng": 22.46,
+      "name": "Tunyogmatolcs",
+      "nameHistorical": "Tunyog",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 48.02,
+      "lng": 22.68,
+      "name": "Túrricse",
+      "nameHistorical": "Túrricse",
+      "region": null,
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "HU",
+      "county": "Szabolcs-Szatmár-Bereg",
+      "countyHistorical": "Szatmár",
+      "lat": 47.85,
+      "lng": 22.56,
+      "name": "Tyukod",
+      "nameHistorical": "Tyukod",
+      "region": null,
       "type": "village"
     },
     {
@@ -6307,6 +6810,20 @@
       "lng": 21.3043,
       "name": "Murani",
       "nameHistorical": "Temesmurány",
+      "region": "Banat",
+      "type": "village"
+    },
+    {
+      "aliases": [],
+      "confidence": "high",
+      "coordNote": "approximate",
+      "country": "RO",
+      "county": "Timiș",
+      "countyHistorical": "Torontál",
+      "lat": 45.6,
+      "lng": 20.85,
+      "name": "Otelec",
+      "nameHistorical": "Otelek",
       "region": "Banat",
       "type": "village"
     },

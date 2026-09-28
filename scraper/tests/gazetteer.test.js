@@ -63,6 +63,7 @@ test('gazetteer file sanity: every place has a known county and approximate coor
   assert.ok(g.data.places.length >= 40);
   for (const p of g.data.places) {
     assert.ok(g.county(p.county), `unknown county ${p.county} for ${p.name}`);
+    if (p.supplement && p.lat === null) continue; // print/places-rfm.json: county-only entries are allowed
     assert.ok(p.lat > 43 && p.lat < 49 && p.lng > 20 && p.lng < 30, `coords out of Romania for ${p.name}`);
     assert.ok(['high', 'medium', 'low'].includes(p.confidence));
   }

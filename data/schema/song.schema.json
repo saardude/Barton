@@ -140,6 +140,13 @@
               "url": {
                 "type": "string",
                 "format": "uri"
+              },
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The id this record had when it was a separate record (e.g. gyuj-1-12994 before merging into bsys-10-12994); lets older references be mapped."
               }
             }
           }

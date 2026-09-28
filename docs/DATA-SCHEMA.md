@@ -121,3 +121,35 @@ the bsys id, fills gaps from the gyuj page (journey, informant, cadences) and re
 link in `source.alternates`. fmbc records are distinct (Lampert catalogue); fmbc facsimile
 captions mention the Bartok System number ("Bartók System, A-I 1071b (BR 03245)") but that link is
 not resolved automatically.
+
+## App copy: `data/songs.slim.json`
+
+`songs.json` (with `rawFields`) is the archival file; the app loads `songs.slim.json`, written by the
+same build: identical records and field names, minified, with `rawFields` removed and every `null`
+value or empty array omitted (readers treat a missing key as null / []). Further trims, all
+derivable from `songs.json`, `facets.json`, `places.json` or `collections-gyuj.json`:
+
+- `source` keeps `site, siteId, url, referenceCode (only when it differs from siteId), volume, number,
+  alternates[{site, siteId, url, id}]` (`alternates[].id` is the id the merged gyuj record used to
+  have, e.g. `gyuj-1-12994`)
+- `location` is `{placeId, origin?}` whenever a place node exists (also `xx/unresolved/...` nodes,
+  which carry the printed names as `name`/`nameHistorical`/`countyHistorical`): names, county,
+  country, region and coordinates are read from the `places.json` node; only records without any
+  place string keep their (empty) location inline
+- `performance` is omitted when `unknown`; `music.rhythm` and `music.form` are omitted (implied by
+  `style`; see `styleRaw` in songs.json)
+- `related` keeps only `variant` / `cross-site` entries as `{id, relation}` (`url` only when no id);
+  previous/next navigation links (`link`) are dropped
+- `media.notation[]` / `media.audio[]` items are `{url, caption}` (filename-only captions dropped)
+- `journey` is `{collectionId}` (join with `collections-gyuj.json`); `incipit` is omitted when equal to `title`
+- `styleRaw`, `location.raw`, `collected.raw`, `source.siteName`, `source.siteRecordId`,
+  `source.fetchedAt` are omitted
+
+The build prints both file sizes in `data/BUILD.md`.
+
+## Printed volumes (`data/rfm.json`)
+
+Records transcribed from *Rumanian Folk Music* vols IV-V (`print/parse-rfm.mjs`, site `rfm`,
+ids `rfm-4-*`, `rfm-5-*`) arrive already in canonical form and are merged by `build` as a fourth
+source (counted in places and facets). `print/places-rfm.json` is folded into the gazetteer lookup
+read-only (its entries keep their own `confidence`; county-only entries have null coordinates).

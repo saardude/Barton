@@ -1,14 +1,14 @@
 # Scraper status
 
-Last update: 2026-09-28 09:25 UTC (data engineer). Updated whenever a crawl is launched or a build lands.
+Last update: 2026-09-28 11:35 UTC (data engineer). Updated whenever a crawl is launched or a build lands.
 
 ## Crawls (launched by the coordinator, one nohup process per site, logs in `scraper/cache/crawl-<site>.log`)
 
 | site | state | progress | check |
 | --- | --- | --- | --- |
 | fmbc (bartok-nepzene.zti.hu) | finished | 261/261 record pages cached | `cat scraper/cache/crawl-fmbc.log` |
-| gyuj (bartok-gyujtesek.zti.hu) | running | 1,600/2,332 at 09:23 UTC (ETA ~12 min) | `tail -n 2 scraper/cache/crawl-gyuj.log` |
-| bsys (systems.zti.hu, `--ignore-robots`, owner decision) | running | 900/13,817 at 09:23 UTC (ETA ~3.5 h) | `tail -n 2 scraper/cache/crawl-bsys.log` |
+| gyuj (bartok-gyujtesek.zti.hu) | finished | 2,332/2,332 record pages cached | `cat scraper/cache/crawl-gyuj.log` |
+| bsys (systems.zti.hu, `--ignore-robots`, owner decision, pid 7106) | running | 8,500/13,817 at 11:30 UTC (ETA ~1.5 h) | `tail -n 2 scraper/cache/crawl-bsys.log` |
 
 Do not launch a second crawl for a site while its process runs (`ps aux | grep "cli.js crawl"`).
 
@@ -21,19 +21,21 @@ node src/cli.js parse all             # cached record pages -> raw/<site>/record
 node src/cli.js gazetteer             # fold fmbc's printed modern names/coordinates into data/gazetteer.json
 node src/cli.js build                 # data/songs.json, places.json, facets.json, BUILD.md
 node src/cli.js validate              # schema gate
+cd .. && node qa/checks/data-gates.mjs --file data/songs.json   # QA gates (summary line)
 ```
 
-## Current build (09:22 UTC, bsys 655 and gyuj 1,385 record pages parsed; the rest from listing rows)
+`data/rfm.json` (printed Rumanian Folk Music IV-V, 830 records from print/parse-rfm.mjs) is read by `build` as a
+fourth source; do not regenerate it here. `print/places-rfm.json` is folded into the gazetteer lookup read-only.
 
-- songs: 14,080 (16,410 raw records; 2,330 bsys/gyuj pairs merged into one record each with `source.alternates`)
-- present-day Romania: 3,246 (bsys 3,159, fmbc 87); 2,616 of them with coordinates
-- resolution: county 7,852, unresolved 3,460, gazetteer 2,529, site 239; countries: HU 6,148, null 3,472, RO 3,246, SK 1,204, UA 7, RS 2, HR 1
-- style set on 13,819 (old style 5,196, new style 4,630, mixed 3,263, not classified 373, instrumental 357); genre null everywhere (no site prints a genre label)
-- with audio 737, with notation image 2,276, with sung text 113 (fmbc), with ethnicity 261 (fmbc only)
-- listing-only rows still awaiting their page (`rawFields._partial`): 11,804 (drops as the bsys crawl progresses)
-- places: 867 nodes; gazetteer: 386 places; unresolved place strings: 232; Romanian localities resolved to county only: 75 names (listed in data/BUILD.md)
-- validate: OK for songs.json (14,080), places.json (867), facets.json; `npm test`: 36/36 pass
-- data/songs.json is 30 MB with `rawFields`; the app should ship a slimmed copy (drop `rawFields`, keep it for the Raw JSON tab on demand)
+## Current build (11:33 UTC; bsys 8,657 of 13,817 record pages parsed, the rest from listing rows)
+
+- songs: 14,910 = fmbc 261 + bsys 13,817 + gyuj 2,332 + rfm 830 (printed volumes, data/rfm.json), minus 2,330 bsys/gyuj pairs merged (`source.alternates[]` keeps the gyuj link and its former id)
+- present-day Romania: 4,072; with coordinates 3,385
+- resolution: county 7,893, gazetteer 3,638, unresolved 3,140, site 239; gazetteer 418 places (+60 read-only from print/places-rfm.json)
+- genre: 830 rfm records (colinda 497, cantec 173, joc 113, bocet 21, other 17, doina 9), null for the 14,080 site records (no site prints a genre); style set on 13,819
+- listing-only rows still awaiting their page (`rawFields._partial`): 4,214
+- files: data/songs.json 40.5 MB (archival, with rawFields); data/songs.slim.json 9.13 MB (app copy, spec in docs/DATA-SCHEMA.md)
+- gates: `npm test` 36/36; `validate` OK (songs 14,910, places 923, facets); `qa/checks/data-gates.mjs`: 8 pass, 4 warn, 1 blocking fail (journeys-valid: data/journeys.json stops lack the `date`/`recordIds` fields the gate expects; a geo-agent output to regenerate after each build; `alternates[].id` maps old gyuj ids)
 
 ## Confirmed against live HTML
 

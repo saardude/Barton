@@ -3,6 +3,7 @@ import path from 'node:path';
 import { PATHS, fold, readJson } from './util.js';
 
 export const GAZETTEER_FILE = path.join(PATHS.data, 'gazetteer.json');
+export const SUPPLEMENT_FILES = [path.join(PATHS.repo, 'print', 'places-rfm.json')];
 
 /** Strip trailing county hints and qualifiers: "Kerpenyét (Bihar)" -> "Kerpenyét". */
 export function stripQualifiers(name) {
@@ -38,8 +39,26 @@ export class Gazetteer {
     this.byName.get(k).push({ entry, via });
   }
 
-  static async load(file = GAZETTEER_FILE) {
-    return new Gazetteer(await readJson(file));
+  /**
+   * Loads data/gazetteer.json plus read-only supplements (print/places-rfm.json: villages printed in
+   * the Rumanian Folk Music volumes). Supplement entries keep their own confidence flags and never
+   * override a place the main gazetteer already holds (same folded name + county).
+   */
+  static async load(file = GAZETTEER_FILE, supplements = SUPPLEMENT_FILES) {
+    const data = await readJson(file);
+    data.places = [...(data.places || [])];
+    const have = new Set(data.places.map((p) => `${fold(p.name)}|${fold(p.county)}`));
+    for (const sup of supplements) {
+      const extra = await readJson(sup, null);
+      if (!extra) continue;
+      for (const p of extra.places || []) {
+        const key = `${fold(p.name)}|${fold(p.county)}`;
+        if (have.has(key)) continue;
+        have.add(key);
+        data.places.push({ ...p, aliases: p.aliases || [], supplement: path.basename(sup) });
+      }
+    }
+    return new Gazetteer(data);
   }
 
   /** Resolve a modern or historical county name to the county entry, or null. */

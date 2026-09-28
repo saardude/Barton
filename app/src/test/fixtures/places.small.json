@@ -1,0 +1,430 @@
+[
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 38
+    },
+    "county": null,
+    "countyHistorical": null,
+    "id": "ro",
+    "lat": 45.9,
+    "lng": 24.9,
+    "name": "RO",
+    "nameHistorical": null,
+    "parent": null,
+    "region": null,
+    "songIds": [],
+    "type": "country",
+    "years": {
+      "max": 1917,
+      "min": 1906
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 24
+    },
+    "county": null,
+    "countyHistorical": null,
+    "id": "ro/crisana",
+    "lat": 46.7,
+    "lng": 22.2,
+    "name": "Crișana",
+    "nameHistorical": null,
+    "parent": "ro",
+    "region": "Crișana",
+    "songIds": [],
+    "type": "region",
+    "years": {
+      "max": 1917,
+      "min": 1909
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 24
+    },
+    "county": "Bihor",
+    "countyHistorical": "Bihar",
+    "id": "ro/crisana/bihor",
+    "lat": 46.9,
+    "lng": 22.3,
+    "name": "Bihor",
+    "nameHistorical": "Bihar",
+    "parent": "ro/crisana",
+    "region": "Crișana",
+    "songIds": [],
+    "type": "county",
+    "years": {
+      "max": 1917,
+      "min": 1909
+    }
+  },
+  {
+    "confidence": "low",
+    "coordSource": "gazetteer-approx",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 12
+    },
+    "county": "Bihor",
+    "countyHistorical": "Bihar",
+    "id": "ro/crisana/bihor/beius",
+    "lat": 46.66,
+    "lng": 22.35,
+    "name": "Beiuș",
+    "nameHistorical": "Belényes",
+    "parent": "ro/crisana/bihor",
+    "region": "Crișana",
+    "songIds": [
+      "bsys-1",
+      "bsys-2",
+      "bsys-3",
+      "bsys-8",
+      "bsys-11",
+      "fmbc-1",
+      "fmbc-2",
+      "gyuj-1",
+      "gyuj-2",
+      "rfm-3",
+      "bsys-27",
+      "bsys-28"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1916,
+      "min": 1909
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "site",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 8
+    },
+    "county": "Bihor",
+    "countyHistorical": "Bihar",
+    "id": "ro/crisana/bihor/ineu",
+    "lat": 46.43,
+    "lng": 21.84,
+    "name": "Ineu",
+    "nameHistorical": "Köröskisjenő",
+    "parent": "ro/crisana/bihor",
+    "region": "Crișana",
+    "songIds": [
+      "bsys-4",
+      "bsys-5",
+      "bsys-6",
+      "bsys-7",
+      "bsys-13",
+      "fmbc-3",
+      "rfm-1",
+      "rfm-2"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1914,
+      "min": 1912
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 1
+    },
+    "county": "Bihor",
+    "countyHistorical": "Bihar",
+    "id": "ro/crisana/bihor/nomap",
+    "lat": null,
+    "lng": null,
+    "name": "Tărcaia",
+    "nameHistorical": "Tárkány",
+    "parent": "ro/crisana/bihor",
+    "region": "Crișana",
+    "songIds": [
+      "bsys-12"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1917,
+      "min": 1917
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 14
+    },
+    "county": null,
+    "countyHistorical": null,
+    "id": "ro/transylvania",
+    "lat": 46.5,
+    "lng": 24.5,
+    "name": "Transylvania",
+    "nameHistorical": null,
+    "parent": "ro",
+    "region": "Transylvania",
+    "songIds": [],
+    "type": "region",
+    "years": {
+      "max": 1914,
+      "min": 1906
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 8
+    },
+    "county": "Cluj",
+    "countyHistorical": "Kolozs",
+    "id": "ro/transylvania/cluj",
+    "lat": 46.8,
+    "lng": 23.5,
+    "name": "Cluj",
+    "nameHistorical": "Kolozs",
+    "parent": "ro/transylvania",
+    "region": "Transylvania",
+    "songIds": [],
+    "type": "county",
+    "years": {
+      "max": 1912,
+      "min": 1906
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "site",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 6
+    },
+    "county": "Cluj",
+    "countyHistorical": "Kolozs",
+    "id": "ro/transylvania/cluj/izvoru-crisului",
+    "lat": 46.84,
+    "lng": 23.1,
+    "name": "Izvoru Crișului",
+    "nameHistorical": "Körösfő",
+    "parent": "ro/transylvania/cluj",
+    "region": "Transylvania",
+    "songIds": [
+      "bsys-14",
+      "bsys-15",
+      "bsys-16",
+      "bsys-17",
+      "fmbc-4",
+      "fmbc-5"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1912,
+      "min": 1906
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 6
+    },
+    "county": "Harghita",
+    "countyHistorical": "Csík",
+    "id": "ro/transylvania/harghita",
+    "lat": 46.5,
+    "lng": 25.8,
+    "name": "Harghita",
+    "nameHistorical": "Csík",
+    "parent": "ro/transylvania",
+    "region": "Transylvania",
+    "songIds": [],
+    "type": "county",
+    "years": {
+      "max": 1914,
+      "min": 1907
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "site",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 3
+    },
+    "county": "Harghita",
+    "countyHistorical": "Csík",
+    "id": "ro/transylvania/harghita/joseni",
+    "lat": 46.7,
+    "lng": 25.5,
+    "name": "Joseni",
+    "nameHistorical": "Gyergyóalfalu",
+    "parent": "ro/transylvania/harghita",
+    "region": "Transylvania",
+    "songIds": [
+      "bsys-20",
+      "bsys-21",
+      "bsys-22"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1907,
+      "min": 1907
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "site",
+    "country": "RO",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 2
+    },
+    "county": "Harghita",
+    "countyHistorical": "Csík",
+    "id": "ro/transylvania/harghita/ciumani",
+    "lat": 46.68,
+    "lng": 25.53,
+    "name": "Ciumani",
+    "nameHistorical": "Gyergyócsomafalva",
+    "parent": "ro/transylvania/harghita",
+    "region": "Transylvania",
+    "songIds": [
+      "bsys-23",
+      "bsys-24"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1914,
+      "min": 1914
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "HU",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": null,
+    "id": "hu",
+    "lat": 47.2,
+    "lng": 19.5,
+    "name": "HU",
+    "nameHistorical": null,
+    "parent": null,
+    "region": null,
+    "songIds": [],
+    "type": "country",
+    "years": {
+      "max": 1918,
+      "min": 1918
+    }
+  },
+  {
+    "confidence": "high",
+    "coordSource": "centroid-of-children",
+    "country": "HU",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 1
+    },
+    "county": null,
+    "countyHistorical": null,
+    "id": "hu/unresolved",
+    "lat": 47.2,
+    "lng": 19.5,
+    "name": "unresolved",
+    "nameHistorical": null,
+    "parent": "hu",
+    "region": null,
+    "songIds": [],
+    "type": "region",
+    "years": {
+      "max": 1918,
+      "min": 1918
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": null,
+    "country": "HU",
+    "counts": {
+      "byGenre": {},
+      "byPerformance": {},
+      "bySite": {},
+      "total": 1
+    },
+    "county": "Újszász",
+    "countyHistorical": "Újszász",
+    "id": "hu/unresolved/ujszasz",
+    "lat": null,
+    "lng": null,
+    "name": "Újszász",
+    "nameHistorical": "Újszász",
+    "parent": "hu/unresolved",
+    "region": null,
+    "songIds": [],
+    "type": "county",
+    "years": {
+      "max": 1918,
+      "min": 1918
+    }
+  }
+]

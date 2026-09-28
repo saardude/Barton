@@ -3,9 +3,11 @@ import path from 'node:path';
 import { promises as fs } from 'node:fs';
 import { PATHS, fold, readJson, writeJson, exists, sha1 } from './util.js';
 import { Gazetteer } from './gazetteer.js';
-import { normalizeRecord } from './normalize.js';
+import { normalizeRecord, placeIdFor } from './normalize.js';
 
 const SITES = ['fmbc', 'bsys', 'gyuj'];
+// Printed volumes (Rumanian Folk Music IV-V) arrive already normalised in data/rfm.json (print/parse-rfm.mjs).
+export const RFM_FILE = path.join(PATHS.data, 'rfm.json');
 const slug = (s) => fold(s).replace(/\s+/g, '-');
 
 function inc(map, key) {
@@ -62,7 +64,7 @@ export function mergeCrossSite(songs) {
     const primary = group[0];
     const isPartial = (s) => !!(s.rawFields && s.rawFields._partial);
     for (const other of group.slice(1)) {
-      const alt = { site: other.source.site, siteName: other.source.siteName, siteId: other.source.siteId, url: other.source.url };
+      const alt = { site: other.source.site, siteName: other.source.siteName, siteId: other.source.siteId, url: other.source.url, id: other.id };
       if (!primary.source.alternates.some((x) => x.url === alt.url)) primary.source.alternates.push(alt);
       // A record parsed from its page beats one built from a listing row, field by field.
       const otherWins = isPartial(primary) && !isPartial(other);
@@ -232,6 +234,17 @@ export function assemble(rawBySite, gazetteer) {
       songs.push(s);
     }
   }
+  for (const r of rawBySite.rfm || []) {
+    // already canonical; only derive the place node id so places.json can link back
+    const s = { ...r, source: { ...r.source, alternates: r.source.alternates || [] }, related: r.related || [], rawFields: r.rawFields ?? null };
+    if (!s.location.placeId) s.location = { ...s.location, placeId: placeIdFor(s.location) };
+    if (seen.has(s.id)) {
+      duplicates += 1;
+      continue;
+    }
+    seen.add(s.id);
+    songs.push(s);
+  }
   const m = mergeCrossSite(songs);
   songs = m.songs;
   songs.sort((a, b) => a.id.localeCompare(b.id));
@@ -251,14 +264,75 @@ export async function build({ log = () => {} } = {}) {
     perSite[site] = { raw: rawBySite[site].length, fromPages: rawBySite[site].filter((r) => !(r.fields && r.fields._partial)).length };
     log(`${site}: ${perSite[site].raw} raw records (${perSite[site].fromPages} from record pages)`);
   }
+  const rfm = (await exists(RFM_FILE)) ? await readJson(RFM_FILE) : { records: [] };
+  rawBySite.rfm = Array.isArray(rfm) ? rfm : rfm.records || [];
+  perSite.rfm = { raw: rawBySite.rfm.length, fromPages: rawBySite.rfm.length };
+  log(`rfm: ${rawBySite.rfm.length} printed-volume records from data/rfm.json`);
   const { songs, places, facets, duplicates, merged } = assemble(rawBySite, gazetteer);
   await writeJson(path.join(PATHS.data, 'songs.json'), songs);
+  const slimText = JSON.stringify(songs.map(slim));
+  await fs.writeFile(path.join(PATHS.data, 'songs.slim.json'), slimText, 'utf8');
   await writeJson(path.join(PATHS.data, 'places.json'), places);
   await writeJson(path.join(PATHS.data, 'facets.json'), facets);
   const summary = buildSummary(songs, places, perSite, duplicates, merged);
+  summary.slimBytes = Buffer.byteLength(slimText, 'utf8');
+  summary.fullBytes = Buffer.byteLength(await fs.readFile(path.join(PATHS.data, 'songs.json'), 'utf8'), 'utf8');
   await writeBuildReport(summary);
   const { unresolved, countyOnlyRO, ...compact } = summary;
   return compact;
+}
+
+/**
+ * App copy of a record (data/songs.slim.json). Same field names as the schema, but:
+ * no rawFields; null values and empty arrays omitted (readers treat missing as null/[]);
+ * source keeps site, siteId, url, referenceCode, volume, number, alternates{site,siteId,url,id};
+ * related keeps only variant/cross-site links as {id, relation} (url only when there is no id);
+ * a resolved location is just {placeId, origin} (names, county, country, coordinates live on the
+ * places.json node); performance 'unknown' omitted; music.rhythm/form omitted (implied by style);
+ * media items are {url, caption}; journey is {collectionId}; incipit dropped when equal to title;
+ * styleRaw, location.raw, collected.raw, fetchedAt, siteRecordId, siteName and a referenceCode
+ * equal to siteId are dropped (all derivable from songs.json, facets or collections-gyuj.json).
+ */
+export function slim(song) {
+  const prune = (v) => {
+    if (Array.isArray(v)) {
+      const a = v.filter((x) => x !== null && x !== undefined).map(prune);
+      return a.length ? a : undefined;
+    }
+    if (v && typeof v === 'object') {
+      const o = {};
+      for (const [k, x] of Object.entries(v)) {
+        const y = prune(x);
+        if (y !== undefined && y !== null) o[k] = y;
+      }
+      return Object.keys(o).length ? o : undefined;
+    }
+    return v;
+  };
+  const src = song.source;
+  const out = {
+    ...song,
+    rawFields: undefined,
+    styleRaw: undefined,
+    incipit: song.incipit && song.incipit !== song.title ? song.incipit : undefined,
+    source: { site: src.site, siteId: src.siteId, url: src.url, referenceCode: src.referenceCode, volume: src.volume, number: src.number, alternates: (src.alternates || []).map((a) => ({ site: a.site, siteId: a.siteId, url: a.url, id: a.id })) },
+    performance: song.performance === 'unknown' ? undefined : song.performance,
+    // a resolved place is described by its node in places.json: keep only the link (+ origin)
+    location: song.location.placeId
+      ? { placeId: song.location.placeId, origin: song.location.origin }
+      : { ...song.location, raw: undefined, resolution: undefined },
+    collected: { ...song.collected, raw: undefined },
+    // rhythm/form are implied by style/category (see styleRaw in songs.json); cadences/syllables/position stay
+    music: { ...song.music, rhythm: undefined, form: undefined },
+    media: {
+      notation: song.media.notation.map((m) => ({ url: m.url, caption: m.caption && !m.url.endsWith(m.caption.replace(/^BR\//, '')) ? m.caption : undefined })),
+      audio: song.media.audio.map((m) => ({ url: m.url, caption: m.caption }))
+    },
+    related: (song.related || []).filter((r) => r.relation !== 'link').map((r) => (r.id ? { id: r.id, relation: r.relation } : { url: r.url, relation: r.relation })),
+    journey: song.journey ? { collectionId: song.journey.collectionId } : undefined
+  };
+  if (out.source.referenceCode === out.source.siteId) out.source.referenceCode = undefined;
+  return prune(out) || {};
 }
 
 function buildSummary(songs, places, perSite, duplicates, merged) {
@@ -322,6 +396,7 @@ async function writeBuildReport(x) {
     `- songs: ${x.songs} (bsys/gyuj pairs merged into one record: ${x.merged}; exact duplicates dropped: ${x.duplicates})`,
     ...Object.entries(x.perSite).map(([k, v]) => `- ${k}: ${v.raw} raw records, ${v.fromPages} parsed from record pages, ${v.raw - v.fromPages} from listing rows only`),
     `- still listing-only after merge (rawFields._partial): ${x.partial}`,
+    `- files: data/songs.json ${(x.fullBytes / 1048576).toFixed(1)} MB (with rawFields); data/songs.slim.json ${(x.slimBytes / 1048576).toFixed(2)} MB (app copy: no rawFields, minified)`,
     `- with year: ${x.withYear}; with audio: ${x.withAudio}; with notation image: ${x.withNotation}; with sung text: ${x.withText}; with journey (gyuj collection): ${x.withJourney}`,
     `- with informant ethnicity: ${x.withEthnicity} (only bartok-nepzene.zti.hu prints an Ethnicity field; the bsys/gyuj record template has none)`,
     '',
