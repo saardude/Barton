@@ -40,3 +40,5 @@ geo/.build-tmp/
 # print-source pipeline: Internet Archive OCR downloads (re-create with print/fetch.mjs)
 print/raw/
 print/.venv/
+.vercel
+.env*

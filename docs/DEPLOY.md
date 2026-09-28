@@ -289,3 +289,17 @@ workflows deploy regardless of this environment's policy.
 | Old data after a deploy | A file under `public/data/` was written without a content hash; fix `sync-data` |
 | CSP blocks tiles, images or audio | Provider host not in `img-src` / `media-src` / `connect-src`; update `vercel.json` |
 | `vercel build` fails on the runner but works locally | Node version differs; `.nvmrc` is 22, project setting should be 22.x |
+
+## Project as created on 2026-09-28
+
+| Setting | Value |
+| --- | --- |
+| Vercel team (scope) | Tutti (`tutti3`, org id `team_pxirNsKcxcCK1zYdohIdOxc2`) |
+| Project | `bartok-romania-viewer` (project id `prj_x46xY2sd0ramFgQcPUa57zu1QdGy`) |
+| Linked from | repository root (`.vercel/project.json`, git-ignored) |
+| Node version (project setting) | 24.x at creation; the repo pins 22 in `.nvmrc` and CI, change the project setting to 22.x in the dashboard or leave both on 24 |
+| Deployments so far | none |
+
+For GitHub Actions set the repository secrets `VERCEL_TOKEN` (a token scoped to the Tutti team), `VERCEL_ORG_ID` = the org id above, `VERCEL_PROJECT_ID` = the project id above. The ids are identifiers, not secrets, but they are kept out of the workflow file so the same workflow works for a fork.
+
+The account has no personal (Hobby) scope, so the project had to live in a team. If the academic project should be separated from the Tutti workspace, create a new team in the Vercel dashboard, transfer the project to it (Project Settings, General, Transfer), and re-run `npx vercel link --yes --project bartok-romania-viewer --scope <new-team>` here.
