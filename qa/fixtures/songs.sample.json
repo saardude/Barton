@@ -1,0 +1,140 @@
+[
+  {
+    "id": "bsys-A204",
+    "source": {
+      "site": "bsys",
+      "url": "https://systems.zti.hu/br/en/browse/A204/",
+      "referenceCode": "A 204",
+      "volume": null,
+      "number": "A204",
+      "siteRecordId": "A204",
+      "fetchedAt": null
+    },
+    "title": "Hej, Dunarol fuj a szel",
+    "incipit": "Hej, Dunarol fuj a szel",
+    "genre": "cantec",
+    "genreRaw": "lyric song",
+    "style": "old style",
+    "performance": "vocal",
+    "instrument": [],
+    "performer": { "name": "Toth Ferencne", "age": 42, "sex": "f", "ethnicity": "Hungarian" },
+    "collector": "Bartok Bela",
+    "collected": { "year": 1910, "month": 4, "day": null, "raw": "1910. apr." },
+    "location": {
+      "country": "RO",
+      "region": "Crisana",
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "village": "Ineu",
+      "villageHistorical": "Borosjeno",
+      "lat": 46.4333,
+      "lng": 21.8333,
+      "raw": "Borosjeno (Arad)",
+      "placeId": "ro-ar-ineu",
+      "origin": null,
+      "resolution": "gazetteer"
+    },
+    "media": {
+      "notation": [{ "url": "https://systems.zti.hu/br/img/A204.png", "type": "image/png", "caption": "A 204" }],
+      "audio": []
+    },
+    "music": { "systemPosition": "A 204/1", "cadences": "5 (b3) 1", "rhythm": "parlando", "mode": null, "ambitus": "1-8", "syllables": "8,8,8,8", "form": "A B B A" },
+    "text": "Hej, Dunarol fuj a szel,\nSzegeny embert mindig er.",
+    "remarks": "Phonograph cylinder MF 1234a.",
+    "related": [],
+    "composition": [],
+    "rawFields": { "Sys.": "A 204", "Place": "Borosjeno (Arad)", "Note": "<b>verbatim, not scanned</b>" }
+  },
+  {
+    "id": "fmbc-517",
+    "source": {
+      "site": "fmbc",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/517",
+      "referenceCode": "RFM II 81",
+      "volume": "RFM II",
+      "number": "81",
+      "siteRecordId": "517",
+      "fetchedAt": null
+    },
+    "title": "Sculati, sculati, boieri mari",
+    "incipit": "Sculati, sculati, boieri mari",
+    "genre": "colinda",
+    "genreRaw": "colinda",
+    "style": null,
+    "performance": "vocal",
+    "instrument": [],
+    "performer": { "name": "Ioan Pop", "age": 60, "sex": "m", "ethnicity": "Romanian" },
+    "collector": "Bartok Bela",
+    "collected": { "year": null, "month": null, "day": null, "raw": "?" },
+    "location": {
+      "country": "RO",
+      "region": "Crisana",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "village": "Beiuș",
+      "villageHistorical": "Belenyes",
+      "lat": 46.6667,
+      "lng": 22.35,
+      "raw": "Belenyes (Bihar)",
+      "placeId": "ro-bh-beius",
+      "origin": null,
+      "resolution": "gazetteer"
+    },
+    "media": {
+      "notation": [],
+      "audio": [{ "url": "https://bartok-nepzene.zti.hu/audio/517.mp3", "type": "audio/mpeg", "caption": null }]
+    },
+    "music": { "systemPosition": null, "cadences": null, "rhythm": "giusto", "mode": null, "ambitus": null, "syllables": null, "form": null },
+    "text": "Sculati, sculati, boieri mari,\nSculati voi, romani plugari.",
+    "remarks": null,
+    "related": [{ "id": null, "url": "https://bartok-nepzene.zti.hu/en/browse/518", "label": "variant", "relation": "variant" }],
+    "composition": [{ "work": "Romanian Christmas Carols", "movement": "Series I, No. 4", "catalogue": "Sz. 57", "raw": "Colinde, I/4 (Sz. 57)" }],
+    "rawFields": null
+  },
+  {
+    "id": "gyuj-21-5398",
+    "source": {
+      "site": "gyuj",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/21/5398",
+      "referenceCode": null,
+      "volume": null,
+      "number": "5398",
+      "siteRecordId": "21/5398",
+      "fetchedAt": null
+    },
+    "title": "Ardeleana",
+    "incipit": null,
+    "genre": "joc",
+    "genreRaw": "dance (ardeleana)",
+    "style": null,
+    "performance": "instrumental",
+    "instrument": ["violin"],
+    "performer": { "name": null, "age": null, "sex": null, "ethnicity": "Romanian" },
+    "collector": "Bartok Bela",
+    "collected": { "year": 1912, "month": null, "day": null, "raw": "1912" },
+    "location": {
+      "country": "RO",
+      "region": "Transylvania",
+      "county": "Harghita",
+      "countyHistorical": "Maros-Torda",
+      "village": "Toplița",
+      "villageHistorical": "Maroshéviz",
+      "lat": null,
+      "lng": null,
+      "raw": "Maroshéviz (Maros-Torda)",
+      "placeId": null,
+      "origin": null,
+      "resolution": "manual"
+    },
+    "media": {
+      "notation": [{ "url": "https://bartok-gyujtesek.zti.hu/img/21-5398.png", "type": "image/png", "caption": null }],
+      "audio": []
+    },
+    "music": { "systemPosition": null, "cadences": null, "rhythm": "tempo giusto", "mode": null, "ambitus": null, "syllables": null, "form": null },
+    "text": null,
+    "remarks": "Instrumental; no text.",
+    "related": [],
+    "composition": [],
+    "rawFields": null
+  }
+]

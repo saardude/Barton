@@ -1,0 +1,263 @@
+/*
+ * Bartok Romania field-collection viewer: design tokens
+ * Drop into app/src/styles/tokens.css and import once from main.tsx.
+ * Source of truth for values and contrast figures: docs/DESIGN-TOKENS.md
+ * Plain CSS custom properties, no preprocessor. All colours are hex.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Colour: light (default) ------------------------------------ */
+  --ground: #f4f2ec;        /* page background */
+  --surface: #ffffff;       /* cards, rails, tables, popovers */
+  --surface-2: #faf9f5;     /* alternate table rows, subtle wells */
+  --ink: #1c1b18;           /* primary text          15.38:1 on ground */
+  --ink-2: #3a3833;         /* secondary text        10.46:1 on ground */
+  --muted: #5c5952;         /* captions, counts       6.24:1 on ground */
+  --ink-3: #767268;         /* placeholder text       4.29:1 on surface, do not use on ground */
+  --line: #d9d6cd;          /* decorative hairlines   1.30:1 (non-semantic only) */
+  --line-strong: #8a877e;   /* component boundaries   3.21:1 on ground */
+  --accent: #b5502e;        /* links, selected, primary action  4.52:1 on ground, 5.06:1 on surface */
+  --accent-soft: #ecd9cf;   /* selected row / chip background; ink on it 12.62:1 */
+  --accent-ink: #ffffff;    /* text on solid accent   5.06:1 */
+  --ok: #2f7a4a;            /* 4.69:1 on ground */
+  --warn: #8a6a0e;          /* 4.52:1 on ground */
+  --err: #a3322a;           /* 6.16:1 on ground */
+  --scrim: rgba(28, 27, 24, 0.45);
+
+  /* ---- Genre palette (categorical, six genres + other) ------------- */
+  /* Ordered by CIE L* so genres differ in lightness as well as hue.   */
+  /* Every value is >= 3:1 against --ground (see DESIGN-TOKENS.md).    */
+  --genre-bocet: #3d3b37;   /* L* 25  lament: near-neutral charcoal */
+  --genre-colinda: #1d4b75; /* L* 31  winter carol: deep blue */
+  --genre-doina: #93401f;   /* L* 38  doina: rust */
+  --genre-joc: #2d7647;     /* L* 44  dance tune: green */
+  --genre-nunta: #9a68a6;   /* L* 51  wedding song: plum */
+  --genre-cantec: #bf7a1e;  /* L* 57  song proper: ochre */
+  --genre-other: #8a877e;   /* same as line-strong, hatched in bars */
+  --genre-label-ink: #ffffff; /* text on any light-mode genre swatch, min 3.49:1 (large text / non-text only) */
+
+  /* ---- Map ---------------------------------------------------------- */
+  --map-dot: #3a3833;               /* mono dot fill when not coloured by genre */
+  --map-dot-stroke: #ffffff;        /* 1 px separation stroke */
+  --map-halo: #ffffff;              /* inner ring of the selected state */
+  --map-select: #b5502e;            /* outer ring of the selected state */
+  --map-cluster-fill: #ffffff;
+  --map-cluster-stroke: #8a877e;
+  --map-county-fill: rgba(28, 27, 24, 0.06);
+  --map-county-fill-hover: rgba(181, 80, 46, 0.14);
+  --map-county-stroke: #8a877e;
+  --map-water: #e6e9ea;             /* SVG fallback only */
+  --map-land: #f4f2ec;              /* SVG fallback only */
+
+  /* ---- Typography ---------------------------------------------------- */
+  --font-sans: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --fs-11: 0.6875rem;   /* 11 px  mono annotations, axis ticks */
+  --fs-12: 0.75rem;     /* 12 px  captions, counts, chips */
+  --fs-13: 0.8125rem;   /* 13 px  table cells, rail labels */
+  --fs-14: 0.875rem;    /* 14 px  body */
+  --fs-16: 1rem;        /* 16 px  lead, inputs on touch */
+  --fs-24: 1.5rem;      /* 24 px  section / county title */
+  --fs-36: 2.25rem;     /* 36 px  song title */
+  --fs-40: 2.5rem;      /* 40 px  page title (explorer masthead) */
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-normal: 1.5;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  --tracking-caps: 0.06em;   /* uppercase mono labels */
+
+  /* ---- Spacing (4-based) -------------------------------------------- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --rail-w: 280px;          /* left filter rail */
+  --results-w: 360px;       /* right results panel */
+  --topbar-h: 56px;
+  --statusbar-h: 32px;
+  --bottomtabs-h: 56px;     /* phone */
+  --content-max: 1440px;
+  --gutter: 16px;           /* phone side gutter */
+  --target-min: 44px;       /* minimum interactive target */
+  --bp-phone: 767px;        /* <= phone layout */
+  --bp-tablet: 1023px;      /* <= two-column layout */
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-0: 0;
+  --radius-1: 4px;          /* opt-in softer variant */
+  --radius: var(--radius-0);
+  --radius-pill: 999px;     /* chips and dots only */
+
+  /* ---- Borders ------------------------------------------------------------ */
+  --border-w: 1px;
+  --border: var(--border-w) solid var(--line);
+  --border-strong: var(--border-w) solid var(--line-strong);
+  --border-accent: 2px solid var(--accent);
+
+  /* ---- Focus ring ---------------------------------------------------------- */
+  --focus-w: 2px;
+  --focus-offset: 2px;
+  --focus-color: var(--accent);
+  --focus-ring: var(--focus-w) solid var(--focus-color);
+
+  /* ---- Shadows (used sparingly; wireframe is flat) --------------------------- */
+  --shadow-card: 0 1px 0 rgba(28, 27, 24, 0.08);
+  --shadow-pop: 0 4px 16px rgba(28, 27, 24, 0.18);
+
+  /* ---- Motion ------------------------------------------------------------------ */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---- Z-index layers ------------------------------------------------------------ */
+  --z-base: 0;
+  --z-sticky: 10;      /* sticky table headers, results header */
+  --z-map-ctl: 20;     /* zoom buttons, legend, layer toggle */
+  --z-hover: 30;       /* map hover card */
+  --z-dropdown: 40;    /* sort select, tree menus */
+  --z-sheet: 50;       /* phone filter sheet, lightbox, scrim */
+  --z-toast: 60;
+  --z-skip: 100;       /* skip link when focused */
+}
+
+/* ---- Dark mode: automatic, unless the page forces light ------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #161513;
+    --surface: #201f1c;
+    --surface-2: #262521;
+    --ink: #ecebe6;          /* 15.29:1 on ground */
+    --ink-2: #cfcdc6;        /* 11.47:1 */
+    --muted: #a9a69d;        /*  7.50:1 */
+    --ink-3: #8f8c83;        /*  5.43:1 */
+    --line: #3a3833;         /*  1.56:1 decorative */
+    --line-strong: #6f6c64;  /*  3.48:1 */
+    --accent: #e0743f;       /*  5.86:1 on ground, 5.29:1 on surface */
+    --accent-soft: #4a2a1c;  /* ink on it 10.73:1 */
+    --accent-ink: #161513;   /*  5.86:1 on accent */
+    --ok: #8bd19b;           /* 10.16:1 */
+    --warn: #e6c25c;         /* 10.63:1 */
+    --err: #f08a80;          /*  7.52:1 */
+    --scrim: rgba(0, 0, 0, 0.6);
+
+    --genre-colinda: #5a9fd8;  /* L* 63 */
+    --genre-doina: #ef9573;    /* L* 70 */
+    --genre-joc: #79c68a;      /* L* 74 */
+    --genre-nunta: #d8c2ea;    /* L* 81 */
+    --genre-cantec: #f6d08c;   /* L* 85 */
+    --genre-bocet: #e4e1d8;    /* L* 90 */
+    --genre-other: #6f6c64;
+    --genre-label-ink: #161513; /* min 6.42:1 on any dark-mode swatch */
+
+    --map-dot: #cfcdc6;
+    --map-dot-stroke: #161513;
+    --map-halo: #161513;
+    --map-select: #e0743f;
+    --map-cluster-fill: #201f1c;
+    --map-cluster-stroke: #6f6c64;
+    --map-county-fill: rgba(236, 235, 230, 0.06);
+    --map-county-fill-hover: rgba(224, 116, 63, 0.18);
+    --map-county-stroke: #6f6c64;
+    --map-water: #1c1e20;
+    --map-land: #161513;
+
+    --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.4);
+    --shadow-pop: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ---- Dark mode: forced by the page --------------------------------------------- */
+:root[data-theme="dark"] {
+  --ground: #161513;
+  --surface: #201f1c;
+  --surface-2: #262521;
+  --ink: #ecebe6;
+  --ink-2: #cfcdc6;
+  --muted: #a9a69d;
+  --ink-3: #8f8c83;
+  --line: #3a3833;
+  --line-strong: #6f6c64;
+  --accent: #e0743f;
+  --accent-soft: #4a2a1c;
+  --accent-ink: #161513;
+  --ok: #8bd19b;
+  --warn: #e6c25c;
+  --err: #f08a80;
+  --scrim: rgba(0, 0, 0, 0.6);
+
+  --genre-colinda: #5a9fd8;
+  --genre-doina: #ef9573;
+  --genre-joc: #79c68a;
+  --genre-nunta: #d8c2ea;
+  --genre-cantec: #f6d08c;
+  --genre-bocet: #e4e1d8;
+  --genre-other: #6f6c64;
+  --genre-label-ink: #161513;
+
+  --map-dot: #cfcdc6;
+  --map-dot-stroke: #161513;
+  --map-halo: #161513;
+  --map-select: #e0743f;
+  --map-cluster-fill: #201f1c;
+  --map-cluster-stroke: #6f6c64;
+  --map-county-fill: rgba(236, 235, 230, 0.06);
+  --map-county-fill-hover: rgba(224, 116, 63, 0.18);
+  --map-county-stroke: #6f6c64;
+  --map-water: #1c1e20;
+  --map-land: #161513;
+
+  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Base application of the tokens (safe to keep or move to base.css) ---- */
+html {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-size: var(--fs-14);
+  line-height: var(--lh-normal);
+}
+
+code, kbd, pre, samp, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; }
+}

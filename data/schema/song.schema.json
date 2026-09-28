@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bartok-romania.local/schema/song.schema.json",
+  "title": "Song",
+  "description": "Canonical record for one melody scraped from a HUN-REN BTK ZTI Bartok database. Unknown values are null, never invented. Arrays are empty when nothing is known.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source",
+    "title",
+    "incipit",
+    "genre",
+    "genreRaw",
+    "style",
+    "performance",
+    "instrument",
+    "performer",
+    "collector",
+    "collected",
+    "location",
+    "media",
+    "music",
+    "text",
+    "remarks",
+    "related",
+    "composition"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable id: site prefix + site record id. Prefixes: fmbc (bartok-nepzene.zti.hu), bsys (systems.zti.hu/br), gyuj (bartok-gyujtesek.zti.hu).",
+      "pattern": "^(fmbc|bsys|gyuj)-[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["site", "url", "referenceCode", "volume", "number"],
+      "properties": {
+        "site": { "type": "string", "enum": ["fmbc", "bsys", "gyuj"] },
+        "url": { "type": "string", "format": "uri", "description": "Canonical record page URL on the source site." },
+        "referenceCode": { "type": ["string", "null"], "description": "The site's own reference code, e.g. an RFM or Bartok System number, verbatim." },
+        "volume": { "type": ["string", "null"], "description": "Published volume the melody appears in (e.g. RFM I, Bihor 1913), verbatim." },
+        "number": { "type": ["string", "null"], "description": "Number within the volume or the site's numeric record id, verbatim." },
+        "siteRecordId": { "type": ["string", "null"], "description": "Raw record id as it appears in the site URL or markup." },
+        "fetchedAt": { "type": ["string", "null"], "format": "date-time", "description": "When the page was fetched (from the HTML cache sidecar)." }
+      }
+    },
+    "title": { "type": ["string", "null"], "description": "Display title. For text-bearing songs usually the first line; for instrumental pieces the site's title or genre label." },
+    "incipit": { "type": ["string", "null"], "description": "Text incipit (first line of the sung text) if given separately from the title." },
+    "genre": {
+      "type": ["string", "null"],
+      "enum": ["colinda", "doina", "bocet", "cantec", "joc", "nunta", "other", null],
+      "description": "Controlled vocabulary. null only when the site gives no genre label at all; 'other' when a label exists but maps to nothing."
+    },
+    "genreRaw": { "type": ["string", "null"], "description": "The site's original genre label, verbatim." },
+    "style": { "type": ["string", "null"], "description": "Stylistic class as given by the site (e.g. old style, new style, parlando, giusto), verbatim but whitespace-normalised." },
+    "performance": { "type": "string", "enum": ["vocal", "instrumental", "mixed", "unknown"] },
+    "instrument": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "Canonical instrument names (lowercase English, e.g. violin, fluier, bagpipe). Empty when vocal or unknown."
+    },
+    "performer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "age", "sex", "ethnicity"],
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "age": { "type": ["integer", "null"], "minimum": 0, "maximum": 120 },
+        "sex": { "type": ["string", "null"], "enum": ["m", "f", null] },
+        "ethnicity": { "type": ["string", "null"], "description": "As stated by the site (e.g. Romanian, Hungarian, Slovak), whitespace-normalised." }
+      }
+    },
+    "collector": { "type": ["string", "null"], "description": "Collector name, usually Bartok Bela; verbatim." },
+    "collected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["year", "month", "day", "raw"],
+      "properties": {
+        "year": { "type": ["integer", "null"], "minimum": 1880, "maximum": 1945 },
+        "month": { "type": ["integer", "null"], "minimum": 1, "maximum": 12 },
+        "day": { "type": ["integer", "null"], "minimum": 1, "maximum": 31 },
+        "raw": { "type": ["string", "null"], "description": "The date string as printed on the site." }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country", "region", "county", "countyHistorical", "village", "villageHistorical", "lat", "lng", "raw"],
+      "properties": {
+        "country": { "type": ["string", "null"], "description": "ISO 3166-1 alpha-2 of the modern country (RO, HU, SK, RS, UA, ...), derived from the modern county via the gazetteer." },
+        "region": { "type": ["string", "null"], "description": "Historical region within the modern country, e.g. Transylvania, Banat, Crisana, Maramures." },
+        "county": { "type": ["string", "null"], "description": "Modern county name (Romanian spelling with diacritics)." },
+        "countyHistorical": { "type": ["string", "null"], "description": "Historical (Hungarian) county name as used on the site, e.g. Bihar, Hunyad." },
+        "village": { "type": ["string", "null"], "description": "Modern locality name with diacritics." },
+        "villageHistorical": { "type": ["string", "null"], "description": "Locality name as printed on the site, usually the Hungarian historical name." },
+        "lat": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+        "lng": { "type": ["number", "null"], "minimum": -180, "maximum": 180 },
+        "raw": { "type": ["string", "null"], "description": "The full place string as printed on the site, including any 'A / B' origin notation." },
+        "placeId": { "type": ["string", "null"], "description": "Id of the matching node in places.json, when resolved." },
+        "origin": {
+          "type": ["object", "null"],
+          "description": "For sites that print 'collection place / informant origin' (A / B): the B part, resolved the same way.",
+          "additionalProperties": false,
+          "properties": {
+            "village": { "type": ["string", "null"] },
+            "villageHistorical": { "type": ["string", "null"] },
+            "county": { "type": ["string", "null"] },
+            "countyHistorical": { "type": ["string", "null"] },
+            "placeId": { "type": ["string", "null"] }
+          }
+        },
+        "resolution": {
+          "type": ["string", "null"],
+          "enum": ["gazetteer", "site", "manual", "unresolved", null],
+          "description": "How modern names and coordinates were obtained."
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["notation", "audio"],
+      "properties": {
+        "notation": { "type": "array", "items": { "$ref": "#/$defs/mediaItem" } },
+        "audio": { "type": "array", "items": { "$ref": "#/$defs/mediaItem" } }
+      }
+    },
+    "music": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["systemPosition", "cadences", "rhythm", "mode", "ambitus", "syllables", "form"],
+      "properties": {
+        "systemPosition": { "type": ["string", "null"], "description": "Position in the Bartok System (e.g. 'A 204/3') or the site's equivalent class number." },
+        "cadences": { "type": ["string", "null"], "description": "Line-ending cadence degrees as printed, e.g. '5 (b3) 1'." },
+        "rhythm": { "type": ["string", "null"], "description": "Rhythm type or rhythm table flattened to text (parlando, giusto, tempo giusto, etc.)." },
+        "mode": { "type": ["string", "null"], "description": "Scale or mode label as printed." },
+        "ambitus": { "type": ["string", "null"], "description": "Range as printed, e.g. '1-8' or 'VII-6'." },
+        "syllables": { "type": ["string", "null"], "description": "Syllable count per line as printed, e.g. '8,8,8,8'." },
+        "form": { "type": ["string", "null"], "description": "Line structure as printed, e.g. 'A B B A' or 'A5 A5 A A'." }
+      }
+    },
+    "text": { "type": ["string", "null"], "description": "Full sung text, lines separated by newline." },
+    "remarks": { "type": ["string", "null"] },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "url", "label", "relation"],
+        "properties": {
+          "id": { "type": ["string", "null"], "description": "Id of a record in songs.json, when the link could be resolved." },
+          "url": { "type": ["string", "null"], "format": "uri" },
+          "label": { "type": ["string", "null"] },
+          "relation": { "type": "string", "enum": ["variant", "same-source", "same-informant", "same-place", "cross-site", "link"] }
+        }
+      }
+    },
+    "composition": {
+      "type": "array",
+      "description": "Bartok works that use this melody (site 1 only). Empty for the other sites.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["work", "movement", "catalogue", "raw"],
+        "properties": {
+          "work": { "type": ["string", "null"], "description": "Work title, e.g. 'Romanian Folk Dances'." },
+          "movement": { "type": ["string", "null"], "description": "Movement or number within the work, e.g. 'No. 3, Pe loc'." },
+          "catalogue": { "type": ["string", "null"], "description": "Catalogue number (Sz., BB, DD) as printed." },
+          "raw": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "rawFields": {
+      "type": ["object", "null"],
+      "description": "Label -> value pairs exactly as extracted from the page, for the Raw JSON tab and for debugging the mapping. Optional.",
+      "additionalProperties": { "type": ["string", "null"] }
+    }
+  },
+  "$defs": {
+    "mediaItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "type", "caption"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "type": { "type": ["string", "null"], "description": "MIME type or short kind (image/png, audio/mpeg, pdf)." },
+        "caption": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
