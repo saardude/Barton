@@ -197,8 +197,9 @@ export function MapPanel({
   const showMelodies = useCallback(
     (p: MapPoint) => {
       setSheetPoint(null)
-      select(p)
+      // switch the phone tab first so the unmounting full-height map never starts the fit animation
       onShowMelodies?.()
+      select(p)
     },
     [select, onShowMelodies],
   )

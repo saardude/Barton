@@ -6,6 +6,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   build: {
+    // VITE_OUT_DIR lets the e2e run build and preview from its own folder (dist-e2e).
+    outDir: process.env.VITE_OUT_DIR ?? 'dist',
     sourcemap: false,
     rollupOptions: {
       output: {

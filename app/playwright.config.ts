@@ -5,11 +5,14 @@ import { existsSync } from 'node:fs'
 import { defineConfig, devices } from '@playwright/test'
 
 process.env.PLAYWRIGHT_BROWSERS_PATH ??= '/opt/pw-browsers'
+// Build and preview from dist-e2e so a concurrent `npm run build` cannot replace the served files mid-run.
+process.env.VITE_OUT_DIR ??= 'dist-e2e'
+const OUT_DIR = process.env.VITE_OUT_DIR
 const PORT = 4173
 const PREINSTALLED_CHROMIUM = '/opt/pw-browsers/chromium'
 const executablePath = process.env.PW_CHROMIUM_PATH ?? (existsSync(PREINSTALLED_CHROMIUM) ? PREINSTALLED_CHROMIUM : undefined)
 // Build first unless dist/ already exists (set E2E_BUILD=1 to force a rebuild).
-const needsBuild = process.env.E2E_BUILD === '1' || !existsSync(new URL('./dist/index.html', import.meta.url))
+const needsBuild = process.env.E2E_BUILD === '1' || !existsSync(new URL(`./${OUT_DIR}/index.html`, import.meta.url))
 
 export default defineConfig({
   testDir: './e2e',

@@ -2,13 +2,14 @@
 //   fail  if any JS chunk        > 300 KB gzip   (BUDGET_JS_CHUNK_KB)
 //   fail  if the songs data file > 3 MB gzip     (BUDGET_SONGS_MB)
 //   warn  if all JS together     > 300 KB gzip   (the CI workflow warns on the same total)
-// Run after `npm run build`: `npm run check-budget`. Exit code 1 on a failed budget.
+// Run after `npm run build`: `npm run check-budget` (or `--dir=dist-e2e`). Exit code 1 on a failed budget.
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 
-const dist = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'dist')
+const dirArg = process.argv.find((a) => a.startsWith('--dir='))?.slice(6)
+const dist = resolve(dirname(fileURLToPath(import.meta.url)), '..', dirArg ?? process.env.BUDGET_DIST ?? 'dist')
 const JS_CHUNK_KB = Number(process.env.BUDGET_JS_CHUNK_KB ?? 300)
 const JS_TOTAL_KB = Number(process.env.BUDGET_JS_TOTAL_KB ?? 300)
 const SONGS_MB = Number(process.env.BUDGET_SONGS_MB ?? 3)

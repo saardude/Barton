@@ -5,7 +5,10 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { expect, test as base, type Locator, type Page } from '@playwright/test'
+import { buildIndex } from '../src/data/catalogIndex'
 import { hydrateSongs } from '../src/data/hydrate'
+import { DEFAULT_QUERY } from '../src/state/query'
+import { buildMapPoints, countryPredicate } from '../src/state/selectors'
 import type { Place } from '../src/types/place'
 import type { Song } from '../src/types/song'
 
@@ -25,30 +28,39 @@ export interface DataFixture {
   songs: SongLite[]
   places: PlaceLite[]
   placeById: Map<string, PlaceLite>
-  /** Records under Romania (the default `country=ro` scope, FRONTEND-SPEC 4). */
+  /** Records under Romania. */
   ro: SongLite[]
+  /** Records in the app's default scope (DEFAULT_QUERY.country, which is "all countries" since 884494c). */
+  scoped: SongLite[]
+  /** Number of county bubbles the map draws for the default scope (same code path as the app). */
+  countyPointCount: number
   under(placeId: string): SongLite[]
   countyId(name: string): string
   song(pred: (s: SongLite) => boolean): SongLite
 }
 
 function loadData(): DataFixture {
-  const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist', 'data')
+  const dir = join(dirname(fileURLToPath(import.meta.url)), '..', process.env.VITE_OUT_DIR ?? 'dist-e2e', 'data')
   const files = readdirSync(dir)
   const read = <T>(prefix: string): T => {
     const f = files.find((x) => x.startsWith(prefix + '.') && x.endsWith('.json'))
-    if (!f) throw new Error(`dist/data/${prefix}.*.json not found; run npm run build`)
+    if (!f) throw new Error(`${dir}/${prefix}.*.json not found; run VITE_OUT_DIR=dist-e2e npm run build`)
     return JSON.parse(readFileSync(join(dir, f), 'utf8')) as T
   }
   const places = read<Place[]>('places')
   const songs = hydrateSongs(read<unknown>('songs'), places)
   const placeById = new Map(places.map((p) => [p.id, p]))
   const ro = songs.filter((s) => (s.location.placeId ? s.location.placeId === 'ro' || s.location.placeId.startsWith('ro/') : s.location.country === 'RO'))
+  const scoped = songs.filter(countryPredicate(DEFAULT_QUERY))
+  const index = buildIndex(songs, places)
+  const countyPointCount = buildMapPoints(scoped, index, 'county', undefined, undefined).points.length
   return {
     songs,
     places,
     placeById,
     ro,
+    scoped,
+    countyPointCount,
     under: (placeId) => songs.filter((s) => s.location.placeId === placeId || (s.location.placeId?.startsWith(placeId + '/') ?? false)),
     countyId: (name) => {
       const p = places.find((x) => x.type === 'county' && x.name === name)
@@ -143,7 +155,36 @@ export async function readCount(page: Page): Promise<{ n: number; m: number }> {
 export async function gotoApp(page: Page, path: string): Promise<void> {
   await page.goto(path)
   await waitForCatalog(page)
+  await showSongsTab(page)
   await waitForMapIdle(page)
+}
+
+/** Phone: a deep link with a place opens on the Map tab (FRONTEND-SPEC 10); switch to the list. */
+export async function showSongsTab(page: Page): Promise<void> {
+  const tab = page.getByRole('tab', { name: /^Songs/ })
+  if ((await tab.count()) > 0 && (await tab.getAttribute('aria-selected')) !== 'true') {
+    await tab.click()
+    await expect(page.locator('.results__count')).toBeVisible()
+  }
+}
+
+/** The first map dot whose box lies inside the visible map (markers outside the view are clipped). */
+export async function visibleDot(page: Page, selector = '.map-view .dot'): Promise<Locator> {
+  const map = page.locator('.map-view').first()
+  const mb = await map.boundingBox()
+  if (!mb) throw new Error('map not visible')
+  const dots = page.locator(selector)
+  const n = await dots.count()
+  for (let i = 0; i < n; i++) {
+    const b = await dots.nth(i).boundingBox()
+    if (!b || b.x < mb.x + 8 || b.y < mb.y + 8 || b.x + b.width > mb.x + mb.width - 8 || b.y + b.height > mb.y + mb.height - 8) continue
+    const onTop = await dots.nth(i).evaluate((el, [x, y]) => {
+      const hit = document.elementFromPoint(x, y)
+      return hit === el || el.contains(hit)
+    }, [b.x + b.width / 2, b.y + b.height / 2])
+    if (onTop) return dots.nth(i)
+  }
+  throw new Error('no dot inside the visible map')
 }
 
 /** Tests that break the catalogue on purpose expect exactly one structured console.error (AC-32). */

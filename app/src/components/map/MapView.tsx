@@ -160,7 +160,8 @@ export function MapView(props: MapViewProps) {
     layerRef.current = layer
     mapRef.current = map
     // Keep Leaflet's size in sync with the panel (the grid resizes with the viewport).
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => map.invalidateSize()) : null
+    // Guarded: a queued observation must not touch a map that the cleanup has already removed.
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => mapRef.current === map && map.invalidateSize()) : null
     ro?.observe(el)
     map.fitBounds(propsRef.current.fitBounds, { padding: [24, 24] })
     map.on('zoomend', () => propsRef.current.onZoom?.(map.getZoom()))
@@ -224,9 +225,10 @@ export function MapView(props: MapViewProps) {
       el.removeEventListener('focusin', onOver)
       el.removeEventListener('focusout', onOut)
       el.removeEventListener('keydown', onKey)
-      map.remove()
       mapRef.current = null
       layerRef.current = null
+      map.stop()
+      map.remove()
       markers.clear()
     }
   }, [])

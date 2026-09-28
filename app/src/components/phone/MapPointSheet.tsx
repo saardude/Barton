@@ -3,6 +3,7 @@
 // role="dialog", focus moves in on open and returns to the opener on close; Escape and the
 // scrim close it. Rendered by MapPanel when `touchSheet` is on.
 import { useEffect, useRef, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router'
 import { t } from '../../i18n/en'
 import { placeText } from '../../state/placeName'
@@ -47,7 +48,8 @@ export function MapPointSheet({
 
   const countyId = countyIdOf(point)
   const name = placeText(point.place, point.placeId)
-  return (
+  // Portal: .map-panel isolates its stacking context, which would trap the sheet under the fixed bottom tabs.
+  return createPortal(
     <div className="sheet point-sheet" onClick={onClose} data-testid="map-point-sheet">
       <div className="sheet__panel point-sheet__panel" role="dialog" aria-modal="true" aria-label={name} ref={panelRef} onClick={(e) => e.stopPropagation()}>
         <div className="point-sheet__handle" aria-hidden="true" />
@@ -66,6 +68,7 @@ export function MapPointSheet({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

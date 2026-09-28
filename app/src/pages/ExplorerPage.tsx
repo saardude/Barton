@@ -2,7 +2,8 @@
 // collapses into a "Filters (n)" button that opens the FilterSheet, and map and results stack.
 // Under 768 px (FRONTEND-SPEC 10, wireframe artboard 4) the same route renders the phone
 // explorer: Filters button, then the view chosen by the bottom tabs (Map / Songs / Places).
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router'
 import { useCatalogReady } from '../app/catalog'
 import { useDerived, useQuery } from '../app/query'
 import { FilterRail, FilterSheet, PlaceFacet } from '../components/filters/FilterRail'
@@ -27,6 +28,33 @@ export function ExplorerPage() {
   useEffect(() => {
     document.title = t('app.title')
   }, [])
+
+  // Desktop: the results column is its own scroll container, so the browser cannot restore its
+  // position on Back. Remember it per history entry (location.key) in sessionStorage (E2E-01).
+  const { key: locationKey } = useLocation()
+  const resultsRef = useRef<HTMLElement>(null)
+  const ready = derived !== null
+  useEffect(() => {
+    const el = resultsRef.current
+    if (!el || !ready) return
+    const storageKey = `bartok.scroll.${locationKey}`
+    try {
+      const saved = window.sessionStorage.getItem(storageKey)
+      if (saved) el.scrollTop = Number(saved)
+    } catch {
+      // storage unavailable: no restoration
+    }
+    // Synchronous on purpose: a route change unmounts this page and a deferred write would be lost.
+    const onScroll = () => {
+      try {
+        window.sessionStorage.setItem(storageKey, String(el.scrollTop))
+      } catch {
+        // ignore
+      }
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [locationKey, ready])
 
   const activeFilters = derived ? derived.activeChips.length : 0
   const resultCount = derived?.filteredSongs.length ?? 0
@@ -94,7 +122,7 @@ export function ExplorerPage() {
           <MapPanel highlightPlaceId={highlightPlaceId} touchSheet={coarse} onShowMelodies={undefined} />
           <MapAccessibleList />
         </section>
-        <section className="results" aria-label={t('results.label')}>
+        <section className="results" aria-label={t('results.label')} ref={resultsRef}>
           <ResultsPanel onHoverPlace={setHighlight} />
         </section>
       </main>

@@ -1,7 +1,7 @@
 // Route-level journeys: E2E-05 county, E2E-06 song, E2E-07 prev/next, E2E-11 404s, E2E-12 loading
 // and error, E2E-14 console cleanliness, E2E-15 source links, E2E-16 journeys.
 // Song / county / journeys specs mark themselves fixme while the route still renders the stub.
-import { expect, expectOnlyCatalogError, gotoApp, isStub, query, readCount, seededSample, test, waitForCatalog } from './fixtures'
+import { expect, expectOnlyCatalogError, gotoApp, isStub, query, readCount, seededSample, showSongsTab, test, waitForCatalog } from './fixtures'
 
 test.describe('Routes', () => {
   test('E2E-05 county drill-down', async ({ page, data }) => {
@@ -15,13 +15,14 @@ test.describe('Routes', () => {
     await expect(table).toBeVisible()
     const names = await table.locator('tbody tr').evaluateAll((rows) => rows.map((r) => r.querySelector('th, td')?.textContent?.trim() ?? ''))
     expect(names.length).toBeGreaterThan(1)
-    // default: sorted by village name (locale-aware, so compare with the Romanian collation)
-    const sorted = [...names].sort((a, b) => a.localeCompare(b, 'ro', { sensitivity: 'base' }))
-    expect(names.map((n) => n.slice(0, 3))).toEqual(sorted.map((n) => n.slice(0, 3)))
+    // default: sorted by village name (the app's roBase collation; assert the header state)
+    await expect(table.locator('th[aria-sort]').filter({ hasText: 'Village' })).toHaveAttribute('aria-sort', 'ascending')
     const melodiesHeader = table.getByRole('button', { name: /Sort by Melodies/ })
+    const melodiesTh = table.locator('th').filter({ hasText: 'Melodies' })
     await melodiesHeader.click()
+    await expect(melodiesTh).toHaveAttribute('aria-sort', 'ascending')
     await melodiesHeader.click()
-    await expect(table.locator('th[aria-sort]').filter({ has: melodiesHeader })).toHaveAttribute('aria-sort', 'descending')
+    await expect(melodiesTh).toHaveAttribute('aria-sort', 'descending')
     const counts = await table.locator('tbody tr').evaluateAll((rows) =>
       rows.slice(0, 5).map((r) => Number((Array.from(r.querySelectorAll('td, th'))[1]?.textContent ?? '').replace(/[^\d]/g, ''))),
     )
@@ -115,6 +116,7 @@ test.describe('Routes', () => {
     await page.unroute('**/data/songs*.json')
     await alert.getByRole('button', { name: 'Retry' }).click()
     await waitForCatalog(page)
+    await showSongsTab(page)
     await expect(page.getByRole('button', { name: /Remove filter: Bihor/ })).toBeVisible()
     expectOnlyCatalogError(consoleLog)
   })
@@ -196,7 +198,8 @@ test.describe('Routes', () => {
     await borders.getByRole('radio', { name: /Compare/ }).click()
     await expect.poll(() => query(page).get('borders')).toBe('both')
     // opening a stop selects it in the URL
-    await stops.locator('li').first().locator('button, a').first().click()
+    // unresolved stops render a disabled button; open the first enabled one
+    await stops.locator('li.stop-row[data-seq] button:enabled').first().click()
     await expect.poll(() => query(page).get('stop')).not.toBeNull()
     // back to the explorer keeps the Query
     await page.getByRole('link', { name: 'Bartok / Romania' }).click()

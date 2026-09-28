@@ -1,12 +1,14 @@
 // E2E-09 phone viewport journey (AC-28, AC-29) plus the MapPointSheet (AC-25).
+import type { Page } from '@playwright/test'
 import { expect, gotoApp, query, readCount, searchBox, test, waitForCatalog, waitForMapIdle } from './fixtures'
 
 test.describe('Phone explorer', () => {
+  // eslint-disable-next-line no-empty-pattern
   test.beforeEach(({}, testInfo) => {
     test.skip(testInfo.project.name !== 'phone-chromium', 'phone project only')
   })
 
-  async function noHorizontalScroll(page: import('@playwright/test').Page) {
+  async function noHorizontalScroll(page: Page) {
     const { scrollWidth, innerWidth } = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth }))
     expect(scrollWidth, 'no horizontal scroll').toBeLessThanOrEqual(innerWidth)
   }
@@ -73,6 +75,11 @@ test.describe('Phone explorer', () => {
     await tabs.getByRole('tab', { name: 'Places' }).click()
     const tree = page.getByRole('tree', { name: 'Places' })
     await expect(tree).toBeVisible()
+    // expand Romania > Crișana (regions are collapsed until opened)
+    for (const id of ['ro', 'ro/crisana']) {
+      const item = tree.locator(`[role="treeitem"][data-id="${id}"]`)
+      if ((await item.getAttribute('aria-expanded')) !== 'true') await item.locator('.tree__toggle').click()
+    }
     const row = tree.locator(`[role="treeitem"][data-id="${data.countyId('Bihor')}"] .tree__row`)
     await expect(row).toBeVisible()
     expect((await row.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(44)
@@ -89,6 +96,7 @@ test.describe('Phone explorer', () => {
     await waitForMapIdle(page)
     const dot = page.locator('.map-view .dot--county[aria-label^="Bihor ("]')
     await expect(dot).toBeVisible()
+    await dot.scrollIntoViewIfNeeded()
     expect((await dot.boundingBox())?.width ?? 0).toBeGreaterThanOrEqual(44)
     await dot.tap()
     const sheet = page.getByRole('dialog', { name: /Bihor/ })
@@ -110,7 +118,8 @@ test.describe('Phone explorer', () => {
   })
 
   test('deep link with a place opens on the Map tab; 320 px has no horizontal scroll', async ({ page, data }) => {
-    await gotoApp(page, `/?county=${data.countyId('Bihor')}`)
+    await page.goto(`/?county=${data.countyId('Bihor')}`)
+    await waitForCatalog(page)
     await expect(page.getByRole('tab', { name: 'Map' })).toHaveAttribute('aria-selected', 'true')
     await expect(page.locator('.map-section--full .map-view')).toBeVisible()
     await page.setViewportSize({ width: 320, height: 640 })

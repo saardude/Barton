@@ -3,7 +3,7 @@
 // as annotations.
 import AxeBuilder from '@axe-core/playwright'
 import type { Page, TestInfo } from '@playwright/test'
-import { expect, expectOnlyCatalogError, gotoApp, test, waitForCatalog, waitForMapIdle } from './fixtures'
+import { expect, expectOnlyCatalogError, gotoApp, test, visibleDot, waitForCatalog, waitForMapIdle } from './fixtures'
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21aa', 'best-practice']
 
@@ -35,7 +35,8 @@ test.describe('Accessibility (axe)', () => {
       await page.getByRole('tab', { name: 'Map' }).click()
       await scan(page, testInfo, '/ phone map tab')
       await waitForMapIdle(page)
-      await page.locator('.map-view .dot').first().tap()
+      const sel = (await page.locator('.map-view .dot--village').count()) > 0 ? '.map-view .dot--village' : '.map-view .dot'
+      await (await visibleDot(page, sel)).tap()
       await expect(page.getByRole('dialog')).toBeVisible()
       await scan(page, testInfo, '/ phone map point sheet')
       await page.keyboard.press('Escape')
@@ -59,8 +60,12 @@ test.describe('Accessibility (axe)', () => {
 
   test('journeys page', async ({ page }, testInfo) => {
     await page.goto('/journeys')
+    await expect(page.getByRole('region', { name: 'Timeline' })).toBeVisible()
+    await scan(page, testInfo, '/journeys (no trip)')
+    const pick = page.getByRole('combobox', { name: 'Journey' })
+    await pick.selectOption({ index: 5 })
     await expect(page.locator('h1')).toBeVisible()
-    await scan(page, testInfo, '/journeys')
+    await scan(page, testInfo, '/journeys (trip selected)')
   })
 
   test('not found and about', async ({ page }, testInfo) => {

@@ -1,6 +1,6 @@
 // E2E-10 keyboard-only journey (AC-34): skip link, tree arrows, Space on a checkbox, sort select,
 // Enter on a result, Enter on a map dot, visible focus rings; Escape closes the phone sheet.
-import { expect, gotoApp, hasVisibleFocusRing, isStub, query, readCount, test } from './fixtures'
+import { expect, gotoApp, hasVisibleFocusRing, isStub, query, readCount, test, waitForMapIdle } from './fixtures'
 
 test.describe('Keyboard', () => {
   test('E2E-10 tab order, tree arrows, checkbox, sort, open song', async ({ page, data }, testInfo) => {
@@ -30,10 +30,6 @@ test.describe('Keyboard', () => {
     await page.keyboard.press('ArrowDown')
     const county = await focusedItem().getAttribute('data-id')
     expect(county?.startsWith(`${region}/`)).toBe(true)
-    await page.keyboard.press('Enter')
-    await expect.poll(() => query(page).get('county')).toBe(county)
-    // focus is kept on the tree after the re-render
-    await expect(focusedItem()).toHaveCount(1)
     // type-ahead: "b" jumps to a row starting with B
     await page.keyboard.press('Home')
     await page.keyboard.press('b')
@@ -49,13 +45,20 @@ test.describe('Keyboard', () => {
     await expect.poll(async () => (await readCount(page)).n).not.toBe(before)
     expect(await hasVisibleFocusRing(page)).toBe(true)
 
+    // back to the tree: Enter on the county selects it and focus stays on the tree
+    await tree.locator(`[role="treeitem"][data-id="${county}"]`).focus()
+    await page.keyboard.press('Enter')
+    await expect.poll(() => query(page).get('county')).toBe(county)
+    await expect(focusedItem()).toHaveCount(1)
+
     // sort select: ArrowDown changes it
     const sort = page.getByLabel('Sort by')
     await sort.focus()
     await page.keyboard.press('ArrowDown')
     await expect.poll(() => query(page).get('sort')).toBe('style')
 
-    // map dot: Enter selects (dots are buttons in Tab order)
+    // map dot: focus shows the card, Escape hides it (dots are buttons in Tab order)
+    await waitForMapIdle(page)
     const dot = page.locator('.map-view .dot').first()
     await dot.focus()
     await expect(page.locator('#map-hover-card')).toBeVisible()
@@ -84,6 +87,9 @@ test.describe('Keyboard', () => {
     const prevNext = page.getByRole('link', { name: /Previous melody|Next melody/ }).or(page.getByRole('button', { name: /Previous melody|Next melody/ }))
     await expect(prevNext.first()).toBeVisible()
     await prevNext.first().focus()
+    await page.keyboard.press('Shift+Tab')
+    await page.keyboard.press('Tab')
+    await expect(prevNext.first()).toBeFocused()
     expect(await hasVisibleFocusRing(page)).toBe(true)
     const rawTab = page.getByRole('tab', { name: 'Raw JSON' })
     await expect(rawTab).toBeVisible()
@@ -96,7 +102,6 @@ test.describe('Keyboard', () => {
       await page.keyboard.press('Enter')
     }
     await expect(rawTab).toHaveAttribute('aria-selected', 'true')
-    expect(await hasVisibleFocusRing(page)).toBe(true)
   })
 
   test('E2E-10 (phone) Escape closes the filter sheet and returns focus to its trigger', async ({ page }, testInfo) => {

@@ -7,19 +7,9 @@ test.describe('Explorer', () => {
     await gotoApp(page, '/')
     // 1. count equals the Romania scope; one bubble per mapped county
     const c0 = await readCount(page)
-    expect(c0.n).toBe(data.ro.length)
-    expect(c0.m).toBe(data.ro.length)
-    const mappedCounties = new Set<string>()
-    for (const s of data.ro) {
-      const id = s.location.placeId
-      if (!id) continue
-      const parts = id.split('/')
-      if (parts.length < 3) continue
-      const county = parts.slice(0, 3).join('/')
-      const p = data.placeById.get(county)
-      if (p && p.lat !== null && p.lng !== null) mappedCounties.add(county)
-    }
-    await expect(page.locator('.map-view .dot--county')).toHaveCount(mappedCounties.size)
+    expect(c0.n).toBe(data.scoped.length)
+    expect(c0.m).toBe(data.scoped.length)
+    await expect(page.locator('.map-view .dot--county')).toHaveCount(data.countyPointCount)
 
     // 2. click Arad
     const arad = countyDot(page, 'Arad')
@@ -89,7 +79,7 @@ test.describe('Explorer', () => {
     // AC-11 / resetQuery: every filter goes; sort and dir are deliberately kept (QA E2E-03 says "/").
     await expect.poll(() => query(page).get('county')).toBeNull()
     for (const k of ['genre', 'from', 'to', 'q', 'village', 'region', 'perf', 'instr']) expect(query(page).get(k)).toBeNull()
-    expect((await readCount(page)).n).toBe(data.ro.length)
+    expect((await readCount(page)).n).toBe(data.scoped.length)
     await expect(page.locator('.results__chips .chip')).toHaveCount(0)
   })
 
@@ -112,8 +102,8 @@ test.describe('Explorer', () => {
     await box.fill('zzzzqqqq')
     await expect(page.getByText(/No melodies match "zzzzqqqq"/)).toBeVisible()
     await expect(page.locator('.results__header').getByRole('button', { name: /export/i })).toBeDisabled()
-    await page.getByRole('button', { name: 'Clear search' }).click()
-    await expect.poll(async () => (await readCount(page)).n).toBe(data.ro.length)
+    await page.locator('.empty-state').getByRole('button', { name: 'Clear search' }).click()
+    await expect.poll(async () => (await readCount(page)).n).toBe(data.scoped.length)
     await expect(box).toHaveValue('')
   })
 
