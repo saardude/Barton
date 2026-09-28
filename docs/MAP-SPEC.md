@@ -5,7 +5,11 @@ to `FRONTEND-SPEC.md`; colours and sizes to `DESIGN-TOKENS.md`.
 
 ## 1. Base map
 
-Phase 1: **Leaflet 1.9** (via `react-leaflet` 4) with **OpenStreetMap raster tiles**.
+Phase 1: **Leaflet 1.9** (via `react-leaflet` 5, React 19) with raster tiles. This spec
+was briefed with OpenStreetMap standard tiles; ARCHITECTURE.md proposes CARTO Positron
+(greyscale, closer to the wireframe) with OSM as the fallback, and DEPLOY.md's CSP already
+allows both hosts. The `TileLayer` config is one object with `url`, `attribution` and
+`maxZoom`, so either is a one-line choice (decision D2).
 
 - Tile URL: `https://tile.openstreetmap.org/{z}/{x}/{y}.png`, `maxZoom` 19 (we cap the
   app at 14), `subdomains` none (the `a/b/c` hosts are deprecated).
@@ -27,6 +31,12 @@ Phase 1: **Leaflet 1.9** (via `react-leaflet` 4) with **OpenStreetMap raster til
 - `zoomControl` custom (our own 44 px buttons top-left, so they can be styled with tokens
   and reach the focus ring), `attributionControl` on, `scrollWheelZoom` on for desktop,
   `tap` on for touch, `zoomSnap` 0.5.
+- Renderer: ARCHITECTURE.md suggests `CircleMarker` on a canvas renderer for scale. This
+  spec uses `divIcon` markers (real `<button>`s, section 3.2) because they are focusable
+  and labelled; clustering keeps the visible marker count in the low hundreds, which the
+  DOM handles. If profiling shows more than about 2,000 visible markers, switch the
+  village layer to canvas `CircleMarker`s and rely on `MapAccessibleList` as the only
+  keyboard path (it exists either way).
 
 Upgrade path: **MapLibre GL JS** with a vector style (OpenFreeMap or MapTiler "dataviz
 light/dark"), which gives true greyscale styling, label language control (Romanian and
@@ -133,7 +143,9 @@ phone this is the only place it lives). All controls are 44 px squares with toke
 edge; clamped inside the panel), `--surface`, `--border-strong`, `--shadow-pop`,
 `--z-hover`, 260 px wide, `role="tooltip"`. Shown on `mouseenter` after 80 ms, on focus
 immediately, hidden on `mouseleave` / blur / Esc. On touch there is no hover: a tap on a
-point opens the phone `MapPointSheet` with the same content plus action buttons.
+point opens the phone `MapPointSheet` with the same content plus the actions "Show
+melodies" (applies the place filter and switches to the list tab, AC-25) and "Open county
+page".
 
 Village card:
 
@@ -152,7 +164,8 @@ villages", genre bar with top 3, year span, "18 villages not mapped" if any, hin
 zoom to this county". Cluster: no card (the cluster icon carries the count).
 
 The card is also what the `MapAccessibleList` items expand to when focused (same
-component, rendered inline under the list item rather than positioned).
+component, rendered inline under the list item rather than positioned). That list is the
+"List counties" (county mode) or "List villages" (village mode) control of AC-27.
 
 ## 5. Click behaviour
 
@@ -220,8 +233,11 @@ why it is in mono (it reads as a code, like the reference number).
 
 ## 8. Records with no coordinates
 
-Songs whose village has no `lat/lon`, or whose place is only known to county level and
-the county has no centroid, are never on the map.
+Songs whose place has no `lat` / `lng` (`location.lat` null; in `places.json` these live
+under `<cc or xx>/unresolved/<slug>`), or whose place is only known to county level and the
+county has no centroid, are never on the map. Places with `confidence: 'low'` or
+`coordSource: 'gazetteer-approx'` are mapped but carry the "location uncertain" text
+marker in the hover card and the tree (`PlaceLabel`).
 
 - `unmappedCount` is shown in three places: the `NotMappedNotice` inside the map panel
   (bottom-right above attribution, `--surface` pill: "312 not mapped"), the StatusBar
@@ -249,8 +265,9 @@ Assets (built once, committed under `data/geo/`):
   footer); simplified with mapshaper to about 100-150 KB. Because historical localities may
   fall outside Romania, also include the neighbouring countries' outlines at admin-0
   (`neighbours.geo.json`, ~40 KB) so points there are not floating in blank space.
-- County centroids and bboxes are computed from this file by the scraper's normaliser and
-  written into `places.json`, so both map modes use the same numbers.
+- County centroids come from `places.json` (`lat` / `lng` of county nodes, `coordSource`
+  `centroid-of-children` or from this file); the county bbox is computed at load from the
+  polygon when present, else from the village points.
 
 `SvgMap` component (`{ points: MapPoint[]; selected; onSelect; bounds; mode: 'country' | 'county' }`):
 

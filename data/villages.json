@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "title": "Village existence and naming, derived from Wikidata",
+    "generatedAt": "2026-09-28",
+    "generator": "geo/enrich-wikidata.mjs",
+    "source": "Wikidata SPARQL endpoint (https://query.wikidata.org/sparql), data CC0 1.0",
+    "attribution": "Village names, coordinates, administrative units and status: Wikidata contributors (CC0)",
+    "statusValues": {
+      "existing": "matched item is a current settlement with the same Romanian name",
+      "renamed": "matched item has a former official name (P1448 with end time) or its current Romanian label differs from the gazetteer name",
+      "merged": "matched item has a replaced-by (P1366) statement",
+      "abandoned": "matched item has a dissolved date (P576) or is an instance of abandoned village / ghost town / destroyed settlement",
+      "unknown": "no confident match; evidence lists the candidates and why they were rejected. Never guessed."
+    },
+    "matching": "label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country; candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
+    "idNote": "Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.",
+    "counts": {
+      "existing": 0,
+      "renamed": 0,
+      "merged": 0,
+      "abandoned": 0,
+      "unknown": 3
+    },
+    "targets": 3,
+    "networkRequests": 0
+  },
+  "villages": {
+    "ro/banat/caras-severin/anina": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": "Caraș-Severin",
+      "countyHistorical": "Krassó-Szörény",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/caras-severin/anina",
+      "inception": null,
+      "instanceOf": [],
+      "name": "Anina",
+      "nameHistorical": "Stájerlakanina",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
+    "ro/banat/caras-severin/bocsa": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": "Caraș-Severin",
+      "countyHistorical": "Krassó-Szörény",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/caras-severin/bocsa",
+      "inception": null,
+      "instanceOf": [],
+      "name": "Bocșa",
+      "nameHistorical": "Boksánbánya",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    },
+    "ro/banat/caras-severin/bozovici": {
+      "admin": {
+        "commune": null,
+        "communeQid": null,
+        "county": null,
+        "countyQid": null,
+        "countyRo": null
+      },
+      "cached": false,
+      "candidates": [],
+      "coord": null,
+      "county": "Caraș-Severin",
+      "countyHistorical": "Krassó-Szörény",
+      "dissolved": null,
+      "distanceFromGazetteerKm": null,
+      "evidence": [
+        "query failed: Wikidata HTTP 403: Host not in allowlist: query.wikidata.org. Add this host to your network egress settings to allow access."
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/caras-severin/bozovici",
+      "inception": null,
+      "instanceOf": [],
+      "name": "Bozovici",
+      "nameHistorical": "Bozovics",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": null,
+        "historical": [],
+        "hu": null,
+        "native": [],
+        "ro": null
+      },
+      "population": null,
+      "qid": null,
+      "replacedBy": null,
+      "status": "unknown",
+      "wikidataUrl": null
+    }
+  }
+}
