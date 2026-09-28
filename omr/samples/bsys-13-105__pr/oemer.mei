@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Elmegyek, elmegyek</title>
+        <respStmt>
+          <persName role="collector">Kodály Zoltán</persName>
+          <name role="encoder">omr/pipeline.py (oemer 0.1.8 + verovio)</name>
+        </respStmt>
+      </titleStmt>
+      <pubStmt>
+        <publisher>Bartok Romania field-collection viewer (research prototype)</publisher>
+        <date isodate="2026-09-28"/>
+        <availability>
+          <useRestrict>Recognised automatically by optical music recognition; unverified. The source image is served by HUN-REN BTK ZTI (systems.zti.hu) or by the Internet Archive scan of Bartok, Rumanian Folk Music; this encoding indexes the notation and does not replace the source.</useRestrict>
+        </availability>
+      </pubStmt>
+      <sourceDesc>
+        <source>
+          <bibl>
+            <title>The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)</title>
+            <identifier type="viewer-record-id">bsys-13-105</identifier>
+            <identifier type="site-record-id">A 31</identifier>
+            <ptr target="https://systems.zti.hu/br/en/browse/13/105"/>
+            <ptr target="https://systems.zti.hu/media/images/publications/BR_00114_pr.gif"/>
+            <geogName>Kászonimpér (Csík)</geogName>
+            <date>1912.</date>
+          </bibl>
+        </source>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="0.1.8" xml:id="app.oemer">
+          <name>oemer</name>
+        </application>
+        <application version="6.3.0-425dd7b" xml:id="app.verovio">
+          <name>verovio</name>
+        </application>
+        <application version="1.4.4" xml:id="app.rapidocr">
+          <name>rapidocr-onnxruntime</name>
+        </application>
+      </appInfo>
+      <editorialDecl>
+        <p>Text lines read from the image by OCR (uncorrected): 31 / Kaszonimper (Csik) / Gy: Kodaly Zoltan / 1912 / 30四 / Parlando / 1. El - me-nyek,el-me-nyek, Hosszu ut - ra / menyek, / 2） / Hosszu ut po-ra-bol  Koppo- nye -  get  veszek. / Var* / 1) / 2) / 2. Buval és banattal / Kisinoroztatom, / Surukonyveimmel / Kigomboztattatom. / Kodaly-MS gepelt szoveggel (az 1. strofa kezirassal is).  P12; 76.Publ: EMN: 24; Kodaly-—Vargyas: 97. / —Kad:Feldallam?Lasd Vll [Kodaly jegyzete]. / * Egyeni variansok.</p>
+      </editorialDecl>
+      <projectDesc>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.807 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+      </projectDesc>
+    </encodingDesc>
+    <workList>
+      <work>
+        <title>Elmegyek, elmegyek</title>
+        <incip>
+          <incipText>
+            <p>Elmegyek, elmegyek</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A 31</term>
+            <term type="cadences">5 (1) VII 1</term>
+            <term type="syllables">6</term>
+            <term type="rhythm">parlando-rubato or fixed rhythm</term>
+            <term type="form">isometric four-liner</term>
+            <term type="style">old style</term>
+            <term type="performance">unknown</term>
+          </termList>
+        </classification>
+      </work>
+    </workList>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv xml:id="d18g37sh">
+        <score xml:id="e169ifxo">
+          <scoreDef xml:id="f1r8n0qr">
+            <staffGrp xml:id="i64z1et">
+              <staffDef xml:id="P1" n="1" lines="5" ppq="16">
+                <label xml:id="js0vvpz">Piano</label>
+                <instrDef xml:id="l180ypmy" midi.channel="0" midi.instrnum="0" midi.volume="80%"/>
+                <clef xml:id="u1nubbak" shape="G" line="2"/>
+                <keySig xml:id="v1x2n1v7" sig="1s"/>
+              </staffDef>
+            </staffGrp>
+          </scoreDef>
+          <section xml:id="g1x58xwz">
+            <pb xml:id="h1rxyxxl"/>
+            <section xml:id="n2jcle6">
+              <measure xml:id="w4sbq7" metcon="false" n="1">
+                <staff xml:id="f15agnic" n="1">
+                  <layer xml:id="g67jmgq" n="1">
+                    <note xml:id="h1fevh81" dur.ppq="8" dur="8" oct="4" pname="b" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">El</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="iv3lzq2" dur.ppq="8" dur="8" oct="5" pname="c" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">me</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="j1kc06zm" dur.ppq="8" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">nyek,el</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="ke0npx3" dur.ppq="8" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">me</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="l1tkflaj" dur.ppq="8" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">nyek</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="m1srprno" dur.ppq="8" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">Hosszu</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="nzntthq" dur.ppq="4" dur="16" oct="5" pname="c" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">ut</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="o19by6gn" metcon="false" n="2">
+                <staff xml:id="xlikj7b" n="1">
+                  <layer xml:id="y1amtnqg" n="1">
+                    <note xml:id="z17unaap" dur.ppq="8" dur="8" oct="5" pname="f" stem.dir="down" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">ra</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="bwkq4bd" dur.ppq="8" dur="8" oct="5" pname="e" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">Hosszu</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="c1v1l91k" dur.ppq="8" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">ut</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="d8q7eib" dur.ppq="8" dur="8" oct="5" pname="c" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">po</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="ea7jd1v" metcon="false" n="3">
+                <staff xml:id="n7ak9nb" n="1">
+                  <layer xml:id="ot3mag9" n="1">
+                    <note xml:id="p2anxyn" dur.ppq="8" dur="8" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">ra</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="q3uhnvw" dur.ppq="16" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">bol</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="b1q6kvc2"/>
+              <scoreDef xml:id="ckc24ns">
+                <keySig xml:id="dnh2m56" sig="2s"/>
+              </scoreDef>
+              <measure xml:id="r1yojhjx" metcon="false" n="4">
+                <staff xml:id="a1vuzwkl" n="1">
+                  <layer xml:id="e1gmbeyb" n="1">
+                    <note xml:id="f1rexlvm" dur.ppq="2" dur="32" oct="5" pname="c" stem.dir="down" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">Koppo</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="h1gkb6iz" dur.ppq="8" dur="8" oct="4" pname="b" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">nye</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="i1kdy5as" dur.ppq="8" dur="8" oct="4" pname="a" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">get</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="j1x8u64e" dur.ppq="8" dur="8" oct="4" pname="b" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">veszek</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="k15i01pc" dur.ppq="8" dur="8" oct="5" pname="c" stem.dir="down" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">Buval</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="mz68rjm" dur.ppq="8" dur="8" oct="4" pname="f" stem.dir="down" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">és</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="ofjg675" metcon="false" n="5">
+                <staff xml:id="x14r5gl2" n="1">
+                  <layer xml:id="yfe938v" n="1">
+                    <note xml:id="z3or412" dur.ppq="8" dur="8" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">banattal</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="a1c5avlh" dur.ppq="8" dur="8" oct="4" pname="a" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">Kodaly</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="bi57q6e" dur.ppq="16" dur="4" oct="4" pname="b" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">MS</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="c153crxq" dots="1" dur.ppq="12" dur="8" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">gepelt</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="d19y93qm" dur.ppq="16" dur="4" oct="4" pname="f" stem.dir="up" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">szoveggel</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="f186zmvv" metcon="false" n="6">
+                <staff xml:id="oozg5lm" n="1">
+                  <layer xml:id="p1dsswgh" n="1">
+                    <note xml:id="q16erwqc" dur.ppq="16" dur="4" oct="4" pname="f" stem.dir="up" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">az</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="s1evugs6" dur.ppq="16" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">1</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="d17w78u9"/>
+              <measure xml:id="t13e4qq9" metcon="false" n="7">
+                <staff xml:id="c8awkpu" n="1">
+                  <layer xml:id="e19vg4g" n="1">
+                    <note xml:id="fzjsr3b" dur.ppq="8" dur="8" oct="5" pname="c" stem.dir="up" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">strofa</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="h2e49i0" dur.ppq="8" dur="8" oct="4" pname="f" stem.dir="up" accid.ges="s">
+                      <verse n="1">
+                        <syl con="d">kezirassal</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="j47yiow" dur.ppq="8" dur="8" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">is</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="kda9d20" dur.ppq="8" dur="8" oct="4" pname="a" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">P12</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="lu6jo32" dur.ppq="8" dur="8" oct="4" pname="b" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">76.Publ</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="misha2f" dur.ppq="8" dur="8" oct="4" pname="a" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">EMN</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="nolsdp8" metcon="false" n="8">
+                <staff xml:id="w1u3tiq4" n="1">
+                  <layer xml:id="x1fm39q5" n="1">
+                    <note xml:id="y12g8t8q" dots="1" dur.ppq="24" dur="4" oct="4" pname="b" stem.dir="down">
+                      <verse n="1">
+                        <syl con="d">24</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="zsnzyh9" dur.ppq="8" dur="8" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">Kodaly</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="a80lbkf" metcon="false" n="9">
+                <staff xml:id="j1nyuve6" n="1">
+                  <layer xml:id="k4okla3" n="1">
+                    <note xml:id="l1gexbn7" dur.ppq="16" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl con="d">—Vargyas</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="m2f36j" dots="1" dur.ppq="24" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse n="1">
+                        <syl>97</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+            </section>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

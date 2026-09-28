@@ -15,14 +15,14 @@
     "matching": "Stage 1: label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country. Stage 2 (only when stage 1 finds no settlement): all settlements within 20 km of the gazetteer coordinate whose ro/hu label or alias equals the name after folding diacritics. Candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
     "idNote": "Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.",
     "counts": {
-      "existing": 642,
-      "renamed": 85,
+      "existing": 673,
+      "renamed": 86,
       "merged": 0,
       "abandoned": 1,
       "unknown": 405
     },
-    "targets": 1133,
-    "networkRequests": 7
+    "targets": 1165,
+    "networkRequests": 52
   },
   "villages": {
     "hr/unresolved/korod": {
@@ -10329,7 +10329,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -20906,6 +20906,72 @@
       "status": "unknown",
       "wikidataUrl": null
     },
+    "ro/banat/timis/banloc": {
+      "admin": {
+        "commune": "Banloc",
+        "communeQid": "Q806854",
+        "county": "Timiș County",
+        "countyQid": "Q185586",
+        "countyRo": "Timiș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q14758001",
+        "Q806854"
+      ],
+      "coord": {
+        "lat": 45.387789,
+        "lng": 21.134283
+      },
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q14758001 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q806854 score 17: county matches; 0.3 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/timis/banloc",
+      "inception": "1400-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Banloc",
+      "nameHistorical": "Bánlak",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Banloc",
+        "historical": [],
+        "hu": "Bánlak",
+        "native": [
+          "Banloc"
+        ],
+        "ro": "Banloc"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1573
+      },
+      "qid": "Q14758001",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q14758001"
+    },
     "ro/banat/timis/buzias": {
       "admin": {
         "commune": "Timiș County",
@@ -21062,7 +21128,7 @@
         "countyQid": "Q185586",
         "countyRo": "Timiș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q12113000",
         "Q12113002",
@@ -21087,23 +21153,23 @@
       "county": "Timiș",
       "countyHistorical": "Temes",
       "dissolved": null,
-      "distanceFromGazetteerKm": 5.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q826661 score 20: county matches; 5.4 km from gazetteer coordinate; type score 3 (village)",
-        "Q12113000 score -25: county differs: Gorj County; 178.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q12113002 score -25: county differs: Bacău County; 442.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q12113003 score -25: county differs: Iași County; 493.7 km from gazetteer coordinate; type score 3 (village)",
-        "Q3732642 score -25: county differs: Dâmbovița County; 381.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q4967027 score -25: county differs: Cluj County; 189.1 km from gazetteer coordinate; type score 3 (village)",
-        "Q666137 score -25: county differs: Cluj County; 196.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q714327 score -25: county differs: Mureș County; 228.9 km from gazetteer coordinate; type score 3 (village)",
-        "Q714332 score -25: county differs: Mureș County; 260.4 km from gazetteer coordinate; type score 3 (village)",
-        "Q723793 score -25: county differs: Cluj County; 219.5 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q755430 score -25: county differs: Maramureș County; 292.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q2326320 score -28: county differs: Dâmbovița County; 379.6 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q5067667 score -28: county differs: Cluj County; 219.9 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q826661 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12113000 score -25: county differs: Gorj County; 181.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12113002 score -25: county differs: Bacău County; 447.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q12113003 score -25: county differs: Iași County; 499.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q3732642 score -25: county differs: Dâmbovița County; 386.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q4967027 score -25: county differs: Cluj County; 194.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q666137 score -25: county differs: Cluj County; 201.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q714327 score -25: county differs: Mureș County; 234.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q714332 score -25: county differs: Mureș County; 265.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q723793 score -25: county differs: Cluj County; 224.7 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q755430 score -25: county differs: Maramureș County; 297.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q2326320 score -28: county differs: Dâmbovița County; 383.8 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q5067667 score -28: county differs: Cluj County; 225.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/banat/timis/cornesti",
       "inception": "1332-01-01",
       "instanceOf": [
@@ -21114,10 +21180,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Cornești",
-      "nameHistorical": "Jadani",
+      "nameHistorical": "Mezőzsadány",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -21127,6 +21194,22 @@
         ],
         "en": "Cornești",
         "historical": [
+          {
+            "name": "Jadani",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Jadani",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Jadani",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Jadani",
+            "until": "1964-12-17"
+          },
           {
             "name": "Jadani",
             "until": "1964-12-17"
@@ -21179,12 +21262,12 @@
       "county": "Timiș",
       "countyHistorical": "Temes",
       "dissolved": null,
-      "distanceFromGazetteerKm": 0.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q904045 score 21: county matches; 0.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q5063363 score 17: county matches; 0.9 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q904045 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5063363 score 17: county matches; 0.5 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/banat/timis/denta",
       "inception": "1241-01-01",
       "instanceOf": [
@@ -21404,6 +21487,142 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q851048"
+    },
+    "ro/banat/timis/foeni": {
+      "admin": {
+        "commune": "Foeni",
+        "communeQid": "Q5062818",
+        "county": "Timiș County",
+        "countyQid": "Q185586",
+        "countyRo": "Timiș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1004774",
+        "Q5062818"
+      ],
+      "coord": {
+        "lat": 45.5,
+        "lng": 20.8833
+      },
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q1004774 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5062818 score 17: county matches; 0.6 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/timis/foeni",
+      "inception": "1289-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Foeni",
+      "nameHistorical": "Fény",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Foeni, Timiș"
+        ],
+        "en": "Foeni",
+        "historical": [],
+        "hu": "Fény",
+        "native": [
+          "Foeni"
+        ],
+        "ro": "Foeni"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 985
+      },
+      "qid": "Q1004774",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1004774"
+    },
+    "ro/banat/timis/ghilad": {
+      "admin": {
+        "commune": "Ghilad",
+        "communeQid": "Q12098929",
+        "county": "Timiș County",
+        "countyQid": "Q185586",
+        "countyRo": "Timiș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1010520",
+        "Q12098929"
+      ],
+      "coord": {
+        "lat": 45.46666667,
+        "lng": 21.15
+      },
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q1010520 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12098929 score 17: county matches; 1.3 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/timis/ghilad",
+      "inception": "1212-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Ghilad",
+      "nameHistorical": "Gilád",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Ghilad, Timiș"
+        ],
+        "en": "Ghilad",
+        "historical": [],
+        "hu": "Gilád",
+        "native": [
+          "Ghilad"
+        ],
+        "ro": "Ghilad"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1892
+      },
+      "qid": "Q1010520",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1010520"
     },
     "ro/banat/timis/ghiroda": {
       "admin": {
@@ -21651,7 +21870,7 @@
         "countyQid": "Q185586",
         "countyRo": "Timiș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q1089925",
         "Q1092983",
@@ -21671,24 +21890,24 @@
         "lng": 21.05
       },
       "county": "Timiș",
-      "countyHistorical": "Torontál",
+      "countyHistorical": "Temes",
       "dissolved": null,
-      "distanceFromGazetteerKm": 25.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1089925 score 17: county matches; 25.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q5029714 score 14: county matches; 25.0 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q1092983 score -25: county differs: Bistrița-Năsăud County; 331.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q12119561 score -25: county differs: Dâmbovița County; 351.9 km from gazetteer coordinate; type score 3 (village)",
-        "Q12119562 score -25: county differs: Dâmbovița County; 362.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q12129807 score -25: county differs: Vrancea County; 461.7 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q2465443 score -25: county differs: Mehedinți County; 194.6 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q937028 score -25: county differs: Alba County; 227.3 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q740671 score -27: county differs: Hunedoara County; 152.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q16425290 score -28: county differs: Alba County; 222.9 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q16426956 score -28: county differs: Mehedinți County; 194.0 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q5055496 score -28: county differs: Bistrița-Năsăud County; 335.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q1089925 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5029714 score 17: county matches; 0.5 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q1092983 score -25: county differs: Bistrița-Năsăud County; 336.3 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12119561 score -25: county differs: Dâmbovița County; 336.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q12119562 score -25: county differs: Dâmbovița County; 348.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q12129807 score -25: county differs: Vrancea County; 454.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q2465443 score -25: county differs: Mehedinți County; 172.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q937028 score -25: county differs: Alba County; 227.5 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q740671 score -27: county differs: Hunedoara County; 144.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q16425290 score -28: county differs: Alba County; 223.9 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q16426956 score -28: county differs: Mehedinți County; 171.9 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q5055496 score -28: county differs: Bistrița-Năsăud County; 339.6 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/banat/timis/livezile",
       "inception": "1322-01-01",
       "instanceOf": [
@@ -21703,10 +21922,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Livezile",
-      "nameHistorical": "Tolvadia",
+      "nameHistorical": "Tolvád",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -21716,6 +21936,38 @@
         ],
         "en": "Livezile",
         "historical": [
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Tolvadia",
+            "until": "1964-12-17"
+          },
           {
             "name": "Tolvadia",
             "until": "1964-12-17"
@@ -22104,6 +22356,72 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1022819"
     },
+    "ro/banat/timis/pischia": {
+      "admin": {
+        "commune": "Pișchia",
+        "communeQid": "Q12146428",
+        "county": "Timiș County",
+        "countyQid": "Q185586",
+        "countyRo": "Timiș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q12146428",
+        "Q598493"
+      ],
+      "coord": {
+        "lat": 45.904166666,
+        "lng": 21.34
+      },
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q598493 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12146428 score 17: county matches; 1.8 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/timis/pischia",
+      "inception": "1332-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Pișchia",
+      "nameHistorical": "Hidasliget",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Pișchia",
+        "historical": [],
+        "hu": "Hidasliget",
+        "native": [
+          "Pișchia"
+        ],
+        "ro": "Pișchia"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1222
+      },
+      "qid": "Q598493",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q598493"
+    },
     "ro/banat/timis/sanmartinu-maghiar": {
       "admin": {
         "commune": "Uivar",
@@ -22378,6 +22696,72 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q373372"
     },
+    "ro/banat/timis/satchinez": {
+      "admin": {
+        "commune": "Satchinez",
+        "communeQid": "Q5062862",
+        "county": "Timiș County",
+        "countyQid": "Q185586",
+        "countyRo": "Timiș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q368055",
+        "Q5062862"
+      ],
+      "coord": {
+        "lat": 45.94333333,
+        "lng": 21.03972222
+      },
+      "county": "Timiș",
+      "countyHistorical": "Temes",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q368055 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5062862 score 17: county matches; 1.4 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/banat/timis/satchinez",
+      "inception": "1230-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Satchinez",
+      "nameHistorical": "Temeskenéz",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Satchinez",
+        "historical": [],
+        "hu": "Temeskenéz",
+        "native": [
+          "Satchinez"
+        ],
+        "ro": "Satchinez"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 2829
+      },
+      "qid": "Q368055",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q368055"
+    },
     "ro/banat/timis/seceani": {
       "admin": {
         "commune": "Orțișoara",
@@ -22386,7 +22770,7 @@
         "countyQid": "Q185586",
         "countyRo": "Timiș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q608433"
       ],
@@ -22397,11 +22781,11 @@
       "county": "Timiș",
       "countyHistorical": "Temes",
       "dissolved": null,
-      "distanceFromGazetteerKm": 17.3,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q608433 score 17: county matches; 17.3 km from gazetteer coordinate; type score 3 (village)"
+        "Q608433 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/banat/timis/seceani",
       "inception": "1256-01-01",
       "instanceOf": [
@@ -22412,10 +22796,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Seceani",
-      "nameHistorical": "Seceani",
+      "nameHistorical": "Temesszécsény",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -22693,7 +23078,7 @@
         "countyQid": "Q185586",
         "countyRo": "Timiș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q5062037",
         "Q976479"
@@ -22703,14 +23088,14 @@
         "lng": 20.39865
       },
       "county": "Timiș",
-      "countyHistorical": "Torontál",
+      "countyHistorical": "Temes",
       "dissolved": null,
-      "distanceFromGazetteerKm": 0.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q976479 score 20: county matches; 0.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q5062037 score 17: county matches; 1.4 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q976479 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5062037 score 17: county matches; 1.0 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/banat/timis/valcani",
       "inception": "1256-01-01",
       "instanceOf": [
@@ -22725,10 +23110,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Vălcani",
-      "nameHistorical": "Valcani",
+      "nameHistorical": "Valkány",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -23938,7 +24324,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q1082215",
         "Q12140338",
@@ -23952,14 +24338,14 @@
       "county": "Arad",
       "countyHistorical": "Arad",
       "dissolved": null,
-      "distanceFromGazetteerKm": 2.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1082215 score 20: county matches; 2.4 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q5064094 score 17: county matches; 2.7 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q12140338 score -25: county differs: Mehedinți County; 174.5 km from gazetteer coordinate; type score 3 (village)",
-        "Q547433 score -25: county differs: Bistrița-Năsăud County; 207.0 km from gazetteer coordinate; type score 3 (village)"
+        "Q1082215 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5064094 score 17: county matches; 4.8 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q12140338 score -25: county differs: Mehedinți County; 172.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q547433 score -25: county differs: Bistrița-Năsăud County; 207.4 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/arad/petris",
       "inception": "1337-01-01",
       "instanceOf": [
@@ -23974,10 +24360,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Petriș",
-      "nameHistorical": "Petris",
+      "nameHistorical": "Marospetres",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -24291,7 +24678,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q757201"
       ],
@@ -24302,11 +24689,11 @@
       "county": "Arad",
       "countyHistorical": "Arad",
       "dissolved": null,
-      "distanceFromGazetteerKm": 6.2,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q757201 score 20: county matches; 6.2 km from gazetteer coordinate; type score 3 (village)"
+        "Q757201 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/arad/toc",
       "inception": "1715-01-01",
       "instanceOf": [
@@ -24317,10 +24704,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Toc",
-      "nameHistorical": "Toc",
+      "nameHistorical": "Tok",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -24350,7 +24738,7 @@
         "countyQid": "Q179559",
         "countyRo": "Arad"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q4684754",
         "Q724049"
@@ -24362,11 +24750,11 @@
       "county": "Arad",
       "countyHistorical": "Arad",
       "dissolved": null,
-      "distanceFromGazetteerKm": 5.2,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q724049 score 20: county matches; 5.2 km from gazetteer coordinate; type score 3 (village)"
+        "Q724049 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/arad/troas",
       "inception": "1700-01-01",
       "instanceOf": [
@@ -24377,10 +24765,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Troaș",
-      "nameHistorical": "Traias",
+      "nameHistorical": "Trojás",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -24403,6 +24792,74 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q724049"
+    },
+    "ro/crisana/arad/vinga": {
+      "admin": {
+        "commune": "Vinga",
+        "communeQid": "Q12093339",
+        "county": "Arad County",
+        "countyQid": "Q179559",
+        "countyRo": "Arad"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1066840",
+        "Q12093339"
+      ],
+      "coord": {
+        "lat": 46.016185,
+        "lng": 21.215725
+      },
+      "county": "Arad",
+      "countyHistorical": "Arad",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q1066840 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12093339 score 17: county matches; 3.6 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/arad/vinga",
+      "inception": null,
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Vinga",
+      "nameHistorical": "Vinga",
+      "names": {
+        "aliasesDe": [
+          "Winga"
+        ],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Vinga",
+        "historical": [],
+        "hu": "Vinga",
+        "native": [
+          "Vinga"
+        ],
+        "ro": "Vinga"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 4138
+      },
+      "qid": "Q1066840",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1066840"
     },
     "ro/crisana/bihor/alesd": {
       "admin": {
@@ -24624,6 +25081,66 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q646065"
     },
+    "ro/crisana/bihor/borz": {
+      "admin": {
+        "commune": "Șoimi",
+        "communeQid": "Q12172188",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q726011"
+      ],
+      "coord": {
+        "lat": 46.673618,
+        "lng": 22.191395
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q726011 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/borz",
+      "inception": "1587-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Borz",
+      "nameHistorical": "Borz",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Borz",
+        "historical": [],
+        "hu": "Borz",
+        "native": [
+          "Borz"
+        ],
+        "ro": "Borz"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 129
+      },
+      "qid": "Q726011",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q726011"
+    },
     "ro/crisana/bihor/budureasa": {
       "admin": {
         "commune": "Budureasa",
@@ -24768,7 +25285,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q1083018",
         "Q12129382",
@@ -24782,14 +25299,14 @@
       "county": "Bihor",
       "countyHistorical": "Bihar",
       "dissolved": null,
-      "distanceFromGazetteerKm": 6.8,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1083018 score 20: county matches; 6.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q12724714 score 17: county matches; 6.8 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q12129382 score -25: county differs: Bacău County; 400.1 km from gazetteer coordinate; type score 3 (village)",
-        "Q3560656 score -25: county differs: Hunedoara County; 94.5 km from gazetteer coordinate; type score 3 (village)"
+        "Q1083018 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12724714 score 17: county matches; 0.0 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q12129382 score -25: county differs: Bacău County; 393.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q3560656 score -25: county differs: Hunedoara County; 90.7 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/bihor/cabesti",
       "inception": "1552-01-01",
       "instanceOf": [
@@ -24804,10 +25321,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Căbești",
-      "nameHistorical": "Cabesti",
+      "nameHistorical": "Biharkaba",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -25290,7 +25808,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q714085",
         "Q754305",
@@ -25303,13 +25821,13 @@
       "county": "Bihor",
       "countyHistorical": "Bihar",
       "dissolved": null,
-      "distanceFromGazetteerKm": 18.6,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q754305 score 17: county matches; 18.6 km from gazetteer coordinate; type score 3 (village)",
-        "Q714085 score -25: county differs: Mureș County; 182.6 km from gazetteer coordinate; type score 3 (village)",
-        "Q755835 score -25: county differs: Arad County; 72.7 km from gazetteer coordinate; type score 3 (village)"
+        "Q754305 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q714085 score -25: county differs: Mureș County; 186.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q755835 score -25: county differs: Arad County; 91.2 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/bihor/corbesti",
       "inception": "1828-01-01",
       "instanceOf": [
@@ -25320,10 +25838,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Corbești",
-      "nameHistorical": "Corbesd",
+      "nameHistorical": "Hollószeg",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -25408,6 +25927,67 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q754248"
+    },
+    "ro/crisana/bihor/cresuia": {
+      "admin": {
+        "commune": "Curățele",
+        "communeQid": "Q12685317",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q755234"
+      ],
+      "coord": {
+        "lat": 46.708572,
+        "lng": 22.479717
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q755234 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/cresuia",
+      "inception": "1588-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Cresuia",
+      "nameHistorical": "Kereszély",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Cresuia",
+        "historical": [],
+        "hu": "Kereszély",
+        "native": [
+          "Cresuia",
+          "Kereszély"
+        ],
+        "ro": "Cresuia"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 407
+      },
+      "qid": "Q755234",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q755234"
     },
     "ro/crisana/bihor/cristioru-de-jos": {
       "admin": {
@@ -25755,6 +26335,79 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1082425"
     },
+    "ro/crisana/bihor/dragesti": {
+      "admin": {
+        "commune": "Drăgești",
+        "communeQid": "Q1083594",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1083594",
+        "Q12102401",
+        "Q12102402",
+        "Q12102403",
+        "Q4683543"
+      ],
+      "coord": {
+        "lat": 46.899892,
+        "lng": 22.128419
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q4683543 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q1083594 score 18: county matches; 1.9 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q12102401 score -25: county differs: Vaslui County; 400.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q12102402 score -25: county differs: Bacău County; 368.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q12102403 score -25: county differs: Bacău County; 393.9 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/dragesti",
+      "inception": "1508-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Drăgești",
+      "nameHistorical": "Drágcséke",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Drăgești",
+        "historical": [],
+        "hu": "Drágcséke",
+        "native": [
+          "Drágcséke",
+          "Drăgești"
+        ],
+        "ro": "Drăgești"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 397
+      },
+      "qid": "Q4683543",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q4683543"
+    },
     "ro/crisana/bihor/dumbravita-de-codru": {
       "admin": {
         "commune": "Șoimi",
@@ -26079,6 +26732,75 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q754962"
+    },
+    "ro/crisana/bihor/lelesti": {
+      "admin": {
+        "commune": "Buntești",
+        "communeQid": "Q12085659",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q16426635",
+        "Q2717901",
+        "Q724387",
+        "Q754969"
+      ],
+      "coord": {
+        "lat": 46.620125,
+        "lng": 22.457092
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q754969 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q2717901 score -25: county differs: Gorj County; 178.5 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q724387 score -25: county differs: Bistrița-Năsăud County; 132.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q16426635 score -28: county differs: Gorj County; 179.9 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/lelesti",
+      "inception": "1588-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Lelești",
+      "nameHistorical": "Lelesd",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Leleşti"
+        ],
+        "en": "Lelești",
+        "historical": [],
+        "hu": "Lelesd",
+        "native": [
+          "Lelesd",
+          "Lelești"
+        ],
+        "ro": "Lelești"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 375
+      },
+      "qid": "Q754969",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q754969"
     },
     "ro/crisana/bihor/lorau": {
       "admin": {
@@ -26617,6 +27339,69 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1022812"
     },
+    "ro/crisana/bihor/pocioveliste": {
+      "admin": {
+        "commune": "Curățele",
+        "communeQid": "Q12685317",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q755182"
+      ],
+      "coord": {
+        "lat": 46.701172,
+        "lng": 22.438593
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q755182 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/pocioveliste",
+      "inception": "1600-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Pocioveliște",
+      "nameHistorical": "Pócsafalva",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Pociovelişte"
+        ],
+        "en": "Pocioveliște",
+        "historical": [],
+        "hu": "Pócsafalva",
+        "native": [
+          "Pocioveliște",
+          "Pócsafalva"
+        ],
+        "ro": "Pocioveliște"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 318
+      },
+      "qid": "Q755182",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q755182"
+    },
     "ro/crisana/bihor/pocola": {
       "admin": {
         "commune": "Pocola",
@@ -27133,6 +27918,69 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q376233"
     },
+    "ro/crisana/bihor/saliste-de-vascau": {
+      "admin": {
+        "commune": "Criștioru de Jos",
+        "communeQid": "Q16425633",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q725209"
+      ],
+      "coord": {
+        "lat": 46.43388,
+        "lng": 22.540872
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q725209 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/saliste-de-vascau",
+      "inception": "1588-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Săliște de Vașcău",
+      "nameHistorical": "Vaskohszeleste",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Sălişte de Vaşcău"
+        ],
+        "en": "Săliște de Vașcău",
+        "historical": [],
+        "hu": "Vaskohszeleste",
+        "native": [
+          "Săliște de Vașcău",
+          "Vaskohszeleste"
+        ],
+        "ro": "Săliște de Vașcău"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 349
+      },
+      "qid": "Q725209",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q725209"
+    },
     "ro/crisana/bihor/salonta": {
       "admin": {
         "commune": "Bihor County",
@@ -27248,6 +28096,73 @@
       "status": "unknown",
       "wikidataUrl": null
     },
+    "ro/crisana/bihor/sambata": {
+      "admin": {
+        "commune": "Sâmbăta",
+        "communeQid": "Q16425720",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1189411",
+        "Q16425720",
+        "Q7665344"
+      ],
+      "coord": {
+        "lat": 46.80146,
+        "lng": 22.201916
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q1189411 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q16425720 score 17: county matches; 1.2 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/sambata",
+      "inception": "1508-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Sâmbăta",
+      "nameHistorical": "Szombatság",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Sâmbăta",
+        "historical": [],
+        "hu": "Szombatság",
+        "native": [
+          "Sâmbăta"
+        ],
+        "ro": "Sâmbăta"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 328
+      },
+      "qid": "Q1189411",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1189411"
+    },
     "ro/crisana/bihor/samsbleat": {
       "admin": {
         "commune": null,
@@ -27355,6 +28270,68 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q714390"
+    },
+    "ro/crisana/bihor/sanmartin-de-beius": {
+      "admin": {
+        "commune": "Pocola",
+        "communeQid": "Q16425688",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q724872"
+      ],
+      "coord": {
+        "lat": 46.690686,
+        "lng": 22.322658
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q724872 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/sanmartin-de-beius",
+      "inception": "1828-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Sânmartin de Beiuș",
+      "nameHistorical": "Belényesszentmárton",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Sânmartin de Beiuş"
+        ],
+        "en": "Sânmartin de Beiuș",
+        "historical": [],
+        "hu": "Belényesszentmárton",
+        "native": [
+          "Sânmartin de Beiuș"
+        ],
+        "ro": "Sânmartin de Beiuș"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 208
+      },
+      "qid": "Q724872",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q724872"
     },
     "ro/crisana/bihor/sebis": {
       "admin": {
@@ -27494,7 +28471,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q1087801",
         "Q12172188"
@@ -27506,12 +28483,12 @@
       "county": "Bihor",
       "countyHistorical": "Bihar",
       "dissolved": null,
-      "distanceFromGazetteerKm": 1,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1087801 score 20: county matches; 1.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q12172188 score 17: county matches; 6.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q1087801 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12172188 score 17: county matches; 5.6 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/bihor/soimi",
       "inception": "1487-01-01",
       "instanceOf": [
@@ -27526,10 +28503,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Șoimi",
-      "nameHistorical": "Soimi",
+      "nameHistorical": "Sólyom",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -27751,6 +28729,67 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q610483"
     },
+    "ro/crisana/bihor/suplacu-de-tinca": {
+      "admin": {
+        "commune": "Căpâlna",
+        "communeQid": "Q16029115",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q755320"
+      ],
+      "coord": {
+        "lat": 46.706813,
+        "lng": 22.111471
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q755320 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/suplacu-de-tinca",
+      "inception": "1291-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Suplacu de Tinca",
+      "nameHistorical": "Tenkeszéplak",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Suplacu de Tinca",
+        "historical": [],
+        "hu": "Tenkeszéplak",
+        "native": [
+          "Suplacu de Tinca",
+          "Tenkeszéplak"
+        ],
+        "ro": "Suplacu de Tinca"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 328
+      },
+      "qid": "Q755320",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q755320"
+    },
     "ro/crisana/bihor/tarcaia": {
       "admin": {
         "commune": "Tărcaia",
@@ -27826,7 +28865,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q539144",
         "Q7862572"
@@ -27838,11 +28877,11 @@
       "county": "Bihor",
       "countyHistorical": "Bihar",
       "dissolved": null,
-      "distanceFromGazetteerKm": 2.1,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q539144 score 20: county matches; 2.1 km from gazetteer coordinate; type score 3 (village)"
+        "Q539144 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/bihor/tasad",
       "inception": "1508-01-01",
       "instanceOf": [
@@ -27853,10 +28892,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Tășad",
-      "nameHistorical": "Tdsad",
+      "nameHistorical": "Tasádfő",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -27878,6 +28918,73 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q539144"
+    },
+    "ro/crisana/bihor/teleac": {
+      "admin": {
+        "commune": "Budureasa",
+        "communeQid": "Q1853345",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": true,
+      "candidates": [
+        "Q3888351",
+        "Q714426",
+        "Q754509",
+        "Q839583"
+      ],
+      "coord": {
+        "lat": 46.661456,
+        "lng": 22.43051
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q754509 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q3888351 score -25: county differs: Alba County; 111.9 km from gazetteer coordinate; type score 3 (village)",
+        "Q714426 score -25: county differs: Harghita County; 226.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q839583 score -25: county differs: Mureș County; 180.2 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/teleac",
+      "inception": "1580-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Teleac",
+      "nameHistorical": "Telek",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Teleac",
+        "historical": [],
+        "hu": "Telek",
+        "native": [
+          "Teleac",
+          "Telek"
+        ],
+        "ro": "Teleac"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 141
+      },
+      "qid": "Q754509",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q754509"
     },
     "ro/crisana/bihor/tinca": {
       "admin": {
@@ -27955,7 +29062,7 @@
         "countyQid": "Q179588",
         "countyRo": "Bihor"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q724988"
       ],
@@ -27966,11 +29073,11 @@
       "county": "Bihor",
       "countyHistorical": "Bihar",
       "dissolved": null,
-      "distanceFromGazetteerKm": 16.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q724988 score 17: county matches; 16.4 km from gazetteer coordinate; type score 3 (village)"
+        "Q724988 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/bihor/urvis-de-beius",
       "inception": "1487-01-01",
       "instanceOf": [
@@ -27981,10 +29088,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Urviș de Beiuș",
-      "nameHistorical": "Urvis",
+      "nameHistorical": "Belényesörvényes",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -29493,12 +30601,12 @@
       "county": "Satu Mare",
       "countyHistorical": "Szatmár",
       "dissolved": null,
-      "distanceFromGazetteerKm": 8.8,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1188978 score 20: county matches; 8.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q5055124 score 17: county matches; 6.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q1188978 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5055124 score 17: county matches; 2.8 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/crisana/satu-mare/pomi",
       "inception": "1407-01-01",
       "instanceOf": [
@@ -29513,10 +30621,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Pomi",
-      "nameHistorical": "Pom",
+      "nameHistorical": "Remetemező",
       "names": {
         "aliasesDe": [
           "Remetemező"
@@ -30306,6 +31415,67 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q781602"
     },
+    "ro/maramures/maramures/bocicoel": {
+      "admin": {
+        "commune": "Bogdan Vodă",
+        "communeQid": "Q5056010",
+        "county": "Maramureș County",
+        "countyQid": "Q188813",
+        "countyRo": "Maramureș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q428427",
+        "Q4936265"
+      ],
+      "coord": {
+        "lat": 47.69861111,
+        "lng": 24.31916667
+      },
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q428427 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/maramures/maramures/bocicoel",
+      "inception": "1365-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Bocicoel",
+      "nameHistorical": "Kisbocskó",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Bocicoel",
+        "historical": [],
+        "hu": "Kisbocskó",
+        "native": [
+          "Bocicoel"
+        ],
+        "ro": "Bocicoel"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 511
+      },
+      "qid": "Q428427",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q428427"
+    },
     "ro/maramures/maramures/bocicoiel": {
       "admin": {
         "commune": null,
@@ -31074,6 +32244,76 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q426912"
+    },
+    "ro/maramures/maramures/iapa": {
+      "admin": {
+        "commune": "Sighetu Marmației",
+        "communeQid": "Q334874",
+        "county": "Maramureș County",
+        "countyQid": "Q188813",
+        "countyRo": "Maramureș"
+      },
+      "cached": true,
+      "candidates": [
+        "Q12118777",
+        "Q18540847",
+        "Q725882",
+        "Q742060",
+        "Q7475813"
+      ],
+      "coord": {
+        "lat": 47.925131,
+        "lng": 23.825387
+      },
+      "county": "Maramureș",
+      "countyHistorical": "Máramaros",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q742060 score 19: county matches; 0.0 km from gazetteer coordinate; type score 1 (constituent locality)",
+        "Q12118777 score -27: county differs: Neamț County; 233.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q725882 score -27: county differs: Sălaj County; 77.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q7475813 score -27: county differs: Alba County; 176.6 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/maramures/maramures/iapa",
+      "inception": "1406-01-01",
+      "instanceOf": [
+        {
+          "label": "constituent locality",
+          "qid": "Q15921247"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Iapa",
+      "nameHistorical": "Kabolapatak",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Kabolapatak"
+        ],
+        "en": "Iapa",
+        "historical": [],
+        "hu": "Kabolapatak",
+        "native": [
+          "Iapa",
+          "Kabolapatak"
+        ],
+        "ro": "Iapa"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1055
+      },
+      "qid": "Q742060",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q742060"
     },
     "ro/maramures/maramures/ieud": {
       "admin": {
@@ -33315,46 +34555,46 @@
       "county": "Maramureș",
       "countyHistorical": "Máramaros",
       "dissolved": null,
-      "distanceFromGazetteerKm": 3.1,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q750740 score 20: county matches; 3.1 km from gazetteer coordinate; type score 3 (village)",
-        "Q725664 score -7: county matches; 42.5 km from gazetteer coordinate; type score 3 (village)",
-        "Q268472 score -9: county matches; 52.1 km from gazetteer coordinate; type score 1 (constituent locality)",
-        "Q12088206 score -24: county differs: Alba County; 176.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q2719284 score -24: county differs: Olt County; 395.1 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q529945 score -24: county differs: Mureș County; 123.7 km from gazetteer coordinate; type score 3 (village)",
-        "Q10858327 score -25: county differs: Constanța County; 512.7 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088203 score -25: county differs: Argeș County; 280.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088205 score -25: county differs: Olt County; 385.9 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088207 score -25: county differs: Gorj County; 339.0 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088208 score -25: county differs: Vaslui County; 328.9 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088209 score -25: county differs: Hunedoara County; 206.0 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088210 score -25: county differs: Vâlcea County; 330.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088212 score -25: county differs: Vrancea County; 309.1 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088215 score -25: county differs: Bacău County; 273.7 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088216 score -25: county differs: Vaslui County; 333.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088217 score -25: county differs: Vrancea County; 304.5 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088218 score -25: county differs: Vâlcea County; 297.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088219 score -25: county differs: Bacău County; 260.9 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088220 score -25: county differs: Vrancea County; 310.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088221 score -25: county differs: Bacău County; 289.0 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088222 score -25: county differs: Sibiu County; 182.6 km from gazetteer coordinate; type score 3 (village)",
-        "Q2303257 score -25: county differs: Neamț County; 218.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q2548874 score -25: county differs: Vaslui County; 305.7 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q264322 score -25: county differs: Hunedoara County; 201.1 km from gazetteer coordinate; type score 3 (village)",
-        "Q714120 score -25: county differs: Cluj County; 131.0 km from gazetteer coordinate; type score 3 (village)",
-        "Q714193 score -25: county differs: Harghita County; 194.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q718157 score -25: county differs: Brașov County; 213.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q755385 score -25: county differs: Sălaj County; 72.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q8113067 score -25: county differs: Cluj County; 108.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q823122 score -25: county differs: Alba County; 190.4 km from gazetteer coordinate; type score 3 (village)",
-        "Q12088214 score -27: county differs: Neamț County; 203.7 km from gazetteer coordinate; type score 1 (constituent locality)",
-        "Q12140278 score -27: county differs: Neamț County; 166.5 km from gazetteer coordinate; type score 3 (village)",
-        "Q16427187 score -27: county differs: Olt County; 397.7 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q13570100 score -28: county differs: Vaslui County; 304.5 km from gazetteer coordinate; type score 0 (commune of Romania)",
-        "Q5066395 score -28: county differs: Neamț County; 218.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q750740 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q725664 score -7: county matches; 45.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q268472 score -9: county matches; 54.8 km from gazetteer coordinate; type score 1 (constituent locality)",
+        "Q10858327 score -25: county differs: Constanța County; 514.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088203 score -25: county differs: Argeș County; 283.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088205 score -25: county differs: Olt County; 388.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088206 score -25: county differs: Alba County; 179.9 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088207 score -25: county differs: Gorj County; 342.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088208 score -25: county differs: Vaslui County; 329.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088209 score -25: county differs: Hunedoara County; 209.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088210 score -25: county differs: Vâlcea County; 333.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088212 score -25: county differs: Vrancea County; 310.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088215 score -25: county differs: Bacău County; 274.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088216 score -25: county differs: Vaslui County; 333.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088217 score -25: county differs: Vrancea County; 305.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088218 score -25: county differs: Vâlcea County; 300.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088219 score -25: county differs: Bacău County; 261.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088220 score -25: county differs: Vrancea County; 311.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088221 score -25: county differs: Bacău County; 289.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088222 score -25: county differs: Sibiu County; 185.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q2303257 score -25: county differs: Neamț County; 217.9 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q2548874 score -25: county differs: Vaslui County; 305.5 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q264322 score -25: county differs: Hunedoara County; 204.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q2719284 score -25: county differs: Olt County; 397.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q529945 score -25: county differs: Mureș County; 126.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q714120 score -25: county differs: Cluj County; 134.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q714193 score -25: county differs: Harghita County; 196.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q718157 score -25: county differs: Brașov County; 215.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q755385 score -25: county differs: Sălaj County; 75.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q8113067 score -25: county differs: Cluj County; 111.7 km from gazetteer coordinate; type score 3 (village)",
+        "Q823122 score -25: county differs: Alba County; 193.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12088214 score -27: county differs: Neamț County; 204.0 km from gazetteer coordinate; type score 1 (constituent locality)",
+        "Q12140278 score -27: county differs: Neamț County; 166.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q13570100 score -28: county differs: Vaslui County; 304.4 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q16427187 score -28: county differs: Olt County; 400.3 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q5066395 score -28: county differs: Neamț County; 218.0 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/maramures/maramures/valeni",
       "inception": "1405-01-01",
       "instanceOf": [
@@ -33365,10 +34605,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Văleni",
-      "nameHistorical": "Văleni",
+      "nameHistorical": "Mikolapatak",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -37094,8 +38335,8 @@
     },
     "ro/transylvania/alba/carpinis": {
       "admin": {
-        "commune": "Roșia Montană",
-        "communeQid": "Q12148992",
+        "commune": "Gârbova",
+        "communeQid": "Q16425265",
         "county": "Alba County",
         "countyQid": "Q45868",
         "countyRo": "Alba"
@@ -37113,24 +38354,24 @@
         "Q747191"
       ],
       "coord": {
-        "lat": 46.31698,
-        "lng": 23.058852
+        "lat": 45.83163,
+        "lng": 23.66114
       },
       "county": "Alba",
       "countyHistorical": "Alsó-Fehér",
       "dissolved": null,
-      "distanceFromGazetteerKm": 4.4,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q221232 score 20: county matches; 4.4 km from gazetteer coordinate; type score 3 (village)",
-        "Q3894374 score -5: county matches; 67.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q1029476 score -25: county differs: Hunedoara County; 46.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q1107598 score -25: county differs: Brașov County; 217.2 km from gazetteer coordinate; type score 3 (village)",
-        "Q12109655 score -25: county differs: Gorj County; 129.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q14776803 score -25: county differs: Timiș County; 179.5 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
-        "Q747191 score -25: county differs: Maramureș County; 148.8 km from gazetteer coordinate; type score 3 (village)",
-        "Q1014839 score -28: county differs: Timiș County; 179.5 km from gazetteer coordinate; type score 0 (commune of Romania)"
+        "Q3894374 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q221232 score -5: county matches; 71.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q1107598 score -24: county differs: Brașov County; 164.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q1029476 score -25: county differs: Hunedoara County; 48.9 km from gazetteer coordinate; type score 3 (village)",
+        "Q12109655 score -25: county differs: Gorj County; 72.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q14776803 score -25: county differs: Timiș County; 213.7 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q747191 score -25: county differs: Maramureș County; 193.9 km from gazetteer coordinate; type score 3 (village)",
+        "Q1014839 score -28: county differs: Timiș County; 213.7 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/alba/carpinis",
       "inception": null,
       "instanceOf": [
@@ -37141,19 +38382,21 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Cărpiniș",
-      "nameHistorical": "Cherpenis",
+      "nameHistorical": "Kerpenyes",
       "names": {
         "aliasesDe": [],
-        "aliasesHu": [
-          "Cărpiniș"
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Cărpiniş",
+          "Cărpiniş (Gârbova)"
         ],
-        "aliasesRo": [],
         "en": "Cărpiniș",
         "historical": [],
-        "hu": "Abrudkerpenyes",
+        "hu": "Kerpenyes",
         "native": [
           "Cărpiniș"
         ],
@@ -37161,12 +38404,12 @@
       },
       "population": {
         "asOf": "2021-12-01",
-        "value": 405
+        "value": 214
       },
-      "qid": "Q221232",
+      "qid": "Q3894374",
       "replacedBy": null,
       "status": "existing",
-      "wikidataUrl": "https://www.wikidata.org/wiki/Q221232"
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q3894374"
     },
     "ro/transylvania/alba/coltesti": {
       "admin": {
@@ -37261,12 +38504,12 @@
       "county": "Alba",
       "countyHistorical": "Alsó-Fehér",
       "dissolved": null,
-      "distanceFromGazetteerKm": 4.3,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q752223 score 21: county matches; 4.3 km from gazetteer coordinate; type score 3 (village)",
-        "Q1706759 score -25: county differs: Caraș-Severin County; 123.6 km from gazetteer coordinate; type score 3 (village)"
+        "Q752223 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q1706759 score -25: county differs: Caraș-Severin County; 125.5 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/alba/fenes",
       "inception": "1673-01-01",
       "instanceOf": [
@@ -37816,6 +39059,79 @@
       "status": "renamed",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q691885"
     },
+    "ro/transylvania/alba/ponor": {
+      "admin": {
+        "commune": "Ponor",
+        "communeQid": "Q16425333",
+        "county": "Alba County",
+        "countyQid": "Q45868",
+        "countyRo": "Alba"
+      },
+      "cached": false,
+      "candidates": [
+        "Q16425333",
+        "Q3728303",
+        "Q4681046",
+        "Q7227951",
+        "Q7227953",
+        "Q937236"
+      ],
+      "coord": {
+        "lat": 46.33555556,
+        "lng": 23.39805556
+      },
+      "county": "Alba",
+      "countyHistorical": "Alsó-Fehér",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q937236 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q16425333 score 17: county matches; 1.9 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q3728303 score -25: county differs: Hunedoara County; 94.1 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/alba/ponor",
+      "inception": null,
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Ponor",
+      "nameHistorical": "Nagyponor",
+      "names": {
+        "aliasesDe": [
+          "Nagyponor"
+        ],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Ponor",
+        "historical": [],
+        "hu": "Nagyponor",
+        "native": [
+          "Ponor"
+        ],
+        "ro": "Ponor"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 143
+      },
+      "qid": "Q937236",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q937236"
+    },
     "ro/transylvania/alba/rimetea": {
       "admin": {
         "commune": "Rimetea",
@@ -38228,6 +39544,141 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q187205"
+    },
+    "ro/transylvania/bistrita-nasaud/coasta": {
+      "admin": {
+        "commune": "Șieu-Odorhei",
+        "communeQid": "Q5065311",
+        "county": "Bistrița-Năsăud County",
+        "countyQid": "Q181513",
+        "countyRo": "Bistrița-Năsăud"
+      },
+      "cached": false,
+      "candidates": [
+        "Q12110805",
+        "Q12110806",
+        "Q12110808",
+        "Q4714435",
+        "Q823164"
+      ],
+      "coord": {
+        "lat": 47.125339,
+        "lng": 24.281993
+      },
+      "county": "Bistrița-Năsăud",
+      "countyHistorical": "Beszterce-Naszód",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q12110805 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q823164 score -3: county differs: Cluj County; 39.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q12110806 score -25: county differs: Vâlcea County; 221.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12110808 score -25: county differs: Vâlcea County; 220.9 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/bistrita-nasaud/coasta",
+      "inception": "1913-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Coasta",
+      "nameHistorical": "Sajókiskeresztúr",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Coasta, Bistriţa-Năsăud",
+          "Coasta, bistriţa-năsăud",
+          "Coasta, bistrița-năsăud"
+        ],
+        "en": "Coasta",
+        "historical": [],
+        "hu": "Sajókiskeresztúr",
+        "native": [
+          "Coasta"
+        ],
+        "ro": "Coasta"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 180
+      },
+      "qid": "Q12110805",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q12110805"
+    },
+    "ro/transylvania/bistrita-nasaud/fantanita": {
+      "admin": {
+        "commune": "Miceștii de Câmpie",
+        "communeQid": "Q5070431",
+        "county": "Bistrița-Năsăud County",
+        "countyQid": "Q181513",
+        "countyRo": "Bistrița-Năsăud"
+      },
+      "cached": false,
+      "candidates": [
+        "Q4716880",
+        "Q755208"
+      ],
+      "coord": {
+        "lat": 46.831644,
+        "lng": 24.340367
+      },
+      "county": "Bistrița-Năsăud",
+      "countyHistorical": "Beszterce-Naszód",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q755208 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/bistrita-nasaud/fantanita",
+      "inception": "1297-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Fântânița",
+      "nameHistorical": "Mezőköbölkút",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Fântâniţa"
+        ],
+        "en": "Fântânița",
+        "historical": [],
+        "hu": "Mezőköbölkút",
+        "native": [
+          "Fântânița",
+          "Mezőköbölkút"
+        ],
+        "ro": "Fântânița"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 296
+      },
+      "qid": "Q755208",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q755208"
     },
     "ro/transylvania/bistrita-nasaud/feldru": {
       "admin": {
@@ -39827,6 +41278,76 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q723062"
+    },
+    "ro/transylvania/cluj/camarasu": {
+      "admin": {
+        "commune": "Cămărașu",
+        "communeQid": "Q12724718",
+        "county": "Cluj County",
+        "countyQid": "Q182624",
+        "countyRo": "Cluj"
+      },
+      "cached": true,
+      "candidates": [
+        "Q1076104",
+        "Q12724718"
+      ],
+      "coord": {
+        "lat": 46.783333333,
+        "lng": 24.116666666
+      },
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q1076104 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12724718 score 17: county matches; 1.7 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/cluj/camarasu",
+      "inception": "1325-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Cămărașu",
+      "nameHistorical": "Pusztakamarás",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Camarasu",
+          "Comuna Cămăraşu",
+          "Cămăraşu"
+        ],
+        "en": "Cămărașu",
+        "historical": [],
+        "hu": "Pusztakamarás",
+        "native": [
+          "Cămărașu"
+        ],
+        "ro": "Cămărașu"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1592
+      },
+      "qid": "Q1076104",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1076104"
     },
     "ro/transylvania/cluj/capusu-mare": {
       "admin": {
@@ -41740,6 +43261,73 @@
       "status": "renamed",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q100188"
     },
+    "ro/transylvania/cluj/coasta": {
+      "admin": {
+        "commune": "Bonțida",
+        "communeQid": "Q12724569",
+        "county": "Cluj County",
+        "countyQid": "Q182624",
+        "countyRo": "Cluj"
+      },
+      "cached": false,
+      "candidates": [
+        "Q12110805",
+        "Q12110806",
+        "Q12110808",
+        "Q4714435",
+        "Q823164"
+      ],
+      "coord": {
+        "lat": 46.885767,
+        "lng": 23.897201
+      },
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q823164 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12110805 score -3: county differs: Bistrița-Năsăud County; 39.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q12110806 score -25: county differs: Vâlcea County; 196.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12110808 score -25: county differs: Vâlcea County; 198.9 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/cluj/coasta",
+      "inception": "1318-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Coasta",
+      "nameHistorical": "Gyulatelke",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Coasta",
+        "historical": [],
+        "hu": "Gyulatelke",
+        "native": [
+          "Coasta"
+        ],
+        "ro": "Coasta"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 161
+      },
+      "qid": "Q823164",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q823164"
+    },
     "ro/transylvania/cluj/cornesti": {
       "admin": {
         "commune": "Mihai Viteazu",
@@ -43148,7 +44736,7 @@
         "countyQid": "Q182624",
         "countyRo": "Cluj"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q1006721",
         "Q16896903"
@@ -43158,13 +44746,13 @@
         "lng": 23.945278
       },
       "county": "Cluj",
-      "countyHistorical": "Szolnok-Doboka",
+      "countyHistorical": "Kolozs",
       "dissolved": null,
-      "distanceFromGazetteerKm": 4.8,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q1006721 score 20: county matches; 4.8 km from gazetteer coordinate; type score 3 (village)"
+        "Q1006721 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/cluj/nicula",
       "inception": "1326-01-01",
       "instanceOf": [
@@ -43175,10 +44763,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Nicula",
-      "nameHistorical": "Micola",
+      "nameHistorical": "Füzesmikola",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -43199,6 +44788,236 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1006721"
+    },
+    "ro/transylvania/cluj/padureni": {
+      "admin": {
+        "commune": "Tritenii de Jos",
+        "communeQid": "Q12725216",
+        "county": "Cluj County",
+        "countyQid": "Q182624",
+        "countyRo": "Cluj"
+      },
+      "cached": false,
+      "candidates": [
+        "Q12139311",
+        "Q12139312",
+        "Q12139313",
+        "Q12139314",
+        "Q12139315",
+        "Q12139316",
+        "Q12139317",
+        "Q12139318",
+        "Q12139319",
+        "Q12139320",
+        "Q12139321",
+        "Q12139322",
+        "Q12139323",
+        "Q12139324",
+        "Q12139325",
+        "Q12139327",
+        "Q12139328",
+        "Q12139329",
+        "Q12139330",
+        "Q13571577",
+        "Q13571578",
+        "Q16427748",
+        "Q2297481",
+        "Q2585692",
+        "Q383081",
+        "Q3847633",
+        "Q3891887",
+        "Q540995",
+        "Q614597",
+        "Q663305",
+        "Q713865",
+        "Q724226",
+        "Q7264885",
+        "Q7264886",
+        "Q990388"
+      ],
+      "coord": {
+        "lat": 46.594722222,
+        "lng": 24.038333333
+      },
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q2585692 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q3891887 score 17: county matches; 36.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q540995 score 3: county unknown on item; type score 1 (quarter)",
+        "Q383081 score -5: county matches; 45.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139311 score -25: county differs: Bacău County; 244.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139312 score -25: county differs: Argeș County; 222.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139313 score -25: county differs: Bacău County; 214.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139314 score -25: county differs: Iași County; 271.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139315 score -25: county differs: Bacău County; 230.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139316 score -25: county differs: Dâmbovița County; 224.9 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139317 score -25: county differs: Giurgiu County; 285.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139318 score -25: county differs: Vrancea County; 247.2 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139319 score -25: county differs: Botoșani County; 236.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139320 score -25: county differs: Constanța County; 411.8 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139321 score -25: county differs: Bacău County; 213.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139322 score -25: county differs: Vrancea County; 256.1 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139323 score -25: county differs: Neamț County; 193.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139324 score -25: county differs: Vaslui County; 260.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139325 score -25: county differs: Iași County; 255.8 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139328 score -25: county differs: Vrancea County; 261.8 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139329 score -25: county differs: Botoșani County; 230.4 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139330 score -25: county differs: Bacău County; 244.8 km from gazetteer coordinate; type score 3 (village)",
+        "Q13571577 score -25: county differs: Sibiu County; 75.3 km from gazetteer coordinate; type score 3 (village)",
+        "Q2297481 score -25: county differs: Vaslui County; 309.1 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q3847633 score -25: county differs: Timiș County; 199.5 km from gazetteer coordinate; type score 3 (village)",
+        "Q614597 score -25: county differs: Bihor County; 150.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q663305 score -25: county differs: Timiș County; 244.1 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q713865 score -25: county differs: Covasna County; 165.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q724226 score -25: county differs: Mureș County; 52.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q990388 score -25: county differs: Sălaj County; 134.6 km from gazetteer coordinate; type score 3 (village)",
+        "Q12139327 score -27: county differs: Suceava County; 216.9 km from gazetteer coordinate; type score 1 (constituent locality)",
+        "Q13571578 score -28: county differs: Vaslui County; 308.8 km from gazetteer coordinate; type score 0 (commune of Romania)",
+        "Q16427748 score -28: county differs: Timiș County; 244.1 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/cluj/padureni",
+      "inception": "1406-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Pădureni",
+      "nameHistorical": "Mezőkók",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Padurenii",
+          "Pădureni (Tritenii de Jos), Cluj",
+          "Pădureni, Cluj",
+          "Pădurenii",
+          "Pădurenii (Tritenii de Jos)",
+          "Țigăreni"
+        ],
+        "en": "Pădureni",
+        "historical": [
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          },
+          {
+            "name": "Țigăreni",
+            "until": "1964-12-17"
+          }
+        ],
+        "hu": "Mezőkók",
+        "native": [
+          "Pădureni"
+        ],
+        "ro": "Pădureni"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1005
+      },
+      "qid": "Q2585692",
+      "replacedBy": null,
+      "status": "renamed",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q2585692"
     },
     "ro/transylvania/cluj/plaiesti": {
       "admin": {
@@ -43704,6 +45523,72 @@
       "replacedBy": null,
       "status": "unknown",
       "wikidataUrl": null
+    },
+    "ro/transylvania/cluj/tritenii-de-jos": {
+      "admin": {
+        "commune": "Tritenii de Jos",
+        "communeQid": "Q12725216",
+        "county": "Cluj County",
+        "countyQid": "Q182624",
+        "countyRo": "Cluj"
+      },
+      "cached": false,
+      "candidates": [
+        "Q12725216",
+        "Q371050"
+      ],
+      "coord": {
+        "lat": 46.5861,
+        "lng": 23.9965
+      },
+      "county": "Cluj",
+      "countyHistorical": "Kolozs",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q371050 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q12725216 score 17: county matches; 1.8 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/cluj/tritenii-de-jos",
+      "inception": "1332-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Tritenii de Jos",
+      "nameHistorical": "Alsódetrehem",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Tritenii de Jos",
+        "historical": [],
+        "hu": "Alsódetrehem",
+        "native": [
+          "Tritenii de Jos"
+        ],
+        "ro": "Tritenii de Jos"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 1304
+      },
+      "qid": "Q371050",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q371050"
     },
     "ro/transylvania/cluj/turda": {
       "admin": {
@@ -54024,6 +55909,72 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q827661"
     },
+    "ro/transylvania/hunedoara/lelese": {
+      "admin": {
+        "commune": "Lelese",
+        "communeQid": "Q1128833",
+        "county": "Hunedoara County",
+        "countyQid": "Q191071",
+        "countyRo": "Hunedoara"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1128833",
+        "Q5053438"
+      ],
+      "coord": {
+        "lat": 45.732585,
+        "lng": 22.697306
+      },
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q5053438 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q1128833 score 17: county matches; 0.0 km from gazetteer coordinate; type score 0 (commune of Romania)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/hunedoara/lelese",
+      "inception": "1733-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Lelese",
+      "nameHistorical": "Lelesz",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Lelese",
+        "historical": [],
+        "hu": "Lelesz",
+        "native": [
+          "Lelese"
+        ],
+        "ro": "Lelese"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 130
+      },
+      "qid": "Q5053438",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q5053438"
+    },
     "ro/transylvania/hunedoara/lunca-cernii-de-jos": {
       "admin": {
         "commune": "Lunca Cernii de Jos",
@@ -54224,6 +56175,68 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1069542"
     },
+    "ro/transylvania/hunedoara/ohaba-sibisel": {
+      "admin": {
+        "commune": "Râu de Mori",
+        "communeQid": "Q1021928",
+        "county": "Hunedoara County",
+        "countyQid": "Q191071",
+        "countyRo": "Hunedoara"
+      },
+      "cached": true,
+      "candidates": [
+        "Q3891776"
+      ],
+      "coord": {
+        "lat": 45.49528,
+        "lng": 22.905486
+      },
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q3891776 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/hunedoara/ohaba-sibisel",
+      "inception": "1359-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Ohaba-Sibișel",
+      "nameHistorical": "Ohábasibisel",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [
+          "Ohaba-Sibişel"
+        ],
+        "en": "Ohaba-Sibișel",
+        "historical": [],
+        "hu": "Ohábasibisel",
+        "native": [
+          "Ohaba-Sibișel"
+        ],
+        "ro": "Ohaba-Sibișel"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 129
+      },
+      "qid": "Q3891776",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q3891776"
+    },
     "ro/transylvania/hunedoara/paucinesti": {
       "admin": {
         "commune": "Sarmizegetusa",
@@ -54232,7 +56245,7 @@
         "countyQid": "Q191071",
         "countyRo": "Hunedoara"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q2031984"
       ],
@@ -54243,11 +56256,11 @@
       "county": "Hunedoara",
       "countyHistorical": "Hunyad",
       "dissolved": null,
-      "distanceFromGazetteerKm": 3.1,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q2031984 score 20: county matches; 3.1 km from gazetteer coordinate; type score 3 (village)"
+        "Q2031984 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/hunedoara/paucinesti",
       "inception": "1438-01-01",
       "instanceOf": [
@@ -54258,10 +56271,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Păucinești",
-      "nameHistorical": "Paucinesd",
+      "nameHistorical": "Paucsinesd",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -55478,6 +57492,68 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q5062395"
     },
+    "ro/transylvania/hunedoara/socet": {
+      "admin": {
+        "commune": "Cerbăl",
+        "communeQid": "Q871809",
+        "county": "Hunedoara County",
+        "countyQid": "Q191071",
+        "countyRo": "Hunedoara"
+      },
+      "cached": false,
+      "candidates": [
+        "Q2943835",
+        "Q754966"
+      ],
+      "coord": {
+        "lat": 45.776705,
+        "lng": 22.669456
+      },
+      "county": "Hunedoara",
+      "countyHistorical": "Hunyad",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q2943835 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q754966 score -25: county differs: Bihor County; 154.7 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/hunedoara/socet",
+      "inception": "1482-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Socet",
+      "nameHistorical": "Szocsed",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Socet",
+        "historical": [],
+        "hu": "Szocsed",
+        "native": [
+          "Socet"
+        ],
+        "ro": "Socet"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 49
+      },
+      "qid": "Q2943835",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q2943835"
+    },
     "ro/transylvania/hunedoara/toplita": {
       "admin": {
         "commune": "Toplița",
@@ -55804,12 +57880,10 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
-        "Q12724528",
         "Q5059386",
-        "Q789134",
-        "Q932323"
+        "Q789134"
       ],
       "coord": {
         "lat": 46.72,
@@ -55818,14 +57892,12 @@
       "county": "Mureș",
       "countyHistorical": "Maros-Torda",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q789134 score 14: county matches; type score 3 (seat of the local council, village)",
-        "Q5059386 score 10: county matches; type score 0 (commune of Romania)",
-        "Q932323 score -5: county differs: Mehedinți County; type score 3 (seat of the local council, village)",
-        "Q12724528 score -8: county differs: Mehedinți County; type score 0 (commune of Romania)"
+        "Q789134 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (seat of the local council, village)",
+        "Q5059386 score 17: county matches; 1.7 km from gazetteer coordinate; type score 0 (commune of Romania)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/mures/bala",
       "inception": "1327-01-01",
       "instanceOf": [
@@ -55840,9 +57912,10 @@
       ],
       "matchStage": "label",
       "matchedVia": [
-        "label-hu"
+        "label-hu",
+        "label-ro"
       ],
-      "name": "Bala",
+      "name": "Băla",
       "nameHistorical": "Bala",
       "names": {
         "aliasesDe": [],
@@ -56225,7 +58298,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q431959"
       ],
@@ -56236,11 +58309,11 @@
       "county": "Mureș",
       "countyHistorical": "Maros-Torda",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q431959 score 15: county matches; type score 3 (village)"
+        "Q431959 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/mures/chincius",
       "inception": "1424-01-01",
       "instanceOf": [
@@ -56251,10 +58324,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Chinciuș",
-      "nameHistorical": "Chincis",
+      "nameHistorical": "Kincses",
       "names": {
         "aliasesDe": [
           "Kincses",
@@ -56278,6 +58352,73 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q431959"
+    },
+    "ro/transylvania/mures/comori": {
+      "admin": {
+        "commune": "Gurghiu",
+        "communeQid": "Q5058150",
+        "county": "Mureș County",
+        "countyQid": "Q190711",
+        "countyRo": "Mureș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q5155195",
+        "Q739992"
+      ],
+      "coord": {
+        "lat": 46.735803,
+        "lng": 24.896906
+      },
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q739992 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/mures/comori",
+      "inception": "1453-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Comori",
+      "nameHistorical": "Kincsesfő",
+      "names": {
+        "aliasesDe": [
+          "Kincsesfő"
+        ],
+        "aliasesHu": [
+          "Comori"
+        ],
+        "aliasesRo": [
+          "Kincsesfő"
+        ],
+        "en": "Comori",
+        "historical": [],
+        "hu": "Kincsesfő",
+        "native": [
+          "Comori"
+        ],
+        "ro": "Comori"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 169
+      },
+      "qid": "Q739992",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q739992"
     },
     "ro/transylvania/mures/cristesti": {
       "admin": {
@@ -58188,7 +60329,7 @@
         "countyQid": "Q190711",
         "countyRo": "Mureș"
       },
-      "cached": true,
+      "cached": false,
       "candidates": [
         "Q12124155",
         "Q4686608",
@@ -58201,12 +60342,12 @@
       "county": "Mureș",
       "countyHistorical": "Maros-Torda",
       "dissolved": null,
-      "distanceFromGazetteerKm": null,
+      "distanceFromGazetteerKm": 0,
       "evidence": [
-        "Q734902 score 15: county matches; type score 3 (village)",
-        "Q12124155 score -5: county differs: Suceava County; type score 3 (village)"
+        "Q734902 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)",
+        "Q12124155 score -25: county differs: Suceava County; 151.6 km from gazetteer coordinate; type score 3 (village)"
       ],
-      "gazetteerSource": "places",
+      "gazetteerSource": "gazetteer",
       "id": "ro/transylvania/mures/moisa",
       "inception": "1256-01-01",
       "instanceOf": [
@@ -58217,10 +60358,11 @@
       ],
       "matchStage": "label",
       "matchedVia": [
+        "label-hu",
         "label-ro"
       ],
       "name": "Moișa",
-      "nameHistorical": "Moisa",
+      "nameHistorical": "Mezőmajos",
       "names": {
         "aliasesDe": [],
         "aliasesHu": [],
@@ -58243,6 +60385,66 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q734902"
+    },
+    "ro/transylvania/mures/nazna": {
+      "admin": {
+        "commune": "Sâncraiu de Mureș",
+        "communeQid": "Q5059361",
+        "county": "Mureș County",
+        "countyQid": "Q190711",
+        "countyRo": "Mureș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q280266"
+      ],
+      "coord": {
+        "lat": 46.53552,
+        "lng": 24.5021
+      },
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q280266 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/mures/nazna",
+      "inception": "1453-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Nazna",
+      "nameHistorical": "Náznánfalva",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Nazna",
+        "historical": [],
+        "hu": "Náznánfalva",
+        "native": [
+          "Nazna"
+        ],
+        "ro": "Nazna"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 3047
+      },
+      "qid": "Q280266",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q280266"
     },
     "ro/transylvania/mures/neaua": {
       "admin": {
@@ -58764,6 +60966,72 @@
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1087806"
     },
+    "ro/transylvania/mures/sacalu-de-padure": {
+      "admin": {
+        "commune": "Brâncovenești",
+        "communeQid": "Q5056613",
+        "county": "Mureș County",
+        "countyQid": "Q190711",
+        "countyRo": "Mureș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q741142"
+      ],
+      "coord": {
+        "lat": 46.883686,
+        "lng": 24.711337
+      },
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q741142 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/mures/sacalu-de-padure",
+      "inception": "1319-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Săcalu de Pădure",
+      "nameHistorical": "Erdőszakál",
+      "names": {
+        "aliasesDe": [
+          "Erdőszakál"
+        ],
+        "aliasesHu": [
+          "Săcalu de Pădure"
+        ],
+        "aliasesRo": [
+          "Erdőszakál"
+        ],
+        "en": "Săcalu de Pădure",
+        "historical": [],
+        "hu": "Erdőszakál",
+        "native": [
+          "Săcalu de Pădure"
+        ],
+        "ro": "Săcalu de Pădure"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 301
+      },
+      "qid": "Q741142",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q741142"
+    },
     "ro/transylvania/mures/sambrias": {
       "admin": {
         "commune": "Hodoșa",
@@ -58898,6 +61166,67 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q1092812"
+    },
+    "ro/transylvania/mures/sangeru-de-padure": {
+      "admin": {
+        "commune": "Ernei",
+        "communeQid": "Q12104071",
+        "county": "Mureș County",
+        "countyQid": "Q190711",
+        "countyRo": "Mureș"
+      },
+      "cached": false,
+      "candidates": [
+        "Q733821"
+      ],
+      "coord": {
+        "lat": 46.640718,
+        "lng": 24.665063
+      },
+      "county": "Mureș",
+      "countyHistorical": "Maros-Torda",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 0,
+      "evidence": [
+        "Q733821 score 21: county matches; 0.0 km from gazetteer coordinate; type score 3 (village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/transylvania/mures/sangeru-de-padure",
+      "inception": "1409-01-01",
+      "instanceOf": [
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "label",
+      "matchedVia": [
+        "label-hu",
+        "label-ro"
+      ],
+      "name": "Sângeru de Pădure",
+      "nameHistorical": "Erdőszengyel",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Sângeru de Pădure",
+        "historical": [],
+        "hu": "Erdőszengyel",
+        "native": [
+          "Erdőszengyel",
+          "Sângeru de Pădure"
+        ],
+        "ro": "Sângeru de Pădure"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 388
+      },
+      "qid": "Q733821",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q733821"
     },
     "ro/transylvania/mures/sapartoc": {
       "admin": {
@@ -62563,7 +64892,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -63484,7 +65813,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -63612,7 +65941,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -63909,7 +66238,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -64464,7 +66793,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,
@@ -67468,7 +69797,7 @@
         "countyQid": null,
         "countyRo": null
       },
-      "cached": false,
+      "cached": true,
       "candidates": [],
       "coord": null,
       "county": null,

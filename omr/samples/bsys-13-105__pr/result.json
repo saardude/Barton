@@ -1,0 +1,460 @@
+{
+ "id": "bsys-13-105",
+ "suffix": "pr",
+ "kind": "typeset",
+ "note": "Printed critical edition page (no. 114): typeset melody with lyrics and header.",
+ "image": "https://systems.zti.hu/media/images/publications/BR_00114_pr.gif",
+ "records": [
+  "bsys-13-105"
+ ],
+ "generated": "2026-09-28T13:55:10",
+ "ocr": {
+  "lines": 20,
+  "file": "ocr.json"
+ },
+ "engines": {
+  "homr": {
+   "engine": "homr",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-13-105__pr/homr.musicxml",
+   "seconds": 11.0,
+   "error": null,
+   "version": "0.7.0",
+   "engine_lyrics": 0,
+   "lyrics_injected": true,
+   "mei": "homr.mei",
+   "render": {
+    "svg": "homr.svg",
+    "midi": "homr.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.917,
+    "weights_used": {
+     "struct": 0.294,
+     "meta": 0.706
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 1.0,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 10,
+      "notes": 35,
+      "grace_notes": 1,
+      "rests": 0,
+      "sung_units": 34,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": "2f",
+      "systems": 3
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 1.0,
+      "syllables": 0.706,
+      "lines": 0.75,
+      "incipit": 0.875
+     },
+     "details": {
+      "cadences_expected": [
+       "5",
+       "1",
+       "VII",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "5",
+       "1",
+       "VII",
+       "1"
+      ],
+      "cadences_found_by_systems": null,
+      "cadence_matches": {
+       "strict": "3/3",
+       "tolerant": "3/3",
+       "by_systems": null
+      },
+      "final_midi": 67,
+      "strophes_notated": 1,
+      "syllables_expected": [
+       6,
+       6,
+       6,
+       6
+      ],
+      "sung_units_found": 34,
+      "lines_expected": 4,
+      "systems_found": 3,
+      "incipit": [
+       {
+        "id": "bsys-13-105",
+        "score": 0.875,
+        "source": "ocr",
+        "incipit": "Elmegyek, elmegyek"
+       }
+      ]
+     },
+     "score": 0.883
+    },
+    "pitches": [
+     "b4",
+     "c5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "c5",
+     "f5",
+     "e5",
+     "d5",
+     "c5",
+     "g4",
+     "g4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "f4",
+     "f4",
+     "g4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "a4",
+     "b4",
+     "g4",
+     "g4",
+     "g4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-13-105__pr/audiveris.musicxml",
+   "seconds": 25.4,
+   "error": null,
+   "rec_grade": 0.794,
+   "version": "5.9.0",
+   "engine_lyrics": 19,
+   "lyrics_injected": false,
+   "mei": "audiveris.mei",
+   "render": {
+    "svg": "audiveris.svg",
+    "midi": "audiveris.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.657,
+    "weights_used": {
+     "rec": 0.15,
+     "struct": 0.25,
+     "meta": 0.6
+    },
+    "rec": {
+     "score": 0.794
+    },
+    "struct": {
+     "score": 0.893,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 0.463,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 9,
+      "notes": 54,
+      "grace_notes": 0,
+      "rests": 0,
+      "sung_units": 51,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": "2f",
+      "systems": 3
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 0.167,
+      "syllables": 0.941,
+      "lines": 0.75,
+      "incipit": 0.875
+     },
+     "details": {
+      "cadences_expected": [
+       "5",
+       "1",
+       "VII",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "IV",
+       "V",
+       "V",
+       "4"
+      ],
+      "cadences_found_by_systems": null,
+      "cadence_matches": {
+       "strict": "0/3",
+       "tolerant": "1/3",
+       "by_systems": null
+      },
+      "final_midi": 67,
+      "strophes_notated": 2,
+      "syllables_expected": [
+       6,
+       6,
+       6,
+       6
+      ],
+      "sung_units_found": 51,
+      "lines_expected": 4,
+      "systems_found": 3,
+      "incipit": [
+       {
+        "id": "bsys-13-105",
+        "score": 0.875,
+        "source": "ocr",
+        "incipit": "Elmegyek, elmegyek"
+       }
+      ]
+     },
+     "score": 0.525
+    },
+    "pitches": [
+     "c4",
+     "b4",
+     "c4",
+     "c5",
+     "c4",
+     "c4",
+     "d5",
+     "d4",
+     "d4",
+     "d5",
+     "d4",
+     "d4",
+     "d5",
+     "d5",
+     "c5",
+     "e4",
+     "f4",
+     "e5",
+     "d4",
+     "d4",
+     "d5",
+     "c5",
+     "g4",
+     "g4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "g5",
+     "g5",
+     "b4",
+     "g4",
+     "f4",
+     "f4",
+     "g4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "b5",
+     "b5",
+     "b4",
+     "a5",
+     "a5",
+     "a4",
+     "a5",
+     "c5",
+     "g4",
+     "g4",
+     "g4"
+    ]
+   }
+  },
+  "oemer": {
+   "engine": "oemer",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-13-105__pr/oemer.musicxml",
+   "seconds": 294.5,
+   "error": null,
+   "version": "0.1.8",
+   "engine_lyrics": 0,
+   "lyrics_injected": true,
+   "mei": "oemer.mei",
+   "render": {
+    "svg": "oemer.svg",
+    "midi": "oemer.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.807,
+    "weights_used": {
+     "struct": 0.294,
+     "meta": 0.706
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 1.0,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 9,
+      "notes": 36,
+      "grace_notes": 0,
+      "rests": 0,
+      "sung_units": 36,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": "1s",
+      "systems": 3
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 0.667,
+      "syllables": 0.75,
+      "lines": 0.75,
+      "incipit": 0.875
+     },
+     "details": {
+      "cadences_expected": [
+       "5",
+       "1",
+       "VII",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "5",
+       "1",
+       "#4",
+       "#VII"
+      ],
+      "cadences_found_by_systems": null,
+      "cadence_matches": {
+       "strict": "2/3",
+       "tolerant": "2/3",
+       "by_systems": null
+      },
+      "final_midi": 67,
+      "strophes_notated": 2,
+      "syllables_expected": [
+       6,
+       6,
+       6,
+       6
+      ],
+      "sung_units_found": 36,
+      "lines_expected": 4,
+      "systems_found": 3,
+      "incipit": [
+       {
+        "id": "bsys-13-105",
+        "score": 0.875,
+        "source": "ocr",
+        "incipit": "Elmegyek, elmegyek"
+       }
+      ]
+     },
+     "score": 0.727
+    },
+    "pitches": [
+     "b4",
+     "c5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "c5",
+     "f5",
+     "e5",
+     "d5",
+     "c5",
+     "g4",
+     "g4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "g4",
+     "f4",
+     "f4",
+     "g4",
+     "c5",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "a4",
+     "b4",
+     "g4",
+     "g4",
+     "g4"
+    ]
+   }
+  }
+ },
+ "best": {
+  "engine": "homr",
+  "confidence": 0.917
+ }
+}

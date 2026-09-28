@@ -1,0 +1,139 @@
+{
+ "engine": "rapidocr-onnxruntime",
+ "seconds": 1.1,
+ "lines": [
+  {
+   "text": "（)4049",
+   "score": 0.756,
+   "x": 44,
+   "y": 9,
+   "h": 70
+  },
+  {
+   "text": "3.3.6",
+   "score": 0.839,
+   "x": 619,
+   "y": 50,
+   "h": 26
+  },
+  {
+   "text": "cll.f:yfoe)",
+   "score": 0.776,
+   "x": 101,
+   "y": 86,
+   "h": 41
+  },
+  {
+   "text": "Gy.:",
+   "score": 0.933,
+   "x": 561,
+   "y": 132,
+   "h": 21
+  },
+  {
+   "text": "Eloada: Jeler Jgnaene",
+   "score": 0.714,
+   "x": 15,
+   "y": 171,
+   "h": 45
+  },
+  {
+   "text": "eves",
+   "score": 0.988,
+   "x": 357,
+   "y": 193,
+   "h": 14
+  },
+  {
+   "text": "Elerjeatseg:",
+   "score": 0.897,
+   "x": 17,
+   "y": 239,
+   "h": 31
+  },
+  {
+   "text": "fyermekjatek",
+   "score": 0.715,
+   "x": 288,
+   "y": 266,
+   "h": 50
+  },
+  {
+   "text": "3",
+   "score": 0.949,
+   "x": 421,
+   "y": 332,
+   "h": 24
+  },
+  {
+   "text": "1.-ikamigy-fa，ey",
+   "score": 0.667,
+   "x": 63,
+   "y": 418,
+   "h": 42
+  },
+  {
+   "text": "2.",
+   "score": 0.67,
+   "x": 270,
+   "y": 476,
+   "h": 21
+  },
+  {
+   "text": "2.Rapd le ewem",
+   "score": 0.738,
+   "x": 57,
+   "y": 693,
+   "h": 36
+  },
+  {
+   "text": "kapedle,",
+   "score": 0.657,
+   "x": 233,
+   "y": 696,
+   "h": 27
+  },
+  {
+   "text": "Lahitaenula",
+   "score": 0.705,
+   "x": 82,
+   "y": 720,
+   "h": 29
+  },
+  {
+   "text": "kapdee.",
+   "score": 0.898,
+   "x": 226,
+   "y": 723,
+   "h": 26
+  },
+  {
+   "text": "eataereten,eatRedoelin",
+   "score": 0.817,
+   "x": 84,
+   "y": 745,
+   "h": 34
+  },
+  {
+   "text": "Baaaen",
+   "score": 0.644,
+   "x": 86,
+   "y": 772,
+   "h": 23
+  },
+  {
+   "text": ".0.ikorkerolayy",
+   "score": 0.614,
+   "x": 331,
+   "y": 1010,
+   "h": 34
+  },
+  {
+   "text": "Ende.8.",
+   "score": 0.721,
+   "x": 559,
+   "y": 1011,
+   "h": 27
+  }
+ ]
+}
