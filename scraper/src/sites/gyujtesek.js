@@ -1,7 +1,7 @@
 // Site 3: bartok-gyujtesek.zti.hu ("Bela Bartok, the Ethnomusicologist"): collections by trip.
 // Record id: "<collectionId>-<recordId>" from the URL /en/browse/<collectionId>/<recordId>.
 // SELECTORS CONFIRMED against live pages fetched 2026-09-28 (browse, 101 collection pages, 95 record pages).
-import { load, links, parseZtiTable, parseZtiRecord, splitPlaceLine, text } from './common.js';
+import { load, links, parseZtiTable, parseZtiRecord, splitPlaceLine, styleFromSystem, text } from './common.js';
 import { absUrl, clean } from '../util.js';
 
 export const name = 'gyuj';
@@ -99,6 +99,7 @@ export function discover($, url) {
       collectionLabel: label,
       collectionDate: collection.dateRaw,
       collectionPlace: collection.place,
+      collectionUrl: url,
       incipit: row.linkText || columnKey(row.cells, SELECTORS.columns.incipit),
       locality: columnKey(row.cells, SELECTORS.columns.locality),
       county: columnKey(row.cells, SELECTORS.columns.county),
@@ -122,6 +123,7 @@ function base(url, context) {
     incipit: c.incipit || null,
     genreRaw: null,
     style: null,
+    styleRaw: null,
     performanceRaw: null,
     instrumentRaw: null,
     performerRaw: c.informant || null,
@@ -149,6 +151,7 @@ function base(url, context) {
     form: null,
     related: [],
     composition: [],
+    journey: c.collectionId ? { collectionId: c.collectionId, label: c.collectionLabel || null, dateRaw: c.collectionDate || null, place: c.collectionPlace || null, url: c.collectionUrl || `${host}/en/browse/${c.collectionId}` } : null,
     fields: { ...(c.collectionLabel ? { _collection: c.collectionLabel } : {}), ...(c.sound ? { Sound: c.sound } : {}) }
   };
 }
@@ -178,6 +181,11 @@ export function parseRecord(html, url, context = {}) {
   r.siteId = get('inventory') || r.siteId;
   r.referenceCode = get('brNumber');
   r.systemPosition = get('brNumber');
+  Object.assign(r, styleFromSystem(r.systemPosition, null));
+  const pubTitle = $(SELECTORS.record).find('p:contains("Publication") a[title]').first().attr('title');
+  if (pubTitle) r.fields.PublicationFull = clean(pubTitle.replace(/<[^>]+>/g, ''));
+  const sound = byLabel(z.pairs, [/^sound recording/i]);
+  if (sound) r.fields['Sound recording'] = sound;
   r.cadences = get('cadence');
   r.volume = get('publication');
   r.rhythm = get('rhythm');

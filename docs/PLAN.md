@@ -140,6 +140,22 @@ border year auto-selection by trip date, village status badges, citations visibl
 Data-gate note (from QA): the 95 % county-resolution gate applies to records whose locality is
 in present-day Romania, not to the 13,000 Hungarian records of the Bartók System.
 
+## Romanian repertoire from print (scope added 2026-09-28)
+
+Finding: the online databases hold no records of Bartók's Romanian melodies; the "Rumanian
+Folk Music" system is named but not published. The printed edition (ed. Suchoff, Nijhoff
+1967-1975) is on the Internet Archive. Volumes 4 (Carols and Christmas Songs) and 5
+(Maramureș County) are open items with Archive-generated OCR; volumes 1 (Instrumental) and 2
+(Vocal Melodies) are restricted lending items and are not used.
+
+Pipeline (print-source engineer): `print/` fetches the open volumes' OCR text, parses the
+melody entries (number, locality with Hungarian name and historical county, performer, date,
+class or category) into `data/rfm.json` in the song schema, with `source.url` pointing at the
+exact scanned page and `genre` populated (colinda for vol. 4; mapped categories for vol. 5).
+Only facts and incipits are indexed; song texts and notation are not republished. Spec and
+counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json` as site
+`rfm`, and the viewer's Romania view shows them alongside the database records.
+
 ## Decisions log
 
 | # | Decision | Rationale |

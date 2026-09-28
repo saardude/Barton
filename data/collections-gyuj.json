@@ -1,0 +1,5402 @@
+{
+  "_meta": {
+    "title": "Bartok's collecting trips as indexed by bartok-gyujtesek.zti.hu (Bela Bartok, the Ethnomusicologist)",
+    "source": {
+      "site": "gyuj",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse",
+      "loadedFrom": "scraper-cache",
+      "fetchedAt": "2026-09-28T08:54:48.281Z",
+      "attribution": "Trip index: HUN-REN BTK Institute for Musicology, Budapest, \"Bela Bartok, the Ethnomusicologist\" (bartok-gyujtesek.zti.hu)"
+    },
+    "generator": "geo/parse-gyuj-collections.mjs",
+    "generatedAt": "2026-09-28",
+    "counts": {
+      "collections": 101,
+      "withOnlineRecords": 64,
+      "withoutOnlineRecords": 37,
+      "precision": {
+        "day": 21,
+        "phrase": 24,
+        "month": 56,
+        "season": 0,
+        "year": 0
+      },
+      "placesResolved": 64,
+      "placesUnresolved": 47,
+      "romanianDocumented": 12,
+      "romanianInferred": 8
+    },
+    "notes": [
+      "label is verbatim from the site (English index). Entry 64 is truncated on the site (\"Land of\"); entry 65 is its Hungarian cross-reference (Mocvidek).",
+      "date.precision: day (explicit days), phrase (Beginning of / Middle of / End of / After: a 10-day window), month, season, year. Where the label carries no year the accordion year is used and yearFromGroup is true.",
+      "places[].resolution: gazetteer (locality in data/gazetteer.json), region-table (built-in region or county centre, approximate), ambiguous, unresolved. Region centres are for clusters, not routes.",
+      "romanianMaterial: documented = matches the collecting chronology in Rumanian Folk Music (Suchoff ed.); inferred = Romanian-speaking area, not checked entry by entry; unknown = present-day Romania but language of the material not checked (Szekely and other Hungarian villages fall here too)."
+    ]
+  },
+  "collections": [
+    {
+      "countOnline": 8,
+      "date": {
+        "end": "1904-11",
+        "periods": [
+          {
+            "end": "1904-11",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - November 1904",
+            "start": "1904-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1904-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – November, 1904",
+      "groupYear": 1904,
+      "hasOnlineRecords": true,
+      "id": "1",
+      "journeyId": "gyuj-1",
+      "label": "July – November, 1904. Gerlicepuszta / Kibéd (8)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Gerlicepuszta / Kibéd",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Gerlicepuszta",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Gerlicepuszta",
+          "uncertain": false
+        },
+        {
+          "confidence": "high",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.47,
+          "lng": 24.94,
+          "name": "Chibed",
+          "nameAlt": null,
+          "nameHu": "Kibéd",
+          "nameRo": "Chibed",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/chibed",
+          "resolution": "gazetteer",
+          "text": "Kibéd",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/1"
+    },
+    {
+      "countOnline": 5,
+      "date": {
+        "end": "1905-07",
+        "periods": [
+          {
+            "end": "1905-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "June - July 1905",
+            "start": "1905-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1905-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June – July, 1905",
+      "groupYear": 1905,
+      "hasOnlineRecords": true,
+      "id": "4",
+      "journeyId": "gyuj-4",
+      "label": "June – July, 1905. Vésztő (5)",
+      "nowIn": [],
+      "placeRaw": "Vésztő",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Vésztő",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Vésztő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/4"
+    },
+    {
+      "countOnline": 38,
+      "date": {
+        "end": "1906-06",
+        "periods": [
+          {
+            "end": "1906-06",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "June 1906",
+            "start": "1906-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "2",
+      "journeyId": "gyuj-2",
+      "label": "June, 1906. Jobaháza (38)",
+      "nowIn": [],
+      "placeRaw": "Jobaháza",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Jobaháza",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Jobaháza",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/2"
+    },
+    {
+      "countOnline": 4,
+      "date": {
+        "end": "1906-06",
+        "periods": [
+          {
+            "end": "1906-06",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "June 1906",
+            "start": "1906-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "5",
+      "journeyId": "gyuj-5",
+      "label": "June, 1906. Bogyoszló (4)",
+      "nowIn": [],
+      "placeRaw": "Bogyoszló",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Bogyoszló",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Bogyoszló",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/5"
+    },
+    {
+      "countOnline": 155,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "June 29 - August 1906",
+            "start": "1906-06-29",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-06-29",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June 29 – August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "3",
+      "journeyId": "gyuj-3",
+      "label": "June 29 – August, 1906. Tura (155)",
+      "nowIn": [],
+      "placeRaw": "Tura",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Tura",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Tura",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/3"
+    },
+    {
+      "countOnline": 112,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1906",
+            "start": "1906-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "9",
+      "journeyId": "gyuj-9",
+      "label": "July – August, 1906. Gyula (112)",
+      "nowIn": [],
+      "placeRaw": "Gyula",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Gyula",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Gyula",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/9"
+    },
+    {
+      "countOnline": 5,
+      "date": {
+        "end": "1906-07",
+        "periods": [
+          {
+            "end": "1906-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July 1906",
+            "start": "1906-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "10",
+      "journeyId": "gyuj-10",
+      "label": "July, 1906. Csongrád (5)",
+      "nowIn": [],
+      "placeRaw": "Csongrád",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Csongrád",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Csongrád",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/10"
+    },
+    {
+      "countOnline": 43,
+      "date": {
+        "end": "1906-07",
+        "periods": [
+          {
+            "end": "1906-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July 1906",
+            "start": "1906-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "11",
+      "journeyId": "gyuj-11",
+      "label": "July, 1906. Doboz (43)",
+      "nowIn": [],
+      "placeRaw": "Doboz",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Doboz",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Doboz",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/11"
+    },
+    {
+      "countOnline": 58,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1906",
+            "start": "1906-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "12",
+      "journeyId": "gyuj-12",
+      "label": "July – August, 1906. Hajdúsámson (58)",
+      "nowIn": [],
+      "placeRaw": "Hajdúsámson",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Hajdúsámson",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Hajdúsámson",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/12"
+    },
+    {
+      "countOnline": 10,
+      "date": {
+        "end": "1906-07-10",
+        "periods": [
+          {
+            "end": "1906-07-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of July 1906",
+            "start": "1906-07-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-07-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of July, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "6",
+      "journeyId": "gyuj-6",
+      "label": "Beginning of July, 1906. Vácszentlászló (10)",
+      "nowIn": [],
+      "placeRaw": "Vácszentlászló",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Vácszentlászló",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Vácszentlászló",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/6"
+    },
+    {
+      "countOnline": 31,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1906",
+            "start": "1906-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "13",
+      "journeyId": "gyuj-13",
+      "label": "August, 1906. Tápiószele (31)",
+      "nowIn": [],
+      "placeRaw": "Tápiószele",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Tápiószele",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Tápiószele",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/13"
+    },
+    {
+      "countOnline": 19,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1906",
+            "start": "1906-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "14",
+      "journeyId": "gyuj-14",
+      "label": "August, 1906. Gyulavári (19)",
+      "nowIn": [],
+      "placeRaw": "Gyulavári",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Gyulavári",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Gyulavári",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/14"
+    },
+    {
+      "countOnline": 4,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1906",
+            "start": "1906-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "16",
+      "journeyId": "gyuj-16",
+      "label": "August, 1906. (?) / Mikosszéplak (4)",
+      "nowIn": [],
+      "placeRaw": "(?) / Mikosszéplak",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Mikosszéplak",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Mikosszéplak",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/16"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1906-08",
+        "periods": [
+          {
+            "end": "1906-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1906",
+            "start": "1906-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": false,
+      "id": "98",
+      "journeyId": "gyuj-98",
+      "label": "August 1906, Gömör county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Gömör county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Gömör és Kis-Hont",
+          "kind": "county",
+          "lat": 48.5,
+          "lng": 20.2,
+          "name": "Gömör county",
+          "nameAlt": null,
+          "nameHu": "Gömör és Kis-Hont vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Gömör county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/98"
+    },
+    {
+      "countOnline": 16,
+      "date": {
+        "end": "1906-08-31",
+        "periods": [
+          {
+            "end": "1906-08-31",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of August 1906",
+            "start": "1906-08-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-08-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "17",
+      "journeyId": "gyuj-17",
+      "label": "End of August, 1906. Szentes (16)",
+      "nowIn": [],
+      "placeRaw": "Szentes",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Szentes",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Szentes",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/17"
+    },
+    {
+      "countOnline": 39,
+      "date": {
+        "end": "1906-08-31",
+        "periods": [
+          {
+            "end": "1906-08-31",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of August 1906",
+            "start": "1906-08-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-08-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "18",
+      "journeyId": "gyuj-18",
+      "label": "End of August, 1906. Horgos (39)",
+      "nowIn": [],
+      "placeRaw": "Horgos",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Horgos",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Horgos",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/18"
+    },
+    {
+      "countOnline": 44,
+      "date": {
+        "end": "1906-08-31",
+        "periods": [
+          {
+            "end": "1906-08-31",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of August 1906",
+            "start": "1906-08-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-08-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of August, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "19",
+      "journeyId": "gyuj-19",
+      "label": "End of August, 1906. Szeged (44)",
+      "nowIn": [],
+      "placeRaw": "Szeged",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Szeged",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Szeged",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/19"
+    },
+    {
+      "countOnline": 1,
+      "date": {
+        "end": "1906-09",
+        "periods": [
+          {
+            "end": "1906-09",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "September 1906",
+            "start": "1906-09",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-09",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "15",
+      "journeyId": "gyuj-15",
+      "label": "September, 1906. Nagyszentmiklós (1)",
+      "nowIn": [],
+      "placeRaw": "Nagyszentmiklós",
+      "places": [
+        {
+          "candidates": [
+            "ro/banat/timis/sannicolau-mare",
+            "ro/banat/timis/sannicolau-mare"
+          ],
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Nagyszentmiklós",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "ambiguous",
+          "text": "Nagyszentmiklós",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/15"
+    },
+    {
+      "countOnline": 66,
+      "date": {
+        "end": "1906-09",
+        "periods": [
+          {
+            "end": "1906-09",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "September 1906",
+            "start": "1906-09",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-09",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "21",
+      "journeyId": "gyuj-21",
+      "label": "September, 1906. Felsőireg (66)",
+      "nowIn": [],
+      "placeRaw": "Felsőireg",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Felsőireg",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Felsőireg",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/21"
+    },
+    {
+      "countOnline": 13,
+      "date": {
+        "end": "1906-09",
+        "periods": [
+          {
+            "end": "1906-09",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "September 1906",
+            "start": "1906-09",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-09",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "22",
+      "journeyId": "gyuj-22",
+      "label": "September, 1906. Dunapentele (13)",
+      "nowIn": [],
+      "placeRaw": "Dunapentele",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Dunapentele",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Dunapentele",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/22"
+    },
+    {
+      "countOnline": 54,
+      "date": {
+        "end": "1906-09",
+        "periods": [
+          {
+            "end": "1906-09",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "September 1906",
+            "start": "1906-09",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-09",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "23",
+      "journeyId": "gyuj-23",
+      "label": "September, 1906. Baracs (54)",
+      "nowIn": [],
+      "placeRaw": "Baracs",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Baracs",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Baracs",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/23"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1906-09-01",
+        "periods": [
+          {
+            "end": "1906-09-01",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "September 1 1906",
+            "start": "1906-09-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1906-09-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September 1, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": false,
+      "id": "20",
+      "journeyId": "gyuj-20",
+      "label": "September 1, 1906. Apátfalva",
+      "nowIn": [],
+      "placeRaw": "Apátfalva",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Apátfalva",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Apátfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/20"
+    },
+    {
+      "countOnline": 3,
+      "date": {
+        "end": "1906-09-30",
+        "periods": [
+          {
+            "end": "1906-09-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of September 1906",
+            "start": "1906-09-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-09-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "24",
+      "journeyId": "gyuj-24",
+      "label": "End of September, 1906. Balatonberény (3)",
+      "nowIn": [],
+      "placeRaw": "Balatonberény",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Balatonberény",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Balatonberény",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/24"
+    },
+    {
+      "countOnline": 42,
+      "date": {
+        "end": "1906-09-30",
+        "periods": [
+          {
+            "end": "1906-09-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of September 1906",
+            "start": "1906-09-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1906-09-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of September, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "25",
+      "journeyId": "gyuj-25",
+      "label": "End of September, 1906. Keszthely (42)",
+      "nowIn": [],
+      "placeRaw": "Keszthely",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Keszthely",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Keszthely",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/25"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1906-10",
+        "periods": [
+          {
+            "end": "1906-10",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "October 1906",
+            "start": "1906-10",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-10",
+        "yearFromGroup": false
+      },
+      "dateRaw": "October, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": false,
+      "id": "96",
+      "journeyId": "gyuj-96",
+      "label": "October, 1906, Gömör",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Gömör",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Gömör és Kis-Hont",
+          "kind": "county",
+          "lat": 48.5,
+          "lng": 20.2,
+          "name": "Gömör county",
+          "nameAlt": null,
+          "nameHu": "Gömör és Kis-Hont vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Gömör",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/96"
+    },
+    {
+      "countOnline": 19,
+      "date": {
+        "end": "1906-12",
+        "periods": [
+          {
+            "end": "1906-12",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "November - December 1906",
+            "start": "1906-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November – December, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "27",
+      "journeyId": "gyuj-27",
+      "label": "November – December, 1906. Vésztő (19)",
+      "nowIn": [],
+      "placeRaw": "Vésztő",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Vésztő",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Vésztő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/27"
+    },
+    {
+      "countOnline": 115,
+      "date": {
+        "end": "1906-11",
+        "periods": [
+          {
+            "end": "1906-11",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "November 1906",
+            "start": "1906-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "103",
+      "journeyId": "gyuj-103",
+      "label": "November, 1906. Doboz (115)",
+      "nowIn": [],
+      "placeRaw": "Doboz",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Doboz",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Doboz",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/103"
+    },
+    {
+      "countOnline": 12,
+      "date": {
+        "end": "1906-12",
+        "periods": [
+          {
+            "end": "1906-12",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "December 1906",
+            "start": "1906-12",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1906-12",
+        "yearFromGroup": false
+      },
+      "dateRaw": "December, 1906",
+      "groupYear": 1906,
+      "hasOnlineRecords": true,
+      "id": "26",
+      "journeyId": "gyuj-26",
+      "label": "December, 1906. Budapest (?) / Kibéd (12)",
+      "nowIn": [
+        "HU",
+        "RO"
+      ],
+      "placeRaw": "Budapest (?) / Kibéd",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Pest-Pilis-Solt-Kiskun",
+          "kind": "city",
+          "lat": 47.4979,
+          "lng": 19.0402,
+          "name": "Budapest",
+          "nameAlt": null,
+          "nameHu": "Budapest",
+          "nameRo": "Budapesta",
+          "nowIn": "HU",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Budapest (?)",
+          "uncertain": true
+        },
+        {
+          "confidence": "high",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.47,
+          "lng": 24.94,
+          "name": "Chibed",
+          "nameAlt": null,
+          "nameHu": "Kibéd",
+          "nameRo": "Chibed",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/chibed",
+          "resolution": "gazetteer",
+          "text": "Kibéd",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/26"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1907-03",
+        "periods": [
+          {
+            "end": "1907-03",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "03. 1907",
+            "start": "1907-03",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-03",
+        "yearFromGroup": false
+      },
+      "dateRaw": "03. 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": false,
+      "id": "95",
+      "journeyId": "gyuj-95",
+      "label": "03. 1907, Nyitra county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Nyitra county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Nyitra",
+          "kind": "county",
+          "lat": 48.4,
+          "lng": 18.1,
+          "name": "Nyitra county",
+          "nameAlt": null,
+          "nameHu": "Nyitra vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Nyitra county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/95"
+    },
+    {
+      "countOnline": 258,
+      "date": {
+        "end": "1907-04-03",
+        "periods": [
+          {
+            "end": "1907-04-03",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "March 24 - April 3 1907",
+            "start": "1907-03-24",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1907-03-24",
+        "yearFromGroup": false
+      },
+      "dateRaw": "March 24 – April 3, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "28",
+      "journeyId": "gyuj-28",
+      "label": "March 24 – April 3, 1907. Felsőireg (258)",
+      "nowIn": [],
+      "placeRaw": "Felsőireg",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Felsőireg",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Felsőireg",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/28"
+    },
+    {
+      "countOnline": 5,
+      "date": {
+        "end": "1907-04-10",
+        "periods": [
+          {
+            "end": "1907-04-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of April 1907",
+            "start": "1907-04-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1907-04-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of April, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "29",
+      "journeyId": "gyuj-29",
+      "label": "Beginning of April, 1907. Felsőnyék (5)",
+      "nowIn": [],
+      "placeRaw": "Felsőnyék",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Felsőnyék",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Felsőnyék",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/29"
+    },
+    {
+      "countOnline": 11,
+      "date": {
+        "end": "1907-05",
+        "periods": [
+          {
+            "end": "1907-05",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "May 1907",
+            "start": "1907-05",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-05",
+        "yearFromGroup": false
+      },
+      "dateRaw": "May, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "30",
+      "journeyId": "gyuj-30",
+      "label": "May, 1907. Fót (11)",
+      "nowIn": [],
+      "placeRaw": "Fót",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Fót",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Fót",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/30"
+    },
+    {
+      "countOnline": 21,
+      "date": {
+        "end": "1907-07-01",
+        "periods": [
+          {
+            "end": "1907-07-01",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "June 28 - July 1 1907",
+            "start": "1907-06-28",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1907-06-28",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June 28 – July 1, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "31",
+      "journeyId": "gyuj-31",
+      "label": "June 28 – July 1, 1907. Jászberény (21)",
+      "nowIn": [],
+      "placeRaw": "Jászberény",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Jászberény",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Jászberény",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/31"
+    },
+    {
+      "countOnline": 5,
+      "date": {
+        "end": "1907-07",
+        "periods": [
+          {
+            "end": "1907-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "32",
+      "journeyId": "gyuj-32",
+      "label": "July, 1907. Csíkszentmihály (5)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csíkszentmihály",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.46,
+          "lng": 25.88,
+          "name": "Mihăileni",
+          "nameAlt": null,
+          "nameHu": "Csíkszentmihály",
+          "nameRo": "Mihăileni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/mihaileni",
+          "resolution": "gazetteer",
+          "text": "Csíkszentmihály",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/32"
+    },
+    {
+      "countOnline": 43,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "33",
+      "journeyId": "gyuj-33",
+      "label": "July – August, 1907. Csíkrákos (43)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csíkrákos",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.44,
+          "lng": 25.77,
+          "name": "Racu",
+          "nameAlt": null,
+          "nameHu": "Csíkrákos",
+          "nameRo": "Racu",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/racu",
+          "resolution": "gazetteer",
+          "text": "Csíkrákos",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/33"
+    },
+    {
+      "countOnline": 29,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "34",
+      "journeyId": "gyuj-34",
+      "label": "July – August, 1907. Csíkjenőfalva (29)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csíkjenőfalva",
+      "places": [
+        {
+          "confidence": "medium",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.5,
+          "lng": 25.79,
+          "name": "Ineu",
+          "nameAlt": null,
+          "nameHu": "Csíkjenőfalva",
+          "nameRo": "Ineu",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/ineu",
+          "resolution": "gazetteer",
+          "text": "Csíkjenőfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/34"
+    },
+    {
+      "countOnline": 31,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "35",
+      "journeyId": "gyuj-35",
+      "label": "July – August, 1907. Csíkszenttamás (31)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csíkszenttamás",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.52,
+          "lng": 25.79,
+          "name": "Tomești",
+          "nameAlt": null,
+          "nameHu": "Csíkszenttamás",
+          "nameRo": "Tomești",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/tomesti",
+          "resolution": "gazetteer",
+          "text": "Csíkszenttamás",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/35"
+    },
+    {
+      "countOnline": 6,
+      "date": {
+        "end": "1907-07",
+        "periods": [
+          {
+            "end": "1907-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "36",
+      "journeyId": "gyuj-36",
+      "label": "July, 1907. Csíkkarcfalva (6)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csíkkarcfalva",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.49,
+          "lng": 25.78,
+          "name": "Cârța",
+          "nameAlt": null,
+          "nameHu": "Csíkkarcfalva",
+          "nameRo": "Cârța",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/carta",
+          "resolution": "gazetteer",
+          "text": "Csíkkarcfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/36"
+    },
+    {
+      "countOnline": 72,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "37",
+      "journeyId": "gyuj-37",
+      "label": "July – August, 1907. Vacsárdi (72)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Vacsárdi",
+      "places": [
+        {
+          "confidence": "medium",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.46,
+          "lng": 25.87,
+          "name": "Văcărești",
+          "nameAlt": null,
+          "nameHu": "Vacsárdi",
+          "nameRo": "Văcărești",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/vacaresti",
+          "resolution": "gazetteer",
+          "text": "Vacsárdi",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/37"
+    },
+    {
+      "countOnline": 49,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "38",
+      "journeyId": "gyuj-38",
+      "label": "July – August, 1907. Gyergyóújfalu (49)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Gyergyóújfalu",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.66,
+          "lng": 25.55,
+          "name": "Suseni",
+          "nameAlt": null,
+          "nameHu": "Gyergyóújfalu",
+          "nameRo": "Suseni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/suseni",
+          "resolution": "gazetteer",
+          "text": "Gyergyóújfalu",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/38"
+    },
+    {
+      "countOnline": 5,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "39",
+      "journeyId": "gyuj-39",
+      "label": "July – August, 1907. Gyergyókilyénfalva (5)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Gyergyókilyénfalva",
+      "places": [
+        {
+          "confidence": "medium",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.66,
+          "lng": 25.58,
+          "name": "Chileni",
+          "nameAlt": null,
+          "nameHu": "Gyergyókilyénfalva",
+          "nameRo": "Chileni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/chileni",
+          "resolution": "gazetteer",
+          "text": "Gyergyókilyénfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/39"
+    },
+    {
+      "countOnline": 35,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "40",
+      "journeyId": "gyuj-40",
+      "label": "July – August, 1907. Tekerőpatak (35)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Tekerőpatak",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.69,
+          "lng": 25.62,
+          "name": "Valea Strâmbă",
+          "nameAlt": null,
+          "nameHu": "Tekerőpatak",
+          "nameRo": "Valea Strâmbă",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/valea-stramba",
+          "resolution": "gazetteer",
+          "text": "Tekerőpatak",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/40"
+    },
+    {
+      "countOnline": 23,
+      "date": {
+        "end": "1907-08",
+        "periods": [
+          {
+            "end": "1907-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July - August 1907",
+            "start": "1907-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July – August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "41",
+      "journeyId": "gyuj-41",
+      "label": "July – August, 1907. Gyergyócsomafalva (23)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Gyergyócsomafalva",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Harghita",
+          "countyHistorical": "Csík",
+          "kind": "village",
+          "lat": 46.68,
+          "lng": 25.53,
+          "name": "Ciumani",
+          "nameAlt": null,
+          "nameHu": "Gyergyócsomafalva",
+          "nameRo": "Ciumani",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/harghita/ciumani",
+          "resolution": "gazetteer",
+          "text": "Gyergyócsomafalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/41"
+    },
+    {
+      "countOnline": 8,
+      "date": {
+        "end": "1907-07-10",
+        "periods": [
+          {
+            "end": "1907-07-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of July 1907",
+            "start": "1907-07-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1907-07-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of July, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "43",
+      "journeyId": "gyuj-43",
+      "label": "Beginning of July, 1907. Körösfő (8)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Körösfő",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "village",
+          "lat": 46.83,
+          "lng": 23.1,
+          "name": "Izvoru Crișului",
+          "nameAlt": null,
+          "nameHu": "Körösfő",
+          "nameRo": "Izvoru Crișului",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/izvoru-crisului",
+          "resolution": "gazetteer",
+          "text": "Körösfő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/43"
+    },
+    {
+      "countOnline": 11,
+      "date": {
+        "end": "1907-08-31",
+        "periods": [
+          {
+            "end": "1907-08-31",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of August 1907",
+            "start": "1907-08-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1907-08-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of August, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "44",
+      "journeyId": "gyuj-44",
+      "label": "End of August, 1907. Körösfő (11)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Körösfő",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "village",
+          "lat": 46.83,
+          "lng": 23.1,
+          "name": "Izvoru Crișului",
+          "nameAlt": null,
+          "nameHu": "Körösfő",
+          "nameRo": "Izvoru Crișului",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/izvoru-crisului",
+          "resolution": "gazetteer",
+          "text": "Körösfő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/44"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1907-11",
+        "periods": [
+          {
+            "end": "1907-11",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "November 1907",
+            "start": "1907-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1907-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": false,
+      "id": "102",
+      "journeyId": "gyuj-102",
+      "label": "November 1907. Nyitra county (Zobordarázs)",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Nyitra county (Zobordarázs)",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Nyitra",
+          "kind": "county",
+          "lat": 48.4,
+          "lng": 18.1,
+          "name": "Nyitra county",
+          "nameAlt": "Zobordarázs",
+          "nameHu": "Nyitra vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Nyitra county (Zobordarázs)",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/102"
+    },
+    {
+      "countOnline": 16,
+      "date": {
+        "end": "1907-11-02",
+        "periods": [
+          {
+            "end": "1907-11-02",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "November 1-2 1907",
+            "start": "1907-11-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1907-11-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November 1–2, 1907",
+      "groupYear": 1907,
+      "hasOnlineRecords": true,
+      "id": "42",
+      "journeyId": "gyuj-42",
+      "label": "November 1–2, 1907. Kánya (16)",
+      "nowIn": [],
+      "placeRaw": "Kánya",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Kánya",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Kánya",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/42"
+    },
+    {
+      "countOnline": 31,
+      "date": {
+        "end": "1908-03",
+        "periods": [
+          {
+            "end": "1908-03",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "March 1908",
+            "start": "1908-03",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1908-03",
+        "yearFromGroup": false
+      },
+      "dateRaw": "March, 1908",
+      "groupYear": 1908,
+      "hasOnlineRecords": true,
+      "id": "45",
+      "journeyId": "gyuj-45",
+      "label": "March, 1908. Körösfő (31)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Körösfő",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "village",
+          "lat": 46.83,
+          "lng": 23.1,
+          "name": "Izvoru Crișului",
+          "nameAlt": null,
+          "nameHu": "Körösfő",
+          "nameRo": "Izvoru Crișului",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/izvoru-crisului",
+          "resolution": "gazetteer",
+          "text": "Körösfő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/45"
+    },
+    {
+      "countOnline": 14,
+      "date": {
+        "end": "1908-10",
+        "periods": [
+          {
+            "end": "1908-10",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "October 1908",
+            "start": "1908-10",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1908-10",
+        "yearFromGroup": false
+      },
+      "dateRaw": "October, 1908",
+      "groupYear": 1908,
+      "hasOnlineRecords": true,
+      "id": "47",
+      "journeyId": "gyuj-47",
+      "label": "October, 1908. Bánffyhunyad (14)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Bánffyhunyad",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "town",
+          "lat": 46.87,
+          "lng": 23.04,
+          "name": "Huedin",
+          "nameAlt": null,
+          "nameHu": "Bánffyhunyad",
+          "nameRo": "Huedin",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/huedin",
+          "resolution": "gazetteer",
+          "text": "Bánffyhunyad",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/47"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1908-10",
+        "periods": [
+          {
+            "end": "1908-10",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "October 1908",
+            "start": "1908-10",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1908-10",
+        "yearFromGroup": false
+      },
+      "dateRaw": "October, 1908",
+      "groupYear": 1908,
+      "hasOnlineRecords": false,
+      "id": "48",
+      "journeyId": "gyuj-48",
+      "label": "October, 1908. Tőkésújfalu, Apátkolos",
+      "nowIn": [],
+      "placeRaw": "Tőkésújfalu, Apátkolos",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Tőkésújfalu",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Tőkésújfalu",
+          "uncertain": false
+        },
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Apátkolos",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Apátkolos",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/48"
+    },
+    {
+      "countOnline": 7,
+      "date": {
+        "end": "1908-10-10",
+        "periods": [
+          {
+            "end": "1908-10-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of October 1908",
+            "start": "1908-10-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1908-10-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of October, 1908",
+      "groupYear": 1908,
+      "hasOnlineRecords": true,
+      "id": "46",
+      "journeyId": "gyuj-46",
+      "label": "Beginning of October, 1908. Torockó (7)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Torockó",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Alba",
+          "countyHistorical": "Torda-Aranyos",
+          "kind": "village",
+          "lat": 46.45,
+          "lng": 23.57,
+          "name": "Rimetea",
+          "nameAlt": null,
+          "nameHu": "Torockó",
+          "nameRo": "Rimetea",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/alba/rimetea",
+          "resolution": "gazetteer",
+          "text": "Torockó",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/46"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1908-10-10",
+        "periods": [
+          {
+            "end": "1908-10-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of October 1908",
+            "start": "1908-10-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1908-10-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of October, 1908",
+      "groupYear": 1908,
+      "hasOnlineRecords": false,
+      "id": "53",
+      "journeyId": "gyuj-53",
+      "label": "Beginning of October, 1908. Torockó / Székelyhidas",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Torockó / Székelyhidas",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Alba",
+          "countyHistorical": "Torda-Aranyos",
+          "kind": "village",
+          "lat": 46.45,
+          "lng": 23.57,
+          "name": "Rimetea",
+          "nameAlt": null,
+          "nameHu": "Torockó",
+          "nameRo": "Rimetea",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/alba/rimetea",
+          "resolution": "gazetteer",
+          "text": "Torockó",
+          "uncertain": false
+        },
+        {
+          "confidence": "medium",
+          "county": "Cluj",
+          "countyHistorical": "Torda-Aranyos",
+          "kind": "village",
+          "lat": 46.49,
+          "lng": 23.63,
+          "name": "Podeni",
+          "nameAlt": null,
+          "nameHu": "Székelyhidas",
+          "nameRo": "Podeni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/podeni",
+          "resolution": "gazetteer",
+          "text": "Székelyhidas",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/53"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1909-02-04",
+        "periods": [
+          {
+            "end": "1909-02-04",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "February 3-4 1909",
+            "start": "1909-02-03",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1909-02-03",
+        "yearFromGroup": false
+      },
+      "dateRaw": "February 3–4, 1909",
+      "groupYear": 1909,
+      "hasOnlineRecords": false,
+      "id": "49",
+      "journeyId": "gyuj-49",
+      "label": "February 3–4, 1909. Zobordarázs",
+      "nowIn": [],
+      "placeRaw": "Zobordarázs",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Zobordarázs",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Zobordarázs",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/49"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1909-08",
+        "periods": [
+          {
+            "end": "1909-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "July-August 1909",
+            "start": "1909-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1909-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "July-August, 1909",
+      "groupYear": 1909,
+      "hasOnlineRecords": false,
+      "id": "50",
+      "journeyId": "gyuj-50",
+      "label": "July-August, 1909. Upper region of the river Fekete-Körös",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Upper region of the river Fekete-Körös",
+      "places": [
+        {
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "region",
+          "lat": 46.55,
+          "lng": 22.45,
+          "name": "Upper Crișul Negru valley (Beiuș and Vașcău districts)",
+          "nameAlt": null,
+          "nameHu": "Fekete-Körös felső vidéke",
+          "nameRo": "Valea superioară a Crișului Negru",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Upper region of the river Fekete-Körös",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/50"
+    },
+    {
+      "countOnline": 21,
+      "date": {
+        "end": "1909-08",
+        "periods": [
+          {
+            "end": "1909-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1909",
+            "start": "1909-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1909-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August, 1909",
+      "groupYear": 1909,
+      "hasOnlineRecords": true,
+      "id": "52",
+      "journeyId": "gyuj-52",
+      "label": "August, 1909. Vésztő (21)",
+      "nowIn": [],
+      "placeRaw": "Vésztő",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Vésztő",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Vésztő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/52"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1909-09-10",
+        "periods": [
+          {
+            "end": "1909-09-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "end",
+              "beginning"
+            ],
+            "raw": "End of August - Beginning of September",
+            "start": "1909-08-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1909-08-21",
+        "yearFromGroup": true
+      },
+      "dateRaw": "End of August – Beginning of September",
+      "groupYear": 1909,
+      "hasOnlineRecords": false,
+      "id": "51",
+      "journeyId": "gyuj-51",
+      "label": "End of August – Beginning of September. Mezőség (Câmpia Transilvaniei)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Mezőség (Câmpia Transilvaniei)",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Kolozs / Szolnok-Doboka / Maros-Torda",
+          "kind": "region",
+          "lat": 46.85,
+          "lng": 24.1,
+          "name": "Transylvanian Plain",
+          "nameAlt": "Câmpia Transilvaniei",
+          "nameHu": "Mezőség",
+          "nameRo": "Câmpia Transilvaniei",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Mezőség (Câmpia Transilvaniei)",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/51"
+    },
+    {
+      "countOnline": 15,
+      "date": {
+        "end": "1909-09",
+        "periods": [
+          {
+            "end": "1909-09",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "September 1909",
+            "start": "1909-09",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1909-09",
+        "yearFromGroup": false
+      },
+      "dateRaw": "September, 1909",
+      "groupYear": 1909,
+      "hasOnlineRecords": true,
+      "id": "54",
+      "journeyId": "gyuj-54",
+      "label": "September, 1909. Ákosfalva (15)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Ákosfalva",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.48,
+          "lng": 24.68,
+          "name": "Acățari",
+          "nameAlt": null,
+          "nameHu": "Ákosfalva",
+          "nameRo": "Acățari",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/acatari",
+          "resolution": "gazetteer",
+          "text": "Ákosfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/54"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1910-01",
+        "periods": [
+          {
+            "end": "1910-01",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "January 1910",
+            "start": "1910-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1910-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "January, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": false,
+      "id": "55",
+      "journeyId": "gyuj-55",
+      "label": "January, 1910. Nagyszentmiklós",
+      "nowIn": [],
+      "placeRaw": "Nagyszentmiklós",
+      "places": [
+        {
+          "candidates": [
+            "ro/banat/timis/sannicolau-mare",
+            "ro/banat/timis/sannicolau-mare"
+          ],
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Nagyszentmiklós",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "ambiguous",
+          "text": "Nagyszentmiklós",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/55"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1910-02",
+        "periods": [
+          {
+            "end": "1910-02",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "February 1910",
+            "start": "1910-02",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1910-02",
+        "yearFromGroup": false
+      },
+      "dateRaw": "February, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": false,
+      "id": "56",
+      "journeyId": "gyuj-56",
+      "label": "February, 1910. Upper region of the river Fekete-Körös: district of Belényes and Vaskoh",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Upper region of the river Fekete-Körös: district of Belényes and Vaskoh",
+      "places": [
+        {
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "region",
+          "lat": 46.55,
+          "lng": 22.45,
+          "name": "Upper Crișul Negru valley (Beiuș and Vașcău districts)",
+          "nameAlt": null,
+          "nameHu": "Fekete-Körös felső vidéke",
+          "nameRo": "Valea superioară a Crișului Negru",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Upper region of the river Fekete-Körös: district of Belényes and Vaskoh",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/56"
+    },
+    {
+      "countOnline": 84,
+      "date": {
+        "end": "1910-11-06",
+        "periods": [
+          {
+            "end": "1910-04-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "end",
+              "beginning"
+            ],
+            "raw": "End of March - Beginning of April",
+            "start": "1910-03-21",
+            "uncertain": false
+          },
+          {
+            "end": "1910-11-06",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "November 5-6 1910",
+            "start": "1910-11-05",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1910-03-21",
+        "yearFromGroup": true
+      },
+      "dateRaw": "End of March – Beginning of April, November 5–6, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": true,
+      "id": "57",
+      "journeyId": "gyuj-57",
+      "label": "End of March – Beginning of April, November 5–6, 1910. Nagymegyer (84)",
+      "nowIn": [],
+      "placeRaw": "Nagymegyer",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Nagymegyer",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Nagymegyer",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/57"
+    },
+    {
+      "countOnline": 23,
+      "date": {
+        "end": "1910-04",
+        "periods": [
+          {
+            "end": "1910-04",
+            "precision": "month",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of March - April 1910",
+            "start": "1910-03-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1910-03-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of March – April, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": true,
+      "id": "58",
+      "journeyId": "gyuj-58",
+      "label": "End of March – April, 1910. Magyargyerőmonostor (23)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Magyargyerőmonostor",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "village",
+          "lat": 46.78,
+          "lng": 23.07,
+          "name": "Mănăstireni",
+          "nameAlt": null,
+          "nameHu": "Magyargyerőmonostor",
+          "nameRo": "Mănăstireni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/manastireni",
+          "resolution": "gazetteer",
+          "text": "Magyargyerőmonostor",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/58"
+    },
+    {
+      "countOnline": 6,
+      "date": {
+        "end": "1910-04",
+        "periods": [
+          {
+            "end": "1910-04",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "April 1910",
+            "start": "1910-04",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1910-04",
+        "yearFromGroup": false
+      },
+      "dateRaw": "April, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": true,
+      "id": "59",
+      "journeyId": "gyuj-59",
+      "label": "April, 1910. Körösfő (6)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Körösfő",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Cluj",
+          "countyHistorical": "Kolozs",
+          "kind": "village",
+          "lat": 46.83,
+          "lng": 23.1,
+          "name": "Izvoru Crișului",
+          "nameAlt": null,
+          "nameHu": "Körösfő",
+          "nameRo": "Izvoru Crișului",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/cluj/izvoru-crisului",
+          "resolution": "gazetteer",
+          "text": "Körösfő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/59"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1910-10-17",
+        "periods": [
+          {
+            "end": "1910-10-17",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "October 15-17 1910",
+            "start": "1910-10-15",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1910-10-15",
+        "yearFromGroup": false
+      },
+      "dateRaw": "October 15–17, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": false,
+      "id": "60",
+      "journeyId": "gyuj-60",
+      "label": "October 15–17, 1910. Region of the river Kis-Szamos",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Region of the river Kis-Szamos",
+      "places": [
+        {
+          "county": "Cluj",
+          "countyHistorical": "Kolozs / Szolnok-Doboka",
+          "kind": "region",
+          "lat": 47,
+          "lng": 23.8,
+          "name": "Someșul Mic valley",
+          "nameAlt": null,
+          "nameHu": "Kis-Szamos vidéke",
+          "nameRo": "Valea Someșului Mic",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Region of the river Kis-Szamos",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/60"
+    },
+    {
+      "countOnline": 54,
+      "date": {
+        "end": "1910-11-13",
+        "periods": [
+          {
+            "end": "1910-11-13",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "November 13 1910",
+            "start": "1910-11-13",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1910-11-13",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November 13, 1910",
+      "groupYear": 1910,
+      "hasOnlineRecords": true,
+      "id": "61",
+      "journeyId": "gyuj-61",
+      "label": "November 13, 1910. Ipolyság. Shepherd’s horn and bagpipe competition (54)",
+      "nowIn": [],
+      "placeRaw": "Ipolyság. Shepherd’s horn and bagpipe competition",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Ipolyság",
+          "nameAlt": null,
+          "note": "Shepherd’s horn and bagpipe competition",
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Ipolyság",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/61"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1911-01-10",
+        "periods": [
+          {
+            "end": "1911-01-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "27. 12. 1910 - Beginning of January 1911",
+            "start": "1910-12-27",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1910-12-27",
+        "yearFromGroup": false
+      },
+      "dateRaw": "27. 12. 1910 – Beginning of January, 1911",
+      "groupYear": 1910,
+      "hasOnlineRecords": false,
+      "id": "64",
+      "journeyId": "gyuj-64",
+      "label": "27. 12. 1910 – Beginning of January, 1911. Land of",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Land of",
+      "places": [
+        {
+          "county": "Alba",
+          "countyHistorical": "Torda-Aranyos / Alsó-Fehér",
+          "kind": "region",
+          "lat": 46.4,
+          "lng": 22.9,
+          "name": "Land of the Moți (Munții Apuseni)",
+          "nameAlt": null,
+          "nameHu": "Mócvidék",
+          "nameRo": "Țara Moților",
+          "note": "label truncated on the site (\"Land of\"); the Hungarian entry 65 reads Mócvidék",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Land of",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/64"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1911-01-10",
+        "periods": [
+          {
+            "end": "1911-01-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "1910. december 27. - 1911. január eleje",
+            "start": "1910-12-27",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1910-12-27",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1910. december 27. – 1911. január eleje",
+      "groupYear": 1911,
+      "hasOnlineRecords": false,
+      "id": "65",
+      "journeyId": "gyuj-65",
+      "label": "Lásd: 1910. december 27. – 1911. január eleje. Mócvidék",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Mócvidék",
+      "places": [
+        {
+          "county": "Alba",
+          "countyHistorical": "Torda-Aranyos / Alsó-Fehér",
+          "kind": "region",
+          "lat": 46.4,
+          "lng": 22.9,
+          "name": "Land of the Moți (Munții Apuseni)",
+          "nameAlt": null,
+          "nameHu": "Mócvidék",
+          "nameRo": "Țara Moților",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Mócvidék",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/65"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1911-11-01",
+        "periods": [
+          {
+            "end": "1911-11-01",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "November 1 1911",
+            "start": "1911-11-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1911-11-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November 1, 1911",
+      "groupYear": 1911,
+      "hasOnlineRecords": false,
+      "id": "63",
+      "journeyId": "gyuj-63",
+      "label": "November 1, 1911. Nagyszőlős",
+      "nowIn": [],
+      "placeRaw": "Nagyszőlős",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Nagyszőlős",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Nagyszőlős",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/63"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-01-04",
+        "periods": [
+          {
+            "end": "1912-01-04",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "23. December 1911.-4. January 1912",
+            "start": "1911-12-23",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1911-12-23",
+        "yearFromGroup": false
+      },
+      "dateRaw": "23. December 1911.–4. January 1912",
+      "groupYear": 1911,
+      "hasOnlineRecords": false,
+      "id": "66",
+      "journeyId": "gyuj-66",
+      "label": "23. December 1911.–4. January 1912. Bihar",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Bihar",
+      "places": [
+        {
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "county",
+          "lat": 46.9,
+          "lng": 22,
+          "name": "Bihar county",
+          "nameAlt": null,
+          "nameHu": "Bihar vármegye",
+          "nameRo": "Bihor",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Bihar",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/66"
+    },
+    {
+      "countOnline": 32,
+      "date": {
+        "end": "1912-01-10",
+        "periods": [
+          {
+            "end": "1912-01-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of January 1912",
+            "start": "1912-01-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-01-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of January, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "67",
+      "journeyId": "gyuj-67",
+      "label": "Beginning of January, 1912. Köröstárkány (32)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Köröstárkány",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.63,
+          "lng": 22.33,
+          "name": "Tărcaia",
+          "nameAlt": null,
+          "nameHu": "Köröstárkány",
+          "nameRo": "Tărcaia",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/tarcaia",
+          "resolution": "gazetteer",
+          "text": "Köröstárkány",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/67"
+    },
+    {
+      "countOnline": 12,
+      "date": {
+        "end": "1912-01-10",
+        "periods": [
+          {
+            "end": "1912-01-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "beginning"
+            ],
+            "raw": "Beginning of January 1912",
+            "start": "1912-01-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-01-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Beginning of January, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "68",
+      "journeyId": "gyuj-68",
+      "label": "Beginning of January, 1912. Gyanta (12)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Gyanta",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.78,
+          "lng": 22.16,
+          "name": "Ginta",
+          "nameAlt": null,
+          "nameHu": "Gyanta",
+          "nameRo": "Ginta",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/ginta",
+          "resolution": "gazetteer",
+          "text": "Gyanta",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/68"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-01-22",
+        "periods": [
+          {
+            "end": "1912-01-22",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "January 20-22 1912",
+            "start": "1912-01-20",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1912-01-20",
+        "yearFromGroup": false
+      },
+      "dateRaw": "January 20–22, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "69",
+      "journeyId": "gyuj-69",
+      "label": "January 20–22, 1912. Nagytarna, Ugocsakomlós, Kabalapatak",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Nagytarna, Ugocsakomlós, Kabalapatak",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Satu Mare",
+          "countyHistorical": "Ugocsa",
+          "kind": "village",
+          "lat": 48.06,
+          "lng": 23.27,
+          "name": "Tarna Mare",
+          "nameAlt": null,
+          "nameHu": "Nagytarna",
+          "nameRo": "Tarna Mare",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/satu-mare/tarna-mare",
+          "resolution": "gazetteer",
+          "text": "Nagytarna",
+          "uncertain": false
+        },
+        {
+          "confidence": "medium",
+          "county": "Satu Mare",
+          "countyHistorical": "Ugocsa",
+          "kind": "village",
+          "lat": 48.03,
+          "lng": 23.25,
+          "name": "Comlăușa",
+          "nameAlt": null,
+          "nameHu": "Ugocsakomlós",
+          "nameRo": "Comlăușa",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/satu-mare/comlausa",
+          "resolution": "gazetteer",
+          "text": "Ugocsakomlós",
+          "uncertain": false
+        },
+        {
+          "confidence": "low",
+          "county": "Satu Mare",
+          "countyHistorical": "Ugocsa",
+          "kind": "village",
+          "lat": 48.01,
+          "lng": 23.24,
+          "name": "Valea Seacă",
+          "nameAlt": null,
+          "nameHu": "Kabalapatak",
+          "nameRo": "Valea Seacă",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/satu-mare/valea-seaca",
+          "resolution": "gazetteer",
+          "text": "Kabalapatak",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/69"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-02-02",
+        "periods": [
+          {
+            "end": "1912-02-02",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "January 28 - February 2 1912",
+            "start": "1912-01-28",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1912-01-28",
+        "yearFromGroup": false
+      },
+      "dateRaw": "January 28 – February 2, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "70",
+      "journeyId": "gyuj-70",
+      "label": "January 28 – February 2, 1912. Csarnóháza, Tőtös, Élesdlok, Remetelórév",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Csarnóháza, Tőtös, Élesdlok, Remetelórév",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.93,
+          "lng": 22.63,
+          "name": "Bulz",
+          "nameAlt": null,
+          "nameHu": "Csarnóháza",
+          "nameRo": "Bulz",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/bulz",
+          "resolution": "gazetteer",
+          "text": "Csarnóháza",
+          "uncertain": false
+        },
+        {
+          "confidence": "medium",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.86,
+          "lng": 22.55,
+          "name": "Groși",
+          "nameAlt": null,
+          "nameHu": "Tőtös",
+          "nameRo": "Groși",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/grosi",
+          "resolution": "gazetteer",
+          "text": "Tőtös",
+          "uncertain": false
+        },
+        {
+          "confidence": "low",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.95,
+          "lng": 22.62,
+          "name": "Luncșoara",
+          "nameAlt": null,
+          "nameHu": "Élesdlok",
+          "nameRo": "Luncșoara",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/luncsoara",
+          "resolution": "gazetteer",
+          "text": "Élesdlok",
+          "uncertain": false
+        },
+        {
+          "confidence": "medium",
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "village",
+          "lat": 46.93,
+          "lng": 22.6,
+          "name": "Lorău",
+          "nameAlt": null,
+          "nameHu": "Remetelórév",
+          "nameRo": "Lorău",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/bihor/lorau",
+          "resolution": "gazetteer",
+          "text": "Remetelórév",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/70"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-03-20",
+        "periods": [
+          {
+            "end": "1912-03-20",
+            "precision": "phrase",
+            "qualifiers": [
+              "middle"
+            ],
+            "raw": "Middle of March 1912",
+            "start": "1912-03-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-03-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "Middle of March, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "71",
+      "journeyId": "gyuj-71",
+      "label": "Middle of March, 1912. Temes county",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Temes county",
+      "places": [
+        {
+          "county": "Timiș",
+          "countyHistorical": "Temes",
+          "kind": "county",
+          "lat": 45.7,
+          "lng": 21.5,
+          "name": "Temes county",
+          "nameAlt": null,
+          "nameHu": "Temes vármegye",
+          "nameRo": "Timiș",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Temes county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/71"
+    },
+    {
+      "countOnline": 24,
+      "date": {
+        "end": "1912-04-10",
+        "periods": [
+          {
+            "end": "1912-04-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "end",
+              "beginning"
+            ],
+            "raw": "End of March - Beginning of April 1912",
+            "start": "1912-03-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-03-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of March – Beginning of April, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "72",
+      "journeyId": "gyuj-72",
+      "label": "End of March – Beginning of April, 1912. Rafajnaújfalu (24)",
+      "nowIn": [],
+      "placeRaw": "Rafajnaújfalu",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Rafajnaújfalu",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Rafajnaújfalu",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/72"
+    },
+    {
+      "countOnline": 3,
+      "date": {
+        "end": "1912-04-10",
+        "periods": [
+          {
+            "end": "1912-04-10",
+            "precision": "phrase",
+            "qualifiers": [
+              "end",
+              "beginning"
+            ],
+            "raw": "End of March - Beginning of April 1912",
+            "start": "1912-03-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-03-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of March – Beginning of April, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "73",
+      "journeyId": "gyuj-73",
+      "label": "End of March – Beginning of April, 1912. Nagygút (3)",
+      "nowIn": [],
+      "placeRaw": "Nagygút",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Nagygút",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Nagygút",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/73"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-04-04",
+        "periods": [
+          {
+            "end": "1912-04-04",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "April 4 1912",
+            "start": "1912-04-04",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1912-04-04",
+        "yearFromGroup": false
+      },
+      "dateRaw": "April 4, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "74",
+      "journeyId": "gyuj-74",
+      "label": "April 4, 1912. Mezőszabad",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Mezőszabad",
+      "places": [
+        {
+          "confidence": "medium",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.6,
+          "lng": 24.57,
+          "name": "Voiniceni",
+          "nameAlt": null,
+          "nameHu": "Mezőszabad",
+          "nameRo": "Voiniceni",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/voiniceni",
+          "resolution": "gazetteer",
+          "text": "Mezőszabad",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/74"
+    },
+    {
+      "countOnline": 22,
+      "date": {
+        "end": "1912-04-30",
+        "periods": [
+          {
+            "end": "1912-04-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "after"
+            ],
+            "raw": "After April 5 1912",
+            "start": "1912-04-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-04-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "After April 5, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "75",
+      "journeyId": "gyuj-75",
+      "label": "After April 5, 1912. Fornos (22)",
+      "nowIn": [],
+      "placeRaw": "Fornos",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Fornos",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Fornos",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/75"
+    },
+    {
+      "countOnline": 30,
+      "date": {
+        "end": "1912-04-30",
+        "periods": [
+          {
+            "end": "1912-04-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "after"
+            ],
+            "raw": "After April 5 1912",
+            "start": "1912-04-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-04-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "After April 5, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "76",
+      "journeyId": "gyuj-76",
+      "label": "After April 5, 1912. Dercen (30)",
+      "nowIn": [],
+      "placeRaw": "Dercen",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Dercen",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Dercen",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/76"
+    },
+    {
+      "countOnline": 1,
+      "date": {
+        "end": "1912-04-30",
+        "periods": [
+          {
+            "end": "1912-04-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "after"
+            ],
+            "raw": "After April 5 1912",
+            "start": "1912-04-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1912-04-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "After April 5, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": true,
+      "id": "77",
+      "journeyId": "gyuj-77",
+      "label": "After April 5, 1912. Kincseshomok (1)",
+      "nowIn": [],
+      "placeRaw": "Kincseshomok",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Kincseshomok",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Kincseshomok",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/77"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-04-15",
+        "periods": [
+          {
+            "end": "1912-04-15",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "April 13-15 1912",
+            "start": "1912-04-13",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1912-04-13",
+        "yearFromGroup": false
+      },
+      "dateRaw": "April 13–15, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "78",
+      "journeyId": "gyuj-78",
+      "label": "April 13–15, 1912. Turc, Lénárdfalva",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Turc, Lénárdfalva",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Satu Mare",
+          "countyHistorical": "Ugocsa",
+          "kind": "village",
+          "lat": 47.99,
+          "lng": 23.21,
+          "name": "Turț",
+          "nameAlt": null,
+          "nameHu": "Turc",
+          "nameRo": "Turț",
+          "nowIn": "RO",
+          "placeId": "ro/crisana/satu-mare/turt",
+          "resolution": "gazetteer",
+          "text": "Turc",
+          "uncertain": false
+        },
+        {
+          "confidence": "medium",
+          "county": "Maramureș",
+          "countyHistorical": "Szatmár",
+          "kind": "village",
+          "lat": 47.63,
+          "lng": 23.52,
+          "name": "Recea",
+          "nameAlt": null,
+          "nameHu": "Lénárdfalva",
+          "nameRo": "Recea",
+          "nowIn": "RO",
+          "placeId": "ro/maramures/maramures/recea",
+          "resolution": "gazetteer",
+          "text": "Lénárdfalva",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/78"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1912-12",
+        "periods": [
+          {
+            "end": "1912-12",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "November-December 1912",
+            "start": "1912-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1912-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "November–December, 1912",
+      "groupYear": 1912,
+      "hasOnlineRecords": false,
+      "id": "79",
+      "journeyId": "gyuj-79",
+      "label": "November–December, 1912. Torontál county",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Torontál county",
+      "places": [
+        {
+          "county": "Timiș",
+          "countyHistorical": "Torontál",
+          "kind": "county",
+          "lat": 45.8,
+          "lng": 20.7,
+          "name": "Torontál county",
+          "nameAlt": null,
+          "nameHu": "Torontál vármegye",
+          "nameRo": "Torontal",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Torontál county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/79"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1913-01",
+        "periods": [
+          {
+            "end": "1913-01",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "January 1913",
+            "start": "1913-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1913-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "January, 1913",
+      "groupYear": 1913,
+      "hasOnlineRecords": false,
+      "id": "80",
+      "journeyId": "gyuj-80",
+      "label": "January, 1913. Hont county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Hont county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Hont",
+          "kind": "county",
+          "lat": 48.1,
+          "lng": 18.9,
+          "name": "Hont county",
+          "nameAlt": null,
+          "nameHu": "Hont vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Hont county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/80"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1913-02-18",
+        "periods": [
+          {
+            "end": "1913-02-18",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "February 16-18 1913",
+            "start": "1913-02-16",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1913-02-16",
+        "yearFromGroup": false
+      },
+      "dateRaw": "February 16–18, 1913",
+      "groupYear": 1913,
+      "hasOnlineRecords": false,
+      "id": "81",
+      "journeyId": "gyuj-81",
+      "label": "February 16–18, 1913. Banat",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Banat",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Temes / Torontál / Krassó-Szörény",
+          "kind": "region",
+          "lat": 45.75,
+          "lng": 21.3,
+          "name": "Banat",
+          "nameAlt": null,
+          "nameHu": "Bánság",
+          "nameRo": "Banat",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Banat",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/81"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1913-03-27",
+        "periods": [
+          {
+            "end": "1913-03-27",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "March 15-27 1913",
+            "start": "1913-03-15",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1913-03-15",
+        "yearFromGroup": false
+      },
+      "dateRaw": "March 15–27, 1913",
+      "groupYear": 1913,
+      "hasOnlineRecords": false,
+      "id": "82",
+      "journeyId": "gyuj-82",
+      "label": "March 15–27, 1913. Máramaros county",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Máramaros county",
+      "places": [
+        {
+          "county": "Maramureș",
+          "countyHistorical": "Máramaros",
+          "kind": "county",
+          "lat": 47.75,
+          "lng": 24.3,
+          "name": "Máramaros county",
+          "nameAlt": null,
+          "nameHu": "Máramaros vármegye",
+          "nameRo": "Maramureș",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Máramaros county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/82"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1913-06",
+        "periods": [
+          {
+            "end": "1913-06",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "June 1913",
+            "start": "1913-06",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1913-06",
+        "yearFromGroup": false
+      },
+      "dateRaw": "June, 1913",
+      "groupYear": 1913,
+      "hasOnlineRecords": false,
+      "id": "83",
+      "journeyId": "gyuj-83",
+      "label": "June, 1913. Algeria",
+      "nowIn": [
+        "DZ"
+      ],
+      "placeRaw": "Algeria",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": "country",
+          "lat": 34.85,
+          "lng": 5.73,
+          "name": "Algeria (Biskra region)",
+          "nameAlt": null,
+          "nameHu": "Algéria",
+          "nameRo": "Algeria",
+          "nowIn": "DZ",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Algeria",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/83"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1914-01",
+        "periods": [
+          {
+            "end": "1914-01",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "December 1913 - January 1914",
+            "start": "1913-12",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1913-12",
+        "yearFromGroup": false
+      },
+      "dateRaw": "December, 1913 – January, 1914",
+      "groupYear": 1913,
+      "hasOnlineRecords": false,
+      "id": "84",
+      "journeyId": "gyuj-84",
+      "label": "December, 1913 – January, 1914. Hunyad county",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Hunyad county",
+      "places": [
+        {
+          "county": "Hunedoara",
+          "countyHistorical": "Hunyad",
+          "kind": "county",
+          "lat": 45.8,
+          "lng": 23,
+          "name": "Hunyad county",
+          "nameAlt": null,
+          "nameHu": "Hunyad vármegye",
+          "nameRo": "Hunedoara",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Hunyad county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/84"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1914-01",
+        "periods": [
+          {
+            "end": "1914-01",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "January 1914",
+            "start": "1914-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1914-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "January, 1914",
+      "groupYear": 1914,
+      "hasOnlineRecords": false,
+      "id": "85",
+      "journeyId": "gyuj-85",
+      "label": "January, 1914. Hont county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Hont county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Hont",
+          "kind": "county",
+          "lat": 48.1,
+          "lng": 18.9,
+          "name": "Hont county",
+          "nameAlt": null,
+          "nameHu": "Hont vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Hont county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/85"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1914-02",
+        "periods": [
+          {
+            "end": "1914-02",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "February 1914",
+            "start": "1914-02",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1914-02",
+        "yearFromGroup": false
+      },
+      "dateRaw": "February, 1914",
+      "groupYear": 1914,
+      "hasOnlineRecords": false,
+      "id": "86",
+      "journeyId": "gyuj-86",
+      "label": "February, 1914. Bihar county",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Bihar county",
+      "places": [
+        {
+          "county": "Bihor",
+          "countyHistorical": "Bihar",
+          "kind": "county",
+          "lat": 46.9,
+          "lng": 22,
+          "name": "Bihar county",
+          "nameAlt": null,
+          "nameHu": "Bihar vármegye",
+          "nameRo": "Bihor",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Bihar county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/86"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1914-04-10",
+        "periods": [
+          {
+            "end": "1914-04-10",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "1914. április 3-10",
+            "start": "1914-04-03",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1914-04-03",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1914. április 3–10",
+      "groupYear": 1914,
+      "hasOnlineRecords": false,
+      "id": "87",
+      "journeyId": "gyuj-87",
+      "label": "1914. április 3–10. Felső-Maros mente",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Felső-Maros mente",
+      "places": [
+        {
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "region",
+          "lat": 46.85,
+          "lng": 24.85,
+          "name": "Upper Mureș valley",
+          "nameAlt": null,
+          "nameHu": "Felső-Maros mente",
+          "nameRo": "Valea superioară a Mureșului",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Felső-Maros mente",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "documented",
+        "value": true
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/87"
+    },
+    {
+      "countOnline": 40,
+      "date": {
+        "end": "1914-04-13",
+        "periods": [
+          {
+            "end": "1914-04-13",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "1914. április 11-13",
+            "start": "1914-04-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1914-04-11",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1914. április 11–13",
+      "groupYear": 1914,
+      "hasOnlineRecords": true,
+      "id": "88",
+      "journeyId": "gyuj-88",
+      "label": "1914. április 11–13. Nyárádremete (40)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Nyárádremete",
+      "places": [
+        {
+          "confidence": "high",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.62,
+          "lng": 24.9,
+          "name": "Eremitu",
+          "nameAlt": null,
+          "nameHu": "Nyárádremete",
+          "nameRo": "Eremitu",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/eremitu",
+          "resolution": "gazetteer",
+          "text": "Nyárádremete",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/88"
+    },
+    {
+      "countOnline": 29,
+      "date": {
+        "end": "1914-04-14",
+        "periods": [
+          {
+            "end": "1914-04-14",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "1914. április 14",
+            "start": "1914-04-14",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1914-04-14",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1914. április 14",
+      "groupYear": 1914,
+      "hasOnlineRecords": true,
+      "id": "89",
+      "journeyId": "gyuj-89",
+      "label": "1914. április 14. Nyárádköszvényes (29)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Nyárádköszvényes",
+      "places": [
+        {
+          "confidence": "medium",
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "village",
+          "lat": 46.62,
+          "lng": 24.88,
+          "name": "Mătrici",
+          "nameAlt": null,
+          "nameHu": "Nyárádköszvényes",
+          "nameRo": "Mătrici",
+          "nowIn": "RO",
+          "placeId": "ro/transylvania/mures/matrici",
+          "resolution": "gazetteer",
+          "text": "Nyárádköszvényes",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/89"
+    },
+    {
+      "countOnline": 103,
+      "date": {
+        "end": "1914-04-20",
+        "periods": [
+          {
+            "end": "1914-04-20",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "1914. április 15-20",
+            "start": "1914-04-15",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1914-04-15",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1914. április 15–20",
+      "groupYear": 1914,
+      "hasOnlineRecords": true,
+      "id": "90",
+      "journeyId": "gyuj-90",
+      "label": "1914. április 15–20. Nyárád mente (103)",
+      "nowIn": [
+        "RO"
+      ],
+      "placeRaw": "Nyárád mente",
+      "places": [
+        {
+          "county": "Mureș",
+          "countyHistorical": "Maros-Torda",
+          "kind": "region",
+          "lat": 46.55,
+          "lng": 24.75,
+          "name": "Niraj valley",
+          "nameAlt": null,
+          "nameHu": "Nyárád mente",
+          "nameRo": "Valea Nirajului",
+          "nowIn": "RO",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Nyárád mente",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "unknown",
+        "note": "in present-day Romania; material language not checked",
+        "value": null
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/90"
+    },
+    {
+      "countOnline": 11,
+      "date": {
+        "end": "1915-02",
+        "periods": [
+          {
+            "end": "1915-02",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "1915. január-február",
+            "start": "1915-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1915-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1915. január–február",
+      "groupYear": 1915,
+      "hasOnlineRecords": true,
+      "id": "91",
+      "journeyId": "gyuj-91",
+      "label": "1915. január–február. Rákoskeresztúr (11)",
+      "nowIn": [],
+      "placeRaw": "Rákoskeresztúr",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Rákoskeresztúr",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Rákoskeresztúr",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/91"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1915-04",
+        "periods": [
+          {
+            "end": "1915-04",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "04. 1915",
+            "start": "1915-04",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1915-04",
+        "yearFromGroup": false
+      },
+      "dateRaw": "04. 1915",
+      "groupYear": 1915,
+      "hasOnlineRecords": false,
+      "id": "92",
+      "journeyId": "gyuj-92",
+      "label": "04. 1915, Zólyom county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Zólyom county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Zólyom",
+          "kind": "county",
+          "lat": 48.7,
+          "lng": 19.2,
+          "name": "Zólyom county",
+          "nameAlt": null,
+          "nameHu": "Zólyom vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Zólyom county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/92"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1915-08",
+        "periods": [
+          {
+            "end": "1915-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "07-08. 1915",
+            "start": "1915-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1915-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "07-08. 1915",
+      "groupYear": 1915,
+      "hasOnlineRecords": false,
+      "id": "93",
+      "journeyId": "gyuj-93",
+      "label": "07-08. 1915. Zólyom county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Zólyom county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Zólyom",
+          "kind": "county",
+          "lat": 48.7,
+          "lng": 19.2,
+          "name": "Zólyom county",
+          "nameAlt": null,
+          "nameHu": "Zólyom vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Zólyom county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/93"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1915-11",
+        "periods": [
+          {
+            "end": "1915-11",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "11",
+            "start": "1915-11",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1915-11",
+        "yearFromGroup": true
+      },
+      "dateRaw": "11",
+      "groupYear": 1915,
+      "hasOnlineRecords": false,
+      "id": "94",
+      "journeyId": "gyuj-94",
+      "label": "11. 1915 Zólyom county, Slovakian",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "1915 Zólyom county, Slovakian",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Zólyom",
+          "kind": "county",
+          "languageNote": "Slovakian",
+          "lat": 48.7,
+          "lng": 19.2,
+          "name": "Zólyom county",
+          "nameAlt": null,
+          "nameHu": "Zólyom vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "1915 Zólyom county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/94"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1915-12-29",
+        "periods": [
+          {
+            "end": "1915-12-29",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "27-29. 12. 1915",
+            "start": "1915-12-27",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1915-12-27",
+        "yearFromGroup": false
+      },
+      "dateRaw": "27-29. 12. 1915",
+      "groupYear": 1915,
+      "hasOnlineRecords": false,
+      "id": "97",
+      "journeyId": "gyuj-97",
+      "label": "27-29. 12. 1915, Zólyom county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Zólyom county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Zólyom",
+          "kind": "county",
+          "lat": 48.7,
+          "lng": 19.2,
+          "name": "Zólyom county",
+          "nameAlt": null,
+          "nameHu": "Zólyom vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Zólyom county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/97"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1916-01-02",
+        "periods": [
+          {
+            "end": "1916-01-02",
+            "precision": "day",
+            "qualifiers": [],
+            "raw": "1-2. January 1916",
+            "start": "1916-01-01",
+            "uncertain": false
+          }
+        ],
+        "precision": "day",
+        "start": "1916-01-01",
+        "yearFromGroup": false
+      },
+      "dateRaw": "1-2. January 1916",
+      "groupYear": 1916,
+      "hasOnlineRecords": false,
+      "id": "99",
+      "journeyId": "gyuj-99",
+      "label": "1-2. January 1916, Pónik (Gömör county)",
+      "nowIn": [],
+      "placeRaw": "Pónik (Gömör county)",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Pónik",
+          "nameAlt": "Gömör county",
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Pónik (Gömör county)",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/99"
+    },
+    {
+      "countOnline": null,
+      "date": {
+        "end": "1916-04-30",
+        "periods": [
+          {
+            "end": "1916-04-30",
+            "precision": "phrase",
+            "qualifiers": [
+              "end"
+            ],
+            "raw": "End of April 1916",
+            "start": "1916-04-21",
+            "uncertain": false
+          }
+        ],
+        "precision": "phrase",
+        "start": "1916-04-21",
+        "yearFromGroup": false
+      },
+      "dateRaw": "End of April 1916",
+      "groupYear": 1916,
+      "hasOnlineRecords": false,
+      "id": "101",
+      "journeyId": "gyuj-101",
+      "label": "End of April 1916, Zólyom county",
+      "nowIn": [
+        "SK"
+      ],
+      "placeRaw": "Zólyom county",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": "Zólyom",
+          "kind": "county",
+          "lat": 48.7,
+          "lng": 19.2,
+          "name": "Zólyom county",
+          "nameAlt": null,
+          "nameHu": "Zólyom vármegye",
+          "nameRo": null,
+          "nowIn": "SK",
+          "placeId": null,
+          "resolution": "region-table",
+          "text": "Zólyom county",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/101"
+    },
+    {
+      "countOnline": 31,
+      "date": {
+        "end": "1918-07",
+        "periods": [
+          {
+            "end": "1918-07",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "07. 1918",
+            "start": "1918-07",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1918-07",
+        "yearFromGroup": false
+      },
+      "dateRaw": "07. 1918",
+      "groupYear": 1918,
+      "hasOnlineRecords": true,
+      "id": "104",
+      "journeyId": "gyuj-104",
+      "label": "07. 1918, Vésztő (31)",
+      "nowIn": [],
+      "placeRaw": "Vésztő",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Vésztő",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Vésztő",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/104"
+    },
+    {
+      "countOnline": 195,
+      "date": {
+        "end": "1918-08",
+        "periods": [
+          {
+            "end": "1918-08",
+            "precision": "month",
+            "qualifiers": [],
+            "raw": "August 1918",
+            "start": "1918-08",
+            "uncertain": false
+          }
+        ],
+        "precision": "month",
+        "start": "1918-08",
+        "yearFromGroup": false
+      },
+      "dateRaw": "August 1918",
+      "groupYear": 1918,
+      "hasOnlineRecords": true,
+      "id": "100",
+      "journeyId": "gyuj-100",
+      "label": "August 1918. Felsőszászberek (195)",
+      "nowIn": [],
+      "placeRaw": "Felsőszászberek",
+      "places": [
+        {
+          "county": null,
+          "countyHistorical": null,
+          "kind": null,
+          "lat": null,
+          "lng": null,
+          "name": "Felsőszászberek",
+          "nameAlt": null,
+          "nowIn": null,
+          "placeId": null,
+          "resolution": "unresolved",
+          "text": "Felsőszászberek",
+          "uncertain": false
+        }
+      ],
+      "romanianMaterial": {
+        "confidence": "inferred",
+        "value": false
+      },
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/100"
+    }
+  ]
+}

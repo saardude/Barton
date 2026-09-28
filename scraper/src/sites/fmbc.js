@@ -66,7 +66,8 @@ export function discover($, url) {
  * -> {villageHistorical, village, countyHistorical, county, country, dateRaw, collector, raw}
  */
 export function parseCollecting(raw) {
-  const r = clean(raw);
+  // "[...]" marks uncertain data on the site; keep the text, drop the brackets.
+  const r = clean(String(raw || '').replace(/^\s*\[/, '').replace(/\]\s*$/, '').replace(/\[|\]/g, ''));
   const out = { villageHistorical: null, village: null, countyHistorical: null, county: null, country: null, dateRaw: null, collector: null, raw: r };
   if (!r) return out;
   const m = r.match(/^(.*?)\s*\(([^)]*)\)\s*(?:,\s*(.*))?$/);
@@ -87,7 +88,7 @@ export function parseCollecting(raw) {
   if (names[1]) out.village = names[1];
   if (parenPart) {
     const [countyPart, nowPart] = parenPart.split(/;\s*now:\s*/i);
-    const counties = countyPart.replace(/\s*county\s*$/i, '').split('/').map((s) => clean(s)).filter(Boolean);
+    const counties = countyPart.replace(/\s*county\w*\s*$/i, '').split('/').map((s) => clean(s)).filter(Boolean);
     out.countyHistorical = counties[0] || null;
     if (counties[1]) out.county = counties[1];
     if (nowPart) {
@@ -208,6 +209,7 @@ export function parseRecord(html, url, context = {}) {
     incipit: null,
     genreRaw: null, // the site prints no genre label; see docs/DATA-SCHEMA.md
     style: null,
+    styleRaw: null,
     performanceRaw: melody.pairs.Performance || null,
     instrumentRaw: null,
     performerRaw: melody.pairs.Informant || null,
@@ -235,6 +237,7 @@ export function parseRecord(html, url, context = {}) {
     form: null,
     related,
     composition,
+    journey: null,
     fields
   };
 }

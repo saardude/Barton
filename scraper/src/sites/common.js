@@ -261,3 +261,26 @@ export function splitPlaceLine(line) {
   if (m && m[2]) return { placeRaw: clean(m[1].replace(/,\s*$/, '')), dateRaw: clean(m[2]) };
   return { placeRaw: clean(t.replace(/,\s*$/, '')), dateRaw: null };
 }
+
+/**
+ * Style class from a Bartok System position ("A 1101a", "B 481c", "C 1231a") or a class label
+ * ("Class A: old style"). Returns {style, styleRaw} with style in
+ * old style | new style | mixed style | instrumental | not classified | null.
+ */
+export function styleFromSystem(position, classLabel) {
+  const label = clean(classLabel);
+  const pos = clean(position);
+  let letter = null;
+  if (label) {
+    const m = label.match(/class\s+([ABC])\b/i);
+    if (m) letter = m[1].toUpperCase();
+    else if (/instrumental/i.test(label)) return { style: 'instrumental', styleRaw: label };
+    else if (/not classified/i.test(label)) return { style: 'not classified', styleRaw: label };
+  }
+  if (!letter && pos) {
+    const m = pos.match(/^([ABC])\s*\d/i);
+    if (m) letter = m[1].toUpperCase();
+  }
+  const style = letter === 'A' ? 'old style' : letter === 'B' ? 'new style' : letter === 'C' ? 'mixed style' : null;
+  return { style, styleRaw: label || (style ? `class ${letter}` : null) };
+}

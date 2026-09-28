@@ -1,5 +1,6 @@
 // Map raw parser output (site-specific label/value pairs) to the canonical song schema.
-import { clean, fold, toInt, uniq } from './util.js';
+import { clean, fold, sha1, toInt, uniq } from './util.js';
+import { countryFromPoint } from './geo.js';
 import { stripQualifiers } from './gazetteer.js';
 
 export const GENRES = ['colinda', 'doina', 'bocet', 'cantec', 'joc', 'nunta', 'other'];
@@ -250,6 +251,16 @@ export function resolvePlace(half, gazetteer) {
     out.country = countyEntry.country;
   }
   const hit = gazetteer ? gazetteer.lookup(half.name, { county: half.county }) : null;
+  if (!hit && gazetteer && half.county) {
+    // Village unknown: derive what the historical county alone allows.
+    const hc = gazetteer.historicalCounty(half.county);
+    if (hc && hc.exclusive && hc.country) {
+      out.country = hc.country;
+      out.region = hc.region || out.region;
+      out.county = hc.county || out.county;
+      out.resolution = 'county';
+    }
+  }
   if (hit) {
     const e = hit.entry;
     out.village = e.name;
@@ -287,7 +298,9 @@ export function resolveStructuredPlace(place, gazetteer) {
   out.countyHistorical = clean(place.countyHistorical) || null;
   out.country = countryCode(place.country);
   const hist = { name: out.villageHistorical, county: out.countyHistorical };
-  const g = gazetteer ? resolvePlace(hist, gazetteer) : null;
+  const g0 = gazetteer ? resolvePlace(hist, gazetteer) : null;
+  // Use the gazetteer only when it does not contradict the country the site states.
+  const g = g0 && (!out.country || !g0.country || g0.country === out.country) ? g0 : null;
   // Prefer what the site states; fall back to the gazetteer.
   out.village = clean(place.village) || (g && g.village) || null;
   out.county = clean(place.county) || (g && g.county) || null;
@@ -296,6 +309,12 @@ export function resolveStructuredPlace(place, gazetteer) {
   if (!out.county && out.countyHistorical && gazetteer) {
     const c = gazetteer.county(out.countyHistorical);
     if (c && (!out.country || c.country === out.country)) out.county = c.name;
+    const hc = gazetteer.historicalCounty(out.countyHistorical);
+    if (hc && hc.exclusive && hc.country && !out.country) out.country = hc.country;
+    if (hc && hc.exclusive && hc.country === out.country) {
+      out.region = out.region || hc.region;
+      out.county = out.county || hc.county;
+    }
   }
   out.region = (gazetteer && out.county && gazetteer.regionOf(out.county)) || (g && g.region) || null;
   if (typeof place.lat === 'number' && typeof place.lng === 'number') {
@@ -308,6 +327,7 @@ export function resolveStructuredPlace(place, gazetteer) {
     out.resolution = 'gazetteer';
     out.confidence = g.confidence;
   } else if (out.village) out.resolution = 'site';
+  else if (g && g.resolution === 'county') out.resolution = 'county';
   if (out.resolution === 'site') out.confidence = 'high';
   return out;
 }
@@ -317,8 +337,10 @@ function placeIdFor(loc) {
   const name = loc.village || loc.villageHistorical;
   if (!name) return null;
   const country = loc.country ? loc.country.toLowerCase() : 'xx';
-  if (loc.village && loc.county && loc.region) return `${country}/${slug(loc.region)}/${slug(loc.county)}/${slug(loc.village)}`;
-  return `${country}/unresolved/${slug(name)}`;
+  const leaf = slug(loc.village) || slug(loc.villageHistorical) || `p-${sha1(name).slice(0, 8)}`;
+  if (loc.village && loc.county && loc.region) return `${country}/${slug(loc.region)}/${slug(loc.county)}/${leaf}`;
+  if (loc.county && loc.region) return `${country}/${slug(loc.region)}/${slug(loc.county)}/${leaf}`;
+  return `${country}/unresolved/${leaf}`;
 }
 
 /**
@@ -342,6 +364,10 @@ export function normalizeRecord(raw, gazetteer) {
   const loc = raw.place ? { main: { name: raw.place.villageHistorical || raw.place.village || null, county: raw.place.countyHistorical || null, raw: raw.placeRaw }, origin: null, raw: clean(raw.placeRaw) } : parseLocality(placeRaw);
   const main = raw.place ? resolveStructuredPlace(raw.place, gazetteer) : resolvePlace(loc.main, gazetteer);
   const origin = loc.origin ? resolvePlace(loc.origin, gazetteer) : null;
+  if (!main.country && main.lat !== null && main.lng !== null) {
+    const cc = countryFromPoint(main.lat, main.lng);
+    if (cc) main.country = cc;
+  }
   const location = {
     country: main.country,
     region: main.region,
@@ -369,13 +395,16 @@ export function normalizeRecord(raw, gazetteer) {
       volume: clean(raw.volume),
       number: clean(raw.number),
       siteRecordId: clean(raw.siteRecordId),
-      fetchedAt: raw.fetchedAt || null
+      fetchedAt: raw.fetchedAt || null,
+      alternates: []
     },
+    journey: raw.journey && (raw.journey.collectionId || raw.journey.label) ? { collectionId: raw.journey.collectionId ?? null, label: clean(raw.journey.label), dateRaw: clean(raw.journey.dateRaw), place: clean(raw.journey.place), url: raw.journey.url ?? null } : null,
     title: clean(raw.title),
     incipit: clean(raw.incipit),
     genre: mapGenre(raw.genreRaw),
     genreRaw: clean(raw.genreRaw),
     style: clean(raw.style),
+    styleRaw: clean(raw.styleRaw),
     performance,
     instrument: instruments,
     performer: {

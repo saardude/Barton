@@ -78,6 +78,20 @@ export class Gazetteer {
     return { ...cands[0], ambiguous: distinct.size > 1 };
   }
 
+  /**
+   * Pre-1920 county (as printed) -> {country, region, county, exclusive, countries} from
+   * data/gazetteer.json historicalCounties, or null. Diacritics-insensitive; strips "vm."/"county".
+   */
+  historicalCounty(name) {
+    if (!name) return null;
+    if (!this.histIndex) {
+      this.histIndex = new Map();
+      for (const [k, v] of Object.entries(this.data.historicalCounties || {})) this.histIndex.set(fold(k), { name: k, ...v });
+    }
+    const k = fold(stripQualifiers(name) || name).replace(/\b(vm|varmegye|megye|county|countye|comitatus)\b/g, '').trim();
+    return this.histIndex.get(k) || null;
+  }
+
   /** Country code for a modern county name. */
   countryOf(countyName) {
     const c = this.county(countyName);
