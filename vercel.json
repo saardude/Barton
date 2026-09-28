@@ -8,8 +8,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/((?!data/|assets/).*)",
+      "destination": "/"
     }
   ],
   "headers": [
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "source": "/index.html",
+      "source": "/",
       "headers": [
         {
           "key": "Cache-Control",
