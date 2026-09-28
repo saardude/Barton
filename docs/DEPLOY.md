@@ -303,3 +303,14 @@ workflows deploy regardless of this environment's policy.
 For GitHub Actions set the repository secrets `VERCEL_TOKEN` (a token scoped to the Tutti team), `VERCEL_ORG_ID` = the org id above, `VERCEL_PROJECT_ID` = the project id above. The ids are identifiers, not secrets, but they are kept out of the workflow file so the same workflow works for a fork.
 
 The account has no personal (Hobby) scope, so the project had to live in a team. If the academic project should be separated from the Tutti workspace, create a new team in the Vercel dashboard, transfer the project to it (Project Settings, General, Transfer), and re-run `npx vercel link --yes --project bartok-romania-viewer --scope <new-team>` here.
+
+## Static deploy of a local build (used for the first live deployment, 2026-09-28)
+
+`scripts/deploy-dist.sh` uploads `app/dist` as a static production deployment with the
+root `vercel.json` rewrites and headers, and install/build disabled. It exists because
+uploading the whole repository (40 MB raw catalogue) aborted through the cloud proxy, and
+because the project-level install command (`npm ci --prefix app`) is applied even to
+prebuilt uploads unless the deployed `vercel.json` sets `installCommand` to an empty
+string. Sequence: `cd app && npm run build && cd .. && scripts/deploy-dist.sh`.
+Verified on the first run: `/` serves the app, `/data/songs.<hash>.json` returns 200 with
+`cache-control: public, max-age=31536000, immutable`.
