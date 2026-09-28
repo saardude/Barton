@@ -178,4 +178,5 @@ counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json
 2. Default view: Romania only, or all countries with Romania preselected?
 3. Do we need the Hungarian-language record labels shown alongside English?
 4. Project name on Vercel and a custom domain, if any.
+6. Historical border data licences: GISta Hungarorum 1910 counties are CC BY-NC (non-commercial use only) and historical-basemaps carries a GPL-3.0 repository licence with no separate data licence. Both are fine for an academic, non-commercial site; confirm that is the intended use, or we drop to Natural Earth (public domain) plus our own county centroids.
 5. Journey split rule (10-day gap) and the assumed Budapest departure: confirm or adjust.
