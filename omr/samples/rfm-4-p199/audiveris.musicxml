@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0.3 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0.3">
+  <identification>
+    <encoding>
+      <software>Audiveris 5.9.0</software>
+      <supports type="yes" element="print" attribute="new-system" value="yes"></supports>
+      <supports type="yes" element="print" attribute="new-page" value="yes"></supports>
+      <supports type="yes" element="accidental"></supports>
+      <supports type="yes" element="beam"></supports>
+      <supports type="yes" element="stem"></supports>
+      <software>ProxyMusic 4.0.3</software>
+      <encoding-date>2026-09-28</encoding-date>
+    </encoding>
+    <source>/home/user/Barton/omr/samples/rfm-4-p199/_audiveris/page.png</source>
+    <miscellaneous>
+      <miscellaneous-field name="source-file">/home/user/Barton/omr/samples/rfm-4-p199/_audiveris/page.png</miscellaneous-field>
+      <miscellaneous-field name="source-sheet-1">3 4 5</miscellaneous-field>
+    </miscellaneous>
+  </identification>
+  <defaults>
+    <scaling>
+      <millimeters>8.4667</millimeters>
+      <tenths>40</tenths>
+    </scaling>
+    <page-layout>
+      <page-height>2252</page-height>
+      <page-width>1435</page-width>
+      <page-margins type="both">
+        <left-margin>80</left-margin>
+        <right-margin>80</right-margin>
+        <top-margin>80</top-margin>
+        <bottom-margin>80</bottom-margin>
+      </page-margins>
+    </page-layout>
+    <lyric-font font-family="Sans Serif" font-size="10"></lyric-font>
+  </defaults>
+  <credit page="1">
+    <credit-words default-x="313" default-y="1650" font-family="serif" font-size="10">2_</credit-words>
+  </credit>
+  <credit page="1">
+    <credit-words default-x="482" default-y="1404" font-family="serif" font-size="14">1)</credit-words>
+  </credit>
+  <credit page="1">
+    <credit-words default-x="922" default-y="1121" font-family="serif" font-size="9">I'.</credit-words>
+  </credit>
+  <part-list>
+    <score-part id="P1">
+      <part-name>Voice</part-name>
+      <part-abbreviation>Voice</part-abbreviation>
+      <score-instrument id="P1-I1">
+        <instrument-name>Voice Oohs</instrument-name>
+      </score-instrument>
+      <midi-instrument id="P1-I1">
+        <midi-channel>1</midi-channel>
+        <midi-program>54</midi-program>
+        <volume>78</volume>
+      </midi-instrument>
+    </score-part>
+    <score-part id="P2">
+      <part-name>Voice</part-name>
+      <part-abbreviation>Voice</part-abbreviation>
+      <score-instrument id="P2-I1">
+        <instrument-name>Voice Oohs</instrument-name>
+      </score-instrument>
+      <midi-instrument id="P2-I1">
+        <midi-channel>2</midi-channel>
+        <midi-program>54</midi-program>
+        <volume>78</volume>
+      </midi-instrument>
+    </score-part>
+  </part-list>
+  <!--= = = = = = = = = = = = = = = = = = = = = = = = = = = = =-->
+  <part id="P1">
+    <!--=======================================================-->
+    <measure number="1">
+      <print>
+        <measure-numbering>system</measure-numbering>
+      </print>
+      <attributes>
+        <divisions>12</divisions>
+        <clef>
+          <sign>F</sign>
+          <line>4</line>
+        </clef>
+        <staff-details print-object="no"></staff-details>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>12</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="2">
+      <note>
+        <rest measure="yes"></rest>
+        <duration>6</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="3">
+      <note>
+        <rest measure="yes"></rest>
+        <duration>36</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="4" width="434">
+      <print new-system="yes">
+        <system-layout>
+          <system-margins>
+            <left-margin>172</left-margin>
+            <right-margin>98</right-margin>
+          </system-margins>
+          <system-distance>203</system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <key>
+          <fifths>1</fifths>
+        </key>
+        <clef>
+          <sign>G</sign>
+          <line>2</line>
+        </clef>
+        <staff-details print-object="yes"></staff-details>
+      </attributes>
+      <barline location="left">
+        <bar-style>regular</bar-style>
+      </barline>
+      <direction placement="above">
+        <direction-type>
+          <words default-y="36" relative-x="-27" font-family="serif" font-size="14">Tempo giusto, = 104</words>
+        </direction-type>
+      </direction>
+      <note default-x="224">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-62">down</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-84">
+          <syllabic>begin</syllabic>
+          <text>De</text>
+        </lyric>
+      </note>
+      <note default-x="283">
+        <pitch>
+          <step>D</step>
+          <alter>1</alter>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <accidental>sharp</accidental>
+        <stem default-y="-58">down</stem>
+        <beam number="1">continue</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>end</syllabic>
+          <text>când</text>
+        </lyric>
+      </note>
+      <note default-x="331">
+        <pitch>
+          <step>D</step>
+          <alter>1</alter>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-54">down</stem>
+        <beam number="1">continue</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>begin</syllabic>
+          <text>Dom</text>
+        </lyric>
+      </note>
+      <note default-x="380">
+        <pitch>
+          <step>D</step>
+          <alter>1</alter>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-51">down</stem>
+        <beam number="1">end</beam>
+        <lyric number="1" placement="below" default-y="-84">
+          <syllabic>end</syllabic>
+          <text>nu</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="5" width="271">
+      <attributes>
+        <time>
+          <beats>3</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note default-x="30">
+        <pitch>
+          <step>D</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-46">down</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>single</syllabic>
+          <text>s’o</text>
+        </lyric>
+      </note>
+      <note default-x="78">
+        <pitch>
+          <step>D</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-46">down</stem>
+        <beam number="1">end</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>begin</syllabic>
+          <text>nă</text>
+        </lyric>
+      </note>
+      <note default-x="128">
+        <pitch>
+          <step>D</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-46">down</stem>
+        <lyric number="1" placement="below" default-y="-84">
+          <syllabic>middle</syllabic>
+          <text>scu</text>
+        </lyric>
+      </note>
+      <note default-x="199">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-55">down</stem>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>end</syllabic>
+          <text>n</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="6" width="264">
+      <attributes>
+        <time>
+          <beats>2</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note default-x="37">
+        <pitch>
+          <step>F</step>
+          <alter>1</alter>
+          <octave>5</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-13">down</stem>
+      </note>
+      <note default-x="38">
+        <chord/>
+        <pitch>
+          <step>B</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-13">down</stem>
+        <notations>
+          <slur type="start" number="1" placement="above" default-x="2" default-y="19" bezier-x="22" bezier-y="13"></slur>
+        </notations>
+      </note>
+      <note default-x="61">
+        <pitch>
+          <step>D</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-59">down</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>single</syllabic>
+          <text>Şi</text>
+        </lyric>
+      </note>
+      <note default-x="125">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>3</duration>
+        <voice>1</voice>
+        <type>16th</type>
+        <stem default-y="-60">down</stem>
+        <beam number="1">continue</beam>
+        <beam number="2">backward hook</beam>
+        <notations>
+          <slur type="stop" number="1" default-x="-12" default-y="13" bezier-x="-21" bezier-y="16"></slur>
+        </notations>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>begin</syllabic>
+          <text>pă</text>
+        </lyric>
+      </note>
+      <note default-x="155">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-60">down</stem>
+        <beam number="1">continue</beam>
+        <notations>
+          <articulations>
+            <breath-mark default-x="210" default-y="48" placement="above">comma</breath-mark>
+          </articulations>
+        </notations>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>middle</syllabic>
+          <text>mân</text>
+        </lyric>
+      </note>
+      <note default-x="207">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="-63">down</stem>
+        <beam number="1">end</beam>
+        <lyric number="1" placement="below" default-y="-85">
+          <syllabic>end</syllabic>
+          <text>iu</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="7" width="454">
+      <print new-system="yes">
+        <system-layout>
+          <system-margins>
+            <left-margin>161</left-margin>
+            <right-margin>103</right-margin>
+          </system-margins>
+          <system-distance>118</system-distance>
+        </system-layout>
+      </print>
+      <attributes>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>3</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <staff-details print-object="yes"></staff-details>
+      </attributes>
+      <note default-x="104">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="3">up</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>single</syllabic>
+          <text>s’o</text>
+        </lyric>
+      </note>
+      <note default-x="168">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="3">up</stem>
+        <beam number="1">end</beam>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>begin</syllabic>
+          <text>fă</text>
+        </lyric>
+      </note>
+      <note default-x="232">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="10">up</stem>
+        <beam number="1">begin</beam>
+        <notations>
+          <slur type="start" number="1" placement="below" default-x="13" default-y="-33" bezier-x="15" bezier-y="-9"></slur>
+        </notations>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>middle</syllabic>
+          <text>cu</text>
+        </lyric>
+      </note>
+      <note default-x="297">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="14">up</stem>
+        <beam number="1">end</beam>
+        <notations>
+          <slur type="stop" number="1" default-x="-4" default-y="-32" bezier-x="-15" bezier-y="-9"></slur>
+        </notations>
+      </note>
+      <note default-x="359">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-52">down</stem>
+        <notations>
+          <articulations>
+            <tenuto placement="below" default-y="-83"></tenuto>
+          </articulations>
+        </notations>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>end</syllabic>
+          <text>tu</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="8" width="269">
+      <attributes>
+        <time>
+          <beats>2</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note default-x="33">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>9</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <dot/>
+        <stem default-y="15">up</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>single</syllabic>
+          <text>.Si</text>
+        </lyric>
+      </note>
+      <note default-x="108">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>3</duration>
+        <voice>1</voice>
+        <type>16th</type>
+        <stem default-y="11">up</stem>
+        <beam number="1">end</beam>
+        <beam number="2">backward hook</beam>
+        <lyric number="1" placement="below" default-y="-78">
+          <syllabic>single</syllabic>
+          <text>nos’Dom</text>
+        </lyric>
+      </note>
+      <note default-x="148">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>9</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <dot/>
+        <stem default-y="16">up</stem>
+        <beam number="1">begin</beam>
+      </note>
+      <note default-x="224">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>3</duration>
+        <voice>1</voice>
+        <type>16th</type>
+        <stem default-y="10">up</stem>
+        <beam number="1">end</beam>
+        <beam number="2">backward hook</beam>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>single</syllabic>
+          <text>i</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="9" width="288">
+      <note default-x="13">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <time-modification>
+          <actual-notes>3</actual-notes>
+          <normal-notes>2</normal-notes>
+        </time-modification>
+        <stem default-y="3">up</stem>
+        <beam number="1">begin</beam>
+        <notations>
+          <tuplet type="start" number="1" placement="above"></tuplet>
+        </notations>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>begin</syllabic>
+          <text>Dum</text>
+        </lyric>
+      </note>
+      <note default-x="79">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <time-modification>
+          <actual-notes>3</actual-notes>
+          <normal-notes>2</normal-notes>
+        </time-modification>
+        <stem default-y="2">up</stem>
+        <beam number="1">end</beam>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>end</syllabic>
+          <text>ăe</text>
+        </lyric>
+      </note>
+      <note default-x="145">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <time-modification>
+          <actual-notes>3</actual-notes>
+          <normal-notes>2</normal-notes>
+        </time-modification>
+        <stem default-y="3">up</stem>
+        <notations>
+          <tuplet type="stop" number="1"></tuplet>
+        </notations>
+        <lyric number="1" placement="below" default-y="-79">
+          <syllabic>single</syllabic>
+          <text>zcg!</text>
+        </lyric>
+      </note>
+      <note default-x="212">
+        <rest>
+          <display-step>B</display-step>
+          <display-octave>4</display-octave>
+        </rest>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+    </measure>
+  </part>
+  <!--= = = = = = = = = = = = = = = = = = = = = = = = = = = = =-->
+  <part id="P2">
+    <!--=======================================================-->
+    <measure number="1" width="113">
+      <print>
+        <system-layout>
+          <system-margins>
+            <left-margin>230</left-margin>
+            <right-margin>540</right-margin>
+          </system-margins>
+          <top-system-distance>535</top-system-distance>
+        </system-layout>
+        <measure-numbering>none</measure-numbering>
+      </print>
+      <attributes>
+        <divisions>12</divisions>
+        <staff-details print-object="yes"></staff-details>
+      </attributes>
+      <note default-x="28">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="8">up</stem>
+        <beam number="1">begin</beam>
+        <notations>
+          <slur type="start" number="1" placement="below" default-x="5" default-y="-30" bezier-x="11" bezier-y="-5"></slur>
+        </notations>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>c),</text>
+        </lyric>
+      </note>
+      <note default-x="66">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="11">up</stem>
+        <beam number="1">end</beam>
+        <notations>
+          <slur type="stop" number="1" default-x="0" default-y="-28" bezier-x="-10" bezier-y="-7"></slur>
+        </notations>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>Igriş</text>
+        </lyric>
+      </note>
+      <barline location="right">
+        <bar-style>light-light</bar-style>
+      </barline>
+    </measure>
+    <!--=======================================================-->
+    <measure number="2" width="170">
+      <direction placement="above">
+        <direction-type>
+          <words default-y="12" relative-x="-109" font-family="serif" font-size="12">Sarafola (Torontal), ţigani:</words>
+        </direction-type>
+      </direction>
+      <note default-x="126">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="9">up</stem>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>2</text>
+        </lyric>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="3" width="221">
+      <note default-x="17">
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="4">up</stem>
+        <beam number="1">begin</beam>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>ţigance,</text>
+        </lyric>
+      </note>
+      <note default-x="54">
+        <pitch>
+          <step>A</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>6</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <stem default-y="9">up</stem>
+        <beam number="1">end</beam>
+      </note>
+      <note default-x="96">
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-46">down</stem>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>XI.</text>
+        </lyric>
+      </note>
+      <note default-x="156">
+        <pitch>
+          <step>C</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>12</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <stem default-y="-42">down</stem>
+        <lyric number="1" placement="below" default-y="-80">
+          <syllabic>single</syllabic>
+          <text>1912.</text>
+        </lyric>
+      </note>
+      <barline location="right">
+        <bar-style>light-light</bar-style>
+      </barline>
+    </measure>
+    <!--=======================================================-->
+    <measure number="4">
+      <print new-system="yes"></print>
+      <attributes>
+        <key>
+          <fifths>1</fifths>
+        </key>
+        <staff-details print-object="no"></staff-details>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>24</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="5">
+      <attributes>
+        <time>
+          <beats>3</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>36</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="6">
+      <attributes>
+        <time>
+          <beats>2</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>33</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="7">
+      <print new-system="yes"></print>
+      <attributes>
+        <key>
+          <fifths>0</fifths>
+        </key>
+        <time>
+          <beats>3</beats>
+          <beat-type>4</beat-type>
+        </time>
+        <staff-details print-object="no"></staff-details>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>36</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="8">
+      <attributes>
+        <time>
+          <beats>2</beats>
+          <beat-type>4</beat-type>
+        </time>
+      </attributes>
+      <note>
+        <rest measure="yes"></rest>
+        <duration>24</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+    <!--=======================================================-->
+    <measure number="9">
+      <note>
+        <rest measure="yes"></rest>
+        <duration>18</duration>
+        <voice>1</voice>
+      </note>
+    </measure>
+  </part>
+</score-partwise>

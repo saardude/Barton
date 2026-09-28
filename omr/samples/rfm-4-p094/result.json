@@ -1,0 +1,322 @@
+{
+ "id": "rfm-4-p094",
+ "suffix": null,
+ "kind": "printed-edition",
+ "note": "Rumanian Folk Music vol. IV p. 49 (Archive leaf n94): melodies 1a, 1b, 2, 3a of class A I / A II a); each with a bass-clef final-note prefix, circled cadence degrees, variant staves and data line.",
+ "image": "/home/user/Barton/omr/cache/rfm/vol4_n94.png",
+ "records": [
+  "rfm-4-1a",
+  "rfm-4-1b",
+  "rfm-4-2",
+  "rfm-4-3a"
+ ],
+ "generated": "2026-09-28T14:07:32",
+ "ocr": {
+  "lines": 36,
+  "file": "ocr.json"
+ },
+ "engines": {
+  "homr": {
+   "engine": "homr",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-4-p094/homr.musicxml",
+   "seconds": 19.0,
+   "error": null,
+   "version": "0.7.0",
+   "engine_lyrics": 0,
+   "lyrics_injected": false,
+   "mei": "homr.mei",
+   "render": {
+    "svg": "homr.svg",
+    "midi": "homr.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.616,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 0.871,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 0.355,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 33,
+      "notes": 87,
+      "grace_notes": 37,
+      "rests": 4,
+      "sung_units": 42,
+      "unfilled_measures": 20,
+      "empty_measures": 0,
+      "meter": "2/4",
+      "keysig": "0",
+      "systems": 7
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.909
+     },
+     "details": {
+      "note": "page carries 4 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-4-1a",
+        "score": 0.857,
+        "source": "ocr-all",
+        "incipit": "Cce Santé Mafie, Corinde, corindel"
+       },
+       {
+        "id": "rfm-4-1b",
+        "score": 1.0,
+        "source": "ocr",
+        "incipit": "Santa Marie, Corinde, corind\"!"
+       },
+       {
+        "id": "rfm-4-2",
+        "score": 0.8,
+        "source": "ocr",
+        "incipit": "M&tecadi, mahecdi Sfanta"
+       },
+       {
+        "id": "rfm-4-3a",
+        "score": 0.979,
+        "source": "ocr",
+        "incipit": "Margu misi, mai margu, Domnuluj nostru!Margu misi, mai marg"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.561
+    },
+    "pitches": [
+     "a4",
+     "b4",
+     "c5",
+     "c5",
+     "a4",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "a4",
+     "a4",
+     "g4",
+     "a4",
+     "g4",
+     "g4",
+     "e4",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "a4",
+     "g4",
+     "e4",
+     "f4",
+     "g4",
+     "f4",
+     "a4",
+     "d4",
+     "g3",
+     "a4",
+     "d5",
+     "c5",
+     "a4",
+     "c5",
+     "b4",
+     "g4",
+     "a4",
+     "b4",
+     "g4",
+     "g4",
+     "g4",
+     "g4",
+     "b4",
+     "c5",
+     "c5",
+     "d5",
+     "e5",
+     "g5",
+     "f5",
+     "e5",
+     "c5",
+     "d5",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "a4",
+     "b4",
+     "c5",
+     "g4",
+     "f4",
+     "b4",
+     "g4",
+     "a4",
+     "f4",
+     "e4",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "a4",
+     "c5",
+     "d5",
+     "c5",
+     "a4",
+     "b4",
+     "g4",
+     "g4",
+     "g4",
+     "f4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-4-p094/audiveris.musicxml",
+   "seconds": 45.5,
+   "error": null,
+   "rec_grade": 0.85,
+   "version": "5.9.0",
+   "engine_lyrics": 52,
+   "lyrics_injected": false,
+   "mei": "audiveris.mei",
+   "render": {
+    "svg": "audiveris.svg",
+    "midi": "audiveris.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.619,
+    "weights_used": {
+     "rec": 0.15,
+     "struct": 0.15,
+     "meta": 0.7
+    },
+    "rec": {
+     "score": 0.85
+    },
+    "struct": {
+     "score": 0.658,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 0.0,
+      "durations": 0.955,
+      "empty": 0.333
+     },
+     "facts": {
+      "staves": 4,
+      "measures": 24,
+      "notes": 17,
+      "grace_notes": 0,
+      "rests": 17,
+      "sung_units": 11,
+      "unfilled_measures": 1,
+      "empty_measures": 16,
+      "meter": "2/4",
+      "keysig": null,
+      "systems": 4
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.909
+     },
+     "details": {
+      "note": "page carries 4 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-4-1a",
+        "score": 0.857,
+        "source": "ocr-all",
+        "incipit": "Cce Santé Mafie, Corinde, corindel"
+       },
+       {
+        "id": "rfm-4-1b",
+        "score": 1.0,
+        "source": "ocr",
+        "incipit": "Santa Marie, Corinde, corind\"!"
+       },
+       {
+        "id": "rfm-4-2",
+        "score": 0.8,
+        "source": "ocr",
+        "incipit": "M&tecadi, mahecdi Sfanta"
+       },
+       {
+        "id": "rfm-4-3a",
+        "score": 0.979,
+        "source": "ocr",
+        "incipit": "Margu misi, mai margu, Domnuluj nostru!Margu misi, mai marg"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.561
+    },
+    "pitches": [
+     "a2",
+     "d3",
+     "b2",
+     "c3",
+     "a2",
+     "g2",
+     "a2",
+     "b2",
+     "c3",
+     "d3",
+     "c3",
+     "e3",
+     "f3",
+     "e3",
+     "c3",
+     "d3",
+     "b2"
+    ]
+   }
+  }
+ },
+ "best": {
+  "engine": "audiveris",
+  "confidence": 0.619
+ },
+ "rescored": "2026-09-28T14:13:59"
+}

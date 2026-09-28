@@ -48,7 +48,7 @@
         <p>Text lines read from the image by OCR (uncorrected): （)4049 / 3.3.6 / cll.f:yfoe) / Gy.: / Eloada: Jeler Jgnaene / eves / Elerjeatseg: / fyermekjatek / 3 / 1.-ikamigy-fa，ey / 2. / 2.Rapd le ewem / kapedle, / Lahitaenula / kapdee. / eataereten,eatRedoelin / Baaaen / .0.ikorkerolayy / Ende.8.</p>
       </editorialDecl>
       <projectDesc>
-        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.567 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.501 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
       </projectDesc>
     </encodingDesc>
     <workList>

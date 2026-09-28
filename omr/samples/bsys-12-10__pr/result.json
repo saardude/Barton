@@ -34,10 +34,10 @@
     "error_count": 0
    },
    "confidence": {
-    "confidence": 0.965,
+    "confidence": 0.966,
     "weights_used": {
-     "struct": 0.294,
-     "meta": 0.706
+     "struct": 0.176,
+     "meta": 0.824
     },
     "rec": {
      "score": null
@@ -97,6 +97,13 @@
        "by_systems": "1/3"
       },
       "final_midi": 67,
+      "final_source": "last-note",
+      "final_candidates": [
+       [
+        "last-note",
+        67
+       ]
+      ],
       "strophes_notated": 2,
       "syllables_expected": [
        5,
@@ -116,6 +123,7 @@
        }
       ]
      },
+     "priors": [],
      "score": 0.968
     },
     "pitches": [
@@ -193,11 +201,11 @@
     "error_count": 0
    },
    "confidence": {
-    "confidence": 0.844,
+    "confidence": 0.83,
     "weights_used": {
      "rec": 0.15,
-     "struct": 0.25,
-     "meta": 0.6
+     "struct": 0.15,
+     "meta": 0.7
     },
     "rec": {
      "score": 0.854
@@ -257,6 +265,17 @@
        "by_systems": "1/3"
       },
       "final_midi": 67,
+      "final_source": "last-note",
+      "final_candidates": [
+       [
+        "last-note",
+        67
+       ],
+       [
+        "end-of-strophe-1",
+        50
+       ]
+      ],
       "strophes_notated": 2,
       "syllables_expected": [
        5,
@@ -276,6 +295,7 @@
        }
       ]
      },
+     "priors": [],
      "score": 0.801
     },
     "pitches": [
@@ -353,10 +373,10 @@
     "error_count": 0
    },
    "confidence": {
-    "confidence": 0.841,
+    "confidence": 0.815,
     "weights_used": {
-     "struct": 0.294,
-     "meta": 0.706
+     "struct": 0.176,
+     "meta": 0.824
     },
     "rec": {
      "score": null
@@ -416,6 +436,17 @@
        "by_systems": "1/3"
       },
       "final_midi": 67,
+      "final_source": "last-note",
+      "final_candidates": [
+       [
+        "last-note",
+        67
+       ],
+       [
+        "end-of-strophe-1",
+        69
+       ]
+      ],
       "strophes_notated": 3,
       "syllables_expected": [
        5,
@@ -435,6 +466,7 @@
        }
       ]
      },
+     "priors": [],
      "score": 0.775
     },
     "pitches": [
@@ -498,6 +530,7 @@
  },
  "best": {
   "engine": "homr",
-  "confidence": 0.965
- }
+  "confidence": 0.966
+ },
+ "rescored": "2026-09-28T14:13:45"
 }

@@ -42,7 +42,7 @@ DEGREE_BELOW = {1: "#VII", 2: "VII", 3: "VI", 4: "bVI", 5: "V", 6: "#IV",
                 7: "IV", 8: "III", 9: "bIII", 10: "II", 11: "bII", 12: "VIII"}
 VALID_DURS = {"long", "breve", "1", "2", "4", "8", "16", "32", "64", "128"}
 
-WEIGHTS = {"rec": 0.15, "struct": 0.25, "meta": 0.60}
+WEIGHTS = {"rec": 0.15, "struct": 0.15, "meta": 0.70}
 META_WEIGHTS = {"cadence": 0.50, "syllables": 0.25, "lines": 0.10, "incipit": 0.15}
 STRUCT_WEIGHTS = {"staves": 0.2, "content": 0.2, "rests": 0.2, "durations": 0.2,
                   "empty": 0.2}
@@ -305,36 +305,47 @@ def recognised_cadences(m: dict, syllables: list[int]) -> dict:
     printed editions usually two, so (b) is often unavailable)."""
     units = m["units"]
     total = sum(syllables)
-    out = {"by_syllables": [], "by_syllables_tolerant": [], "by_systems": None, "strophes": 0, "final": None}
+    out = {"by_syllables": [], "by_syllables_tolerant": [], "by_systems": None, "strophes": 0, "final": None,
+           "final_source": None}
     if not units or total == 0:
         return out
     out["strophes"] = max(1, round(len(units) / total))
-    final = m["events"][units[-1]]["midi"]
-    out["final"] = final
-
-    def deg(unit_index):
-        if unit_index < 0 or unit_index >= len(units):
-            return "?"
-        return degree_name(m["events"][units[unit_index]]["midi"] - final)
-
-    pos = 0
-    for syl in syllables:
-        pos += syl
-        out["by_syllables"].append(deg(pos - 1))
-        out["by_syllables_tolerant"].append([deg(pos - 2), deg(pos - 1), deg(pos)])
-    # system-based segmentation
-    sys_of_unit = []
-    sb_before = 0
+    # Two candidates for the final: the last sung note of everything recognised (right when
+    # the page ends with the tune) and the last note of strophe 1 by syllable count (right
+    # when variant fragments follow the tune, as on the master sheets). The caller picks the
+    # candidate that agrees better with the catalogue and records which one it was.
+    cands = [("last-note", m["events"][units[-1]]["midi"])]
+    if len(units) >= total:
+        c2 = m["events"][units[total - 1]]["midi"]
+        if c2 != cands[0][1]:
+            cands.append(("end-of-strophe-1", c2))
+    out["final_candidates"] = cands
+    out["per_final"] = {}
     events = m["events"]
-    for i in units:
-        sys_of_unit.append(events[i].get("system", 0))
+    sys_of_unit = [events[i].get("system", 0) for i in units]
     n_sys = m["systems"]
-    if n_sys == len(syllables) and sys_of_unit:
-        cads = []
-        for s in range(n_sys):
-            idx = [k for k, sy in enumerate(sys_of_unit) if sy == s]
-            cads.append(deg(idx[-1]) if idx else "?")
-        out["by_systems"] = cads
+    for source, final in cands:
+        def deg(unit_index, final=final):
+            if unit_index < 0 or unit_index >= len(units):
+                return "?"
+            return degree_name(events[units[unit_index]]["midi"] - final)
+
+        res = {"final": final, "by_syllables": [], "by_syllables_tolerant": [], "by_systems": None}
+        pos = 0
+        for syl in syllables:
+            pos += syl
+            res["by_syllables"].append(deg(pos - 1))
+            res["by_syllables_tolerant"].append([deg(pos - 2), deg(pos - 1), deg(pos)])
+        if n_sys == len(syllables) and sys_of_unit:
+            cads = []
+            for s in range(n_sys):
+                idx = [k for k, sy in enumerate(sys_of_unit) if sy == s]
+                cads.append(deg(idx[-1]) if idx else "?")
+            res["by_systems"] = cads
+        out["per_final"][source] = res
+    first = out["per_final"][cands[0][0]]
+    out.update({k: first[k] for k in ("final", "by_syllables", "by_syllables_tolerant", "by_systems")})
+    out["final_source"] = cands[0][0]
     return out
 
 
@@ -388,21 +399,35 @@ def catalogue_score(m: dict, records: list[dict], ocr_lines: list[str], lyrics: 
         rc = recognised_cadences(m, syllables)
         n = len(cad_expected) - 1  # the last cadence is 1 by construction; compare the first n-1
         exp = [c.upper() for c in cad_expected[:-1]]
-        strict = sum(1 for a, b in zip(exp, rc["by_syllables"][:n]) if a == b.upper())
-        tolerant = sum(1 for a, cands in zip(exp, rc["by_syllables_tolerant"][:n])
-                       if a in [c.upper() for c in cands])
-        by_sys = None
-        if rc["by_systems"]:
-            by_sys = sum(1 for a, b in zip(exp, rc["by_systems"][:n]) if a == b.upper())
-        best = max(strict, by_sys or 0)
-        # score: half strict (or system-based), half tolerant
-        out["parts"]["cadence"] = round(0.5 * best / n + 0.5 * max(tolerant, by_sys or 0) / n, 3) if n else None
-        out["details"]["cadences_expected"] = cad_expected
-        out["details"]["cadences_found_by_syllables"] = rc["by_syllables"]
-        out["details"]["cadences_found_by_systems"] = rc["by_systems"]
-        out["details"]["cadence_matches"] = {"strict": f"{strict}/{n}", "tolerant": f"{tolerant}/{n}",
-                                             "by_systems": f"{by_sys}/{n}" if by_sys is not None else None}
-        out["details"]["final_midi"] = rc["final"]
+        best_score, best_src, best_res = -1.0, None, None
+        for src, res in (rc.get("per_final") or {}).items():
+            strict = sum(1 for a, b in zip(exp, res["by_syllables"][:n]) if a == b.upper())
+            tolerant = sum(1 for a, cands in zip(exp, res["by_syllables_tolerant"][:n])
+                           if a in [c.upper() for c in cands])
+            by_sys = None
+            if res["by_systems"]:
+                by_sys = sum(1 for a, b in zip(exp, res["by_systems"][:n]) if a == b.upper())
+            # score: half strict (or system-based), half tolerant
+            sc = (0.5 * max(strict, by_sys or 0) / n + 0.5 * max(tolerant, by_sys or 0) / n) if n else 0.0
+            if sc > best_score:
+                best_score, best_src = sc, src
+                best_res = {"strict": strict, "tolerant": tolerant, "by_sys": by_sys, "res": res}
+        if best_res is None:
+            out["parts"]["cadence"] = 0.0
+            out["details"]["cadences_expected"] = cad_expected
+            out["details"]["cadences_found_by_syllables"] = []
+        else:
+            r_ = best_res["res"]
+            out["parts"]["cadence"] = round(best_score, 3)
+            out["details"]["cadences_expected"] = cad_expected
+            out["details"]["cadences_found_by_syllables"] = r_["by_syllables"]
+            out["details"]["cadences_found_by_systems"] = r_["by_systems"]
+            out["details"]["cadence_matches"] = {
+                "strict": f"{best_res['strict']}/{n}", "tolerant": f"{best_res['tolerant']}/{n}",
+                "by_systems": f"{best_res['by_sys']}/{n}" if best_res["by_sys"] is not None else None}
+            out["details"]["final_midi"] = r_["final"]
+            out["details"]["final_source"] = best_src
+            out["details"]["final_candidates"] = rc["final_candidates"]
         out["details"]["strophes_notated"] = rc["strophes"]
         total = sum(syllables)
         n_units = len(m["units"])
@@ -435,12 +460,11 @@ def catalogue_score(m: dict, records: list[dict], ocr_lines: list[str], lyrics: 
             inc_details.append({"id": r.get("id"), **s})
     out["parts"]["incipit"] = round(sum(inc_scores) / len(inc_scores), 3) if inc_scores else None
     out["details"]["incipit"] = inc_details
-    avail = {k: v for k, v in out["parts"].items() if v is not None}
-    if avail:
-        wsum = sum(META_WEIGHTS[k] for k in avail)
-        out["score"] = round(sum(META_WEIGHTS[k] * v for k, v in avail.items()) / wsum, 3)
-    else:
-        out["score"] = None
+    # a test that cannot run (no catalogue data, several melodies on the page) is not
+    # evidence either way: it enters as an uninformative 0.5 prior and is listed as such
+    priors = [k for k, v in out["parts"].items() if v is None]
+    out["priors"] = priors
+    out["score"] = round(sum(META_WEIGHTS[k] * (0.5 if v is None else v) for k, v in out["parts"].items()), 3)
     return out
 
 

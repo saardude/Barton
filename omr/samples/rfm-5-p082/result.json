@@ -1,0 +1,333 @@
+{
+ "id": "rfm-5-p082",
+ "suffix": null,
+ "kind": "printed-edition",
+ "note": "Rumanian Folk Music vol. V p. 37 (Archive leaf n82): first Music Examples page, melodies 1-5 (Maramures).",
+ "image": "/home/user/Barton/omr/cache/rfm/vol5_n82.png",
+ "records": [
+  "rfm-5-1",
+  "rfm-5-2",
+  "rfm-5-3",
+  "rfm-5-4",
+  "rfm-5-5"
+ ],
+ "generated": "2026-09-28T14:10:04",
+ "ocr": {
+  "lines": 51,
+  "file": "ocr.json"
+ },
+ "engines": {
+  "homr": {
+   "engine": "homr",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-5-p082/homr.musicxml",
+   "seconds": 18.4,
+   "error": null,
+   "version": "0.7.0",
+   "engine_lyrics": 0,
+   "lyrics_injected": false,
+   "mei": "homr.mei",
+   "render": {
+    "svg": "homr.svg",
+    "midi": "homr.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.62,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 1.0,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 23,
+      "notes": 107,
+      "grace_notes": 14,
+      "rests": 4,
+      "sung_units": 86,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": "1f",
+      "systems": 7
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.763
+     },
+     "details": {
+      "note": "page carries 5 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-5-1",
+        "score": 0.978,
+        "source": "ocr",
+        "incipit": "Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne"
+       },
+       {
+        "id": "rfm-5-2",
+        "score": 0.833,
+        "source": "ocr-all",
+        "incipit": "Zaritus’o zorile, - tus’o zorile,"
+       },
+       {
+        "id": "rfm-5-3",
+        "score": 0.875,
+        "source": "ocr",
+        "incipit": "Dumnezeu de la’nceput, —— Dumnezeude la’nceput"
+       },
+       {
+        "id": "rfm-5-4",
+        "score": 0.4,
+        "source": "ocr",
+        "incipit": "Malia er, je) Se te NS Bae (GS SN"
+       },
+       {
+        "id": "rfm-5-5",
+        "score": 0.727,
+        "source": "ocr-all",
+        "incipit": "N poar Doamne!*"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.539
+    },
+    "pitches": [
+     "d4",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "f4",
+     "a4",
+     "g4",
+     "f4",
+     "g4",
+     "g4",
+     "b4",
+     "a4",
+     "g4",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "d5",
+     "d5",
+     "b4",
+     "c5",
+     "c5",
+     "d5",
+     "d5",
+     "c5",
+     "b4",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "c5",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "b4",
+     "b4",
+     "a4",
+     "g4",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "b4",
+     "b4",
+     "d5",
+     "d5",
+     "e5",
+     "d5",
+     "b4",
+     "d5",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "g4",
+     "a4",
+     "a4",
+     "g4",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "g4",
+     "d5",
+     "e5",
+     "d5",
+     "c5",
+     "d5",
+     "b4",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "b4",
+     "c5",
+     "g4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-5-p082/audiveris.musicxml",
+   "seconds": 40.9,
+   "error": null,
+   "rec_grade": null,
+   "version": "5.9.0",
+   "engine_lyrics": 18,
+   "lyrics_injected": false,
+   "mei": "audiveris.mei",
+   "render": {
+    "svg": "audiveris.svg",
+    "midi": "audiveris.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.62,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 1.0,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 1.0
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 4,
+      "notes": 16,
+      "grace_notes": 0,
+      "rests": 1,
+      "sung_units": 15,
+      "unfilled_measures": 0,
+      "empty_measures": 0,
+      "meter": null,
+      "keysig": null,
+      "systems": 1
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.763
+     },
+     "details": {
+      "note": "page carries 5 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-5-1",
+        "score": 0.978,
+        "source": "ocr",
+        "incipit": "Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne"
+       },
+       {
+        "id": "rfm-5-2",
+        "score": 0.833,
+        "source": "ocr-all",
+        "incipit": "Zaritus’o zorile, - tus’o zorile,"
+       },
+       {
+        "id": "rfm-5-3",
+        "score": 0.875,
+        "source": "ocr",
+        "incipit": "Dumnezeu de la’nceput, —— Dumnezeude la’nceput"
+       },
+       {
+        "id": "rfm-5-4",
+        "score": 0.4,
+        "source": "ocr",
+        "incipit": "Malia er, je) Se te NS Bae (GS SN"
+       },
+       {
+        "id": "rfm-5-5",
+        "score": 0.727,
+        "source": "ocr-all",
+        "incipit": "N poar Doamne!*"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.539
+    },
+    "pitches": [
+     "b4",
+     "b4",
+     "d5",
+     "e5",
+     "b4",
+     "d5",
+     "c5",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "a4",
+     "a4",
+     "b4",
+     "a4",
+     "g4"
+    ]
+   }
+  }
+ },
+ "best": {
+  "engine": "homr",
+  "confidence": 0.62
+ },
+ "rescored": "2026-09-28T14:14:05"
+}

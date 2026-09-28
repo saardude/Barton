@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Deciand Domnu so na&amp;scutu, Decand Domnu; Decand Domnu sos nascutu Si pamantu; Scriso Domnu, ¢eo maj scri - =) Suge (Caitu-1) zi ua</title>
+        <respStmt>
+          <persName role="collector">Bartók Béla</persName>
+          <persName role="performer">2 figance</persName>
+          <name role="encoder">omr/pipeline.py (homr 0.7.0 + verovio)</name>
+        </respStmt>
+      </titleStmt>
+      <pubStmt>
+        <publisher>Bartok Romania field-collection viewer (research prototype)</publisher>
+        <date isodate="2026-09-28"/>
+        <availability>
+          <useRestrict>Recognised automatically by optical music recognition; unverified. The source image is served by HUN-REN BTK ZTI (systems.zti.hu) or by the Internet Archive scan of Bartok, Rumanian Folk Music; this encoding indexes the notation and does not replace the source.</useRestrict>
+        </availability>
+      </pubStmt>
+      <sourceDesc>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. IV (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-4-100a</identifier>
+            <identifier type="site-record-id">RFM IV No. 100a</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0004blab/page/n199"/>
+            <geogName>Igris (Torontal)</geogName>
+            <date>XI. 1912</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. IV (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-4-100b</identifier>
+            <identifier type="site-record-id">RFM IV No. 100b</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0004blab/page/n199"/>
+            <geogName>Cianad (Torontal)</geogName>
+            <date>II. 1913</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. IV (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-4-100c</identifier>
+            <identifier type="site-record-id">RFM IV No. 100c</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0004blab/page/n199"/>
+            <geogName>Coticlet (Bihor)</geogName>
+            <date>XII. 1911</date>
+          </bibl>
+        </source>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="0.7.0" xml:id="app.homr">
+          <name>homr</name>
+        </application>
+        <application version="6.3.0-425dd7b" xml:id="app.verovio">
+          <name>verovio</name>
+        </application>
+        <application version="1.4.4" xml:id="app.rapidocr">
+          <name>rapidocr-onnxruntime</name>
+        </application>
+      </appInfo>
+      <editorialDecl>
+        <p>Text lines read from the image by OCR (uncorrected): B III. g) / 8, 3④ / Tempo giusto, J - 76 -(acc. 3 st.)- 80 / 3 / 1) / 100a. / 103e.De-cand Dom-nu / sona-scu- / tu, / De -cand Dom-nu / Si-a nos' Dom-nu-i / Dum - ne - zey! / s'o / na-scu / tu, / r. / Sarafola (Torontal), tigani: / 2 / D+2)+3 / M. F. 1725 c), Igris (Torontal), 2 tigance, XI. 1912. / 8, 3④ / Tempo giusto, J: 104 / 3） / 100b. / ni - nos-gu os / Si—— pa-man-tu / 103e.De-cand Dom-nu / 5 / Si-a nos'Dom-nu-i Dum - ne · zeu! / s'o / fa - cu / tu / M. F. 1848 c), Cianad (Torontal), un tigan, Ⅱ. 1913. / 8,3③ / Parlando, D- 224 / 2 / 100c. / 93i.Scris-o Dom-nu, ce-o mai scri / Ca-tu-i zi -ya / ns / 3) / 4 / da / va-ra / Doam-ne Dom -nul / Dum - ne - zey! / le / M. F. 1953 b), Coticlet (Bihor), un om, XI. 1911. / [154 ]</p>
+      </editorialDecl>
+      <projectDesc>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.603 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+      </projectDesc>
+    </encodingDesc>
+    <workList>
+      <work>
+        <title>Deciand Domnu so na&amp;scutu, Decand Domnu</title>
+        <incip>
+          <incipText>
+            <p>Deciand Domnu so na&amp;scutu, Decand Domnu</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A.</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Decand Domnu sos nascutu Si pamantu</title>
+        <incip>
+          <incipText>
+            <p>Decand Domnu sos nascutu Si pamantu</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A.</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Scriso Domnu, ¢eo maj scri - =) Suge (Caitu-1) zi ua</title>
+        <incip>
+          <incipText>
+            <p>Scriso Domnu, ¢eo maj scri - =) Suge (Caitu-1) zi ua</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A.</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+    </workList>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv xml:id="f17413ah">
+        <score xml:id="g1lwpv2s">
+          <scoreDef xml:id="hhmv149">
+            <staffGrp xml:id="kzd4nat">
+              <staffDef xml:id="P1" n="1" lines="5" ppq="16">
+                <label xml:id="l136bttq">Voice</label>
+                <instrDef xml:id="nxto53b" midi.channel="0" midi.instrnum="53" midi.volume="100%"/>
+                <clef xml:id="w1f55it1" shape="G" line="2"/>
+                <keySig xml:id="xr6emc7" sig="0"/>
+                <meterSig xml:id="y1g3mpd0" count="2" unit="4"/>
+              </staffDef>
+            </staffGrp>
+          </scoreDef>
+          <section xml:id="i143jbng">
+            <pb xml:id="j1bls5fg"/>
+            <section xml:id="z66ar1b">
+              <measure xml:id="z1hyw0si" n="1">
+                <staff xml:id="io1t2z6" n="1">
+                  <layer xml:id="jm21f43" n="1">
+                    <note xml:id="kz85v0" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="l6iruqa" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="mxbqjn2" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="n1juevn3" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="o1yfl68n" metcon="false" n="2">
+                <staff xml:id="x1jdri24" n="1">
+                  <layer xml:id="ylutmwo" n="1">
+                    <note xml:id="zf4qjgi" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="aps3ks6" dur.ppq="8" dur="8" oct="5" pname="e"/>
+                    <note xml:id="b1xapx44" dur.ppq="16" dur="4" oct="5" pname="d"/>
+                    <note xml:id="drbrubo" dur.ppq="0" dur="16" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="e1g425p4" dur.ppq="16" dur="4" oct="4" pname="b"/>
+                  </layer>
+                </staff>
+                <slur xml:id="c1eax1i8" startid="#b1xapx44" endid="#drbrubo"/>
+                <slur xml:id="f1ij7w6v" startid="#e1g425p4" endid="#s19deh33"/>
+                <fermata xml:id="g1g1atvw" staff="1" startid="#e1g425p4"/>
+              </measure>
+              <measure xml:id="h3ia92y" metcon="false" n="3">
+                <staff xml:id="q5s81me" n="1">
+                  <layer xml:id="rqi3c36" n="1">
+                    <note xml:id="s19deh33" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="tnsvr3r" dots="1" dur.ppq="12" dur="8" oct="5" pname="c"/>
+                    <note xml:id="u1esy1dl" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="v9n529" dur.ppq="0" dur="16" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="y1m5oug1" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="w10yp6p8" startid="#v9n529" endid="#y1m5oug1"/>
+                <fermata xml:id="xbbykuz" staff="1" startid="#v9n529"/>
+              </measure>
+              <sb xml:id="j1rpa6t7"/>
+              <measure xml:id="zsuwwkv" metcon="false" n="4">
+                <staff xml:id="i1263omn" n="1">
+                  <layer xml:id="kwyw5q0" n="1">
+                    <note xml:id="l8gs22z" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="m1c1x71" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="n1psgzm0" dots="1" dur.ppq="12" dur="8" oct="4" pname="a"/>
+                    <note xml:id="q14egzl8" dur.ppq="4" dur="16" oct="4" pname="b"/>
+                    <note xml:id="r13niu6p" dur.ppq="8" dur="8" oct="5" pname="c"/>
+                    <note xml:id="t95u8d2" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="o1m7hsdg" startid="#n1psgzm0" endid="#q14egzl8"/>
+                <fermata xml:id="p1p87p0k" staff="1" startid="#n1psgzm0"/>
+                <slur xml:id="svlh43b" startid="#r13niu6p" endid="#t95u8d2"/>
+              </measure>
+              <measure xml:id="uonuyg5" n="5">
+                <staff xml:id="d1mg82sg" n="1">
+                  <layer xml:id="etctcjm" n="1">
+                    <note xml:id="fmn08yu" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="g19wn8yl" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="hhyd26b" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="i141k8u8" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="j5kiyny" n="6">
+                <staff xml:id="s1qq8cru" n="1">
+                  <layer xml:id="tmpuwxd" n="1">
+                    <note xml:id="u1efi1dc" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="v1k45jil" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="w1p6koet" dur.ppq="16" dur="4" oct="4" pname="g"/>
+                    <clef xml:id="i112jis6" shape="F" line="4"/>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="hll7gr4"/>
+              <scoreDef xml:id="johtkzb">
+                <keySig xml:id="k1pkf34n" sig="2f"/>
+              </scoreDef>
+              <measure xml:id="x1e403qe" metcon="false" n="7">
+                <staff xml:id="g4cty57" n="1">
+                  <layer xml:id="lohv2ss" n="1">
+                    <note xml:id="m16ittv7" dur.ppq="8" dur="8" oct="3" pname="c"/>
+                    <note xml:id="obuqaad" dur.ppq="8" dur="8" oct="3" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="n53ndvc" startid="#m16ittv7" endid="#obuqaad"/>
+              </measure>
+              <measure xml:id="p1xlj76n" metcon="false" n="8">
+                <staff xml:id="y18w6vhz" n="1">
+                  <layer xml:id="zd9uz7e" n="1">
+                    <note xml:id="a1qdygu4" dur.ppq="0" dur="16" oct="3" pname="e" grace="acc"/>
+                    <mRest xml:id="b5k80ks"/>
+                    <note xml:id="cipdatt" dur.ppq="0" dur="16" oct="3" pname="e" grace="acc"/>
+                    <note xml:id="d1k37p5y" dur.ppq="0" dur="16" oct="3" pname="e" grace="acc"/>
+                    <note xml:id="e1nb79ot" dur.ppq="0" dur="16" oct="3" pname="e" grace="acc"/>
+                    <note xml:id="fd97rr4" dur.ppq="0" dur="16" oct="3" pname="e" grace="acc"/>
+                    <note xml:id="g2cf0g7" dur.ppq="8" dur="8" oct="2" pname="b"/>
+                    <note xml:id="h1ydy0vm" dur.ppq="16" dur="4" oct="3" pname="c"/>
+                    <rest xml:id="i1fi3umt" dur.ppq="16" dur="4"/>
+                    <clef xml:id="ud3ci1q" shape="G" line="2"/>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="t1d50vcz"/>
+              <scoreDef xml:id="v1wf7d69">
+                <keySig xml:id="wytud1w" sig="1s"/>
+              </scoreDef>
+              <measure xml:id="j13ke61w" n="9">
+                <staff xml:id="s1xdnlef" n="1">
+                  <layer xml:id="xfouo3d" n="1">
+                    <note xml:id="y14jrx3t" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="z1ez447s" dur.ppq="0" dur="8" oct="5" pname="c" grace="acc" accid.ges="s"/>
+                    <note xml:id="c1wjo2vg" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="d16dh75r" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="e1voi65" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="bjmqyhl" startid="#z1ez447s" endid="#c1wjo2vg"/>
+              </measure>
+              <measure xml:id="f1luk9w4" metcon="false" n="10">
+                <staff xml:id="o1cqkryg" n="1">
+                  <layer xml:id="p1ta659l" n="1">
+                    <note xml:id="q1azyvhp" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="rhxs4t" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="s1pwyq5g" dur.ppq="16" dur="4" oct="5" pname="d"/>
+                    <note xml:id="v1l2tf3k" dur.ppq="0" dur="8" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="y1bx6k3" dur.ppq="16" dur="4" oct="4" pname="b"/>
+                  </layer>
+                </staff>
+                <slur xml:id="tj51g8q" startid="#s1pwyq5g" endid="#v1l2tf3k"/>
+                <fermata xml:id="u37y7qq" staff="1" startid="#s1pwyq5g"/>
+                <breath xml:id="xjjx7zk" staff="1" tstamp="2.9"/>
+                <fermata xml:id="z1puv3kd" staff="1" startid="#y1bx6k3"/>
+              </measure>
+              <measure xml:id="a1kt3f07" n="11">
+                <staff xml:id="j1iaazhx" n="1">
+                  <layer xml:id="k16yzgh4" n="1">
+                    <note xml:id="lecgkbk" dur.ppq="0" dur="32" oct="4" pname="b" grace="acc"/>
+                    <note xml:id="n1wrudpj" dur.ppq="0" dur="32" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="o1d1kfng" dots="1" dur.ppq="12" dur="8" oct="5" pname="d"/>
+                    <note xml:id="pe22rzd" dur.ppq="0" dur="16" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="q5rxil9" dur.ppq="4" dur="16" oct="4" pname="b"/>
+                    <note xml:id="ryimfo9" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="sw943nj" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                  </layer>
+                </staff>
+                <slur xml:id="m1jdyn6l" startid="#lecgkbk" endid="#n1wrudpj"/>
+              </measure>
+              <sb xml:id="d1d0ojo6"/>
+              <measure xml:id="t12elgnp" metcon="false" n="12">
+                <staff xml:id="c1w5a5cu" n="1">
+                  <layer xml:id="e13f17tf" n="1">
+                    <note xml:id="fz7em0z" dur.ppq="0" dur="16" oct="4" pname="b" grace="acc"/>
+                    <note xml:id="h11pjfpk" dur.ppq="0" dur="16" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="is1jlim" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="j5rz1tb" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="k1eaaml" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="mchdyzp" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="nxyoh4n" dur.ppq="16" dur="4" oct="5" pname="c"/>
+                  </layer>
+                </staff>
+                <slur xml:id="gh9es40" startid="#fz7em0z" endid="#is1jlim"/>
+                <slur xml:id="l8zu2n0" startid="#k1eaaml" endid="#mchdyzp"/>
+                <slur xml:id="ok958eo" startid="#nxyoh4n" endid="#z19s6b6w"/>
+                <fermata xml:id="p1bogent" staff="1" startid="#nxyoh4n"/>
+              </measure>
+              <measure xml:id="q16oizvv" n="13">
+                <staff xml:id="z1wrxit0" n="1">
+                  <layer xml:id="a1i1733" n="1">
+                    <note xml:id="b30lvgb" dots="1" dur.ppq="12" dur="8" oct="4" pname="b"/>
+                    <note xml:id="c1fzyjqm" dur.ppq="4" dur="16" oct="4" pname="a"/>
+                    <note xml:id="d19p697u" dots="1" dur.ppq="12" dur="8" oct="4" pname="b"/>
+                    <note xml:id="ehhs6yt" dur.ppq="4" dur="16" oct="4" pname="a"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="fm7d0un" n="14">
+                <staff xml:id="osbfwe" n="1">
+                  <layer xml:id="p18gcj7i" n="1">
+                    <note xml:id="q81owx5" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="r169a4xm" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="sx0tmmg" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <rest xml:id="u1s0b2az" dur.ppq="8" dur="8"/>
+                    <clef xml:id="g18bueu0" shape="C" line="4"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="t3uxeu" staff="1" startid="#sx0tmmg"/>
+              </measure>
+              <sb xml:id="f1hxaawl"/>
+              <scoreDef xml:id="h1pfhfew">
+                <keySig xml:id="iymdl3m" sig="0"/>
+              </scoreDef>
+              <measure xml:id="vf5x9h8" metcon="false" n="15">
+                <staff xml:id="eqmnqe5" n="1">
+                  <layer xml:id="j15bpxhe" n="1">
+                    <note xml:id="knyhx9o" dur.ppq="16" dur="4" oct="4" pname="c"/>
+                    <note xml:id="mnfc0og" dur.ppq="1" dur="64" oct="3" pname="b"/>
+                    <note xml:id="n1abqxi5" dur.ppq="1" dur="64" oct="3" pname="a"/>
+                  </layer>
+                </staff>
+                <slur xml:id="l11yx9te" startid="#knyhx9o" endid="#n1abqxi5"/>
+              </measure>
+              <measure xml:id="o1gi9xoh" metcon="false" n="16">
+                <staff xml:id="xa754fy" n="1">
+                  <layer xml:id="ydh3vq3" n="1">
+                    <note xml:id="z19s6b6w" dur.ppq="1" dur="64" oct="4" pname="c"/>
+                    <note xml:id="a184ih61" dur.ppq="1" dur="64" oct="3" pname="a"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="bxyiurj" metcon="false" n="17">
+                <staff xml:id="k6wfbla" n="1">
+                  <layer xml:id="l13uyx3k" n="1">
+                    <note xml:id="mqzvs37" dur.ppq="8" dur="8" oct="4" pname="c"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="n1xp81ph" metcon="false" n="18">
+                <staff xml:id="wafgr89" n="1">
+                  <layer xml:id="x1nen2ra" n="1">
+                    <note xml:id="yc8e8g3" dur.ppq="8" dur="8" oct="3" pname="a"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="z1jdbzzz" metcon="false" n="19">
+                <staff xml:id="i18iqamr" n="1">
+                  <layer xml:id="jsmy0io" n="1">
+                    <note xml:id="kyuphse" dur.ppq="8" dur="8" oct="3" pname="a"/>
+                    <clef xml:id="v1bj40rr" shape="C" line="3"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="ljl3flo" metcon="false" n="20">
+                <staff xml:id="uti6jno" n="1">
+                  <layer xml:id="w1gknebq" n="1">
+                    <note xml:id="x1w8582e" dur.ppq="16" dur="4" oct="3" pname="a"/>
+                    <clef xml:id="j1ai24in" shape="G" line="2"/>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="iv16kbx"/>
+              <scoreDef xml:id="k1huyahh">
+                <keySig xml:id="lq1ijp7" sig="1s"/>
+              </scoreDef>
+              <measure xml:id="yh2hky9" n="21">
+                <staff xml:id="h2el4ux" n="1">
+                  <layer xml:id="mbvd9tq" n="1">
+                    <note xml:id="n15qawih" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="odrd1ys" dur.ppq="8" dur="8" oct="5" pname="c"/>
+                    <note xml:id="pjz04qy" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="qi34w55" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="r1jsp106" startid="#qi34w55" endid="#druw9su"/>
+              </measure>
+              <measure xml:id="sg91u83" metcon="false" n="22">
+                <staff xml:id="b13586ai" n="1">
+                  <layer xml:id="coajzid" n="1">
+                    <note xml:id="druw9su" dur.ppq="0" dur="16" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="e1ezg2r5" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="f2n2bh7" dur.ppq="8" dur="8" oct="5" pname="c"/>
+                    <note xml:id="gc6y19l" dur.ppq="16" dur="4" oct="5" pname="d"/>
+                    <note xml:id="i1v37sws" dots="1" dur.ppq="24" dur="4" oct="5" pname="d"/>
+                    <note xml:id="j1fhl84k" dur.ppq="0" dur="16" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="k1faz36y" dur.ppq="0" dur="16" oct="4" pname="b" grace="acc"/>
+                  </layer>
+                </staff>
+                <slur xml:id="hi7z64b" startid="#gc6y19l" endid="#i1v37sws"/>
+              </measure>
+              <measure xml:id="l1xcfxcx" n="23">
+                <staff xml:id="uxau1nf" n="1">
+                  <layer xml:id="v1fxof34" n="1">
+                    <note xml:id="wlkpe4o" dur.ppq="32" dur="2" oct="4" pname="b"/>
+                    <note xml:id="y1psxnrf" dur.ppq="0" dur="16" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="z7x7bh2" dur.ppq="0" dur="16" oct="5" pname="d" grace="acc"/>
+                  </layer>
+                </staff>
+                <slur xml:id="xhhs21a" startid="#wlkpe4o" endid="#z7x7bh2"/>
+              </measure>
+              <measure xml:id="a1m7z5ep" n="24">
+                <staff xml:id="j14yq9x2" n="1">
+                  <layer xml:id="kkkb8kv" n="1">
+                    <note xml:id="l1rqtgxj" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="m9pmtlp" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="phakehn" dur.ppq="0" dur="32" oct="5" pname="c" grace="acc"/>
+                    <note xml:id="q1jrwvii" dur.ppq="0" dur="32" oct="4" pname="b" grace="acc"/>
+                    <note xml:id="r1svrpsk" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                    <note xml:id="s1oz32ba" dur.ppq="8" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="n10vgvsq" startid="#m9pmtlp" endid="#r1svrpsk"/>
+                <fermata xml:id="o1ysab6l" staff="1" startid="#m9pmtlp"/>
+              </measure>
+              <sb xml:id="d1mq7bu1"/>
+              <measure xml:id="t1amp95m" metcon="false" n="25">
+                <staff xml:id="ccovun6" n="1">
+                  <layer xml:id="e1m1jz4f" n="1">
+                    <note xml:id="fvhmo63" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="g1vydyoq" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="h1flwf36" dur.ppq="32" dur="2" oct="4" pname="a"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="i1vx2k9p" metcon="false" n="26">
+                <staff xml:id="r1fw0nvp" n="1">
+                  <layer xml:id="s1d5jgme" n="1">
+                    <note xml:id="tcu13tu" dots="1" dur.ppq="24" dur="4" oct="4" pname="b"/>
+                    <note xml:id="w1g0k9wd" dur.ppq="0" dur="32" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="x1hei2qw" dur.ppq="0" dur="32" oct="4" pname="g" grace="acc"/>
+                  </layer>
+                </staff>
+                <slur xml:id="us9ko8r" startid="#tcu13tu" endid="#x1hei2qw"/>
+                <fermata xml:id="v1wwhek8" staff="1" startid="#tcu13tu"/>
+              </measure>
+              <measure xml:id="y13zxw4r" n="27">
+                <staff xml:id="hv2z2ya" n="1">
+                  <layer xml:id="i15fqwdw" n="1">
+                    <note xml:id="jatfzl4" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="k1adipc1" dur.ppq="8" dur="8" oct="4" pname="a"/>
+                    <note xml:id="l1fxfsz1" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                    <note xml:id="mja4u6p" dur.ppq="8" dur="8" oct="4" pname="b"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="n176cjet" staff="1" startid="#mja4u6p"/>
+              </measure>
+              <measure xml:id="omkrtz3" metcon="false" n="28">
+                <staff xml:id="x1tpefqk" n="1">
+                  <layer xml:id="ykccbgk" n="1">
+                    <note xml:id="z19wjs9y" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="a1ye6464" dur.ppq="8" dur="8" oct="4" pname="g"/>
+                    <note xml:id="bzd0qqq" dur.ppq="16" dur="4" oct="4" pname="g"/>
+                    <rest xml:id="cw35ypm" dur.ppq="8" dur="8"/>
+                    <clef xml:id="o1k8n8py" shape="C" line="4"/>
+                  </layer>
+                </staff>
+              </measure>
+              <sb xml:id="n9glf0p"/>
+              <scoreDef xml:id="pstpe56">
+                <keySig xml:id="qv1d7kq" sig="0"/>
+              </scoreDef>
+              <measure xml:id="d1aqq6dp" metcon="false" n="29">
+                <staff xml:id="m15k178d" n="1">
+                  <layer xml:id="r1lwblic" n="1">
+                    <note xml:id="s9mddf8" dots="1" dur.ppq="48" dur="2" oct="3" pname="d"/>
+                    <note xml:id="upi3bw4" dur.ppq="0" dur="16" oct="3" pname="g" grace="acc"/>
+                    <note xml:id="v1r6gfll" dur.ppq="0" dur="16" oct="3" pname="f" grace="acc"/>
+                  </layer>
+                </staff>
+                <slur xml:id="t5uxjbc" startid="#s9mddf8" endid="#v1r6gfll"/>
+              </measure>
+              <measure xml:id="wyj8v8r" metcon="false" n="30">
+                <staff xml:id="fi8lycn" n="1">
+                  <layer xml:id="gdupk3l" n="1">
+                    <note xml:id="hmhxty9" dots="1" dur.ppq="48" dur="2" oct="4" pname="c"/>
+                    <note xml:id="j12jaqut" dur.ppq="0" dur="16" oct="3" pname="b" grace="acc"/>
+                    <note xml:id="kyjwqv7" dur.ppq="0" dur="16" oct="3" pname="a" grace="acc"/>
+                  </layer>
+                </staff>
+                <slur xml:id="izzgf2i" startid="#hmhxty9" endid="#kyjwqv7"/>
+              </measure>
+              <measure xml:id="l1ymnjxx" metcon="false" n="31">
+                <staff xml:id="u1snf42i" n="1">
+                  <layer xml:id="v7ewlv" n="1">
+                    <note xml:id="w1lyx553" dots="1" dur.ppq="48" dur="2" oct="4" pname="c"/>
+                    <note xml:id="xynonsq" dur.ppq="0" dur="16" oct="3" pname="b" grace="acc"/>
+                    <note xml:id="y15rxwhx" dur.ppq="0" dur="16" oct="3" pname="a" grace="acc"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="z16wrkts" metcon="false" n="32">
+                <staff xml:id="itnu7tx" n="1">
+                  <layer xml:id="jrmmtyh" n="1">
+                    <note xml:id="kmzsptv" dur.ppq="8" dur="8" oct="3" pname="b"/>
+                    <rest xml:id="lhpgkq" dur.ppq="8" dur="8"/>
+                    <clef xml:id="w1xzebf2" shape="C" line="3"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="m1wtlqtd" metcon="false" n="33">
+                <staff xml:id="vj1xmn7" n="1">
+                  <layer xml:id="xjve23t" n="1">
+                    <rest xml:id="y1llxicw" dur.ppq="8" dur="8"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="zd4tb0d" right="dbl" metcon="false" n="34">
+                <staff xml:id="isc7nd2" n="1">
+                  <layer xml:id="j1vd6acm" n="1">
+                    <note xml:id="kwnxg07" dur.ppq="32" dur="2" oct="4" pname="c"/>
+                    <note xml:id="m55qseh" dur.ppq="8" dur="8" oct="3" pname="f"/>
+                  </layer>
+                </staff>
+                <slur xml:id="lnosjo6" startid="#kwnxg07" endid="#m55qseh"/>
+              </measure>
+              <measure xml:id="ny7dbdj" metcon="false" n="35">
+                <staff xml:id="wr67mm5" n="1">
+                  <layer xml:id="x1gdq6zc" n="1">
+                    <note xml:id="y1ah53hy" dur.ppq="8" dur="8" oct="3" pname="g"/>
+                  </layer>
+                </staff>
+              </measure>
+            </section>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

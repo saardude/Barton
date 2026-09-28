@@ -47,7 +47,7 @@
         <p>Text lines read from the image by OCR (uncorrected): 31 / Kaszonimper (Csik) / Gy: Kodaly Zoltan / 1912 / 30四 / Parlando / 1. El - me-nyek,el-me-nyek, Hosszu ut - ra / menyek, / 2） / Hosszu ut po-ra-bol  Koppo- nye -  get  veszek. / Var* / 1) / 2) / 2. Buval és banattal / Kisinoroztatom, / Surukonyveimmel / Kigomboztattatom. / Kodaly-MS gepelt szoveggel (az 1. strofa kezirassal is).  P12; 76.Publ: EMN: 24; Kodaly-—Vargyas: 97. / —Kad:Feldallam?Lasd Vll [Kodaly jegyzete]. / * Egyeni variansok.</p>
       </editorialDecl>
       <projectDesc>
-        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.657 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.621 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
       </projectDesc>
     </encodingDesc>
     <workList>

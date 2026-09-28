@@ -1,0 +1,317 @@
+{
+ "id": "rfm-4-p199",
+ "suffix": null,
+ "kind": "printed-edition",
+ "note": "Rumanian Folk Music vol. IV p. 154 (Archive leaf n199): colinde of class A, melody 100a and neighbours.",
+ "image": "/home/user/Barton/omr/cache/rfm/vol4_n199.png",
+ "records": [
+  "rfm-4-100a",
+  "rfm-4-100b",
+  "rfm-4-100c"
+ ],
+ "generated": "2026-09-28T14:08:46",
+ "ocr": {
+  "lines": 49,
+  "file": "ocr.json"
+ },
+ "engines": {
+  "homr": {
+   "engine": "homr",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-4-p199/homr.musicxml",
+   "seconds": 20.8,
+   "error": null,
+   "version": "0.7.0",
+   "engine_lyrics": 0,
+   "lyrics_injected": false,
+   "mei": "homr.mei",
+   "render": {
+    "svg": "homr.svg",
+    "midi": "homr.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.603,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 0.855,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 0.303,
+      "empty": 0.971
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 35,
+      "notes": 93,
+      "grace_notes": 29,
+      "rests": 6,
+      "sung_units": 74,
+      "unfilled_measures": 23,
+      "empty_measures": 1,
+      "meter": "2/4",
+      "keysig": "0",
+      "systems": 9
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.826
+     },
+     "details": {
+      "note": "page carries 3 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-4-100a",
+        "score": 0.969,
+        "source": "ocr-all",
+        "incipit": "Deciand Domnu so na&scutu, Decand Domnu"
+       },
+       {
+        "id": "rfm-4-100b",
+        "score": 0.733,
+        "source": "ocr-all",
+        "incipit": "Decand Domnu sos nascutu Si pamantu"
+       },
+       {
+        "id": "rfm-4-100c",
+        "score": 0.776,
+        "source": "ocr",
+        "incipit": "Scriso Domnu, ¢eo maj scri - =) Suge (Caitu-1) zi ua"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.549
+    },
+    "pitches": [
+     "g4",
+     "d5",
+     "d5",
+     "d5",
+     "b4",
+     "e5",
+     "d5",
+     "b4",
+     "d5",
+     "c5",
+     "b4",
+     "g4",
+     "a4",
+     "g4",
+     "a4",
+     "b4",
+     "c5",
+     "d5",
+     "b4",
+     "a4",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "g4",
+     "c3",
+     "d3",
+     "b2",
+     "c3",
+     "a4",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "b4",
+     "d5",
+     "b4",
+     "a4",
+     "a4",
+     "g4",
+     "g4",
+     "a4",
+     "b4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "g4",
+     "c4",
+     "b3",
+     "a3",
+     "c4",
+     "a3",
+     "c4",
+     "a3",
+     "a3",
+     "a3",
+     "b4",
+     "c5",
+     "d5",
+     "d5",
+     "b4",
+     "c5",
+     "d5",
+     "d5",
+     "b4",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "a4",
+     "a4",
+     "a4",
+     "b4",
+     "b4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": "/home/user/Barton/omr/samples/rfm-4-p199/audiveris.musicxml",
+   "seconds": 49.0,
+   "error": null,
+   "rec_grade": null,
+   "version": "5.9.0",
+   "engine_lyrics": 28,
+   "lyrics_injected": false,
+   "mei": "audiveris.mei",
+   "render": {
+    "svg": "audiveris.svg",
+    "midi": "audiveris.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.62,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 0.92,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 0.933,
+      "empty": 0.667
+     },
+     "facts": {
+      "staves": 2,
+      "measures": 9,
+      "notes": 26,
+      "grace_notes": 0,
+      "rests": 4,
+      "sung_units": 23,
+      "unfilled_measures": 0,
+      "empty_measures": 3,
+      "meter": null,
+      "keysig": null,
+      "systems": 3
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": null,
+      "syllables": null,
+      "lines": null,
+      "incipit": 0.871
+     },
+     "details": {
+      "note": "page carries 3 records; only incipit tested",
+      "incipit": [
+       {
+        "id": "rfm-4-100a",
+        "score": 0.969,
+        "source": "ocr-all",
+        "incipit": "Deciand Domnu so na&scutu, Decand Domnu"
+       },
+       {
+        "id": "rfm-4-100b",
+        "score": 0.867,
+        "source": "lyrics",
+        "incipit": "Decand Domnu sos nascutu Si pamantu"
+       },
+       {
+        "id": "rfm-4-100c",
+        "score": 0.776,
+        "source": "ocr",
+        "incipit": "Scriso Domnu, ¢eo maj scri - =) Suge (Caitu-1) zi ua"
+       }
+      ]
+     },
+     "priors": [
+      "cadence",
+      "syllables",
+      "lines"
+     ],
+     "score": 0.556
+    },
+    "pitches": [
+     "a4",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "b4",
+     "f5",
+     "b5",
+     "d5",
+     "b4",
+     "a4",
+     "a4",
+     "g4",
+     "g4",
+     "a4",
+     "b4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "a4",
+     "g4",
+     "g4",
+     "g4"
+    ]
+   }
+  }
+ },
+ "best": {
+  "engine": "audiveris",
+  "confidence": 0.62
+ },
+ "rescored": "2026-09-28T14:14:02"
+}

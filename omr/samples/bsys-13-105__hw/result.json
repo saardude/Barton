@@ -1,0 +1,173 @@
+{
+ "id": "bsys-13-105",
+ "suffix": "hw",
+ "kind": "handwritten",
+ "note": "Bartok's master sheet for no. 114 (handwritten notation and lyrics on a form).",
+ "image": "https://systems.zti.hu/media/images/BR/BR_00114_01.jpg",
+ "records": [
+  "bsys-13-105"
+ ],
+ "generated": "2026-09-28T14:06:54",
+ "ocr": {
+  "lines": 17,
+  "file": "ocr.json"
+ },
+ "engines": {
+  "homr": {
+   "engine": "homr",
+   "musicxml": "/home/user/Barton/omr/samples/bsys-13-105__hw/homr.musicxml",
+   "seconds": 13.4,
+   "error": null,
+   "version": "0.7.0",
+   "engine_lyrics": 0,
+   "lyrics_injected": false,
+   "mei": "homr.mei",
+   "render": {
+    "svg": "homr.svg",
+    "midi": "homr.mid",
+    "pages": 1
+   },
+   "validation": {
+    "valid": true,
+    "schema": "mei-all 5.1 (RelaxNG, xmllint)",
+    "errors": [],
+    "error_count": 0
+   },
+   "confidence": {
+    "confidence": 0.561,
+    "weights_used": {
+     "struct": 0.176,
+     "meta": 0.824
+    },
+    "rec": {
+     "score": null
+    },
+    "struct": {
+     "score": 0.978,
+     "parts": {
+      "staves": 1.0,
+      "content": 1.0,
+      "rests": 1.0,
+      "durations": 1.0,
+      "empty": 0.889
+     },
+     "facts": {
+      "staves": 1,
+      "measures": 9,
+      "notes": 32,
+      "grace_notes": 3,
+      "rests": 0,
+      "sung_units": 8,
+      "unfilled_measures": 0,
+      "empty_measures": 1,
+      "meter": null,
+      "keysig": "2f",
+      "systems": 2
+     }
+    },
+    "meta": {
+     "parts": {
+      "cadence": 0.333,
+      "syllables": 0.333,
+      "lines": 1.0,
+      "incipit": 0.812
+     },
+     "details": {
+      "cadences_expected": [
+       "5",
+       "1",
+       "VII",
+       "1"
+      ],
+      "cadences_found_by_syllables": [
+       "5",
+       "?",
+       "?",
+       "?"
+      ],
+      "cadences_found_by_systems": null,
+      "cadence_matches": {
+       "strict": "1/3",
+       "tolerant": "1/3",
+       "by_systems": null
+      },
+      "final_midi": 67,
+      "final_source": "last-note",
+      "final_candidates": [
+       [
+        "last-note",
+        67
+       ]
+      ],
+      "strophes_notated": 1,
+      "syllables_expected": [
+       6,
+       6,
+       6,
+       6
+      ],
+      "sung_units_found": 8,
+      "lines_expected": 4,
+      "systems_found": 2,
+      "incipit": [
+       {
+        "id": "bsys-13-105",
+        "score": 0.812,
+        "source": "ocr",
+        "incipit": "Elmegyek, elmegyek"
+       }
+      ]
+     },
+     "priors": [],
+     "score": 0.472
+    },
+    "pitches": [
+     "b4",
+     "c5",
+     "d5",
+     "d5",
+     "d5",
+     "d5",
+     "g4",
+     "f4",
+     "e4",
+     "d4",
+     "g4",
+     "c5",
+     "b4",
+     "a4",
+     "b4",
+     "d5",
+     "f4",
+     "g4",
+     "a4",
+     "b4",
+     "g4",
+     "f4",
+     "f4",
+     "g4",
+     "c5",
+     "f4",
+     "g4",
+     "b4",
+     "d5",
+     "c5",
+     "d5",
+     "g4"
+    ]
+   }
+  },
+  "audiveris": {
+   "engine": "audiveris",
+   "musicxml": null,
+   "seconds": 2.2,
+   "error": "no .mxl exported; INFO  [page]                 SheetStub 1660 | Disposed sheet | INFO  [page]                      Book 2064 | End of Stub#1 | INFO  [page]                      Book 2071 | Book processed.",
+   "version": "5.9.0"
+  }
+ },
+ "best": {
+  "engine": "homr",
+  "confidence": 0.561
+ },
+ "rescored": "2026-09-28T14:13:54"
+}

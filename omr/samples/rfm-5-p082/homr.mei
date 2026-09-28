@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne; Zaritus’o zorile, - tus’o zorile,; Dumnezeu de la’nceput, —— Dumnezeude la’nceput; Malia er, je) Se te NS Bae (GS SN; N poar Doamne!*</title>
+        <respStmt>
+          <persName role="collector">Bartók Béla</persName>
+          <persName role="performer">Marie Ardelean</persName>
+          <name role="encoder">omr/pipeline.py (homr 0.7.0 + verovio)</name>
+        </respStmt>
+      </titleStmt>
+      <pubStmt>
+        <publisher>Bartok Romania field-collection viewer (research prototype)</publisher>
+        <date isodate="2026-09-28"/>
+        <availability>
+          <useRestrict>Recognised automatically by optical music recognition; unverified. The source image is served by HUN-REN BTK ZTI (systems.zti.hu) or by the Internet Archive scan of Bartok, Rumanian Folk Music; this encoding indexes the notation and does not replace the source.</useRestrict>
+        </availability>
+      </pubStmt>
+      <sourceDesc>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-1</identifier>
+            <identifier type="site-record-id">RFM V No. 1</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Visaul- de - jos (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-2</identifier>
+            <identifier type="site-record-id">RFM V No. 2</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Dragomiresti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-3</identifier>
+            <identifier type="site-record-id">RFM V No. 3</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Dragomiresti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-4</identifier>
+            <identifier type="site-record-id">RFM V No. 4</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Ieud (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-5</identifier>
+            <identifier type="site-record-id">RFM V No. 5</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Oncesti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="0.7.0" xml:id="app.homr">
+          <name>homr</name>
+        </application>
+        <application version="6.3.0-425dd7b" xml:id="app.verovio">
+          <name>verovio</name>
+        </application>
+        <application version="1.4.4" xml:id="app.rapidocr">
+          <name>rapidocr-onnxruntime</name>
+        </application>
+      </appInfo>
+      <editorialDecl>
+        <p>Text lines read from the image by OCR (uncorrected): A 1. / Poco rubato  = (80) / Nda-ta-mi,Doam-ne,d-amaudzi - ty Dom-nu-lui,_Dom -nu-lui Doam-ne! / F. 2123 d), Visaul - de - jos. Marie Ardelean (ca. 25). / Andante J : 76 / Za-ri - tu-s'o / zo -ri-le, / Za-ri - tu-s'o_ / zo-ri - le, / F. 2133 b), Dragomiresti, Erina Vlad (26). / Andante J : 84 / 3 / la'n-ce - put, / Dum-nezeu de- la'n-ce-put / Dum-nezeu de / F.2132 d),Dragomiresti,Erina Vlad (26). / A 2. / Andante / =66 / Ha -ia / l'er, / -ra / Per! / Fac / Gre - cii / ia / 0 / ma / -na / ·stir', / Fac / Gre - cii / ma / -sti / re; / Var.:1)* / F. 1626 c), Ieud, Dumitru Goja $1 Vasile Dancus (ca. 15). / Allegretto J = 92 / 'Npoar / ta / ce / ru / Doam / -ne!* / Hai / co - rin - de! / 'Npoar - ta / ru / 2.I / F. 2188 b), Oncesti, Marie si Doica Dragus (18- 20). / [ 47 ]</p>
+      </editorialDecl>
+      <projectDesc>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.62 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+      </projectDesc>
+    </encodingDesc>
+    <workList>
+      <work>
+        <title>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne</title>
+        <incip>
+          <incipText>
+            <p>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Zaritus’o zorile, - tus’o zorile,</title>
+        <incip>
+          <incipText>
+            <p>Zaritus’o zorile, - tus’o zorile,</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Dumnezeu de la’nceput, —— Dumnezeude la’nceput</title>
+        <incip>
+          <incipText>
+            <p>Dumnezeu de la’nceput, —— Dumnezeude la’nceput</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Malia er, je) Se te NS Bae (GS SN</title>
+        <incip>
+          <incipText>
+            <p>Malia er, je) Se te NS Bae (GS SN</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>N poar Doamne!*</title>
+        <incip>
+          <incipText>
+            <p>N poar Doamne!*</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+    </workList>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv xml:id="n1cprjso">
+        <score xml:id="omw6whr">
+          <scoreDef xml:id="purma5z">
+            <staffGrp xml:id="s1g8qx13">
+              <staffDef xml:id="P1" n="1" lines="5" ppq="12">
+                <label xml:id="t1gx7sh0">Voice</label>
+                <instrDef xml:id="vttnhg9" midi.channel="0" midi.instrnum="53" midi.volume="100%"/>
+                <clef xml:id="emv6ppz" shape="G" line="2"/>
+                <keySig xml:id="fwcz07q" sig="1f"/>
+              </staffDef>
+            </staffGrp>
+          </scoreDef>
+          <section xml:id="q8a2z5o">
+            <pb xml:id="r1ud64sm"/>
+            <section xml:id="u1dps1ol">
+              <measure xml:id="gjv2rpb" n="1">
+                <staff xml:id="pm5e68y" n="1">
+                  <layer xml:id="q83xdyg" n="1">
+                    <note xml:id="rwnxuej" dur.ppq="12" dur="4" oct="4" pname="d"/>
+                    <note xml:id="s1netzfq" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="t83coxp" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="v1y93615" dur.ppq="6" dur="8" oct="4" pname="a"/>
+                    <note xml:id="w4asm28" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="xhqk8b" staff="1" startid="#w4asm28"/>
+              </measure>
+              <measure xml:id="y13ph4o1" metcon="false" n="2">
+                <staff xml:id="hz32aks" n="1">
+                  <layer xml:id="i1ut17xm" n="1">
+                    <note xml:id="j1gz96s4" dur.ppq="6" dur="8" oct="4" pname="f"/>
+                    <note xml:id="kh000k7" dur.ppq="6" dur="8" oct="4" pname="a"/>
+                    <note xml:id="l10drmai" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="n1y4goch" dur.ppq="0" dur="16" oct="4" pname="f" grace="acc"/>
+                    <note xml:id="o1t1fdq" dots="1" dur.ppq="18" dur="4" oct="4" pname="f"/>
+                  </layer>
+                </staff>
+                <slur xml:id="m1owi08d" startid="#l10drmai" endid="#n1y4goch"/>
+                <fermata xml:id="px5o0yx" staff="1" startid="#o1t1fdq"/>
+              </measure>
+              <measure xml:id="qxbggth" n="3">
+                <staff xml:id="z1fgzoeo" n="1">
+                  <layer xml:id="a9dfjt9" n="1">
+                    <note xml:id="bvo6gma" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="c1xiiqts" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                    <note xml:id="d1k6jd23" dur.ppq="3" dur="16" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="gx4nkp5" dur.ppq="3" dur="16" oct="4" pname="a"/>
+                    <note xml:id="h1b3jei" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="fx5ea7m" startid="#d1k6jd23" endid="#gx4nkp5"/>
+              </measure>
+              <measure xml:id="i1h9yq0p" right="dblheavy" metcon="false" n="4">
+                <staff xml:id="rwzys9z" n="1">
+                  <layer xml:id="s1ogmse6" n="1">
+                    <note xml:id="tw3s2i3" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="u5r4ql1" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="w16iwbim" dur.ppq="6" dur="8" oct="4" pname="a"/>
+                    <note xml:id="y13r5a16" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="x1l0pxtm" staff="1" startid="#w16iwbim"/>
+                <fermata xml:id="z9le2xz" staff="1" startid="#y13r5a16"/>
+              </measure>
+              <sb xml:id="k1te0psx"/>
+              <scoreDef xml:id="lyrxn0y">
+                <meterSig xml:id="m1iev6lc" count="3" unit="4"/>
+              </scoreDef>
+              <measure xml:id="a1cutdcf" metcon="false" n="5">
+                <staff xml:id="j100u09c" n="1">
+                  <layer xml:id="n12wd15l" n="1">
+                    <note xml:id="o1iforym" dur.ppq="12" dur="4" oct="5" pname="d"/>
+                    <note xml:id="pjsbos6" dur.ppq="6" dur="8" oct="5" pname="d"/>
+                    <note xml:id="r1td12ke" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="t1kucqhn" dur.ppq="12" dur="4" oct="5" pname="c"/>
+                    <note xml:id="ux8vqye" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="w4cn8jp" dur.ppq="6" dur="8" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="qml5ye9" startid="#pjsbos6" endid="#r1td12ke"/>
+                <slur xml:id="vcql7by" startid="#ux8vqye" endid="#w4cn8jp"/>
+              </measure>
+              <measure xml:id="x1kt9cak" metcon="false" n="6">
+                <staff xml:id="gf7as6d" n="1">
+                  <layer xml:id="h1s0jssq" n="1">
+                    <note xml:id="ic77jk2" dots="1" dur.ppq="9" dur="8" oct="5" pname="d"/>
+                    <note xml:id="k1od1q2m" dur.ppq="3" dur="16" oct="5" pname="c"/>
+                    <note xml:id="l1pwpx3" dur.ppq="12" dur="4" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="nidfxfr" dur.ppq="3" dur="16" oct="5" pname="c"/>
+                    <note xml:id="p13yrude" dur.ppq="3" dur="16" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="r1z05dwk" dur.ppq="3" dur="16" oct="4" pname="a"/>
+                    <note xml:id="s729m2w" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                    <note xml:id="t17nq0d9" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <rest xml:id="vk9ix4y" dur.ppq="6" dur="8"/>
+                  </layer>
+                </staff>
+                <slur xml:id="j54rsvb" startid="#ic77jk2" endid="#k1od1q2m"/>
+                <slur xml:id="o1md31dk" startid="#nidfxfr" endid="#s729m2w"/>
+                <fermata xml:id="u1uh15hs" staff="1" startid="#t17nq0d9"/>
+              </measure>
+              <measure xml:id="wfwx31i" metcon="false" n="7">
+                <staff xml:id="f1bqcwkh" n="1">
+                  <layer xml:id="g1klv59h" n="1">
+                    <note xml:id="h1h8ag9" dur.ppq="12" dur="4" oct="5" pname="c"/>
+                    <tuplet xml:id="i1ro2kel" num="3" numbase="2">
+                      <note xml:id="j1sjwc9w" dur.ppq="2" dur="16" oct="5" pname="c"/>
+                      <note xml:id="l9015e4" dur.ppq="2" dur="16" oct="4" pname="b" accid.ges="f"/>
+                      <note xml:id="n32i03y" dur.ppq="2" dur="16" oct="4" pname="a"/>
+                    </tuplet>
+                    <note xml:id="ofsxuz7" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="p71n1qo" dur.ppq="12" dur="4" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="r1p87bpm" dur.ppq="3" dur="16" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="ubu11lu" dur.ppq="3" dur="16" oct="4" pname="a"/>
+                    <note xml:id="vw75zgg" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                    <rest xml:id="w133axy8" dur.ppq="3" dur="16"/>
+                  </layer>
+                </staff>
+                <slur xml:id="kivzqbr" startid="#j1sjwc9w" endid="#ofsxuz7"/>
+                <slur xml:id="truzkzu" startid="#r1p87bpm" endid="#vw75zgg"/>
+              </measure>
+              <measure xml:id="xc2k1id" metcon="false" n="8">
+                <staff xml:id="g1o2hc8y" n="1">
+                  <layer xml:id="h3010uc" n="1">
+                    <note xml:id="i14xw39p" dur.ppq="12" dur="4" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="krpt2pl" dur.ppq="12" dur="4" oct="4" pname="a"/>
+                    <note xml:id="mdpkyit" dur.ppq="0" dur="8" oct="4" pname="g" grace="acc"/>
+                    <note xml:id="npk7qxq" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                    <note xml:id="o2lkihr" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="lpfpxf3" startid="#krpt2pl" endid="#mdpkyit"/>
+              </measure>
+              <sb xml:id="zdcdz34"/>
+              <measure xml:id="p1oinbk" n="9">
+                <staff xml:id="y1ub65yh" n="1">
+                  <layer xml:id="adfjzvv" n="1">
+                    <note xml:id="b78k6n9" dur.ppq="6" dur="8" oct="4" pname="b"/>
+                    <note xml:id="cky9h9g" dur.ppq="6" dur="8" oct="4" pname="b"/>
+                    <note xml:id="dkfc6jh" dur.ppq="6" dur="8" oct="5" pname="d"/>
+                    <note xml:id="e3w2qxl" dots="1" dur.ppq="18" dur="4" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+              </measure>
+              <scoreDef xml:id="p3zg6f9">
+                <meterSig xml:id="q1tsy808" count="6" unit="8"/>
+              </scoreDef>
+              <measure xml:id="f1opvq88" n="10">
+                <staff xml:id="o14ay86t" n="1">
+                  <layer xml:id="r20ixu4" n="1">
+                    <note xml:id="s1ydreap" dur.ppq="6" dur="8" oct="5" pname="e"/>
+                    <note xml:id="uxbbymk" dur.ppq="0" dur="8" oct="5" pname="d" grace="acc"/>
+                    <note xml:id="v1chg5sm" dur.ppq="3" dur="16" oct="5" pname="d"/>
+                    <note xml:id="xmq2k4i" dur.ppq="3" dur="16" oct="4" pname="b"/>
+                    <note xml:id="yrbsxti" dur.ppq="3" dur="16" oct="5" pname="d"/>
+                    <note xml:id="a1dr2oh2" dur.ppq="3" dur="16" oct="5" pname="c"/>
+                    <note xml:id="b1lpeu8g" dur.ppq="3" dur="16" oct="4" pname="b"/>
+                    <note xml:id="c1y0e8l0" dur.ppq="12" dur="4" oct="4" pname="a"/>
+                    <note xml:id="d1l5vrgb" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="t1opq1vv" startid="#s1ydreap" endid="#uxbbymk"/>
+                <slur xml:id="w1wxjw0j" startid="#v1chg5sm" endid="#xmq2k4i"/>
+                <slur xml:id="za0xhmj" startid="#yrbsxti" endid="#d1l5vrgb"/>
+              </measure>
+              <scoreDef xml:id="okjvb">
+                <meterSig xml:id="p1yjc147" count="3" unit="4"/>
+              </scoreDef>
+              <measure xml:id="eofun7w" metcon="false" n="11">
+                <staff xml:id="nvhkhm2" n="1">
+                  <layer xml:id="q1tvtj9k" n="1">
+                    <note xml:id="r1osb2zs" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="s5sgisq" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="t1o5ogmb" dur.ppq="6" dur="8" oct="4" pname="a"/>
+                    <note xml:id="uozkvbo" dots="1" dur.ppq="18" dur="4" oct="4" pname="a"/>
+                    <note xml:id="wgfj3n6" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="vl7x5h3" startid="#uozkvbo" endid="#wgfj3n6"/>
+              </measure>
+              <measure xml:id="x1qzjqi8" n="12">
+                <staff xml:id="gcan34l" n="1">
+                  <layer xml:id="hwtiqbw" n="1">
+                    <note xml:id="ikjn4mm" dur.ppq="6" dur="8" oct="4" pname="b"/>
+                    <note xml:id="k1wgndo3" dur.ppq="0" dur="8" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="l1v0vy5c" dur.ppq="6" dur="8" oct="4" pname="a"/>
+                    <note xml:id="n1pnp2cg" dur.ppq="0" dur="8" oct="4" pname="g" grace="acc"/>
+                    <note xml:id="o1dgq3rs" dur.ppq="12" dur="4" oct="4" pname="g"/>
+                    <rest xml:id="p1p7vma9" dur.ppq="12" dur="4"/>
+                  </layer>
+                </staff>
+                <slur xml:id="j6bmz68" startid="#ikjn4mm" endid="#k1wgndo3"/>
+                <slur xml:id="m121hu8a" startid="#l1v0vy5c" endid="#n1pnp2cg"/>
+              </measure>
+              <sb xml:id="a1u1798y"/>
+              <measure xml:id="qwvo1pj" metcon="false" n="13">
+                <staff xml:id="zk0gnwo" n="1">
+                  <layer xml:id="b146q7nr" n="1">
+                    <note xml:id="c16rml7w" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="d1m9ou6v" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="e1qejmaw" dur.ppq="12" dur="4" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="f8kl561" staff="1" startid="#e1qejmaw"/>
+              </measure>
+              <measure xml:id="g8zg7xg" metcon="false" n="14">
+                <staff xml:id="pvaj2gh" n="1">
+                  <layer xml:id="q11yy9ag" n="1">
+                    <note xml:id="r1eigjq6" dur.ppq="3" dur="16" oct="5" pname="e"/>
+                    <note xml:id="t1s0sqap" dur.ppq="3" dur="16" oct="5" pname="d"/>
+                    <note xml:id="u14yzt4g" dur.ppq="6" dur="8" oct="5" pname="c" accid.ges="s"/>
+                    <note xml:id="w185rain" dur.ppq="12" dur="4" oct="5" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="s1tdzpr2" startid="#r1eigjq6" endid="#t1s0sqap"/>
+                <slur xml:id="xst8ut3" startid="#w185rain" endid="#k17aub8i"/>
+                <fermata xml:id="y1i4vzb0" staff="1" startid="#w185rain"/>
+              </measure>
+              <measure xml:id="z7j3kd6" metcon="false" n="15">
+                <staff xml:id="itcqlvd" n="1">
+                  <layer xml:id="j1ojck6z" n="1">
+                    <note xml:id="k17aub8i" dur.ppq="0" dur="8" oct="4" pname="b" grace="acc" accid.ges="f"/>
+                    <note xml:id="m1wcvjpn" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="ouu0cyh" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="qhobr3c" dur.ppq="0" dur="16" oct="4" pname="b" grace="acc" accid.ges="f"/>
+                    <note xml:id="s106mqsb" dur.ppq="0" dur="16" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="t12hnpwo" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="v15gk94x" dur.ppq="3" dur="16" oct="4" pname="a"/>
+                    <note xml:id="x1pu9o02" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="pthusf9" startid="#ouu0cyh" endid="#s106mqsb"/>
+                <slur xml:id="wxvy4y3" startid="#v15gk94x" endid="#x1pu9o02"/>
+              </measure>
+              <sb xml:id="iu778xf"/>
+              <measure xml:id="y19pgsfi" metcon="false" n="16">
+                <staff xml:id="h1cdy5l2" n="1">
+                  <layer xml:id="jtydtin" n="1">
+                    <note xml:id="k1knnkdb" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="m1pltlyc" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="o1acoid1" dur.ppq="0" dur="32" oct="4" pname="b" grace="acc" accid.ges="f"/>
+                    <note xml:id="qyo1ri3" dur.ppq="0" dur="32" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="r1d1iaq0" dur.ppq="12" dur="4" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="nrhh8bv" startid="#m1pltlyc" endid="#qyo1ri3"/>
+                <fermata xml:id="s1xv57we" staff="1" startid="#r1d1iaq0"/>
+              </measure>
+              <measure xml:id="t1mcuemg" metcon="false" n="17">
+                <staff xml:id="cqfvjhh" n="1">
+                  <layer xml:id="di4jkt1" n="1">
+                    <note xml:id="e1b0jryj" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="g1542yo7" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="ijmk4m4" dur.ppq="0" dur="32" oct="4" pname="b" grace="acc" accid.ges="f"/>
+                    <note xml:id="kf6mzue" dur.ppq="0" dur="32" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="lczt95g" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="n18g5mgk" dur.ppq="3" dur="16" oct="4" pname="a"/>
+                    <note xml:id="p5ujghe" dur.ppq="3" dur="16" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <slur xml:id="h1flo63c" startid="#g1542yo7"/>
+                <slur xml:id="o1hv13cf" startid="#n18g5mgk" endid="#p5ujghe"/>
+              </measure>
+              <measure xml:id="q1t0v9zk" metcon="false" n="18">
+                <staff xml:id="z1s6242q" n="1">
+                  <layer xml:id="a1qpn7ut" n="1">
+                    <note xml:id="bvjq4v4" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="d1s7dhah" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="fipgfmg" dur.ppq="0" dur="32" oct="4" pname="b" grace="acc" accid.ges="f"/>
+                    <note xml:id="hk1nu3e" dur.ppq="0" dur="32" oct="4" pname="a" grace="acc"/>
+                    <note xml:id="i1u24jg6" dots="1" dur.ppq="9" dur="8" oct="4" pname="g"/>
+                    <note xml:id="kwjh3fe" dur.ppq="3" dur="16" oct="4" pname="d"/>
+                  </layer>
+                </staff>
+                <slur xml:id="e1x64d14" startid="#d1s7dhah" endid="#hk1nu3e"/>
+                <fermata xml:id="j1rzcsle" staff="1" startid="#i1u24jg6"/>
+              </measure>
+              <sb xml:id="v1ilhnbs"/>
+              <measure xml:id="lyv9zbc" n="19">
+                <staff xml:id="up5o452" n="1">
+                  <layer xml:id="woc151y" n="1">
+                    <note xml:id="xciv6nk" dots="1" dur.ppq="18" dur="4" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="z1mv87qt" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="b17t1ueb" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="d1y9eyyi" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="fs4ojgj" metcon="false" n="20">
+                <staff xml:id="oc00i7a" n="1">
+                  <layer xml:id="p1lmfpjn" n="1">
+                    <note xml:id="q1ls1ags" dur.ppq="12" dur="4" oct="5" pname="d"/>
+                    <note xml:id="r1oppddi" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="s1jw957f" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="u1mc19bp" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="w1ekumfg" staff="1" startid="#u1mc19bp"/>
+              </measure>
+              <sb xml:id="h19u9u64"/>
+              <measure xml:id="x1fpnmkp" metcon="false" n="21">
+                <staff xml:id="gws25up" n="1">
+                  <layer xml:id="i15tmkee" n="1">
+                    <note xml:id="jqhnbq9" dur.ppq="6" dur="8" oct="5" pname="d"/>
+                    <note xml:id="kilp8j1" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="l1wtpmgz" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="nfuy9hv" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                  </layer>
+                </staff>
+                <fermata xml:id="o1aqh36w" staff="1" startid="#nfuy9hv"/>
+              </measure>
+              <measure xml:id="p13drgii" metcon="false" n="22">
+                <staff xml:id="y16uku1d" n="1">
+                  <layer xml:id="z12ubo6e" n="1">
+                    <note xml:id="arzlesb" dur.ppq="6" dur="8" oct="5" pname="c"/>
+                    <note xml:id="bjxatj7" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                    <note xml:id="d1p4xm56" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <note xml:id="e1vzgy5s" dur.ppq="6" dur="8" oct="4" pname="b" accid.ges="f"/>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="g3qv89g" n="23">
+                <staff xml:id="pj2luvd" n="1">
+                  <layer xml:id="q12r1bcb" n="1">
+                    <note xml:id="r1ni2i7s" dots="1" dur.ppq="18" dur="4" oct="4" pname="g"/>
+                    <note xml:id="sxbflqx" dur.ppq="6" dur="8" oct="4" pname="g"/>
+                    <rest xml:id="tfjpsif" dur.ppq="12" dur="4"/>
+                  </layer>
+                </staff>
+              </measure>
+            </section>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

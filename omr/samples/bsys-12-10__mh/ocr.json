@@ -1,0 +1,125 @@
+{
+ "engine": "rapidocr-onnxruntime",
+ "seconds": 1.2,
+ "lines": [
+  {
+   "text": "ermenyitok",
+   "score": 0.646,
+   "x": 330,
+   "y": 47,
+   "h": 64
+  },
+  {
+   "text": "Roldogargalauhy",
+   "score": 0.587,
+   "x": 426,
+   "y": 89,
+   "h": 65
+  },
+  {
+   "text": "T.:40e)",
+   "score": 0.692,
+   "x": 127,
+   "y": 125,
+   "h": 67
+  },
+  {
+   "text": "Vitergnaene",
+   "score": 0.694,
+   "x": 540,
+   "y": 158,
+   "h": 46
+  },
+  {
+   "text": "yiRar",
+   "score": 0.767,
+   "x": 617,
+   "y": 200,
+   "h": 28
+  },
+  {
+   "text": "a-f”-hkek",
+   "score": 0.635,
+   "x": 610,
+   "y": 351,
+   "h": 49
+  },
+  {
+   "text": "mepai-ta",
+   "score": 0.643,
+   "x": 266,
+   "y": 375,
+   "h": 30
+  },
+  {
+   "text": "Kagd leaivn,",
+   "score": 0.626,
+   "x": 152,
+   "y": 658,
+   "h": 42
+  },
+  {
+   "text": "Rapd be",
+   "score": 0.87,
+   "x": 312,
+   "y": 662,
+   "h": 28
+  },
+  {
+   "text": "JaRitmcrcbalapdbe",
+   "score": 0.681,
+   "x": 154,
+   "y": 692,
+   "h": 45
+  },
+  {
+   "text": "sntmeclinst kedeln",
+   "score": 0.668,
+   "x": 158,
+   "y": 721,
+   "h": 54
+  },
+  {
+   "text": "0d）e",
+   "score": 0.505,
+   "x": 311,
+   "y": 870,
+   "h": 65
+  },
+  {
+   "text": "Raveroodalle-",
+   "score": 0.729,
+   "x": 295,
+   "y": 946,
+   "h": 59
+  },
+  {
+   "text": "saurko",
+   "score": 0.616,
+   "x": 552,
+   "y": 956,
+   "h": 30
+  },
+  {
+   "text": "gil\"meven",
+   "score": 0.712,
+   "x": 287,
+   "y": 995,
+   "h": 54
+  },
+  {
+   "text": "eyy",
+   "score": 0.774,
+   "x": 515,
+   "y": 1007,
+   "h": 42
+  },
+  {
+   "text": "Manotodilen)fitty",
+   "score": 0.692,
+   "x": 281,
+   "y": 1076,
+   "h": 62
+  }
+ ]
+}

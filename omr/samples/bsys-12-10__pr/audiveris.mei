@@ -48,7 +48,7 @@
         <p>Text lines read from the image by OCR (uncorrected): M. F. 470 c) / Gy: Vikar Bela / Felsoboldogfalva (Udvarhely) / [1903. V1. 27.] / Peter Ignacne / L: Bartok Bela / 1. E- rik a meggy - fa, / Haj - lik az / á - ga, / Ar-ra / fe-ju-ro / Szo - ke kis - lany - ka. / 2.Kapd be szi-vem,kapd be / jA-kit szeretsz, kapd be, / Ezt sze-re-tem,ezt ked-ve-lem, / Ez az én é - de - sem. / [3.Arany volnek,megpendilnek, / Rozsa volnek, kivirulnek, / Allj ki szivem, allj ki!] / Ziegler Marta masolata Bartok javitasaival. Kiegeszitesek Vikar: 13/18a alapjan.  1019. Bartok: (2); javitva:</p>
       </editorialDecl>
       <projectDesc>
-        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.844 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.83 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
       </projectDesc>
     </encodingDesc>
     <workList>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne; Zaritus’o zorile, - tus’o zorile,; Dumnezeu de la’nceput, —— Dumnezeude la’nceput; Malia er, je) Se te NS Bae (GS SN; N poar Doamne!*</title>
+        <respStmt>
+          <persName role="collector">Bartók Béla</persName>
+          <persName role="performer">Marie Ardelean</persName>
+          <name role="encoder">omr/pipeline.py (audiveris 5.9.0 + verovio)</name>
+        </respStmt>
+      </titleStmt>
+      <pubStmt>
+        <publisher>Bartok Romania field-collection viewer (research prototype)</publisher>
+        <date isodate="2026-09-28"/>
+        <availability>
+          <useRestrict>Recognised automatically by optical music recognition; unverified. The source image is served by HUN-REN BTK ZTI (systems.zti.hu) or by the Internet Archive scan of Bartok, Rumanian Folk Music; this encoding indexes the notation and does not replace the source.</useRestrict>
+        </availability>
+      </pubStmt>
+      <sourceDesc>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-1</identifier>
+            <identifier type="site-record-id">RFM V No. 1</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Visaul- de - jos (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-2</identifier>
+            <identifier type="site-record-id">RFM V No. 2</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Dragomiresti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-3</identifier>
+            <identifier type="site-record-id">RFM V No. 3</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Dragomiresti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-4</identifier>
+            <identifier type="site-record-id">RFM V No. 4</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Ieud (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+        <source>
+          <bibl>
+            <title>Rumanian Folk Music, vol. V (Bartók, ed. Suchoff, 1975), Internet Archive scan</title>
+            <identifier type="viewer-record-id">rfm-5-5</identifier>
+            <identifier type="site-record-id">RFM V No. 5</identifier>
+            <ptr target="https://archive.org/details/rumanianfolkmusi0005blab/page/n82"/>
+            <geogName>Oncesti (Maramureș)</geogName>
+            <date>not printed on the melody; Bartók's Maramureș trip, March 15-27, 1913 (Introduction to Part One)</date>
+          </bibl>
+        </source>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo>
+        <application version="5.9.0" xml:id="app.audiveris">
+          <name>audiveris</name>
+        </application>
+        <application version="6.3.0-425dd7b" xml:id="app.verovio">
+          <name>verovio</name>
+        </application>
+        <application version="1.4.4" xml:id="app.rapidocr">
+          <name>rapidocr-onnxruntime</name>
+        </application>
+      </appInfo>
+      <editorialDecl>
+        <p>Text lines read from the image by OCR (uncorrected): A 1. / Poco rubato  = (80) / Nda-ta-mi,Doam-ne,d-amaudzi - ty Dom-nu-lui,_Dom -nu-lui Doam-ne! / F. 2123 d), Visaul - de - jos. Marie Ardelean (ca. 25). / Andante J : 76 / Za-ri - tu-s'o / zo -ri-le, / Za-ri - tu-s'o_ / zo-ri - le, / F. 2133 b), Dragomiresti, Erina Vlad (26). / Andante J : 84 / 3 / la'n-ce - put, / Dum-nezeu de- la'n-ce-put / Dum-nezeu de / F.2132 d),Dragomiresti,Erina Vlad (26). / A 2. / Andante / =66 / Ha -ia / l'er, / -ra / Per! / Fac / Gre - cii / ia / 0 / ma / -na / ·stir', / Fac / Gre - cii / ma / -sti / re; / Var.:1)* / F. 1626 c), Ieud, Dumitru Goja $1 Vasile Dancus (ca. 15). / Allegretto J = 92 / 'Npoar / ta / ce / ru / Doam / -ne!* / Hai / co - rin - de! / 'Npoar - ta / ru / 2.I / F. 2188 b), Oncesti, Marie si Doica Dragus (18- 20). / [ 47 ]</p>
+      </editorialDecl>
+      <projectDesc>
+        <p>OMR pipeline of the Bartok Romania viewer. Confidence score 0.62 in [0,1] (see omr/confidence.py); components are stored in result.json next to this file.</p>
+      </projectDesc>
+    </encodingDesc>
+    <workList>
+      <work>
+        <title>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne</title>
+        <incip>
+          <incipText>
+            <p>Ndatami, Doamne,damaudzitu Domnului, Domnului Doamne</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Zaritus’o zorile, - tus’o zorile,</title>
+        <incip>
+          <incipText>
+            <p>Zaritus’o zorile, - tus’o zorile,</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Dumnezeu de la’nceput, —— Dumnezeude la’nceput</title>
+        <incip>
+          <incipText>
+            <p>Dumnezeu de la’nceput, —— Dumnezeude la’nceput</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>Malia er, je) Se te NS Bae (GS SN</title>
+        <incip>
+          <incipText>
+            <p>Malia er, je) Se te NS Bae (GS SN</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+      <work>
+        <title>N poar Doamne!*</title>
+        <incip>
+          <incipText>
+            <p>N poar Doamne!*</p>
+          </incipText>
+        </incip>
+        <classification>
+          <termList>
+            <term type="bartok-system">A</term>
+            <term type="genre">colinda</term>
+            <term type="performance">vocal</term>
+          </termList>
+        </classification>
+      </work>
+    </workList>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv xml:id="dp45ms3">
+        <score xml:id="e1546k07">
+          <scoreDef xml:id="f6ezose">
+            <staffGrp xml:id="h16dbazv">
+              <staffDef xml:id="P1" n="1" lines="5" ppq="6">
+                <label xml:id="i1p4t4uf">Voice</label>
+                <labelAbbr xml:id="k1tiy7ob">Voice</labelAbbr>
+                <instrDef xml:id="mtjbt3y" midi.channel="0" midi.instrnum="53" midi.volume="78%"/>
+              </staffDef>
+            </staffGrp>
+          </scoreDef>
+          <section xml:id="g46pg6y">
+            <section xml:id="tz49kdr">
+              <measure xml:id="vk3cnxj" metcon="false" n="1">
+                <staff xml:id="e1jwnemp" n="1">
+                  <layer xml:id="f16rbjdi" n="1">
+                    <beam xml:id="gkxykoe">
+                      <note xml:id="htn7sdx" dur.ppq="3" dur="8" oct="4" pname="b" stem.dir="down">
+                        <verse xml:id="i1u41k31" n="1">
+                          <syl xml:id="j7tr9dh" con="d" wordpos="i">Dum</syl>
+                        </verse>
+                        <verse xml:id="l42cf21" n="2">
+                          <syl xml:id="mj6tj8g" con="s" wordpos="s">d).</syl>
+                        </verse>
+                      </note>
+                      <note xml:id="ofcrazk" dur.ppq="3" dur="8" oct="4" pname="b" stem.dir="down">
+                        <verse xml:id="p1qhvm8k" n="1">
+                          <syl xml:id="qq2woge" con="s" wordpos="t">ne</syl>
+                        </verse>
+                      </note>
+                    </beam>
+                    <note xml:id="s1oqbdh4" dur.ppq="3" dur="8" oct="5" pname="d" stem.dir="down">
+                      <verse xml:id="tgr960e" n="1">
+                        <syl xml:id="up267a4" con="s" wordpos="s">zey</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="wh7o50l" metcon="false" n="2">
+                <staff xml:id="fj6mxov" n="1">
+                  <layer xml:id="gbz76vw" n="1">
+                    <beam xml:id="h1xh5h80">
+                      <note xml:id="i6uii73" dur.ppq="3" dur="8" oct="5" pname="e" stem.dir="down">
+                        <verse xml:id="jfign7o" n="1">
+                          <syl xml:id="kg1oyxa" con="d" wordpos="i">la</syl>
+                        </verse>
+                        <verse xml:id="mu2l0bj" n="2">
+                          <syl xml:id="n12g8x4i" con="s" wordpos="s">Erină</syl>
+                        </verse>
+                      </note>
+                      <note xml:id="pqbv174" dur.ppq="3" dur="8" oct="4" pname="b" stem.dir="down">
+                        <verse xml:id="qw7j0wu" n="1">
+                          <syl xml:id="r1vsteq8" con="s" wordpos="t">put</syl>
+                        </verse>
+                        <verse xml:id="t1wpidp9" n="2">
+                          <syl xml:id="u9mr3dp" con="s" wordpos="s">Vlad</syl>
+                        </verse>
+                      </note>
+                    </beam>
+                    <beam xml:id="w1qq9ps1">
+                      <tuplet xml:id="x10v0g82" num="3" numbase="2" num.place="below" bracket.place="below">
+                        <note xml:id="y1bekb7x" dur.ppq="1" dur="16" oct="5" pname="d" stem.dir="down"/>
+                        <note xml:id="z1ylbvkd" dur.ppq="1" dur="16" oct="5" pname="c" stem.dir="down"/>
+                        <note xml:id="ar9z6ty" dur.ppq="1" dur="16" oct="4" pname="b" stem.dir="down">
+                          <verse xml:id="b1iaexjy" n="1">
+                            <syl xml:id="c1gv8xve" con="s" wordpos="s">,</syl>
+                          </verse>
+                          <verse xml:id="e4kim4y" n="2">
+                            <syl xml:id="fw7urcw" con="s" wordpos="s">(20).</syl>
+                          </verse>
+                        </note>
+                      </tuplet>
+                    </beam>
+                    <note xml:id="k1s37spy" dur.ppq="6" dur="4" oct="4" pname="a" stem.dir="up">
+                      <verse xml:id="lxn8xr1" n="1">
+                        <syl xml:id="m1g1cqt3" con="s" wordpos="s">.</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+                <dir xml:id="hjv3oci" place="above" staff="1" tstamp="2.5" vgrp="2200">
+                  <rend xml:id="i15bgfh7" fontfam="serif" fontstyle="italic" fontweight="bold">©</rend>
+                </dir>
+              </measure>
+              <scoreDef xml:id="yyy5zv9">
+                <meterSig xml:id="zso07a" count="3" unit="4"/>
+              </scoreDef>
+              <measure xml:id="o12bxxd4" n="3">
+                <staff xml:id="xkiuhsg" n="1">
+                  <layer xml:id="a14bmb64" n="1">
+                    <beam xml:id="baxsih">
+                      <note xml:id="cb9glpq" dur.ppq="3" dur="8" oct="4" pname="g" stem.dir="up">
+                        <verse xml:id="dxz5pzm" n="1">
+                          <syl xml:id="e1fp2mht" con="d" wordpos="i">Dum</syl>
+                        </verse>
+                      </note>
+                      <note xml:id="gdi75vd" dur.ppq="3" dur="8" oct="4" pname="g" stem.dir="up">
+                        <verse xml:id="h1waf7od" n="1">
+                          <syl xml:id="i18utjge" con="s" wordpos="t">ne</syl>
+                        </verse>
+                      </note>
+                    </beam>
+                    <note xml:id="k1rretia" dur.ppq="3" dur="8" oct="4" pname="a" stem.dir="up">
+                      <verse xml:id="lqmkkja" n="1">
+                        <syl xml:id="m6g79y6" con="s" wordpos="s">zeg</syl>
+                      </verse>
+                    </note>
+                    <note xml:id="o17l15lm" dots="1" dur.ppq="9" dur="4" oct="4" pname="a" stem.dir="up">
+                      <verse xml:id="p1uwnfid" n="1">
+                        <syl xml:id="q2vygmh" con="s" wordpos="s">de</syl>
+                      </verse>
+                    </note>
+                  </layer>
+                </staff>
+              </measure>
+              <measure xml:id="sq7grqk" n="4">
+                <staff xml:id="b16r7y9r" n="1">
+                  <layer xml:id="c72t7ht" n="1">
+                    <beam xml:id="d3nv3nk">
+                      <note xml:id="e1hosbtv" dur.ppq="3" dur="8" oct="4" pname="b" stem.dir="up">
+                        <verse xml:id="f136l08" n="1">
+                          <syl xml:id="gqdsjsl" con="d" wordpos="i">la’n</syl>
+                        </verse>
+                        <artic xml:id="jt6p6re" artic="stacc" place="below"/>
+                      </note>
+                      <note xml:id="keuiqb3" dur.ppq="3" dur="8" oct="4" pname="a" stem.dir="up">
+                        <verse xml:id="l1is9azh" n="1">
+                          <syl xml:id="mjb5jds" con="d" wordpos="m">ce</syl>
+                        </verse>
+                      </note>
+                    </beam>
+                    <note xml:id="o1xtzmns" dur.ppq="6" dur="4" oct="4" pname="g" stem.dir="up">
+                      <verse xml:id="prb3xh1" n="1">
+                        <syl xml:id="q11xq02w" con="s" wordpos="t">put</syl>
+                      </verse>
+                    </note>
+                    <rest xml:id="s1raiyfo" dur.ppq="6" dur="4" ploc="b" oloc="4"/>
+                  </layer>
+                </staff>
+                <slur xml:id="io1qb7t" startid="#e1hosbtv" endid="#keuiqb3" curvedir="below"/>
+              </measure>
+            </section>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>

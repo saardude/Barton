@@ -459,10 +459,38 @@ def process(sample_id: str, image: str, engines: list[str], suffix: str | None =
     return result
 
 
+def rescore(out_dir: Path) -> dict:
+    """Recompute confidence (and the score line in each MEI header) from the files already in
+    a sample directory, without re-running the engines."""
+    result = json.load(open(out_dir / "result.json"))
+    records = load_records(result.get("records") or [])
+    ocr_lines = json.load(open(out_dir / "ocr.json"))["lines"] if (out_dir / "ocr.json").exists() else []
+    image_url = result["image"] if str(result["image"]).startswith("http") else None
+    for eng, r in result["engines"].items():
+        mei_path = out_dir / f"{eng}.mei"
+        if not r.get("mei") or not mei_path.exists():
+            continue
+        conf = confidence.score(mei_path, records, [l["text"] for l in ocr_lines], None, r.get("rec_grade"))
+        r["confidence"] = conf
+        root = etree.parse(str(mei_path)).getroot()
+        finalise_mei(etree.tostring(root, encoding="unicode"), records, image_url, eng, r.get("version", "?"),
+                     ocr_lines, mei_path, conf["confidence"])
+        r["validation"] = validate(mei_path)
+    best = max((e for e in result["engines"].values() if e.get("confidence")),
+               key=lambda e: e["confidence"]["confidence"], default=None)
+    result["best"] = {"engine": best["engine"], "confidence": best["confidence"]["confidence"]} if best else None
+    result["rescored"] = dt.datetime.now().isoformat(timespec="seconds")
+    (out_dir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=1))
+    log(f"[{out_dir.name}] rescored: " + ", ".join(
+        f"{k}={v['confidence']['confidence']}" for k, v in result["engines"].items() if v.get("confidence")))
+    return result
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--id", required=True, help="sample id (catalogue record id unless --record given)")
-    ap.add_argument("--image", required=True, help="image URL (systems.zti.hu) or local path")
+    ap.add_argument("--rescore", metavar="DIR", help="recompute confidence for an existing sample dir and exit")
+    ap.add_argument("--id", help="sample id (catalogue record id unless --record given)")
+    ap.add_argument("--image", help="image URL (systems.zti.hu) or local path")
     ap.add_argument("--engines", default="homr,audiveris", help="comma list of homr,audiveris,oemer")
     ap.add_argument("--suffix", help="sample dir suffix, e.g. hw / pr / mh")
     ap.add_argument("--record", action="append", help="catalogue record id(s) to compare against")
@@ -470,6 +498,11 @@ def main():
     ap.add_argument("--note", help="free-text description stored in result.json")
     ap.add_argument("--no-ocr", action="store_true")
     a = ap.parse_args()
+    if a.rescore:
+        rescore(Path(a.rescore))
+        return
+    if not a.id or not a.image:
+        ap.error("--id and --image are required (or --rescore DIR)")
     process(a.id, a.image, a.engines.split(","), a.suffix, a.record, a.kind, a.note, a.no_ocr)
 
 

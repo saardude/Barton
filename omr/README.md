@@ -76,8 +76,11 @@ several records (printed edition pages). Remote images are fetched at 1 request/
 | `<engine>.log` | engine log |
 | `result.json` | timings, validation result, confidence score and its components per engine |
 
-The sample set of the report: `.venv/bin/python run_samples.py` (about 50 min on 4 cores;
-`--only bsys-12-10__pr --engines homr` for a quick check). Score an existing MEI on its own:
+The sample set of the report: `.venv/bin/python run_samples.py` (22 min on 4 cores;
+`--only bsys-12-10__pr --engines homr` for a quick check; `--rescore` recomputes the confidence
+scores and the MEI header line from the existing outputs without re-running the engines, for
+use after changing `confidence.py`). The results table of the report:
+`.venv/bin/python report_table.py` (`--json` for the raw rows). Score an existing MEI on its own:
 `.venv/bin/python confidence.py samples/bsys-12-10__pr/homr.mei --record bsys-12-10 --ocr samples/bsys-12-10__pr/ocr.json`.
 
 Preview an SVG as PNG: `.venv/bin/python -c "import cairosvg; cairosvg.svg2png(url='samples/bsys-12-10__pr/homr.svg', write_to='/tmp/x.png', output_width=1400)"`.

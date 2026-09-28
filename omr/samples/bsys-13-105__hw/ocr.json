@@ -1,0 +1,125 @@
+{
+ "engine": "rapidocr-onnxruntime",
+ "seconds": 1.0,
+ "lines": [
+  {
+   "text": "31.",
+   "score": 0.918,
+   "x": 304,
+   "y": 10,
+   "h": 40
+  },
+  {
+   "text": "5:（1)",
+   "score": 0.586,
+   "x": 592,
+   "y": 11,
+   "h": 46
+  },
+  {
+   "text": "te853",
+   "score": 0.581,
+   "x": 326,
+   "y": 58,
+   "h": 42
+  },
+  {
+   "text": "Kasoimper",
+   "score": 0.696,
+   "x": 470,
+   "y": 69,
+   "h": 38
+  },
+  {
+   "text": "BapecB",
+   "score": 0.506,
+   "x": 608,
+   "y": 69,
+   "h": 42
+  },
+  {
+   "text": "1g12.",
+   "score": 0.689,
+   "x": 526,
+   "y": 94,
+   "h": 34
+  },
+  {
+   "text": "gegohope",
+   "score": 0.587,
+   "x": 53,
+   "y": 189,
+   "h": 46
+  },
+  {
+   "text": "eqyguiwn",
+   "score": 0.51,
+   "x": 494,
+   "y": 245,
+   "h": 20
+  },
+  {
+   "text": "glmenyek,elmenyek,",
+   "score": 0.934,
+   "x": 236,
+   "y": 449,
+   "h": 26
+  },
+  {
+   "text": "hosszu itra menyek,",
+   "score": 0.927,
+   "x": 321,
+   "y": 478,
+   "h": 28
+  },
+  {
+   "text": "Hosszu ut porabol",
+   "score": 0.809,
+   "x": 236,
+   "y": 513,
+   "h": 25
+  },
+  {
+   "text": "Kopponyeget veszek.",
+   "score": 0.895,
+   "x": 325,
+   "y": 545,
+   "h": 22
+  },
+  {
+   "text": "Buval Gs banattal",
+   "score": 0.907,
+   "x": 239,
+   "y": 643,
+   "h": 25
+  },
+  {
+   "text": "kisinoroztatom,",
+   "score": 0.98,
+   "x": 327,
+   "y": 673,
+   "h": 23
+  },
+  {
+   "text": "Suru konyveimmel",
+   "score": 0.921,
+   "x": 242,
+   "y": 708,
+   "h": 20
+  },
+  {
+   "text": "kigomboztattatom.",
+   "score": 0.957,
+   "x": 330,
+   "y": 740,
+   "h": 20
+  },
+  {
+   "text": "P.12",
+   "score": 0.817,
+   "x": 553,
+   "y": 1140,
+   "h": 59
+  }
+ ]
+}

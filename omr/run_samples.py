@@ -90,12 +90,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", help="comma list of sample dir names (id or id__suffix)")
     ap.add_argument("--engines", help="override engine list for every sample")
+    ap.add_argument("--rescore", action="store_true", help="recompute confidence from existing outputs only")
     a = ap.parse_args()
     only = set(a.only.split(",")) if a.only else None
     t0 = time.time()
     for sid, suffix, kind, image, records, engines, note in SAMPLES:
         name = f"{sid}__{suffix}" if suffix else sid
         if only and name not in only:
+            continue
+        if a.rescore:
+            pipeline.rescore(pipeline.SAMPLES / name)
             continue
         if isinstance(image, tuple):
             vol, leaf = image
