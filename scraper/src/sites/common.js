@@ -102,7 +102,7 @@ export function findAudio($, base, root) {
 }
 
 /** Notation images: <img> whose src/alt/class hints at notation, and PDF links. */
-export function findNotation($, base, root, hintRe = /kotta|notation|score|melody|dallam|lejegyz|notes|record|sheet|img\//i) {
+export function findNotation($, base, root, hintRe = /kotta|notation|score|melody|dallam|lejegyz|notes|record|sheet|img\/|media\/images/i) {
   const $root = root ? $(root) : $.root();
   const found = [];
   $root.find('img[src], a[href]').each((_, el) => {
@@ -189,4 +189,75 @@ export function outline(html, base) {
   lines.push('link patterns:');
   for (const [p, n] of Object.entries(patterns).sort((a, b) => b[1] - a[1]).slice(0, 40)) lines.push(`  ${n}\t${p}`);
   return lines.join('\n');
+}
+
+// ---------------------------------------------------------------------------------------------
+// Shared parsers for the ZTI "systems" platform used by systems.zti.hu/br and
+// bartok-gyujtesek.zti.hu (same templates: #record table listings, #record <p> label pages).
+// CONFIRMED on live gyujtesek pages 2026-09-28; the bsys record page is assumed identical (TO CONFIRM).
+
+/** Listing table: header cells -> keys; rows -> {url, cells{}}. */
+export function parseZtiTable($, base, recordUrlRe) {
+  const rows = [];
+  const $table = $('#record table').first();
+  if (!$table.length) return rows;
+  const headers = $table.find('thead th').map((_, th) => clean($(th).text()) || '').get();
+  $table.find('tbody tr').each((_, tr) => {
+    const cells = $(tr).children('td');
+    const a = $(cells[0]).find('a[href]').first();
+    const url = a.length ? absUrl(base, a.attr('href')) : null;
+    if (!url || !recordUrlRe.test(url)) return;
+    const row = { url: url.split('#')[0], cells: {} };
+    cells.each((i, td) => {
+      const key = headers[i] || `col${i}`;
+      row.cells[key] = clean($(td).text());
+    });
+    row.linkText = clean(a.text());
+    rows.push(row);
+  });
+  return rows;
+}
+
+/**
+ * Record page: #record with an h3 title, <p>Label: value</p> lines, one unlabelled
+ * "Place (County), date." line, an image and (when present) an audio player.
+ * Returns {title, pairs, placeLine, notation[], audio[], links[]}.
+ */
+export function parseZtiRecord($, base) {
+  const $rec = $('#record').length ? $('#record') : $.root();
+  const title = text($rec.find('h3').first());
+  const pairs = {};
+  let placeLine = null;
+  $rec.find('p').each((_, p) => {
+    const $p = $(p);
+    if ($p.closest('.btn-group').length) return;
+    const t = clean($p.text());
+    if (!t) return;
+    const m = t.match(/^([^:]{2,40}?):\s*(.*)$/);
+    if (m) {
+      let k = m[1];
+      let i = 2;
+      while (k in pairs) k = `${m[1]}#${i++}`;
+      pairs[k] = clean(m[2]);
+      const href = $p.find('a[href]').first().attr('href');
+      if (href) pairs[`${m[1]} (link)`] = absUrl(base, href);
+    } else if (!placeLine) placeLine = t;
+  });
+  const notation = [];
+  $rec.find('a[href] > img, img').each((_, img) => {
+    const $img = $(img);
+    const full = $img.closest('a[href]').attr('href') || $img.attr('src');
+    const url = absUrl(base, full);
+    if (url && IMAGE_RE.test(url) && !notation.some((n) => n.url === url)) notation.push({ url, type: mimeFor(url), caption: clean($img.attr('alt') || $img.closest('a').attr('title') || null) });
+  });
+  return { title, pairs, placeLine, notation, audio: findAudio($, base, $rec) };
+}
+
+/** "Gerlicepuszta (Gömör és Kis-Hont), 1904.11." -> {placeRaw, dateRaw}. */
+export function splitPlaceLine(line) {
+  const t = clean(line);
+  if (!t) return { placeRaw: null, dateRaw: null };
+  const m = t.match(/^(.*?)(?:,\s*)((?:\d{1,2}\.\s*)?(?:\d{1,2}\.\s*)?1[89]\d\d\.?(?:\s*\d{1,2}\.?)?(?:\s*\d{1,2}\.?)?)?\s*$/);
+  if (m && m[2]) return { placeRaw: clean(m[1].replace(/,\s*$/, '')), dateRaw: clean(m[2]) };
+  return { placeRaw: clean(t.replace(/,\s*$/, '')), dateRaw: null };
 }

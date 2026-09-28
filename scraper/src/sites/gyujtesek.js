@@ -1,6 +1,7 @@
 // Site 3: bartok-gyujtesek.zti.hu ("Bela Bartok, the Ethnomusicologist"): collections by trip.
 // Record id: "<collectionId>-<recordId>" from the URL /en/browse/<collectionId>/<recordId>.
-import { load, extractPairs, byLabel, findAudio, findNotation, links, text, multilineText } from './common.js';
+// SELECTORS CONFIRMED against live pages fetched 2026-09-28 (browse, 101 collection pages, 95 record pages).
+import { load, links, parseZtiTable, parseZtiRecord, splitPlaceLine, text } from './common.js';
 import { absUrl, clean } from '../util.js';
 
 export const name = 'gyuj';
@@ -9,45 +10,42 @@ export const kind = 'pages';
 export const seeds = [`${host}/en/browse`];
 
 export const SELECTORS = {
-  // CONFIRMED (live /en/browse fetched 2026-09-28): collection links in the accordion,
-  // labelled "Month, Year. Place (count)" or "dd. mm. yyyy. Region".
+  // CONFIRMED: collection links in the accordion, labelled "Month, Year. Place (count)".
   browseTree: '#accordian',
-  collectionLink: 'a.list[href*="/en/browse/"], #accordian a[href*="/en/browse/"]',
   collectionUrl: /\/en\/browse\/(\d+)\/?$/,
-  // Record URL pattern from CONTEXT.md (/en/browse/21/5398). TO CONFIRM on a collection page:
-  // whether records are listed as links, and whether the list is paginated.
+  // CONFIRMED: collection page = #record > p "Number of melodies in the database: N" + table
+  // thead: Text incipit or designation | Locality | County | Date | Informant | Sound
+  // first cell: <a class="link" href="/en/browse/68/1046">Gyantai iskolában</a>. No pagination; "?sort=N" ignored.
+  table: '#record table',
   recordUrl: /\/en\/browse\/(\d+)\/(\d+)\/?$/,
-  pagination: 'a[rel="next"], .pagination a, ul.pager a, a.next',
-  paginationUrl: /[?&](page|p|offset|start)=\d+/,
-  // TO CONFIRM: record page fields (English and Hungarian labels both tried).
-  pageTitle: 'h1, h2, .record-title',
-  notationHint: /kotta|notation|score|melody|dallam|lejegyz|img\//i,
+  columns: { incipit: /incipit/i, locality: /^Locality/i, county: /^County/i, date: /^Date/i, informant: /^Informant/i, sound: /^Sound/i },
+  // CONFIRMED: record page = #record; h3 title; .col-md-7 <p>: unlabelled "Place (County), 1904.11.",
+  // "Informant: Dósa Lidi (18)", "Place of origin: Kibéd (Maros-Torda)", "Collector: Bartók Béla",
+  // "Inventory number: BR_12388", sometimes "Publication: ..."; .col-md-5 <p>: "BR number: C 1231a",
+  // "Number of melodic variants: <a href=sys.zti.hu/br/en/search?sys=C+1231>3</a>", "Cadence: (1) 1";
+  // notation image /media/images/BR/BR_12388_01.jpg; previous/next buttons in .btn-group.
+  record: '#record',
   labels: {
-    place: [/^(place|locality|village|collection place|place of collection)/i, /^(helys[eé]g|gy[uű]jt[eé]s helye|hely)/i],
-    county: [/^county/i, /^(megye|v[aá]rmegye)/i],
-    date: [/^(date|time|year|date of collection)/i, /^(id[oő]|d[aá]tum|[eé]v|gy[uű]jt[eé]s ideje)/i],
-    informant: [/^(informant|performer|singer|sung by|played by)/i, /^(adatk[oö]zl[oő]|el[oő]ad[oó]|[eé]nekes)/i],
-    age: [/age/i, /\bkor/i, /[eé]letkor/i],
-    sex: [/^(sex|gender)/i, /^nem$/i],
-    collector: [/^(collector|collected by)/i, /^gy[uű]jt[oő]/i],
-    ethnicity: [/^(ethnicity|nationality|language)/i, /^(nemzetis[eé]g|nyelv)/i],
-    genre: [/^(genre|type|category|function|kind)/i, /^(m[uű]faj|t[ií]pus|funkci[oó])/i],
-    style: [/^(style|class)/i, /^(st[ií]lus|oszt[aá]ly)/i],
-    performance: [/^(performance|manner|way of performance|instrument)/i, /^(el[oő]ad[aá]sm[oó]d|hangszer)/i],
-    title: [/^(title|incipit|first line)/i, /^(c[ií]m|sz[oö]vegkezdet|kezd[oő]sor)/i],
-    text: [/^(text|lyrics|words)/i, /^sz[oö]veg/i],
-    remarks: [/^(remarks?|notes?|comment)/i, /^megjegyz[eé]s/i],
-    referenceCode: [/^(reference|signature|call number|source|catalogue|inventory|number|no\.?|id)/i, /^(jelzet|lelt[aá]ri sz[aá]m|forr[aá]s|sorsz[aá]m)/i],
-    volume: [/^(published|publication|edition|volume)/i, /^(kiad[aá]s|k[oö]tet|publik[aá]ci[oó])/i],
-    systemPosition: [/^(system|classification|bartok system|position)/i, /^(rendszer|oszt[aá]lyoz[aá]s)/i],
-    cadences: [/^cadenc/i, /^kadencia/i],
-    rhythm: [/^rhythm/i, /^ritmus/i],
-    syllables: [/^syllab/i, /^sz[oó]tag/i],
-    ambitus: [/^(ambitus|range)/i, /^hangterjedelem/i],
-    mode: [/^(mode|scale|tonality)/i, /^hangsor/i],
-    form: [/^(form|structure)/i, /^(forma|szerkezet)/i],
-    phonograph: [/^(phonograph|recording|audio|sound)/i, /^(fonogr[aá]f|hangfelv[eé]tel|henger)/i]
+    informant: [/^informant/i, /^adatk/i],
+    origin: [/^place of origin/i, /^sz[aá]rmaz/i],
+    collector: [/^collector/i, /^gy[uű]jt[oő]/i],
+    inventory: [/^inventory number/i, /^lelt/i],
+    brNumber: [/^br number/i],
+    variants: [/^number of melodic variants/i],
+    cadence: [/^cadence/i, /^kadencia/i],
+    publication: [/^publication/i, /^kiad/i],
+    rhythm: [/^rhythm/i],
+    syllables: [/^(number of )?syllab/i],
+    genre: [/^(genre|type|function|designation)/i],
+    performance: [/^(performance|instrument)/i],
+    ethnicity: [/^(ethnicity|nationality)/i],
+    remarks: [/^(remarks?|notes?|comment)/i]
   }
+};
+
+const byLabel = (pairs, res) => {
+  for (const re of res) for (const [k, v] of Object.entries(pairs)) if (re.test(k.replace(/#\d+$/, ''))) return v;
+  return null;
 };
 
 /** "February, 1910. Upper region of the river Fekete-Koros: district of Belenyes and Vaskoh" -> parts. */
@@ -61,10 +59,8 @@ export function parseCollectionLabel(label) {
     count = +cm[1];
     rest = rest.slice(0, cm.index).trim();
   }
-  // Date part ends at the first ". " after a 4-digit year, or at ", " after "yyyy" in "March 1907, Nyitra county".
   let dateRaw = null;
   let place = rest;
-  // Hungarian year-first form: "1914. április 3–10. Felső-Maros mente", "1915. január–február. Rákoskeresztúr"
   const hu = rest.match(/^(1[89]\d\d\.\s*[a-záéíóöőúüű]+(?:[–-][a-záéíóöőúüű]+)?(?:\s*\d{1,2}(?:[–-]\d{1,2})?)?)\.?\s+(.*)$/i);
   const m = hu || rest.match(/^(.*?\b1[89]\d\d\b[^.,]*)[.,]\s+(.*)$/) || rest.match(/^(.*?\b1[89]\d\d\.)\s*(.*)$/);
   if (m) {
@@ -74,90 +70,130 @@ export function parseCollectionLabel(label) {
   return { dateRaw, place, count, raw: l };
 }
 
+function idFromUrl(url) {
+  const m = String(url).match(SELECTORS.recordUrl);
+  return m ? `${m[1]}-${m[2]}` : null;
+}
+
+function columnKey(cells, re) {
+  for (const [k, v] of Object.entries(cells)) if (re.test(k)) return v;
+  return null;
+}
+
 export function discover($, url) {
-  const records = [];
-  const listings = [];
-  const isBrowseRoot = /\/en\/browse\/?$/.test(url);
-  if (isBrowseRoot) {
+  if (/\/en\/browse\/?$/.test(url)) {
+    const listings = [];
     $(SELECTORS.browseTree).find('a[href]').each((_, a) => {
       const u = absUrl(url, $(a).attr('href'));
       if (u && SELECTORS.collectionUrl.test(u)) listings.push(u);
     });
-  } else {
-    const label = text($('h2').first()) || text($(SELECTORS.browseTree).find('li.active > a, a.active').first());
-    const collection = parseCollectionLabel(label);
-    const collectionId = (url.match(SELECTORS.collectionUrl) || [])[1] || (url.match(/\/en\/browse\/(\d+)/) || [])[1] || null;
-    $('a[href]').each((_, a) => {
-      const u = absUrl(url, $(a).attr('href'));
-      if (!u) return;
-      const m = u.split('?')[0].match(SELECTORS.recordUrl);
-      if (m) records.push({ url: u.split('?')[0].split('#')[0], context: { collectionId: m[1], collectionLabel: label, collectionDate: collection.dateRaw, collectionPlace: collection.place, listLabel: clean($(a).text()) } });
-      else if (SELECTORS.paginationUrl.test(u) && u !== url && (!collectionId || u.includes(`/en/browse/${collectionId}`))) listings.push(u);
-    });
-    // also follow pagination controls without query strings (e.g. /en/browse/56/page/2)
-    $(SELECTORS.pagination).each((_, a) => {
-      const u = absUrl(url, $(a).attr('href'));
-      if (u && u !== url && !SELECTORS.recordUrl.test(u) && !SELECTORS.collectionUrl.test(u)) listings.push(u);
-    });
+    return { records: [], listings: [...new Set(listings)] };
   }
-  const seen = new Set();
-  return { records: records.filter((r) => (seen.has(r.url) ? false : seen.add(r.url))), listings: [...new Set(listings)] };
+  const collectionId = (url.match(SELECTORS.collectionUrl) || [])[1] || null;
+  const label = text($(SELECTORS.browseTree).find('li.active > a, a.active').first()) || text($('h2').first()) || null;
+  const collection = parseCollectionLabel(label);
+  const records = parseZtiTable($, url, SELECTORS.recordUrl).map((row) => ({
+    url: row.url,
+    context: {
+      collectionId,
+      collectionLabel: label,
+      collectionDate: collection.dateRaw,
+      collectionPlace: collection.place,
+      incipit: row.linkText || columnKey(row.cells, SELECTORS.columns.incipit),
+      locality: columnKey(row.cells, SELECTORS.columns.locality),
+      county: columnKey(row.cells, SELECTORS.columns.county),
+      date: columnKey(row.cells, SELECTORS.columns.date),
+      informant: columnKey(row.cells, SELECTORS.columns.informant),
+      sound: columnKey(row.cells, SELECTORS.columns.sound)
+    }
+  }));
+  return { records, listings: [] };
+}
+
+function base(url, context) {
+  const c = context || {};
+  const m = url.match(SELECTORS.recordUrl);
+  return {
+    site: name,
+    siteRecordId: idFromUrl(url),
+    siteId: m ? m[2] : idFromUrl(url),
+    url,
+    title: c.incipit || null,
+    incipit: c.incipit || null,
+    genreRaw: null,
+    style: null,
+    performanceRaw: null,
+    instrumentRaw: null,
+    performerRaw: c.informant || null,
+    ageRaw: null,
+    sexRaw: null,
+    ethnicityRaw: null,
+    collectorRaw: null,
+    dateRaw: c.date || c.collectionDate || null,
+    placeRaw: c.locality ? (c.county ? `${c.locality} (${c.county})` : c.locality) : c.collectionPlace || null,
+    place: null,
+    originRaw: null,
+    referenceCode: null,
+    volume: null,
+    number: m ? m[2] : null,
+    notation: [],
+    audio: [],
+    text: null,
+    remarks: null,
+    systemPosition: null,
+    cadences: null,
+    rhythm: null,
+    mode: null,
+    ambitus: null,
+    syllables: null,
+    form: null,
+    related: [],
+    composition: [],
+    fields: { ...(c.collectionLabel ? { _collection: c.collectionLabel } : {}), ...(c.sound ? { Sound: c.sound } : {}) }
+  };
+}
+
+export function fromContext(url, context) {
+  const r = base(url, context);
+  r.fields._partial = 'listing row only; record page not fetched';
+  return r;
 }
 
 export function parseRecord(html, url, context = {}) {
   const $ = load(html);
-  const m = url.match(SELECTORS.recordUrl);
-  const siteRecordId = m ? `${m[1]}-${m[2]}` : null;
-  const pairs = extractPairs($);
+  const r = base(url, context);
+  const z = parseZtiRecord($, url);
   const L = SELECTORS.labels;
-  const get = (k) => byLabel(pairs, L[k]);
-  const title = get('title') || text($(SELECTORS.pageTitle).first()) || context.listLabel || null;
-  let placeRaw = get('place');
-  const county = get('county');
-  if (placeRaw && county && !/\(/.test(placeRaw)) placeRaw = `${placeRaw} (${county})`;
-  if (!placeRaw && context.collectionPlace) placeRaw = context.collectionPlace;
-  const dateRaw = get('date') || context.collectionDate || null;
-  const textEl = $('.text, .lyrics, pre, blockquote').first();
-  const related = links($, url, SELECTORS.recordUrl).filter((u) => u !== url).map((u) => {
-    const mm = u.match(SELECTORS.recordUrl);
-    return { id: mm ? `gyuj-${mm[1]}-${mm[2]}` : null, url: u, label: null, relation: 'link' };
-  });
-  return {
-    site: name,
-    siteRecordId,
-    siteId: get('referenceCode') || (m ? m[2] : null) || siteRecordId,
-    url,
-    title,
-    incipit: null,
-    genreRaw: get('genre'),
-    style: get('style'),
-    performanceRaw: get('performance'),
-    instrumentRaw: null,
-    performerRaw: get('informant'),
-    ageRaw: get('age'),
-    sexRaw: get('sex'),
-    ethnicityRaw: get('ethnicity'),
-    collectorRaw: get('collector'),
-    dateRaw,
-    placeRaw,
-    referenceCode: get('referenceCode'),
-    volume: get('volume'),
-    number: m ? m[2] : null,
-    notation: findNotation($, url, null, SELECTORS.notationHint),
-    audio: findAudio($, url),
-    text: multilineText($, textEl) || get('text'),
-    remarks: get('remarks'),
-    systemPosition: get('systemPosition'),
-    cadences: get('cadences'),
-    rhythm: get('rhythm'),
-    mode: get('mode'),
-    ambitus: get('ambitus'),
-    syllables: get('syllables'),
-    form: get('form'),
-    related,
-    composition: [],
-    fields: { ...pairs, ...(context.collectionLabel ? { _collection: context.collectionLabel } : {}) }
-  };
+  const get = (k) => byLabel(z.pairs, L[k]);
+  const pl = splitPlaceLine(z.placeLine);
+  if (z.title) {
+    r.title = z.title;
+    r.incipit = r.incipit || z.title;
+  }
+  if (pl.placeRaw) r.placeRaw = pl.placeRaw;
+  if (pl.dateRaw) r.dateRaw = pl.dateRaw;
+  r.originRaw = get('origin');
+  r.performerRaw = get('informant') || r.performerRaw;
+  r.collectorRaw = get('collector');
+  r.siteId = get('inventory') || r.siteId;
+  r.referenceCode = get('brNumber');
+  r.systemPosition = get('brNumber');
+  r.cadences = get('cadence');
+  r.volume = get('publication');
+  r.rhythm = get('rhythm');
+  r.syllables = get('syllables');
+  r.genreRaw = get('genre');
+  r.performanceRaw = get('performance');
+  r.ethnicityRaw = get('ethnicity');
+  r.remarks = get('remarks');
+  r.notation = z.notation;
+  r.audio = z.audio;
+  const variantsLink = z.pairs['Number of melodic variants (link)'];
+  if (variantsLink) r.related.push({ id: null, url: variantsLink, label: `melodic variants (${get('variants') || '?'})`, relation: 'variant' });
+  const $rec = $(SELECTORS.record);
+  for (const u of links($, url, SELECTORS.recordUrl, $rec.length ? $rec : null)) if (u !== url) r.related.push({ id: `gyuj-${idFromUrl(u)}`, url: u, label: null, relation: 'link' });
+  r.fields = { ...r.fields, ...z.pairs };
+  return r;
 }
 
-export default { name, host, kind, seeds, SELECTORS, discover, parseRecord, parseCollectionLabel };
+export default { name, host, kind, seeds, SELECTORS, discover, parseRecord, fromContext, parseCollectionLabel };

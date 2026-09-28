@@ -8,7 +8,6 @@
     "enrich": "node enrich-wikidata.mjs"
   },
   "devDependencies": {
-    "mapshaper": "^0.6.100",
-    "shapefile": "^0.6.6"
+    "mapshaper": "^0.6.100"
   }
 }

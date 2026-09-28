@@ -40,6 +40,7 @@ const ENDPOINT = 'https://query.wikidata.org/sparql';
 const USER_AGENT = 'BartonViewer/0.1 (Bartok field-collection viewer; geo enrichment script; tsaar@maltandbrew.com)';
 const MIN_INTERVAL_MS = 1000;
 const MAX_KM_FROM_GAZETTEER = 40; // beyond this a name match is not trusted
+const AROUND_RADIUS_KM = 20; // stage-2 search radius around the gazetteer coordinate
 
 const args = process.argv.slice(2);
 const opt = (name, dflt) => {
@@ -170,28 +171,7 @@ function sparqlString(s) {
   return '"' + String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
 }
 
-function buildQuery(t) {
-  const country = COUNTRY_QID[t.country] || 'Q218';
-  const parts = [];
-  if (t.name) {
-    parts.push(`{ ?item rdfs:label ${sparqlString(t.name)}@ro . BIND("label-ro" AS ?via) }`);
-    parts.push(`{ ?item skos:altLabel ${sparqlString(t.name)}@ro . BIND("alias-ro" AS ?via) }`);
-  }
-  if (t.nameHistorical) {
-    parts.push(`{ ?item rdfs:label ${sparqlString(t.nameHistorical)}@hu . BIND("label-hu" AS ?via) }`);
-    parts.push(`{ ?item skos:altLabel ${sparqlString(t.nameHistorical)}@hu . BIND("alias-hu" AS ?via) }`);
-  }
-  for (const a of t.aliases || []) {
-    if (!a || a === t.name || a === t.nameHistorical) continue;
-    parts.push(`{ ?item rdfs:label ${sparqlString(a)}@hu . BIND("alias-gazetteer-hu" AS ?via) }`);
-    parts.push(`{ ?item rdfs:label ${sparqlString(a)}@ro . BIND("alias-gazetteer-ro" AS ?via) }`);
-  }
-  return `
-SELECT ?item ?via ?inst ?instLabel ?isSettlement ?coord ?labelRo ?labelHu ?labelEn ?native ?dissolved ?inception ?replacedBy ?replacedByLabel
-       ?pop ?popTime ?county ?countyLabel ?countyLabelRo ?parent ?parentLabel ?officialName ?officialEnd ?aliasRo ?aliasHu ?aliasDe
-WHERE {
-  ${parts.join('\n  UNION\n  ')}
-  ?item wdt:P17 wd:${country} .
+const DETAIL_FIELDS = `
   ?item wdt:P31 ?inst .
   BIND(EXISTS { ?inst wdt:P279* wd:Q486972 } AS ?isSettlement)
   OPTIONAL { ?item wdt:P625 ?coord }
@@ -210,9 +190,83 @@ WHERE {
   OPTIONAL { ?item skos:altLabel ?aliasRo FILTER(LANG(?aliasRo) = "ro") }
   OPTIONAL { ?item skos:altLabel ?aliasHu FILTER(LANG(?aliasHu) = "hu") }
   OPTIONAL { ?item skos:altLabel ?aliasDe FILTER(LANG(?aliasDe) = "de") }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ro,hu" . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ro,hu" . }`;
+const DETAIL_SELECT = `SELECT ?item ?via ?inst ?instLabel ?isSettlement ?coord ?labelRo ?labelHu ?labelEn ?native ?dissolved ?inception ?replacedBy ?replacedByLabel
+       ?pop ?popTime ?county ?countyLabel ?countyLabelRo ?parent ?parentLabel ?officialName ?officialEnd ?aliasRo ?aliasHu ?aliasDe`;
+
+// Stage 1: exact label / alias match in the country.
+function buildQuery(t) {
+  const country = COUNTRY_QID[t.country] || 'Q218';
+  const parts = [];
+  if (t.name) {
+    parts.push(`{ ?item rdfs:label ${sparqlString(t.name)}@ro . BIND("label-ro" AS ?via) }`);
+    parts.push(`{ ?item skos:altLabel ${sparqlString(t.name)}@ro . BIND("alias-ro" AS ?via) }`);
+  }
+  if (t.nameHistorical) {
+    parts.push(`{ ?item rdfs:label ${sparqlString(t.nameHistorical)}@hu . BIND("label-hu" AS ?via) }`);
+    parts.push(`{ ?item skos:altLabel ${sparqlString(t.nameHistorical)}@hu . BIND("alias-hu" AS ?via) }`);
+  }
+  for (const a of t.aliases || []) {
+    if (!a || a === t.name || a === t.nameHistorical) continue;
+    parts.push(`{ ?item rdfs:label ${sparqlString(a)}@hu . BIND("alias-gazetteer-hu" AS ?via) }`);
+    parts.push(`{ ?item rdfs:label ${sparqlString(a)}@ro . BIND("alias-gazetteer-ro" AS ?via) }`);
+  }
+  return `${DETAIL_SELECT}
+WHERE {
+  ${parts.join('\n  UNION\n  ')}
+  ?item wdt:P17 wd:${country} .${DETAIL_FIELDS}
 }
 LIMIT 400`;
+}
+
+// Stage 2a: every settlement within radiusKm of the gazetteer coordinate, names only.
+// Used when stage 1 finds nothing, so that missing diacritics in either dataset
+// ("Cristioru de Jos" vs "Criștioru de Jos") do not lose the match.
+function buildAroundQuery(t, radiusKm) {
+  return `SELECT ?item ?labelRo ?labelHu ?aliasRo ?aliasHu ?inst ?isSettlement ?coord
+WHERE {
+  SERVICE wikibase:around {
+    ?item wdt:P625 ?coord .
+    bd:serviceParam wikibase:center "Point(${t.lng} ${t.lat})"^^geo:wktLiteral .
+    bd:serviceParam wikibase:radius "${radiusKm}" .
+  }
+  ?item wdt:P31 ?inst .
+  BIND(EXISTS { ?inst wdt:P279* wd:Q486972 } AS ?isSettlement)
+  FILTER(?isSettlement)
+  OPTIONAL { ?item rdfs:label ?labelRo FILTER(LANG(?labelRo) = "ro") }
+  OPTIONAL { ?item rdfs:label ?labelHu FILTER(LANG(?labelHu) = "hu") }
+  OPTIONAL { ?item skos:altLabel ?aliasRo FILTER(LANG(?aliasRo) = "ro") }
+  OPTIONAL { ?item skos:altLabel ?aliasHu FILTER(LANG(?aliasHu) = "hu") }
+}
+LIMIT 2000`;
+}
+
+// Stage 2b: full details for the items that matched by folded name.
+function buildDetailQuery(qids, via) {
+  return `${DETAIL_SELECT}
+WHERE {
+  VALUES ?item { ${qids.map((q) => 'wd:' + q).join(' ')} }
+  BIND(${sparqlString(via)} AS ?via)${DETAIL_FIELDS}
+}
+LIMIT 400`;
+}
+
+function foldedNameSet(t) {
+  return new Set([t.name, t.nameHistorical, ...(t.aliases || [])].filter(Boolean).map(fold));
+}
+function aroundMatches(bindings, t) {
+  const want = foldedNameSet(t);
+  const hits = new Map();
+  for (const b of bindings) {
+    const id = qid(b.item.value);
+    for (const k of ['labelRo', 'labelHu', 'aliasRo', 'aliasHu']) {
+      if (b[k] && want.has(fold(b[k].value))) {
+        if (!hits.has(id)) hits.set(id, new Set());
+        hits.get(id).add(`${k}=${b[k].value}`);
+      }
+    }
+  }
+  return hits;
 }
 
 let lastRequestAt = 0;
@@ -445,8 +499,30 @@ async function main() {
     try {
       const { fromCache, data } = await sparql(buildQuery(t));
       if (!fromCache) network++;
-      const cands = groupCandidates(data.data.results.bindings);
-      rec = record(t, pickCandidate(cands, t), cands, fromCache);
+      let cands = groupCandidates(data.data.results.bindings);
+      let stage = 'label';
+      let stage2Note = null;
+      let cached = fromCache;
+      if (!cands.some((c) => c.settlementClasses.size) && t.lat != null && t.lng != null) {
+        const around = await sparql(buildAroundQuery(t, AROUND_RADIUS_KM));
+        if (!around.fromCache) network++;
+        cached = cached && around.fromCache;
+        const hits = aroundMatches(around.data.data.results.bindings, t);
+        if (hits.size) {
+          const detail = await sparql(buildDetailQuery([...hits.keys()].sort(), 'around-folded-name'));
+          if (!detail.fromCache) network++;
+          cached = cached && detail.fromCache;
+          cands = groupCandidates(detail.data.data.results.bindings);
+          stage = 'around';
+          stage2Note = `stage 2: ${around.data.data.results.bindings.length} settlement rows within ${AROUND_RADIUS_KM} km; folded-name hits: ` + [...hits.entries()].map(([q, v]) => `${q} (${[...v].join(', ')})`).join('; ');
+        } else {
+          stage2Note = `stage 2: no settlement within ${AROUND_RADIUS_KM} km whose ro/hu label or alias folds to ${[...foldedNameSet(t)].join(' / ')}`;
+        }
+      }
+      const picked = pickCandidate(cands, t);
+      if (stage2Note) picked.evidence = [stage2Note, ...picked.evidence];
+      rec = record(t, picked, cands, cached);
+      rec.matchStage = stage;
     } catch (err) {
       rec = record(t, { match: null, evidence: ['query failed: ' + err.message] }, [], false);
     }
@@ -470,7 +546,7 @@ async function main() {
         abandoned: 'matched item has a dissolved date (P576) or is an instance of abandoned village / ghost town / destroyed settlement',
         unknown: 'no confident match; evidence lists the candidates and why they were rejected. Never guessed.'
       },
-      matching: 'label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country; candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.',
+      matching: 'Stage 1: label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country. Stage 2 (only when stage 1 finds no settlement): all settlements within 20 km of the gazetteer coordinate whose ro/hu label or alias equals the name after folding diacritics. Candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.',
       idNote: 'Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.',
       counts: statusCounts,
       targets: Object.keys(villages).length,

@@ -1,0 +1,353 @@
+[
+  {
+    "collected": {
+      "day": null,
+      "month": 11,
+      "raw": "1904.11.",
+      "year": 1904
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": null,
+    "genreRaw": null,
+    "id": "bsys-12-1234",
+    "incipit": "Elindultam szép hazámbul",
+    "instrument": [],
+    "location": {
+      "country": null,
+      "county": null,
+      "countyHistorical": "Gömör és Kis-Hont",
+      "lat": null,
+      "lng": null,
+      "origin": {
+        "county": "Mureș",
+        "countyHistorical": "Maros-Torda",
+        "placeId": "ro/transylvania/mures/chibed",
+        "village": "Chibed",
+        "villageHistorical": "Kibéd"
+      },
+      "placeId": "xx/unresolved/gerlicepuszta",
+      "raw": "Gerlicepuszta (Gömör és Kis-Hont) / Kibéd (Maros-Torda)",
+      "region": null,
+      "resolution": "unresolved",
+      "village": null,
+      "villageHistorical": "Gerlicepuszta"
+    },
+    "media": {
+      "audio": [
+        {
+          "caption": null,
+          "type": "audio/mpeg",
+          "url": "https://systems.zti.hu/media/audio/MH_0001a.mp3"
+        }
+      ],
+      "notation": [
+        {
+          "caption": "BR/BR_00001_01.jpg",
+          "type": "image/jpeg",
+          "url": "https://systems.zti.hu/media/images/BR/BR_00001_01.jpg"
+        }
+      ]
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": "5 (b3) 1",
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "A 1a"
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": 18,
+      "ethnicity": null,
+      "name": "Dósa Lidi",
+      "sex": null
+    },
+    "rawFields": {
+      "BR number": "A 1a",
+      "Cadence": "5 (b3) 1",
+      "Collector": "Bartók Béla",
+      "Informant": "Dósa Lidi (18)",
+      "Inventory number": "BR_00001",
+      "Number of melodic variants": "2",
+      "Number of melodic variants (link)": "http://sys.zti.hu/br/en/search?sys=A+1",
+      "Place of origin": "Kibéd (Maros-Torda)",
+      "_category": "number of syllables: 5"
+    },
+    "related": [
+      {
+        "id": null,
+        "label": "melodic variants (2)",
+        "relation": "variant",
+        "url": "http://sys.zti.hu/br/en/search?sys=A+1"
+      },
+      {
+        "id": null,
+        "label": null,
+        "relation": "link",
+        "url": "https://systems.zti.hu/br/en/browse/12/1233"
+      },
+      {
+        "id": null,
+        "label": null,
+        "relation": "link",
+        "url": "https://systems.zti.hu/br/en/browse/12/1235"
+      }
+    ],
+    "remarks": null,
+    "source": {
+      "fetchedAt": null,
+      "number": "BR_00001",
+      "referenceCode": "A 1a",
+      "site": "bsys",
+      "siteId": "A 1a",
+      "siteName": "The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)",
+      "siteRecordId": "12-1234",
+      "url": "https://systems.zti.hu/br/en/browse/12/1234",
+      "volume": null
+    },
+    "style": null,
+    "text": null,
+    "title": "Elindultam szép hazámbul"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 2,
+      "raw": "February 1910",
+      "year": 1910
+    },
+    "collector": "Béla Bartók",
+    "composition": [
+      {
+        "catalogue": "BB 68",
+        "movement": "5. Romanian Polka",
+        "raw": "Romanian Folk Dances (1915; BB 68) | 5. Romanian Polka",
+        "work": "Romanian Folk Dances"
+      }
+    ],
+    "genre": null,
+    "genreRaw": null,
+    "id": "fmbc-BB068-L132-05",
+    "incipit": null,
+    "instrument": [
+      "violin"
+    ],
+    "location": {
+      "country": "RO",
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "lat": 46.6668,
+      "lng": 22.3527,
+      "origin": null,
+      "placeId": "ro/crisana/bihor/beius",
+      "raw": "Belényes/Beiuș (Bihar/Bihor County)",
+      "region": "Crișana",
+      "resolution": "site",
+      "village": "Beiuș",
+      "villageHistorical": "Belényes"
+    },
+    "media": {
+      "audio": [
+        {
+          "caption": "source recording MH_0863b",
+          "type": "audio/mpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/audio/source/132_MH_0863b.mp3"
+        },
+        {
+          "caption": "composition recording: Zoltán Kocsis Bartók New Series, Hungaroton Records, 2008",
+          "type": "audio/mpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/audio/composition/132_Kocsis.mp3"
+        },
+        {
+          "caption": "composition recording: Zoltán Kocsis Bartók New Series, Hungaroton Records, 2008",
+          "type": "audio/mpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/audio/composition/132_Bartok.mp3"
+        }
+      ],
+      "notation": [
+        {
+          "caption": "L 132",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/melody/132.jpg"
+        },
+        {
+          "caption": "facsimile: (A) MS field book: R.I, fol. 43v (1st staff)",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/facsimile/132_BH_101_043v.jpg"
+        },
+        {
+          "caption": "facsimile: (B) MS master sheet, carbon copy of the orig. layer of (D): MMS, MH 863b",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/facsimile/132_MH_0863b.jpg"
+        },
+        {
+          "caption": "facsimile: (C) Bihor, no. 309",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/facsimile/132_Bihor_309.jpg"
+        },
+        {
+          "caption": "facsimile: (D) MS master sheet, with Bartók’s revisions and later revised transcription: R.Instr. II, no. 222c",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/facsimile/132_RoInstr_2_222c.jpg"
+        },
+        {
+          "caption": "facsimile: (E) RFM/I, no. 18d",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/facsimile/132_RFM_1_018d.jpg"
+        },
+        {
+          "caption": "score (composition)",
+          "type": "image/jpeg",
+          "url": "https://bartok-nepzene.zti.hu/media/images/score/132-1_partitura.jpg"
+        }
+      ]
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": null,
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": null
+    },
+    "performance": "instrumental",
+    "performer": {
+      "age": null,
+      "ethnicity": "Romanian",
+      "name": null,
+      "sex": "m"
+    },
+    "rawFields": {
+      "Collecting": "Belényes/Beiuș (Bihar/Bihor County), February 1910, Béla Bartók",
+      "Collecting (map)": "https://bartok-nepzene.zti.hu/en/map/?lat=46.6668&lng=22.3527",
+      "Ethnicity": "Romanian",
+      "Informant": "young man",
+      "Lampert number": "L 132",
+      "Performance": "violin",
+      "Recording": "MH_0863b",
+      "Remarks": "Cf. Bihor, no. 310; RFM/I, no. 18c",
+      "Work": "Romanian Folk Dances (1915; BB 68)"
+    },
+    "related": [],
+    "remarks": "Cf. Bihor, no. 310; RFM/I, no. 18c",
+    "source": {
+      "fetchedAt": null,
+      "number": "MH_0863b",
+      "referenceCode": "L 132",
+      "site": "fmbc",
+      "siteId": "L 132",
+      "siteName": "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI, bartok-nepzene.zti.hu)",
+      "siteRecordId": "BB068-L132-05",
+      "url": "https://bartok-nepzene.zti.hu/en/browse/record/BB068-L132-05/",
+      "volume": null
+    },
+    "style": null,
+    "text": null,
+    "title": "5. Romanian Polka"
+  },
+  {
+    "collected": {
+      "day": null,
+      "month": 11,
+      "raw": "1904.11.",
+      "year": 1904
+    },
+    "collector": "Bartók Béla",
+    "composition": [],
+    "genre": null,
+    "genreRaw": null,
+    "id": "gyuj-1-12994",
+    "incipit": "Száraz ágtól messze virít a rózsa",
+    "instrument": [],
+    "location": {
+      "country": null,
+      "county": null,
+      "countyHistorical": "Gömör és Kis-Hont",
+      "lat": null,
+      "lng": null,
+      "origin": {
+        "county": "Mureș",
+        "countyHistorical": "Maros-Torda",
+        "placeId": "ro/transylvania/mures/chibed",
+        "village": "Chibed",
+        "villageHistorical": "Kibéd"
+      },
+      "placeId": "xx/unresolved/gerlicepuszta",
+      "raw": "Gerlicepuszta (Gömör és Kis-Hont) / Kibéd (Maros-Torda)",
+      "region": null,
+      "resolution": "unresolved",
+      "village": null,
+      "villageHistorical": "Gerlicepuszta"
+    },
+    "media": {
+      "audio": [],
+      "notation": [
+        {
+          "caption": "BR/BR_12388_01.jpg",
+          "type": "image/jpeg",
+          "url": "https://bartok-gyujtesek.zti.hu/media/images/BR/BR_12388_01.jpg"
+        }
+      ]
+    },
+    "music": {
+      "ambitus": null,
+      "cadences": "(1) 1",
+      "form": null,
+      "mode": null,
+      "rhythm": null,
+      "syllables": null,
+      "systemPosition": "C 1231a"
+    },
+    "performance": "unknown",
+    "performer": {
+      "age": 18,
+      "ethnicity": null,
+      "name": "Dósa Lidi",
+      "sex": null
+    },
+    "rawFields": {
+      "BR number": "C 1231a",
+      "Cadence": "(1) 1",
+      "Collector": "Bartók Béla",
+      "Informant": "Dósa Lidi (18)",
+      "Inventory number": "BR_12388",
+      "Number of melodic variants": "3",
+      "Number of melodic variants (link)": "http://sys.zti.hu/br/en/search?sys=C+1231",
+      "Place of origin": "Kibéd (Maros-Torda)",
+      "_collection": "July – November, 1904. Gerlicepuszta / Kibéd (8)"
+    },
+    "related": [
+      {
+        "id": null,
+        "label": "melodic variants (3)",
+        "relation": "variant",
+        "url": "http://sys.zti.hu/br/en/search?sys=C+1231"
+      },
+      {
+        "id": null,
+        "label": null,
+        "relation": "link",
+        "url": "https://bartok-gyujtesek.zti.hu/en/browse/1/12738"
+      }
+    ],
+    "remarks": null,
+    "source": {
+      "fetchedAt": null,
+      "number": "12994",
+      "referenceCode": "C 1231a",
+      "site": "gyuj",
+      "siteId": "BR_12388",
+      "siteName": "Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)",
+      "siteRecordId": "1-12994",
+      "url": "https://bartok-gyujtesek.zti.hu/en/browse/1/12994",
+      "volume": null
+    },
+    "style": null,
+    "text": null,
+    "title": "Száraz ágtól messze virít a rózsa"
+  }
+]

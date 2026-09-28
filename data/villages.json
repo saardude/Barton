@@ -12,16 +12,16 @@
       "abandoned": "matched item has a dissolved date (P576) or is an instance of abandoned village / ghost town / destroyed settlement",
       "unknown": "no confident match; evidence lists the candidates and why they were rejected. Never guessed."
     },
-    "matching": "label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country; candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
+    "matching": "Stage 1: label@ro or alias@ro = modern name, or label@hu / alias@hu = historical name, restricted to P17 = country. Stage 2 (only when stage 1 finds no settlement): all settlements within 20 km of the gazetteer coordinate whose ro/hu label or alias equals the name after folding diacritics. Candidates scored by county (P131* to a county of Romania), distance from the gazetteer coordinate (<= 10 km strong, <= 40 km weak, further rejected), settlement type and which label matched; ties and low scores are unknown.",
     "idNote": "Keys are gazetteer ids: <country>/<region>/<county-slug>/<name-slug>, the same shape as place.schema.json ids. When data/places.json exists its village ids are used directly.",
     "counts": {
-      "existing": 3,
+      "existing": 4,
       "renamed": 0,
       "merged": 0,
       "abandoned": 0,
       "unknown": 0
     },
-    "targets": 3,
+    "targets": 4,
     "networkRequests": 3
   },
   "villages": {
@@ -240,6 +240,71 @@
       "replacedBy": null,
       "status": "existing",
       "wikidataUrl": "https://www.wikidata.org/wiki/Q848684"
+    },
+    "ro/crisana/bihor/cristioru-de-jos": {
+      "admin": {
+        "commune": "Criștioru de Jos",
+        "communeQid": "Q16425633",
+        "county": "Bihor County",
+        "countyQid": "Q179588",
+        "countyRo": "Bihor"
+      },
+      "cached": false,
+      "candidates": [
+        "Q1189419"
+      ],
+      "coord": {
+        "lat": 46.43333333,
+        "lng": 22.53333333
+      },
+      "county": "Bihor",
+      "countyHistorical": "Bihar",
+      "dissolved": null,
+      "distanceFromGazetteerKm": 1.8,
+      "evidence": [
+        "stage 2: 142 settlement rows within 20 km; folded-name hits: Q1189419 (labelRo=Criștioru de Jos)",
+        "Q1189419 score 18: county matches; 1.8 km from gazetteer coordinate; type score 3 (seat of the local council, village)"
+      ],
+      "gazetteerSource": "gazetteer",
+      "id": "ro/crisana/bihor/cristioru-de-jos",
+      "inception": "1588-01-01",
+      "instanceOf": [
+        {
+          "label": "seat of the local council",
+          "qid": "Q34841063"
+        },
+        {
+          "label": "village",
+          "qid": "Q532"
+        }
+      ],
+      "matchStage": "around",
+      "matchedVia": [
+        "around-folded-name"
+      ],
+      "name": "Cristioru de Jos",
+      "nameHistorical": "Alsókristyor",
+      "names": {
+        "aliasesDe": [],
+        "aliasesHu": [],
+        "aliasesRo": [],
+        "en": "Criștioru de Jos",
+        "historical": [],
+        "hu": "Alsóbiharkristyór",
+        "native": [
+          "Alsóbiharkristyór",
+          "Criștioru de Jos"
+        ],
+        "ro": "Criștioru de Jos"
+      },
+      "population": {
+        "asOf": "2021-12-01",
+        "value": 335
+      },
+      "qid": "Q1189419",
+      "replacedBy": null,
+      "status": "existing",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q1189419"
     }
   }
 }

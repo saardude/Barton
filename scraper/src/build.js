@@ -78,7 +78,8 @@ export function buildPlaces(songs, gazetteer) {
   };
   for (const s of songs) {
     const loc = s.location;
-    if (!loc.village) continue;
+    const villageName = loc.village || loc.villageHistorical;
+    if (!villageName) continue;
     const countryCode = loc.country ? loc.country.toLowerCase() : 'xx';
     const chain = [];
     const countryNode = node(countryCode, { type: 'country', name: loc.country || 'unknown', country: loc.country });
@@ -98,7 +99,7 @@ export function buildPlaces(songs, gazetteer) {
       chain.push(villageNode);
     } else {
       const unresolved = node(`${countryCode}/unresolved`, { type: 'region', name: 'unresolved', parent: countryNode.id, country: loc.country });
-      const villageNode = node(`${unresolved.id}/${slug(loc.village)}`, { type: 'village', name: loc.village, nameHistorical: loc.villageHistorical, parent: unresolved.id, country: loc.country, countyHistorical: loc.countyHistorical, lat: loc.lat, lng: loc.lng });
+      const villageNode = node(`${unresolved.id}/${slug(villageName)}`, { type: 'village', name: villageName, nameHistorical: loc.villageHistorical, parent: unresolved.id, country: loc.country, countyHistorical: loc.countyHistorical, lat: loc.lat, lng: loc.lng, coordSource: loc.lat !== null ? 'site' : null });
       chain.push(unresolved, villageNode);
     }
     for (const n of chain) count(n, s);
@@ -106,7 +107,8 @@ export function buildPlaces(songs, gazetteer) {
   }
   // centroid coordinates for aggregates that have none
   const list = [...nodes.values()];
-  for (const n of list) {
+  // bottom-up: deeper nodes first so a parent's centroid sees its children's coordinates
+  for (const n of [...list].sort((a, b) => b.id.split('/').length - a.id.split('/').length)) {
     if (n.lat !== null || n.type === 'village') continue;
     const kids = list.filter((k) => k.parent === n.id && k.lat !== null);
     if (kids.length) {

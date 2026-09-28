@@ -82,11 +82,15 @@ test('locality splitting: A / B, parentheses, comma county', () => {
 });
 
 test('performer name / age / sex', () => {
-  assert.deepEqual(parsePerformer('Floare Muntean (18)'), { name: 'Floare Muntean', age: 18 });
-  assert.deepEqual(parsePerformer('Dósa Lidi, 16 é.'), { name: 'Dósa Lidi', age: 16 });
-  assert.deepEqual(parsePerformer('Ioan Pop, 45 years'), { name: 'Ioan Pop', age: 45 });
-  assert.deepEqual(parsePerformer('Ana Coroiu'), { name: 'Ana Coroiu', age: null });
-  assert.deepEqual(parsePerformer(null), { name: null, age: null });
+  assert.deepEqual(parsePerformer('Floare Muntean (18)'), { name: 'Floare Muntean', age: 18, sex: null });
+  assert.deepEqual(parsePerformer('Dósa Lidi, 16 é.'), { name: 'Dósa Lidi', age: 16, sex: null });
+  assert.deepEqual(parsePerformer('Ioan Pop, 45 years'), { name: 'Ioan Pop', age: 45, sex: null });
+  assert.deepEqual(parsePerformer('Ana Coroiu'), { name: 'Ana Coroiu', age: null, sex: null });
+  assert.deepEqual(parsePerformer('Nicolaie Bortiș (ca 55)'), { name: 'Nicolaie Bortiș', age: 55, sex: null });
+  assert.deepEqual(parsePerformer('Miklós Pap (elderly man)'), { name: 'Miklós Pap', age: null, sex: 'm' });
+  assert.deepEqual(parsePerformer('young man'), { name: null, age: null, sex: 'm' });
+  assert.deepEqual(parsePerformer('girls'), { name: null, age: null, sex: 'f' });
+  assert.deepEqual(parsePerformer(null), { name: null, age: null, sex: null });
   assert.equal(mapSex('female'), 'f');
   assert.equal(mapSex('nő'), 'f');
   assert.equal(mapSex('férfi'), 'm');
@@ -133,7 +137,7 @@ test('normalizeRecord leaves unresolved places unresolved (never invents)', asyn
   assert.equal(rec.location.country, null);
   assert.equal(rec.location.lat, null);
   assert.equal(rec.location.resolution, 'unresolved');
-  assert.equal(rec.location.placeId, null);
+  assert.equal(rec.location.placeId, 'xx/unresolved/tura');
   assert.equal(rec.performance, 'unknown');
   assert.equal(rec.genre, null);
 });

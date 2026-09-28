@@ -48,6 +48,7 @@ export function mapPerformance(label, instruments = []) {
 const INSTRUMENTS = [
   ['violin', ['violin', 'vioara', 'hegedu', 'fiddle', 'violino', 'viola']],
   ['fluier', ['fluier', 'fluer', 'furulya', 'flute', 'fluieras', 'shepherd flute']],
+  ['fujara', ['fujara', 'fujera']],
   ['tilinca', ['tilinca', 'tilinka']],
   ['caval', ['caval', 'kaval']],
   ['bagpipe', ['bagpipe', 'bagpipes', 'cimpoi', 'duda', 'gajdy']],
@@ -193,28 +194,48 @@ export function parseLocality(raw) {
   return { main, origin, raw: r };
 }
 
-/** "Pop Ioan (45)" / "Ioan Pop, 45 years" / "Maria Bud, 19 é." -> {name, age}. */
+const DESCRIPTOR_RE = /^(?:(?:elderly|old|older|young|adult|little|small)\s+)?(woman|women|man|men|girl|girls|boy|boys|male|female|lad|lads|lass|child|children|persons|people|soldier|soldiers|shepherd|shepherds|gypsy|gypsies|peasant|peasants|nő|nők|férfi|férfiak|asszony|leány|lány|lányok|legény|legények|fiú|gyerek|gyermek|femeie|bărbat|fată|băiat)(?:\s+(?:and|és|și)\s+.*)?$/i;
+
+/**
+ * "Pop Ioan (45)" / "Ioan Pop, 45 years" / "Dósa Lidi, 16 é." / "Nicolaie Bortiș (ca 55)" /
+ * "Miklós Pap (elderly man)" / "woman" -> {name, age, sex}. Generic descriptors ("young man",
+ * "girls", "old woman") are not names: name stays null and only sex is derived.
+ */
 export function parsePerformer(raw) {
   const r = clean(raw);
-  if (!r) return { name: null, age: null };
+  if (!r) return { name: null, age: null, sex: null };
   let age = null;
+  let sex = null;
   let name = r;
-  const m = r.match(/\(?\b(\d{1,3})\s*(é\.?|éves|years?|yrs?|ani|de ani|j\.)?\)?\s*$/i) || r.match(/\((\d{1,3})\)/);
-  if (m) {
-    age = +m[1];
-    name = r.replace(m[0], '').replace(/[,(]\s*$/, '').trim();
+  const paren = r.match(/\(([^)]*)\)\s*$/);
+  if (paren) {
+    const inner = paren[1];
+    const am = inner.match(/(?:ca\.?|c\.|about|approx\.?|kb\.?)?\s*(\d{1,3})\s*(é\.?|éves|years?|yrs?|ani|de ani|j\.)?/i);
+    if (am) age = +am[1];
+    else sex = mapSex(inner);
+    name = r.slice(0, paren.index).trim();
+  } else {
+    const m = r.match(/[,\s]\s*(?:ca\.?\s*)?(\d{1,3})\s*(é\.?|éves|years?|yrs?|ani|de ani|j\.)?\s*$/i);
+    if (m) {
+      age = +m[1];
+      name = r.slice(0, m.index).trim();
+    }
   }
   name = name.replace(/[,;:]\s*$/, '').trim() || null;
   if (age !== null && (age < 3 || age > 110)) age = null;
-  return { name, age };
+  if (name && DESCRIPTOR_RE.test(name)) {
+    sex = sex || mapSex(name);
+    name = null;
+  }
+  return { name, age, sex };
 }
 
 /** m | f | null from a sex label in en/hu/ro. */
 export function mapSex(raw) {
   const f = fold(raw);
   if (!f) return null;
-  if (/\b(f|female|woman|women|girl|no|noi|asszony|leany|lany|femeie|fata|w)\b/.test(f)) return 'f';
-  if (/\b(m|male|man|men|boy|ferfi|barbat|baiat|legeny)\b/.test(f)) return 'm';
+  if (/\b(f|female|woman|women|girl|girls|lass|no|nok|asszony|leany|lany|lanyok|femeie|fata|w)\b/.test(f)) return 'f';
+  if (/\b(m|male|man|men|boy|boys|lad|lads|ferfi|ferfiak|barbat|baiat|legeny|legenyek|fiu|soldier|soldiers|shepherd|shepherds)\b/.test(f)) return 'm';
   return null;
 }
 
@@ -246,12 +267,58 @@ export function resolvePlace(half, gazetteer) {
   return out;
 }
 
+export const COUNTRY_CODES = { romania: 'RO', hungary: 'HU', slovakia: 'SK', serbia: 'RS', ukraine: 'UA', austria: 'AT', croatia: 'HR', slovenia: 'SI', bulgaria: 'BG', 'czech republic': 'CZ', czechia: 'CZ', poland: 'PL', moldova: 'MD', turkey: 'TR', algeria: 'DZ', 'bosnia and herzegovina': 'BA' };
+
+export function countryCode(name) {
+  const f = fold(name);
+  if (!f) return null;
+  if (/^[a-z]{2}$/.test(f)) return f.toUpperCase();
+  return COUNTRY_CODES[f] || null;
+}
+
+/**
+ * Site-provided structured place (fmbc prints "Hist/Modern (HistCounty/ModernCounty)" or
+ * "Hist (HistCounty; now: Modern, Country)" and a map link with coordinates). Gazetteer fills gaps.
+ */
+export function resolveStructuredPlace(place, gazetteer) {
+  const out = { village: null, villageHistorical: null, county: null, countyHistorical: null, region: null, country: null, lat: null, lng: null, placeId: null, resolution: 'unresolved', confidence: null };
+  if (!place) return out;
+  out.villageHistorical = clean(place.villageHistorical) || clean(place.village) || null;
+  out.countyHistorical = clean(place.countyHistorical) || null;
+  out.country = countryCode(place.country);
+  const hist = { name: out.villageHistorical, county: out.countyHistorical };
+  const g = gazetteer ? resolvePlace(hist, gazetteer) : null;
+  // Prefer what the site states; fall back to the gazetteer.
+  out.village = clean(place.village) || (g && g.village) || null;
+  out.county = clean(place.county) || (g && g.county) || null;
+  if (!out.country && g && g.country) out.country = g.country;
+  if (!out.country && out.county && gazetteer) out.country = gazetteer.countryOf(out.county);
+  if (!out.county && out.countyHistorical && gazetteer) {
+    const c = gazetteer.county(out.countyHistorical);
+    if (c && (!out.country || c.country === out.country)) out.county = c.name;
+  }
+  out.region = (gazetteer && out.county && gazetteer.regionOf(out.county)) || (g && g.region) || null;
+  if (typeof place.lat === 'number' && typeof place.lng === 'number') {
+    out.lat = place.lat;
+    out.lng = place.lng;
+    out.resolution = 'site';
+  } else if (g && g.lat !== null) {
+    out.lat = g.lat;
+    out.lng = g.lng;
+    out.resolution = 'gazetteer';
+    out.confidence = g.confidence;
+  } else if (out.village) out.resolution = 'site';
+  if (out.resolution === 'site') out.confidence = 'high';
+  return out;
+}
+
 function placeIdFor(loc) {
   const slug = (s) => fold(s).replace(/\s+/g, '-');
-  if (!loc.village) return null;
+  const name = loc.village || loc.villageHistorical;
+  if (!name) return null;
   const country = loc.country ? loc.country.toLowerCase() : 'xx';
-  if (loc.county && loc.region) return `${country}/${slug(loc.region)}/${slug(loc.county)}/${slug(loc.village)}`;
-  return `${country}/unresolved/${slug(loc.village)}`;
+  if (loc.village && loc.county && loc.region) return `${country}/${slug(loc.region)}/${slug(loc.county)}/${slug(loc.village)}`;
+  return `${country}/unresolved/${slug(name)}`;
 }
 
 /**
@@ -268,9 +335,12 @@ export function normalizeRecord(raw, gazetteer) {
   const id = `${site}-${idBody}`;
   const performer = parsePerformer(raw.performerRaw);
   const age = raw.ageRaw !== undefined && raw.ageRaw !== null ? toInt(raw.ageRaw) : performer.age;
+  const sex = mapSex(raw.sexRaw) || performer.sex;
   const instruments = uniq([...(raw.instrumentRaw ? extractInstruments(raw.instrumentRaw) : []), ...extractInstruments(raw.performanceRaw)]);
-  const loc = parseLocality(raw.placeRaw);
-  const main = resolvePlace(loc.main, gazetteer);
+  let placeRaw = raw.placeRaw;
+  if (raw.originRaw && placeRaw && !/\s\/\s/.test(placeRaw)) placeRaw = `${placeRaw} / ${raw.originRaw}`;
+  const loc = raw.place ? { main: { name: raw.place.villageHistorical || raw.place.village || null, county: raw.place.countyHistorical || null, raw: raw.placeRaw }, origin: null, raw: clean(raw.placeRaw) } : parseLocality(placeRaw);
+  const main = raw.place ? resolveStructuredPlace(raw.place, gazetteer) : resolvePlace(loc.main, gazetteer);
   const origin = loc.origin ? resolvePlace(loc.origin, gazetteer) : null;
   const location = {
     country: main.country,
@@ -311,7 +381,7 @@ export function normalizeRecord(raw, gazetteer) {
     performer: {
       name: performer.name,
       age: age !== null && age >= 0 && age <= 120 ? age : null,
-      sex: mapSex(raw.sexRaw),
+      sex,
       ethnicity: clean(raw.ethnicityRaw)
     },
     collector: clean(raw.collectorRaw),

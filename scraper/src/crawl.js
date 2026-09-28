@@ -80,6 +80,19 @@ export async function parseSite(site, { log = () => {} } = {}) {
       const res = await fetcher.fetchText(url);
       if (!res.ok) {
         missing += 1;
+        // Listing-only record while the page is not cached yet (bsys/gyuj tables carry most fields).
+        if (typeof site.fromContext === 'function' && context) {
+          try {
+            const rec = site.fromContext(url, context);
+            if (rec) {
+              rec.fetchedAt = null;
+              out.push(rec);
+            }
+          } catch (e) {
+            errors += 1;
+            log(`fromContext threw on ${url}: ${e.message}`);
+          }
+        }
         continue;
       }
       try {
