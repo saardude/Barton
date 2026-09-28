@@ -35,10 +35,12 @@
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["site", "url", "referenceCode", "volume", "number"],
+      "required": ["site", "siteName", "siteId", "url", "referenceCode", "volume", "number"],
       "properties": {
         "site": { "type": "string", "enum": ["fmbc", "bsys", "gyuj"] },
-        "url": { "type": "string", "format": "uri", "description": "Canonical record page URL on the source site." },
+        "siteName": { "type": "string", "description": "Human-readable name of the source database, for attribution (e.g. 'Folk Music in Bartok's Compositions (HUN-REN BTK ZTI)')." },
+        "siteId": { "type": "string", "minLength": 1, "description": "The site's own record identifier as displayed (reference code, system position or URL id). Required: academic integrity." },
+        "url": { "type": "string", "format": "uri", "pattern": "^https?://", "description": "Canonical record page URL on the source site, exactly as fetched. Never synthesised." },
         "referenceCode": { "type": ["string", "null"], "description": "The site's own reference code, e.g. an RFM or Bartok System number, verbatim." },
         "volume": { "type": ["string", "null"], "description": "Published volume the melody appears in (e.g. RFM I, Bihor 1913), verbatim." },
         "number": { "type": ["string", "null"], "description": "Number within the volume or the site's numeric record id, verbatim." },

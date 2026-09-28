@@ -4,6 +4,12 @@ import { stripQualifiers } from './gazetteer.js';
 
 export const GENRES = ['colinda', 'doina', 'bocet', 'cantec', 'joc', 'nunta', 'other'];
 
+export const SITE_NAMES = {
+  fmbc: "Folk Music in Bartok's Compositions (HUN-REN BTK ZTI, bartok-nepzene.zti.hu)",
+  bsys: 'The Bartok System (HUN-REN BTK ZTI, systems.zti.hu/br)',
+  gyuj: 'Bela Bartok, the Ethnomusicologist (HUN-REN BTK ZTI, bartok-gyujtesek.zti.hu)'
+};
+
 // Order matters: the first matching rule wins. Patterns are tested on the folded label.
 const GENRE_RULES = [
   ['nunta', /\b(nunta|nunti|nuntii|wedding|lakodalm|bridal|mireas|menyasszony|hora miresii|cantec de nunta)\b/],
@@ -285,6 +291,8 @@ export function normalizeRecord(raw, gazetteer) {
     id,
     source: {
       site,
+      siteName: SITE_NAMES[site] || site,
+      siteId: clean(raw.siteId) || clean(raw.referenceCode) || clean(raw.siteRecordId) || idBody,
       url: raw.url,
       referenceCode: clean(raw.referenceCode),
       volume: clean(raw.volume),

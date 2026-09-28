@@ -25,8 +25,9 @@ function parseArgs(argv) {
 function usage() {
   console.log(`Usage:
   node src/cli.js probe <url> [--force]           fetch one page into the cache and print a DOM outline
-  node src/cli.js crawl <site|all> [--max N] [--offline] [--force-listings]
+  node src/cli.js crawl <site|all> [--max N] [--offline] [--force-listings] [--ignore-robots]
                                                   discover and fetch record pages (site: ${SITES.join('|')})
+                                                  --ignore-robots: do not enforce robots.txt (needed for systems.zti.hu)
   node src/cli.js parse <site|all>                parse cached pages into raw/<site>/records.json
   node src/cli.js build                           normalise, merge, write data/songs.json, places.json, facets.json
   node src/cli.js validate [songs.json]           validate data files against data/schema/*.schema.json
@@ -69,7 +70,9 @@ async function cmdCrawl(args) {
   const which = args._[1] === 'all' || !args._[1] ? SITES : [args._[1]];
   const { crawlSite } = await import('./crawl.js');
   const log = makeLogger();
-  const fetcher = new Fetcher({ log, offline: !!args.flags.offline });
+  const ignoreRobots = !!args.flags['ignore-robots'];
+  if (ignoreRobots) log('WARNING: --ignore-robots set: robots.txt rules are NOT enforced (owner decision, see docs/SCRAPER.md). Rate limit stays at 1 req/s.');
+  const fetcher = new Fetcher({ log, offline: !!args.flags.offline, respectRobots: !ignoreRobots });
   for (const name of which) {
     const site = await loadSite(name);
     const summary = await crawlSite(site, fetcher, { max: args.flags.max ? parseInt(args.flags.max, 10) : Infinity, forceListings: !!args.flags['force-listings'], log });

@@ -61,7 +61,7 @@ export async function crawlSite(site, fetcher, { max = Infinity, forceListings =
       const res = await fetcher.fetchText(todo[i].url);
       if (res.ok) fetched += 1;
       else failed += 1;
-      if ((i + 1) % 25 === 0 || i === todo.length - 1) log(`records ${i + 1}/${todo.length} (ok ${fetched}, failed ${failed}, cache hits ${fetcher.stats.cached})`);
+      if ((i + 1) % 100 === 0 || i === todo.length - 1) log(`records ${i + 1}/${todo.length} (ok ${fetched}, failed ${failed}, cache hits ${fetcher.stats.cached})`);
     }
   }
   return { listings: listings.size, failedListings, records: urls.length, fetched, failed };

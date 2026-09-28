@@ -167,6 +167,7 @@ export class Fetcher {
         const out = { ok: r.ok, status: r.status, html, url, finalUrl: r.url || url, fetchedAt: new Date().toISOString(), contentType, fromCache: false };
         if (r.status === 429 || (r.status >= 500 && r.status < 600)) {
           lastErr = new Error(`HTTP ${r.status}`);
+          lastErr.status = r.status;
         } else {
           return out;
         }
@@ -176,7 +177,9 @@ export class Fetcher {
       }
       attempt += 1;
       if (attempt > this.retries) break;
-      const backoff = Math.min(60000, 1000 * 2 ** attempt) + Math.floor(Math.random() * 500);
+      // 429 / 503 mean "slow down": back off a full 60 s. Other failures: exponential, capped at 60 s.
+      const overloaded = lastErr && (lastErr.status === 429 || lastErr.status === 503);
+      const backoff = overloaded ? 60000 : Math.min(60000, 1000 * 2 ** attempt) + Math.floor(Math.random() * 500);
       this.log(`retry ${attempt}/${this.retries} for ${url} after ${backoff}ms (${lastErr && lastErr.message})`);
       await sleep(backoff);
     }
