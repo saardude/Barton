@@ -6,7 +6,7 @@
 // (rumanianfolkmusi0001bela, rumanianfolkmusi0002bela) are lending-library
 // items and are deliberately absent: they are "not available as open text".
 //
-// Usage: node print/fetch.mjs [--force]
+// Usage: node print/fetch.mjs [--force] [--pdf]   (--pdf also downloads the item PDF, ~30 MB / 13 MB, for print/reocr.py)
 // Behind an HTTPS_PROXY (e.g. this cloud container) run it as
 //   NODE_USE_ENV_PROXY=1 node print/fetch.mjs
 // because Node's built-in fetch ignores the proxy variables by default.
@@ -57,11 +57,12 @@ async function checkOpen(item) {
 
 async function main() {
   const force = process.argv.includes('--force');
+  const wantPdf = process.argv.includes('--pdf');
   await fs.mkdir(RAW_DIR, { recursive: true });
   for (const item of ITEMS) {
     const { names, metadata } = await checkOpen(item);
     await fs.writeFile(path.join(RAW_DIR, `${item.id}_meta.json`), JSON.stringify(metadata, null, 2) + '\n');
-    for (const suffix of SUFFIXES) {
+    for (const suffix of wantPdf ? [...SUFFIXES, '.pdf'] : SUFFIXES) {
       const name = `${item.id}${suffix}`;
       const dest = path.join(RAW_DIR, name);
       if (!names.has(name)) { console.log(`skip ${name}: not in item`); continue; }

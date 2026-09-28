@@ -18,6 +18,7 @@ import * as v4 from './lib/rfm4.mjs';
 import * as v5 from './lib/rfm5.mjs';
 import { buildRecord, resolveLocation } from './lib/record.mjs';
 import { ITEMS, RAW_DIR } from './fetch.mjs';
+import { loadReocr, mergeReocr } from './lib/reocr.mjs';
 import { Gazetteer } from '../scraper/src/gazetteer.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -229,11 +230,13 @@ async function parseVolume4(loaded, gaz, stats) {
   if (range.music === null || range.notes === null) throw new Error(`vol 4: ranges not found (${JSON.stringify(range)})`);
   const musicPages = pages.slice(range.music, range.notes);
   const notesPages = pages.slice(range.notes, range.partTwo || range.notes + 12);
+  const reocr = await loadReocr(path.join(RAW_DIR, 'reocr', item.id), musicPages.map((p) => p.index));
+  const reocrAdded = mergeReocr(musicPages, reocr, v4, 380);
   const entries = v4.extractEntries(musicPages);
   keepMonotonicTokens(entries);
   const partTwoStart = text.indexOf('Texts and Translations');
   const labels = v4.extractLabels({ text: text.slice(partTwoStart > 0 ? partTwoStart : 0), entries, notesPages });
-  stats.vol4 = { labels: labels.length, labelsWithVillage: labels.filter((l) => l.village).length, entries: entries.length, musicPages: [range.music, range.notes - 1], missingLabels: [] };
+  stats.vol4 = { labels: labels.length, labelsWithVillage: labels.filter((l) => l.village).length, entries: entries.length, musicPages: [range.music, range.notes - 1], missingLabels: [], reocr: reocrAdded, reocrEngine: reocr.size ? [...reocr.values()][0].engine : null };
   const assigned = assignLabels(labels, entries, stats.vol4, { phantoms: 2 });
   fillUnaligned(assigned);
   const records = [];
@@ -268,7 +271,8 @@ async function parseVolume4(loaded, gaz, stats) {
         incipitOcr: e.incipitRaw,
         printedPage: page.printedPage || e.printedPageOcr || null,
         leaf: String(page.leafNum),
-        ocrConfidence: summariseConfidence(e, e.rescued ? 'county not readable on this line; village recognised from other data lines of the volume' : null),
+        ocrEngine: e.ocrSource === 're-ocr' ? e.ocrEngine : 'Internet Archive OCR (djvu.xml)',
+        ocrConfidence: `${e.ocrSource === 're-ocr' ? 're-ocr; data line missing from the Archive OCR, recovered by local OCR of the page; ' : ''}${summariseConfidence(e, e.rescued ? 'county not readable on this line; village recognised from other data lines of the volume' : null)}`,
         _provisional: e.provisional ? 'melody number could not be aligned; provisional id' : null
       }
     });
@@ -284,10 +288,12 @@ async function parseVolume5(loaded, gaz, stats) {
   const musicPages = pages.slice(r.music, r.notes);
   const notesPages = pages.slice(r.notes, r.texts);
   const textPages = pages.slice(r.texts, r.end || pages.length);
+  const reocr = await loadReocr(path.join(RAW_DIR, 'reocr', item.id), musicPages.map((p) => p.index));
+  const reocrAdded = mergeReocr(musicPages, reocr, v5, 400);
   const entries = v5.extractEntries(musicPages);
   keepMonotonicTokens(entries);
   const labels = v5.extractLabels({ entries, notesPages, textPages });
-  stats.vol5 = { labels: labels.length, labelsWithVillage: labels.filter((l) => l.village).length, entries: entries.length, musicPages: [r.music, r.notes - 1], missingLabels: [] };
+  stats.vol5 = { labels: labels.length, labelsWithVillage: labels.filter((l) => l.village).length, entries: entries.length, musicPages: [r.music, r.notes - 1], missingLabels: [], reocr: reocrAdded, reocrEngine: reocr.size ? [...reocr.values()][0].engine : null };
   const assigned = assignLabels(labels, entries, stats.vol5, { phantoms: 4, villageMatch: 1.5, villageMismatch: -1 });
   fillUnaligned(assigned);
   const records = [];
@@ -322,7 +328,8 @@ async function parseVolume5(loaded, gaz, stats) {
         incipitOcr: e.incipitRaw,
         printedPage: page.printedPage || e.printedPageOcr || null,
         leaf: String(page.leafNum),
-        ocrConfidence: summariseConfidence(e, `date taken from the volume introduction (March 15-27, 1913), not from the melody${e.villageInferred ? `; village ${e.villageInferred}` : ''}`),
+        ocrEngine: e.ocrSource === 're-ocr' ? e.ocrEngine : 'Internet Archive OCR (djvu.xml)',
+        ocrConfidence: `${e.ocrSource === 're-ocr' ? 're-ocr; data line missing from the Archive OCR, recovered by local OCR of the page; ' : ''}${summariseConfidence(e, `date taken from the volume introduction (March 15-27, 1913), not from the melody${e.villageInferred ? `; village ${e.villageInferred}` : ''}`)}`,
         _provisional: e.provisional ? 'melody number could not be aligned; provisional id' : null
       }
     });
@@ -385,11 +392,14 @@ async function main() {
     notAvailable: 'Volumes I (Instrumental Melodies, rumanianfolkmusi0001bela) and II (Vocal Melodies, rumanianfolkmusi0002bela) are access-restricted lending items on the Internet Archive and are not available as open text; nothing was downloaded from them. Volume III (Texts) has no Internet Archive item at all.',
     copyright: 'The volumes are in copyright (Bartók estate / the editor; Martinus Nijhoff 1975). Only catalogue facts are indexed here (melody number, village, county, performer, date, class, phonograph number and the first line of the text as an identifier); each record links to the exact scanned page. No notation and no song text is reproduced.',
     ocrCaveat: OCR_CAVEAT,
+    reocrNote: 'Data lines the Archive OCR dropped were recovered by re-OCRing the Music Examples pages locally (print/reocr.py: pypdfium2 render of the item PDF at 200 dpi, RapidOCR/ONNX runtime) and merging only the lines the Archive lacks at that position (print/lib/reocr.mjs); such records carry rawFields.ocrEngine and an ocrConfidence starting with "re-ocr".',
     counts: {
       total: all.length,
       vol4: { printed: v4.VOLUME.printedTotal, printedNote: v4.VOLUME.printedTotalNote, labelsFound: stats.vol4.labels, dataLinesFound: stats.vol4.entries, parsed: perVolume[4].records.length, labelsWithoutDataLine: stats.vol4.missing, dataLinesWithoutLabel: stats.vol4.unaligned },
       vol5: { printed: v5.VOLUME.printedTotal, printedNote: v5.VOLUME.printedTotalNote, labelsFound: stats.vol5.labels, dataLinesFound: stats.vol5.entries, parsed: perVolume[5].records.length, labelsWithoutDataLine: stats.vol5.missing, dataLinesWithoutLabel: stats.vol5.unaligned },
       numberConfidence: countBy(all, (r) => (r.rawFields.ocrConfidence.match(/\((high|medium|low|none)\)/) || [])[1] || 'unknown'),
+      ocrSource: countBy(all, (r) => (r.rawFields.ocrConfidence.startsWith('re-ocr') ? 're-ocr (local RapidOCR of the PDF page)' : 'archive-djvu')),
+      reocr: { vol4: stats.vol4.reocr, vol5: stats.vol5.reocr, engine: stats.vol4.reocrEngine || stats.vol5.reocrEngine || null },
       locationResolution: countBy(all, (r) => r.location.resolution),
       unresolvedCounty: unresolved.length,
       gazetteerSupplementPlaces: extraCount

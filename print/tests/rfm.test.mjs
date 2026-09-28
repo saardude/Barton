@@ -265,3 +265,22 @@ test('djvu.xml reader: real two-page excerpts of both volumes give the printed d
   assert.equal(e5[0].referenceCode, 'F. 2123 d)');
   assert.equal(fold(e5[0].incipit).length > 10, true);
 });
+
+test('re-OCR merge: adds the data line and number tokens the Archive OCR dropped, never duplicates', async () => {
+  const { mergeReocr } = await import('../lib/reocr.mjs');
+  const p4 = await readDjvuXml(path.join(FIX, 'rfm4-pages-94-95.djvu.xml'));
+  const before = v4.extractEntries(p4).map((e) => e.village);
+  assert.deepEqual(before.slice(0, 3), ['Dumbravita de codru', 'Petrosan', 'Cherpenis'], 'the Soimi line is missing from the Archive OCR');
+  const doc = JSON.parse(await fs.readFile(path.join(FIX, 'rfm4-page-94.reocr.json'), 'utf8'));
+  const added = mergeReocr(p4, new Map([[0, doc]]), v4, 380);
+  assert.equal(added.data, 1, 'exactly one data line added');
+  assert.ok(added.token >= 2, 'the bold numbers 1b. and 3a. are added as tokens');
+  const after = v4.extractEntries(p4);
+  assert.deepEqual(after.slice(0, 4).map((e) => e.village), ['Soimi', 'Dumbravita de codru', 'Petrosan', 'Cherpenis']);
+  assert.equal(after[0].ocrSource, 're-ocr');
+  assert.equal(after[1].ocrSource, 'archive-djvu');
+  assert.deepEqual(after.slice(0, 4).map((e) => (e.numberToken ? e.numberToken.label : null)), ['1a', '1b', null, '3a'], 'neither OCR reads the bold "2.*" on this page');
+  // merging the same page twice adds nothing
+  const again = mergeReocr(p4, new Map([[0, doc]]), v4, 380);
+  assert.deepEqual([again.data, again.token], [0, 0]);
+});

@@ -269,6 +269,8 @@ export function extractEntries(pages) {
             classHeading,
             numberToken: token,
             numberTokenRejected: tokenRejected,
+            ocrSource: line.source || 'archive-djvu',
+            ocrEngine: line.engine || null,
             incipitRaw: pending.incipit,
             incipit: pending.incipit ? cleanIncipit(pending.incipit) : null,
             textNumber: pending.incipit ? textNumberOf(pending.incipit) : null
