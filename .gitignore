@@ -42,3 +42,8 @@ print/raw/
 print/.venv/
 .vercel
 .env*
+
+# Playwright artifacts
+app/e2e-results/
+app/playwright-report/
+app/test-results/
