@@ -33,7 +33,7 @@ export function TimelinePanel({ timeline, colourByGenre, onPickYear, selectedYea
         {perYear.map((bar, i) => {
           const x = PAD_LEFT + i * (colW + gap)
           const total = scale(bar.count)
-          const label = t('county.timelineLabel', { year: bar.year, n: bar.count })
+          const label = t('county.timelineLabel', { year: String(bar.year), n: bar.count })
           const selected = bar.year === selectedYear
           let y = H - PAD_BOTTOM
           const segs = colourByGenre

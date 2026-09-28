@@ -28,7 +28,7 @@ export function ExplorerPage() {
     document.title = t('app.title')
   }, [])
 
-  const activeFilters = derived ? derived.activeChips.filter((c) => c.key !== 'place' || c.value.split('/').length > 1).length : 0
+  const activeFilters = derived ? derived.activeChips.length : 0
   const resultCount = derived?.filteredSongs.length ?? 0
 
   const filtersButton = (

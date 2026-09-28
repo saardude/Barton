@@ -69,12 +69,9 @@ export function encodeQuery(q: Query, bordersDefault?: string): string {
   const put = (k: string, v: string) => parts.push(`${k}=${v}`)
   if (q.q.trim()) put('q', encQ(q.q.trim()))
   const deepest = deepestPlace(q)
-  if (q.country === 'all') put('country', 'all')
-  else if (deepest) {
+  if (deepest) {
     const level = placeLevelOf(deepest)
-    if (level === 'country') {
-      if (deepest !== 'ro') put('country', enc(deepest))
-    } else if (level) put(level, enc(deepest))
+    if (level) put(level, enc(deepest))
   }
   if (q.genre.length) put('genre', q.genre.map(enc).join(','))
   if (q.style.length) put('style', q.style.map(enc).join(','))
@@ -156,7 +153,7 @@ export function decodeQuery(search: string, opts: DecodeOptions = {}): DecodeRes
   for (const [level, id] of candidates) {
     if (!id) continue
     if (level === 'country' && id === 'all') {
-      if (!chosen) patch.country = 'all'
+      // legacy alias for "no country constraint" (the default)
       continue
     }
     const own = placeLevelOf(id)

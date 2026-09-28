@@ -12,7 +12,7 @@ describe('URL codec round trip (QA 3.1)', () => {
     'q=sculati',
     'q=Beiu%C8%99',
     'q=boieri+mari',
-    'country=all',
+    'country=ro',
     'country=hu',
     'region=ro/crisana',
     'county=ro/crisana/bihor',
@@ -58,7 +58,7 @@ describe('URL codec round trip (QA 3.1)', () => {
     for (let i = 0; i < 200; i++) {
       const place = pick([
         {},
-        { country: 'all' },
+        { country: 'ro' },
         { country: 'hu' },
         { region: 'ro/crisana' },
         { county: 'ro/transylvania/cluj' },
@@ -95,7 +95,10 @@ describe('URL codec round trip (QA 3.1)', () => {
   it('defaults are omitted: the default query encodes to ""', () => {
     expect(encodeQuery(DEFAULT_QUERY)).toBe('')
     expect(decodeQuery('?', opts).query).toEqual(DEFAULT_QUERY)
-    expect(decodeQuery('country=ro&sort=title&dir=asc&page=1', opts).query).toEqual(DEFAULT_QUERY)
+    expect(decodeQuery('sort=title&dir=asc&page=1', opts).query).toEqual(DEFAULT_QUERY)
+    // no country by default; `country=all` is a legacy alias for the default
+    expect(decodeQuery('country=all', opts).query).toEqual(DEFAULT_QUERY)
+    expect(decodeQuery('country=ro', opts).query).toEqual({ ...DEFAULT_QUERY, country: 'ro' })
   })
 
   it('tolerates unknown or malformed values and names what it dropped', () => {
@@ -154,8 +157,9 @@ describe('Query invariants', () => {
     expect(q.region).toBe('ro/transylvania')
     expect(q.county).toBeUndefined()
     q = applyPatch(q, { country: 'all' })
-    expect(q).toMatchObject({ country: 'all' })
+    expect(q.country).toBeUndefined()
     expect(q.region).toBeUndefined()
+    expect(applyPatch(q, { country: 'ro' }).country).toBe('ro')
   })
   it('non-page changes reset the page; sort and dir keep it; arrays are deduplicated and ordered', () => {
     let q = applyPatch(DEFAULT_QUERY, { page: 4 })

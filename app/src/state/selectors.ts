@@ -101,8 +101,8 @@ const TRUE: Predicate = () => true
 
 /** Country-only predicate (used for "N of M"). */
 export function countryPredicate(query: Query): Predicate {
-  const c = query.country ?? 'ro'
-  if (c === 'all') return TRUE
+  const c = query.country
+  if (!c || c === 'all') return TRUE
   const prefix = c + '/'
   const iso = c.toUpperCase()
   return (s) => {
@@ -340,8 +340,7 @@ function groupKey(s: Song, index: CatalogIndex, level: 'county' | 'village'): st
 export function buildChips(query: Query, index: CatalogIndex): Chip[] {
   const chips: Chip[] = []
   const deepest = deepestPlace(query)
-  if (query.country === 'all') chips.push({ key: 'country', value: 'all', label: t('facet.allCountries') })
-  else if (deepest) chips.push({ key: 'place', value: deepest, label: placeChipLabel(deepest, index) })
+  if (deepest) chips.push({ key: 'place', value: deepest, label: placeChipLabel(deepest, index) })
   for (const g of query.genre) chips.push({ key: 'genre', value: g, label: genreChip(g) })
   for (const s of query.style) chips.push({ key: 'style', value: s, label: s })
   if (query.performance) chips.push({ key: 'performance', value: query.performance, label: query.performance })

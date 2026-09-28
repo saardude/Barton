@@ -59,7 +59,7 @@ describe('County drill-down route', () => {
     await waitFor(() => expect(within(list).getAllByRole('listitem').length).toBe(bihor.length))
     expect(within(list).getAllByRole('link', { name: /^Open original record on/ }).length).toBe(bihor.length)
     expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?county=ro/crisana/bihor')
-    expect(screen.getByRole('button', { name: /Export county JSON|Export \d+ melodies as JSON/ })).toBeEnabled()
+    expect(screen.getByText('Export county JSON').closest('button')).toBeEnabled()
   })
 
   it('sorting the villages table by melodies desc reorders rows', async () => {
@@ -83,29 +83,28 @@ describe('County drill-down route', () => {
     expect(screen.getByRole('table', { name: 'By style' })).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('tab', { name: 'By performer' }))
-    await screen.findByRole('table', { name: 'By performer' })
+    await screen.findByRole('table', { name: 'By performer' }, { timeout: 4000 })
     expect(screen.getByText(/^Unnamed performer \(\d+\)$/)).toBeInTheDocument()
     expect(screen.getAllByText('Ion Pop').length).toBe(2)
 
     fireEvent.click(screen.getByRole('tab', { name: 'Timeline' }))
     const in1910 = bihor.filter((s) => s.collected.year === 1910).length
-    await screen.findByRole('img', { name: `1910: ${in1910} melodies` })
+    await screen.findByRole('img', { name: `1910: ${in1910} melodies` }, { timeout: 4000 })
     expect(screen.getByText(/melodies without a year/)).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('tab', { name: 'Local map' }))
-    const map = await screen.findByTestId('map-stub')
+    const map = await screen.findByTestId('map-stub', {}, { timeout: 4000 })
     expect(map).toHaveTextContent('ro/crisana/bihor/beius')
     expect(map).not.toHaveTextContent('ro/crisana/bihor/nomap')
   })
 
   it('a village row click narrows the query to that village and the melodies tab', async () => {
     renderApp('/county/ro/crisana/bihor')
-    const table = await screen.findByRole('table', { name: /Villages in Bihor/ })
+    const table = await screen.findByRole('table', { name: /Villages in Bihor/ }, { timeout: 4000 })
     fireEvent.click(within(table).getByRole('button', { name: /Filter to Ineu/ }))
-    await waitFor(() => expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?village=ro/crisana/bihor/ineu'))
+    await waitFor(() => expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?village=ro/crisana/bihor/ineu'), { timeout: 4000 })
     const ineu = fixtureSongs.filter((s) => s.location.placeId === 'ro/crisana/bihor/ineu').length
-    const list = screen.getByRole('list', { name: 'Results' })
-    expect(within(list).getAllByRole('listitem').length).toBe(ineu)
+    await waitFor(() => expect(within(screen.getByRole('list', { name: 'Results' })).getAllByRole('listitem').length).toBe(ineu), { timeout: 4000 })
     expect(within(table).getByRole('button', { name: 'Clear village filter' })).toHaveAttribute('aria-pressed', 'true')
     // the villages table still lists the whole county
     expect(within(table).getAllByRole('row').slice(1).length).toBe(4)

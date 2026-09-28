@@ -100,7 +100,7 @@ describe('Song record route', () => {
     const tab = await screen.findByRole('tab', { name: 'Raw JSON' })
     expect(tab).toHaveAttribute('aria-selected', 'true')
     expect(document.title).toBe('Ardeleana \u00b7 Bartók in Romania')
-    const pre = screen.getByLabelText('Raw JSON')
+    const pre = screen.getByLabelText('Raw JSON, bsys-2')
     const parsed = JSON.parse(pre.textContent ?? '')
     expect(parsed.id).toBe('bsys-2')
     expect(parsed.source.url).toBe('https://systems.zti.hu/br/en/browse/10/2')

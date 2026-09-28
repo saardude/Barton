@@ -13,9 +13,11 @@ const ids = (songs: { id: string }[]) => songs.map((s) => s.id).sort()
 const inRO = fixtureSongs.filter((s) => s.location.country === 'RO')
 
 describe('filter logic (QA 3.2)', () => {
-  it('country RO is the default; the country switch reveals non-RO records', () => {
-    expect(ids(run({}).filteredSongs)).toEqual(ids(inRO))
-    expect(run({}).total).toBe(inRO.length)
+  it('no country by default (every country counts); the country switch narrows to one', () => {
+    expect(run({}).filteredSongs).toHaveLength(fixtureSongs.length)
+    expect(run({}).total).toBe(fixtureSongs.length)
+    expect(ids(run({ country: 'ro' }).filteredSongs)).toEqual(ids(inRO))
+    expect(run({ country: 'ro' }).total).toBe(inRO.length)
     expect(run({ country: 'all' }).filteredSongs).toHaveLength(fixtureSongs.length)
     expect(ids(run({ country: 'hu' }).filteredSongs)).toEqual(['bsys-26'])
   })

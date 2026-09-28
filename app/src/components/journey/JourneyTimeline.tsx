@@ -62,7 +62,7 @@ export function JourneyTimeline({ journeys, events, selectedId, date, unmappedCo
     // Keep the selected marker in view when the track scrolls horizontally (phone).
     if (!selectedId) return
     const el = trackRef.current?.querySelector<HTMLElement>(`[data-id="${CSS.escape(selectedId)}"]`)
-    el?.scrollIntoView({ block: 'nearest', inline: 'center' })
+    el?.scrollIntoView?.({ block: 'nearest', inline: 'center' })
   }, [selectedId])
 
   const focusMarker = (id: string) => {
@@ -101,7 +101,7 @@ export function JourneyTimeline({ journeys, events, selectedId, date, unmappedCo
         return
       default: {
         if (/^\d$/.test(e.key)) {
-          const now = Date.now()
+          const now = e.timeStamp
           const ta = typeahead.current
           ta.buf = now - ta.at < 1000 ? ta.buf + e.key : e.key
           ta.at = now

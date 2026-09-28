@@ -12,9 +12,10 @@ export const ROMANIA_BOUNDS: L.LatLngBoundsLiteral = [
   [43.6, 20.2],
   [48.3, 29.7],
 ]
+// Wide enough for every plotted locality (Hungary, Slovakia, Serbia, Ukraine, Croatia too).
 const MAX_BOUNDS: L.LatLngBoundsLiteral = [
-  [41.0, 15.0],
-  [50.5, 33.0],
+  [39.5, 12.0],
+  [52.5, 36.0],
 ]
 
 // CARTO raster basemaps need an API key (watermarked without one). The key is public by
@@ -81,11 +82,13 @@ function diameter(p: MapPoint, nMax: number): number {
   return p.level === 'county' ? Math.min(40, Math.max(10, 10 + 30 * r)) : Math.min(22, Math.max(4, 4 + 18 * r))
 }
 
-function markerHtml(p: MapPoint, d: number, colourByGenre: boolean, selected: boolean, highlighted: boolean): string {
+function markerHtml(p: MapPoint, d: number, colourByGenre: boolean, selected: boolean, highlighted: boolean, hollow: boolean): string {
   const genre: GenreId | null = colourByGenre ? p.dominantGenre : null
   const fill = colourByGenre ? `var(--genre-${genre ?? 'other'})` : p.level === 'county' ? 'var(--surface)' : 'var(--map-dot)'
   const labelInk = colourByGenre ? 'var(--genre-label-ink)' : 'var(--ink)'
-  const cls = ['dot', p.level === 'county' ? 'dot--county' : 'dot--village', highlighted ? 'dot--highlight' : ''].filter(Boolean).join(' ')
+  const cls = ['dot', p.level === 'county' ? 'dot--county' : 'dot--village', highlighted ? 'dot--highlight' : '', hollow ? 'dot--county-hollow' : '']
+    .filter(Boolean)
+    .join(' ')
   const label =
     p.level === 'county'
       ? d >= 22
@@ -236,34 +239,47 @@ export function MapView(props: MapViewProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.fitKey])
 
-  // Rebuild markers when the points, the selection, the highlight or the colour mode change.
+  // Rebuild markers only when the points, the selection, the highlight or the colour mode
+  // change. Depending on the whole props object here re-created every icon on each parent
+  // re-render (a hover state change), which replaced the hovered button, fired mouseout, and
+  // flickered the card and the markers.
+  const { points, selectedId, highlightId, colourByGenre } = props
   useEffect(() => {
     const map = mapRef.current
     const layer = layerRef.current
     if (!map || !layer) return
-    const { points, selectedId, highlightId, colourByGenre } = props
-    const nMax = points.reduce((m, p) => Math.max(m, p.count), 0)
+    // Sizes are relative within a level (counties and villages can share the map in drill-down).
+    let nMaxCounty = 0
+    let nMaxVillage = 0
+    for (const p of points) {
+      if (p.level === 'county') nMaxCounty = Math.max(nMaxCounty, p.count)
+      else nMaxVillage = Math.max(nMaxVillage, p.count)
+    }
     const markers = markersRef.current
     const seen = new Set<string>()
     pointsRef.current = new Map(points.map((p) => [p.placeId, p]))
+    const hasVillages = nMaxVillage > 0
     for (const p of points) {
       seen.add(p.placeId)
-      const d = diameter(p, nMax)
-      const selected = p.placeId === selectedId
+      const d = diameter(p, p.level === 'county' ? nMaxCounty : nMaxVillage)
+      const selected = p.placeId === selectedId || p.selected
       const highlighted = !selected && p.placeId === highlightId
+      // The selected county keeps a hollow ring behind its village dots (drill-down state).
+      const hollow = p.level === 'county' && selected && hasVillages
       const hit = Math.max(24, Math.ceil(d) + 8)
       const icon = L.divIcon({
         className: '',
-        html: markerHtml(p, d, colourByGenre, selected, highlighted),
+        html: markerHtml(p, d, colourByGenre, selected, highlighted, hollow),
         iconSize: [hit, hit],
         iconAnchor: [hit / 2, hit / 2],
       })
+      const z = hollow ? -1000 : selected ? 1000 : highlighted ? 500 : 0
       const existing = markers.get(p.placeId)
       if (existing) {
         existing.setIcon(icon)
-        existing.setZIndexOffset(selected ? 1000 : highlighted ? 500 : 0)
+        existing.setZIndexOffset(z)
       } else {
-        const m = L.marker([p.lat, p.lon], { icon, keyboard: false, zIndexOffset: selected ? 1000 : 0, riseOnHover: true })
+        const m = L.marker([p.lat, p.lon], { icon, keyboard: false, zIndexOffset: z, riseOnHover: !hollow })
         m.addTo(layer)
         markers.set(p.placeId, m)
       }
@@ -274,12 +290,15 @@ export function MapView(props: MapViewProps) {
         markers.delete(id)
       }
     }
-    // Pan to a highlighted dot only when it is off-screen (MAP-SPEC 3.4).
-    if (highlightId) {
-      const p = pointsRef.current.get(highlightId)
-      if (p && !map.getBounds().contains([p.lat, p.lon])) map.panTo([p.lat, p.lon], { animate: false })
-    }
-  }, [props])
+  }, [points, selectedId, highlightId, colourByGenre])
+
+  // Pan to a highlighted dot only when it is off-screen (MAP-SPEC 3.4).
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !highlightId) return
+    const p = pointsRef.current.get(highlightId)
+    if (p && !map.getBounds().contains([p.lat, p.lon])) map.panTo([p.lat, p.lon], { animate: false })
+  }, [highlightId])
 
   return <div className="map-view" ref={containerRef} />
 }

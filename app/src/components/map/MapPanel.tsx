@@ -9,7 +9,8 @@ import { useDerived, useQuery } from '../../app/query'
 import { genreLabel, t } from '../../i18n/en'
 import { placeText } from '../../state/placeName'
 import { applyPatch, GENRE_ORDER, type GenreId } from '../../state/query'
-import { buildMapPoints, type MapPoint } from '../../state/selectors'
+import { buildMapPoints, countryPredicate, filterSongs, type MapPoint } from '../../state/selectors'
+import { countryName } from '../../state/placeName'
 import { toSearch } from '../../state/urlCodec'
 import { GenreBar, GenreSwatch } from '../Genre'
 import { PlaceLabel } from '../PlaceLabel'
@@ -17,7 +18,10 @@ import { EmptyState } from '../States'
 import { MapPointSheet } from '../phone/MapPointSheet'
 import { MapView, pointAriaLabel, ROMANIA_BOUNDS, type HoverInfo, type TileProvider } from './MapView'
 
-const COUNTY_ZOOM_MAX = 7
+// Below this zoom (with no county selected) the map shows county bubbles; above it, village dots.
+const COUNTY_ZOOM_MAX = 8
+// Never render more DOM markers than this in the zoom-driven village mode (MAP-SPEC D7).
+const VILLAGE_DOM_LIMIT = 2000
 
 function yearSpan(p: MapPoint): string {
   if (p.yearMin === undefined || p.yearMax === undefined) return t('facet.noDate')
@@ -90,14 +94,34 @@ export function MapPanel({
   const [size, setSize] = useState({ width: 800, height: 500 })
 
   const placeSelected = Boolean(query.county || query.village)
-  const level: 'county' | 'village' = placeSelected || zoom > COUNTY_ZOOM_MAX ? 'village' : 'county'
+  const zoomedIn = zoom > COUNTY_ZOOM_MAX
+  const level: 'county' | 'village' = placeSelected || zoomedIn ? 'village' : 'county'
   const selectedId = level === 'village' ? query.village : query.county
 
+  // Drill-down point set (owner feedback): with a county selected, its village dots plus the
+  // other counties' bubbles (counted over every filter except place) and a hollow ring for the
+  // selected county, so any circle stays clickable: another county re-selects, a village narrows,
+  // the selected item deselects.
   const { points, unmappedCount } = useMemo(() => {
     if (!catalog || !derived) return { points: [] as MapPoint[], unmappedCount: 0 }
-    if (level === derived.mapLevel) return { points: derived.mapPoints, unmappedCount: derived.unmappedCount }
-    return buildMapPoints(derived.filteredSongs, catalog.index, level, selectedId, undefined)
-  }, [catalog, derived, level, selectedId])
+    const villages =
+      level === derived.mapLevel
+        ? { points: derived.mapPoints, unmappedCount: derived.unmappedCount }
+        : buildMapPoints(derived.filteredSongs, catalog.index, level, selectedId, undefined)
+    if (level === 'village' && !placeSelected && villages.points.length > VILLAGE_DOM_LIMIT) {
+      // too many dots for DOM markers: stay on county bubbles until the user picks a county
+      return buildMapPoints(derived.filteredSongs, catalog.index, 'county', undefined, undefined)
+    }
+    const county = query.county
+    if (!county) return villages
+    const inCountry = countryPredicate(query)
+    const exceptPlace = filterSongs(catalog.index.songs, derived.predicates, 'place').filter(inCountry)
+    const counties = buildMapPoints(exceptPlace, catalog.index, 'county', county, undefined).points
+    // Every village of the selected county stays visible (and clickable) while one is selected.
+    const inCounty = exceptPlace.filter((s) => s.location.placeId === county || s.location.placeId?.startsWith(county + '/'))
+    const countyVillages = buildMapPoints(inCounty, catalog.index, 'village', query.village, undefined).points
+    return { points: [...counties, ...countyVillages], unmappedCount: villages.unmappedCount }
+  }, [catalog, derived, level, selectedId, placeSelected, query])
 
   const { fitBounds, fitKey } = useMemo(() => {
     if (!catalog) return { fitBounds: ROMANIA_BOUNDS, fitKey: 'ro' }
@@ -117,22 +141,42 @@ export function MapPanel({
         return { fitBounds: b, fitKey: county }
       }
     }
-    const country = query.country ?? 'ro'
-    if (country !== 'ro') {
-      const pts = catalog.places.filter((p) => p.type === 'village' && p.lat !== null && p.lng !== null && (country === 'all' || p.id.startsWith(country + '/')))
-      if (pts.length) {
-        const lats = pts.map((p) => p.lat as number)
-        const lngs = pts.map((p) => p.lng as number)
-        const b: L.LatLngBoundsLiteral = [
-          [Math.min(...lats), Math.min(...lngs)],
-          [Math.max(...lats), Math.max(...lngs)],
-        ]
-        return { fitBounds: b, fitKey: country }
+    // No county: fit every plotted place of the selected country, or of every country by default.
+    const country = query.country
+    const pts = catalog.places.filter((p) => p.lat !== null && p.lng !== null && (!country || p.id === country || p.id.startsWith(country + '/')))
+    if (pts.length) {
+      let s = 90
+      let n = -90
+      let w = 180
+      let e = -180
+      for (const p of pts) {
+        const lat = p.lat as number
+        const lng = p.lng as number
+        if (lat < s) s = lat
+        if (lat > n) n = lat
+        if (lng < w) w = lng
+        if (lng > e) e = lng
       }
+      const b: L.LatLngBoundsLiteral = [
+        [s - 0.1, w - 0.1],
+        [n + 0.1, e + 0.1],
+      ]
+      return { fitBounds: b, fitKey: country ?? 'all' }
     }
-    return { fitBounds: ROMANIA_BOUNDS, fitKey: 'ro' }
+    return { fitBounds: ROMANIA_BOUNDS, fitKey: country ?? 'all' }
   }, [catalog, query.county, query.country])
 
+  const fitLabel = query.county
+    ? t('map.fitCounty')
+    : query.country === 'ro'
+      ? t('map.fitRomania')
+      : query.country
+        ? t('map.fitCountry', { name: countryName(query.country) })
+        : t('map.fitAll')
+
+  // Drill-down: a county bubble selects that county (the map fits it and shows its villages);
+  // the selected county's ring deselects it (fit back out); a village dot selects the village,
+  // the selected village deselects it and the county stays.
   const select = useCallback(
     (p: MapPoint) => {
       if (p.level === 'county') setQuery({ county: p.placeId === query.county ? undefined : p.placeId })
@@ -193,7 +237,8 @@ export function MapPanel({
     )
   }
 
-  const nMax = points.reduce((m, p) => Math.max(m, p.count), 0)
+  const legendLevel: 'county' | 'village' = query.county ? 'village' : level
+  const nMax = points.reduce((m, p) => (p.level === legendLevel ? Math.max(m, p.count) : m), 0)
   const selectedUnmapped = selectedId && !points.some((p) => p.placeId === selectedId) && catalog.index.placeById.get(selectedId)?.lat === null
   const unmappedSearch = toSearch(applyPatch(query, { unmapped: true }))
 
@@ -220,13 +265,7 @@ export function MapPanel({
         <button type="button" className="map-ctl" aria-label={t('map.zoomOut')} title={t('map.zoomOut')} onClick={() => map?.zoomOut()}>
           &minus;
         </button>
-        <button
-          type="button"
-          className="map-ctl"
-          aria-label={query.county ? t('map.fitCounty') : t('map.fitRomania')}
-          title={query.county ? t('map.fitCounty') : t('map.fitRomania')}
-          onClick={() => map?.fitBounds(fitBounds, { padding: [24, 24] })}
-        >
+        <button type="button" className="map-ctl" aria-label={fitLabel} title={fitLabel} onClick={() => map?.fitBounds(fitBounds, { padding: [24, 24] })}>
           <svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">
             <path d="M2 6V2h4M12 2h4v4M16 12v4h-4M6 16H2v-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </svg>
@@ -264,7 +303,7 @@ export function MapPanel({
             <div className="map-legend__row">{t('map.legendSize')}</div>
             {[1, Math.max(1, Math.round(nMax / 2)), Math.max(1, nMax)].map((n, i) => {
               const r = Math.sqrt(n / Math.max(1, nMax))
-              const d = level === 'county' ? 10 + 30 * r : 4 + 18 * r
+              const d = legendLevel === 'county' ? 10 + 30 * r : 4 + 18 * r
               return (
                 <div key={i} className="map-legend__row">
                   <span className="map-legend__dot" style={{ width: d, height: d }} />

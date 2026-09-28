@@ -26,9 +26,10 @@ interface FlatRow {
 }
 
 export function PlaceTree({ tree, query, countryOptions, onSelect, onCountry }: Props) {
-  const country = query.country ?? 'ro'
-  const deepest = query.village ?? query.county ?? query.region ?? (country !== 'all' ? country : undefined)
-  const [userExpanded, setExpanded] = useState<Set<string>>(() => new Set())
+  const country = query.country
+  const deepest = query.village ?? query.county ?? query.region ?? country
+  // Romania starts expanded as a convenience (it is the first country); it is not a filter.
+  const [userExpanded, setExpanded] = useState<Set<string>>(() => new Set(['ro']))
   const [active, setActive] = useState<string | null>(null)
   const listRef = useRef<HTMLUListElement>(null)
   const typeahead = useRef({ text: '', at: 0 })
@@ -36,7 +37,7 @@ export function PlaceTree({ tree, query, countryOptions, onSelect, onCountry }: 
   // The selected branch (and the selected country) is always expanded (AC-01, AC-03).
   const expanded = useMemo(() => {
     const next = new Set(userExpanded)
-    if (country !== 'all') next.add(country)
+    if (country) next.add(country)
     if (deepest) for (const a of ancestorIds(deepest)) next.add(a)
     if (deepest && deepest.split('/').length < 4) next.add(deepest)
     return next
@@ -136,13 +137,13 @@ export function PlaceTree({ tree, query, countryOptions, onSelect, onCountry }: 
     <div>
       <div className="tree-header">
         <label htmlFor="country-select">{t('facet.country')}</label>
-        <select id="country-select" className="select" value={country} onChange={(e) => onCountry(e.target.value)}>
+        <select id="country-select" className="select" value={country ?? 'all'} onChange={(e) => onCountry(e.target.value)}>
+          <option value="all">{t('facet.allCountries')}</option>
           {countryOptions.map((c) => (
             <option key={c.id} value={c.id}>
               {displayName(c, c.id)}
             </option>
           ))}
-          <option value="all">{t('facet.allCountries')}</option>
         </select>
       </div>
       <ul className="tree" role="tree" aria-label={t('tree.label')} ref={listRef}>

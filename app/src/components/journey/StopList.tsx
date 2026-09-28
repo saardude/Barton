@@ -96,7 +96,7 @@ export function StopList({ view, query, selectedSeq, onSelect, onHover }: StopLi
   useEffect(() => {
     if (selectedSeq === undefined) return
     const row = listRef.current?.querySelector<HTMLElement>(`[data-seq="${selectedSeq}"]`)
-    row?.scrollIntoView({ block: 'nearest' })
+    row?.scrollIntoView?.({ block: 'nearest' })
   }, [selectedSeq])
 
   const onKey = (e: KeyboardEvent<HTMLOListElement>) => {
@@ -143,7 +143,7 @@ export function StopList({ view, query, selectedSeq, onSelect, onHover }: StopLi
                 aria-pressed={selected}
                 aria-label={
                   dates
-                    ? t('journey.stopLabel', { i: stop.seq, n: j.stops.length, then: s.nameThen, year: s.year, now: s.nameNow ?? s.nameThen, m: stop.recordCount, dates })
+                    ? t('journey.stopLabel', { i: stop.seq, n: j.stops.length, then: s.nameThen, year: String(s.year), now: s.nameNow ?? s.nameThen, m: stop.recordCount, dates })
                     : t('journey.stopLabelNoDate', { i: stop.seq, n: j.stops.length, then: s.nameThen, now: s.nameNow ?? s.nameThen, m: stop.recordCount })
                 }
                 disabled={!s.resolved}

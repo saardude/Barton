@@ -30,9 +30,10 @@ export interface Query {
   borders?: BordersMode
 }
 
+// No country by default: the map, the counts and the tree cover every country in the data
+// (owner decision 2026-09-28, overriding D3). `country` is written only when the user picks one.
 export const DEFAULT_QUERY: Query = {
   q: '',
-  country: 'ro',
   genre: [],
   style: [],
   instrument: [],
@@ -181,14 +182,14 @@ export function applyPatch(base: Query, patch: Partial<Query>): Query {
     next.yearFrom = next.yearTo
     next.yearTo = t
   }
-  if (!next.country) next.country = 'ro'
+  if (next.country === 'all') next.country = undefined
   if (keys.some((k) => !PAGE_NEUTRAL.has(k))) next.page = 1
   return dropUndefined(next)
 }
 
 function setPlace(q: Query, level: PlaceLevel, id: string | undefined): void {
   if (level === 'country') {
-    q.country = id && id.length > 0 ? id : 'ro'
+    q.country = id && id.length > 0 && id !== 'all' ? id : undefined
     q.region = q.county = q.village = undefined
     return
   }
@@ -241,7 +242,7 @@ export function resetQuery(q: Query, keepTrip = false): Query {
 export function hasActiveFilters(q: Query): boolean {
   return Boolean(
     q.q.trim() ||
-      (q.country && q.country !== 'ro') ||
+      q.country ||
       q.region ||
       q.county ||
       q.village ||

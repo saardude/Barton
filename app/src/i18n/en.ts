@@ -113,6 +113,8 @@ export const en: Record<string, string> = {
   'map.zoomIn': 'Zoom in',
   'map.zoomOut': 'Zoom out',
   'map.fitRomania': 'Fit to Romania',
+  'map.fitAll': 'Fit to all places',
+  'map.fitCountry': 'Fit to {name}',
   'map.fitCounty': 'Fit to county',
   'map.layerBubbles': 'County bubbles',
   'map.layerChoropleth': 'County shading',

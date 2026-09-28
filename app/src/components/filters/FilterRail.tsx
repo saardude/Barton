@@ -100,8 +100,8 @@ export function PlaceFacet({ onSelect }: { onSelect?: () => void }) {
     <FacetGroup
       id="place"
       title={t('facet.place')}
-      activeCount={query.village || query.county || query.region ? 1 : 0}
-      onClear={() => setQuery({ region: undefined })}
+      activeCount={query.village || query.county || query.region || query.country ? 1 : 0}
+      onClear={() => setQuery({ country: undefined })}
     >
       <PlaceTree
         tree={derived.placeTree}
@@ -111,7 +111,7 @@ export function PlaceFacet({ onSelect }: { onSelect?: () => void }) {
           setQuery({ [level]: id })
           if (id) onSelect?.()
         }}
-        onCountry={(id) => setQuery({ country: id })}
+        onCountry={(id) => setQuery({ country: id === 'all' ? undefined : id })}
       />
     </FacetGroup>
   )

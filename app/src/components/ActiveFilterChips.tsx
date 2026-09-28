@@ -9,13 +9,13 @@ import type { Chip } from '../state/selectors'
 function removalPatch(chip: Chip, query: Query): Partial<Query> {
   switch (chip.key) {
     case 'country':
-      return { country: 'ro' }
+      return { country: undefined }
     case 'place': {
       const depth = chip.value.split('/').length
       if (depth >= 4) return { village: undefined }
       if (depth === 3) return { county: undefined }
       if (depth === 2) return { region: undefined }
-      return { country: 'ro' }
+      return { country: undefined }
     }
     case 'genre':
       return { genre: query.genre.filter((g) => g !== chip.value) }
@@ -53,10 +53,11 @@ function chipLabel(chip: Chip): string {
   }
 }
 
-export function ActiveFilterChips({ chips, hideCountry }: { chips: Chip[]; hideCountry?: boolean }) {
+export function ActiveFilterChips({ chips }: { chips: Chip[]; hideCountry?: boolean }) {
   const { query, setQuery, reset } = useQuery()
   const ref = useRef<HTMLDivElement>(null)
-  const visible = hideCountry ? chips.filter((c) => c.key !== 'place' || c.value.split('/').length > 1) : chips
+  // A country is a real filter now (no country by default), so every chip is shown.
+  const visible = chips
   if (!visible.length) return null
   const remove = (chip: Chip, i: number) => {
     setQuery(removalPatch(chip, query))

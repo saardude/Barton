@@ -267,7 +267,7 @@ export function journeyDateText(j: Journey): { text: string; precision: DatePrec
   const precision = j.dateConfidence
   const wording = PRECISION_WORDING[precision]
   if (j.labelDateRaw) return { text: j.labelDateRaw, precision, wording }
-  if (precision === 'year') return { text: t('journey.dates.year', { year: yearOf(j.dateStart) }), precision, wording }
+  if (precision === 'year') return { text: t('journey.dates.year', { year: String(yearOf(j.dateStart)) }), precision, wording }
   return { text: formatDateRange(j.dateStart, j.dateEnd), precision, wording }
 }
 

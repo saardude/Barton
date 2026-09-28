@@ -42,7 +42,7 @@ export function RawJson({ song }: { song: Song }) {
           {t('song.copyJson')}
         </button>
       </div>
-      <pre className="raw-json__pre" tabIndex={0} ref={preRef} aria-label={t('song.tab.raw')}>
+      <pre className="raw-json__pre" tabIndex={0} ref={preRef} aria-label={`${t('song.tab.raw')}, ${song.id}`}>
         <code>{truncated ? text.slice(0, LIMIT) : text}</code>
       </pre>
       {truncated && (

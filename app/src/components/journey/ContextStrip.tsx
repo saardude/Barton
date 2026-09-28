@@ -20,7 +20,7 @@ export function ContextStrip({ events, title }: { events: EventInWindow[]; title
     e.preventDefault()
     const next = cards[e.key === 'ArrowRight' ? Math.min(cards.length - 1, i + 1) : Math.max(0, i - 1)]
     next?.focus()
-    next?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+    next?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' })
   }
   return (
     <section className="context-strip" aria-labelledby="context-title">

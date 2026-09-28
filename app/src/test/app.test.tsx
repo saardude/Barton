@@ -57,6 +57,7 @@ function renderAt(url: string) {
   )
 }
 
+const all = songsJson.length
 const inRO = (songsJson as { location?: { placeId?: string; country?: string } }[]).filter((s) => (s.location?.placeId ? s.location.placeId.startsWith('ro') : s.location?.country === 'RO')).length
 
 describe('Explorer shell', () => {
@@ -72,11 +73,11 @@ describe('Explorer shell', () => {
     expect(within(footer).getByRole('link', { name: 'Béla Bartók, the Ethnomusicologist' })).toHaveAttribute('href', 'https://bartok-gyujtesek.zti.hu/en')
 
     await waitFor(() => expect(screen.getByRole('list', { name: 'Results' })).toBeInTheDocument())
-    // once in the results header (live region) and once in the status bar
-    expect(screen.getAllByText(`${inRO} of ${inRO} melodies`).length).toBe(2)
+    // every country by default; once in the results header (live region) and once in the status bar
+    expect(screen.getAllByText(new RegExp(`^${all} of ${all} melodies`)).length).toBe(2)
 
     const rows = within(screen.getByRole('list', { name: 'Results' })).getAllByRole('listitem')
-    expect(rows.length).toBe(inRO)
+    expect(rows.length).toBe(all)
     const first = rows[0]
     const sourceLink = within(first).getByRole('link', { name: /^Open original record on / })
     expect(sourceLink).toHaveAttribute('target', '_blank')
@@ -87,18 +88,24 @@ describe('Explorer shell', () => {
     expect(within(first).getAllByRole('link').length).toBe(2)
   })
 
-  it('default country is Romania with a country switch; the place tree shows Romania expanded to regions', async () => {
+  it('no country by default; the switch lists All countries first, then Romania; picking Romania narrows and adds a chip', async () => {
     renderAt('/')
     await screen.findByRole('list', { name: 'Results' })
     const select = screen.getByLabelText('Country') as HTMLSelectElement
-    expect(select.value).toBe('ro')
+    expect(select.value).toBe('all')
+    expect(Array.from(select.options).slice(0, 2).map((o) => o.textContent)).toEqual(['All countries', 'Romania'])
     const tree = screen.getByRole('tree', { name: 'Places' })
-    const ro = within(tree).getAllByRole('treeitem')[0]
-    expect(ro).toHaveAttribute('aria-expanded', 'true')
+    const items = within(tree).getAllByRole('treeitem')
+    expect(items[0]).toHaveTextContent('Romania')
+    expect(items[0]).toHaveAttribute('aria-expanded', 'true')
     expect(within(tree).getByText('Crișana')).toBeInTheDocument()
-    fireEvent.change(select, { target: { value: 'all' } })
-    // the status bar appends ", n not mapped" for the non-RO record, so match the prefix
-    await waitFor(() => expect(screen.getAllByText(new RegExp(`^${songsJson.length} of ${songsJson.length} melodies`)).length).toBe(2))
+    expect(within(tree).getByText('Hungary')).toBeInTheDocument()
+    fireEvent.change(select, { target: { value: 'ro' } })
+    await waitFor(() => expect(screen.getAllByText(`${inRO} of ${inRO} melodies`).length).toBe(2))
+    expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?country=ro')
+    expect(screen.getByRole('button', { name: 'Remove filter: Romania' })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove filter: Romania' }))
+    await waitFor(() => expect(screen.getAllByText(new RegExp(`^${all} of ${all} melodies`)).length).toBe(2))
   })
 
   it('a genre checkbox narrows the set, adds a chip, and Clear all restores the default', async () => {
@@ -107,11 +114,11 @@ describe('Explorer shell', () => {
     const colinda = screen.getByRole('checkbox', { name: /colindă/ })
     fireEvent.click(colinda)
     await waitFor(() => expect(screen.getByRole('button', { name: /Remove filter: colindă/ })).toBeInTheDocument())
-    const n = (songsJson as { genre?: string; location?: { placeId?: string } }[]).filter((s) => s.genre === 'colinda' && s.location?.placeId?.startsWith('ro')).length
-    expect(screen.getAllByText(`${n} of ${inRO} melodies`).length).toBe(2)
+    const n = (songsJson as { genre?: string }[]).filter((s) => s.genre === 'colinda').length
+    expect(screen.getAllByText(new RegExp(`^${n} of ${all} melodies`)).length).toBe(2)
     expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('?genre=colinda')
     fireEvent.click(screen.getAllByRole('button', { name: 'Clear all filters' })[0])
-    await waitFor(() => expect(screen.getAllByText(`${inRO} of ${inRO} melodies`).length).toBe(2))
+    await waitFor(() => expect(screen.getAllByText(new RegExp(`^${all} of ${all} melodies`)).length).toBe(2))
     expect(screen.getByRole('status', { name: 'Query status' })).toHaveTextContent('/')
   })
 

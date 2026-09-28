@@ -63,9 +63,10 @@ describe('facet counting (QA 3.3)', () => {
     expect(a.filteredSongs.length).toBe(b.filteredSongs.length)
   })
 
-  it('"N of M": total is the country-only set', () => {
+  it('"N of M": total is the country-only set (every country when none is selected)', () => {
     const d = run({ county: 'ro/crisana/bihor', genre: ['joc'] })
     expect(d.total).toBe(fixtureSongs.filter((s) => s.location.country === 'RO').length)
+    expect(run({ genre: ['joc'] }).total).toBe(fixtureSongs.length)
     expect(d.filteredSongs.length).toBeLessThan(d.total)
   })
 })

@@ -25,7 +25,7 @@ function esc(s: string): string {
 export function stopAriaLabel(s: StopView, n: number, dimmed: boolean): string {
   const dates = stopDateText(s.stop)
   const base = dates
-    ? t('journey.stopLabel', { i: s.stop.seq, n, then: s.nameThen, year: s.year, now: s.nameNow ?? s.nameThen, m: s.stop.recordCount, dates })
+    ? t('journey.stopLabel', { i: s.stop.seq, n, then: s.nameThen, year: String(s.year), now: s.nameNow ?? s.nameThen, m: s.stop.recordCount, dates })
     : t('journey.stopLabelNoDate', { i: s.stop.seq, n, then: s.nameThen, now: s.nameNow ?? s.nameThen, m: s.stop.recordCount })
   return dimmed ? `${base}; ${t('journey.stopDimmed', { n: s.stop.recordCount })}` : base
 }

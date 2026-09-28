@@ -73,7 +73,7 @@ export function ResultsPanel({ onHoverPlace, hideCountyLink }: { onHoverPlace?: 
           )}
         </div>
         <div className="results__chips">
-          <ActiveFilterChips chips={chips} hideCountry />
+          <ActiveFilterChips chips={chips} />
         </div>
       </div>
       {n === 0 && !derived.searching ? (
