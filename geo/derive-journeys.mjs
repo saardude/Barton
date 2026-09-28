@@ -34,7 +34,9 @@ export const DEFAULT_CONFIG = {
     confidence: 'assumed',
     note: "Default departure point: Budapest, Bartok's home base from 1907 (Academy of Music). Not documented per trip; the UI labels it as assumed."
   },
-  collections: null // parsed collections-gyuj.json, or null to disable
+  collections: null, // parsed collections-gyuj.json, or null to disable
+  curated: null, // parsed journeys-curated.json, or null to disable
+  gazetteer: null // parsed gazetteer.json, used to place curated stops without placeId
 };
 
 // ------------------------------------------------------------------ helpers
@@ -250,6 +252,7 @@ function collectionJourney(coll, records, cfg) {
   return sortKeys({
     id: coll.journeyId,
     derivedFrom: 'gyuj-collections',
+    quality: 'index only',
     kind,
     collector: records[0] ? records[0].collector : 'Bartok Bela',
     label: coll.label,
@@ -352,8 +355,169 @@ function gapJourneys(dated, cfg) {
       songIds: g.records.map((s) => s.id).sort(),
       nowIn: [...new Set(g.records.map((s) => s.location.country).filter(Boolean))].sort(),
       romanianMaterial: null,
+      quality: 'dates only',
       derivation: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: g.reasons, generator: GENERATOR }
     });
+  });
+}
+
+// ------------------------------------------------------------------ curated layer (data/journeys-curated.json)
+
+function qualityOf(curated) {
+  if (!curated) return 'index only';
+  const eq = String(curated.evidenceQuality || '');
+  if (eq.startsWith('documented itinerary')) {
+    return curated.datePrecision === 'day' && curated.stops.every((st) => st.confidence === 'documented') ? 'sourced itinerary' : 'documented itinerary';
+  }
+  return 'dates only';
+}
+
+/** gazetteer index: folded name / historical name / alias + folded county -> entry with id */
+function gazetteerIndex(gaz) {
+  const byKey = new Map();
+  if (!gaz) return byKey;
+  const REGION_BY_COUNTY = { Bihor: 'Crisana', Arad: 'Crisana', 'Satu Mare': 'Crisana', 'Sălaj': 'Crisana', 'Timiș': 'Banat', 'Caraș-Severin': 'Banat', 'Maramureș': 'Maramures' };
+  const slug = (x) => fold(x).replace(/ /g, '-');
+  for (const p of gaz.places || []) {
+    const id = p.id || `${(p.country || 'xx').toLowerCase()}/${slug(p.region || REGION_BY_COUNTY[p.county] || 'transylvania')}/${slug(p.county || 'unresolved')}/${slug(p.name)}`;
+    for (const n of [p.name, p.nameHistorical, ...(p.aliases || [])]) {
+      if (!n) continue;
+      const k = fold(n) + '|' + fold(p.county);
+      if (!byKey.has(k)) byKey.set(k, []);
+      if (!byKey.get(k).some((x) => x.id === id)) byKey.get(k).push({ ...p, id });
+    }
+  }
+  return byKey;
+}
+function lookupGazetteer(gi, name, county) {
+  if (!name || !county) return null;
+  const hits = gi.get(fold(name.replace(/\s*\([^)]*\)\s*/g, ' ')) + '|' + fold(county)) || [];
+  return hits.length === 1 ? hits[0] : null;
+}
+
+function conflictNotes(cur) {
+  const notes = [];
+  const eq = String(cur.evidenceQuality || '');
+  const paren = eq.match(/\(([^)]+)\)/);
+  if (paren) notes.push({ kind: 'evidence', text: `Curated evidence quality: ${eq}` });
+  for (const st of cur.stops) {
+    if (st.note && /\b(gives|differs|instead|however|conflict|disagree|but the|whereas|contradict|not visited|was not)\b/i.test(st.note)) notes.push({ kind: 'source-conflict', stopSeq: st.seq, text: st.note });
+  }
+  for (const src of cur.sources || []) if (src.note && /\b(conflict|differs|disagree|however|instead)\b/i.test(src.note)) notes.push({ kind: 'source-conflict', text: `${src.key}${src.locator ? ' ' + src.locator : ''}: ${src.note}` });
+  if (cur.departure && cur.departure.note) notes.push({ kind: 'departure', text: cur.departure.note });
+  if (cur.return && cur.return.note) notes.push({ kind: 'return', text: cur.return.note });
+  return notes;
+}
+
+/** Build a journey from a curated entry, the index entries it covers and the attached records. */
+function curatedJourney(cur, primaryColl, subsumed, records, cfg) {
+  const gi = cfg._gazetteerIndex || new Map();
+  const attachment = cfg._attachment || new Map();
+  const kind = String(cur.evidenceQuality || '').startsWith('documented itinerary') ? 'route' : 'cluster';
+  // curated stops in seq order, coordinates from the stop, else the gazetteer
+  const stops = [...cur.stops].sort((a, b) => a.seq - b.seq).map((st) => {
+    let placeId = st.placeId || null, lat = st.lat ?? null, lng = st.lng ?? null, placeIdSource = st.placeId ? 'curated' : null;
+    if (!placeId && st.country === 'RO') {
+      const g = lookupGazetteer(gi, st.modernName, st.county) || lookupGazetteer(gi, st.placeName, st.county);
+      if (g) { placeId = g.id; placeIdSource = 'gazetteer-lookup'; if (lat == null) { lat = g.lat; lng = g.lng; } }
+    } else if (placeId && lat == null) {
+      const g = [...gi.values()].flat().find((x) => x.id === placeId);
+      if (g) { lat = g.lat; lng = g.lng; }
+    }
+    return {
+      seq: st.seq, curatedSeq: st.seq, placeId, placeIdSource, village: st.modernName || null, villageHistorical: st.placeName || null, placeIdNote: st.placeIdNote || null,
+      county: st.county || null, countyHistorical: null, country: st.country || null, lat, lng,
+      arrival: st.arrival || null, departure: st.departure || null, recordDateStart: null, recordDateEnd: null,
+      confidence: st.confidence || 'inferred', note: st.note || null,
+      recordCount: 0, songIds: [], kmFromPrevious: null, locationConfidence: lat != null ? 'resolved' : 'unresolved'
+    };
+  });
+  // Route stops must be in date order. Where the curated seq disagrees with the dated order
+  // (or mixes month- and day-precision dates), emit in date order, keep the source order in
+  // curatedSeq and say so in notes; nothing is dropped.
+  const orderNotes = [];
+  if (kind === 'route') {
+    const dated = stops.map((st, i) => ({ st, i, key: st.arrival ? isoStartOf(st.arrival) : null }));
+    const sorted = [...dated].sort((a, b) => (a.key && b.key && a.key !== b.key ? (a.key < b.key ? -1 : 1) : a.i - b.i));
+    if (sorted.some((x, i) => x.i !== i)) {
+      orderNotes.push({ kind: 'source-conflict', text: `Curated stop order differs from the dated order for stops ${sorted.filter((x, i) => x.i !== i).map((x) => x.st.curatedSeq).join(', ')}; stops are emitted in date order and curatedSeq keeps the source order.` });
+      stops.splice(0, stops.length, ...sorted.map((x, i) => ({ ...x.st, seq: i + 1 })));
+    }
+  }
+  // attach records to curated stops by placeId, then by folded village name (+county when both known)
+  const unplaced = [];
+  for (const s of records) {
+    const loc = s.location;
+    let hit = stops.find((st) => st.placeId && loc.placeId && st.placeId === loc.placeId);
+    if (!hit && loc.village) hit = stops.find((st) => st.village && fold(st.village) === fold(loc.village) && (!st.county || !loc.county || fold(st.county) === fold(loc.county)));
+    if (!hit && loc.villageHistorical) hit = stops.find((st) => st.villageHistorical && fold(st.villageHistorical) === fold(loc.villageHistorical));
+    if (hit) { hit.songIds.push(s.id); hit.recordCount++; } else unplaced.push(s);
+  }
+  // records at places the curated itinerary does not name become extra stops after the itinerary
+  if (unplaced.length) {
+    const extra = stopsFromRecords(unplaced, 'cluster', cfg).stops;
+    for (const st of extra) stops.push({ ...st, seq: stops.length + 1, curatedSeq: null, placeIdSource: st.placeId ? 'record' : null, placeIdNote: null, confidence: 'inferred', note: 'From attached records; not named in the curated itinerary. Position in the route unknown; record dates in recordDateStart/recordDateEnd.', arrival: null, departure: null, recordDateStart: st.arrival, recordDateEnd: st.departure });
+  }
+  for (const st of stops) st.songIds.sort();
+  // distances along the curated order
+  let distance = 0, anyKm = false;
+  let prev = cfg.departure.lat != null ? { lat: cfg.departure.lat, lng: cfg.departure.lng } : null;
+  if (kind === 'route') for (const st of stops) {
+    if (st.lat == null) continue;
+    if (prev) { st.kmFromPrevious = Number(haversineKm(prev.lat, prev.lng, st.lat, st.lng).toFixed(1)); distance += st.kmFromPrevious; anyKm = true; }
+    prev = { lat: st.lat, lng: st.lng };
+  }
+  const depPlace = cur.departure && cur.departure.place;
+  const departure = depPlace
+    ? { name: depPlace, lat: /budapest/i.test(depPlace) && !/^pozsony/i.test(depPlace) ? cfg.departure.lat : null, lng: /budapest/i.test(depPlace) && !/^pozsony/i.test(depPlace) ? cfg.departure.lng : null, confidence: cur.departure.evidence || 'inferred', note: cur.departure.note || null }
+    : { ...cfg.departure };
+  const collLabelParts = [primaryColl, ...subsumed].filter(Boolean);
+  const recDates = records.map((s) => isoOf(s.collected)).filter(Boolean).sort();
+  const notes = [...conflictNotes(cur), ...orderNotes];
+  for (const c of subsumed) notes.push({ kind: 'subsumed-index-entry', text: `Index entry ${c.id} "${c.label}" is part of this trip and is not shown separately.`, collectionId: c.id });
+  const days = /^\d{4}-\d{2}-\d{2}$/.test(cur.dateStart) && /^\d{4}-\d{2}-\d{2}$/.test(cur.dateEnd) ? dayNumberIso(cur.dateEnd) - dayNumberIso(cur.dateStart) + 1 : null;
+  return sortKeys({
+    id: primaryColl ? primaryColl.journeyId : cur.id,
+    curatedId: cur.id,
+    derivedFrom: primaryColl ? 'gyuj-collections' : 'curated',
+    quality: qualityOf(cur),
+    evidenceQuality: cur.evidenceQuality || null,
+    kind,
+    collector: records[0] ? records[0].collector || 'Bartok Bela' : 'Bartok Bela',
+    title: cur.title || null,
+    summary: cur.summary || null,
+    sources: cur.sources || [],
+    companions: cur.companions || [],
+    label: primaryColl ? primaryColl.label : null,
+    labelDateRaw: primaryColl ? primaryColl.dateRaw : null,
+    labelPlaceRaw: primaryColl ? primaryColl.placeRaw : null,
+    sourceUrl: primaryColl ? primaryColl.url : null,
+    countOnline: collLabelParts.length ? collLabelParts.reduce((n, c) => n + (c.countOnline || 0), 0) || (primaryColl ? primaryColl.countOnline : null) : null,
+    recordsOnline: collLabelParts.some((c) => c.hasOnlineRecords),
+    subsumedCollections: subsumed.map((c) => ({ id: c.id, journeyId: c.journeyId, label: c.label, countOnline: c.countOnline })),
+    dateStart: cur.dateStart,
+    dateEnd: cur.dateEnd,
+    dateConfidence: cur.datePrecision || 'day',
+    datePeriods: [{ raw: null, start: cur.dateStart, end: cur.dateEnd, precision: cur.datePrecision || 'day', qualifiers: [], uncertain: false }],
+    recordDateRange: recDates.length ? { start: recDates[0], end: recDates[recDates.length - 1] } : null,
+    days,
+    departure,
+    return: cur.return ? { date: cur.return.date || null, place: cur.return.place || null, confidence: cur.return.evidence || 'inferred', note: cur.return.note || null } : null,
+    stops,
+    distanceKm: kind === 'route' && anyKm ? Number(distance.toFixed(1)) : null,
+    recordCount: records.length,
+    facts: facts(records, stops),
+    songIds: records.map((s) => s.id).sort(),
+    nowIn: [...new Set(stops.map((st) => st.country).filter(Boolean))].sort(),
+    romanianMaterial: typeof cur.romanianMaterial === 'boolean' ? { value: cur.romanianMaterial, confidence: 'documented' } : primaryColl ? primaryColl.romanianMaterial : null,
+    notes,
+    derivation: {
+      gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, splitReasons: ['collection'], generator: GENERATOR,
+      attachedRecords: {
+        byMembership: records.filter((s) => attachment.get(s.id) !== 'date-county').length,
+        byDateCounty: records.filter((s) => attachment.get(s.id) === 'date-county').length
+      }
+    }
   });
 }
 
@@ -363,6 +527,19 @@ export function deriveJourneys(songs, config = {}) {
   const cfg = { ...DEFAULT_CONFIG, ...config, departure: { ...DEFAULT_CONFIG.departure, ...(config.departure || {}) } };
   const collections = cfg.collections ? cfg.collections.collections : [];
   const collIds = new Set(collections.map((c) => c.id));
+  const curated = cfg.curated ? cfg.curated.journeys : [];
+  const collById = new Map(collections.map((c) => [c.id, c]));
+  const curatedByColl = new Map(); // collection id -> curated entry (primary or subsumed)
+  for (const cur of curated) {
+    if (cur.matchesCollection) curatedByColl.set(String(cur.matchesCollection), cur);
+    for (const a of cur.alsoMatchesCollections || []) curatedByColl.set(String(a), cur);
+  }
+  cfg._gazetteerIndex = gazetteerIndex(cfg.gazetteer);
+  // pseudo-collections for curated-only trips so rfm records can attach by date + county
+  const curatedOnlyAnchors = curated.filter((c) => !c.matchesCollection).map((c) => ({
+    id: c.id, journeyId: c.id, date: { start: c.dateStart, end: c.dateEnd },
+    places: c.stops.map((st) => ({ name: st.modernName, county: st.county && (cfg.gazetteer ? (cfg.gazetteer.counties.find((x) => fold(x.name) === fold(st.county)) || {}).name : st.county) || st.county, countyHistorical: null, kind: 'village' }))
+  }));
   // Records of an index entry are Bartok's by definition (the index is his collecting
   // trips), even when the record page prints no collector; count how often we rely on that.
   let collectorAssumedFromIndex = 0;
@@ -381,8 +558,8 @@ export function deriveJourneys(songs, config = {}) {
   for (const s of bartok) {
     let cid = collectionIdOf(s);
     let how = 'membership';
-    if (!cid && s.source && s.source.site === 'rfm') { cid = attachByDateCounty(s, collections); how = 'date-county'; }
-    if (cid && collIds.has(cid)) {
+    if (!cid && s.source && s.source.site === 'rfm') { cid = attachByDateCounty(s, [...collections, ...curatedOnlyAnchors]); how = 'date-county'; }
+    if (cid && (collIds.has(cid) || curatedOnlyAnchors.some((a) => a.id === cid))) {
       if (!byColl.has(cid)) byColl.set(cid, []);
       byColl.get(cid).push(s);
       attachment.set(s.id, how);
@@ -393,10 +570,26 @@ export function deriveJourneys(songs, config = {}) {
     }
   }
   cfg._attachment = attachment;
-  const primary = collections.map((c) => collectionJourney(c, (byColl.get(c.id) || []).sort((a, b) => (a.id < b.id ? -1 : 1)), cfg));
+  const sortIds = (arr) => arr.sort((a, b) => (a.id < b.id ? -1 : 1));
+  const primary = [];
+  const done = new Set();
+  for (const c of collections) {
+    if (done.has(c.id)) continue;
+    const cur = curatedByColl.get(c.id);
+    if (!cur) { primary.push(collectionJourney(c, sortIds(byColl.get(c.id) || []), cfg)); done.add(c.id); continue; }
+    const primaryId = String(cur.matchesCollection);
+    const primaryColl = collById.get(primaryId) || c;
+    const subsumed = (cur.alsoMatchesCollections || []).map(String).filter((id) => id !== primaryId && collById.has(id)).map((id) => collById.get(id));
+    const recs = sortIds([primaryColl.id, ...subsumed.map((x) => x.id)].flatMap((id) => byColl.get(id) || []));
+    primary.push(curatedJourney(cur, primaryColl, subsumed, recs, cfg));
+    done.add(primaryColl.id); for (const x of subsumed) done.add(x.id);
+  }
+  for (const cur of curated.filter((x) => !x.matchesCollection)) primary.push(curatedJourney(cur, null, [], sortIds(byColl.get(cur.id) || []), cfg));
+  for (const j of primary) if (!j.quality) j.quality = 'index only';
   const dated = rest.filter((s) => s.collected && s.collected.year != null);
   const fallback = gapJourneys(dated, cfg);
-  const journeys = [...primary, ...fallback].sort((a, b) => (a.dateStart < b.dateStart ? -1 : a.dateStart > b.dateStart ? 1 : a.id < b.id ? -1 : 1));
+  // Same ordering as qa/checks/data-gates.mjs: ISO dates compared on their common prefix (a month equals any day of it), then id.
+  const journeys = [...primary, ...fallback].sort((a, b) => { const n = Math.min(a.dateStart.length, b.dateStart.length); const ka = a.dateStart.slice(0, n), kb = b.dateStart.slice(0, n); return ka < kb ? -1 : ka > kb ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : 0; });
   return {
     _meta: {
       title: "Bartok's field trips: the bartok-gyujtesek.zti.hu trip index, with records attached, plus date-gap derived trips for records outside that index",
@@ -405,6 +598,7 @@ export function deriveJourneys(songs, config = {}) {
       generator: GENERATOR,
       sources: {
         primary: cfg.collections ? { file: 'data/collections-gyuj.json', ...cfg.collections._meta.source } : null,
+        curated: cfg.curated ? { file: 'data/journeys-curated.json', entries: curated.length, note: cfg.curated._meta && cfg.curated._meta.note } : null,
         fallback: 'date-gap derivation over records with no collection'
       },
       config: { gapDays: cfg.gapDays, jumpKm: cfg.jumpKm, departure: cfg.departure, collectorPattern: String(cfg.collectorPattern) },
@@ -422,6 +616,12 @@ export function deriveJourneys(songs, config = {}) {
         collectionJourneysWithRecords: primary.filter((j) => j.recordCount > 0).length,
         collectionJourneysWithoutOnlineRecords: primary.filter((j) => !j.recordsOnline).length,
         gapJourneys: fallback.length,
+        curatedJourneys: primary.filter((j) => j.curatedId).length,
+        curatedOnlyJourneys: primary.filter((j) => j.derivedFrom === 'curated').length,
+        indexEntriesSubsumed: primary.reduce((n, j) => n + ((j.subsumedCollections || []).length), 0),
+        byQuality: journeys.reduce((m, j) => ((m[j.quality] = (m[j.quality] || 0) + 1), m), {}),
+        stopsTotal: journeys.reduce((n, j) => n + j.stops.length, 0),
+        stopsWithCoordinates: journeys.reduce((n, j) => n + j.stops.filter((st) => st.lat != null).length, 0),
         routes: journeys.filter((j) => j.kind === 'route').length,
         clusters: journeys.filter((j) => j.kind === 'cluster').length
       },
@@ -450,6 +650,10 @@ function main() {
   const coll = opt('--collector', null);
   if (coll) cfg.collectorPattern = new RegExp(coll, 'i');
   if (!args.includes('--no-collections') && existsSync(collPath)) cfg.collections = JSON.parse(readFileSync(collPath, 'utf8'));
+  const curPath = resolve(opt('--curated', join(ROOT, 'data', 'journeys-curated.json')));
+  if (!args.includes('--no-curated') && existsSync(curPath)) cfg.curated = JSON.parse(readFileSync(curPath, 'utf8'));
+  const gazPath = resolve(opt('--gazetteer', join(ROOT, 'data', 'gazetteer.json')));
+  if (existsSync(gazPath)) cfg.gazetteer = JSON.parse(readFileSync(gazPath, 'utf8'));
   if (!songs.length && !cfg.collections) {
     console.error('Nothing to derive from: no songs and no collections file.');
     process.exit(2);

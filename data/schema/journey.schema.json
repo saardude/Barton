@@ -30,13 +30,14 @@
     "songIds",
     "nowIn",
     "romanianMaterial",
-    "derivation"
+    "derivation",
+    "quality"
   ],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^(gyuj-[0-9]+|J-[0-9]{4}-(0[1-9]|1[0-2]|00)-[0-9]{2})$",
-      "description": "gyuj-<collection id> for index entries (stable, the site's own id). J-YYYY-MM-nn for date-gap trips: year and month of the first record, nn = 01-based sequence within that month; MM = 00 for year-only clusters."
+      "pattern": "^(gyuj-[0-9]+|cur-[0-9]{4}-[0-9]{2}-[0-9]{2}|J-[0-9]{4}-(0[1-9]|1[0-2]|00)-[0-9]{2})$",
+      "description": "gyuj-<collection id> for index entries (stable, the site's own id). J-YYYY-MM-nn for date-gap trips: year and month of the first record, nn = 01-based sequence within that month; MM = 00 for year-only clusters. cur-YYYY-MM-nn for curated trips absent from the index."
     },
     "kind": {
       "type": "string",
@@ -94,15 +95,22 @@
           "type": "string"
         },
         "lat": {
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "lng": {
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "confidence": {
           "type": "string",
           "enum": [
             "documented",
+            "inferred",
             "assumed"
           ],
           "description": "'assumed' means the configured default (Budapest, Bartok's home base) was used; the UI labels it as such."
@@ -231,6 +239,58 @@
               "unresolved"
             ],
             "description": "resolved: coordinates from the record; label: locality from the index label resolved through the gazetteer; label-region: a region or county centre from the built-in table (draw as a cluster, never as a route); unresolved: no coordinates, listed but not drawn."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "documented",
+              "inferred"
+            ],
+            "description": "Curated stops: documented = the cited source states it; inferred = curator's inference (or a stop built from records only)."
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "placeIdNote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "placeIdSource": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "curated",
+              "gazetteer-lookup",
+              "record",
+              null
+            ]
+          },
+          "curatedSeq": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Order of the stop in the curated source; differs from seq when the dated order was used for the route (see notes)."
+          },
+          "recordDateStart": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "For stops built from records only: earliest record date (arrival is null because the stop's place in the itinerary is unknown)."
+          },
+          "recordDateEnd": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       }
@@ -367,9 +427,10 @@
       "type": "string",
       "enum": [
         "gyuj-collections",
+        "curated",
         "date-gap"
       ],
-      "description": "gyuj-collections: an entry of the trip index on bartok-gyujtesek.zti.hu with its records attached. date-gap: derived from dated records that belong to no index entry."
+      "description": "gyuj-collections: an entry of the trip index on bartok-gyujtesek.zti.hu with its records attached. date-gap: derived from dated records that belong to no index entry. curated: a trip documented in data/journeys-curated.json with no index entry."
     },
     "label": {
       "type": [
@@ -528,6 +589,221 @@
         }
       },
       "description": "Whether the trip collected Romanian material: documented (matches the collecting chronology in Rumanian Folk Music, Suchoff ed.), inferred (Romanian-speaking area, not checked entry by entry), unknown (present-day Romania but language not checked). Null for date-gap trips."
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "sourced itinerary",
+        "documented itinerary",
+        "dates only",
+        "index only"
+      ],
+      "description": "App quality badge. sourced itinerary: curated documented itinerary with day precision and every stop documented; documented itinerary: curated documented itinerary otherwise; dates only: curated 'dates only' entry or a date-gap trip; index only: index entry without curated research."
+    },
+    "curatedId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Id of the curated entry merged into this journey (data/journeys-curated.json)."
+    },
+    "evidenceQuality": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The curated entry's evidenceQuality verbatim (may carry a parenthetical such as '(conflicting)')."
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Curated one-paragraph summary, neutral, sourced."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "title"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "year": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accessed": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "publisher": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cached": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "description": "Citations carried from the curated entry."
+    },
+    "companions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "return": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "place",
+        "confidence",
+        "note"
+      ],
+      "properties": {
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "place": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "inferred",
+            "assumed"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "subsumedCollections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "journeyId",
+          "label",
+          "countOnline"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "journeyId": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "countOnline": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "description": "Index entries folded into this journey by the curated layer (shown as part of it, not as separate trips)."
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "text"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "source-conflict",
+              "evidence",
+              "subsumed-index-entry",
+              "departure",
+              "return",
+              "curator"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "stopSeq": {
+            "type": "integer"
+          },
+          "collectionId": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Source conflicts and curator remarks preserved verbatim; never resolved silently."
     }
   },
   "$defs": {

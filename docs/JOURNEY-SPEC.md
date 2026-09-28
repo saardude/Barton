@@ -10,7 +10,8 @@ Files:
 | File | Produced by | Schema |
 | --- | --- | --- |
 | `data/collections-gyuj.json` | `node geo/parse-gyuj-collections.mjs` from the bartok-gyujtesek.zti.hu trip index | described in section 2.1 |
-| `data/journeys.json` | `node geo/derive-journeys.mjs` from `data/collections-gyuj.json` + `data/songs.json` | `data/schema/journey.schema.json` |
+| `data/journeys-curated.json` | hand-curated (research engineer), see docs/JOURNEY-SOURCES.md | `_meta.fields` in the file |
+| `data/journeys.json` | `node geo/derive-journeys.mjs` from `data/collections-gyuj.json` + `data/journeys-curated.json` + `data/songs.json` + `data/gazetteer.json` | `data/schema/journey.schema.json` |
 | `data/villages.json` | `node geo/enrich-wikidata.mjs` from `data/gazetteer.json` (+ `data/places.json`) | described in section 5 |
 | `data/geo/borders-{1910,1914,1920,now}.json` | `node geo/build.mjs` from `geo/raw/` | GeoJSON, section 4 |
 | `data/context-events.json` | hand-curated | section 6 |
@@ -34,7 +35,11 @@ All scripts live in `geo/` (own `package.json`; `cd geo && npm i` once). Nothing
    (stop identity and coordinates), `performer.ethnicity`, `instrument[]`, `genre`,
    `performer.name` (derived facts), `id`, `source.url` (collection membership: a gyuj
    record's URL is `/en/browse/<collection>/<record>`, and its id `gyuj-<collection>-<record>`).
-3. `data/gazetteer.json` for resolving the label's localities (historical Hungarian name,
+3. `data/gazetteer.json` for resolving the label's localities and the curated stops
+   without `placeId` (`geo/fill-gazetteer.mjs` adds missing Romanian villages with
+   Wikidata coordinates and a confidence: high = exact label and county, medium = folded
+   name within 20 km of the county centroid, low = within 80 km; unresolved ones are
+   listed, never guessed) (historical Hungarian name,
    modern name or alias, folded), plus a built-in table of regions and counties named in
    the index (Fekete-Koros valley, Mezoseg, Kis-Szamos, Mocvidek, Felso-Maros mente,
    Nyarad mente, Banat, the 1910 counties, Algeria) with approximate centres.
@@ -86,6 +91,39 @@ no network. Two passes:
    can show the Romanian trips even where the melodies are not online.
 6. **Id** = `gyuj-<collection id>`, the site's own stable id. `sourceUrl` links the entry.
 
+### 2.1a Curated layer (`data/journeys-curated.json`, merged over the index)
+
+`data/journeys-curated.json` (63 cited entries, 1904-1918, see docs/JOURNEY-SOURCES.md) is
+merged over the index entries by `derive-journeys.mjs`:
+
+1. An entry with `matchesCollection` merges into journey `gyuj-<id>`: the curated
+   `dateStart`/`dateEnd`/`datePrecision`, `departure` (place text, evidence; Budapest
+   coordinates only when the text names Budapest), `return`, `companions`, `summary`,
+   `sources[]`, `evidenceQuality` and `title` are carried into the journey (`curatedId`
+   links back). The index entries listed in `alsoMatchesCollections` are folded into the
+   same journey (`subsumedCollections[]`, their records attached, a `notes` entry per
+   folded entry) and are not emitted as separate journeys.
+2. Entries with `matchesCollection: null` become new journeys with the curated id
+   (`cur-YYYY-MM-nn`, `derivedFrom: "curated"`); rfm records attach to them by date +
+   county like to index entries.
+3. Stops are the curated ordered stops (`seq`, `arrival`, `departure`, `confidence:
+   documented|inferred`, `note`, `placeIdNote`). Coordinates come from the curated stop,
+   else from the gazetteer by `placeId`, else by a unique folded (modern or historical
+   name, county) lookup in the gazetteer (`placeIdSource: "gazetteer-lookup"`). Attached
+   records are assigned to the stop whose `placeId` or folded village name matches; records
+   at places the itinerary does not name are appended as extra stops with
+   `confidence: "inferred"` and a note. `kind` is `route` when `evidenceQuality` starts
+   with "documented itinerary" (distances along the curated order), else `cluster`.
+4. `quality` (the app's badge): `sourced itinerary` = documented itinerary with day
+   precision and every stop documented; `documented itinerary` = other documented
+   itineraries; `dates only` = curated "dates only" entries and all date-gap trips; `index
+   only` = index entries without curated research.
+5. Conflicts are never resolved silently: `notes[]` keeps, verbatim, stop and source notes
+   that report a differing date or place, the parenthetical of an evidence quality such as
+   "dates only (conflicting)", departure/return notes, and the folded index entries.
+6. `romanianMaterial` comes from the curated boolean (`confidence: documented`) when
+   present, else from the index flag.
+
 ### 2.2 Fallback pass: records outside the index (`derivedFrom: "date-gap"`)
 
 Records of the other two sites (and any gyuj record whose collection is not in the index,
@@ -123,7 +161,7 @@ counted as `orphanCollectionRecords`) are grouped by the date-gap heuristic:
   indent. `_meta.counts` reports records in/outside collections, index entries with and
   without records, and route/cluster totals.
 - Tunables: `--gap 10 --jump 250 --collector "bart[oó]k" --collections <file>
-  --no-collections`. Values used are written into each journey's `derivation`.
+  --no-collections --curated <file> --no-curated --gazetteer <file>`. Values used are written into each journey's `derivation`.
 
 Worked example (`node geo/derive-journeys.mjs --in <synthetic> --out <file>`): two
 records with URLs `/en/browse/32/...` join `gyuj-32` ("July, 1907. Csikszentmihaly (5)",
