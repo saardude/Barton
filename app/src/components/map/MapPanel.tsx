@@ -68,7 +68,6 @@ export function MapPanel({ highlightPlaceId }: { highlightPlaceId: string | null
   const [hover, setHover] = useState<HoverInfo | null>(null)
   const [provider, setProvider] = useState<TileProvider>('carto')
   const [size, setSize] = useState({ width: 800, height: 500 })
-  const [listHover, setListHover] = useState<MapPoint | null>(null)
 
   const placeSelected = Boolean(query.county || query.village)
   const level: 'county' | 'village' = placeSelected || zoom > COUNTY_ZOOM_MAX ? 'village' : 'county'

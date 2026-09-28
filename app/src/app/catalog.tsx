@@ -5,12 +5,10 @@ import { buildIndex, type CatalogIndex } from '../data/catalogIndex'
 import { hydrateSongs } from '../data/hydrate'
 import type { SearchService } from '../data/search'
 import { createSearchService } from '../data/searchClient'
-import { dataManifest } from '../generated/data-manifest'
+import { manifest } from './manifest'
 import type { Facets } from '../types/facets'
 import type { Place } from '../types/place'
 import type { Song } from '../types/song'
-
-const manifest = dataManifest as Record<string, string | undefined>
 
 export interface JourneySummary {
   id: string

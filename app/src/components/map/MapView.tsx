@@ -149,6 +149,9 @@ export function MapView(props: MapViewProps) {
     const layer = L.layerGroup().addTo(map)
     layerRef.current = layer
     mapRef.current = map
+    // Keep Leaflet's size in sync with the panel (the grid resizes with the viewport).
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => map.invalidateSize()) : null
+    ro?.observe(el)
     map.fitBounds(propsRef.current.fitBounds, { padding: [24, 24] })
     map.on('zoomend', () => propsRef.current.onZoom?.(map.getZoom()))
     propsRef.current.onZoom?.(map.getZoom())
@@ -204,6 +207,7 @@ export function MapView(props: MapViewProps) {
 
     return () => {
       window.clearTimeout(timer)
+      ro?.disconnect()
       el.removeEventListener('click', onClick, true)
       el.removeEventListener('mouseover', onOver)
       el.removeEventListener('mouseout', onOut)
