@@ -1,4 +1,5 @@
 // Attribution footer (UI-COPY 12, AC-37): on every route, in the DOM before data loads.
+import { Link } from 'react-router'
 import { siteName, siteUrl, t } from '../i18n/en'
 
 const SITES = ['fmbc', 'bsys', 'gyuj'] as const
@@ -38,6 +39,9 @@ export function Footer() {
           CARTO
         </a>
         . {t('map.attributionBounds')}.
+      </p>
+      <p>
+        <Link to="/about">{t('nav.about')}</Link>
       </p>
     </footer>
   )

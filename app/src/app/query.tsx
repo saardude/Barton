@@ -44,15 +44,19 @@ export function QueryProvider({ children }: { children: ReactNode }) {
   const search = useMemo(() => toSearch(query), [query])
 
   const pathname = location.pathname
+  // `?tab=` belongs to the song / county routes, not to the Query; carry it across query changes.
+  const tab = new URLSearchParams(location.search).get('tab')
 
   const setQuery = useCallback(
     (patch: Partial<Query>, opts?: SetQueryOptions) => {
       const next = applyPatch(query, patch)
       const nextSearch = toSearch(next)
       if (nextSearch === search) return
-      navigate({ pathname, search: nextSearch }, { replace: opts?.replace })
+      const tabPart = tab ? `tab=${encodeURIComponent(tab)}` : ''
+      const full = tabPart ? (nextSearch ? `${nextSearch}&${tabPart}` : `?${tabPart}`) : nextSearch
+      navigate({ pathname, search: full }, { replace: opts?.replace })
     },
-    [navigate, pathname, query, search],
+    [navigate, pathname, query, search, tab],
   )
 
   const reset = useCallback(() => {
@@ -76,11 +80,18 @@ export function QueryProvider({ children }: { children: ReactNode }) {
   }, [catalog, q, qActive])
 
   const searching = qActive && searchState.q !== q
+  // Journey mapper: `trip` narrows the results to the trip's records (FRONTEND-SPEC 14.2).
+  const tripSongIds = useMemo(() => {
+    if (!catalog || !query.trip) return null
+    const j = catalog.journeys.find((x) => x.id === query.trip)
+    return j?.songIds ? new Set(j.songIds) : null
+  }, [catalog, query.trip])
+
   const derived = useMemo(() => {
     if (!index) return null
     const searchIds = qActive ? (searchState.q === q ? searchState.ids : []) : null
-    return derive({ query, index, searchIds, searching })
-  }, [index, query, qActive, q, searchState, searching])
+    return derive({ query, index, searchIds, searching, tripSongIds })
+  }, [index, query, qActive, q, searchState, searching, tripSongIds])
 
   const value = useMemo<QueryContextValue>(
     () => ({ query, warnings: decoded.warnings, setQuery, reset, search }),

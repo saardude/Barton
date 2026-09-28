@@ -38,7 +38,7 @@ export function SortSelect() {
   )
 }
 
-export function ResultsPanel({ onHoverPlace }: { onHoverPlace?: (placeId: string | null) => void }) {
+export function ResultsPanel({ onHoverPlace, hideCountyLink }: { onHoverPlace?: (placeId: string | null) => void; hideCountyLink?: boolean }) {
   const catalog = useCatalogReady()
   const derived = useDerived()
   const { query, setQuery, reset, search } = useQuery()
@@ -66,7 +66,7 @@ export function ResultsPanel({ onHoverPlace }: { onHoverPlace?: (placeId: string
         <div className="results__controls">
           <SortSelect />
           <ExportButton songs={derived.sortedSongs} query={query} small />
-          {query.county && (
+          {query.county && !hideCountyLink && (
             <Link className="btn btn--sm" to={{ pathname: `/county/${query.county}`, search }}>
               {t('nav.openCounty')}
             </Link>

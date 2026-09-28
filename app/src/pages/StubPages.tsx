@@ -1,121 +1,16 @@
-// Stub routes (FRONTEND-SPEC 2): County, Song, Journeys, About, NotFound. Each renders the shell
-// and the footer; the full screens are later milestones.
+// Stub routes (FRONTEND-SPEC 2): Journeys, About, NotFound. Each renders the shell and the footer.
+// County and Song live in CountyPage.tsx and SongPage.tsx.
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link } from 'react-router'
 import { useCatalogReady } from '../app/catalog'
 import { useQuery } from '../app/query'
 import { genreLabels, siteName, siteUrl, t } from '../i18n/en'
-import { placeText } from '../state/placeName'
-import { PlaceLabel } from '../components/PlaceLabel'
-import { SourceLink } from '../components/SourceLink'
-import { songDisplayTitle, songPlaceLine } from '../components/SongRow'
 import { EmptyState } from '../components/States'
 
 function useTitle(title: string) {
   useEffect(() => {
     document.title = `${title} | ${t('app.title')}`
   }, [title])
-}
-
-export function CountyPage() {
-  const params = useParams()
-  const countyId = params['*'] ?? ''
-  const catalog = useCatalogReady()
-  const { search } = useQuery()
-  const place = catalog?.index.placeById.get(countyId)
-  useTitle(place ? placeText(place, place.id) : t('state.notFound'))
-  if (!catalog) return <div className="page">{t('loadingCollection')}</div>
-  if (!place || place.type !== 'county') {
-    return (
-      <div className="page">
-        <EmptyState
-          title={t('state.countyNotFound', { id: countyId })}
-          actions={
-            <Link className="btn" to={{ pathname: '/', search }}>
-              {t('state.backToExplorer')}
-            </Link>
-          }
-        />
-      </div>
-    )
-  }
-  const songs = catalog.index.songsUnder(place.id)
-  const villages = catalog.index.childrenOf(place.id)
-  return (
-    <div className="page">
-      <h1>
-        <PlaceLabel place={place} />
-      </h1>
-      <p className="muted">
-        {[place.region, place.country].filter(Boolean).join(' / ')}
-      </p>
-      <div className="stats">
-        <div>
-          <div className="stats__n">{songs.length}</div>
-          <div className="stats__label">{t('county.stats.melodies')}</div>
-        </div>
-        <div>
-          <div className="stats__n">{villages.length}</div>
-          <div className="stats__label">{t('county.stats.villages')}</div>
-        </div>
-      </div>
-      <p>
-        <Link className="btn" to={{ pathname: '/', search: `?county=${place.id}` }}>
-          {t('nav.viewInExplorer')}
-        </Link>
-      </p>
-      <p className="muted">{t('state.placeholder')}</p>
-    </div>
-  )
-}
-
-export function SongPage() {
-  const { songId = '' } = useParams()
-  const catalog = useCatalogReady()
-  const { search } = useQuery()
-  const song = catalog?.index.songById.get(songId)
-  useTitle(song ? songDisplayTitle(song).text : t('state.notFound'))
-  if (!catalog) return <div className="page">{t('loadingCollection')}</div>
-  if (!song) {
-    return (
-      <div className="page">
-        <EmptyState
-          title={t('state.songNotFound', { id: songId })}
-          actions={
-            <Link className="btn" to={{ pathname: '/', search }}>
-              {t('state.backToExplorer')}
-            </Link>
-          }
-        />
-      </div>
-    )
-  }
-  const title = songDisplayTitle(song)
-  return (
-    <div className="page">
-      <p>
-        <Link to={{ pathname: '/', search }}>{t('nav.backToResults')}</Link>
-      </p>
-      <h1>{title.text}</h1>
-      <p>
-        <SourceLink song={song} size="header" /> <span className="muted">{siteName(song.source.site)}</span>
-      </p>
-      <p className="muted">
-        {songPlaceLine(song, catalog.index)}
-        {song.collected.year ? `, ${song.collected.year}` : ''}
-      </p>
-      {song.genre && <p>{genreLabels[song.genre]?.ro ?? song.genre}</p>}
-      {song.text && (
-        <section>
-          <h2>{t('song.text')}</h2>
-          <p lang="ro" style={{ whiteSpace: 'pre-wrap' }}>
-            {song.text}
-          </p>
-        </section>
-      )}
-      <p className="muted">{t('state.placeholder')}</p>
-    </div>
-  )
 }
 
 export function JourneysPage() {

@@ -32,20 +32,7 @@ export function FilterRailContent() {
   const yearActive = (query.yearFrom !== undefined ? 1 : 0) + (query.yearTo !== undefined ? 1 : 0)
   return (
     <>
-      <FacetGroup
-        id="place"
-        title={t('facet.place')}
-        activeCount={query.village || query.county || query.region ? 1 : 0}
-        onClear={() => setQuery({ region: undefined })}
-      >
-        <PlaceTree
-          tree={derived.placeTree}
-          query={query}
-          countryOptions={index.countries}
-          onSelect={(level, id) => setQuery({ [level]: id })}
-          onCountry={(id) => setQuery({ country: id })}
-        />
-      </FacetGroup>
+      <PlaceFacet />
       <FacetGroup id="genre" title={t('facet.genre')} activeCount={query.genre.length} onClear={() => setQuery({ genre: [] })}>
         <CheckboxFacet counts={derived.facetCounts.genre} selected={query.genre} onChange={(genre) => setQuery({ genre: genre as GenreId[] })} />
       </FacetGroup>
@@ -94,6 +81,39 @@ export function FilterRailContent() {
         </button>
       </div>
     </>
+  )
+}
+
+/** The Place group (country switch + tree) alone; also the phone "Places" tab. */
+export function PlaceFacet({ onSelect }: { onSelect?: () => void }) {
+  const catalog = useCatalogReady()
+  const derived = useDerived()
+  const { query, setQuery } = useQuery()
+  if (!catalog || !derived) {
+    return (
+      <FacetGroup id="place" title={t('facet.place')} activeCount={0}>
+        <p className="muted">{t('loadingCollection')}</p>
+      </FacetGroup>
+    )
+  }
+  return (
+    <FacetGroup
+      id="place"
+      title={t('facet.place')}
+      activeCount={query.village || query.county || query.region ? 1 : 0}
+      onClear={() => setQuery({ region: undefined })}
+    >
+      <PlaceTree
+        tree={derived.placeTree}
+        query={query}
+        countryOptions={catalog.index.countries}
+        onSelect={(level, id) => {
+          setQuery({ [level]: id })
+          if (id) onSelect?.()
+        }}
+        onCountry={(id) => setQuery({ country: id })}
+      />
+    </FacetGroup>
   )
 }
 

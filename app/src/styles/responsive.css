@@ -1,0 +1,259 @@
+/* Phone explorer (< 768 px; FRONTEND-SPEC 10, AC-28, AC-29) and touch refinements.
+   Desktop (>= 768 px) is untouched: every rule here is scoped to the phone media query or to
+   pointer: coarse. */
+
+/* ---- Bottom tabs -------------------------------------------------------------------- */
+.bottom-tabs {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #root {
+    /* room for the fixed bottom tabs on the Explorer */
+    --phone-header-h: 56px;
+  }
+
+  .explorer--phone {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding-bottom: calc(var(--bottomtabs-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .explorer--phone .explorer__main {
+    display: block;
+  }
+
+  /* Top bar: masthead + theme on one row, search on the next; nav lives in the bottom tabs
+     and the footer. Static (not sticky) so the small screen keeps its height for content. */
+  .topbar {
+    position: static;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-4);
+    min-height: 0;
+  }
+
+  .topbar__masthead,
+  .topbar__masthead--large {
+    font-size: var(--fs-16);
+  }
+
+  .topbar__nav {
+    display: none;
+  }
+
+  .topbar__search {
+    order: 10;
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  .topbar__tools .toggle {
+    display: none;
+  }
+
+  /* Phone header under the top bar: Filters (n) + count */
+  .phone-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-height: var(--phone-header-h);
+    padding: var(--space-2) var(--space-4);
+    border-bottom: var(--border);
+    background: var(--surface);
+  }
+
+  .phone-header .filters-toggle {
+    display: inline-flex;
+    margin: 0;
+    min-height: var(--target-min);
+  }
+
+  .phone-header__count {
+    font-size: var(--fs-12);
+    white-space: nowrap;
+  }
+
+  .phone-panel {
+    min-height: 0;
+  }
+
+  /* Map tab: the map fills what is left of the screen */
+  .explorer--phone .map-section--full {
+    height: calc(100dvh - var(--topbar-h) - var(--phone-header-h) - var(--bottomtabs-h) - 44px);
+    min-height: 360px;
+  }
+
+  /* Songs tab: a small map above the list */
+  .explorer--phone .map-section--mini {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .map-section--mini .map-legend,
+  .map-section--mini .map-notice,
+  .map-section--mini .map-controls--right {
+    display: none;
+  }
+
+  .phone-viewlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: var(--target-min);
+    padding: 0 var(--space-4);
+    background: var(--surface);
+    color: var(--ink);
+    border: 0;
+    border-top: var(--border-strong);
+    border-bottom: var(--border);
+    font-family: var(--font-mono);
+    font-size: var(--fs-12);
+  }
+
+  .explorer--phone .results {
+    border-left: 0;
+    overflow: visible;
+  }
+
+  .explorer--phone .results__header {
+    top: 0;
+  }
+
+  .rail--phone {
+    border-right: 0;
+    padding-bottom: var(--space-4);
+  }
+
+  /* Bottom tab bar */
+  .bottom-tabs {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-sticky);
+    display: flex;
+    align-items: stretch;
+    min-height: var(--bottomtabs-h);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--surface);
+    border-top: var(--border-strong);
+  }
+
+  .bottom-tabs__list {
+    display: flex;
+    flex: 3 1 0;
+  }
+
+  .bottom-tabs__tab {
+    flex: 1 1 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: var(--bottomtabs-h);
+    min-width: var(--target-min);
+    padding: var(--space-1) 0 0;
+    background: transparent;
+    border: 0;
+    border-top: 2px solid transparent;
+    color: var(--ink-2);
+    font-size: var(--fs-11);
+    font-family: var(--font-mono);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .bottom-tabs__link {
+    flex: 1 1 0;
+  }
+
+  .bottom-tabs__tab svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bottom-tabs__tab[aria-selected='true'],
+  .bottom-tabs__link[aria-current='page'] {
+    color: var(--accent);
+    border-top-color: var(--accent);
+  }
+
+  .bottom-tabs__count {
+    color: var(--muted);
+  }
+
+  /* Toasts sit above the tabs */
+  .toast {
+    bottom: calc(var(--bottomtabs-h) + var(--space-4));
+  }
+
+  /* Static pages: 16 px gutter, no horizontal scroll */
+  .page {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    padding-bottom: var(--space-8);
+  }
+
+  .page pre,
+  .page code {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* ---- Map point sheet (touch; any viewport with a coarse pointer) ------------------ */
+.point-sheet__panel {
+  max-height: 80dvh;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.point-sheet__handle {
+  width: 40px;
+  height: 4px;
+  margin: var(--space-2) auto 0;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.point-sheet__body {
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  font-size: var(--fs-13);
+}
+
+.point-sheet__body .hover-card__name {
+  font-size: var(--fs-16);
+}
+
+.point-sheet__footer {
+  flex-wrap: wrap;
+}
+
+.point-sheet__footer .btn {
+  min-height: var(--target-min);
+}
+
+.point-sheet__footer .btn--icon {
+  flex: 0 0 var(--target-min);
+}
+
+@media (min-width: 768px) {
+  .point-sheet {
+    align-items: center;
+    justify-content: center;
+  }
+  .point-sheet__panel {
+    width: min(420px, calc(100% - 32px));
+    border: var(--border-strong);
+    border-radius: var(--radius);
+  }
+}
+
+/* Large touch screens (tablet): 44 px targets for the filter sheet and map controls
+   already come from pointer: coarse rules in explorer.css and map.css. */

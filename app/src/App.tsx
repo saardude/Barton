@@ -8,7 +8,10 @@ import { ErrorState } from './components/States'
 import { StatusBar } from './components/StatusBar'
 import { SkipLink, TopBar } from './components/TopBar'
 import { ExplorerPage } from './pages/ExplorerPage'
-import { AboutPage, CountyPage, JourneysPage, NotFoundPage, SongPage } from './pages/StubPages'
+import { CountyPage } from './pages/CountyPage'
+import { SongPage } from './pages/SongPage'
+import { AboutPage, NotFoundPage } from './pages/StubPages'
+import { JourneysPage } from './routes/journeys'
 
 function Shell() {
   const { state, retry } = useCatalog()

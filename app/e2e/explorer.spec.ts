@@ -1,0 +1,154 @@
+// Explorer journeys: E2E-01 to E2E-04 and E2E-13 (QA-PLAN section 4).
+import { countyDot, expect, gotoApp, query, readCount, searchBox, test, waitForCatalog } from './fixtures'
+
+test.describe('Explorer', () => {
+  test('E2E-01 land, pick county on map, results narrow, sort by style, open song, back keeps filters', async ({ page, data }, testInfo) => {
+    test.skip(testInfo.project.name === 'phone-chromium', 'desktop journey; the phone journey is E2E-09')
+    await gotoApp(page, '/')
+    // 1. count equals the Romania scope; one bubble per mapped county
+    const c0 = await readCount(page)
+    expect(c0.n).toBe(data.ro.length)
+    expect(c0.m).toBe(data.ro.length)
+    const mappedCounties = new Set<string>()
+    for (const s of data.ro) {
+      const id = s.location.placeId
+      if (!id) continue
+      const parts = id.split('/')
+      if (parts.length < 3) continue
+      const county = parts.slice(0, 3).join('/')
+      const p = data.placeById.get(county)
+      if (p && p.lat !== null && p.lng !== null) mappedCounties.add(county)
+    }
+    await expect(page.locator('.map-view .dot--county')).toHaveCount(mappedCounties.size)
+
+    // 2. click Arad
+    const arad = countyDot(page, 'Arad')
+    const label = (await arad.getAttribute('aria-label')) ?? ''
+    const bubbleCount = Number(/: ([\d,]+) melodies/.exec(label)?.[1].replace(/,/g, ''))
+    await arad.click()
+    await expect(page.getByRole('button', { name: /Remove filter: Arad/ })).toBeVisible()
+    await expect.poll(() => query(page).get('county')).toBe(data.countyId('Arad'))
+    const c1 = await readCount(page)
+    expect(c1.n).toBe(bubbleCount)
+    expect(c1.n).toBe(data.under(data.countyId('Arad')).length)
+    expect(c1.n).toBeLessThan(c0.n)
+
+    // 3. sort by style
+    await page.getByLabel('Sort by').selectOption('style')
+    await expect.poll(() => query(page).get('sort')).toBe('style')
+    const firstId = await page.locator('.song-row').first().getAttribute('data-song-id')
+    const first = data.songs.find((s) => s.id === firstId)
+    expect(first).toBeTruthy()
+    if (data.under(data.countyId('Arad')).some((s) => s.style !== null)) expect(first?.style).not.toBeNull()
+
+    // remember the results scroll position, then open the first song
+    const results = page.locator('.results')
+    await results.evaluate((el) => el.scrollTo(0, 300))
+    const scrollBefore = await results.evaluate((el) => el.scrollTop)
+    await page.locator('.song-row a.song-row__main').first().click()
+    await expect(page).toHaveURL(new RegExp(`/song/${firstId}\\?.*county=`))
+    await expect(page.locator('h1')).toContainText(first?.title?.trim() || first?.incipit?.trim() || 'Untitled')
+
+    // 5. back keeps county chip, sort, count and scroll position
+    await page.goBack()
+    await waitForCatalog(page)
+    await expect(page.getByRole('button', { name: /Remove filter: Arad/ })).toBeVisible()
+    await expect(page.getByLabel('Sort by')).toHaveValue('style')
+    expect((await readCount(page)).n).toBe(c1.n)
+    await expect.poll(() => results.evaluate((el) => el.scrollTop)).toBeGreaterThan(scrollBefore - 50)
+  })
+
+  test('E2E-02 URL paste restores state', async ({ page, data }) => {
+    const bihor = data.countyId('Bihor')
+    await gotoApp(page, `/?county=${bihor}&genre=colinda,joc&from=1909&to=1912&sort=year&dir=desc`)
+    const expected = data.under(bihor).filter((s) => (s.genre === 'colinda' || s.genre === 'joc') && s.collected.year !== null && s.collected.year >= 1909 && s.collected.year <= 1912)
+    expect((await readCount(page)).n).toBe(expected.length)
+    // chips
+    for (const name of [/Remove filter: Bihor/, /Remove filter: colind/, /Remove filter: joc/, /Remove filter: 1909-1912/]) {
+      await expect(page.getByRole('button', { name })).toBeVisible()
+    }
+    await expect(page.getByLabel('Sort by')).toHaveValue('year')
+    await expect(page.getByRole('button', { name: 'Toggle sort direction' })).toHaveAttribute('aria-pressed', 'true')
+    // the status bar shows the canonical string
+    await expect(page.locator('.statusbar__query')).toHaveText(`?county=${bihor}&genre=colinda,joc&from=1909&to=1912&sort=year&dir=desc`)
+    // the filter rail (desktop) or sheet (phone) reflects every value
+    const isPhone = (await page.locator('.explorer--phone').count()) > 0
+    if (isPhone) await page.getByRole('button', { name: /^Filters/ }).click()
+    const rail = isPhone ? page.getByRole('dialog', { name: 'Filters' }) : page.getByRole('complementary', { name: 'Filters' })
+    await expect(rail.locator(`[role="treeitem"][data-id="${bihor}"]`)).toHaveAttribute('aria-selected', 'true')
+    await expect(rail.getByRole('checkbox', { name: /colind/ })).toBeChecked()
+    await expect(rail.getByRole('checkbox', { name: /^joc/ })).toBeChecked()
+    await expect(rail.getByRole('spinbutton', { name: 'From' })).toHaveValue('1909')
+    await expect(rail.getByRole('spinbutton', { name: 'To' })).toHaveValue('1912')
+  })
+
+  test('E2E-03 clear all', async ({ page, data }) => {
+    const bihor = data.countyId('Bihor')
+    await gotoApp(page, `/?county=${bihor}&genre=colinda,joc&from=1909&to=1912&sort=year&dir=desc`)
+    await page.locator('.results__chips').getByRole('button', { name: 'Clear all filters' }).click()
+    await expect(page).toHaveURL(/\/$/)
+    expect(query(page).toString()).toBe('')
+    expect((await readCount(page)).n).toBe(data.ro.length)
+    await expect(page.locator('.results__chips .chip')).toHaveCount(0)
+  })
+
+  test('E2E-04 search, with diacritics, and the empty state', async ({ page, data }) => {
+    await gotoApp(page, '/')
+    const box = searchBox(page)
+    await box.fill('sculati')
+    await expect.poll(() => query(page).get('q')).toBe('sculati')
+    await expect(page.locator('.song-row').first()).toBeVisible()
+    const titles = await page.locator('.song-row__title').allTextContents()
+    expect(titles.some((t) => /scula/i.test(t))).toBe(true)
+    // diacritics: "Sculați" finds the same records (diacritic-insensitive, FRONTEND-SPEC 4)
+    await box.fill('Sculați')
+    await expect.poll(async () => (await readCount(page)).n).toBeGreaterThan(0)
+    const withDiacritics = (await readCount(page)).n
+    await box.fill('sculati')
+    await expect.poll(async () => (await readCount(page)).n).toBe(withDiacritics)
+    expect(data.songs.some((s) => /scula/i.test(`${s.title ?? ''} ${s.incipit ?? ''}`))).toBe(true)
+    // nonsense -> empty state with "Clear search"
+    await box.fill('zzzzqqqq')
+    await expect(page.getByText(/No melodies match "zzzzqqqq"/)).toBeVisible()
+    await expect(page.getByRole('button', { name: /Export/ }).first()).toBeDisabled()
+    await page.getByRole('button', { name: 'Clear search' }).click()
+    await expect.poll(async () => (await readCount(page)).n).toBe(data.ro.length)
+    await expect(box).toHaveValue('')
+  })
+
+  test('E2E-13 map interactions: hover card, click narrows, clear, village dots, list fallback', async ({ page, data }, testInfo) => {
+    test.skip(testInfo.project.name === 'phone-chromium', 'touch map interactions are covered by E2E-09')
+    await gotoApp(page, '/')
+    const bihor = countyDot(page, 'Bihor')
+    await bihor.hover()
+    const card = page.locator('#map-hover-card')
+    await expect(card).toBeVisible()
+    await expect(card).toContainText('Bihor')
+    await expect(card).toContainText(/\d+ melodies in \d+ villages/)
+    await bihor.click()
+    const bihorId = data.countyId('Bihor')
+    await expect.poll(() => query(page).get('county')).toBe(bihorId)
+    // village mode: dots for the villages of Bihor
+    await expect(page.locator('.map-view .dot--village').first()).toBeVisible()
+    const villageDots = page.locator('.map-view .dot--village')
+    expect(await villageDots.count()).toBeGreaterThan(1)
+    const villageLabel = (await villageDots.first().getAttribute('aria-label')) ?? ''
+    await villageDots.first().click()
+    await expect.poll(() => query(page).get('village')).toMatch(new RegExp(`^${bihorId}/`))
+    await expect(page.getByRole('button', { name: new RegExp(`Remove filter: ${villageLabel.split(',')[0].replace(/[()]/g, '\\$&').slice(0, 12)}`) })).toBeVisible()
+    // clearing with the chip's x goes back to the county
+    await page.getByRole('button', { name: /Remove filter: / }).first().click()
+    await expect.poll(() => query(page).get('village')).toBeNull()
+    await page.getByRole('button', { name: /Remove filter: Bihor/ }).click()
+    await expect.poll(() => query(page).get('county')).toBeNull()
+    // keyboard fallback list
+    const summary = page.getByText(/List counties \(\d+\)/)
+    await expect(summary).toBeVisible()
+    await summary.click()
+    const item = page.locator('.map-list__item').first()
+    await expect(item).toBeVisible()
+    await item.focus()
+    await page.keyboard.press('Enter')
+    await expect.poll(() => query(page).get('county')).not.toBeNull()
+  })
+})
