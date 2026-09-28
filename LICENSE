@@ -1,0 +1,35 @@
+Culegeri Academic Use Licence
+
+Copyright (c) 2026 Thomas Saar
+
+1. Scope. This licence covers the software, documentation and derived data files in this
+   repository (the "Work"). It does not cover the underlying catalogue records, notation
+   images, recordings, printed-edition pages, map tiles or geographic datasets, which
+   remain subject to the terms of their respective holders as listed in the README and on
+   the site's About and sources page.
+
+2. Permitted use. Permission is granted, free of charge, to any person or institution to
+   use, copy, modify and redistribute the Work, in source or derived form, for
+   non-commercial academic purposes: research, teaching, study and scholarly publication.
+
+3. Conditions.
+   a. Attribution. Copies and derived works must retain this notice and credit
+      "Culegeri, Thomas Saar, University of Melbourne", with a link to the source
+      repository or to https://culegeri.vercel.app.
+   b. Source integrity. Derived works that present records from the Work must keep each
+      record's link to its original catalogue entry or printed page.
+   c. Same terms. Redistributed or derived versions of the Work must be made available
+      under this licence.
+
+4. Prohibited use. Commercial use of any kind is not permitted, including sale, paid
+   access, advertising-supported distribution and use within a commercial product or
+   service. Use of the Work to train, fine-tune or evaluate a machine-learning model
+   requires the written permission of the copyright holder.
+
+5. No warranty. The Work is provided "as is", without warranty of any kind. Data in the
+   Work were produced by automated crawling, optical character recognition and
+   place-name resolution and may contain errors; users are responsible for checking
+   records against their sources.
+
+6. Requests. Permission for uses outside this licence may be sought from
+   tsaar@student.unimelb.edu.au.
