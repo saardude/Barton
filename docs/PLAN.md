@@ -170,6 +170,7 @@ counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json
 | D8 | Source link text priority: referenceCode, then system position, then site + number; always links to `source.url` | Academic integrity requirement |
 | D9 | Style sort uses collator order on the verbatim style string | No controlled vocabulary for style in the sources |
 | D10 | UI in English; Romanian and Hungarian shown as secondary labels for facets, genres and place names | Wireframe language; sources are HU/RO |
+| D12 | The project is non-commercial and academic only. The site is publicly readable; any management or editing functions (corrections, annotations, curation) are gated to scholars. CC BY-NC border data and the GPL-licensed basemaps are acceptable on that basis; the app shows their attribution. | Owner decision 2026-09-28 |
 | D11 | Crawl of systems.zti.hu proceeds with `--ignore-robots` at the owner's instruction, 1 req/s, cached | Owner decision 2026-09-28; recommend requesting an export from ZTI |
 
 ## Open decisions for the owner
@@ -178,5 +179,5 @@ counts: docs/PRINT-SOURCES.md. The build merges `data/rfm.json` into `songs.json
 2. Default view: Romania only, or all countries with Romania preselected?
 3. Do we need the Hungarian-language record labels shown alongside English?
 4. Project name on Vercel and a custom domain, if any.
-6. Historical border data licences: GISta Hungarorum 1910 counties are CC BY-NC (non-commercial use only) and historical-basemaps carries a GPL-3.0 repository licence with no separate data licence. Both are fine for an academic, non-commercial site; confirm that is the intended use, or we drop to Natural Earth (public domain) plus our own county centroids.
+6. Scholar-gated management: which functions need a login (corrections to place resolution, annotations, flagging OCR errors), and who administers accounts. Phase 2; the read-only site needs no auth.
 5. Journey split rule (10-day gap) and the assumed Budapest departure: confirm or adjust.
