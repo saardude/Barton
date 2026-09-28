@@ -7,7 +7,7 @@ author-date; in-text parenthetical citations and a References list at the end.
 
 ---
 
-Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. This viewer is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or printed page that holds it. It sells nothing, carries no advertising and collects no data about its readers. Contact: [contact].
+Built by Thomas Saar (BMus) in his honours year at the University of Melbourne. This viewer is an academic, non-commercial study aid. It indexes Béla Bartók's ethnographic field collection, with a focus on localities in present-day Romania, and links every record back to the database or printed page that holds it. This project collects no data about its readers. Contact: tsaar@student.unimelb.edu.au.
 
 The material is spread across three online databases and a five-volume printed edition, under Hungarian, Romanian and English place names. The viewer puts it on one map, with the borders of the day, so that a melody, its village and its trip can be read together.
 
