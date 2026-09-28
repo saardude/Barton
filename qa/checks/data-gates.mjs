@@ -53,7 +53,9 @@ const REPO_ROOT = resolve(__dirname, '..', '..');
 // ---------------------------------------------------------------------------
 
 const ROMANIA_BBOX = { latMin: 43.6, latMax: 48.3, lngMin: 20.2, lngMax: 29.7 };
-const BARTOK_YEARS = { min: 1904, max: 1918 };
+const BARTOK_YEARS = { min: 1904, max: 1918 };        // Bartok's own field years (warn only)
+const SCHEMA_YEARS_FALLBACK = { min: 1800, max: 1960 }; // used when the song schema has no year bounds
+const BARTOK_RE = /bart[o\u00f3]k/i;                     // "Bartók Béla", "Bartok Bela", "Béla Bartók"
 const COUNTY_RESOLUTION_MIN = 0.95;
 const MAX_LISTED = 10; // offenders printed per gate in the terminal; the JSON report holds all
 
@@ -82,6 +84,7 @@ function parseArgs(argv) {
     facets: resolve(REPO_ROOT, 'data', 'facets.json'),
     gazetteer: resolve(REPO_ROOT, 'data', 'gazetteer.json'),
     journeys: resolve(REPO_ROOT, 'data', 'journeys.json'),
+    journeySchema: resolve(REPO_ROOT, 'data', 'schema', 'journey.schema.json'),
     villages: resolve(REPO_ROOT, 'data', 'villages.json'),
     report: null,
     strict: false,
@@ -101,6 +104,7 @@ function parseArgs(argv) {
     else if (a === '--facets') args.facets = resolve(next());
     else if (a === '--gazetteer') args.gazetteer = resolve(next());
     else if (a === '--journeys') args.journeys = resolve(next());
+    else if (a === '--journey-schema') args.journeySchema = resolve(next());
     else if (a === '--villages') args.villages = resolve(next());
     else if (a === '--report' || a === '-r') args.report = resolve(next());
     else if (a === '--strict') args.strict = true;
@@ -114,7 +118,7 @@ function usage() {
   return [
     'Usage: node qa/checks/data-gates.mjs [--file data/songs.json] [--schema data/schema/song.schema.json]',
     '                                   [--facets data/facets.json] [--gazetteer data/gazetteer.json]',
-    '                                   [--journeys data/journeys.json]',
+    '                                   [--journeys data/journeys.json] [--journey-schema data/schema/journey.schema.json]',
     '                                   [--villages data/villages.json] [--report out.json] [--strict]',
     '',
     'Exit codes: 0 all blocking gates passed, 1 a blocking gate failed (or a warning under --strict),',
@@ -209,6 +213,34 @@ function* stringFields(value, path = []) {
       yield* stringFields(v, [...path, k]);
     }
   }
+}
+
+/** journeys.json is { _meta, journeys: [] }; also accept a bare array or { trips: [] }. */
+function journeyList(doc) {
+  if (Array.isArray(doc)) return doc;
+  if (doc && typeof doc === 'object') {
+    for (const k of ['journeys', 'trips']) if (Array.isArray(doc[k])) return doc[k];
+  }
+  return [];
+}
+
+/**
+ * Compare two ISO dates that may be YYYY, YYYY-MM or YYYY-MM-DD at their shared precision.
+ * Returns -1/0/1, or 0 when either side is missing (nothing to assert).
+ */
+function cmpIsoPrefix(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return 0;
+  const n = Math.min(a.length, b.length);
+  const x = a.slice(0, n); const y = b.slice(0, n);
+  return x < y ? -1 : x > y ? 1 : 0;
+}
+
+/** Whole days from a to b when both are day-precise (YYYY-MM-DD); null otherwise. */
+function daysBetween(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== 10 || b.length !== 10) return null;
+  const ta = Date.parse(`${a}T00:00:00Z`); const tb = Date.parse(`${b}T00:00:00Z`);
+  if (Number.isNaN(ta) || Number.isNaN(tb)) return null;
+  return Math.round((tb - ta) / 86400000);
 }
 
 // ---------------------------------------------------------------------------
@@ -380,20 +412,26 @@ const GATES = [
     };
   }),
 
-  gate('year-range', false, `year ${BARTOK_YEARS.min}-${BARTOK_YEARS.max} or null (out-of-range listed as warnings)`, (records) => {
-    const details = [];
-    const nulls = [];
+  gate('year-range', true, 'block: collected.year outside the schema range; warn: Bartok-collected records outside 1904-1918 (his own field years)', (records, ctx) => {
+    const yr = ctx.schema?.properties?.collected?.properties?.year ?? {};
+    const min = Number.isInteger(yr.minimum) ? yr.minimum : SCHEMA_YEARS_FALLBACK.min;
+    const max = Number.isInteger(yr.maximum) ? yr.maximum : SCHEMA_YEARS_FALLBACK.max;
+    const details = [];   // blocking
+    const warnings = [];  // Bartok field-years
+    let nulls = 0; let bartokTotal = 0; let bartokNull = 0; let bartokOut = 0;
     records.forEach((r, i) => {
       const y = get.year(r);
-      if (isNil(y)) { nulls.push(label(r, i)); return; }
-      if (!Number.isInteger(y)) { details.push(`${label(r, i)}: non-integer year ${JSON.stringify(y)}`); return; }
-      if (y < BARTOK_YEARS.min || y > BARTOK_YEARS.max) details.push(`${label(r, i)}: year ${y} outside ${BARTOK_YEARS.min}-${BARTOK_YEARS.max}`);
+      const isBartok = BARTOK_RE.test(String(r?.collector ?? ''));
+      if (isBartok) bartokTotal++;
+      if (isNil(y)) { nulls++; if (isBartok) bartokNull++; return; }
+      if (!Number.isInteger(y) || y < min || y > max) { details.push(`${label(r, i)}: year ${JSON.stringify(y)} outside schema range ${min}-${max} (raw ${JSON.stringify(r?.collected?.raw ?? null)})`); return; }
+      if (isBartok && (y < BARTOK_YEARS.min || y > BARTOK_YEARS.max)) { bartokOut++; warnings.push(`${label(r, i)}: Bartok-collected, year ${y} outside ${BARTOK_YEARS.min}-${BARTOK_YEARS.max}`); }
     });
-    const all = [...details];
-    if (nulls.length) all.push(`${nulls.length} record(s) with null year: ${nulls.slice(0, MAX_LISTED).join(', ')}${nulls.length > MAX_LISTED ? ', ...' : ''}`);
+    const all = [...details, ...warnings];
+    if (bartokNull) all.push(`${bartokNull} Bartok-collected record(s) with null year`);
     return {
-      status: details.length || nulls.length ? 'warn' : 'pass',
-      metric: `${details.length} out of range, ${nulls.length} null`,
+      status: details.length ? 'fail' : ((bartokOut || bartokNull) ? 'warn' : 'pass'),
+      metric: `${details.length} outside schema range ${min}-${max} (blocking); Bartok: ${bartokOut} of ${bartokTotal} outside ${BARTOK_YEARS.min}-${BARTOK_YEARS.max}, ${bartokNull} null; all records: ${nulls} null year`,
       details: all,
     };
   }),
@@ -496,55 +534,91 @@ const GATES = [
     return { status: n ? 'warn' : 'pass', metric: `${n}/${records.length} partial (${records.length ? ((n / records.length) * 100).toFixed(1) : '0.0'}%)`, details };
   }),
 
-  gate('journeys-valid', true, 'journeys.json: unique trip ids, stops reference existing record ids, dates ordered, gaps <= 10 days, unmapped ids exist', (records, ctx) => {
+  gate('journeys-valid', true, 'journeys.json validates against journey.schema.json; song ids exist (or are alternates of a merged record); route stops in date order; date-gap routes respect derivation.gapDays', async (records, ctx) => {
     if (!ctx.journeys) {
       return { status: 'skip', metric: 'data/journeys.json missing', details: [`${rel(ctx.journeysPath)} not found; gate skipped until the journey mapper data exists.`] };
     }
+    const journeys = journeyList(ctx.journeys);
+    const details = [];   // blocking
+    const warnings = [];  // non-blocking consistency notes
+    // 1. schema
+    if (!ctx.journeySchema) {
+      warnings.push(`journey schema not found at ${rel(ctx.journeySchemaPath)}; structural validation skipped`);
+    } else {
+      const ajv = await loadAjv();
+      if (!ajv) warnings.push('ajv not found under scraper/node_modules; structural validation skipped');
+      else {
+        try {
+          const inst = new ajv.Ajv({ allErrors: true, strict: false, allowUnionTypes: true });
+          if (ajv.addFormats) ajv.addFormats(inst);
+          const validate = inst.compile(ctx.journeySchema);
+          journeys.forEach((t, i) => {
+            if (!validate(t)) {
+              const first = (validate.errors ?? []).slice(0, 3).map((e) => `${e.instancePath || '/'} ${e.message}`).join('; ');
+              details.push(`${t?.id ?? `#${i}`}: schema: ${first}`);
+            }
+          });
+        } catch (e) { details.push(`journey schema does not compile: ${e.message}`); }
+      }
+    }
+    // 2. referential integrity
     const ids = new Set(records.map((r) => get.id(r)).filter((x) => !isNil(x)).map(String));
-    const trips = Array.isArray(ctx.journeys) ? ctx.journeys : (ctx.journeys.trips ?? ctx.journeys.journeys ?? []);
-    const unmapped = Array.isArray(ctx.journeys) ? [] : (ctx.journeys.unmapped ?? []);
-    const details = [];
-    const tripIds = new Set();
-    const stopped = new Set();
-    let stops = 0;
-    const parseDate = (d) => {
-      if (typeof d !== 'string' || !/^\d{4}-\d{2}(-\d{2})?$/.test(d)) return null;
-      const t = Date.parse(d.length === 7 ? `${d}-01` : d);
-      return Number.isNaN(t) ? null : t;
-    };
-    trips.forEach((t, ti) => {
-      const tid = isNil(t?.id) ? `#${ti}` : String(t.id);
-      if (tripIds.has(tid)) details.push(`trip ${tid}: duplicate id`);
-      tripIds.add(tid);
+    const altIds = new Set();
+    for (const r of records) for (const a of (Array.isArray(r?.source?.alternates) ? r.source.alternates : [])) if (!isNil(a?.id)) altIds.add(String(a.id));
+    const known = (id) => ids.has(String(id)) || altIds.has(String(id));
+    const seen = new Set();
+    let stops = 0; let viaAlt = 0;
+    journeys.forEach((t, i) => {
+      const tid = isNil(t?.id) ? `#${i}` : String(t.id);
+      if (seen.has(tid)) details.push(`${tid}: duplicate journey id`);
+      seen.add(tid);
+      const tripIds = new Set((Array.isArray(t?.songIds) ? t.songIds : []).map(String));
+      for (const sid of tripIds) {
+        if (!known(sid)) details.push(`${tid}: songIds has unknown record ${JSON.stringify(sid)}`);
+        else if (!ids.has(sid)) viaAlt++;
+      }
       const list = Array.isArray(t?.stops) ? t.stops : [];
-      if (!list.length) details.push(`trip ${tid}: no stops`);
-      let prev = null;
-      list.forEach((s, si) => {
+      list.forEach((st, si) => {
         stops++;
-        const d = parseDate(s?.date);
-        if (d === null) details.push(`trip ${tid} stop ${si + 1}: bad date ${JSON.stringify(s?.date)}`);
-        else if (prev !== null) {
-          if (d < prev) details.push(`trip ${tid} stop ${si + 1}: date ${s.date} before previous stop`);
-          else if ((d - prev) / 86400000 > TRIP_MAX_GAP_DAYS) details.push(`trip ${tid} stop ${si + 1}: gap > ${TRIP_MAX_GAP_DAYS} days (should be a new trip)`);
+        const label_ = `${tid} stop ${st?.seq ?? si + 1}`;
+        for (const sid of (Array.isArray(st?.songIds) ? st.songIds : [])) {
+          if (!known(sid)) details.push(`${label_}: unknown record ${JSON.stringify(sid)}`);
+          else if (!tripIds.has(String(sid))) details.push(`${label_}: record ${sid} not in the journey's songIds`);
         }
-        if (d !== null) prev = d;
-        const rids = Array.isArray(s?.recordIds) ? s.recordIds : [];
-        if (!rids.length) details.push(`trip ${tid} stop ${si + 1}: no recordIds`);
-        for (const rid of rids) {
-          if (!ids.has(String(rid))) details.push(`trip ${tid} stop ${si + 1}: unknown record id ${JSON.stringify(rid)}`);
-          stopped.add(String(rid));
-        }
+        if (Number.isInteger(st?.recordCount) && Array.isArray(st?.songIds) && st.recordCount !== st.songIds.length) warnings.push(`${label_}: recordCount ${st.recordCount} != songIds.length ${st.songIds.length}`);
       });
-      const first = list[0]?.date; const last = list[list.length - 1]?.date;
-      if (list.length && t?.start !== undefined && t.start !== first) details.push(`trip ${tid}: start ${t.start} != first stop ${first}`);
-      if (list.length && t?.end !== undefined && t.end !== last) details.push(`trip ${tid}: end ${t.end} != last stop ${last}`);
+      if (Number.isInteger(t?.recordCount) && t.recordCount !== tripIds.size) warnings.push(`${tid}: recordCount ${t.recordCount} != songIds.length ${tripIds.size}`);
+      // 3. dates: journey span, route stop order, gap rule
+      if (cmpIsoPrefix(t?.dateStart, t?.dateEnd) > 0) details.push(`${tid}: dateStart ${t.dateStart} after dateEnd ${t.dateEnd}`);
+      if (t?.kind === 'route') {
+        let prevDep = null; let prevSeq = 0;
+        const gapDays = Number.isInteger(t?.derivation?.gapDays) ? t.derivation.gapDays : TRIP_MAX_GAP_DAYS;
+        const gapRule = t?.derivedFrom === 'date-gap';
+        list.forEach((st, si) => {
+          const label_ = `${tid} stop ${st?.seq ?? si + 1}`;
+          if (Number.isInteger(st?.seq) && st.seq <= prevSeq) details.push(`${label_}: seq not increasing`);
+          prevSeq = st?.seq ?? prevSeq;
+          if (cmpIsoPrefix(st?.arrival, st?.departure) > 0) details.push(`${label_}: departure ${st.departure} before arrival ${st.arrival}`);
+          if (prevDep !== null && cmpIsoPrefix(prevDep, st?.arrival) > 0) details.push(`${label_}: arrival ${st.arrival} before previous stop's departure ${prevDep}`);
+          if (gapRule && prevDep !== null) {
+            const gap = daysBetween(prevDep, st?.arrival);
+            if (gap !== null && gap > gapDays) details.push(`${label_}: ${gap} days after previous stop, more than derivation.gapDays ${gapDays} (should be a new trip)`);
+          }
+          if (!isNil(st?.departure)) prevDep = st.departure;
+        });
+      }
     });
-    unmapped.forEach((u) => {
-      const rid = typeof u === 'string' ? u : u?.id;
-      if (!ids.has(String(rid))) details.push(`unmapped: unknown record id ${JSON.stringify(rid)}`);
-      else if (stopped.has(String(rid))) details.push(`unmapped: ${rid} is also placed on a stop`);
-    });
-    return { status: details.length ? 'fail' : 'pass', metric: `${trips.length} trip(s), ${stops} stop(s), ${unmapped.length} unmapped, ${details.length} problem(s)`, details };
+    // 4. file order (schema description: sorted by dateStart then id)
+    for (let i = 1; i < journeys.length; i++) {
+      const a = journeys[i - 1]; const b = journeys[i];
+      const c = cmpIsoPrefix(a?.dateStart, b?.dateStart);
+      if (c > 0 || (c === 0 && String(a?.id) > String(b?.id))) { warnings.push(`file order: ${b?.id} should come before ${a?.id} (sorted by dateStart then id)`); break; }
+    }
+    return {
+      status: details.length ? 'fail' : (warnings.length ? 'warn' : 'pass'),
+      metric: `${journeys.length} journey(s), ${stops} stop(s), ${viaAlt} id(s) resolved via alternates, ${details.length} problem(s), ${warnings.length} note(s)`,
+      details: [...details, ...warnings.map((w) => `note: ${w}`)],
+    };
   }),
 
   gate('villages-valid', true, 'villages.json: status in vocabulary, names non-empty, every journey stop place has an entry', (records, ctx) => {
@@ -572,11 +646,12 @@ const GATES = [
     });
     for (const st of VILLAGE_STATUSES) if (!statuses.has(st)) details.push(`_meta.statusValues lacks "${st}" (AC-41 vocabulary)`);
     if (ctx.journeys) {
-      const trips = Array.isArray(ctx.journeys) ? ctx.journeys : (ctx.journeys.trips ?? ctx.journeys.journeys ?? []);
-      for (const t of trips) for (const s of (t?.stops ?? [])) {
-        const pid = s?.placeId ?? s?.villageId;
-        if (!isNil(pid) && !known.has(String(pid))) details.push(`trip ${t?.id}: stop place ${JSON.stringify(pid)} missing from villages.json`);
+      const missing = new Set();
+      for (const t of journeyList(ctx.journeys)) for (const st of (Array.isArray(t?.stops) ? t.stops : [])) {
+        const pid = st?.placeId;
+        if (!isNil(pid) && !known.has(String(pid))) missing.add(String(pid));
       }
+      if (missing.size) details.push(`${missing.size} journey stop place(s) missing from villages.json: ${[...missing].slice(0, 5).join(', ')}${missing.size > 5 ? ', ...' : ''}`);
     }
     return { status: details.length ? 'fail' : 'pass', metric: `${list.length} village(s), ${details.length} problem(s)`, details };
   }),
@@ -636,8 +711,12 @@ async function main() {
   const ctx = {
     schemaPath: args.schema, schema: null, genreVocab: null, genreVocabSource: '',
     journeysPath: args.journeys, journeys: null, villagesPath: args.villages, villages: null,
+    journeySchemaPath: args.journeySchema, journeySchema: null,
     roHistoricalCounties: new Set(),
   };
+  if (existsSync(args.journeySchema)) {
+    try { ctx.journeySchema = loadJson(args.journeySchema, 'journey schema'); } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
+  }
   if (existsSync(args.gazetteer)) {
     try {
       const g = loadJson(args.gazetteer, 'gazetteer');
