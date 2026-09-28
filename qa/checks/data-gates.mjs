@@ -22,7 +22,7 @@
  * so the script does not crash on a pre-schema sample.
  *
  *   {
- *     id: "bsys-A204",                         // ^(fmbc|bsys|gyuj)-...; unique
+ *     id: "bsys-A204",                         // ^(fmbc|bsys|gyuj|rfm)-...; unique
  *     source: { site: "bsys", siteName, siteId, url, referenceCode, volume, number, siteRecordId?, fetchedAt? },
  *     title, incipit,                          // string | null
  *     genre: "colinda"|"doina"|"bocet"|"cantec"|"joc"|"nunta"|"other"|null,
@@ -64,8 +64,10 @@ const DEFAULT_GENRE_VOCAB = ['colinda', 'doina', 'bocet', 'cantec', 'joc', 'nunt
 // String fields under these keys are URLs or opaque, so they are not HTML-scanned.
 const URL_LIKE_KEY = /url|href|src|image|audio|link|thumbnail/i;
 
-// Source record pages must live on one of the three ZTI databases (academic integrity, AC-36).
-const SOURCE_HOSTS = new Set(['bartok-nepzene.zti.hu', 'systems.zti.hu', 'sys.zti.hu', 'bartok-gyujtesek.zti.hu']);
+// Source record pages must live on one of the three ZTI databases (academic integrity, AC-36),
+// or on archive.org for the printed Rumanian Folk Music volumes (site 'rfm', data/rfm.json,
+// docs/PRINT-SOURCES.md), whose records link to the exact scanned page.
+const SOURCE_HOSTS = new Set(['bartok-nepzene.zti.hu', 'systems.zti.hu', 'sys.zti.hu', 'bartok-gyujtesek.zti.hu', 'archive.org']);
 const VILLAGE_STATUSES = new Set(['existing', 'renamed', 'merged', 'abandoned', 'unknown']);
 const TRIP_MAX_GAP_DAYS = 10;
 
@@ -298,7 +300,7 @@ const GATES = [
     return { status: details.length ? 'fail' : 'pass', metric: `${dups} duplicate, ${missing} missing`, details };
   }),
 
-  gate('source-url', true, 'every record has an absolute http(s) source url on a zti.hu source host and a non-empty source.siteId', (records) => {
+  gate('source-url', true, 'every record has an absolute http(s) source url on a zti.hu source host (or archive.org for site rfm) and a non-empty source.siteId', (records) => {
     const details = [];
     records.forEach((r, i) => {
       const u = get.sourceUrl(r);

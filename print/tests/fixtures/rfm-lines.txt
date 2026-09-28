@@ -1,0 +1,51 @@
+# Saved OCR excerpts (one line each) from the Internet Archive djvu.txt of
+# rumanianfolkmusi0004blab (vol. IV) and rumanianfolkmusi0005blab (vol. V),
+# exactly as OCRed, used by print/tests/*.test.mjs. Data lines only (no song text).
+#
+# vol4 data lines
+V4 F. 1174 c), Soimi (Bihor), Ion Mot (45), II. 1914.
+V4 M.F. 1457 b),Petrosan (Alba de jos), feciori, I. 1911.
+V4 ME 1375 b), Cherpenis (Alba de jos), dascal, XII. 1910.
+V4 Sarafola (Torontal,) tigani, XI. 1912. Se
+V4 M.-F. 1725 d), Igris (Torontal), doua tigance (30), XL. 1912.
+V4 Valcani (Torontal), Xf. 1912. ee
+V4 F 1233 c), Idicel (Mures-Turda), Susana si Rafila Oncea (43,16), IV. 1914.
+V4 M.F. 1955 b), Coticlet @ihor), oameni, XII. 1911.
+V4 Tempo giusto, 2120 ® 8, M,F. 737 bj, Sebis (Bihor), un om, VIII. 1909.
+V4 F.1009c),1010c)*, Paucinesd (Hunedioara), Petrut Dabucean (27), etc., XII. 1913.
+V4 F. 1564. b), Trdias (Arad), Pavel Oprea (17), Gligor Halmagean (17), VIL 1917.
+V4 M.F 1963 d), Ginta Rohani (Bihor), oameni batrani, I. 1912
+V4 F. 1271 d), Urisiu de sus (Mures-Turda), Vasile Suciy (31)., IV. 1914. GBD
+# vol4 lines that are NOT data lines
+N4 The intonation of the gypsies is thoroughly unreliable.
+N4 Parlando, 2=132 dd) 6,
+N4 [Cucu, Gh. 200 colinde populare (ed. C. Brailoiu). Bucharest, Soc. Comp. Romani,
+# vol4 class headings and number tokens
+C4 A I.
+C4 A II. a)
+C4 B Il. d)
+T4 la.
+T4 2.
+T4 12bb.
+T4 2le.
+# vol4 Part Two references
+R4 (21b. Urvis q)
+R4 (62k. Rau de mori ¢)
+R4 (82a. Var. Paucinesd)
+R4 (17. Valcani)
+R4 (210, Rogoz q)
+R4 (73dd. Petrosan)
+# vol5 data lines
+V5 F. 2123 d), Visaul- de - jos, Marie Ardelean (ca. 25).
+V5 F. 2133 b), Dragomiresti, Erina Vlad (26).
+V5 F. 1626 c), Ieud, Dumitru Goja $i Vasile Dancus (ca. 15).
+V5 Ieud, o fata (15-16).
+V5 FE 2126 b), Bocicoiel, Erind si Ioana Chiesa (15-18). {Cf. No. 50]
+V5 F 2096 c), Anuté Dunca (25-30).
+V5 62a. ee 6 —— F 2181 b), Nanesti, Palaga Bot’is* (19).
+V5 Presto o = 184 4) Guitare F, 2109 a), [eud, Vasile Barani (38).
+V5 F. 2156 a), Poieni, un tigan batran. Invartita batranilor Violino si Presto 4-190 la Guitare
+# vol5 lines that are NOT data lines
+N5 Recitativo De 160 1) (2) 7
+N5 Poco rubato @ = (80) Gi) ~~
+N5 The first notations of Rumanian popular melodies known to us like-

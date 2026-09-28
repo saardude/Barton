@@ -1,0 +1,15 @@
+{
+  "name": "bartok-romania-print-sources",
+  "version": "0.1.0",
+  "description": "Index of Bartok's printed Rumanian Folk Music volumes (Internet Archive OCR) as song records",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "fetch": "NODE_USE_ENV_PROXY=1 node fetch.mjs",
+    "parse": "node parse-rfm.mjs",
+    "test": "node --test \"tests/**/*.test.mjs\""
+  }
+}
