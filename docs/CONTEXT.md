@@ -51,9 +51,8 @@ hold both historical and modern names and derive the modern country from the mod
 
 ## Environment facts (as of 2026-09-28)
 
-- The container's egress proxy **blocks** every `*.zti.hu` host, `web.archive.org`, and
-  `api.vercel.com`. Do not keep retrying them; one probe at most. Scraping and deployment run
-  only after the user adds those hosts to the environment's allowed domains.
+- Network access: opened by the owner on 2026-09-28. All `*.zti.hu` hosts and
+  `api.vercel.com` return 200 from the container. Scrape politely (1 request/s, on-disk cache).
 - `registry.npmjs.org` is reachable. Node 22.22, npm 10.9, Python 3 available. No Vercel CLI
   installed and no `VERCEL_TOKEN` set.
 - Repo: `/home/user/Barton`, branch `claude/bartok-ethnographic-viewer-kvjt8j`, currently empty
