@@ -70,7 +70,7 @@ year, one with null coordinates, one instrumental with no text).
 | G1 | `schema-valid` | Every record validates against `data/schema/song.schema.json` (Ajv 2020-12, `allErrors`, formats via ajv-formats) | 100 % valid | Blocks. Skipped with a warning while the schema file or `ajv` is missing; once the schema exists this must never skip in CI |
 | G2 | `id-unique` | `id` present, non-empty, unique across the whole file | 0 duplicates, 0 missing | Blocks |
 | G3 | `source-url` | `source.url` is an absolute `https?://` URL whose host is one of `bartok-nepzene.zti.hu`, `systems.zti.hu` (alias `sys.zti.hu`), `bartok-gyujtesek.zti.hu`, and `source.siteId` (fallback `source.siteRecordId`) is a non-empty string | 100 % of records | Blocks |
-| G4 | `county-resolved` | `location.county` (modern county) is a non-empty string | >= 95 % of records | Blocks below 95 %; between 95 % and 100 % the unresolved list is printed as a warning for gazetteer work |
+| G4 | `county-resolved` | `location.county` (modern county) is a non-empty string, measured over records whose locality is in present-day Romania: `location.country` = `RO`, or country null and `location.countyHistorical` is a historical name that `data/gazetteer.json` maps to an RO county | >= 95 % of in-scope records | Blocks below 95 %; between 95 % and 100 % the unresolved list is printed as a warning for gazetteer work. Non-RO and null-country records are reported per country (with their without-county counts) as information only |
 | G5 | `coords-in-romania` | For records with `location.country` = `RO`: `lat` 43.6..48.3 and `lng` 20.2..29.7, or both null. One of the pair null, or non-numeric, is an error for any record. Records with another country are exempt (counted); records with null country but coordinates outside the box are listed as suspicious | 0 violations | Blocks on RO violations and half-set pairs; warns on null-country outliers |
 | G6 | `year-range` | `collected.year` is an integer 1904..1918 or null | 0 out of range is the target; any out-of-range or null year is listed | Warns only. The listed ids feed the data engineer's review; records from other collectors or later dates are legitimate and are kept |
 | G7 | `genre-vocab` | `genre` is in the vocabulary: the schema's `genre` enum (which allows null), else `data/facets.json`, else the built-in fallback list in the script (with a warning). Null is counted, not failed, when the vocabulary allows it. More than 25 % of records mapped to `other` is reported | 100 % in vocabulary | Blocks on unknown values; warns when `other` exceeds 25 % |
@@ -81,11 +81,16 @@ year, one with null coordinates, one instrumental with no text).
 Normalisation for G9/G10: NFD, strip combining marks, lower-case, collapse non-alphanumerics
 to single spaces. "Borosjenő" and "Borosjeno" compare equal.
 
-G4's denominator is all records, whatever their country, because a record without a modern
-county gets no country and therefore vanishes from the default (Romania) view; that is the
-user-visible harm the gate protects against. The metric line prints a per-country breakdown
-so the data engineer can see whether the misses are Romanian localities missing from the
-gazetteer or out-of-scope material.
+G4's denominator is the present-day-Romania scope only (PLAN.md decisions log): the Bartók
+System's 13,000 Hungarian, Slovak and other records are not held to the threshold. Because
+country is derived from the modern county, an unresolved Romanian locality has country null;
+the gazetteer's historical-county list is what pulls it back into scope, so extending the
+gazetteer both resolves records and widens the denominator. The metric line prints the
+out-of-scope breakdown per country with their without-county counts.
+
+| # | Check name | What it checks | Threshold | Blocks or warns |
+| --- | --- | --- | --- | --- |
+| G11 | `partial-records` | Counts records whose `rawFields._partial` is set ("listing row only; record page not fetched"), per site and overall, so crawl completeness is visible in every gate report | 0 is the goal | Warns only (informational) |
 
 ### 1.3 Additional gates to add once `places.json` and `facets.json` exist
 
@@ -104,7 +109,7 @@ the files do not exist):
 | Check name | What | Threshold | Blocks |
 | --- | --- | --- | --- |
 | `journeys-valid` | `data/journeys.json`: trip ids unique; every stop `recordIds[]` entry exists in songs.json; each stop has a date `YYYY-MM` or `YYYY-MM-DD`; stops within a trip are in non-decreasing date order; trip `start`/`end` equal first/last stop; gaps between consecutive stops <= 10 days; `unmapped[]` record ids exist and are not also in a stop | 0 violations | Blocks |
-| `villages-valid` | `data/villages.json`: every stop place references an entry; `status` in `existing, renamed, merged, abandoned, unknown`; historical and modern names non-empty | 0 violations | Blocks |
+| `villages-valid` | `data/villages.json` (`{_meta, villages: {id: {...}}}`; keys starting with `_` are skipped): every stop place references an entry; `status` in the `_meta.statusValues` keys, which must include `existing, renamed, merged, abandoned, unknown`; `name` and `nameHistorical` non-empty | 0 violations | Blocks |
 
 ### 1.4 CI wiring
 

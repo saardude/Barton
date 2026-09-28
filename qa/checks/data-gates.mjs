@@ -78,6 +78,7 @@ function parseArgs(argv) {
     file: resolve(REPO_ROOT, 'data', 'songs.json'),
     schema: resolve(REPO_ROOT, 'data', 'schema', 'song.schema.json'),
     facets: resolve(REPO_ROOT, 'data', 'facets.json'),
+    gazetteer: resolve(REPO_ROOT, 'data', 'gazetteer.json'),
     journeys: resolve(REPO_ROOT, 'data', 'journeys.json'),
     villages: resolve(REPO_ROOT, 'data', 'villages.json'),
     report: null,
@@ -96,6 +97,7 @@ function parseArgs(argv) {
     else if (a === '--schema' || a === '-s') args.schema = resolve(next());
     else if (a.startsWith('--schema=')) args.schema = resolve(a.slice(9));
     else if (a === '--facets') args.facets = resolve(next());
+    else if (a === '--gazetteer') args.gazetteer = resolve(next());
     else if (a === '--journeys') args.journeys = resolve(next());
     else if (a === '--villages') args.villages = resolve(next());
     else if (a === '--report' || a === '-r') args.report = resolve(next());
@@ -109,7 +111,8 @@ function parseArgs(argv) {
 function usage() {
   return [
     'Usage: node qa/checks/data-gates.mjs [--file data/songs.json] [--schema data/schema/song.schema.json]',
-    '                                   [--facets data/facets.json] [--journeys data/journeys.json]',
+    '                                   [--facets data/facets.json] [--gazetteer data/gazetteer.json]',
+    '                                   [--journeys data/journeys.json]',
     '                                   [--villages data/villages.json] [--report out.json] [--strict]',
     '',
     'Exit codes: 0 all blocking gates passed, 1 a blocking gate failed (or a warning under --strict),',
@@ -313,21 +316,37 @@ const GATES = [
     return { status: details.length ? 'fail' : 'pass', metric: `${records.length - badRecords}/${records.length} records ok (${details.length} problem(s))`, details };
   }),
 
-  gate('county-resolved', true, `>= ${COUNTY_RESOLUTION_MIN * 100}% of records resolve to a modern county`, (records) => {
+  gate('county-resolved', true, `>= ${COUNTY_RESOLUTION_MIN * 100}% of present-day-Romania records (country RO, or historical county mapped to RO by the gazetteer) resolve to a modern county; other records informational`, (records, ctx) => {
     const details = [];
-    let ok = 0;
+    const hasCounty = (r) => { const c = get.county(r); return typeof c === 'string' && c.trim() !== ''; };
+    const inScope = (r) => {
+      const country = get.country(r);
+      if (country === 'RO') return true;
+      if (!isNil(country)) return false;
+      const ch = get.countyHistorical(r);
+      return !isNil(ch) && ctx.roHistoricalCounties.has(norm(ch));
+    };
+    let scoped = 0; let ok = 0;
+    const outCountry = new Map(); // country -> {n, unresolved}
     records.forEach((r, i) => {
-      const c = get.county(r);
-      if (typeof c === 'string' && c.trim() !== '') ok++;
-      else details.push(`${label(r, i)}: village=${JSON.stringify(get.village(r))} countyHistorical=${JSON.stringify(get.countyHistorical(r))} raw=${JSON.stringify(loc(r)?.raw ?? null)}`);
+      if (inScope(r)) {
+        scoped++;
+        if (hasCounty(r)) ok++;
+        else details.push(`${label(r, i)}: village=${JSON.stringify(get.village(r))} countyHistorical=${JSON.stringify(get.countyHistorical(r))} raw=${JSON.stringify(loc(r)?.raw ?? null)}`);
+      } else {
+        const c = get.country(r) ?? 'null';
+        const e = outCountry.get(c) ?? { n: 0, unresolved: 0 };
+        e.n++; if (!hasCounty(r)) e.unresolved++;
+        outCountry.set(c, e);
+      }
     });
-    const ratio = records.length ? ok / records.length : 1;
-    const byCountry = new Map();
-    records.forEach((r) => { const c = get.country(r) ?? 'null'; byCountry.set(c, (byCountry.get(c) ?? 0) + 1); });
-    const breakdown = [...byCountry].sort((a, b) => b[1] - a[1]).map(([c, n]) => `${c}=${n}`).join(' ');
+    const ratio = scoped ? ok / scoped : 1;
+    const breakdown = [...outCountry].sort((a, b) => b[1].n - a[1].n)
+      .map(([c, e]) => `${c}=${e.n}${e.unresolved ? ` (${e.unresolved} without county)` : ''}`).join(' ');
+    const info = `out of scope (informational): ${breakdown || 'none'}${ctx.roHistoricalCounties.size ? '' : '; no gazetteer loaded, scope = country RO only'}`;
     return {
       status: ratio >= COUNTY_RESOLUTION_MIN ? (details.length ? 'warn' : 'pass') : 'fail',
-      metric: `${(ratio * 100).toFixed(2)}% resolved (${details.length} unresolved); by country: ${breakdown}`,
+      metric: `${(ratio * 100).toFixed(2)}% of ${scoped} in-scope records resolved (${details.length} unresolved); ${info}`,
       details,
     };
   }),
@@ -459,6 +478,22 @@ const GATES = [
     };
   }),
 
+  gate('partial-records', false, 'informational: records with rawFields._partial (listing row only; record page not fetched) per site', (records) => {
+    const total = new Map(); const partial = new Map();
+    records.forEach((r) => {
+      const site = get.site(r) ?? '?';
+      total.set(site, (total.get(site) ?? 0) + 1);
+      const p = r?.rawFields?._partial;
+      if (!isNil(p) && p !== false && p !== '') partial.set(site, (partial.get(site) ?? 0) + 1);
+    });
+    const n = [...partial.values()].reduce((a, b) => a + b, 0);
+    const details = [...total].sort((a, b) => b[1] - a[1]).map(([site, t]) => {
+      const p = partial.get(site) ?? 0;
+      return `${site}: ${p}/${t} partial (${(t ? (p / t) * 100 : 0).toFixed(1)}%), ${t - p} full`;
+    });
+    return { status: n ? 'warn' : 'pass', metric: `${n}/${records.length} partial (${records.length ? ((n / records.length) * 100).toFixed(1) : '0.0'}%)`, details };
+  }),
+
   gate('journeys-valid', true, 'journeys.json: unique trip ids, stops reference existing record ids, dates ordered, gaps <= 10 days, unmapped ids exist', (records, ctx) => {
     if (!ctx.journeys) {
       return { status: 'skip', metric: 'data/journeys.json missing', details: [`${rel(ctx.journeysPath)} not found; gate skipped until the journey mapper data exists.`] };
@@ -514,17 +549,26 @@ const GATES = [
     if (!ctx.villages) {
       return { status: 'skip', metric: 'data/villages.json missing', details: [`${rel(ctx.villagesPath)} not found; gate skipped until the journey mapper data exists.`] };
     }
-    const list = Array.isArray(ctx.villages) ? ctx.villages : Object.entries(ctx.villages).map(([id, v]) => ({ id, ...v }));
+    const doc = ctx.villages;
+    const container = Array.isArray(doc) ? doc
+      : (doc && typeof doc === 'object' && doc.villages !== undefined) ? doc.villages : doc;
+    const list = Array.isArray(container) ? container
+      : Object.entries(container ?? {}).filter(([k]) => !k.startsWith('_')).map(([id, v]) => ({ id, ...(v ?? {}) }));
+    const metaStatuses = doc && !Array.isArray(doc) && doc._meta?.statusValues && typeof doc._meta.statusValues === 'object'
+      ? new Set(Object.keys(doc._meta.statusValues)) : null;
+    const statuses = metaStatuses ?? VILLAGE_STATUSES;
     const details = [];
     const known = new Set();
     list.forEach((v, i) => {
       const id = isNil(v?.id) ? `#${i}` : String(v.id);
       known.add(id);
-      if (!VILLAGE_STATUSES.has(v?.status)) details.push(`${id}: status ${JSON.stringify(v?.status)} not in ${[...VILLAGE_STATUSES].join(', ')}`);
-      const hist = v?.historicalName ?? v?.villageHistorical; const mod = v?.modernName ?? v?.village;
+      if (!statuses.has(v?.status)) details.push(`${id}: status ${JSON.stringify(v?.status)} not in ${[...statuses].join(', ')}`);
+      const hist = v?.nameHistorical ?? v?.historicalName ?? v?.villageHistorical;
+      const mod = v?.name ?? v?.modernName ?? v?.village;
       if (typeof hist !== 'string' || !hist.trim()) details.push(`${id}: historical name empty`);
       if (typeof mod !== 'string' || !mod.trim()) details.push(`${id}: modern name empty`);
     });
+    for (const st of VILLAGE_STATUSES) if (!statuses.has(st)) details.push(`_meta.statusValues lacks "${st}" (AC-41 vocabulary)`);
     if (ctx.journeys) {
       const trips = Array.isArray(ctx.journeys) ? ctx.journeys : (ctx.journeys.trips ?? ctx.journeys.journeys ?? []);
       for (const t of trips) for (const s of (t?.stops ?? [])) {
@@ -590,7 +634,18 @@ async function main() {
   const ctx = {
     schemaPath: args.schema, schema: null, genreVocab: null, genreVocabSource: '',
     journeysPath: args.journeys, journeys: null, villagesPath: args.villages, villages: null,
+    roHistoricalCounties: new Set(),
   };
+  if (existsSync(args.gazetteer)) {
+    try {
+      const g = loadJson(args.gazetteer, 'gazetteer');
+      for (const c of (Array.isArray(g?.counties) ? g.counties : [])) {
+        if (c?.country !== 'RO') continue;
+        for (const h of (Array.isArray(c?.historical) ? c.historical : [])) ctx.roHistoricalCounties.add(norm(h));
+        if (typeof c?.name === 'string') ctx.roHistoricalCounties.add(norm(c.name));
+      }
+    } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
+  }
   for (const [key, path] of [['journeys', args.journeys], ['villages', args.villages]]) {
     if (existsSync(path)) {
       try { ctx[key] = loadJson(path, key); } catch (e) { console.error(`ERROR: ${e.message}`); return 2; }
@@ -615,6 +670,7 @@ async function main() {
   console.log(`Data gates: ${rel(args.file)} (${records.length} record${records.length === 1 ? '' : 's'})`);
   console.log(`Schema:     ${ctx.schema ? rel(args.schema) : '(none)'}`);
   console.log(`Genre vocab: ${gv.source} (${gv.vocab.size} values)`);
+  console.log(`Scope:      country RO plus ${ctx.roHistoricalCounties.size} historical county names mapped to RO${ctx.roHistoricalCounties.size ? ` (${rel(args.gazetteer)})` : ' (gazetteer not found)'}`);
   for (const p of preamble) console.log(p);
   console.log('');
 
