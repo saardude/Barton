@@ -1,4 +1,5 @@
 // ResultsPanel (FRONTEND-SPEC 7): ResultsHeader (count, sort, export, chips), SongList, Pagination.
+import { Link } from 'react-router'
 import { useCatalogReady } from '../app/catalog'
 import { useDerived, useQuery } from '../app/query'
 import { melodiesOf, t } from '../i18n/en'
@@ -65,6 +66,11 @@ export function ResultsPanel({ onHoverPlace }: { onHoverPlace?: (placeId: string
         <div className="results__controls">
           <SortSelect />
           <ExportButton songs={derived.sortedSongs} query={query} small />
+          {query.county && (
+            <Link className="btn btn--sm" to={{ pathname: `/county/${query.county}`, search }}>
+              {t('nav.openCounty')}
+            </Link>
+          )}
         </div>
         <div className="results__chips">
           <ActiveFilterChips chips={chips} hideCountry />

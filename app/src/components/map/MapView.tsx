@@ -86,7 +86,7 @@ function markerHtml(p: MapPoint, d: number, colourByGenre: boolean, selected: bo
         : `<span class="dot__label dot__label--beside" aria-hidden="true">${p.count}</span>`
       : ''
   const title = genre ? ` title="${esc(genreLabel(genre))}"` : ''
-  return `<button type="button" class="${cls}" data-place-id="${esc(p.placeId)}" aria-label="${esc(pointAriaLabel(p))}" aria-pressed="${selected}"${title} style="--d:${d}px;--fill:${fill};--label-ink:${labelInk}">${label}</button>`
+  return `<button type="button" class="${cls}" data-place-id="${esc(p.placeId)}" aria-label="${esc(pointAriaLabel(p))}" aria-pressed="${selected}" aria-describedby="map-hover-card"${title} style="--d:${d}px;--fill:${fill};--label-ink:${labelInk}">${label}</button>`
 }
 
 export function MapView(props: MapViewProps) {
