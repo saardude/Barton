@@ -1,0 +1,11 @@
+# Files not needed to build the static app on Vercel.
+# `vercel deploy` (without --prebuilt) uploads the working directory minus these.
+.git
+.github
+docs
+scraper
+**/node_modules
+**/dist
+**/coverage
+.env
+.env.*

@@ -1,0 +1,126 @@
+# Deploys the static app to Vercel with the Vercel CLI.
+#
+#   push to main      -> production deployment (https://<project>.vercel.app)
+#   pull request      -> preview deployment, URL posted as a PR comment
+#   workflow_dispatch -> production deployment on demand
+#
+# The build runs here on the GitHub runner (`vercel build` executes the
+# installCommand / buildCommand from vercel.json), and only the prebuilt output
+# in .vercel/output is uploaded (`vercel deploy --prebuilt`). Vercel never
+# builds anything itself, so the deployment is exactly what CI tested.
+#
+# Required repository secrets (Settings > Secrets and variables > Actions):
+#   VERCEL_TOKEN       personal or team token, https://vercel.com/account/tokens
+#   VERCEL_ORG_ID      "orgId"     from .vercel/project.json after `vercel link`
+#   VERCEL_PROJECT_ID  "projectId" from .vercel/project.json after `vercel link`
+# See docs/DEPLOY.md for the full runbook.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  # Pin the CLI major so a Vercel release cannot change deploy behaviour silently.
+  VERCEL_CLI: vercel@60
+
+jobs:
+  production:
+    name: Production
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Pull Vercel project settings (production)
+        run: npx --yes $VERCEL_CLI pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build (runs installCommand and buildCommand from vercel.json)
+        run: npx --yes $VERCEL_CLI build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Report data payload sizes (gzip)
+        run: |
+          shopt -s nullglob
+          {
+            echo "### Static data (gzip bytes)"
+            for f in .vercel/output/static/data/*.json; do
+              printf -- "- %s: %s\n" "$(basename "$f")" "$(gzip -9c "$f" | wc -c)"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Deploy prebuilt output to production
+        id: deploy
+        run: |
+          url=$(npx --yes $VERCEL_CLI deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Production: $url" >> "$GITHUB_STEP_SUMMARY"
+
+  preview:
+    name: Preview
+    # Secrets are not available to pull requests from forks; skip those.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Pull Vercel project settings (preview)
+        run: npx --yes $VERCEL_CLI pull --yes --environment=preview --git-branch=${{ github.head_ref }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        run: npx --yes $VERCEL_CLI build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy prebuilt output as a preview
+        id: deploy
+        run: |
+          url=$(npx --yes $VERCEL_CLI deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Preview: $url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Post or update the preview URL on the pull request
+        uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+        with:
+          script: |
+            const marker = '<!-- vercel-preview -->';
+            const body = `${marker}\nVercel preview for ${context.sha.slice(0, 7)}: ${process.env.PREVIEW_URL}`;
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.rest.issues.listComments({ owner, repo, issue_number, per_page: 100 });
+            const existing = comments.data.find(c => c.body && c.body.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }

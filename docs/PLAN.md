@@ -96,8 +96,10 @@ Build in this order so each screen is usable as soon as it lands:
 
 ## Step 7: deploy (system engineer, 30 minutes)
 
-1. `cd app && npx vercel --yes` creates the new Vercel project on first run (name
-   `bartok-romania-viewer`); `npx vercel --prod` for production. Full runbook: DEPLOY.md.
+1. From the repository root (not `app/`, because the build copies `data/*.json` into the app):
+   `npx vercel link --yes --project bartok-romania-viewer`, then `npx vercel` for a preview and
+   `npx vercel --prod` for production. `vercel.json` at the root sets the app build. Full
+   runbook: DEPLOY.md.
 2. Preview URL smoke test, then production; verify cache headers with curl; deep-link 404 test.
 3. Enable the GitHub Actions deploy workflow with `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
    `VERCEL_PROJECT_ID` secrets so every push to main redeploys.

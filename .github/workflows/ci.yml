@@ -1,0 +1,154 @@
+# Continuous integration: lint, typecheck, unit tests and build for the app;
+# unit tests for the scraper; data quality gates on the committed dataset.
+#
+# Script contract (see docs/DEPLOY.md, "Build contract"):
+#   app/package.json      lint, typecheck, test (non-watch), build
+#   scraper/package.json  test (node --test, fixtures only, no network), validate
+#   qa/checks/data-gates.mjs  reads data/songs.json, exits non-zero on a failed gate
+#
+# Jobs skip themselves (with a notice) while the corresponding package does not
+# exist yet, so this workflow is safe to enable before app/ is scaffolded.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: App (lint, typecheck, test, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check that app/ is scaffolded
+        id: present
+        working-directory: .
+        run: |
+          if [ -f app/package-lock.json ]; then
+            echo "yes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "yes=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::app/package-lock.json not found; app job skipped"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.present.outputs.yes == 'true'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install
+        if: steps.present.outputs.yes == 'true'
+        run: npm ci
+
+      - name: Lint
+        if: steps.present.outputs.yes == 'true'
+        run: npm run lint
+
+      - name: Typecheck
+        if: steps.present.outputs.yes == 'true'
+        run: npm run typecheck
+
+      - name: Unit tests
+        if: steps.present.outputs.yes == 'true'
+        run: npm test
+
+      - name: Build
+        if: steps.present.outputs.yes == 'true'
+        run: npm run build
+
+      - name: Performance budget (initial JSON <= 3 MB gzip, JS <= 300 KB gzip)
+        if: steps.present.outputs.yes == 'true'
+        run: |
+          shopt -s nullglob
+          fail=0
+          for f in dist/data/songs.*.json; do
+            gz=$(gzip -9c "$f" | wc -c)
+            echo "$(basename "$f"): $gz bytes gzip"
+            if [ "$gz" -gt 3145728 ]; then echo "::error::$f exceeds 3 MB gzip"; fail=1; fi
+          done
+          js=0
+          for f in dist/assets/*.js; do js=$(( js + $(gzip -9c "$f" | wc -c) )); done
+          echo "total JS: $js bytes gzip"
+          if [ "$js" -gt 307200 ]; then echo "::warning::JS bundle exceeds 300 KB gzip"; fi
+          exit $fail
+
+  scraper:
+    name: Scraper (tests)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: scraper
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check that scraper/ is present
+        id: present
+        working-directory: .
+        run: |
+          if [ -f scraper/package-lock.json ]; then
+            echo "yes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "yes=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::scraper/package-lock.json not found; scraper job skipped"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.present.outputs.yes == 'true'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: scraper/package-lock.json
+
+      - name: Install
+        if: steps.present.outputs.yes == 'true'
+        run: npm ci
+
+      - name: Lint (if a lint script exists)
+        if: steps.present.outputs.yes == 'true'
+        run: npm run lint --if-present
+
+      - name: Unit tests (fixtures only, no network)
+        if: steps.present.outputs.yes == 'true'
+        run: npm test
+
+  data-gates:
+    name: Data quality gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install scraper deps (data-gates imports ajv from scraper/node_modules)
+        if: hashFiles('scraper/package-lock.json') != ''
+        run: npm ci --prefix scraper
+
+      - name: Run gates on data/songs.json (falls back to the QA fixture)
+        run: |
+          if [ -f data/songs.json ]; then
+            node qa/checks/data-gates.mjs --file data/songs.json --schema data/schema/song.schema.json
+          else
+            echo "::notice::data/songs.json not present; running gates on qa/fixtures/songs.sample.json"
+            node qa/checks/data-gates.mjs --file qa/fixtures/songs.sample.json --schema data/schema/song.schema.json
+          fi

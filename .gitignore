@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+app/dist/
+coverage/
+*.tsbuildinfo
+.eslintcache
+
+# generated at build time from ../data by app/scripts/sync-data.mjs
+app/public/data/
+app/src/generated/
+
+# vercel (created by `vercel link` / `vercel pull` / `vercel build`)
+.vercel/
+
+# scraper working files (raw HTML cache, never committed)
+scraper/cache/
+
+# environment files
+.env
+.env.*
+!.env.example
+
+# logs and OS noise
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
