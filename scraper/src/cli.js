@@ -44,21 +44,25 @@ function makeLogger() {
 }
 
 async function cmdProbe(args) {
-  const url = args._[1];
-  if (!url) {
+  const urls = args._.slice(1);
+  if (!urls.length) {
     usage();
     return 2;
   }
   const fetcher = new Fetcher({ log: makeLogger() });
-  const res = await fetcher.fetchText(url, { force: !!args.flags.force });
-  if (!res.ok) {
-    console.error(`probe failed: HTTP ${res.status} ${res.error || ''}`);
-    return 2;
+  let code = 0;
+  for (const url of urls) {
+    const res = await fetcher.fetchText(url, { force: !!args.flags.force });
+    if (!res.ok) {
+      console.error(`probe failed: HTTP ${res.status} ${url} ${res.error || ''}`);
+      code = 2;
+      continue;
+    }
+    const p = cachePathFor(url, fetcher.cacheDir);
+    console.log(`\n==== fetched ${res.fromCache ? '(cache)' : '(live)'} ${url} -> ${path.relative(PATHS.scraper, p.html)} (${res.html.length} bytes)`);
+    console.log(outline(res.html, res.finalUrl || url));
   }
-  const p = cachePathFor(url, fetcher.cacheDir);
-  console.log(`fetched ${res.fromCache ? '(cache)' : '(live)'} ${url} -> ${path.relative(PATHS.scraper, p.html)} (${res.html.length} bytes)`);
-  console.log(outline(res.html, res.finalUrl || url));
-  return 0;
+  return code;
 }
 
 async function cmdCrawl(args) {
