@@ -20,8 +20,9 @@ environment variable and no dashboard-only setting the app depends on.
 Since the Australia collection was added, the build command is `node scripts/build-site.mjs`,
 which runs `npm run build` in `app/` and in `australia/app/` and copies the second into
 `app/dist/australia/`. The install command installs both packages. `vercel.json` rewrites
-`/australia/*` (except its `data/` and `assets/`) to `/australia/index.html` ahead of the
-Bartók catch-all, caches `/australia/data/*` and `/australia/assets/*` as immutable, and the
+`/australia/*` (except its `data/` and `assets/`) to `/australia` ahead of the Bartók
+catch-all (the target is the clean URL of `australia/index.html`: with `cleanUrls` on, a
+rewrite to the `.html` path itself returns 404), caches `/australia/data/*` and `/australia/assets/*` as immutable, and the
 shared Content-Security-Policy allows images and media from folkstream.com. If the Australia
 build fails, the whole deployment fails; CI runs the same steps first.
 
@@ -319,6 +320,7 @@ root `vercel.json` rewrites and headers, and install/build disabled. It exists b
 uploading the whole repository (40 MB raw catalogue) aborted through the cloud proxy, and
 because the project-level install command (`npm ci --prefix app`) is applied even to
 prebuilt uploads unless the deployed `vercel.json` sets `installCommand` to an empty
-string. Sequence: `cd app && npm run build && cd .. && scripts/deploy-dist.sh`.
+string. Sequence: `node scripts/build-site.mjs && scripts/deploy-dist.sh` (the root script builds
+both collections into `app/dist`; `cd app && npm run build` alone leaves out `/australia`).
 Verified on the first run: `/` serves the app, `/data/songs.<hash>.json` returns 200 with
 `cache-control: public, max-age=31536000, immutable`.
