@@ -1,0 +1,13 @@
+{
+  "name": "culegeri-australia-geo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Newspaper gazetteer for the Culegeri Australia viewer: resolves the papers cited on folkstream.com to a place of publication via Wikidata",
+  "scripts": {
+    "resolve": "node resolve-newspapers.mjs"
+  },
+  "dependencies": {
+    "undici": "^7.30.0"
+  }
+}

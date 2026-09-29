@@ -1,0 +1,11 @@
+
+# Australia collection: raw parse output, geo caches (GeoNames dump, Wikidata results)
+australia/scraper/raw/
+australia/geo/cache/
+australia/app/dist/
+australia/app/dist-e2e/
+australia/app/public/data/
+australia/app/src/generated/
+australia/app/e2e-results/
+australia/app/e2e-report/
+australia/app/test-results/

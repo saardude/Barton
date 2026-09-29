@@ -17,6 +17,14 @@ cat .vercel/project.json                                    # orgId / projectId 
 Everything is driven by `vercel.json` at the repository root. There is no server, no
 environment variable and no dashboard-only setting the app depends on.
 
+Since the Australia collection was added, the build command is `node scripts/build-site.mjs`,
+which runs `npm run build` in `app/` and in `australia/app/` and copies the second into
+`app/dist/australia/`. The install command installs both packages. `vercel.json` rewrites
+`/australia/*` (except its `data/` and `assets/`) to `/australia/index.html` ahead of the
+Bartók catch-all, caches `/australia/data/*` and `/australia/assets/*` as immutable, and the
+shared Content-Security-Policy allows images and media from folkstream.com. If the Australia
+build fails, the whole deployment fails; CI runs the same steps first.
+
 ## 1. Stack decision
 
 **Vite + React + TypeScript, built to static files. Data shipped as static JSON under
