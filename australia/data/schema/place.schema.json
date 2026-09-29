@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://culegeri.local/australia/schema/place.schema.json",
+  "title": "Place",
+  "description": "One node of the place hierarchy in places.json (country > state > town). Songs sit at the town of the newspaper that printed them, or at the state when only that is known.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "name",
+    "parent",
+    "state",
+    "lat",
+    "lng",
+    "coordSource",
+    "counts",
+    "years",
+    "songIds",
+    "newspapers"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]+(/[a-z0-9-]+){0,2}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "country",
+        "state",
+        "town"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "parent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lat": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -90,
+      "maximum": 90
+    },
+    "lng": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -180,
+      "maximum": 180
+    },
+    "coordSource": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "fixed",
+        "gazetteer",
+        null
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "byDecade",
+        "byKind"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "byDecade": {
+          "$ref": "#/$defs/countMap"
+        },
+        "byKind": {
+          "$ref": "#/$defs/countMap"
+        }
+      }
+    },
+    "years": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "songIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "newspapers": {
+      "$ref": "#/$defs/countMap"
+    }
+  },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

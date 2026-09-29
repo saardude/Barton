@@ -1,0 +1,24 @@
+{
+  "name": "culegeri-australia-scraper",
+  "version": "0.1.0",
+  "description": "Polite scraper and normaliser for folkstream.com (Australian Folk Songs, Mark Gregory) for the Culegeri Australia viewer",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\"",
+    "probe": "node src/cli.js probe",
+    "crawl": "node src/cli.js crawl",
+    "parse": "node src/cli.js parse",
+    "build": "node src/cli.js build",
+    "validate": "node src/cli.js validate"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "cheerio": "^1.0.0",
+    "undici": "^7.30.0"
+  }
+}

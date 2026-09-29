@@ -1,5 +1,7 @@
 # Continuous integration: lint, typecheck, unit tests and build for the app;
 # unit tests for the scraper; data quality gates on the committed dataset.
+# The Australia collection (australia/) has the same three jobs below (australia-app,
+# australia-scraper, australia-data-gates); scripts/build-site.mjs assembles both apps for Vercel.
 #
 # Script contract (see docs/DEPLOY.md, "Build contract"):
 #   app/package.json      lint, typecheck, test (non-watch), build
@@ -152,3 +154,76 @@ jobs:
             echo "::notice::data/songs.json not present; running gates on qa/fixtures/songs.sample.json"
             node qa/checks/data-gates.mjs --file qa/fixtures/songs.sample.json --schema data/schema/song.schema.json
           fi
+
+  australia-app:
+    name: Australia app (lint, typecheck, test, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: australia/app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: australia/app/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Performance budget
+        run: npm run check-budget
+
+  australia-scraper:
+    name: Australia scraper (tests)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: australia/scraper
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: australia/scraper/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Unit tests (fixtures only, no network)
+        run: npm test
+
+      - name: Validate the committed dataset against its schemas
+        run: npm run validate
+
+  australia-data-gates:
+    name: Australia data quality gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Run gates on australia/data
+        run: node australia/qa/checks/data-gates.mjs

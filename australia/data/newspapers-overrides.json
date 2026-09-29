@@ -1,0 +1,1125 @@
+[
+  {
+    "key": "worker",
+    "title": "The Worker",
+    "town": "Brisbane",
+    "state": "QLD",
+    "note": "Queensland labour weekly (Brisbane, 1890-1974); the NSW edition (Wagga Wagga 1892-93, then Sydney) is the variant",
+    "variants": [
+      {
+        "town": "Brisbane",
+        "state": "QLD",
+        "default": true
+      },
+      {
+        "town": "Sydney",
+        "state": "NSW"
+      }
+    ]
+  },
+  {
+    "key": "worker wagga nsw",
+    "title": "The Worker (Wagga)",
+    "town": "Wagga Wagga",
+    "state": "NSW",
+    "note": "NSW edition of the Worker, printed at Wagga Wagga 1892-93"
+  },
+  {
+    "key": "australian worker",
+    "title": "The Australian Worker",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "australian workman",
+    "title": "The Australian Workman",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "westralian worker",
+    "title": "Westralian Worker",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "workers weekly",
+    "title": "The Workers' Weekly",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "herald",
+    "title": "The Herald",
+    "town": "Melbourne",
+    "state": "VIC",
+    "note": "Melbourne evening daily; the South Australian Herald (Adelaide labour weekly, 1894-1910) is the variant",
+    "variants": [
+      {
+        "town": "Melbourne",
+        "state": "VIC",
+        "default": true
+      },
+      {
+        "town": "Adelaide",
+        "state": "SA"
+      }
+    ]
+  },
+  {
+    "key": "melbourne herald",
+    "title": "The Melbourne Herald",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "weekly herald",
+    "title": "Weekly Herald",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "daily herald",
+    "title": "The Daily Herald",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "advocate",
+    "title": "The Advocate",
+    "town": "Melbourne",
+    "state": "VIC",
+    "note": "Melbourne Catholic weekly; The Advocate (Burnie, Tasmania) is the variant",
+    "variants": [
+      {
+        "town": "Melbourne",
+        "state": "VIC",
+        "default": true
+      },
+      {
+        "town": "Burnie",
+        "state": "TAS"
+      }
+    ]
+  },
+  {
+    "key": "australian",
+    "title": "The Australian",
+    "town": "Sydney",
+    "state": "NSW",
+    "note": "The Australian (Sydney, 1824-1848); the Perth paper of the same name is the variant",
+    "variants": [
+      {
+        "town": "Sydney",
+        "state": "NSW",
+        "default": true
+      },
+      {
+        "town": "Perth",
+        "state": "WA"
+      }
+    ]
+  },
+  {
+    "key": "tribune",
+    "title": "Tribune",
+    "town": "Sydney",
+    "state": "NSW",
+    "note": "Communist Party weekly, Sydney (1939-1991)"
+  },
+  {
+    "key": "truth",
+    "title": "Truth",
+    "town": "Brisbane",
+    "state": "QLD",
+    "note": "Truth had Sydney, Brisbane and Perth editions; the notes' state decides",
+    "variants": [
+      {
+        "town": "Brisbane",
+        "state": "QLD",
+        "default": true
+      },
+      {
+        "town": "Sydney",
+        "state": "NSW"
+      },
+      {
+        "town": "Perth",
+        "state": "WA"
+      }
+    ]
+  },
+  {
+    "key": "leader",
+    "title": "The Leader",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "sun",
+    "title": "The Sun",
+    "town": "Sydney",
+    "state": "NSW",
+    "variants": [
+      {
+        "town": "Sydney",
+        "state": "NSW",
+        "default": true
+      },
+      {
+        "town": "Kalgoorlie",
+        "state": "WA"
+      }
+    ]
+  },
+  {
+    "key": "sunday sun",
+    "title": "The Sunday Sun",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sunday times",
+    "title": "Sunday Times",
+    "town": "Perth",
+    "state": "WA",
+    "variants": [
+      {
+        "town": "Perth",
+        "state": "WA",
+        "default": true
+      },
+      {
+        "town": "Sydney",
+        "state": "NSW"
+      }
+    ]
+  },
+  {
+    "key": "sunday herald",
+    "title": "The Sunday Herald",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "freemans journal",
+    "title": "Freeman's Journal",
+    "town": "Sydney",
+    "state": "NSW",
+    "aliases": [
+      "freemans journa"
+    ]
+  },
+  {
+    "key": "catholic press",
+    "title": "The Catholic Press",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "evening news",
+    "title": "Evening News",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "evening journal",
+    "title": "Evening Journal",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "express and telegraph",
+    "title": "The Express and Telegraph",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "daily standard",
+    "title": "Daily Standard",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "daily telegraph",
+    "title": "The Daily Telegraph",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "daily news",
+    "title": "The Daily News",
+    "town": "Perth",
+    "state": "WA",
+    "variants": [
+      {
+        "town": "Perth",
+        "state": "WA",
+        "default": true
+      },
+      {
+        "town": "Sydney",
+        "state": "NSW"
+      }
+    ]
+  },
+  {
+    "key": "western mail",
+    "title": "Western Mail",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "west australian",
+    "title": "The West Australian",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "w a record",
+    "title": "The W.A. Record",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "westralian record",
+    "title": "Westralian Record",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "australian town and country journal",
+    "title": "Australian Town and Country Journal",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "international socialist",
+    "title": "International Socialist",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "socialist",
+    "title": "The Socialist",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "direct action",
+    "title": "Direct Action",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "labor daily",
+    "title": "The Labor Daily",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sydney morning herald",
+    "title": "The Sydney Morning Herald",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sydney mail",
+    "title": "The Sydney Mail",
+    "town": "Sydney",
+    "state": "NSW",
+    "aliases": [
+      "sydney mail and new south wales advertiser"
+    ]
+  },
+  {
+    "key": "sydney gazette",
+    "title": "The Sydney Gazette",
+    "town": "Sydney",
+    "state": "NSW",
+    "aliases": [
+      "sydney gazette and new south wales advertiser"
+    ]
+  },
+  {
+    "key": "sydney chronicle",
+    "title": "Sydney Chronicle",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "australasian chronicle",
+    "title": "Australasian Chronicle",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "morning chronicle",
+    "title": "Morning Chronicle",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "australian star",
+    "title": "The Australian Star",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "smiths weekly",
+    "title": "Smith's Weekly",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "worlds news",
+    "title": "World's News",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "bells life",
+    "title": "Bell's Life in Sydney",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "illustrated sydney news",
+    "title": "The Illustrated Sydney News",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sydney sportsman",
+    "title": "The Sydney Sportsman",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sydney stock and station journal",
+    "title": "Sydney Stock and Station Journal",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "sydney wool and stock journal",
+    "title": "Sydney Wool and Stock Journal",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "country life stock and station journal",
+    "title": "Country Life Stock and Station Journal",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "land",
+    "title": "The Land",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "commercial journal and advertiser",
+    "title": "The Commercial Journal and Advertiser",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "newsletter an australian paper",
+    "title": "Newsletter: an Australian Paper for Australian People",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "mirror",
+    "title": "Mirror",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "free lance",
+    "title": "Free Lance",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "reformer",
+    "title": "Reformer",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "st george call",
+    "title": "The St George Call",
+    "town": "Kogarah",
+    "state": "NSW"
+  },
+  {
+    "key": "chronicle",
+    "title": "The Chronicle",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "register",
+    "title": "The Register",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "south australian register",
+    "title": "South Australian Register",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "south australian",
+    "title": "The South Australian",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "south australian weekly chronicle",
+    "title": "South Australian Weekly Chronicle",
+    "town": "Adelaide",
+    "state": "SA",
+    "aliases": [
+      "south australian chronicle and weekly mail"
+    ]
+  },
+  {
+    "key": "adelaide observer",
+    "title": "Adelaide Observer",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "southern cross",
+    "title": "Southern Cross",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "quiz and the lantern",
+    "title": "Quiz and the Lantern",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "sport",
+    "title": "Sport",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "mail",
+    "title": "The Mail",
+    "town": "Adelaide",
+    "state": "SA"
+  },
+  {
+    "key": "critic",
+    "title": "The Critic",
+    "town": "Adelaide",
+    "state": "SA",
+    "variants": [
+      {
+        "town": "Adelaide",
+        "state": "SA",
+        "default": true
+      },
+      {
+        "town": "Hobart",
+        "state": "TAS"
+      }
+    ]
+  },
+  {
+    "key": "border watch",
+    "title": "Border Watch",
+    "town": "Mount Gambier",
+    "state": "SA"
+  },
+  {
+    "key": "northern argus",
+    "title": "Northern Argus",
+    "town": "Clare",
+    "state": "SA"
+  },
+  {
+    "key": "queenslander",
+    "title": "The Queenslander",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "telegraph",
+    "title": "The Telegraph",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "brisbane courier",
+    "title": "The Brisbane Courier",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "courier mail",
+    "title": "The Courier-Mail",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "observer",
+    "title": "The Observer",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "week",
+    "title": "The Week",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "queensland figaro",
+    "title": "Queensland Figaro",
+    "town": "Brisbane",
+    "state": "QLD",
+    "aliases": [
+      "queensland figaro and punch"
+    ]
+  },
+  {
+    "key": "queensland country life",
+    "title": "Queensland Country Life",
+    "town": "Brisbane",
+    "state": "QLD"
+  },
+  {
+    "key": "northern miner",
+    "title": "The Northern Miner",
+    "town": "Charters Towers",
+    "state": "QLD"
+  },
+  {
+    "key": "capricornian",
+    "title": "The Capricornian",
+    "town": "Rockhampton",
+    "state": "QLD"
+  },
+  {
+    "key": "central queensland herald",
+    "title": "Central Queensland Herald",
+    "town": "Rockhampton",
+    "state": "QLD"
+  },
+  {
+    "key": "daily northern argus",
+    "title": "The Daily Northern Argus",
+    "town": "Rockhampton",
+    "state": "QLD"
+  },
+  {
+    "key": "western champion",
+    "title": "The Western Champion",
+    "town": "Barcaldine",
+    "state": "QLD",
+    "aliases": [
+      "western champion and general advertiser",
+      "western champion and general advertiser for the central western districts"
+    ],
+    "variants": [
+      {
+        "town": "Barcaldine",
+        "state": "QLD",
+        "default": true
+      },
+      {
+        "town": "Parkes",
+        "state": "NSW"
+      }
+    ]
+  },
+  {
+    "key": "western star",
+    "title": "The Western Star",
+    "town": "Roma",
+    "state": "QLD",
+    "aliases": [
+      "western star and roma advertiser"
+    ]
+  },
+  {
+    "key": "north queensland register",
+    "title": "North Queensland Register",
+    "town": "Townsville",
+    "state": "QLD"
+  },
+  {
+    "key": "evening advocate",
+    "title": "The Evening Advocate",
+    "town": "Innisfail",
+    "state": "QLD"
+  },
+  {
+    "key": "northern herald",
+    "title": "The Northern Herald",
+    "town": "Cairns",
+    "state": "QLD"
+  },
+  {
+    "key": "darling downs gazette",
+    "title": "The Darling Downs Gazette",
+    "town": "Toowoomba",
+    "state": "QLD",
+    "aliases": [
+      "darling downs gazette and general advertiser"
+    ]
+  },
+  {
+    "key": "queensland times",
+    "title": "Queensland Times",
+    "town": "Ipswich",
+    "state": "QLD",
+    "aliases": [
+      "queensland times ipswich herald and general advertiser"
+    ]
+  },
+  {
+    "key": "age",
+    "title": "The Age",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "argus",
+    "title": "The Argus",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "australasian",
+    "title": "The Australasian",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "tocsin",
+    "title": "Tocsin",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "melbourne punch",
+    "title": "Melbourne Punch",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "australian womens weekly",
+    "title": "The Australian Women's Weekly",
+    "town": "Sydney",
+    "state": "NSW"
+  },
+  {
+    "key": "port phillip patriot",
+    "title": "The Port Phillip Patriot",
+    "town": "Melbourne",
+    "state": "VIC"
+  },
+  {
+    "key": "mercury and weekly courier",
+    "title": "Mercury and Weekly Courier",
+    "town": "Fitzroy",
+    "state": "VIC"
+  },
+  {
+    "key": "mount alexander mail",
+    "title": "The Mount Alexander Mail",
+    "town": "Castlemaine",
+    "state": "VIC"
+  },
+  {
+    "key": "ovens and murray advertiser",
+    "title": "Ovens and Murray Advertiser",
+    "town": "Beechworth",
+    "state": "VIC"
+  },
+  {
+    "key": "snowy river mail",
+    "title": "Snowy River Mail",
+    "town": "Orbost",
+    "state": "VIC"
+  },
+  {
+    "key": "gippsland times",
+    "title": "Gippsland Times",
+    "town": "Sale",
+    "state": "VIC"
+  },
+  {
+    "key": "evelyn observer and south and east bourke record",
+    "title": "The Evelyn Observer",
+    "town": "Kangaroo Ground",
+    "state": "VIC"
+  },
+  {
+    "key": "goulburn valley stock and property journal",
+    "title": "Goulburn Valley Stock and Property Journal",
+    "town": "Shepparton",
+    "state": "VIC"
+  },
+  {
+    "key": "miners advocate and northumberland recorder",
+    "title": "Miners' Advocate and Northumberland Recorder",
+    "town": "Newcastle",
+    "state": "NSW"
+  },
+  {
+    "key": "newcastle morning herald and miners advocate",
+    "title": "Newcastle Morning Herald and Miners' Advocate",
+    "town": "Newcastle",
+    "state": "NSW"
+  },
+  {
+    "key": "northern times",
+    "title": "Northern Times",
+    "town": "Newcastle",
+    "state": "NSW",
+    "variants": [
+      {
+        "town": "Newcastle",
+        "state": "NSW",
+        "default": true
+      },
+      {
+        "town": "Carnarvon",
+        "state": "WA"
+      }
+    ]
+  },
+  {
+    "key": "national advocate",
+    "title": "National Advocate",
+    "town": "Bathurst",
+    "state": "NSW"
+  },
+  {
+    "key": "southern argus",
+    "title": "The Southern Argus",
+    "town": "Goulburn",
+    "state": "NSW"
+  },
+  {
+    "key": "riverine grazier",
+    "title": "Riverine Grazier",
+    "town": "Hay",
+    "state": "NSW"
+  },
+  {
+    "key": "murrumbidgee irrigator",
+    "title": "Murrumbidgee Irrigator",
+    "town": "Leeton",
+    "state": "NSW"
+  },
+  {
+    "key": "western herald",
+    "title": "Western Herald",
+    "town": "Bourke",
+    "state": "NSW"
+  },
+  {
+    "key": "clarence and richmond examiner",
+    "title": "Clarence and Richmond Examiner",
+    "town": "Grafton",
+    "state": "NSW"
+  },
+  {
+    "key": "daily examiner",
+    "title": "The Daily Examiner",
+    "town": "Grafton",
+    "state": "NSW"
+  },
+  {
+    "key": "richmond river herald and northern districts advertiser",
+    "title": "The Richmond River Herald",
+    "town": "Coraki",
+    "state": "NSW"
+  },
+  {
+    "key": "northern star",
+    "title": "The Northern Star",
+    "town": "Lismore",
+    "state": "NSW"
+  },
+  {
+    "key": "tweed daily",
+    "title": "The Tweed Daily",
+    "town": "Murwillumbah",
+    "state": "NSW"
+  },
+  {
+    "key": "manaro mercury",
+    "title": "Manaro Mercury",
+    "town": "Cooma",
+    "state": "NSW",
+    "aliases": [
+      "manaro mercury and cooma and bombala advertiser"
+    ]
+  },
+  {
+    "key": "shoalhaven news",
+    "title": "The Shoalhaven News",
+    "town": "Nowra",
+    "state": "NSW"
+  },
+  {
+    "key": "lachlander and condobolin and western districts recorder",
+    "title": "Lachlander",
+    "town": "Condobolin",
+    "state": "NSW"
+  },
+  {
+    "key": "scrutineer and berrima district press",
+    "title": "Scrutineer and Berrima District Press",
+    "town": "Moss Vale",
+    "state": "NSW"
+  },
+  {
+    "key": "blue mountain echo",
+    "title": "Blue Mountain Echo",
+    "town": "Katoomba",
+    "state": "NSW"
+  },
+  {
+    "key": "blue mountain star",
+    "title": "Blue Mountain Star",
+    "town": "Katoomba",
+    "state": "NSW"
+  },
+  {
+    "key": "nepean times",
+    "title": "Nepean Times",
+    "town": "Penrith",
+    "state": "NSW"
+  },
+  {
+    "key": "hawkesbury courier and agricultural and general advertiser",
+    "title": "Hawkesbury Courier",
+    "town": "Windsor",
+    "state": "NSW"
+  },
+  {
+    "key": "burrangong argus",
+    "title": "The Burrangong Argus",
+    "town": "Young",
+    "state": "NSW"
+  },
+  {
+    "key": "border morning mail and riverina times",
+    "title": "The Border Morning Mail",
+    "town": "Albury",
+    "state": "NSW"
+  },
+  {
+    "key": "great southern advocate",
+    "title": "Great Southern Advocate",
+    "town": "Katanning",
+    "state": "WA"
+  },
+  {
+    "key": "great southern herald",
+    "title": "The Great Southern Herald",
+    "town": "Katanning",
+    "state": "WA"
+  },
+  {
+    "key": "south western times",
+    "title": "The South Western Times",
+    "town": "Bunbury",
+    "state": "WA"
+  },
+  {
+    "key": "swan river guardian",
+    "title": "Swan River Guardian",
+    "town": "Perth",
+    "state": "WA"
+  },
+  {
+    "key": "western argus",
+    "title": "The Western Argus",
+    "town": "Kalgoorlie",
+    "state": "WA"
+  },
+  {
+    "key": "colonial times",
+    "title": "Colonial Times",
+    "town": "Hobart",
+    "state": "TAS",
+    "aliases": [
+      "colonial times and tasmanian advertiser"
+    ]
+  },
+  {
+    "key": "colonial advocate",
+    "title": "The Colonial Advocate",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "colonist and van diemens land commercial and agricultural advertiser",
+    "title": "The Colonist",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "cornwall chronicle",
+    "title": "Cornwall Chronicle",
+    "town": "Launceston",
+    "state": "TAS"
+  },
+  {
+    "key": "independent",
+    "title": "The Independent",
+    "town": "Launceston",
+    "state": "TAS"
+  },
+  {
+    "key": "bents news and tasmanian register",
+    "title": "Bent's News and Tasmanian Register",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "britannia and trades advocate",
+    "title": "The Britannia and Trades' Advocate",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "irish exile and freedoms advocate",
+    "title": "The Irish Exile and Freedom's Advocate",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "tasmanian colonist",
+    "title": "The Tasmanian Colonist",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "tasmanian and port dalrymple advertiser",
+    "title": "Tasmanian and Port Dalrymple Advertiser",
+    "town": "Launceston",
+    "state": "TAS"
+  },
+  {
+    "key": "north west post",
+    "title": "North West Post",
+    "town": "Formby",
+    "state": "TAS"
+  },
+  {
+    "key": "western tiers",
+    "title": "Western Tiers",
+    "town": "Deloraine",
+    "state": "TAS"
+  },
+  {
+    "key": "huon and derwent times",
+    "title": "Huon and Derwent Times",
+    "town": "Huonville",
+    "state": "TAS"
+  },
+  {
+    "key": "clipper",
+    "title": "The Clipper",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "northern standard",
+    "title": "Northern Standard",
+    "town": "Darwin",
+    "state": "NT",
+    "aliases": [
+      "northern standard the droving days"
+    ]
+  },
+  {
+    "key": "northern territory times and gazette",
+    "title": "Northern Territory Times and Gazette",
+    "town": "Darwin",
+    "state": "NT"
+  },
+  {
+    "key": "federal capital pioneer",
+    "title": "Federal Capital Pioneer",
+    "town": "Canberra",
+    "state": "ACT"
+  },
+  {
+    "key": "woroni",
+    "title": "Woroni",
+    "town": "Canberra",
+    "state": "ACT"
+  },
+  {
+    "key": "hobarton guardian or true friend",
+    "title": "Hobarton Guardian, or, True Friend of Tasmania",
+    "town": "Hobart",
+    "state": "TAS"
+  },
+  {
+    "key": "mcivor times and rodney advertiser",
+    "title": "The McIvor Times and Rodney Advertiser",
+    "town": "Heathcote",
+    "state": "VIC"
+  },
+  {
+    "key": "narracoorte herald",
+    "title": "Narracoorte Herald",
+    "town": "Naracoorte",
+    "state": "SA"
+  },
+  {
+    "key": "burrowa news",
+    "title": "Burrowa News",
+    "town": "Boorowa",
+    "state": "NSW"
+  },
+  {
+    "key": "hay standard and advertiser",
+    "title": "Hay Standard and Advertiser",
+    "town": "Hay",
+    "state": "NSW"
+  },
+  {
+    "key": "petersburg times",
+    "title": "Petersburg Times",
+    "town": "Peterborough",
+    "state": "SA"
+  },
+  {
+    "key": "southern districts advocate",
+    "title": "The Southern Districts Advocate",
+    "town": "Katanning",
+    "state": "WA"
+  },
+  {
+    "key": "southern times",
+    "title": "Southern Times",
+    "town": "Bunbury",
+    "state": "WA"
+  },
+  {
+    "key": "yorkes peninsula advertiser and miners news",
+    "title": "The Yorke's Peninsula Advertiser and Miners' News",
+    "town": "Moonta",
+    "state": "SA"
+  }
+]

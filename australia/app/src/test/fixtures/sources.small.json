@@ -1,0 +1,549 @@
+{
+ "site": {
+  "editor": "Mark Gregory",
+  "name": "Australian Folk Songs",
+  "since": 1994,
+  "url": "https://folkstream.com/"
+ },
+ "songbooks": [
+  {
+   "author": null,
+   "id": "book-005",
+   "songCount": 1,
+   "title": "Sydney Golden Songster",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1893,
+   "yearRaw": "1893"
+  },
+  {
+   "author": "A.B. Paterson (7th edition 1932)",
+   "id": "book-006",
+   "songCount": 35,
+   "title": "Old Bush Songs",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1905,
+   "yearRaw": "1905"
+  },
+  {
+   "author": "Bill Bowyang",
+   "id": "book-011",
+   "songCount": 1,
+   "title": "Old Bush Recitations",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1933,
+   "yearRaw": "1933"
+  },
+  {
+   "author": "Geoffrey Ingleton",
+   "id": "book-019",
+   "songCount": 3,
+   "title": "True Patriots All",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1952,
+   "yearRaw": "1952"
+  },
+  {
+   "author": "Marjorie Pizer",
+   "id": "book-021",
+   "songCount": 3,
+   "title": "Freedom on the Wallaby",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1953,
+   "yearRaw": "1953"
+  },
+  {
+   "author": "Douglas Stewart & Nancy Keesing",
+   "id": "book-031",
+   "songCount": 35,
+   "title": "Old Bush Songs",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1957,
+   "yearRaw": "1957"
+  },
+  {
+   "author": "Russel Ward",
+   "id": "book-033",
+   "songCount": 1,
+   "title": "Three Street Ballads",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1957,
+   "yearRaw": "1957"
+  },
+  {
+   "author": "Federation of Bush Music Clubs",
+   "id": "book-037",
+   "songCount": 2,
+   "title": "Queensland Centenary Pocket Songbook",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1959,
+   "yearRaw": "1959"
+  },
+  {
+   "author": "Russel Ward",
+   "id": "book-051",
+   "songCount": 2,
+   "title": "Penguin Book of Australian Ballads",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1964,
+   "yearRaw": "1964"
+  },
+  {
+   "author": "Hugh Anderson",
+   "id": "book-052",
+   "songCount": 3,
+   "title": "Farewell to Old England",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1964,
+   "yearRaw": "1964"
+  },
+  {
+   "author": "Stan Wakefield",
+   "id": "book-062",
+   "songCount": 8,
+   "title": "Songs of Australia",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1966,
+   "yearRaw": "1966"
+  },
+  {
+   "author": "A.L.Lloyd",
+   "id": "book-072",
+   "songCount": 2,
+   "title": "Folk Song in England",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1967,
+   "yearRaw": "1967"
+  },
+  {
+   "author": "Alex Hood",
+   "id": "book-087",
+   "songCount": 2,
+   "title": "The Wallaby Track",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1971,
+   "yearRaw": "1971"
+  },
+  {
+   "author": "Ron Edwards",
+   "id": "book-102",
+   "songCount": 1,
+   "title": "The Big Book of Australian Folk Song",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1976,
+   "yearRaw": "1976"
+  },
+  {
+   "author": "John Meredith and Rex Whalen",
+   "id": "book-111",
+   "songCount": 9,
+   "title": "Frank the Poet",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1979,
+   "yearRaw": "1979"
+  },
+  {
+   "author": "John Meredith",
+   "id": "book-122",
+   "songCount": 1,
+   "title": "The Donahoe Ballads",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1982,
+   "yearRaw": "1982"
+  },
+  {
+   "author": "Patsy Adam-Smith",
+   "id": "book-126",
+   "songCount": 18,
+   "title": "The Shearers",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1982,
+   "yearRaw": "1982"
+  },
+  {
+   "author": "Donald Cave",
+   "id": "book-147",
+   "songCount": 7,
+   "title": "Percy Jones",
+   "url": "http://folkstream.com/722.html",
+   "year": 1988,
+   "yearRaw": "1988"
+  },
+  {
+   "author": "Chris Kempster",
+   "id": "book-150",
+   "songCount": 1,
+   "title": "The Songs of Henry Lawson",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1989,
+   "yearRaw": "1989"
+  },
+  {
+   "author": "Phillip Butterss & Elizabeth Webby",
+   "id": "book-167",
+   "songCount": 2,
+   "title": "Penguin Book of Australian Ballads",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 1993,
+   "yearRaw": "1993"
+  },
+  {
+   "author": "Hugh Anderson",
+   "id": "book-189",
+   "songCount": 1,
+   "title": "Fairwell to Judges & Juries",
+   "url": "https://folkstream.com/songbooks.html",
+   "year": 2003,
+   "yearRaw": "2003"
+  }
+ ],
+ "articles": [
+  {
+   "id": "article-001",
+   "title": "To Hear Your Banjo Play: Film by Alan Lomax with Pete Seeger - 1947",
+   "url": "http://folkstream.com/reviews/lomaxseeger.html"
+  },
+  {
+   "id": "article-002",
+   "title": "Larrikin Records and Larrikin Music Founder Speaks Out: Warren Fahey",
+   "url": "http://folkstream.com/reviews/larrikin.html"
+  },
+  {
+   "id": "article-003",
+   "title": "Folkways Music Shop: Warren Fahey",
+   "url": "http://folkstream.com/reviews/folkways.html"
+  }
+ ],
+ "newspapers": [
+  {
+   "count": 84,
+   "key": "worker",
+   "lat": -27.46794,
+   "lng": 153.02809,
+   "resolved": true,
+   "songIds": [
+    "afs-127"
+   ],
+   "state": "QLD",
+   "stateHints": {
+    "Brisbane": 4,
+    "NSW": 4,
+    "Queenland": 1,
+    "Queensland": 6,
+    "Wagga": 3,
+    "Wagga NSW": 1
+   },
+   "title": "Worker",
+   "town": "Brisbane",
+   "troveTitleId": null,
+   "variants": [
+    {
+     "state": "QLD",
+     "town": "Brisbane"
+    },
+    {
+     "state": "NSW",
+     "town": "Sydney"
+    }
+   ],
+   "wikidata": null,
+   "years": {
+    "max": 1951,
+    "min": 1890
+   }
+  },
+  {
+   "count": 23,
+   "key": "queenslander",
+   "lat": -27.46794,
+   "lng": 153.02809,
+   "resolved": true,
+   "songIds": [
+    "afs-014"
+   ],
+   "state": "QLD",
+   "stateHints": {
+    "Brisbane": 1,
+    "Queensland": 2
+   },
+   "title": "Queenslander",
+   "town": "Brisbane",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1994,
+    "min": 1867
+   }
+  },
+  {
+   "count": 6,
+   "key": "wellington-times",
+   "lat": -32.55588,
+   "lng": 148.94508,
+   "resolved": true,
+   "songIds": [
+    "afs-022"
+   ],
+   "state": "NSW",
+   "stateHints": {
+    "NSW": 1
+   },
+   "title": "The Wellington Times",
+   "town": "Wellington",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1939,
+    "min": 1906
+   }
+  },
+  {
+   "count": 4,
+   "key": "argus",
+   "lat": -37.814,
+   "lng": 144.96332,
+   "resolved": true,
+   "songIds": [
+    "afs-129"
+   ],
+   "state": "VIC",
+   "stateHints": {
+    "Victorian": 1
+   },
+   "title": "Argus",
+   "town": "Melbourne",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1851,
+    "min": 1849
+   }
+  },
+  {
+   "count": 4,
+   "key": "chronicle",
+   "lat": -34.92866,
+   "lng": 138.59863,
+   "resolved": true,
+   "songIds": [
+    "afs-054"
+   ],
+   "state": "SA",
+   "stateHints": {
+    "Adelaide": 1,
+    "South Australian": 1
+   },
+   "title": "The Chronicle",
+   "town": "Adelaide",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1954,
+    "min": 1900
+   }
+  },
+  {
+   "count": 4,
+   "key": "land",
+   "lat": -33.86785,
+   "lng": 151.20732,
+   "resolved": true,
+   "songIds": [
+    "afs-040"
+   ],
+   "state": "NSW",
+   "stateHints": {
+    "NSW": 1
+   },
+   "title": "The Land",
+   "town": "Sydney",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1937,
+    "min": 1929
+   }
+  },
+  {
+   "count": 4,
+   "key": "west-australian",
+   "lat": -31.95224,
+   "lng": 115.8614,
+   "resolved": true,
+   "songIds": [
+    "afs-021"
+   ],
+   "state": "WA",
+   "stateHints": {
+    "Western Australian": 1
+   },
+   "title": "West Australian",
+   "town": "Perth",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1925,
+    "min": 1892
+   }
+  },
+  {
+   "count": 3,
+   "key": "bunbury-herald",
+   "lat": -33.32711,
+   "lng": 115.64137,
+   "resolved": true,
+   "songIds": [
+    "afs-131"
+   ],
+   "state": "WA",
+   "stateHints": {},
+   "title": "Bunbury Herald",
+   "town": "Bunbury",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1911,
+    "min": 1905
+   }
+  },
+  {
+   "count": 3,
+   "key": "capricornian",
+   "lat": -23.38032,
+   "lng": 150.50595,
+   "resolved": true,
+   "songIds": [
+    "afs-094"
+   ],
+   "state": "QLD",
+   "stateHints": {
+    "Queensland": 1,
+    "Queensland regional": 1
+   },
+   "title": "The Capricornian",
+   "town": "Rockhampton",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1928,
+    "min": 1895
+   }
+  },
+  {
+   "count": 3,
+   "key": "geelong-advertiser-and-intelligencer",
+   "lat": -38.14711,
+   "lng": 144.36069,
+   "resolved": true,
+   "songIds": [
+    "afs-144"
+   ],
+   "state": "VIC",
+   "stateHints": {
+    "Victorian": 2
+   },
+   "title": "Geelong Advertiser and Intelligencer",
+   "town": "Geelong",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1855,
+    "min": 1853
+   }
+  },
+  {
+   "count": 2,
+   "key": "north-west-post",
+   "lat": null,
+   "lng": null,
+   "resolved": true,
+   "songIds": [
+    "afs-002"
+   ],
+   "state": "TAS",
+   "stateHints": {
+    "Tasmanian": 1
+   },
+   "title": "North West Post",
+   "town": "Formby",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1910,
+    "min": 1889
+   }
+  },
+  {
+   "count": 2,
+   "key": "northern-argus",
+   "lat": -33.83325,
+   "lng": 138.61064,
+   "resolved": true,
+   "songIds": [
+    "afs-113"
+   ],
+   "state": "SA",
+   "stateHints": {},
+   "title": "Northern Argus",
+   "town": "Clare",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1874,
+    "min": 1874
+   }
+  },
+  {
+   "count": 1,
+   "key": "bacchus-marsh-express",
+   "lat": -37.675,
+   "lng": 144.438888888,
+   "resolved": true,
+   "songIds": [
+    "afs-112"
+   ],
+   "state": "VIC",
+   "stateHints": {},
+   "title": "Bacchus Marsh Express",
+   "town": "Bacchus Marsh",
+   "troveTitleId": "246",
+   "variants": [],
+   "wikidata": "Q19870907",
+   "years": {
+    "max": 2013,
+    "min": 2013
+   }
+  },
+  {
+   "count": 1,
+   "key": "launceston-advertiser",
+   "lat": -41.43876,
+   "lng": 147.13467,
+   "resolved": true,
+   "songIds": [
+    "afs-091"
+   ],
+   "state": "TAS",
+   "stateHints": {},
+   "title": "Launceston Advertiser",
+   "town": "Launceston",
+   "troveTitleId": null,
+   "variants": [],
+   "wikidata": null,
+   "years": {
+    "max": 1839,
+    "min": 1839
+   }
+  }
+ ]
+}

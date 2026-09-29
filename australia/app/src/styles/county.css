@@ -1,0 +1,204 @@
+/* County drill-down (FRONTEND-SPEC 8). */
+
+.county-header {
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border);
+}
+
+.county-header__title {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-medium);
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+.county-header__path {
+  font-size: var(--fs-13);
+}
+
+.county-header__thennow {
+  font-size: var(--fs-12);
+}
+
+.county-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-8);
+  margin: var(--space-4) 0;
+}
+
+.county-stats > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.county-stats dd {
+  margin: 0;
+}
+
+.county-header__bar {
+  max-width: 400px;
+  margin-bottom: var(--space-3);
+}
+
+.county-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.county-filters {
+  margin: var(--space-3) 0;
+}
+
+.county-filters__note {
+  font-size: var(--fs-12);
+  margin-top: var(--space-1);
+}
+
+.villages {
+  margin: var(--space-4) 0;
+  overflow-x: auto;
+}
+
+.villages-table__row {
+  cursor: pointer;
+}
+
+.villages-table__row:hover {
+  background: var(--accent-soft);
+}
+
+.villages-table__pick,
+.count-table__pick {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  min-height: 24px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.villages-table__pick:hover,
+.count-table__pick:hover {
+  color: var(--accent);
+}
+
+.villages-table__bar {
+  min-width: 120px;
+}
+
+.county-tabs {
+  scroll-margin-top: calc(var(--topbar-h) + var(--space-2));
+}
+
+.county-panel {
+  margin-top: var(--space-2);
+}
+
+.county-panel.results {
+  display: flex;
+  flex-direction: column;
+}
+
+/* by genre / style */
+.by-genre {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .by-genre {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.count-table__bar {
+  width: 30%;
+  min-width: 80px;
+}
+
+.count-bar {
+  display: block;
+}
+
+/* timeline */
+.timeline__chart {
+  display: block;
+  max-width: 720px;
+  background: var(--surface);
+  border: var(--border);
+}
+
+.timeline__tick {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--muted);
+}
+
+.timeline__col {
+  cursor: pointer;
+  outline: none;
+}
+
+.timeline__col:hover rect,
+.timeline__col:focus-visible rect {
+  opacity: 0.8;
+}
+
+.timeline__col:focus-visible {
+  outline: 2px solid var(--accent);
+}
+
+.timeline__col.is-selected rect:first-of-type {
+  fill: var(--accent-soft);
+}
+
+.timeline__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0;
+  font-size: var(--fs-12);
+}
+
+/* local map */
+.local-map {
+  position: relative;
+  height: 420px;
+  border: var(--border);
+  background: var(--ground);
+}
+
+.local-map .map-view {
+  height: 100%;
+}
+
+.local-map__status {
+  position: absolute;
+  left: var(--space-2);
+  bottom: var(--space-2);
+  z-index: var(--z-map-ctl);
+  background: var(--surface);
+  border: var(--border);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--fs-12);
+}
+
+@media (max-width: 767px) {
+  .local-map {
+    height: 320px;
+  }
+
+  .county-stats {
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .table thead th {
+    position: static;
+  }
+}
