@@ -18,6 +18,7 @@ export interface Query {
   style: string[]
   performance?: Performance
   instrument: string[]
+  collector: string[]        // normalised names; `none` selects records with no collector
   yearFrom?: number
   yearTo?: number
   sort: SortKey
@@ -37,6 +38,7 @@ export const DEFAULT_QUERY: Query = {
   genre: [],
   style: [],
   instrument: [],
+  collector: [],
   sort: 'title',
   dir: 'asc',
   page: 1,
@@ -136,6 +138,9 @@ export function applyPatch(base: Query, patch: Partial<Query>): Query {
         break
       case 'instrument':
         next.instrument = sortedUnique(patch.instrument ?? [])
+        break
+      case 'collector':
+        next.collector = sortedUnique(patch.collector ?? [])
         break
       case 'performance':
         next.performance = patch.performance
@@ -250,6 +255,7 @@ export function hasActiveFilters(q: Query): boolean {
       q.style.length ||
       q.performance ||
       q.instrument.length ||
+      q.collector.length ||
       q.yearFrom !== undefined ||
       q.yearTo !== undefined ||
       q.unmapped ||

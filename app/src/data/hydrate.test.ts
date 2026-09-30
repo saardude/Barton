@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { fixturePlaces } from '../test/fixture'
 import songsJson from '../test/fixtures/songs.small.json'
 import type { Song } from '../types/song'
+import { collectorsFromString } from './collectors'
 import { hydrateSong, hydrateSongs } from './hydrate'
 
 describe('hydrate (slim app copy -> schema Song)', () => {
@@ -12,7 +13,12 @@ describe('hydrate (slim app copy -> schema Song)', () => {
     expect(songs.length).toBe(songsJson.length)
     for (let i = 0; i < songs.length; i++) {
       const original = songsJson[i] as unknown as Song
-      expect(songs[i]).toEqual({ ...original, source: { ...original.source, referenceCode: original.source.referenceCode ?? original.source.siteId } })
+      expect(songs[i]).toEqual({
+        ...original,
+        source: { ...original.source, referenceCode: original.source.referenceCode ?? original.source.siteId },
+        // app-side field derived from `collector` until the schema ships `collectors`
+        collectors: collectorsFromString(original.collector),
+      })
     }
   })
 

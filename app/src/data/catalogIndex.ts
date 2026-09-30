@@ -22,6 +22,8 @@ export interface CatalogIndex {
   countries: Place[]
   styles: string[]
   instruments: string[]
+  /** Distinct collector names, most frequent first (then by name). */
+  collectors: string[]
   yearMin: number | undefined
   yearMax: number | undefined
   /** Pre-folded title key for sort tie-breaks. */
@@ -63,12 +65,14 @@ export function buildIndex(songs: Song[], places: Place[]): CatalogIndex {
 
   const styles = new Set<string>()
   const instruments = new Set<string>()
+  const collectorCounts = new Map<string, number>()
   let yearMin: number | undefined
   let yearMax: number | undefined
   const keys = new WeakMap<Song, string>()
   for (const s of songs) {
     if (s.style) styles.add(s.style)
     for (const i of s.instrument) instruments.add(i)
+    for (const c of s.collectors) collectorCounts.set(c, (collectorCounts.get(c) ?? 0) + 1)
     const y = s.collected.year
     if (y !== null) {
       if (yearMin === undefined || y < yearMin) yearMin = y
@@ -99,6 +103,7 @@ export function buildIndex(songs: Song[], places: Place[]): CatalogIndex {
     countries,
     styles: [...styles].sort((a, b) => roBase.compare(normalize(a), normalize(b))),
     instruments: [...instruments].sort((a, b) => roBase.compare(normalize(a), normalize(b))),
+    collectors: [...collectorCounts.entries()].sort((a, b) => b[1] - a[1] || roBase.compare(normalize(a[0]), normalize(b[0]))).map(([c]) => c),
     yearMin,
     yearMax,
     searchKey: (s) => keys.get(s) ?? titleKey(s),

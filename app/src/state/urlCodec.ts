@@ -19,6 +19,8 @@ export interface DecodeOptions {
   /** Known style / instrument vocabularies; unknown values are dropped with a warning when given. */
   styles?: ReadonlySet<string>
   instruments?: ReadonlySet<string>
+  /** Known collector names; `none` (unknown collector) is always accepted. */
+  collectors?: ReadonlySet<string>
 }
 
 export interface DecodeResult {
@@ -36,6 +38,7 @@ const PARAM_ORDER = [
   'style',
   'perf',
   'instr',
+  'collector',
   'from',
   'to',
   'sort',
@@ -77,6 +80,7 @@ export function encodeQuery(q: Query, bordersDefault?: string): string {
   if (q.style.length) put('style', q.style.map(enc).join(','))
   if (q.performance) put('perf', enc(q.performance))
   if (q.instrument.length) put('instr', q.instrument.map(enc).join(','))
+  if (q.collector.length) put('collector', q.collector.map(enc).join(','))
   if (q.yearFrom !== undefined) put('from', String(q.yearFrom))
   if (q.yearTo !== undefined) put('to', String(q.yearTo))
   if (q.sort !== 'title') put('sort', q.sort)
@@ -199,6 +203,13 @@ export function decodeQuery(search: string, opts: DecodeOptions = {}): DecodeRes
     else instruments.push(i)
   }
   if (raw.has('instr')) patch.instrument = instruments
+
+  const collectors: string[] = []
+  for (const c of list('collector')) {
+    if (opts.collectors && c !== 'none' && !opts.collectors.has(c)) warnings.push(`unknown collector "${c}" dropped`)
+    else collectors.push(c)
+  }
+  if (raw.has('collector')) patch.collector = collectors
 
   const from = int('from')
   if (from !== undefined) patch.yearFrom = from

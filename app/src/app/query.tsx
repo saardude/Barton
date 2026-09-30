@@ -35,7 +35,7 @@ export function QueryProvider({ children }: { children: ReactNode }) {
   const decodeOptions = useMemo(
     () =>
       index
-        ? { placeExists: index.placeExists, styles: new Set(index.styles), instruments: new Set(index.instruments) }
+        ? { placeExists: index.placeExists, styles: new Set(index.styles), instruments: new Set(index.instruments), collectors: new Set(index.collectors) }
         : {},
     [index],
   )

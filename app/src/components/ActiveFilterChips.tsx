@@ -25,6 +25,8 @@ function removalPatch(chip: Chip, query: Query): Partial<Query> {
       return { performance: undefined }
     case 'instrument':
       return { instrument: query.instrument.filter((i) => i !== chip.value) }
+    case 'collector':
+      return { collector: query.collector.filter((c) => c !== chip.value) }
     case 'year':
       return { yearFrom: undefined, yearTo: undefined }
     case 'q':

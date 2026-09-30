@@ -4,6 +4,7 @@
 // exactly the fields docs/DATA-SCHEMA.md describes. It also accepts full schema records unchanged.
 import type { Place } from '../types/place'
 import type { Song } from '../types/song'
+import { collectorsOf } from './collectors'
 
 type Raw = Record<string, unknown>
 const obj = (v: unknown): Raw => (v && typeof v === 'object' && !Array.isArray(v) ? (v as Raw) : {})
@@ -102,6 +103,7 @@ export function hydrateSong(input: unknown, placeById: Map<string, Place>): Song
       ethnicity: str(perf.ethnicity),
     },
     collector: str(r.collector),
+    collectors: collectorsOf(r.collectors, str(r.collector)),
     collected: { year: num(col.year), month: num(col.month), day: num(col.day), raw: str(col.raw) },
     location: placeId
       ? locationFromPlace(placeId, place, rawLoc)

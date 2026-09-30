@@ -6,6 +6,7 @@ import { useDerived, useQuery } from '../../app/query'
 import { instrumentLabel, melodies, performanceLabel, styleLabel, t } from '../../i18n/en'
 import { hasActiveFilters, PERFORMANCE_IDS, type GenreId, type Performance } from '../../state/query'
 import { CheckboxFacet } from './CheckboxFacet'
+import { CollectorFacet } from './CollectorFacet'
 import { ChipFacet } from './ChipFacet'
 import { FacetGroup } from './FacetGroup'
 import { PlaceTree } from './PlaceTree'
@@ -33,6 +34,9 @@ export function FilterRailContent() {
   return (
     <>
       <PlaceFacet />
+      <FacetGroup id="collector" title={t('facet.collector')} activeCount={query.collector.length} onClear={() => setQuery({ collector: [] })}>
+        <CollectorFacet values={index.collectors} counts={derived.facetCounts.collector} selected={query.collector} onChange={(collector) => setQuery({ collector })} />
+      </FacetGroup>
       <FacetGroup id="genre" title={t('facet.genre')} activeCount={query.genre.length} onClear={() => setQuery({ genre: [] })}>
         <CheckboxFacet counts={derived.facetCounts.genre} selected={query.genre} onChange={(genre) => setQuery({ genre: genre as GenreId[] })} />
       </FacetGroup>

@@ -1,6 +1,7 @@
 // Derived state (FRONTEND-SPEC section 4): pure functions over the Query and the catalogue index.
 import { t } from '../i18n/en'
 import { isUnknownLeaf, UNKNOWN_LEAF, type CatalogIndex } from '../data/catalogIndex'
+import { UNKNOWN_COLLECTOR } from '../data/collectors'
 import type { Place } from '../types/place'
 import type { Song } from '../types/song'
 import { placeText } from './placeName'
@@ -16,8 +17,8 @@ import {
 } from './query'
 import { sortSongs } from './sort'
 
-export type FacetKey = 'place' | 'q' | 'genre' | 'style' | 'performance' | 'instrument' | 'year' | 'unmapped' | 'journey'
-export const FACET_KEYS: FacetKey[] = ['place', 'q', 'genre', 'style', 'performance', 'instrument', 'year', 'unmapped', 'journey']
+export type FacetKey = 'place' | 'q' | 'genre' | 'style' | 'performance' | 'instrument' | 'collector' | 'year' | 'unmapped' | 'journey'
+export const FACET_KEYS: FacetKey[] = ['place', 'q', 'genre', 'style', 'performance', 'instrument', 'collector', 'year', 'unmapped', 'journey']
 
 export type Predicate = (s: Song) => boolean
 export type Counts = Map<string, number>
@@ -73,7 +74,7 @@ export interface Derived {
   pagedSongs: Song[]
   page: number
   pageCount: number
-  facetCounts: { genre: Counts; style: Counts; performance: Counts; instrument: Counts }
+  facetCounts: { genre: Counts; style: Counts; performance: Counts; instrument: Counts; collector: Counts }
   yearHistogram: Bin[]
   placeTree: PlaceNode[]
   mapLevel: 'county' | 'village'
@@ -136,6 +137,8 @@ export function buildPredicates(input: DeriveInput): Record<FacetKey, Predicate>
   const genre = new Set<string>(query.genre)
   const style = new Set(query.style)
   const instrument = new Set(query.instrument)
+  const collector = new Set(query.collector)
+  const wantUnknownCollector = collector.has(UNKNOWN_COLLECTOR)
   const search = searchIds ? new Set(searchIds) : null
   const from = query.yearFrom
   const to = query.yearTo
@@ -146,6 +149,7 @@ export function buildPredicates(input: DeriveInput): Record<FacetKey, Predicate>
     style: style.size ? (s) => s.style !== null && style.has(s.style) : TRUE,
     performance: query.performance ? (s) => s.performance === query.performance : TRUE,
     instrument: instrument.size ? (s) => s.instrument.some((i) => instrument.has(i)) : TRUE,
+    collector: collector.size ? (s) => (wantUnknownCollector && s.collectors.length === 0) || s.collectors.some((c) => collector.has(c)) : TRUE,
     year:
       from === undefined && to === undefined
         ? TRUE
@@ -345,6 +349,7 @@ export function buildChips(query: Query, index: CatalogIndex): Chip[] {
   for (const s of query.style) chips.push({ key: 'style', value: s, label: s })
   if (query.performance) chips.push({ key: 'performance', value: query.performance, label: query.performance })
   for (const i of query.instrument) chips.push({ key: 'instrument', value: i, label: i })
+  for (const c of query.collector) chips.push({ key: 'collector', value: c, label: c === UNKNOWN_COLLECTOR ? t('facet.unknownCollector') : c })
   if (query.yearFrom !== undefined || query.yearTo !== undefined) {
     const label =
       query.yearFrom !== undefined && query.yearTo !== undefined
@@ -391,6 +396,7 @@ export function derive(input: DeriveInput): Derived {
   const style: Counts = new Map(index.styles.map((s) => [s, 0]))
   const performance: Counts = new Map(PERFORMANCE_IDS.map((p) => [p, 0]))
   const instrument: Counts = new Map(index.instruments.map((i) => [i, 0]))
+  const collector: Counts = new Map([...index.collectors.map((c): [string, number] => [c, 0]), [UNKNOWN_COLLECTOR, 0]])
   const exceptPlace: Song[] = []
   const exceptYear: Song[] = []
   const filtered: Song[] = []
@@ -409,15 +415,16 @@ export function derive(input: DeriveInput): Derived {
       filtered.push(s)
       exceptPlace.push(s)
       exceptYear.push(s)
-      countFacet(s, 'genre', genre, style, performance, instrument)
-      countFacet(s, 'style', genre, style, performance, instrument)
-      countFacet(s, 'performance', genre, style, performance, instrument)
-      countFacet(s, 'instrument', genre, style, performance, instrument)
+      countFacet(s, 'genre', genre, style, performance, instrument, collector)
+      countFacet(s, 'style', genre, style, performance, instrument, collector)
+      countFacet(s, 'performance', genre, style, performance, instrument, collector)
+      countFacet(s, 'instrument', genre, style, performance, instrument, collector)
+      countFacet(s, 'collector', genre, style, performance, instrument, collector)
     } else if (fails === 1 && failing) {
       if (failing === 'place') exceptPlace.push(s)
       else if (failing === 'year') exceptYear.push(s)
-      else if (failing === 'genre' || failing === 'style' || failing === 'performance' || failing === 'instrument')
-        countFacet(s, failing, genre, style, performance, instrument)
+      else if (failing === 'genre' || failing === 'style' || failing === 'performance' || failing === 'instrument' || failing === 'collector')
+        countFacet(s, failing, genre, style, performance, instrument, collector)
     }
   }
 
@@ -439,7 +446,7 @@ export function derive(input: DeriveInput): Derived {
     pagedSongs: paged,
     page,
     pageCount,
-    facetCounts: { genre, style, performance, instrument },
+    facetCounts: { genre, style, performance, instrument, collector },
     yearHistogram: histogram(exceptYear, index.yearMin, index.yearMax),
     placeTree: buildPlaceTree(index, exceptPlace, query.country),
     mapLevel: level,
@@ -450,7 +457,15 @@ export function derive(input: DeriveInput): Derived {
   }
 }
 
-function countFacet(s: Song, facet: 'genre' | 'style' | 'performance' | 'instrument', genre: Counts, style: Counts, performance: Counts, instrument: Counts): void {
+function countFacet(
+  s: Song,
+  facet: 'genre' | 'style' | 'performance' | 'instrument' | 'collector',
+  genre: Counts,
+  style: Counts,
+  performance: Counts,
+  instrument: Counts,
+  collector: Counts,
+): void {
   switch (facet) {
     case 'genre':
       if (s.genre) inc(genre, s.genre)
@@ -464,6 +479,10 @@ function countFacet(s: Song, facet: 'genre' | 'style' | 'performance' | 'instrum
       break
     case 'instrument':
       for (const i of s.instrument) inc(instrument, i)
+      break
+    case 'collector':
+      if (s.collectors.length) for (const c of s.collectors) inc(collector, c)
+      else inc(collector, UNKNOWN_COLLECTOR)
       break
   }
 }
