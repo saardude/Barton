@@ -9,7 +9,7 @@
   "rewrites": [
     {
       "source": "/australia/((?!data/|assets/).*)",
-      "destination": "/australia/index.html"
+      "destination": "/australia"
     },
     {
       "source": "/((?!data/|assets/|australia/).*)",
@@ -109,10 +109,5 @@
         }
       ]
     }
-  ],
-  "git": {
-    "deploymentEnabled": {
-      "claude/bartok-ethnographic-viewer-kvjt8j": false
-    }
-  }
+  ]
 }

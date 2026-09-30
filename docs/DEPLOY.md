@@ -17,11 +17,22 @@ cat .vercel/project.json                                    # orgId / projectId 
 Everything is driven by `vercel.json` at the repository root. There is no server, no
 environment variable and no dashboard-only setting the app depends on.
 
+**Automatic deployments (from 2026-09-30).** Vercel's git integration deploys every push to
+the default branch (`claude/bartok-ethnographic-viewer-kvjt8j`, the project's production
+branch) and builds a preview for every pull request, running the install and build commands
+below on Vercel from a fresh clone. A merge therefore deploys exactly the repository state, and
+a stale local checkout can no longer replace the site (which happened on 2026-09-30, when a
+manual upload built without `australia/` took `/australia` offline). The earlier
+`git.deploymentEnabled: false` entry that turned this off has been removed; put it back only if
+manual-only deployment is wanted again. `scripts/deploy-dist.sh` remains for a manual upload and
+now builds both collections itself and refuses an incomplete tree.
+
 Since the Australia collection was added, the build command is `node scripts/build-site.mjs`,
 which runs `npm run build` in `app/` and in `australia/app/` and copies the second into
 `app/dist/australia/`. The install command installs both packages. `vercel.json` rewrites
-`/australia/*` (except its `data/` and `assets/`) to `/australia/index.html` ahead of the
-Bartók catch-all, caches `/australia/data/*` and `/australia/assets/*` as immutable, and the
+`/australia/*` (except its `data/` and `assets/`) to `/australia` ahead of the Bartók
+catch-all (the target is the clean URL of `australia/index.html`: with `cleanUrls` on, a
+rewrite to the `.html` path itself returns 404), caches `/australia/data/*` and `/australia/assets/*` as immutable, and the
 shared Content-Security-Policy allows images and media from folkstream.com. If the Australia
 build fails, the whole deployment fails; CI runs the same steps first.
 
@@ -314,11 +325,15 @@ The account has no personal (Hobby) scope, so the project had to live in a team.
 
 ## Static deploy of a local build (used for the first live deployment, 2026-09-28)
 
-`scripts/deploy-dist.sh` uploads `app/dist` as a static production deployment with the
-root `vercel.json` rewrites and headers, and install/build disabled. It exists because
+`scripts/deploy-dist.sh` builds both collections with `scripts/build-site.mjs` and uploads
+`app/dist` as a static production deployment with the root `vercel.json` rewrites and headers,
+and install/build disabled. It refuses to upload when the checkout is behind `origin`, has
+uncommitted changes, or the built tree lacks `app/dist/australia/index.html`, the Australia data
+file or the `/australia` rewrite (`--no-build` reuses an existing `app/dist`, `--force` skips
+the checkout check). It exists because
 uploading the whole repository (40 MB raw catalogue) aborted through the cloud proxy, and
 because the project-level install command (`npm ci --prefix app`) is applied even to
 prebuilt uploads unless the deployed `vercel.json` sets `installCommand` to an empty
-string. Sequence: `cd app && npm run build && cd .. && scripts/deploy-dist.sh`.
+string. Sequence: `scripts/deploy-dist.sh` from an up-to-date checkout of the default branch.
 Verified on the first run: `/` serves the app, `/data/songs.<hash>.json` returns 200 with
 `cache-control: public, max-age=31536000, immutable`.
