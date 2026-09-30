@@ -47,7 +47,9 @@ Everything is written with sorted keys and 2-space indentation so diffs are stab
 | `performance` | enum | `vocal, instrumental, mixed, unknown` from fmbc "Performance:" (voice / violin / bagpipe ...) or the bsys Appendix "instrumental" category |
 | `instrument[]` | string[] | canonical names (`violin`, `fluier`, `bagpipe`, `fujara`, ...) found in performance text |
 | `performer` | {name, age, sex, ethnicity} | "Dósa Lidi (18)" -> name/age; "young man", "girls" -> sex only; `ethnicity` only on fmbc |
-| `collector` | string? | verbatim ("Bartók Béla", "Béla Bartók", "Vikár Béla" ...) |
+| `collector` | string? | verbatim, kept for compatibility |
+| `collectorRaw` | string? | the same printed string |
+| `collectors[]` | string[] | normalised, one name per person in Hungarian order ("Bartók Béla"); multi-collector strings split on `, ; /` and "and"/"és"; Western-order and spelling variants folded by `COLLECTOR_ALIASES` in `scraper/src/normalize.js` (Béla Bartók -> Bartók Béla, Zoltán Kodály -> Kodály Zoltán, Márta Ziegler -> Bartók Béláné, M. and K. Royová -> M. Royová + K. Royová, ...; the full table is printed in data/BUILD.md). The Collector facet counts this array. |
 | `collected` | {year, month, day, raw} | parsed from `1904.11.`, `February 1910`, `1914. április 3-10.`, `1912. VI. 12` ...; ranges keep the first date; year range 1800-1960 because the Bartok System holds 19th-century collections |
 | `location` | object | see below |
 | `media.notation[]` | {url, type, caption} | fmbc: melody image (`media/images/melody/*.jpg`), facsimiles (caption `facsimile: <manuscript>`), composition score (`score (composition)`); bsys/gyuj: `media/images/BR/BR_nnnnn_01.jpg` |
@@ -138,8 +140,10 @@ derivable from `songs.json`, `facets.json`, `places.json` or `collections-gyuj.j
   place string keep their (empty) location inline
 - `performance` is omitted when `unknown`; `music.rhythm` and `music.form` are omitted (implied by
   `style`; see `styleRaw` in songs.json)
-- `related` keeps only `variant` / `cross-site` entries as `{id, relation}` (`url` only when no id);
-  previous/next navigation links (`link`) are dropped
+- `related` keeps only `cross-site` entries as `{id, relation}` (`url` only when no id); `variant`
+  entries are recoverable from `music.systemPosition` (same Bartok System group, e.g. `C 1025a` /
+  `C 1025b`) and previous/next navigation links (`link`) are dropped; `collectors[]` is kept,
+  `collector`/`collectorRaw` are dropped
 - `media.notation[]` / `media.audio[]` items are `{url, caption}` (filename-only captions dropped)
 - `journey` is `{collectionId}` (join with `collections-gyuj.json`); `incipit` is omitted when equal to `title`
 - `styleRaw`, `location.raw`, `collected.raw`, `source.siteName`, `source.siteRecordId`,

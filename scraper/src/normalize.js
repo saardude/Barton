@@ -3,6 +3,67 @@ import { clean, fold, sha1, toInt, uniq } from './util.js';
 import { countryFromPoint } from './geo.js';
 import { stripQualifiers } from './gazetteer.js';
 
+/**
+ * Collector name normalisation. The sources print Hungarian order ("Bartók Béla"); fmbc prints
+ * Western order ("Béla Bartók"). Keys are folded (diacritics/case-insensitive); values are the
+ * canonical printed form. Non-Hungarian collectors keep their printed form.
+ */
+export const COLLECTOR_ALIASES = {
+  'bela bartok': 'Bartók Béla',
+  'bela bartok bela': 'Bartók Béla',
+  'bartok': 'Bartók Béla',
+  'b bartok': 'Bartók Béla',
+  'bela vikar': 'Vikár Béla',
+  'zoltan kodaly': 'Kodály Zoltán',
+  'antal molnar': 'Molnár Antal',
+  'laszlo lajtha': 'Lajtha László',
+  'vilmos seemayer': 'Seemayer Vilmos',
+  'akos garay': 'Garay Ákos',
+  'gyula sebestyen': 'Sebestyén Gyula',
+  'geza baditcs': 'Baditcs Géza',
+  'albert osvath': 'Osváth Albert',
+  'jozsef szabo': 'Szabó József',
+  'kalman kovacs': 'Kovács Kálmán',
+  'jozsef farbas': 'Fárbás József',
+  'laszlo kun': 'Kún László',
+  'marta ziegler': 'Bartók Béláné',
+  'ziegler marta': 'Bartók Béláné',
+  'bartok belane ziegler marta': 'Bartók Béláné',
+  'emma sandor': 'Kodály Zoltánné',
+  'sandor emma': 'Kodály Zoltánné',
+  'pal peter domokos': 'Domokos Pál Péter',
+  'sandor veress': 'Veress Sándor',
+  'gyorgy kerenyi': 'Kerényi György',
+  'attila peczely': 'Péczely Attila',
+  'peter balla': 'Balla Péter',
+  'm and k royova': ['M. Royová', 'K. Royová']
+};
+
+/**
+ * "Seemayer Vilmos, Bartók Béla, Lajtha László" -> ['Seemayer Vilmos', 'Bartók Béla', 'Lajtha László'];
+ * "Béla Bartók" -> ['Bartók Béla']; "" -> []. Splits on , ; / " and " " és " (never inside an
+ * initial such as "M. and K. Royová", which the alias table expands), trims, applies COLLECTOR_ALIASES.
+ */
+export function parseCollectors(raw) {
+  const r = clean(raw);
+  if (!r) return [];
+  const out = [];
+  const push = (name) => {
+    const n = clean(name);
+    if (!n) return;
+    const alias = COLLECTOR_ALIASES[fold(n)];
+    const names = Array.isArray(alias) ? alias : [alias || n];
+    for (const x of names) if (!out.includes(x)) out.push(x);
+  };
+  const whole = COLLECTOR_ALIASES[fold(r)];
+  if (whole) {
+    for (const x of Array.isArray(whole) ? whole : [whole]) push(x);
+    return out;
+  }
+  for (const part of r.split(/\s*[,;\/]\s*|\s+(?:and|és|und)\s+(?=\S+\s+\S)/i)) push(part);
+  return out;
+}
+
 export const GENRES = ['colinda', 'doina', 'bocet', 'cantec', 'joc', 'nunta', 'other'];
 
 export const SITE_NAMES = {
@@ -424,6 +485,8 @@ export function normalizeRecord(raw, gazetteer) {
       ethnicity: clean(raw.ethnicityRaw)
     },
     collector: clean(raw.collectorRaw),
+    collectorRaw: clean(raw.collectorRaw),
+    collectors: parseCollectors(raw.collectorRaw),
     collected: parseDate(raw.dateRaw),
     location,
     media: { notation: media(raw.notation), audio: media(raw.audio) },

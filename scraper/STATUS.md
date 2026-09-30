@@ -1,6 +1,6 @@
 # Scraper status
 
-Last update: 2026-09-28 11:35 UTC (data engineer). Updated whenever a crawl is launched or a build lands.
+Last update: 2026-09-30 (data engineer). All three crawls finished; every record page is in the cache.
 
 ## Crawls (launched by the coordinator, one nohup process per site, logs in `scraper/cache/crawl-<site>.log`)
 
@@ -8,7 +8,7 @@ Last update: 2026-09-28 11:35 UTC (data engineer). Updated whenever a crawl is l
 | --- | --- | --- | --- |
 | fmbc (bartok-nepzene.zti.hu) | finished | 261/261 record pages cached | `cat scraper/cache/crawl-fmbc.log` |
 | gyuj (bartok-gyujtesek.zti.hu) | finished | 2,332/2,332 record pages cached | `cat scraper/cache/crawl-gyuj.log` |
-| bsys (systems.zti.hu, `--ignore-robots`, owner decision, pid 7106) | running | 8,500/13,817 at 11:30 UTC (ETA ~1.5 h) | `tail -n 2 scraper/cache/crawl-bsys.log` |
+| bsys (systems.zti.hu, `--ignore-robots`, owner decision) | finished | 13,817/13,817 record pages cached | `cat scraper/cache/crawl-bsys.log` |
 
 Do not launch a second crawl for a site while its process runs (`ps aux | grep "cli.js crawl"`).
 
@@ -27,15 +27,14 @@ cd .. && node qa/checks/data-gates.mjs --file data/songs.json   # QA gates (summ
 `data/rfm.json` (printed Rumanian Folk Music IV-V, 830 records from print/parse-rfm.mjs) is read by `build` as a
 fourth source; do not regenerate it here. `print/places-rfm.json` is folded into the gazetteer lookup read-only.
 
-## Current build (11:33 UTC; bsys 8,657 of 13,817 record pages parsed, the rest from listing rows)
+## Current build (2026-09-30, complete cache: all bsys, gyuj and fmbc record pages parsed)
 
-- songs: 14,910 = fmbc 261 + bsys 13,817 + gyuj 2,332 + rfm 830 (printed volumes, data/rfm.json), minus 2,330 bsys/gyuj pairs merged (`source.alternates[]` keeps the gyuj link and its former id)
-- present-day Romania: 4,072; with coordinates 3,385
-- resolution: county 7,893, gazetteer 3,638, unresolved 3,140, site 239; gazetteer 418 places (+60 read-only from print/places-rfm.json)
+- songs: 14,910 = fmbc 261 + bsys 13,817 + gyuj 2,332 + rfm 830 (printed volumes, data/rfm.json), minus 2,330 bsys/gyuj pairs merged (`source.alternates[]` keeps the gyuj link and its former id); listing-only rows: 0
+- present-day Romania: 4,042; with coordinates 3,359; places 908 nodes; gazetteer 480 places (+60 read-only from print/places-rfm.json)
+- collectors: 69 distinct printed strings -> 57 normalised names in `collectors[]` (alias table in data/BUILD.md); the Collector facet counts the array
 - genre: 830 rfm records (colinda 497, cantec 173, joc 113, bocet 21, other 17, doina 9), null for the 14,080 site records (no site prints a genre); style set on 13,819
-- listing-only rows still awaiting their page (`rawFields._partial`): 4,214
-- files: data/songs.json 40.5 MB (archival, with rawFields); data/songs.slim.json 9.13 MB (app copy, spec in docs/DATA-SCHEMA.md)
-- gates: `npm test` 36/36; `validate` OK (songs 14,910, places 923, facets); `qa/checks/data-gates.mjs`: 8 pass, 4 warn, 1 blocking fail (journeys-valid: data/journeys.json stops lack the `date`/`recordIds` fields the gate expects; a geo-agent output to regenerate after each build; `alternates[].id` maps old gyuj ids)
+- files: data/songs.json 46.9 MB (archival, with rawFields); data/songs.slim.json 9.54 MB (app copy, spec in docs/DATA-SCHEMA.md)
+- gates: `npm test` 37/37; `validate` OK (songs 14,910, places 908, facets); `qa/checks/data-gates.mjs`: 8 pass, 5 warn, 0 blocking fail (RESULT: OK)
 
 ## Confirmed against live HTML
 
@@ -45,7 +44,7 @@ server-rendered. bsys and gyuj share backend record ids (2,328 identical incipit
 
 ## Open items
 
-1. When the bsys crawl finishes: `parse all`, `gazetteer`, `build`, `validate` again (partial rows -> pages).
+1. Crawls are complete; re-run the chain above only after code or gazetteer changes.
 2. 75 Romanian localities resolve to county only and 232 place strings stay unresolved: extend
    `data/gazetteer.json` from the lists in data/BUILD.md (top: Kászonaltíz/Kászonfeltíz, Csíkszentgyörgy
    variants, Székelylengyelfalva, ...). Coordinates in the seed are approximate; fmbc's map coordinates are exact.

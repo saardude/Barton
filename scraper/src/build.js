@@ -3,7 +3,7 @@ import path from 'node:path';
 import { promises as fs } from 'node:fs';
 import { PATHS, fold, readJson, writeJson, exists, sha1 } from './util.js';
 import { Gazetteer } from './gazetteer.js';
-import { normalizeRecord, placeIdFor } from './normalize.js';
+import { normalizeRecord, placeIdFor, parseCollectors, COLLECTOR_ALIASES } from './normalize.js';
 
 const SITES = ['fmbc', 'bsys', 'gyuj'];
 // Printed volumes (Rumanian Folk Music IV-V) arrive already normalised in data/rfm.json (print/parse-rfm.mjs).
@@ -212,7 +212,8 @@ export function buildFacets(songs) {
     inc(facets.region, s.location.region);
     inc(facets.county, s.location.county);
     inc(facets.village, s.location.village);
-    inc(facets.collector, s.collector);
+    if (s.collectors.length) for (const c of s.collectors) inc(facets.collector, c);
+    else inc(facets.collector, null);
     inc(facets.ethnicity, s.performer.ethnicity);
   }
   return facets;
@@ -238,6 +239,8 @@ export function assemble(rawBySite, gazetteer) {
     // already canonical; only derive the place node id so places.json can link back
     const s = { ...r, source: { ...r.source, alternates: r.source.alternates || [] }, related: r.related || [], rawFields: r.rawFields ?? null };
     if (!s.location.placeId) s.location = { ...s.location, placeId: placeIdFor(s.location) };
+    if (!Array.isArray(s.collectors)) s.collectors = parseCollectors(s.collector);
+    if (s.collectorRaw === undefined) s.collectorRaw = s.collector ?? null;
     if (seen.has(s.id)) {
       duplicates += 1;
       continue;
@@ -317,6 +320,8 @@ export function slim(song) {
     incipit: song.incipit && song.incipit !== song.title ? song.incipit : undefined,
     source: { site: src.site, siteId: src.siteId, url: src.url, referenceCode: src.referenceCode, volume: src.volume, number: src.number, alternates: (src.alternates || []).map((a) => ({ site: a.site, siteId: a.siteId, url: a.url, id: a.id })) },
     performance: song.performance === 'unknown' ? undefined : song.performance,
+    collector: undefined,
+    collectorRaw: undefined,
     // a resolved place is described by its node in places.json: keep only the link (+ origin)
     location: song.location.placeId
       ? { placeId: song.location.placeId, origin: song.location.origin }
@@ -328,7 +333,8 @@ export function slim(song) {
       notation: song.media.notation.map((m) => ({ url: m.url, caption: m.caption && !m.url.endsWith(m.caption.replace(/^BR\//, '')) ? m.caption : undefined })),
       audio: song.media.audio.map((m) => ({ url: m.url, caption: m.caption }))
     },
-    related: (song.related || []).filter((r) => r.relation !== 'link').map((r) => (r.id ? { id: r.id, relation: r.relation } : { url: r.url, relation: r.relation })),
+    // variants share the Bartok System group (music.systemPosition without the letter suffix): recoverable; only cross-site links kept
+    related: (song.related || []).filter((r) => r.relation === 'cross-site').map((r) => (r.id ? { id: r.id, relation: r.relation } : { url: r.url, relation: r.relation })),
     journey: song.journey ? { collectionId: song.journey.collectionId } : undefined
   };
   if (out.source.referenceCode === out.source.siteId) out.source.referenceCode = undefined;
@@ -372,6 +378,9 @@ function buildSummary(songs, places, perSite, duplicates, merged) {
     withText: songs.filter((s) => s.text).length,
     withYear: songs.filter((s) => s.collected.year !== null).length,
     withJourney: songs.filter((s) => s.journey).length,
+    collectorsRawDistinct: new Set(songs.map((s) => s.collectorRaw).filter(Boolean)).size,
+    collectorsDistinct: new Set(songs.flatMap((s) => s.collectors)).size,
+    collectorsTop: Object.fromEntries(Object.entries(songs.flatMap((s) => s.collectors).reduce((a, c) => (inc(a, c), a), {})).sort((a, b) => b[1] - a[1]).slice(0, 10)),
     partial: songs.filter((s) => s.rawFields && s.rawFields._partial).length,
     places: places.length,
     villages: places.filter((p) => p.type === 'village').length,
@@ -417,6 +426,13 @@ async function writeBuildReport(x) {
     `- style: ${kv(x.style)}`,
     `- genre: ${kv(x.genre)} (no site prints a genre label; see docs/DATA-SCHEMA.md)`,
     `- performance: ${kv(x.performance)}`,
+    '',
+    '## Collectors',
+    '',
+    `- distinct collector strings as printed: ${x.collectorsRawDistinct}; distinct normalised collectors (collectors[]): ${x.collectorsDistinct}`,
+    `- top 10: ${kv(x.collectorsTop)}`,
+    '- alias table (scraper/src/normalize.js COLLECTOR_ALIASES, keys are diacritics-insensitive):',
+    ...Object.entries(COLLECTOR_ALIASES).map(([k, v]) => `  - ${k} -> ${Array.isArray(v) ? v.join(' + ') : v}`),
     '',
     '## Romanian localities resolved to county only (village missing from data/gazetteer.json; top 100)',
     '',

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mapGenre, mapPerformance, extractInstruments, parseDate, parseLocality, parsePerformer, mapSex, normalizeRecord } from '../src/normalize.js';
+import { parseCollectors, mapGenre, mapPerformance, extractInstruments, parseDate, parseLocality, parsePerformer, mapSex, normalizeRecord } from '../src/normalize.js';
 import { Gazetteer } from '../src/gazetteer.js';
 
 test('genre mapping to the controlled vocabulary', () => {
@@ -144,4 +144,18 @@ test('normalizeRecord derives only the country from an exclusive historical coun
   assert.equal(rec.location.placeId, 'hu/unresolved/tura');
   assert.equal(rec.performance, 'unknown');
   assert.equal(rec.genre, null);
+});
+
+test('collectors: split, Hungarian order, aliases, initials kept together', () => {
+  assert.deepEqual(parseCollectors('Bartók Béla'), ['Bartók Béla']);
+  assert.deepEqual(parseCollectors('Béla Bartók'), ['Bartók Béla']);
+  assert.deepEqual(parseCollectors('Béla Bartók Béla'), ['Bartók Béla']);
+  assert.deepEqual(parseCollectors('Zoltán Kodály'), ['Kodály Zoltán']);
+  assert.deepEqual(parseCollectors('Seemayer Vilmos, Bartók Béla, Lajtha László'), ['Seemayer Vilmos', 'Bartók Béla', 'Lajtha László']);
+  assert.deepEqual(parseCollectors('Domokos Pál Péter és Bartók Béla'), ['Domokos Pál Péter', 'Bartók Béla']);
+  assert.deepEqual(parseCollectors('Márta Ziegler'), ['Bartók Béláné']);
+  assert.deepEqual(parseCollectors('M. and K. Royová'), ['M. Royová', 'K. Royová']);
+  assert.deepEqual(parseCollectors('Ľ. Vansa'), ['Ľ. Vansa']);
+  assert.deepEqual(parseCollectors(''), []);
+  assert.deepEqual(parseCollectors(null), []);
 });

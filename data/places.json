@@ -103,19 +103,19 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 6548
+        "null": 6521
       },
       "byPerformance": {
         "instrumental": 67,
-        "unknown": 6408,
+        "unknown": 6381,
         "vocal": 73
       },
       "bySite": {
-        "bsys": 6472,
+        "bsys": 6445,
         "fmbc": 74,
         "gyuj": 2
       },
-      "total": 6548
+      "total": 6521
     },
     "county": null,
     "countyHistorical": null,
@@ -139,19 +139,19 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 6548
+        "null": 6521
       },
       "byPerformance": {
         "instrumental": 67,
-        "unknown": 6408,
+        "unknown": 6381,
         "vocal": 73
       },
       "bySite": {
-        "bsys": 6472,
+        "bsys": 6445,
         "fmbc": 74,
         "gyuj": 2
       },
-      "total": 6548
+      "total": 6521
     },
     "county": null,
     "countyHistorical": null,
@@ -9816,44 +9816,6 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 5
-      },
-      "byPerformance": {
-        "unknown": 5
-      },
-      "bySite": {
-        "bsys": 5
-      },
-      "total": 5
-    },
-    "county": null,
-    "countyHistorical": "Heves",
-    "id": "hu/unresolved/lelesz",
-    "lat": null,
-    "lng": null,
-    "name": "Lelesz",
-    "nameHistorical": "Lelesz",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-31-5513",
-      "bsys-31-5702",
-      "bsys-33-6007",
-      "bsys-33-6362",
-      "bsys-34-8099"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1906,
-      "min": 1906
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
         "null": 23
       },
       "byPerformance": {
@@ -16206,61 +16168,6 @@
     "country": "HU",
     "counts": {
       "byGenre": {
-        "null": 22
-      },
-      "byPerformance": {
-        "unknown": 22
-      },
-      "bySite": {
-        "bsys": 22
-      },
-      "total": 22
-    },
-    "county": null,
-    "countyHistorical": "Pest-Pilis-Solt-Kiskun",
-    "id": "hu/unresolved/tok",
-    "lat": null,
-    "lng": null,
-    "name": "Tök",
-    "nameHistorical": "Tök",
-    "parent": "hu/unresolved",
-    "region": null,
-    "songIds": [
-      "bsys-13-761",
-      "bsys-14-1102",
-      "bsys-17-2782",
-      "bsys-17-3003",
-      "bsys-17-3057",
-      "bsys-22-3802",
-      "bsys-23-4152",
-      "bsys-24-4292",
-      "bsys-29-5220",
-      "bsys-30-5349",
-      "bsys-33-6700",
-      "bsys-34-6862",
-      "bsys-34-6966",
-      "bsys-34-7527",
-      "bsys-34-7578",
-      "bsys-34-7778",
-      "bsys-44-10314",
-      "bsys-61-10938",
-      "bsys-62-10985",
-      "bsys-71-11751",
-      "bsys-73-12153",
-      "bsys-80-12534"
-    ],
-    "type": "village",
-    "years": {
-      "max": 1922,
-      "min": 1922
-    }
-  },
-  {
-    "confidence": null,
-    "coordSource": null,
-    "country": "HU",
-    "counts": {
-      "byGenre": {
         "null": 21
       },
       "byPerformance": {
@@ -17815,20 +17722,20 @@
         "colinda": 497,
         "doina": 9,
         "joc": 113,
-        "null": 3185,
+        "null": 3212,
         "other": 17
       },
       "byPerformance": {
         "instrumental": 345,
-        "unknown": 2895,
+        "unknown": 2922,
         "vocal": 775
       },
       "bySite": {
-        "bsys": 3098,
+        "bsys": 3125,
         "fmbc": 87,
         "rfm": 830
       },
-      "total": 4015
+      "total": 4042
     },
     "county": null,
     "countyHistorical": null,
@@ -19188,19 +19095,19 @@
     "counts": {
       "byGenre": {
         "colinda": 131,
-        "null": 414
+        "null": 436
       },
       "byPerformance": {
         "instrumental": 14,
-        "unknown": 384,
+        "unknown": 406,
         "vocal": 147
       },
       "bySite": {
-        "bsys": 395,
+        "bsys": 417,
         "fmbc": 19,
         "rfm": 131
       },
-      "total": 545
+      "total": 567
     },
     "county": null,
     "countyHistorical": null,
@@ -19214,7 +19121,7 @@
     "songIds": [],
     "type": "region",
     "years": {
-      "max": 1918,
+      "max": 1922,
       "min": 1906
     }
   },
@@ -19225,32 +19132,32 @@
     "counts": {
       "byGenre": {
         "colinda": 17,
-        "null": 14
+        "null": 36
       },
       "byPerformance": {
-        "unknown": 11,
+        "unknown": 33,
         "vocal": 20
       },
       "bySite": {
-        "bsys": 11,
+        "bsys": 33,
         "fmbc": 3,
         "rfm": 17
       },
-      "total": 31
+      "total": 53
     },
     "county": "Arad",
-    "countyHistorical": "Arad",
+    "countyHistorical": "Pest-Pilis-Solt-Kiskun",
     "id": "ro/crisana/arad",
     "lat": 46.18,
     "lng": 21.32,
     "name": "Arad",
-    "nameHistorical": "Arad",
+    "nameHistorical": "Pest-Pilis-Solt-Kiskun",
     "parent": "ro/crisana",
-    "region": "Crișana",
+    "region": "Crisana",
     "songIds": [],
     "type": "county",
     "years": {
-      "max": 1917,
+      "max": 1922,
       "min": 1906
     }
   },
@@ -19614,32 +19521,57 @@
     "country": "RO",
     "counts": {
       "byGenre": {
-        "colinda": 2
+        "colinda": 2,
+        "null": 22
       },
       "byPerformance": {
+        "unknown": 22,
         "vocal": 2
       },
       "bySite": {
+        "bsys": 22,
         "rfm": 2
       },
-      "total": 2
+      "total": 24
     },
     "county": "Arad",
-    "countyHistorical": "Arad",
+    "countyHistorical": "Pest-Pilis-Solt-Kiskun",
     "id": "ro/crisana/arad/toc",
-    "lat": 46.07,
-    "lng": 22.32,
+    "lat": 46.014,
+    "lng": 22.3165,
     "name": "Toc",
-    "nameHistorical": "Toc",
+    "nameHistorical": "Tök",
     "parent": "ro/crisana/arad",
-    "region": "Crișana",
+    "region": "Crisana",
     "songIds": [
+      "bsys-13-761",
+      "bsys-14-1102",
+      "bsys-17-2782",
+      "bsys-17-3003",
+      "bsys-17-3057",
+      "bsys-22-3802",
+      "bsys-23-4152",
+      "bsys-24-4292",
+      "bsys-29-5220",
+      "bsys-30-5349",
+      "bsys-33-6700",
+      "bsys-34-6862",
+      "bsys-34-6966",
+      "bsys-34-7527",
+      "bsys-34-7578",
+      "bsys-34-7778",
+      "bsys-44-10314",
+      "bsys-61-10938",
+      "bsys-62-10985",
+      "bsys-71-11751",
+      "bsys-73-12153",
+      "bsys-80-12534",
       "rfm-4-111b",
       "rfm-4-12g"
     ],
     "type": "village",
     "years": {
-      "max": 1917,
+      "max": 1922,
       "min": 1917
     }
   },
@@ -23494,19 +23426,19 @@
     "counts": {
       "byGenre": {
         "colinda": 266,
-        "null": 2094
+        "null": 2099
       },
       "byPerformance": {
         "instrumental": 189,
-        "unknown": 1852,
+        "unknown": 1857,
         "vocal": 319
       },
       "bySite": {
-        "bsys": 2035,
+        "bsys": 2040,
         "fmbc": 59,
         "rfm": 266
       },
-      "total": 2360
+      "total": 2365
     },
     "county": null,
     "countyHistorical": null,
@@ -29448,19 +29380,19 @@
     "counts": {
       "byGenre": {
         "colinda": 94,
-        "null": 11
+        "null": 16
       },
       "byPerformance": {
         "instrumental": 1,
-        "unknown": 2,
+        "unknown": 7,
         "vocal": 102
       },
       "bySite": {
-        "bsys": 2,
+        "bsys": 7,
         "fmbc": 9,
         "rfm": 94
       },
-      "total": 105
+      "total": 110
     },
     "county": "Hunedoara",
     "countyHistorical": "Hunyad",
@@ -29732,6 +29664,44 @@
     "years": {
       "max": 1913,
       "min": 1913
+    }
+  },
+  {
+    "confidence": null,
+    "coordSource": "gazetteer-approx",
+    "country": "RO",
+    "counts": {
+      "byGenre": {
+        "null": 5
+      },
+      "byPerformance": {
+        "unknown": 5
+      },
+      "bySite": {
+        "bsys": 5
+      },
+      "total": 5
+    },
+    "county": "Hunedoara",
+    "countyHistorical": "Heves",
+    "id": "ro/transylvania/hunedoara/lelese",
+    "lat": 45.7326,
+    "lng": 22.6973,
+    "name": "Lelese",
+    "nameHistorical": "Lelesz",
+    "parent": "ro/transylvania/hunedoara",
+    "region": "Transylvania",
+    "songIds": [
+      "bsys-31-5513",
+      "bsys-31-5702",
+      "bsys-33-6007",
+      "bsys-33-6362",
+      "bsys-34-8099"
+    ],
+    "type": "village",
+    "years": {
+      "max": 1906,
+      "min": 1906
     }
   },
   {

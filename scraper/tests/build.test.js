@@ -45,6 +45,9 @@ test('end to end: fixtures -> parse -> assemble -> validate against the schemas'
   assert.equal(dances.performer.sex, 'm');
   assert.deepEqual(dances.collected, { year: 1910, month: 2, day: null, raw: 'February 1910' });
   assert.equal(dances.genre, null);
+  assert.deepEqual(dances.collectors, ['Bartók Béla']);
+  assert.equal(dances.collectorRaw, 'Béla Bartók');
+  assert.equal(facets.collector['Bartók Béla'], songs.filter((s) => s.collectors.includes('Bartók Béla')).length);
   assert.equal(dances.composition[0].catalogue, 'BB 68');
   const valenii = songs.find((s) => s.id === 'fmbc-BB047-L172-07');
   assert.equal(valenii.location.village, 'Vălenii');
