@@ -109,10 +109,5 @@
         }
       ]
     }
-  ],
-  "git": {
-    "deploymentEnabled": {
-      "claude/bartok-ethnographic-viewer-kvjt8j": false
-    }
-  }
+  ]
 }
