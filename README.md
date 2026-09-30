@@ -48,9 +48,20 @@ itineraries from the cited sources, and to run the optical music recognition exp
 Its output was checked against the sources and the catalogue. It did not write the
 melodies' metadata; every record still links to its original entry.
 
+## A second collection: Australia
+
+`australia/` holds a sister project on the same model: an index of Mark Gregory's *Australian
+Folk Songs* (folkstream.com, 1994 to date), about 1,100 songs and poems rediscovered in digitised
+Australian newspapers, mapped by the town where each paper was published. It has its own
+scraper, data, gazetteer, tests and app, and is served under
+https://culegeri.vercel.app/australia. See [australia/README.md](australia/README.md) and
+[australia/docs/STATUS.md](australia/docs/STATUS.md).
+
 ## Repository layout
 
 ```
+australia/ the Australia collection (scraper, data, geo, qa, app, docs); served at /australia
+scripts/   build-site.mjs builds both apps into app/dist for Vercel
 app/       the web app (Vite + React + TypeScript); app/src/content/about.md is the About page
 data/      built catalogue: songs.json, places.json, facets.json, journeys.json, villages.json,
            journeys-curated.json, context-events.json, geo/ border layers, schema/, gazetteer.json
@@ -87,7 +98,7 @@ node qa/checks/data-gates.mjs --file data/songs.json --journeys data/journeys.js
 
 The crawler runs at one request per second and caches every page; the outputs are
 deterministic, so re-runs give clean diffs. Deployment to Vercel is described in
-`docs/DEPLOY.md`.
+`docs/DEPLOY.md`; `vercel.json` builds both collections with `scripts/build-site.mjs`.
 
 ## Sources and attribution
 

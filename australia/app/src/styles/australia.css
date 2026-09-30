@@ -1,0 +1,115 @@
+/* Australia collection: additions over the shared stylesheets (kind swatches, place tree,
+   sources tables, timeline bars). */
+
+.swatch--song {
+  background: var(--genre-joc);
+}
+.swatch--poem {
+  background: var(--genre-nunta);
+}
+.swatch--unknown {
+  background: var(--genre-other);
+}
+
+.topbar__sibling {
+  color: var(--muted);
+}
+
+/* Place tree (country > state > town) */
+.tree__node {
+  list-style: none;
+}
+.tree__children {
+  padding-left: var(--space-4);
+}
+.tree__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.tree__toggle {
+  width: 20px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: var(--fs-12);
+}
+.tree__toggle--leaf {
+  display: inline-block;
+}
+.tree__label {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 28px;
+  padding: var(--space-1) var(--space-2);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  text-align: left;
+  font-size: var(--fs-13);
+}
+.tree__label:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.tree__label[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.tree__label.is-zero {
+  color: var(--ink-3);
+}
+.tree__label.is-unmapped > span:first-child::after {
+  content: ' \00b7';
+  color: var(--muted);
+}
+.tree__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  color: var(--muted);
+}
+
+/* Sources page and state tables */
+.page.sources section {
+  margin-top: var(--space-6);
+}
+.page.sources table {
+  width: 100%;
+  margin-top: var(--space-3);
+}
+.sources__articles li {
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid var(--line);
+}
+.timeline-table td {
+  width: 100%;
+}
+.timeline-bar {
+  display: inline-block;
+  height: 12px;
+  background: var(--accent);
+  vertical-align: middle;
+}
+.song-text__stanza {
+  margin: 0 0 var(--space-3);
+}
+.song-text__stanzas.is-collapsed {
+  max-height: 24em;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, #000 80%, transparent);
+}
+.song-notes__credit {
+  font-size: var(--fs-12);
+  margin-top: var(--space-2);
+}
+
+.county-table th,
+.county-table td {
+  text-align: left;
+}
+.county-table .num {
+  text-align: right;
+}

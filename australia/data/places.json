@@ -1,0 +1,6664 @@
+[
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1790s": 1,
+        "1820s": 9,
+        "1830s": 18,
+        "1840s": 25,
+        "1850s": 35,
+        "1860s": 37,
+        "1870s": 47,
+        "1880s": 52,
+        "1890s": 148,
+        "1900s": 141,
+        "1910s": 109,
+        "1920s": 103,
+        "1930s": 94,
+        "1940s": 34,
+        "1950s": 24,
+        "1960s": 11,
+        "1980s": 5,
+        "null": 1
+      },
+      "byKind": {
+        "poem": 39,
+        "song": 432,
+        "unknown": 423
+      },
+      "total": 894
+    },
+    "id": "au",
+    "lat": -27,
+    "lng": 133,
+    "name": "Australia",
+    "newspapers": {
+      "Adelaide Observer": 6,
+      "Advocate": 2,
+      "Age": 4,
+      "Albury Banner and Wodonga Express": 2,
+      "Alexandra Times": 2,
+      "Alexandra and Yea Standard and Yarck, Gobur, Thornton and Acheron Express": 1,
+      "Argus": 3,
+      "Armidale Chronicle": 1,
+      "Armidale Express and New England General Advertiser": 2,
+      "Australasian": 4,
+      "Australasian Chronicle": 4,
+      "Australian": 1,
+      "Australian Town and Country Journal": 5,
+      "Australian Worker": 6,
+      "Australian Workman": 1,
+      "Avoca Mail": 1,
+      "Bacchus Marsh Express": 1,
+      "Ballarat Courier": 1,
+      "Ballarat Star": 1,
+      "Bathurst Daily Argus": 1,
+      "Bathurst Free Press and Mining Journal": 1,
+      "Bathurst Times": 1,
+      "Beaudesert Times": 2,
+      "Bell's Life": 2,
+      "Bendigo Advertiser": 3,
+      "Bent's News and Tasmanian Register": 1,
+      "Blackwood Times": 1,
+      "Blue Mountain Echo": 1,
+      "Blue Mountain Star": 1,
+      "Border Watch": 2,
+      "Bowral Free Press": 1,
+      "Bowral Free Press and Berrima District Intelligencer": 1,
+      "Braidwood Dispatch and Mining Journal": 2,
+      "Brisbane Courier": 1,
+      "Bunbury Herald": 3,
+      "Bunbury Herald and Blackwood Express": 1,
+      "Bunyip": 5,
+      "Burra Record": 1,
+      "Burrowa News": 1,
+      "Cairns Post": 4,
+      "Camperdown Chronicle": 1,
+      "Canowindra Star and Woodstock Recorder": 1,
+      "Catholic Press": 3,
+      "Central Queensland Herald": 1,
+      "Chronicle": 2,
+      "Clarence and Richmond Examiner": 2,
+      "Clipper": 1,
+      "Coffs Harbour Advocate": 2,
+      "Colonial Times": 2,
+      "Colonist": 1,
+      "Colonist and Van Diemen's Land Commercial and Agricultural Advertiser": 1,
+      "Cornwall Chronicle": 3,
+      "Country Life Stock and Station Journal": 1,
+      "Critic": 1,
+      "Daily Herald": 1,
+      "Daily Mercury": 1,
+      "Daily News": 1,
+      "Daily Standard": 2,
+      "Daily Telegraph": 1,
+      "Darling Downs Gazette and General Advertiser": 1,
+      "Deniliquin Independent": 1,
+      "Direct Action": 1,
+      "Dungog Chronicle : Durham and Gloucester Advertiser": 1,
+      "Euroa Advertiser": 1,
+      "Evening Journal": 5,
+      "Evening News": 6,
+      "Federal Capital Pioneer": 1,
+      "Forbes Advocate": 1,
+      "Free Lance": 1,
+      "Freeman's Journa": 1,
+      "Freeman's Journal": 12,
+      "Geelong Advertiser": 1,
+      "Geelong Advertiser and Intelligencer": 2,
+      "Gippsland Times": 1,
+      "Gosford Times and Wyong District Advocate": 1,
+      "Goulburn Evening Penny Post": 1,
+      "Goulburn Herald": 2,
+      "Goulburn Herald and County": 4,
+      "Goulburn Valley Stock and Property Journal": 1,
+      "Great Southern Advocate": 1,
+      "Gundagai Independent": 1,
+      "Gundagai Times": 2,
+      "Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 3,
+      "Hamilton Spectator": 1,
+      "Hamilton Spectator and Grange District Advertiser": 1,
+      "Hawkesbury Courier and Agricultural and General Advertiser": 1,
+      "Hay Standard and Advertiser": 1,
+      "Herald": 3,
+      "Hillston Spectator and Lachlan River Advertiser": 2,
+      "Hobart Town Gazette and Van Diemen's Land Advertiser": 1,
+      "Hobarton Guardian, or, True Friend": 2,
+      "Horsham Times": 2,
+      "Hummer": 3,
+      "Huon and Derwent Times": 1,
+      "Illawarra Mercury": 4,
+      "Independent": 2,
+      "International Socialist": 2,
+      "Inverell Times": 4,
+      "Jerilderie Herald and Urana Advertiser": 1,
+      "Kadina and Wallaroo Times": 1,
+      "Kalgoorlie Miner": 1,
+      "Kiama Independent, and Shoalhaven Advertiser": 2,
+      "Kilmore Free Press and Counties": 1,
+      "Lachlander and Condobolin and Western Districts Recorder": 1,
+      "Land": 2,
+      "Launceston Advertiser": 1,
+      "Launceston Examiner": 3,
+      "Leader": 3,
+      "Lithgow Mercury": 2,
+      "Longreach Leader": 2,
+      "Mackay Mercury": 1,
+      "Mail": 1,
+      "Maitland Mercury": 1,
+      "Maitland Mercury and Hunter River General Advertiser": 1,
+      "Manaro Mercury": 1,
+      "Manaro Mercury, and Cooma and Bombala Advertiser": 1,
+      "Manilla Express": 1,
+      "Maryborough Chronicle": 1,
+      "Maryborough Chronicle, Wide Bay and Burnett Advertiser": 4,
+      "Melbourne Punch": 1,
+      "Mercury and Weekly Courier": 1,
+      "Miners' Advocate and Northumberland Recorder": 2,
+      "Mirror": 1,
+      "Molong Express and Western District Advertiser": 1,
+      "Morning Chronicle": 1,
+      "Mount Alexander Mail": 1,
+      "Mudgee Guardian and North-Western Representative": 6,
+      "Murrumbidgee Irrigator": 2,
+      "Muswellbrook Chronicle": 1,
+      "Myrtleford Mail and Whorouly Witness": 2,
+      "Narracoorte Herald": 1,
+      "National Advocate": 2,
+      "Nepean Times": 2,
+      "Newcastle Morning Herald and Miners' Advocate": 2,
+      "Newcastle Sun": 1,
+      "News": 1,
+      "Newsletter": 1,
+      "Newsletter: an Australian Paper": 1,
+      "North Melbourne Advertiser": 1,
+      "North Queensland Register": 1,
+      "North West Post": 1,
+      "Northern Argus": 2,
+      "Northern Miner": 9,
+      "Northern Standard": 1,
+      "Northern Territory Times and Gazette": 1,
+      "Northern Times": 1,
+      "Nowra Leader": 1,
+      "Observer": 1,
+      "Ovens and Murray Advertiser": 4,
+      "Petersburg Times": 1,
+      "Port Adelaide News and Lefevre's Peninsula Advertiser": 1,
+      "Port Augusta Dispatch": 1,
+      "Port Fairy Times and Macarthur News": 1,
+      "Portland Guardian": 1,
+      "Portland Guardian and Normanby General Advertiser": 3,
+      "Prahran Chronicle": 1,
+      "Queanbeyan Age": 2,
+      "Queanbeyan Leader": 1,
+      "Queensland Country Life": 1,
+      "Queensland Figaro": 1,
+      "Queensland Figaro and Punch": 2,
+      "Queensland Times": 1,
+      "Queensland Times, Ipswich Herald & General Advertiser": 1,
+      "Queenslander": 10,
+      "Quiz and the Lantern": 1,
+      "Reformer": 1,
+      "Register": 1,
+      "Riverine Grazier": 2,
+      "Rockhampton Bulletin": 1,
+      "Scone Advocate": 1,
+      "Scrutineer and Berrima District Press": 1,
+      "Smith's Weekly": 2,
+      "Smiths Weekly": 1,
+      "Snowy River Mail": 1,
+      "South Australian": 1,
+      "South Australian Chronicle and Weekly Mail": 1,
+      "South Australian Register": 2,
+      "South Australian Weekly Chronicle": 2,
+      "Southern Cross": 4,
+      "Southern Times": 1,
+      "Sport": 1,
+      "Standard": 1,
+      "Sun": 1,
+      "Sunday Times": 4,
+      "Swan River Guardian": 1,
+      "Sydney Chronicle": 1,
+      "Sydney Gazette": 4,
+      "Sydney Gazette and New South Wales Advertiser": 2,
+      "Sydney Mail": 4,
+      "Sydney Mail and New South Wales Advertiser": 5,
+      "Sydney Morning Herald": 4,
+      "Sydney Stock and Station Journal": 4,
+      "Sydney Wool and Stock Journal": 1,
+      "Tasmanian": 1,
+      "Tasmanian and Port Dalrymple Advertiser": 1,
+      "Telegraph": 2,
+      "The Advocate": 7,
+      "The Age": 3,
+      "The Albury Banner and Wodonga Express": 3,
+      "The Argus": 1,
+      "The Australasian": 3,
+      "The Australian": 7,
+      "The Australian Star": 3,
+      "The Australian Town and Country Journal": 1,
+      "The Australian Women's Weekly": 1,
+      "The Australian Worker": 2,
+      "The Australian Workman": 1,
+      "The Barrier Miner": 2,
+      "The Bathurst Post": 1,
+      "The Bendigo Advertiser": 2,
+      "The Biz": 1,
+      "The Border Morning Mail and Riverina Times": 1,
+      "The Border Watch": 3,
+      "The Bowral Free Press": 1,
+      "The Braidwood Dispatch and Mining Journal": 2,
+      "The Braidwood Review and District Advocate": 1,
+      "The Britannia and Trades' Advocate": 1,
+      "The Broadford Courier and Reedy Creek Times": 2,
+      "The Bunyip": 1,
+      "The Burrangong Argus": 1,
+      "The Cairns Post": 1,
+      "The Camperdown Chronicle": 1,
+      "The Canberra Times": 4,
+      "The Capricornian": 3,
+      "The Catholic Press": 5,
+      "The Central Queensland Herald": 3,
+      "The Cessnock Eagle and South Maitland Recorder": 7,
+      "The Chronicle": 2,
+      "The Clarence and Richmond Examiner": 1,
+      "The Clipper": 3,
+      "The Cobar Herald": 1,
+      "The Cobargo Chronicle": 1,
+      "The Colonial Advocate": 1,
+      "The Colonial Times": 1,
+      "The Colonial Times and Tasmanian Advertiser": 1,
+      "The Commercial Journal and Advertiser": 1,
+      "The Cootamundra Herald": 1,
+      "The Courier": 1,
+      "The Courier-Mail": 1,
+      "The Critic": 3,
+      "The Daily Advertiser": 1,
+      "The Daily Examiner": 1,
+      "The Daily Herald": 2,
+      "The Daily News": 3,
+      "The Daily Northern Argus": 1,
+      "The Daily Standard": 6,
+      "The Daily Telegraph": 2,
+      "The Darling Downs Gazette": 1,
+      "The Dubbo Dispatch and Wellington Independent": 1,
+      "The Dubbo Liberal and Macquarie Advocate": 1,
+      "The Dungog Chronicle": 1,
+      "The Evelyn Observer, and South and East Bourke Record": 1,
+      "The Evening Advocate": 1,
+      "The Evening Journal": 2,
+      "The Evening News": 3,
+      "The Examiner": 1,
+      "The Express and Telegraph": 1,
+      "The Fitzroy City Press": 1,
+      "The Freeman's Journal": 7,
+      "The Geelong Advertiser": 3,
+      "The Geelong Advertiser and Intelligencer": 1,
+      "The Geraldton Express": 1,
+      "The Glen Innes Examiner": 1,
+      "The Gosford Times and Wyong District Advocate": 1,
+      "The Goulburn Herald": 1,
+      "The Goulburn Herald and Chronicle": 1,
+      "The Great Southern Herald": 1,
+      "The Gundagai Independent": 1,
+      "The Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 2,
+      "The Gympie Times and Mary River Mining Gazette": 1,
+      "The Henty Observer and Culcairn Shire Register": 1,
+      "The Herald": 7,
+      "The Horsham Times": 1,
+      "The Illawarra Mercury": 3,
+      "The Illustrated Sydney News": 1,
+      "The International Socialist": 4,
+      "The Irish Exile and Freedom's Advocate": 1,
+      "The Kadina and Wallaroo Times": 2,
+      "The Kerang New Times": 1,
+      "The Kerang Times and Swan Hill Gazette": 2,
+      "The Kiama Independent, and Shoalhaven Advertiser": 3,
+      "The Kyabram Union and Rodney Shire Advocate": 1,
+      "The Labor Daily": 1,
+      "The Land": 2,
+      "The Leader": 3,
+      "The Lithgow Mercury": 1,
+      "The Lockhart Review and Oaklands Advertiser": 1,
+      "The Longreach Leader": 1,
+      "The Mail": 1,
+      "The Maitland Daily Mercury": 2,
+      "The Maitland Mercury and Hunter River General Advertiser": 1,
+      "The Manaro Mercury, and Cooma and Bombala Advertiser": 1,
+      "The Maryborough Chronicle": 1,
+      "The Maryborough Chronicle, Wide Bay and Burnett Advertiser": 1,
+      "The McIvor Times and Rodney Advertiser": 2,
+      "The Melbourne Herald": 1,
+      "The Melbourne Punch": 1,
+      "The Mercury": 1,
+      "The Millicent Times": 1,
+      "The Miners' Advocate and Northumberland Recorder": 2,
+      "The Monitor": 1,
+      "The Mount Alexander Mail": 1,
+      "The Mount Barker Courier and Onkaparinga and Gumeracha Advertiser": 1,
+      "The Mudgee Guardian": 1,
+      "The Mudgee Guardian and North-Western Representative": 3,
+      "The Murray Pioneer and Australian River Record": 1,
+      "The Muswellbrook Chronicle": 1,
+      "The Nambour Chronicle": 1,
+      "The Narracoorte Herald": 1,
+      "The National Advocate": 2,
+      "The Newcastle Chronicle": 2,
+      "The Newcastle Morning Herald and Miners' Advocate": 1,
+      "The Newcastle Sun": 2,
+      "The Newsletter: an Australian Paper": 1,
+      "The North West Post": 1,
+      "The Northern Herald": 1,
+      "The Northern Miner": 6,
+      "The Northern Standard The Droving Days": 1,
+      "The Northern Star": 5,
+      "The Northern Times": 1,
+      "The Nowra Leader": 1,
+      "The Observer": 1,
+      "The Port Adelaide News and Lefevre's Peninsula Advertiser": 1,
+      "The Port Augusta Dispatch": 2,
+      "The Port Phillip Patriot": 1,
+      "The Queanbeyan Age": 1,
+      "The Queensland Figaro and Punch": 1,
+      "The Queensland Times": 1,
+      "The Queenslander": 13,
+      "The Quiz and the Lantern": 2,
+      "The Register": 3,
+      "The Richmond River Herald and Northern Districts Advertiser": 2,
+      "The Scone Advocate": 6,
+      "The Sentinel": 1,
+      "The Shoalhaven News": 1,
+      "The Socialist": 1,
+      "The South Australian Register": 3,
+      "The South Australian Weekly Chronicle": 1,
+      "The South Western Times": 1,
+      "The Southern Argus": 2,
+      "The Southern Cross": 1,
+      "The Southern Districts Advocate": 1,
+      "The Sport": 2,
+      "The St George Call": 1,
+      "The Sun": 2,
+      "The Sunday Herald": 1,
+      "The Sunday Sun": 1,
+      "The Sunday Times": 8,
+      "The Sydney Gazette and New South Wales Advertiser": 3,
+      "The Sydney Mail": 3,
+      "The Sydney Mail and New South Wales Advertiser": 5,
+      "The Sydney Morning Herald": 2,
+      "The Sydney Sportsman": 1,
+      "The Tasmanian Colonist": 1,
+      "The Telegraph": 3,
+      "The Tocsin": 2,
+      "The Townsville Daily Bulletin": 5,
+      "The Tribune": 12,
+      "The Truth": 1,
+      "The Tweed Daily": 1,
+      "The Uralla Times": 1,
+      "The Voice": 1,
+      "The W.A. Record": 1,
+      "The Walcha Witness and Vernon County Record": 2,
+      "The Wangaratta Chronicle": 1,
+      "The Warwick Examiner and Times": 1,
+      "The Watchman": 2,
+      "The Wellington Times": 1,
+      "The West Australian": 1,
+      "The Western Argus": 1,
+      "The Western Champion": 1,
+      "The Western Champion and General Advertiser": 1,
+      "The Western Herald": 2,
+      "The Western Mail": 6,
+      "The Western Star": 2,
+      "The Westralian Worker": 3,
+      "The Windsor and Richmond Gazette": 3,
+      "The Wingham Chronicle and Manning River Observer": 4,
+      "The Worker": 22,
+      "The Workers Weekly": 1,
+      "The Workers' Weekly": 1,
+      "The World's News": 2,
+      "The Worlds News": 1,
+      "The Yalgoo Observer and Murchison Chronicle": 1,
+      "The Yorke's Peninsula Advertiser and Miners' News": 1,
+      "Tocsin": 3,
+      "Toowoomba Chronicle and Darling Downs General Advertiser": 2,
+      "Townsville Daily Bulletin": 19,
+      "Tribune": 1,
+      "Truth": 6,
+      "Ulladulla and Milton Times": 1,
+      "Urana Independent and Clear Hills Standard": 1,
+      "Walcha News": 1,
+      "Warialda Standard and Northern Districts' Advertiser": 1,
+      "Warragul Guardian and Buln Buln and Narracan Shire Advocate": 1,
+      "Warwick Argus": 1,
+      "Week": 1,
+      "Weekly Herald": 4,
+      "Wellington Times": 5,
+      "West Australian": 3,
+      "Western Champion and General Advertiser": 1,
+      "Western Herald": 3,
+      "Western Mail": 1,
+      "Western Star and Roma Advertiser": 1,
+      "Western Tiers": 1,
+      "Westralian Record": 1,
+      "Westralian Worker": 3,
+      "Windsor and Richmond Gazette": 2,
+      "Wingham Chronicle": 1,
+      "Wingham Chronicle and Manning River Observer": 1,
+      "Wodonga and Towong Sentinel": 1,
+      "Wollondilly Press": 1,
+      "Worker": 62,
+      "Worker (Wagga, NSW)": 1,
+      "Workers' Weekly": 1,
+      "World's News": 2,
+      "Woroni": 1
+    },
+    "parent": null,
+    "songIds": [],
+    "state": null,
+    "type": "country",
+    "years": {
+      "max": 1988,
+      "min": 1798
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1920s": 1,
+        "1960s": 2,
+        "1980s": 3
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 6
+    },
+    "id": "au/act",
+    "lat": -35.5,
+    "lng": 149,
+    "name": "Australian Capital Territory",
+    "newspapers": {
+      "Federal Capital Pioneer": 1,
+      "The Canberra Times": 4,
+      "Woroni": 1
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "ACT",
+    "type": "state",
+    "years": {
+      "max": 1987,
+      "min": 1925
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1,
+        "1960s": 2,
+        "1980s": 3
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 6
+    },
+    "id": "au/act/canberra",
+    "lat": -35.28346,
+    "lng": 149.12807,
+    "name": "Canberra",
+    "newspapers": {
+      "Federal Capital Pioneer": 1,
+      "The Canberra Times": 4,
+      "Woroni": 1
+    },
+    "parent": "au/act",
+    "songIds": [
+      "afs-494",
+      "afs-647",
+      "afs-874",
+      "afs-884",
+      "afs-899",
+      "afs-959"
+    ],
+    "state": "ACT",
+    "type": "town",
+    "years": {
+      "max": 1987,
+      "min": 1925
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1790s": 1,
+        "1820s": 5,
+        "1830s": 11,
+        "1840s": 16,
+        "1850s": 12,
+        "1860s": 13,
+        "1870s": 21,
+        "1880s": 16,
+        "1890s": 41,
+        "1900s": 69,
+        "1910s": 42,
+        "1920s": 50,
+        "1930s": 39,
+        "1940s": 16,
+        "1950s": 19,
+        "1960s": 9,
+        "1980s": 1,
+        "null": 1
+      },
+      "byKind": {
+        "poem": 16,
+        "song": 169,
+        "unknown": 197
+      },
+      "total": 382
+    },
+    "id": "au/nsw",
+    "lat": -32.5,
+    "lng": 147,
+    "name": "New South Wales",
+    "newspapers": {
+      "Albury Banner and Wodonga Express": 2,
+      "Armidale Chronicle": 1,
+      "Armidale Express and New England General Advertiser": 2,
+      "Australasian Chronicle": 4,
+      "Australian": 1,
+      "Australian Town and Country Journal": 5,
+      "Australian Worker": 6,
+      "Australian Workman": 1,
+      "Bathurst Daily Argus": 1,
+      "Bathurst Free Press and Mining Journal": 1,
+      "Bathurst Times": 1,
+      "Bell's Life": 2,
+      "Blue Mountain Echo": 1,
+      "Blue Mountain Star": 1,
+      "Bowral Free Press": 1,
+      "Bowral Free Press and Berrima District Intelligencer": 1,
+      "Braidwood Dispatch and Mining Journal": 2,
+      "Burrowa News": 1,
+      "Canowindra Star and Woodstock Recorder": 1,
+      "Catholic Press": 3,
+      "Clarence and Richmond Examiner": 2,
+      "Coffs Harbour Advocate": 2,
+      "Country Life Stock and Station Journal": 1,
+      "Daily Telegraph": 1,
+      "Deniliquin Independent": 1,
+      "Direct Action": 1,
+      "Dungog Chronicle : Durham and Gloucester Advertiser": 1,
+      "Evening News": 6,
+      "Forbes Advocate": 1,
+      "Freeman's Journa": 1,
+      "Freeman's Journal": 12,
+      "Gosford Times and Wyong District Advocate": 1,
+      "Goulburn Evening Penny Post": 1,
+      "Goulburn Herald": 2,
+      "Goulburn Herald and County": 4,
+      "Gundagai Independent": 1,
+      "Gundagai Times": 2,
+      "Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 3,
+      "Hawkesbury Courier and Agricultural and General Advertiser": 1,
+      "Hay Standard and Advertiser": 1,
+      "Hillston Spectator and Lachlan River Advertiser": 2,
+      "Hummer": 3,
+      "Illawarra Mercury": 4,
+      "International Socialist": 2,
+      "Inverell Times": 4,
+      "Jerilderie Herald and Urana Advertiser": 1,
+      "Kiama Independent, and Shoalhaven Advertiser": 2,
+      "Lachlander and Condobolin and Western Districts Recorder": 1,
+      "Land": 2,
+      "Lithgow Mercury": 2,
+      "Maitland Mercury": 1,
+      "Maitland Mercury and Hunter River General Advertiser": 1,
+      "Manaro Mercury": 1,
+      "Manaro Mercury, and Cooma and Bombala Advertiser": 1,
+      "Manilla Express": 1,
+      "Miners' Advocate and Northumberland Recorder": 2,
+      "Molong Express and Western District Advertiser": 1,
+      "Morning Chronicle": 1,
+      "Mudgee Guardian and North-Western Representative": 6,
+      "Murrumbidgee Irrigator": 2,
+      "Muswellbrook Chronicle": 1,
+      "National Advocate": 2,
+      "Nepean Times": 2,
+      "Newcastle Morning Herald and Miners' Advocate": 2,
+      "Newcastle Sun": 1,
+      "Newsletter": 1,
+      "Newsletter: an Australian Paper": 1,
+      "Northern Times": 1,
+      "Nowra Leader": 1,
+      "Queanbeyan Age": 2,
+      "Queanbeyan Leader": 1,
+      "Reformer": 1,
+      "Riverine Grazier": 2,
+      "Scone Advocate": 1,
+      "Scrutineer and Berrima District Press": 1,
+      "Smith's Weekly": 2,
+      "Smiths Weekly": 1,
+      "Sun": 1,
+      "Sydney Chronicle": 1,
+      "Sydney Gazette": 4,
+      "Sydney Gazette and New South Wales Advertiser": 2,
+      "Sydney Mail": 4,
+      "Sydney Mail and New South Wales Advertiser": 5,
+      "Sydney Morning Herald": 4,
+      "Sydney Stock and Station Journal": 4,
+      "Sydney Wool and Stock Journal": 1,
+      "The Albury Banner and Wodonga Express": 3,
+      "The Australian": 6,
+      "The Australian Star": 3,
+      "The Australian Town and Country Journal": 1,
+      "The Australian Women's Weekly": 1,
+      "The Australian Worker": 2,
+      "The Australian Workman": 1,
+      "The Barrier Miner": 2,
+      "The Bathurst Post": 1,
+      "The Biz": 1,
+      "The Border Morning Mail and Riverina Times": 1,
+      "The Bowral Free Press": 1,
+      "The Braidwood Dispatch and Mining Journal": 2,
+      "The Braidwood Review and District Advocate": 1,
+      "The Burrangong Argus": 1,
+      "The Catholic Press": 5,
+      "The Cessnock Eagle and South Maitland Recorder": 7,
+      "The Clarence and Richmond Examiner": 1,
+      "The Cobar Herald": 1,
+      "The Cobargo Chronicle": 1,
+      "The Commercial Journal and Advertiser": 1,
+      "The Cootamundra Herald": 1,
+      "The Daily Advertiser": 1,
+      "The Daily Examiner": 1,
+      "The Daily News": 1,
+      "The Daily Telegraph": 2,
+      "The Dubbo Dispatch and Wellington Independent": 1,
+      "The Dubbo Liberal and Macquarie Advocate": 1,
+      "The Dungog Chronicle": 1,
+      "The Evening News": 3,
+      "The Examiner": 1,
+      "The Freeman's Journal": 7,
+      "The Glen Innes Examiner": 1,
+      "The Gosford Times and Wyong District Advocate": 1,
+      "The Goulburn Herald": 1,
+      "The Goulburn Herald and Chronicle": 1,
+      "The Gundagai Independent": 1,
+      "The Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 2,
+      "The Henty Observer and Culcairn Shire Register": 1,
+      "The Illawarra Mercury": 3,
+      "The Illustrated Sydney News": 1,
+      "The International Socialist": 4,
+      "The Kiama Independent, and Shoalhaven Advertiser": 3,
+      "The Labor Daily": 1,
+      "The Land": 2,
+      "The Lithgow Mercury": 1,
+      "The Lockhart Review and Oaklands Advertiser": 1,
+      "The Maitland Daily Mercury": 2,
+      "The Maitland Mercury and Hunter River General Advertiser": 1,
+      "The Manaro Mercury, and Cooma and Bombala Advertiser": 1,
+      "The Miners' Advocate and Northumberland Recorder": 2,
+      "The Monitor": 1,
+      "The Mudgee Guardian": 1,
+      "The Mudgee Guardian and North-Western Representative": 3,
+      "The Muswellbrook Chronicle": 1,
+      "The National Advocate": 2,
+      "The Newcastle Chronicle": 2,
+      "The Newcastle Morning Herald and Miners' Advocate": 1,
+      "The Newcastle Sun": 2,
+      "The Newsletter: an Australian Paper": 1,
+      "The Northern Star": 5,
+      "The Northern Times": 1,
+      "The Nowra Leader": 1,
+      "The Queanbeyan Age": 1,
+      "The Richmond River Herald and Northern Districts Advertiser": 2,
+      "The Scone Advocate": 6,
+      "The Sentinel": 1,
+      "The Shoalhaven News": 1,
+      "The Southern Argus": 2,
+      "The St George Call": 1,
+      "The Sun": 2,
+      "The Sunday Herald": 1,
+      "The Sunday Sun": 1,
+      "The Sunday Times": 1,
+      "The Sydney Gazette and New South Wales Advertiser": 3,
+      "The Sydney Mail": 3,
+      "The Sydney Mail and New South Wales Advertiser": 5,
+      "The Sydney Morning Herald": 2,
+      "The Sydney Sportsman": 1,
+      "The Tribune": 12,
+      "The Tweed Daily": 1,
+      "The Uralla Times": 1,
+      "The Walcha Witness and Vernon County Record": 2,
+      "The Watchman": 2,
+      "The Wellington Times": 1,
+      "The Western Herald": 2,
+      "The Windsor and Richmond Gazette": 3,
+      "The Wingham Chronicle and Manning River Observer": 4,
+      "The Worker": 8,
+      "The Workers Weekly": 1,
+      "The Workers' Weekly": 1,
+      "The World's News": 2,
+      "The Worlds News": 1,
+      "Tribune": 1,
+      "Ulladulla and Milton Times": 1,
+      "Urana Independent and Clear Hills Standard": 1,
+      "Walcha News": 1,
+      "Warialda Standard and Northern Districts' Advertiser": 1,
+      "Wellington Times": 5,
+      "Western Herald": 3,
+      "Windsor and Richmond Gazette": 2,
+      "Wingham Chronicle": 1,
+      "Wingham Chronicle and Manning River Observer": 1,
+      "Wollondilly Press": 1,
+      "Worker (Wagga, NSW)": 1,
+      "Workers' Weekly": 1,
+      "World's News": 2
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "NSW",
+    "type": "state",
+    "years": {
+      "max": 1981,
+      "min": 1798
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1910s": 2,
+        "1920s": 2,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 6
+    },
+    "id": "au/nsw/albury",
+    "lat": -36.073333333,
+    "lng": 146.9144444,
+    "name": "Albury",
+    "newspapers": {
+      "Albury Banner and Wodonga Express": 2,
+      "The Albury Banner and Wodonga Express": 3,
+      "The Border Morning Mail and Riverina Times": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1056",
+      "afs-392",
+      "afs-629",
+      "afs-715",
+      "afs-716",
+      "afs-974"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1933,
+      "min": 1904
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 2,
+        "1890s": 1
+      },
+      "byKind": {
+        "unknown": 3
+      },
+      "total": 3
+    },
+    "id": "au/nsw/armidale",
+    "lat": -30.5,
+    "lng": 151.666666666,
+    "name": "Armidale",
+    "newspapers": {
+      "Armidale Chronicle": 1,
+      "Armidale Express and New England General Advertiser": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-363",
+      "afs-511",
+      "afs-640"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1898,
+      "min": 1859
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1,
+        "1890s": 2,
+        "1900s": 2,
+        "1910s": 2,
+        "1920s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 1,
+        "unknown": 6
+      },
+      "total": 8
+    },
+    "id": "au/nsw/bathurst",
+    "lat": -33.41665,
+    "lng": 149.5806,
+    "name": "Bathurst",
+    "newspapers": {
+      "Bathurst Daily Argus": 1,
+      "Bathurst Free Press and Mining Journal": 1,
+      "Bathurst Times": 1,
+      "National Advocate": 2,
+      "The Bathurst Post": 1,
+      "The National Advocate": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1052",
+      "afs-1088",
+      "afs-214",
+      "afs-243",
+      "afs-261",
+      "afs-292",
+      "afs-586",
+      "afs-758"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1926,
+      "min": 1861
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/boorowa",
+    "lat": -34.43661,
+    "lng": 148.71634,
+    "name": "Boorowa",
+    "newspapers": {
+      "Burrowa News": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-484"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1886,
+      "min": 1886
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1950s": 2,
+        "1960s": 3
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 2,
+        "unknown": 2
+      },
+      "total": 5
+    },
+    "id": "au/nsw/bourke",
+    "lat": -30.09011,
+    "lng": 145.93646,
+    "name": "Bourke",
+    "newspapers": {
+      "The Western Herald": 2,
+      "Western Herald": 3
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1048",
+      "afs-145",
+      "afs-253",
+      "afs-645",
+      "afs-910"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1963,
+      "min": 1950
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1,
+        "1900s": 3
+      },
+      "byKind": {
+        "unknown": 4
+      },
+      "total": 4
+    },
+    "id": "au/nsw/bowral",
+    "lat": -34.481666666,
+    "lng": 150.4177778,
+    "name": "Bowral",
+    "newspapers": {
+      "Bowral Free Press": 1,
+      "Bowral Free Press and Berrima District Intelligencer": 1,
+      "The Bowral Free Press": 1,
+      "Wollondilly Press": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1037",
+      "afs-271",
+      "afs-306",
+      "afs-574"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1907,
+      "min": 1886
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1920s": 1,
+        "1940s": 1,
+        "1950s": 2
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 3
+      },
+      "total": 5
+    },
+    "id": "au/nsw/braidwood",
+    "lat": -35.44148,
+    "lng": 149.7998,
+    "name": "Braidwood",
+    "newspapers": {
+      "Braidwood Dispatch and Mining Journal": 2,
+      "The Braidwood Dispatch and Mining Journal": 2,
+      "The Braidwood Review and District Advocate": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1050",
+      "afs-1058",
+      "afs-498",
+      "afs-591",
+      "afs-812"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1953,
+      "min": 1903
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/broken-hill",
+    "lat": -31.965,
+    "lng": 141.4511111,
+    "name": "Broken Hill",
+    "newspapers": {
+      "The Barrier Miner": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1039",
+      "afs-1071"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1933,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/canowindra",
+    "lat": -33.566666666,
+    "lng": 148.666666666,
+    "name": "Canowindra",
+    "newspapers": {
+      "Canowindra Star and Woodstock Recorder": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-547"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1902,
+      "min": 1902
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 2,
+        "1930s": 3,
+        "1950s": 2
+      },
+      "byKind": {
+        "unknown": 7
+      },
+      "total": 7
+    },
+    "id": "au/nsw/cessnock",
+    "lat": -32.833333333,
+    "lng": 151.3561111,
+    "name": "Cessnock",
+    "newspapers": {
+      "The Cessnock Eagle and South Maitland Recorder": 7
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-337",
+      "afs-339",
+      "afs-340",
+      "afs-341",
+      "afs-342",
+      "afs-343",
+      "afs-777"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1953,
+      "min": 1923
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/cobar",
+    "lat": -31.49666,
+    "lng": 145.83439,
+    "name": "Cobar",
+    "newspapers": {
+      "The Cobar Herald": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-245"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1902,
+      "min": 1902
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/cobargo",
+    "lat": -36.38788,
+    "lng": 149.88634,
+    "name": "Cobargo",
+    "newspapers": {
+      "The Cobargo Chronicle": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-803"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1936,
+      "min": 1936
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 2
+      },
+      "byKind": {
+        "poem": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/nsw/coffs-harbour",
+    "lat": -30.30228,
+    "lng": 153.118896,
+    "name": "Coffs Harbour",
+    "newspapers": {
+      "Coffs Harbour Advocate": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-338",
+      "afs-528"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1919,
+      "min": 1912
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/condobolin",
+    "lat": -33.08877,
+    "lng": 147.15139,
+    "name": "Condobolin",
+    "newspapers": {
+      "Lachlander and Condobolin and Western Districts Recorder": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-678"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1902,
+      "min": 1902
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 3
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/nsw/cooma",
+    "lat": -36.23517,
+    "lng": 149.12408,
+    "name": "Cooma",
+    "newspapers": {
+      "Manaro Mercury": 1,
+      "Manaro Mercury, and Cooma and Bombala Advertiser": 1,
+      "The Manaro Mercury, and Cooma and Bombala Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-115",
+      "afs-203",
+      "afs-848"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1878,
+      "min": 1874
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/cootamundra",
+    "lat": -34.648333333,
+    "lng": 148.0344444,
+    "name": "Cootamundra",
+    "newspapers": {
+      "The Cootamundra Herald": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-943"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1893,
+      "min": 1893
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/coraki",
+    "lat": -28.9926,
+    "lng": 153.28374,
+    "name": "Coraki",
+    "newspapers": {
+      "The Richmond River Herald and Northern Districts Advertiser": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-201",
+      "afs-867"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1928,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/culcairn",
+    "lat": -35.66669,
+    "lng": 147.03845,
+    "name": "Culcairn",
+    "newspapers": {
+      "The Henty Observer and Culcairn Shire Register": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-792"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1938,
+      "min": 1938
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/deniliquin",
+    "lat": -35.53245,
+    "lng": 144.95364,
+    "name": "Deniliquin",
+    "newspapers": {
+      "Deniliquin Independent": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-674"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1906,
+      "min": 1906
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/dubbo",
+    "lat": -32.24295,
+    "lng": 148.60484,
+    "name": "Dubbo",
+    "newspapers": {
+      "The Dubbo Dispatch and Wellington Independent": 1,
+      "The Dubbo Liberal and Macquarie Advocate": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1015",
+      "afs-905"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1937,
+      "min": 1913
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/dungog",
+    "lat": -32.40431,
+    "lng": 151.75192,
+    "name": "Dungog",
+    "newspapers": {
+      "The Dungog Chronicle": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-844"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1914,
+      "min": 1914
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1950s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/fairfield",
+    "lat": -33.865,
+    "lng": 150.9511111,
+    "name": "Fairfield",
+    "newspapers": {
+      "The Biz": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-723"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1956,
+      "min": 1956
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/forbes",
+    "lat": -33.38436,
+    "lng": 148.0076,
+    "name": "Forbes",
+    "newspapers": {
+      "Forbes Advocate": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-641"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1912,
+      "min": 1912
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/glen-innes",
+    "lat": -29.73485,
+    "lng": 151.7385,
+    "name": "Glen Innes",
+    "newspapers": {
+      "The Glen Innes Examiner": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-989"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1909,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/gloucester",
+    "lat": -32.0077,
+    "lng": 151.9633,
+    "name": "Gloucester",
+    "newspapers": {
+      "Dungog Chronicle : Durham and Gloucester Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-496"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1929,
+      "min": 1929
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/gosford",
+    "lat": -33.4244,
+    "lng": 151.34399,
+    "name": "Gosford",
+    "newspapers": {
+      "Gosford Times and Wyong District Advocate": 1,
+      "The Gosford Times and Wyong District Advocate": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-652",
+      "afs-945"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1934,
+      "min": 1926
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 1,
+        "1850s": 4,
+        "1870s": 1,
+        "1890s": 3,
+        "1900s": 2
+      },
+      "byKind": {
+        "poem": 2,
+        "song": 5,
+        "unknown": 4
+      },
+      "total": 11
+    },
+    "id": "au/nsw/goulburn",
+    "lat": -34.75155,
+    "lng": 149.72086,
+    "name": "Goulburn",
+    "newspapers": {
+      "Goulburn Evening Penny Post": 1,
+      "Goulburn Herald": 2,
+      "Goulburn Herald and County": 4,
+      "The Goulburn Herald": 1,
+      "The Goulburn Herald and Chronicle": 1,
+      "The Southern Argus": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1026",
+      "afs-1041",
+      "afs-111",
+      "afs-274",
+      "afs-334",
+      "afs-526",
+      "afs-618",
+      "afs-619",
+      "afs-620",
+      "afs-861",
+      "afs-930"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1905,
+      "min": 1848
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1900s": 2,
+        "1920s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 2
+      },
+      "total": 4
+    },
+    "id": "au/nsw/grafton",
+    "lat": -29.68104,
+    "lng": 152.93394,
+    "name": "Grafton",
+    "newspapers": {
+      "Clarence and Richmond Examiner": 2,
+      "The Clarence and Richmond Examiner": 1,
+      "The Daily Examiner": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-314",
+      "afs-366",
+      "afs-694",
+      "afs-810"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1927,
+      "min": 1897
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1,
+        "1900s": 2,
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 4
+      },
+      "total": 4
+    },
+    "id": "au/nsw/gundagai",
+    "lat": -35.06352,
+    "lng": 148.10365,
+    "name": "Gundagai",
+    "newspapers": {
+      "Gundagai Independent": 1,
+      "Gundagai Times": 2,
+      "The Gundagai Independent": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-163",
+      "afs-199",
+      "afs-521",
+      "afs-789"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1928,
+      "min": 1869
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1,
+        "1890s": 1,
+        "1950s": 1
+      },
+      "byKind": {
+        "unknown": 3
+      },
+      "total": 3
+    },
+    "id": "au/nsw/hay",
+    "lat": -34.50903,
+    "lng": 144.84306,
+    "name": "Hay",
+    "newspapers": {
+      "Hay Standard and Advertiser": 1,
+      "Riverine Grazier": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-224",
+      "afs-376",
+      "afs-523"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1951,
+      "min": 1872
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 2
+      },
+      "byKind": {
+        "song": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/hillston",
+    "lat": -33.48266,
+    "lng": 145.53525,
+    "name": "Hillston",
+    "newspapers": {
+      "Hillston Spectator and Lachlan River Advertiser": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-463",
+      "afs-485"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1903,
+      "min": 1901
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1900s": 1,
+        "1930s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 3
+      },
+      "total": 4
+    },
+    "id": "au/nsw/inverell",
+    "lat": -29.77403,
+    "lng": 151.11166,
+    "name": "Inverell",
+    "newspapers": {
+      "Inverell Times": 4
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-391",
+      "afs-445",
+      "afs-509",
+      "afs-583"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1935,
+      "min": 1899
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1940s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/jerilderie",
+    "lat": -35.35757,
+    "lng": 145.72962,
+    "name": "Jerilderie",
+    "newspapers": {
+      "Jerilderie Herald and Urana Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-677"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1949,
+      "min": 1949
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/nsw/katoomba",
+    "lat": -33.71977,
+    "lng": 150.30739,
+    "name": "Katoomba",
+    "newspapers": {
+      "Blue Mountain Echo": 1,
+      "Blue Mountain Star": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-193",
+      "afs-569"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1931,
+      "min": 1917
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1880s": 1,
+        "1890s": 1,
+        "1920s": 2
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 3
+      },
+      "total": 5
+    },
+    "id": "au/nsw/kiama",
+    "lat": -34.66828,
+    "lng": 150.85219,
+    "name": "Kiama",
+    "newspapers": {
+      "Kiama Independent, and Shoalhaven Advertiser": 2,
+      "The Kiama Independent, and Shoalhaven Advertiser": 3
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-212",
+      "afs-650",
+      "afs-713",
+      "afs-796",
+      "afs-999"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1929,
+      "min": 1854
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/kogarah",
+    "lat": -33.9681,
+    "lng": 151.13564,
+    "name": "Kogarah",
+    "newspapers": {
+      "The St George Call": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-979"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1923,
+      "min": 1923
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 2
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/leeton",
+    "lat": -34.55105,
+    "lng": 146.40483,
+    "name": "Leeton",
+    "newspapers": {
+      "Murrumbidgee Irrigator": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-436",
+      "afs-437"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1935,
+      "min": 1930
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1920s": 2,
+        "1940s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 4
+      },
+      "total": 5
+    },
+    "id": "au/nsw/lismore",
+    "lat": -28.81354,
+    "lng": 153.2773,
+    "name": "Lismore",
+    "newspapers": {
+      "The Northern Star": 5
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1035",
+      "afs-1086",
+      "afs-710",
+      "afs-714",
+      "afs-774"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1946,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 2,
+        "1940s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/nsw/lithgow",
+    "lat": -33.4845,
+    "lng": 150.14903,
+    "name": "Lithgow",
+    "newspapers": {
+      "Lithgow Mercury": 2,
+      "The Lithgow Mercury": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-505",
+      "afs-632",
+      "afs-825"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1947,
+      "min": 1911
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/lockhart",
+    "lat": -35.22333,
+    "lng": 146.71816,
+    "name": "Lockhart",
+    "newspapers": {
+      "The Lockhart Review and Oaklands Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-508"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1931,
+      "min": 1931
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 1,
+        "1880s": 1,
+        "1890s": 3
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 3,
+        "unknown": 1
+      },
+      "total": 5
+    },
+    "id": "au/nsw/maitland",
+    "lat": -32.73308,
+    "lng": 151.5574,
+    "name": "Maitland",
+    "newspapers": {
+      "Maitland Mercury": 1,
+      "Maitland Mercury and Hunter River General Advertiser": 1,
+      "The Maitland Daily Mercury": 2,
+      "The Maitland Mercury and Hunter River General Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-178",
+      "afs-357",
+      "afs-928",
+      "afs-987",
+      "afs-995"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1898,
+      "min": 1843
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/manilla",
+    "lat": -30.74748,
+    "lng": 150.71974,
+    "name": "Manilla",
+    "newspapers": {
+      "Manilla Express": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-444"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1910,
+      "min": 1910
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/molong",
+    "lat": -33.09233,
+    "lng": 148.87002,
+    "name": "Molong",
+    "newspapers": {
+      "Molong Express and Western District Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-265"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1898,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/moss-vale",
+    "lat": -34.55374,
+    "lng": 150.37115,
+    "name": "Moss Vale",
+    "newspapers": {
+      "Scrutineer and Berrima District Press": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-100"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1895,
+      "min": 1895
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 2,
+        "1910s": 1,
+        "1920s": 2,
+        "1930s": 2,
+        "1940s": 1,
+        "1950s": 2
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 4,
+        "unknown": 5
+      },
+      "total": 10
+    },
+    "id": "au/nsw/mudgee",
+    "lat": -32.59426,
+    "lng": 149.5871,
+    "name": "Mudgee",
+    "newspapers": {
+      "Mudgee Guardian and North-Western Representative": 6,
+      "The Mudgee Guardian": 1,
+      "The Mudgee Guardian and North-Western Representative": 3
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1008",
+      "afs-230",
+      "afs-298",
+      "afs-529",
+      "afs-530",
+      "afs-584",
+      "afs-688",
+      "afs-757",
+      "afs-790",
+      "afs-814"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1954,
+      "min": 1905
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/murwillumbah",
+    "lat": -28.32732,
+    "lng": 153.39339,
+    "name": "Murwillumbah",
+    "newspapers": {
+      "The Tweed Daily": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-750"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1921,
+      "min": 1921
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 2
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/muswellbrook",
+    "lat": -32.26118,
+    "lng": 150.89009,
+    "name": "Muswellbrook",
+    "newspapers": {
+      "Muswellbrook Chronicle": 1,
+      "The Muswellbrook Chronicle": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-497",
+      "afs-706"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1899,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 1,
+        "1850s": 1,
+        "1870s": 7,
+        "1880s": 1,
+        "1920s": 3,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 7,
+        "unknown": 7
+      },
+      "total": 14
+    },
+    "id": "au/nsw/newcastle",
+    "lat": -32.92953,
+    "lng": 151.7801,
+    "name": "Newcastle",
+    "newspapers": {
+      "Miners' Advocate and Northumberland Recorder": 2,
+      "Newcastle Morning Herald and Miners' Advocate": 2,
+      "Newcastle Sun": 1,
+      "Northern Times": 1,
+      "The Miners' Advocate and Northumberland Recorder": 2,
+      "The Newcastle Chronicle": 2,
+      "The Newcastle Morning Herald and Miners' Advocate": 1,
+      "The Newcastle Sun": 2,
+      "The Northern Times": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1009",
+      "afs-1027",
+      "afs-1028",
+      "afs-1069",
+      "afs-235",
+      "afs-249",
+      "afs-263",
+      "afs-324",
+      "afs-475",
+      "afs-679",
+      "afs-759",
+      "afs-775",
+      "afs-851",
+      "afs-911"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1939,
+      "min": 1840
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1930s": 2
+      },
+      "byKind": {
+        "unknown": 3
+      },
+      "total": 3
+    },
+    "id": "au/nsw/nowra",
+    "lat": -34.880833333,
+    "lng": 150.6075,
+    "name": "Nowra",
+    "newspapers": {
+      "Nowra Leader": 1,
+      "The Nowra Leader": 1,
+      "The Shoalhaven News": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-626",
+      "afs-800",
+      "afs-804"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1937,
+      "min": 1850
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/nsw/penrith",
+    "lat": -33.75,
+    "lng": 150.7,
+    "name": "Penrith",
+    "newspapers": {
+      "Nepean Times": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-217",
+      "afs-506"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1914,
+      "min": 1890
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 2,
+        "1890s": 1,
+        "null": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 2
+      },
+      "total": 4
+    },
+    "id": "au/nsw/queanbeyan",
+    "lat": -35.35493,
+    "lng": 149.232,
+    "name": "Queanbeyan",
+    "newspapers": {
+      "Queanbeyan Age": 2,
+      "Queanbeyan Leader": 1,
+      "The Queanbeyan Age": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-128",
+      "afs-152",
+      "afs-551",
+      "afs-847"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1895,
+      "min": 1873
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 5,
+        "1930s": 1,
+        "1940s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 5
+      },
+      "total": 7
+    },
+    "id": "au/nsw/scone",
+    "lat": -32.05014,
+    "lng": 150.86893,
+    "name": "Scone",
+    "newspapers": {
+      "Scone Advocate": 1,
+      "The Scone Advocate": 6
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1036",
+      "afs-471",
+      "afs-660",
+      "afs-781",
+      "afs-817",
+      "afs-833",
+      "afs-919"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1946,
+      "min": 1926
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1790s": 1,
+        "1820s": 5,
+        "1830s": 11,
+        "1840s": 12,
+        "1850s": 3,
+        "1860s": 10,
+        "1870s": 6,
+        "1880s": 9,
+        "1890s": 14,
+        "1900s": 37,
+        "1910s": 23,
+        "1920s": 18,
+        "1930s": 10,
+        "1940s": 4,
+        "1950s": 9,
+        "1960s": 6,
+        "1980s": 1
+      },
+      "byKind": {
+        "poem": 6,
+        "song": 107,
+        "unknown": 66
+      },
+      "total": 179
+    },
+    "id": "au/nsw/sydney",
+    "lat": -33.86785,
+    "lng": 151.20732,
+    "name": "Sydney",
+    "newspapers": {
+      "Australasian Chronicle": 4,
+      "Australian": 1,
+      "Australian Town and Country Journal": 5,
+      "Australian Worker": 6,
+      "Australian Workman": 1,
+      "Bell's Life": 2,
+      "Catholic Press": 3,
+      "Country Life Stock and Station Journal": 1,
+      "Daily Telegraph": 1,
+      "Direct Action": 1,
+      "Evening News": 6,
+      "Freeman's Journa": 1,
+      "Freeman's Journal": 12,
+      "Hummer": 3,
+      "International Socialist": 2,
+      "Land": 2,
+      "Morning Chronicle": 1,
+      "Newsletter": 1,
+      "Newsletter: an Australian Paper": 1,
+      "Reformer": 1,
+      "Smith's Weekly": 2,
+      "Smiths Weekly": 1,
+      "Sun": 1,
+      "Sydney Chronicle": 1,
+      "Sydney Gazette": 4,
+      "Sydney Gazette and New South Wales Advertiser": 2,
+      "Sydney Mail": 4,
+      "Sydney Mail and New South Wales Advertiser": 5,
+      "Sydney Morning Herald": 4,
+      "Sydney Stock and Station Journal": 4,
+      "Sydney Wool and Stock Journal": 1,
+      "The Australian": 6,
+      "The Australian Star": 3,
+      "The Australian Town and Country Journal": 1,
+      "The Australian Women's Weekly": 1,
+      "The Australian Worker": 2,
+      "The Australian Workman": 1,
+      "The Catholic Press": 5,
+      "The Commercial Journal and Advertiser": 1,
+      "The Daily News": 1,
+      "The Daily Telegraph": 2,
+      "The Evening News": 3,
+      "The Examiner": 1,
+      "The Freeman's Journal": 7,
+      "The Illustrated Sydney News": 1,
+      "The International Socialist": 4,
+      "The Labor Daily": 1,
+      "The Land": 2,
+      "The Monitor": 1,
+      "The Newsletter: an Australian Paper": 1,
+      "The Sentinel": 1,
+      "The Sun": 2,
+      "The Sunday Herald": 1,
+      "The Sunday Sun": 1,
+      "The Sunday Times": 1,
+      "The Sydney Gazette and New South Wales Advertiser": 3,
+      "The Sydney Mail": 3,
+      "The Sydney Mail and New South Wales Advertiser": 5,
+      "The Sydney Morning Herald": 2,
+      "The Sydney Sportsman": 1,
+      "The Tribune": 12,
+      "The Watchman": 2,
+      "The Worker": 8,
+      "The Workers Weekly": 1,
+      "The Workers' Weekly": 1,
+      "The World's News": 2,
+      "The Worlds News": 1,
+      "Tribune": 1,
+      "Workers' Weekly": 1,
+      "World's News": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-040",
+      "afs-051",
+      "afs-071",
+      "afs-1001",
+      "afs-1004",
+      "afs-1011",
+      "afs-1012",
+      "afs-1016",
+      "afs-1017",
+      "afs-1021",
+      "afs-1023",
+      "afs-1029",
+      "afs-1031",
+      "afs-1043",
+      "afs-1044",
+      "afs-1046",
+      "afs-1051",
+      "afs-1053",
+      "afs-1059",
+      "afs-1063",
+      "afs-1072",
+      "afs-1074",
+      "afs-1078",
+      "afs-1079",
+      "afs-1085",
+      "afs-1090",
+      "afs-1091",
+      "afs-1093",
+      "afs-1098",
+      "afs-1100",
+      "afs-119",
+      "afs-122",
+      "afs-137",
+      "afs-138",
+      "afs-139",
+      "afs-146",
+      "afs-156",
+      "afs-157",
+      "afs-158",
+      "afs-175",
+      "afs-196",
+      "afs-197",
+      "afs-209",
+      "afs-210",
+      "afs-211",
+      "afs-226",
+      "afs-228",
+      "afs-229",
+      "afs-236",
+      "afs-251",
+      "afs-254",
+      "afs-269",
+      "afs-275",
+      "afs-276",
+      "afs-277",
+      "afs-278",
+      "afs-283",
+      "afs-295",
+      "afs-299",
+      "afs-301",
+      "afs-308",
+      "afs-309",
+      "afs-313",
+      "afs-315",
+      "afs-317",
+      "afs-335",
+      "afs-344",
+      "afs-346",
+      "afs-347",
+      "afs-351",
+      "afs-353",
+      "afs-362",
+      "afs-364",
+      "afs-384",
+      "afs-389",
+      "afs-393",
+      "afs-398",
+      "afs-450",
+      "afs-451",
+      "afs-452",
+      "afs-457",
+      "afs-464",
+      "afs-465",
+      "afs-469",
+      "afs-478",
+      "afs-480",
+      "afs-487",
+      "afs-489",
+      "afs-495",
+      "afs-510",
+      "afs-512",
+      "afs-524",
+      "afs-525",
+      "afs-543",
+      "afs-550",
+      "afs-553",
+      "afs-555",
+      "afs-572",
+      "afs-578",
+      "afs-581",
+      "afs-593",
+      "afs-598",
+      "afs-614",
+      "afs-622",
+      "afs-623",
+      "afs-624",
+      "afs-625",
+      "afs-633",
+      "afs-635",
+      "afs-639",
+      "afs-642",
+      "afs-655",
+      "afs-656",
+      "afs-657",
+      "afs-663",
+      "afs-664",
+      "afs-665",
+      "afs-670",
+      "afs-671",
+      "afs-675",
+      "afs-676",
+      "afs-682",
+      "afs-683",
+      "afs-689",
+      "afs-691",
+      "afs-698",
+      "afs-699",
+      "afs-701",
+      "afs-702",
+      "afs-720",
+      "afs-722",
+      "afs-734",
+      "afs-739",
+      "afs-742",
+      "afs-753",
+      "afs-755",
+      "afs-766",
+      "afs-767",
+      "afs-771",
+      "afs-786",
+      "afs-787",
+      "afs-797",
+      "afs-801",
+      "afs-820",
+      "afs-822",
+      "afs-830",
+      "afs-831",
+      "afs-836",
+      "afs-837",
+      "afs-841",
+      "afs-842",
+      "afs-849",
+      "afs-852",
+      "afs-862",
+      "afs-871",
+      "afs-878",
+      "afs-880",
+      "afs-883",
+      "afs-888",
+      "afs-889",
+      "afs-892",
+      "afs-897",
+      "afs-900",
+      "afs-907",
+      "afs-918",
+      "afs-920",
+      "afs-922",
+      "afs-923",
+      "afs-924",
+      "afs-932",
+      "afs-940",
+      "afs-942",
+      "afs-955",
+      "afs-958",
+      "afs-977",
+      "afs-991",
+      "afs-992",
+      "afs-996",
+      "afs-998"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1981,
+      "min": 1798
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1,
+        "1920s": 3,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 4
+      },
+      "total": 5
+    },
+    "id": "au/nsw/tumut",
+    "lat": -35.30642,
+    "lng": 148.21818,
+    "name": "Tumut",
+    "newspapers": {
+      "Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 3,
+      "The Gundagai Times and Tumut, Adelong and Murrumbidgee District Advertiser": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-200",
+      "afs-204",
+      "afs-218",
+      "afs-244",
+      "afs-690"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1931,
+      "min": 1881
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/ulladulla",
+    "lat": -35.35906,
+    "lng": 150.47247,
+    "name": "Ulladulla",
+    "newspapers": {
+      "Ulladulla and Milton Times": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-472"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1913,
+      "min": 1913
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/uralla",
+    "lat": -30.6411,
+    "lng": 151.50069,
+    "name": "Uralla",
+    "newspapers": {
+      "The Uralla Times": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-860"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1931,
+      "min": 1931
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/urana",
+    "lat": -35.32933,
+    "lng": 146.26659,
+    "name": "Urana",
+    "newspapers": {
+      "Urana Independent and Clear Hills Standard": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-634"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1917,
+      "min": 1917
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/nsw/wagga-wagga",
+    "lat": -35.12577,
+    "lng": 147.35375,
+    "name": "Wagga Wagga",
+    "newspapers": {
+      "The Daily Advertiser": 1,
+      "Worker (Wagga, NSW)": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1099",
+      "afs-213"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1931,
+      "min": 1901
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1900s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/nsw/walcha-shire",
+    "lat": -30.983333333,
+    "lng": 151.6,
+    "name": "Walcha Shire",
+    "newspapers": {
+      "The Walcha Witness and Vernon County Record": 2,
+      "Walcha News": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-403",
+      "afs-520",
+      "afs-585"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1934,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1940s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/warialda",
+    "lat": -29.54354,
+    "lng": 150.57542,
+    "name": "Warialda",
+    "newspapers": {
+      "Warialda Standard and Northern Districts' Advertiser": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1002"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1945,
+      "min": 1945
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 4,
+        "1930s": 1,
+        "1940s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 6
+    },
+    "id": "au/nsw/wellington",
+    "lat": -32.55588,
+    "lng": 148.94508,
+    "name": "Wellington",
+    "newspapers": {
+      "The Wellington Times": 1,
+      "Wellington Times": 5
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-022",
+      "afs-179",
+      "afs-216",
+      "afs-415",
+      "afs-433",
+      "afs-653"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1946,
+      "min": 1906
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 1,
+        "1860s": 1,
+        "1890s": 1,
+        "1920s": 1,
+        "1930s": 2
+      },
+      "byKind": {
+        "song": 4,
+        "unknown": 2
+      },
+      "total": 6
+    },
+    "id": "au/nsw/windsor",
+    "lat": -33.61309,
+    "lng": 150.81416,
+    "name": "Windsor",
+    "newspapers": {
+      "Hawkesbury Courier and Agricultural and General Advertiser": 1,
+      "The Windsor and Richmond Gazette": 3,
+      "Windsor and Richmond Gazette": 2
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1019",
+      "afs-1095",
+      "afs-118",
+      "afs-161",
+      "afs-456",
+      "afs-813"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1932,
+      "min": 1844
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1910s": 2,
+        "1930s": 1,
+        "1940s": 2
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 6
+    },
+    "id": "au/nsw/wingham",
+    "lat": -31.85,
+    "lng": 152.367,
+    "name": "Wingham",
+    "newspapers": {
+      "The Wingham Chronicle and Manning River Observer": 4,
+      "Wingham Chronicle": 1,
+      "Wingham Chronicle and Manning River Observer": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-427",
+      "afs-537",
+      "afs-631",
+      "afs-704",
+      "afs-768",
+      "afs-982"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1945,
+      "min": 1900
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1,
+        "1880s": 1,
+        "1890s": 2,
+        "1900s": 1,
+        "1920s": 1,
+        "1940s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 2,
+        "unknown": 4
+      },
+      "total": 7
+    },
+    "id": "au/nsw/wollongong",
+    "lat": -34.433055555,
+    "lng": 150.883055555,
+    "name": "Wollongong",
+    "newspapers": {
+      "Illawarra Mercury": 4,
+      "The Illawarra Mercury": 3
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1030",
+      "afs-148",
+      "afs-151",
+      "afs-354",
+      "afs-595",
+      "afs-845",
+      "afs-921"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1941,
+      "min": 1872
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/nsw/young",
+    "lat": -34.3135,
+    "lng": 148.30107,
+    "name": "Young",
+    "newspapers": {
+      "The Burrangong Argus": 1
+    },
+    "parent": "au/nsw",
+    "songIds": [
+      "afs-1018"
+    ],
+    "state": "NSW",
+    "type": "town",
+    "years": {
+      "max": 1896,
+      "min": 1896
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1910s": 1,
+        "1930s": 2
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/nt",
+    "lat": -19.5,
+    "lng": 133.5,
+    "name": "Northern Territory",
+    "newspapers": {
+      "Northern Standard": 1,
+      "Northern Territory Times and Gazette": 1,
+      "The Northern Standard The Droving Days": 1
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "NT",
+    "type": "state",
+    "years": {
+      "max": 1934,
+      "min": 1919
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1,
+        "1930s": 2
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/nt/darwin",
+    "lat": -12.46113,
+    "lng": 130.84185,
+    "name": "Darwin",
+    "newspapers": {
+      "Northern Standard": 1,
+      "Northern Territory Times and Gazette": 1,
+      "The Northern Standard The Droving Days": 1
+    },
+    "parent": "au/nt",
+    "songIds": [
+      "afs-101",
+      "afs-554",
+      "afs-557"
+    ],
+    "state": "NT",
+    "type": "town",
+    "years": {
+      "max": 1934,
+      "min": 1919
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1860s": 4,
+        "1870s": 4,
+        "1880s": 9,
+        "1890s": 63,
+        "1900s": 28,
+        "1910s": 35,
+        "1920s": 26,
+        "1930s": 32,
+        "1940s": 12,
+        "1950s": 4
+      },
+      "byKind": {
+        "poem": 9,
+        "song": 103,
+        "unknown": 106
+      },
+      "total": 218
+    },
+    "id": "au/qld",
+    "lat": -22.5,
+    "lng": 145,
+    "name": "Queensland",
+    "newspapers": {
+      "Avoca Mail": 1,
+      "Beaudesert Times": 2,
+      "Brisbane Courier": 1,
+      "Cairns Post": 4,
+      "Central Queensland Herald": 1,
+      "Daily Mercury": 1,
+      "Daily Standard": 2,
+      "Darling Downs Gazette and General Advertiser": 1,
+      "Longreach Leader": 2,
+      "Mackay Mercury": 1,
+      "Maryborough Chronicle": 1,
+      "Maryborough Chronicle, Wide Bay and Burnett Advertiser": 4,
+      "North Queensland Register": 1,
+      "Northern Miner": 9,
+      "Observer": 1,
+      "Queensland Country Life": 1,
+      "Queensland Figaro": 1,
+      "Queensland Figaro and Punch": 2,
+      "Queensland Times": 1,
+      "Queensland Times, Ipswich Herald & General Advertiser": 1,
+      "Queenslander": 10,
+      "Rockhampton Bulletin": 1,
+      "Telegraph": 2,
+      "The Cairns Post": 1,
+      "The Capricornian": 3,
+      "The Central Queensland Herald": 3,
+      "The Courier": 1,
+      "The Courier-Mail": 1,
+      "The Daily Northern Argus": 1,
+      "The Daily Standard": 6,
+      "The Darling Downs Gazette": 1,
+      "The Evening Advocate": 1,
+      "The Gympie Times and Mary River Mining Gazette": 1,
+      "The Longreach Leader": 1,
+      "The Maryborough Chronicle": 1,
+      "The Maryborough Chronicle, Wide Bay and Burnett Advertiser": 1,
+      "The Nambour Chronicle": 1,
+      "The Northern Herald": 1,
+      "The Northern Miner": 6,
+      "The Observer": 1,
+      "The Queensland Figaro and Punch": 1,
+      "The Queensland Times": 1,
+      "The Queenslander": 13,
+      "The Telegraph": 3,
+      "The Townsville Daily Bulletin": 5,
+      "The Truth": 1,
+      "The Warwick Examiner and Times": 1,
+      "The Western Champion": 1,
+      "The Western Champion and General Advertiser": 1,
+      "The Western Star": 2,
+      "The Worker": 14,
+      "Toowoomba Chronicle and Darling Downs General Advertiser": 2,
+      "Townsville Daily Bulletin": 19,
+      "Truth": 6,
+      "Warwick Argus": 1,
+      "Week": 1,
+      "Western Champion and General Advertiser": 1,
+      "Western Star and Roma Advertiser": 1,
+      "Worker": 62
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "QLD",
+    "type": "state",
+    "years": {
+      "max": 1954,
+      "min": 1857
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/qld/avoca",
+    "lat": -24.87822,
+    "lng": 152.30794,
+    "name": "Avoca",
+    "newspapers": {
+      "Avoca Mail": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-273"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1868,
+      "min": 1868
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1,
+        "1900s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/qld/barcaldine",
+    "lat": -23.55353,
+    "lng": 145.28542,
+    "name": "Barcaldine",
+    "newspapers": {
+      "The Western Champion": 1,
+      "The Western Champion and General Advertiser": 1,
+      "Western Champion and General Advertiser": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-492",
+      "afs-636",
+      "afs-984"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1909,
+      "min": 1884
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/qld/beaudesert",
+    "lat": -27.98691,
+    "lng": 152.99657,
+    "name": "Beaudesert",
+    "newspapers": {
+      "Beaudesert Times": 2
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-468",
+      "afs-476"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1934,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1860s": 2,
+        "1880s": 7,
+        "1890s": 54,
+        "1900s": 18,
+        "1910s": 25,
+        "1920s": 11,
+        "1930s": 7,
+        "1940s": 3,
+        "1950s": 2
+      },
+      "byKind": {
+        "poem": 5,
+        "song": 79,
+        "unknown": 46
+      },
+      "total": 130
+    },
+    "id": "au/qld/brisbane",
+    "lat": -27.46794,
+    "lng": 153.02809,
+    "name": "Brisbane",
+    "newspapers": {
+      "Brisbane Courier": 1,
+      "Daily Standard": 2,
+      "Observer": 1,
+      "Queensland Country Life": 1,
+      "Queensland Figaro": 1,
+      "Queensland Figaro and Punch": 2,
+      "Queenslander": 10,
+      "Telegraph": 2,
+      "The Courier": 1,
+      "The Courier-Mail": 1,
+      "The Daily Standard": 6,
+      "The Observer": 1,
+      "The Queensland Figaro and Punch": 1,
+      "The Queenslander": 13,
+      "The Telegraph": 3,
+      "The Truth": 1,
+      "The Worker": 14,
+      "Truth": 6,
+      "Week": 1,
+      "Worker": 62
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-014",
+      "afs-1022",
+      "afs-1042",
+      "afs-1045",
+      "afs-1057",
+      "afs-1067",
+      "afs-1070",
+      "afs-1080",
+      "afs-1081",
+      "afs-117",
+      "afs-120",
+      "afs-123",
+      "afs-124",
+      "afs-127",
+      "afs-132",
+      "afs-133",
+      "afs-134",
+      "afs-135",
+      "afs-136",
+      "afs-140",
+      "afs-141",
+      "afs-142",
+      "afs-143",
+      "afs-153",
+      "afs-165",
+      "afs-166",
+      "afs-173",
+      "afs-174",
+      "afs-186",
+      "afs-191",
+      "afs-192",
+      "afs-194",
+      "afs-195",
+      "afs-205",
+      "afs-232",
+      "afs-239",
+      "afs-241",
+      "afs-242",
+      "afs-247",
+      "afs-248",
+      "afs-282",
+      "afs-287",
+      "afs-291",
+      "afs-293",
+      "afs-297",
+      "afs-303",
+      "afs-310",
+      "afs-311",
+      "afs-316",
+      "afs-320",
+      "afs-322",
+      "afs-326",
+      "afs-328",
+      "afs-348",
+      "afs-358",
+      "afs-370",
+      "afs-371",
+      "afs-372",
+      "afs-374",
+      "afs-377",
+      "afs-378",
+      "afs-379",
+      "afs-380",
+      "afs-381",
+      "afs-382",
+      "afs-383",
+      "afs-386",
+      "afs-388",
+      "afs-396",
+      "afs-397",
+      "afs-401",
+      "afs-402",
+      "afs-404",
+      "afs-405",
+      "afs-410",
+      "afs-411",
+      "afs-412",
+      "afs-413",
+      "afs-414",
+      "afs-417",
+      "afs-418",
+      "afs-420",
+      "afs-426",
+      "afs-429",
+      "afs-430",
+      "afs-435",
+      "afs-438",
+      "afs-439",
+      "afs-440",
+      "afs-443",
+      "afs-447",
+      "afs-459",
+      "afs-461",
+      "afs-474",
+      "afs-479",
+      "afs-488",
+      "afs-501",
+      "afs-504",
+      "afs-514",
+      "afs-516",
+      "afs-532",
+      "afs-534",
+      "afs-535",
+      "afs-538",
+      "afs-562",
+      "afs-565",
+      "afs-587",
+      "afs-588",
+      "afs-589",
+      "afs-606",
+      "afs-607",
+      "afs-637",
+      "afs-646",
+      "afs-672",
+      "afs-727",
+      "afs-728",
+      "afs-735",
+      "afs-744",
+      "afs-832",
+      "afs-834",
+      "afs-838",
+      "afs-839",
+      "afs-840",
+      "afs-875",
+      "afs-877",
+      "afs-906",
+      "afs-933",
+      "afs-944",
+      "afs-957",
+      "afs-981"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1951,
+      "min": 1857
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 3,
+        "1920s": 2,
+        "1940s": 1
+      },
+      "byKind": {
+        "song": 3,
+        "unknown": 3
+      },
+      "total": 6
+    },
+    "id": "au/qld/cairns",
+    "lat": -16.92366,
+    "lng": 145.76613,
+    "name": "Cairns",
+    "newspapers": {
+      "Cairns Post": 4,
+      "The Cairns Post": 1,
+      "The Northern Herald": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-169",
+      "afs-428",
+      "afs-544",
+      "afs-580",
+      "afs-611",
+      "afs-866"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1942,
+      "min": 1918
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1,
+        "1890s": 2,
+        "1900s": 1,
+        "1910s": 1,
+        "1920s": 4,
+        "1930s": 4,
+        "1940s": 2
+      },
+      "byKind": {
+        "song": 4,
+        "unknown": 11
+      },
+      "total": 15
+    },
+    "id": "au/qld/charters-towers",
+    "lat": -20.07671,
+    "lng": 146.26353,
+    "name": "Charters Towers",
+    "newspapers": {
+      "Northern Miner": 9,
+      "The Northern Miner": 6
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-1014",
+      "afs-1034",
+      "afs-1038",
+      "afs-150",
+      "afs-258",
+      "afs-281",
+      "afs-541",
+      "afs-552",
+      "afs-564",
+      "afs-567",
+      "afs-608",
+      "afs-609",
+      "afs-659",
+      "afs-876",
+      "afs-917"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1940,
+      "min": 1876
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/qld/gympie",
+    "lat": -26.18979,
+    "lng": 152.66499,
+    "name": "Gympie",
+    "newspapers": {
+      "The Gympie Times and Mary River Mining Gazette": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-1047"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1908,
+      "min": 1908
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1940s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/qld/innisfail",
+    "lat": -17.52209,
+    "lng": 146.03102,
+    "name": "Innisfail",
+    "newspapers": {
+      "The Evening Advocate": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-949"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1942,
+      "min": 1942
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1,
+        "1890s": 1,
+        "1910s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/qld/ipswich",
+    "lat": -27.62343,
+    "lng": 152.76067,
+    "name": "Ipswich",
+    "newspapers": {
+      "Queensland Times": 1,
+      "Queensland Times, Ipswich Herald & General Advertiser": 1,
+      "The Queensland Times": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-149",
+      "afs-154",
+      "afs-823"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1914,
+      "min": 1867
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 2,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/qld/longreach",
+    "lat": -23.44212,
+    "lng": 144.24921,
+    "name": "Longreach",
+    "newspapers": {
+      "Longreach Leader": 2,
+      "The Longreach Leader": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-375",
+      "afs-559",
+      "afs-692"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1932,
+      "min": 1923
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/qld/mackay",
+    "lat": -21.141111111,
+    "lng": 149.186111111,
+    "name": "Mackay",
+    "newspapers": {
+      "Daily Mercury": 1,
+      "Mackay Mercury": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-365",
+      "afs-601"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1937,
+      "min": 1895
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1910s": 5,
+        "1930s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 3,
+        "unknown": 3
+      },
+      "total": 7
+    },
+    "id": "au/qld/maryborough",
+    "lat": -25.5375,
+    "lng": 152.701944444,
+    "name": "Maryborough",
+    "newspapers": {
+      "Maryborough Chronicle": 1,
+      "Maryborough Chronicle, Wide Bay and Burnett Advertiser": 4,
+      "The Maryborough Chronicle": 1,
+      "The Maryborough Chronicle, Wide Bay and Burnett Advertiser": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-367",
+      "afs-369",
+      "afs-422",
+      "afs-470",
+      "afs-628",
+      "afs-719",
+      "afs-816"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1935,
+      "min": 1908
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/qld/nambour",
+    "lat": -26.62613,
+    "lng": 152.95941,
+    "name": "Nambour",
+    "newspapers": {
+      "The Nambour Chronicle": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-931"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1935,
+      "min": 1935
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 2,
+        "1890s": 1,
+        "1900s": 1,
+        "1920s": 1,
+        "1930s": 4
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 5,
+        "unknown": 3
+      },
+      "total": 9
+    },
+    "id": "au/qld/rockhampton",
+    "lat": -23.38032,
+    "lng": 150.50595,
+    "name": "Rockhampton",
+    "newspapers": {
+      "Central Queensland Herald": 1,
+      "Rockhampton Bulletin": 1,
+      "The Capricornian": 3,
+      "The Central Queensland Herald": 3,
+      "The Daily Northern Argus": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-094",
+      "afs-187",
+      "afs-432",
+      "afs-566",
+      "afs-687",
+      "afs-746",
+      "afs-788",
+      "afs-795",
+      "afs-864"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1937,
+      "min": 1872
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1900s": 1,
+        "1950s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/qld/roma",
+    "lat": -26.56741,
+    "lng": 148.78751,
+    "name": "Roma",
+    "newspapers": {
+      "The Western Star": 2,
+      "Western Star and Roma Advertiser": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-307",
+      "afs-729",
+      "afs-939"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1952,
+      "min": 1899
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1,
+        "1880s": 1,
+        "1890s": 2
+      },
+      "byKind": {
+        "unknown": 4
+      },
+      "total": 4
+    },
+    "id": "au/qld/toowoomba",
+    "lat": -27.56056,
+    "lng": 151.95386,
+    "name": "Toowoomba",
+    "newspapers": {
+      "Darling Downs Gazette and General Advertiser": 1,
+      "The Darling Downs Gazette": 1,
+      "Toowoomba Chronicle and Darling Downs General Advertiser": 2
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-1065",
+      "afs-160",
+      "afs-536",
+      "afs-811"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1899,
+      "min": 1872
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1920s": 6,
+        "1930s": 12,
+        "1940s": 5,
+        "1950s": 1
+      },
+      "byKind": {
+        "song": 3,
+        "unknown": 22
+      },
+      "total": 25
+    },
+    "id": "au/qld/townsville",
+    "lat": -19.26639,
+    "lng": 146.80569,
+    "name": "Townsville",
+    "newspapers": {
+      "North Queensland Register": 1,
+      "The Townsville Daily Bulletin": 5,
+      "Townsville Daily Bulletin": 19
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-170",
+      "afs-208",
+      "afs-250",
+      "afs-252",
+      "afs-264",
+      "afs-321",
+      "afs-385",
+      "afs-406",
+      "afs-518",
+      "afs-558",
+      "afs-563",
+      "afs-568",
+      "afs-570",
+      "afs-571",
+      "afs-573",
+      "afs-575",
+      "afs-590",
+      "afs-610",
+      "afs-644",
+      "afs-661",
+      "afs-751",
+      "afs-807",
+      "afs-809",
+      "afs-854",
+      "afs-872"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1954,
+      "min": 1904
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/qld/warwick",
+    "lat": -28.21901,
+    "lng": 152.03438,
+    "name": "Warwick",
+    "newspapers": {
+      "The Warwick Examiner and Times": 1,
+      "Warwick Argus": 1
+    },
+    "parent": "au/qld",
+    "songIds": [
+      "afs-1089",
+      "afs-419"
+    ],
+    "state": "QLD",
+    "type": "town",
+    "years": {
+      "max": 1901,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1840s": 4,
+        "1850s": 2,
+        "1860s": 7,
+        "1870s": 10,
+        "1880s": 11,
+        "1890s": 16,
+        "1900s": 13,
+        "1910s": 9,
+        "1920s": 8,
+        "1930s": 4,
+        "1950s": 1
+      },
+      "byKind": {
+        "poem": 5,
+        "song": 48,
+        "unknown": 33
+      },
+      "total": 86
+    },
+    "id": "au/sa",
+    "lat": -30,
+    "lng": 135.5,
+    "name": "South Australia",
+    "newspapers": {
+      "Adelaide Observer": 6,
+      "Border Watch": 2,
+      "Bunyip": 5,
+      "Burra Record": 1,
+      "Chronicle": 2,
+      "Critic": 1,
+      "Daily Herald": 1,
+      "Evening Journal": 5,
+      "Kadina and Wallaroo Times": 1,
+      "Mail": 1,
+      "Narracoorte Herald": 1,
+      "News": 1,
+      "Northern Argus": 2,
+      "Petersburg Times": 1,
+      "Port Adelaide News and Lefevre's Peninsula Advertiser": 1,
+      "Port Augusta Dispatch": 1,
+      "Quiz and the Lantern": 1,
+      "Register": 1,
+      "South Australian": 1,
+      "South Australian Chronicle and Weekly Mail": 1,
+      "South Australian Register": 2,
+      "South Australian Weekly Chronicle": 2,
+      "Southern Cross": 4,
+      "Sport": 1,
+      "The Border Watch": 3,
+      "The Bunyip": 1,
+      "The Chronicle": 2,
+      "The Critic": 2,
+      "The Daily Herald": 2,
+      "The Evening Journal": 2,
+      "The Express and Telegraph": 1,
+      "The Herald": 1,
+      "The Kadina and Wallaroo Times": 2,
+      "The Mail": 1,
+      "The Millicent Times": 1,
+      "The Mount Barker Courier and Onkaparinga and Gumeracha Advertiser": 1,
+      "The Murray Pioneer and Australian River Record": 1,
+      "The Narracoorte Herald": 1,
+      "The Port Adelaide News and Lefevre's Peninsula Advertiser": 1,
+      "The Port Augusta Dispatch": 2,
+      "The Quiz and the Lantern": 2,
+      "The Register": 3,
+      "The South Australian Register": 3,
+      "The South Australian Weekly Chronicle": 1,
+      "The Southern Cross": 1,
+      "The Sport": 2,
+      "The Yorke's Peninsula Advertiser and Miners' News": 1,
+      "Weekly Herald": 4
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "SA",
+    "type": "state",
+    "years": {
+      "max": 1954,
+      "min": 1835
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 4,
+        "1850s": 2,
+        "1860s": 4,
+        "1870s": 2,
+        "1880s": 4,
+        "1890s": 14,
+        "1900s": 10,
+        "1910s": 7,
+        "1920s": 6,
+        "1930s": 3,
+        "1950s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 40,
+        "unknown": 16
+      },
+      "total": 57
+    },
+    "id": "au/sa/adelaide",
+    "lat": -34.92866,
+    "lng": 138.59863,
+    "name": "Adelaide",
+    "newspapers": {
+      "Adelaide Observer": 6,
+      "Chronicle": 2,
+      "Critic": 1,
+      "Daily Herald": 1,
+      "Evening Journal": 5,
+      "Mail": 1,
+      "News": 1,
+      "Quiz and the Lantern": 1,
+      "Register": 1,
+      "South Australian": 1,
+      "South Australian Chronicle and Weekly Mail": 1,
+      "South Australian Register": 2,
+      "South Australian Weekly Chronicle": 2,
+      "Southern Cross": 4,
+      "Sport": 1,
+      "The Chronicle": 2,
+      "The Critic": 2,
+      "The Daily Herald": 2,
+      "The Evening Journal": 2,
+      "The Express and Telegraph": 1,
+      "The Herald": 1,
+      "The Mail": 1,
+      "The Quiz and the Lantern": 2,
+      "The Register": 3,
+      "The South Australian Register": 3,
+      "The South Australian Weekly Chronicle": 1,
+      "The Southern Cross": 1,
+      "The Sport": 2,
+      "Weekly Herald": 4
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-054",
+      "afs-1000",
+      "afs-1010",
+      "afs-1033",
+      "afs-1068",
+      "afs-1094",
+      "afs-121",
+      "afs-147",
+      "afs-260",
+      "afs-296",
+      "afs-312",
+      "afs-327",
+      "afs-331",
+      "afs-361",
+      "afs-425",
+      "afs-446",
+      "afs-449",
+      "afs-453",
+      "afs-460",
+      "afs-486",
+      "afs-491",
+      "afs-502",
+      "afs-527",
+      "afs-539",
+      "afs-540",
+      "afs-542",
+      "afs-546",
+      "afs-577",
+      "afs-592",
+      "afs-599",
+      "afs-604",
+      "afs-612",
+      "afs-613",
+      "afs-617",
+      "afs-666",
+      "afs-669",
+      "afs-680",
+      "afs-685",
+      "afs-721",
+      "afs-724",
+      "afs-738",
+      "afs-743",
+      "afs-745",
+      "afs-778",
+      "afs-779",
+      "afs-780",
+      "afs-805",
+      "afs-846",
+      "afs-868",
+      "afs-879",
+      "afs-881",
+      "afs-893",
+      "afs-898",
+      "afs-925",
+      "afs-950",
+      "afs-986",
+      "afs-993"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1954,
+      "min": 1845
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/burra",
+    "lat": -33.67171,
+    "lng": 138.92835,
+    "name": "Burra",
+    "newspapers": {
+      "Burra Record": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-219"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1917,
+      "min": 1917
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 2
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/sa/clare",
+    "lat": -33.83325,
+    "lng": 138.61064,
+    "name": "Clare",
+    "newspapers": {
+      "Northern Argus": 2
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-113",
+      "afs-323"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1874,
+      "min": 1874
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1860s": 3,
+        "1880s": 1,
+        "1900s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 3,
+        "unknown": 2
+      },
+      "total": 6
+    },
+    "id": "au/sa/gawler",
+    "lat": -34.598055555,
+    "lng": 138.745,
+    "name": "Gawler",
+    "newspapers": {
+      "Bunyip": 5,
+      "The Bunyip": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-1092",
+      "afs-177",
+      "afs-329",
+      "afs-407",
+      "afs-408",
+      "afs-409"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1901,
+      "min": 1835
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 2,
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 3
+      },
+      "total": 3
+    },
+    "id": "au/sa/kadina",
+    "lat": -33.96495,
+    "lng": 137.71634,
+    "name": "Kadina",
+    "newspapers": {
+      "Kadina and Wallaroo Times": 1,
+      "The Kadina and Wallaroo Times": 2
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-116",
+      "afs-332",
+      "afs-761"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1919,
+      "min": 1889
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/millicent",
+    "lat": -37.5833,
+    "lng": 140.35,
+    "name": "Millicent",
+    "newspapers": {
+      "The Millicent Times": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-1007"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1898,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/moonta",
+    "lat": -34.06841,
+    "lng": 137.59076,
+    "name": "Moonta",
+    "newspapers": {
+      "The Yorke's Peninsula Advertiser and Miners' News": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-885"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1873,
+      "min": 1873
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/mount-barker",
+    "lat": -35.06667,
+    "lng": 138.86667,
+    "name": "Mount Barker",
+    "newspapers": {
+      "The Mount Barker Courier and Onkaparinga and Gumeracha Advertiser": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-1073"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1929,
+      "min": 1929
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 3,
+        "1900s": 1,
+        "1920s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 3
+      },
+      "total": 5
+    },
+    "id": "au/sa/mount-gambier",
+    "lat": -37.8318,
+    "lng": 140.77919,
+    "name": "Mount Gambier",
+    "newspapers": {
+      "Border Watch": 2,
+      "The Border Watch": 3
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-155",
+      "afs-257",
+      "afs-821",
+      "afs-936",
+      "afs-937"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1926,
+      "min": 1879
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/sa/naracoorte",
+    "lat": -36.95785,
+    "lng": 140.7383,
+    "name": "Naracoorte",
+    "newspapers": {
+      "Narracoorte Herald": 1,
+      "The Narracoorte Herald": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-270",
+      "afs-843"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1889,
+      "min": 1880
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/peterborough",
+    "lat": -32.97205,
+    "lng": 138.84073,
+    "name": "Peterborough",
+    "newspapers": {
+      "Petersburg Times": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-747"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1896,
+      "min": 1896
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 2
+      },
+      "byKind": {
+        "song": 2
+      },
+      "total": 2
+    },
+    "id": "au/sa/port-adelaide",
+    "lat": -34.846,
+    "lng": 138.503,
+    "name": "Port Adelaide",
+    "newspapers": {
+      "Port Adelaide News and Lefevre's Peninsula Advertiser": 1,
+      "The Port Adelaide News and Lefevre's Peninsula Advertiser": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-473",
+      "afs-760"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1888,
+      "min": 1888
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 2,
+        "1900s": 1
+      },
+      "byKind": {
+        "poem": 2,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/sa/port-augusta",
+    "lat": -32.4925,
+    "lng": 137.765833,
+    "name": "Port Augusta",
+    "newspapers": {
+      "Port Augusta Dispatch": 1,
+      "The Port Augusta Dispatch": 2
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-560",
+      "afs-912",
+      "afs-913"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1905,
+      "min": 1878
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/sa/renmark",
+    "lat": -34.166666666,
+    "lng": 140.733333333,
+    "name": "Renmark",
+    "newspapers": {
+      "The Murray Pioneer and Australian River Record": 1
+    },
+    "parent": "au/sa",
+    "songIds": [
+      "afs-1064"
+    ],
+    "state": "SA",
+    "type": "town",
+    "years": {
+      "max": 1930,
+      "min": 1930
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1820s": 4,
+        "1830s": 4,
+        "1840s": 1,
+        "1850s": 8,
+        "1860s": 1,
+        "1870s": 1,
+        "1880s": 3,
+        "1890s": 7,
+        "1900s": 2,
+        "1910s": 2,
+        "1920s": 1,
+        "1930s": 1,
+        "1940s": 1,
+        "1980s": 1
+      },
+      "byKind": {
+        "song": 24,
+        "unknown": 13
+      },
+      "total": 37
+    },
+    "id": "au/tas",
+    "lat": -42,
+    "lng": 146.8,
+    "name": "Tasmania",
+    "newspapers": {
+      "Bent's News and Tasmanian Register": 1,
+      "Clipper": 1,
+      "Colonial Times": 2,
+      "Colonist": 1,
+      "Colonist and Van Diemen's Land Commercial and Agricultural Advertiser": 1,
+      "Cornwall Chronicle": 3,
+      "Hobart Town Gazette and Van Diemen's Land Advertiser": 1,
+      "Hobarton Guardian, or, True Friend": 2,
+      "Huon and Derwent Times": 1,
+      "Independent": 2,
+      "Launceston Advertiser": 1,
+      "Launceston Examiner": 3,
+      "North West Post": 1,
+      "Tasmanian": 1,
+      "Tasmanian and Port Dalrymple Advertiser": 1,
+      "The Advocate": 1,
+      "The Britannia and Trades' Advocate": 1,
+      "The Clipper": 3,
+      "The Colonial Advocate": 1,
+      "The Colonial Times": 1,
+      "The Colonial Times and Tasmanian Advertiser": 1,
+      "The Critic": 1,
+      "The Irish Exile and Freedom's Advocate": 1,
+      "The Mercury": 1,
+      "The North West Post": 1,
+      "The Tasmanian Colonist": 1,
+      "The Voice": 1,
+      "Western Tiers": 1
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "TAS",
+    "type": "state",
+    "years": {
+      "max": 1988,
+      "min": 1820
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1940s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/tas/burnie",
+    "lat": -41.05584,
+    "lng": 145.90375,
+    "name": "Burnie",
+    "newspapers": {
+      "The Advocate": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-754"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1942,
+      "min": 1942
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1980s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/tas/deloraine",
+    "lat": -41.52477,
+    "lng": 146.65701,
+    "name": "Deloraine",
+    "newspapers": {
+      "Western Tiers": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-395"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1988,
+      "min": 1988
+    }
+  },
+  {
+    "coordSource": null,
+    "counts": {
+      "byDecade": {
+        "1880s": 1,
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/tas/formby",
+    "lat": null,
+    "lng": null,
+    "name": "Formby",
+    "newspapers": {
+      "North West Post": 1,
+      "The North West Post": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-002",
+      "afs-954"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1910,
+      "min": 1889
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1820s": 3,
+        "1830s": 3,
+        "1840s": 1,
+        "1850s": 6,
+        "1890s": 3,
+        "1900s": 2,
+        "1910s": 1,
+        "1920s": 1
+      },
+      "byKind": {
+        "song": 14,
+        "unknown": 6
+      },
+      "total": 20
+    },
+    "id": "au/tas/hobart",
+    "lat": -42.87936,
+    "lng": 147.32941,
+    "name": "Hobart",
+    "newspapers": {
+      "Bent's News and Tasmanian Register": 1,
+      "Clipper": 1,
+      "Colonial Times": 2,
+      "Colonist and Van Diemen's Land Commercial and Agricultural Advertiser": 1,
+      "Hobart Town Gazette and Van Diemen's Land Advertiser": 1,
+      "Hobarton Guardian, or, True Friend": 2,
+      "The Britannia and Trades' Advocate": 1,
+      "The Clipper": 3,
+      "The Colonial Advocate": 1,
+      "The Colonial Times": 1,
+      "The Colonial Times and Tasmanian Advertiser": 1,
+      "The Critic": 1,
+      "The Irish Exile and Freedom's Advocate": 1,
+      "The Mercury": 1,
+      "The Tasmanian Colonist": 1,
+      "The Voice": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-1006",
+      "afs-1024",
+      "afs-185",
+      "afs-227",
+      "afs-300",
+      "afs-454",
+      "afs-493",
+      "afs-630",
+      "afs-643",
+      "afs-649",
+      "afs-700",
+      "afs-705",
+      "afs-765",
+      "afs-770",
+      "afs-783",
+      "afs-784",
+      "afs-793",
+      "afs-855",
+      "afs-865",
+      "afs-988"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1921,
+      "min": 1824
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/tas/huonville",
+    "lat": -43.03124,
+    "lng": 147.04813,
+    "name": "Huonville",
+    "newspapers": {
+      "Huon and Derwent Times": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-684"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1939,
+      "min": 1939
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1820s": 1,
+        "1830s": 1,
+        "1850s": 2,
+        "1860s": 1,
+        "1870s": 1,
+        "1880s": 2,
+        "1890s": 4
+      },
+      "byKind": {
+        "song": 7,
+        "unknown": 5
+      },
+      "total": 12
+    },
+    "id": "au/tas/launceston",
+    "lat": -41.43876,
+    "lng": 147.13467,
+    "name": "Launceston",
+    "newspapers": {
+      "Colonist": 1,
+      "Cornwall Chronicle": 3,
+      "Independent": 2,
+      "Launceston Advertiser": 1,
+      "Launceston Examiner": 3,
+      "Tasmanian": 1,
+      "Tasmanian and Port Dalrymple Advertiser": 1
+    },
+    "parent": "au/tas",
+    "songIds": [
+      "afs-091",
+      "afs-1097",
+      "afs-162",
+      "afs-223",
+      "afs-259",
+      "afs-455",
+      "afs-477",
+      "afs-616",
+      "afs-621",
+      "afs-638",
+      "afs-654",
+      "afs-686"
+    ],
+    "state": "TAS",
+    "type": "town",
+    "years": {
+      "max": 1899,
+      "min": 1820
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1840s": 4,
+        "1850s": 12,
+        "1860s": 12,
+        "1870s": 11,
+        "1880s": 13,
+        "1890s": 18,
+        "1900s": 14,
+        "1910s": 14,
+        "1920s": 6,
+        "1930s": 7
+      },
+      "byKind": {
+        "poem": 8,
+        "song": 58,
+        "unknown": 46
+      },
+      "total": 112
+    },
+    "id": "au/vic",
+    "lat": -37,
+    "lng": 144.5,
+    "name": "Victoria",
+    "newspapers": {
+      "Advocate": 2,
+      "Age": 4,
+      "Alexandra Times": 2,
+      "Alexandra and Yea Standard and Yarck, Gobur, Thornton and Acheron Express": 1,
+      "Argus": 3,
+      "Australasian": 4,
+      "Bacchus Marsh Express": 1,
+      "Ballarat Courier": 1,
+      "Ballarat Star": 1,
+      "Bendigo Advertiser": 3,
+      "Camperdown Chronicle": 1,
+      "Euroa Advertiser": 1,
+      "Free Lance": 1,
+      "Geelong Advertiser": 1,
+      "Geelong Advertiser and Intelligencer": 2,
+      "Gippsland Times": 1,
+      "Goulburn Valley Stock and Property Journal": 1,
+      "Hamilton Spectator": 1,
+      "Hamilton Spectator and Grange District Advertiser": 1,
+      "Herald": 3,
+      "Horsham Times": 2,
+      "Kilmore Free Press and Counties": 1,
+      "Leader": 3,
+      "Melbourne Punch": 1,
+      "Mercury and Weekly Courier": 1,
+      "Mount Alexander Mail": 1,
+      "Myrtleford Mail and Whorouly Witness": 2,
+      "North Melbourne Advertiser": 1,
+      "Ovens and Murray Advertiser": 4,
+      "Port Fairy Times and Macarthur News": 1,
+      "Portland Guardian": 1,
+      "Portland Guardian and Normanby General Advertiser": 3,
+      "Prahran Chronicle": 1,
+      "Snowy River Mail": 1,
+      "Standard": 1,
+      "The Advocate": 6,
+      "The Age": 3,
+      "The Argus": 1,
+      "The Australasian": 3,
+      "The Bendigo Advertiser": 2,
+      "The Broadford Courier and Reedy Creek Times": 2,
+      "The Camperdown Chronicle": 1,
+      "The Evelyn Observer, and South and East Bourke Record": 1,
+      "The Fitzroy City Press": 1,
+      "The Geelong Advertiser": 3,
+      "The Geelong Advertiser and Intelligencer": 1,
+      "The Herald": 6,
+      "The Horsham Times": 1,
+      "The Kerang New Times": 1,
+      "The Kerang Times and Swan Hill Gazette": 2,
+      "The Kyabram Union and Rodney Shire Advocate": 1,
+      "The Leader": 3,
+      "The McIvor Times and Rodney Advertiser": 2,
+      "The Melbourne Herald": 1,
+      "The Melbourne Punch": 1,
+      "The Mount Alexander Mail": 1,
+      "The Port Phillip Patriot": 1,
+      "The Socialist": 1,
+      "The Tocsin": 2,
+      "The Wangaratta Chronicle": 1,
+      "Tocsin": 3,
+      "Warragul Guardian and Buln Buln and Narracan Shire Advocate": 1,
+      "Wodonga and Towong Sentinel": 1
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "VIC",
+    "type": "state",
+    "years": {
+      "max": 1939,
+      "min": 1830
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/bacchus-marsh",
+    "lat": -37.675,
+    "lng": 144.438888888,
+    "name": "Bacchus Marsh",
+    "newspapers": {
+      "Bacchus Marsh Express": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-112"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1891,
+      "min": 1891
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1,
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 2
+      },
+      "total": 2
+    },
+    "id": "au/vic/ballarat",
+    "lat": -37.56622,
+    "lng": 143.84957,
+    "name": "Ballarat",
+    "newspapers": {
+      "Ballarat Courier": 1,
+      "Ballarat Star": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-667",
+      "afs-681"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1917,
+      "min": 1882
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1860s": 1,
+        "1870s": 1,
+        "1900s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 3
+      },
+      "total": 4
+    },
+    "id": "au/vic/beechworth",
+    "lat": -36.35828,
+    "lng": 146.68584,
+    "name": "Beechworth",
+    "newspapers": {
+      "Ovens and Murray Advertiser": 4
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-168",
+      "afs-399",
+      "afs-503",
+      "afs-517"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1901,
+      "min": 1859
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1,
+        "1880s": 1,
+        "1890s": 1,
+        "1900s": 2
+      },
+      "byKind": {
+        "song": 4,
+        "unknown": 1
+      },
+      "total": 5
+    },
+    "id": "au/vic/bendigo",
+    "lat": -36.75,
+    "lng": 144.266666666,
+    "name": "Bendigo",
+    "newspapers": {
+      "Bendigo Advertiser": 3,
+      "The Bendigo Advertiser": 2
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-421",
+      "afs-515",
+      "afs-549",
+      "afs-972",
+      "afs-973"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1903,
+      "min": 1863
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 2
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/broadford",
+    "lat": -37.2,
+    "lng": 145.067,
+    "name": "Broadford",
+    "newspapers": {
+      "The Broadford Courier and Reedy Creek Times": 2
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-237",
+      "afs-238"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1898,
+      "min": 1898
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1,
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/camperdown",
+    "lat": -38.23392,
+    "lng": 143.14983,
+    "name": "Camperdown",
+    "newspapers": {
+      "Camperdown Chronicle": 1,
+      "The Camperdown Chronicle": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1083",
+      "afs-603"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1910,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1860s": 1
+      },
+      "byKind": {
+        "unknown": 2
+      },
+      "total": 2
+    },
+    "id": "au/vic/castlemaine",
+    "lat": -37.06709,
+    "lng": 144.21684,
+    "name": "Castlemaine",
+    "newspapers": {
+      "Mount Alexander Mail": 1,
+      "The Mount Alexander Mail": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-732",
+      "afs-902"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1869,
+      "min": 1856
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/euroa",
+    "lat": -36.75555,
+    "lng": 145.57075,
+    "name": "Euroa",
+    "newspapers": {
+      "Euroa Advertiser": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-355"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1879,
+      "min": 1879
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/fitzroy",
+    "lat": -37.79839,
+    "lng": 144.97833,
+    "name": "Fitzroy",
+    "newspapers": {
+      "Mercury and Weekly Courier": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-749"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1890,
+      "min": 1890
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 5,
+        "1890s": 1,
+        "1900s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 1,
+        "unknown": 5
+      },
+      "total": 7
+    },
+    "id": "au/vic/geelong",
+    "lat": -38.14711,
+    "lng": 144.36069,
+    "name": "Geelong",
+    "newspapers": {
+      "Geelong Advertiser": 1,
+      "Geelong Advertiser and Intelligencer": 2,
+      "The Geelong Advertiser": 3,
+      "The Geelong Advertiser and Intelligencer": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-144",
+      "afs-442",
+      "afs-703",
+      "afs-707",
+      "afs-869",
+      "afs-894",
+      "afs-929"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1905,
+      "min": 1850
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1,
+        "1870s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/hamilton",
+    "lat": -37.7333,
+    "lng": 142.017,
+    "name": "Hamilton",
+    "newspapers": {
+      "Hamilton Spectator": 1,
+      "Hamilton Spectator and Grange District Advertiser": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1075",
+      "afs-279"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1870,
+      "min": 1864
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 2
+      },
+      "byKind": {
+        "poem": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/heathcote",
+    "lat": -36.92214,
+    "lng": 144.70837,
+    "name": "Heathcote",
+    "newspapers": {
+      "The McIvor Times and Rodney Advertiser": 2
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1062",
+      "afs-853"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1905,
+      "min": 1900
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1840s": 1,
+        "1920s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 2
+      },
+      "total": 3
+    },
+    "id": "au/vic/horsham",
+    "lat": -36.71131,
+    "lng": 142.19981,
+    "name": "Horsham",
+    "newspapers": {
+      "Horsham Times": 2,
+      "The Horsham Times": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-171",
+      "afs-462",
+      "afs-798"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1932,
+      "min": 1845
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/kangaroo-ground",
+    "lat": -37.68919,
+    "lng": 145.2317,
+    "name": "Kangaroo Ground",
+    "newspapers": {
+      "The Evelyn Observer, and South and East Bourke Record": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1066"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1894,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/kerang",
+    "lat": -35.73489,
+    "lng": 143.92027,
+    "name": "Kerang",
+    "newspapers": {
+      "The Kerang New Times": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1060"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1907,
+      "min": 1907
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1860s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/kilmore",
+    "lat": -37.29577,
+    "lng": 144.95252,
+    "name": "Kilmore",
+    "newspapers": {
+      "Kilmore Free Press and Counties": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-302"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1866,
+      "min": 1866
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/kyabram",
+    "lat": -36.31335,
+    "lng": 145.05035,
+    "name": "Kyabram",
+    "newspapers": {
+      "The Kyabram Union and Rodney Shire Advocate": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-870"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1894,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1840s": 3,
+        "1850s": 4,
+        "1860s": 6,
+        "1870s": 5,
+        "1880s": 7,
+        "1890s": 7,
+        "1900s": 6,
+        "1910s": 5,
+        "1920s": 5,
+        "1930s": 4
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 36,
+        "unknown": 16
+      },
+      "total": 53
+    },
+    "id": "au/vic/melbourne",
+    "lat": -37.814,
+    "lng": 144.96332,
+    "name": "Melbourne",
+    "newspapers": {
+      "Advocate": 2,
+      "Age": 4,
+      "Argus": 3,
+      "Australasian": 4,
+      "Free Lance": 1,
+      "Herald": 3,
+      "Leader": 3,
+      "Melbourne Punch": 1,
+      "The Advocate": 6,
+      "The Age": 3,
+      "The Argus": 1,
+      "The Australasian": 3,
+      "The Fitzroy City Press": 1,
+      "The Herald": 6,
+      "The Leader": 3,
+      "The Melbourne Herald": 1,
+      "The Melbourne Punch": 1,
+      "The Port Phillip Patriot": 1,
+      "The Socialist": 1,
+      "The Tocsin": 2,
+      "Tocsin": 3
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1003",
+      "afs-1005",
+      "afs-1049",
+      "afs-129",
+      "afs-130",
+      "afs-164",
+      "afs-182",
+      "afs-188",
+      "afs-220",
+      "afs-221",
+      "afs-222",
+      "afs-246",
+      "afs-284",
+      "afs-285",
+      "afs-286",
+      "afs-319",
+      "afs-325",
+      "afs-330",
+      "afs-336",
+      "afs-359",
+      "afs-360",
+      "afs-423",
+      "afs-458",
+      "afs-531",
+      "afs-545",
+      "afs-600",
+      "afs-605",
+      "afs-648",
+      "afs-673",
+      "afs-697",
+      "afs-708",
+      "afs-711",
+      "afs-717",
+      "afs-725",
+      "afs-733",
+      "afs-737",
+      "afs-740",
+      "afs-762",
+      "afs-763",
+      "afs-772",
+      "afs-773",
+      "afs-785",
+      "afs-826",
+      "afs-829",
+      "afs-882",
+      "afs-887",
+      "afs-896",
+      "afs-903",
+      "afs-908",
+      "afs-916",
+      "afs-926",
+      "afs-947",
+      "afs-975"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1938,
+      "min": 1830
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/myrtleford",
+    "lat": -36.56104,
+    "lng": 146.72371,
+    "name": "Myrtleford",
+    "newspapers": {
+      "Myrtleford Mail and Whorouly Witness": 2
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-255",
+      "afs-256"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1916,
+      "min": 1915
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/north-melbourne",
+    "lat": -37.79798,
+    "lng": 144.94512,
+    "name": "North Melbourne",
+    "newspapers": {
+      "North Melbourne Advertiser": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-1087"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1884,
+      "min": 1884
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "poem": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/orbost",
+    "lat": -37.69644,
+    "lng": 148.457,
+    "name": "Orbost",
+    "newspapers": {
+      "Snowy River Mail": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-748"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1913,
+      "min": 1913
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/port-fairy",
+    "lat": -38.38535,
+    "lng": 142.2371,
+    "name": "Port Fairy",
+    "newspapers": {
+      "Port Fairy Times and Macarthur News": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-769"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1917,
+      "min": 1917
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1850s": 1,
+        "1860s": 1,
+        "1870s": 1,
+        "1890s": 1
+      },
+      "byKind": {
+        "song": 2,
+        "unknown": 2
+      },
+      "total": 4
+    },
+    "id": "au/vic/portland",
+    "lat": -38.3462,
+    "lng": 141.60257,
+    "name": "Portland",
+    "newspapers": {
+      "Portland Guardian": 1,
+      "Portland Guardian and Normanby General Advertiser": 3
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-289",
+      "afs-290",
+      "afs-394",
+      "afs-533"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1890,
+      "min": 1859
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1890s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/prahran",
+    "lat": -37.85114,
+    "lng": 144.99318,
+    "name": "Prahran",
+    "newspapers": {
+      "Prahran Chronicle": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-349"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1894,
+      "min": 1894
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/sale",
+    "lat": -38.11095,
+    "lng": 147.06802,
+    "name": "Sale",
+    "newspapers": {
+      "Gippsland Times": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-288"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1934,
+      "min": 1934
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1930s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/shepparton",
+    "lat": -36.38047,
+    "lng": 145.39867,
+    "name": "Shepparton",
+    "newspapers": {
+      "Goulburn Valley Stock and Property Journal": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-576"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1939,
+      "min": 1939
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1870s": 2,
+        "1910s": 1
+      },
+      "byKind": {
+        "unknown": 3
+      },
+      "total": 3
+    },
+    "id": "au/vic/shire-of-alexandra",
+    "lat": -37.2,
+    "lng": 145.717,
+    "name": "Shire of Alexandra",
+    "newspapers": {
+      "Alexandra Times": 2,
+      "Alexandra and Yea Standard and Yarck, Gobur, Thornton and Acheron Express": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-262",
+      "afs-267",
+      "afs-466"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1918,
+      "min": 1870
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/vic/swan-hill",
+    "lat": -35.33781,
+    "lng": 143.5544,
+    "name": "Swan Hill",
+    "newspapers": {
+      "The Kerang Times and Swan Hill Gazette": 2
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-709",
+      "afs-948"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1889,
+      "min": 1882
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/wangaratta",
+    "lat": -36.35846,
+    "lng": 146.32056,
+    "name": "Wangaratta",
+    "newspapers": {
+      "The Wangaratta Chronicle": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-827"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1915,
+      "min": 1915
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1880s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/warragul",
+    "lat": -38.17,
+    "lng": 145.95,
+    "name": "Warragul",
+    "newspapers": {
+      "Warragul Guardian and Buln Buln and Narracan Shire Advocate": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-318"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1880,
+      "min": 1880
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/warrnambool",
+    "lat": -38.3825,
+    "lng": 142.481388888,
+    "name": "Warrnambool",
+    "newspapers": {
+      "Standard": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-390"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1909,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1
+      },
+      "byKind": {
+        "song": 1
+      },
+      "total": 1
+    },
+    "id": "au/vic/wodonga",
+    "lat": -36.12179,
+    "lng": 146.88809,
+    "name": "Wodonga",
+    "newspapers": {
+      "Wodonga and Towong Sentinel": 1
+    },
+    "parent": "au/vic",
+    "songIds": [
+      "afs-441"
+    ],
+    "state": "VIC",
+    "type": "town",
+    "years": {
+      "max": 1918,
+      "min": 1918
+    }
+  },
+  {
+    "coordSource": "fixed",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1890s": 3,
+        "1900s": 15,
+        "1910s": 6,
+        "1920s": 11,
+        "1930s": 9,
+        "1940s": 5
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 26,
+        "unknown": 23
+      },
+      "total": 50
+    },
+    "id": "au/wa",
+    "lat": -26,
+    "lng": 121,
+    "name": "Western Australia",
+    "newspapers": {
+      "Blackwood Times": 1,
+      "Bunbury Herald": 3,
+      "Bunbury Herald and Blackwood Express": 1,
+      "Daily News": 1,
+      "Great Southern Advocate": 1,
+      "Kalgoorlie Miner": 1,
+      "Mirror": 1,
+      "Southern Times": 1,
+      "Sunday Times": 4,
+      "Swan River Guardian": 1,
+      "The Australian": 1,
+      "The Daily News": 2,
+      "The Geraldton Express": 1,
+      "The Great Southern Herald": 1,
+      "The South Western Times": 1,
+      "The Southern Districts Advocate": 1,
+      "The Sunday Times": 7,
+      "The W.A. Record": 1,
+      "The West Australian": 1,
+      "The Western Argus": 1,
+      "The Western Mail": 6,
+      "The Westralian Worker": 3,
+      "The Yalgoo Observer and Murchison Chronicle": 1,
+      "West Australian": 3,
+      "Western Mail": 1,
+      "Westralian Record": 1,
+      "Westralian Worker": 3
+    },
+    "parent": "au",
+    "songIds": [],
+    "state": "WA",
+    "type": "state",
+    "years": {
+      "max": 1947,
+      "min": 1836
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 3,
+        "1910s": 1,
+        "1920s": 2
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 5
+      },
+      "total": 6
+    },
+    "id": "au/wa/bunbury",
+    "lat": -33.32711,
+    "lng": 115.64137,
+    "name": "Bunbury",
+    "newspapers": {
+      "Bunbury Herald": 3,
+      "Bunbury Herald and Blackwood Express": 1,
+      "Southern Times": 1,
+      "The South Western Times": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-131",
+      "afs-181",
+      "afs-272",
+      "afs-387",
+      "afs-400",
+      "afs-695"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1929,
+      "min": 1905
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/wa/geraldton",
+    "lat": -28.77897,
+    "lng": 114.61459,
+    "name": "Geraldton",
+    "newspapers": {
+      "The Geraldton Express": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-818"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1906,
+      "min": 1906
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1,
+        "1930s": 1
+      },
+      "byKind": {
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 2
+    },
+    "id": "au/wa/kalgoorlie",
+    "lat": -30.74614,
+    "lng": 121.4742,
+    "name": "Kalgoorlie",
+    "newspapers": {
+      "Kalgoorlie Miner": 1,
+      "The Western Argus": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-189",
+      "afs-828"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1930,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1910s": 1,
+        "1930s": 1,
+        "1940s": 1
+      },
+      "byKind": {
+        "poem": 1,
+        "song": 1,
+        "unknown": 1
+      },
+      "total": 3
+    },
+    "id": "au/wa/katanning",
+    "lat": -33.68787,
+    "lng": 117.5584,
+    "name": "Katanning",
+    "newspapers": {
+      "Great Southern Advocate": 1,
+      "The Great Southern Herald": 1,
+      "The Southern Districts Advocate": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-215",
+      "afs-914",
+      "afs-935"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1947,
+      "min": 1916
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1830s": 1,
+        "1890s": 3,
+        "1900s": 9,
+        "1910s": 4,
+        "1920s": 8,
+        "1930s": 7,
+        "1940s": 4
+      },
+      "byKind": {
+        "song": 23,
+        "unknown": 13
+      },
+      "total": 36
+    },
+    "id": "au/wa/perth",
+    "lat": -31.95224,
+    "lng": 115.8614,
+    "name": "Perth",
+    "newspapers": {
+      "Daily News": 1,
+      "Mirror": 1,
+      "Sunday Times": 4,
+      "Swan River Guardian": 1,
+      "The Australian": 1,
+      "The Daily News": 2,
+      "The Sunday Times": 7,
+      "The W.A. Record": 1,
+      "The West Australian": 1,
+      "The Western Mail": 6,
+      "The Westralian Worker": 3,
+      "West Australian": 3,
+      "Western Mail": 1,
+      "Westralian Record": 1,
+      "Westralian Worker": 3
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-021",
+      "afs-1020",
+      "afs-1032",
+      "afs-1076",
+      "afs-1077",
+      "afs-167",
+      "afs-180",
+      "afs-240",
+      "afs-268",
+      "afs-373",
+      "afs-448",
+      "afs-467",
+      "afs-490",
+      "afs-561",
+      "afs-596",
+      "afs-597",
+      "afs-615",
+      "afs-627",
+      "afs-651",
+      "afs-731",
+      "afs-776",
+      "afs-782",
+      "afs-794",
+      "afs-815",
+      "afs-824",
+      "afs-835",
+      "afs-856",
+      "afs-857",
+      "afs-858",
+      "afs-859",
+      "afs-873",
+      "afs-901",
+      "afs-904",
+      "afs-909",
+      "afs-951",
+      "afs-971"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1946,
+      "min": 1836
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1900s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/wa/western-australia",
+    "lat": -26,
+    "lng": 121,
+    "name": "Western Australia",
+    "newspapers": {
+      "Blackwood Times": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-431"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1909,
+      "min": 1909
+    }
+  },
+  {
+    "coordSource": "gazetteer",
+    "counts": {
+      "byDecade": {
+        "1920s": 1
+      },
+      "byKind": {
+        "unknown": 1
+      },
+      "total": 1
+    },
+    "id": "au/wa/yalgoo",
+    "lat": -28.34356,
+    "lng": 116.68253,
+    "name": "Yalgoo",
+    "newspapers": {
+      "The Yalgoo Observer and Murchison Chronicle": 1
+    },
+    "parent": "au/wa",
+    "songIds": [
+      "afs-976"
+    ],
+    "state": "WA",
+    "type": "town",
+    "years": {
+      "max": 1924,
+      "min": 1924
+    }
+  }
+]

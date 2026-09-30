@@ -1,0 +1,5004 @@
+[
+ {
+  "author": {
+   "name": "Charles Flower",
+   "raw": "written by Charles Flower",
+   "signature": null
+  },
+  "id": "afs-001",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/001.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/001.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "First published in the Queenslander in 1894 Stewart and Keesing note in their Old Bush Songs : \"According to our correspondent R.C.Lethbridge this song was written by Charles Flower, who once owned a station, 'Roma Downs', in the Maranoa district\".\nThe brothers Horace and Charles Flower were keen songwriters in the 1880's - 90's. Charles Flower's manuscripts are in the Oxley Library, Brisbane.\nRon Edwards suggests inThe Big Book of Australian Folk Song that Paterson probably got his version from the Hurd collection (1894 - 1900).\nMore recently Phillip Butterss discovered that the Hurd collection consists of cuttings taken from the Queenslander and that many of the songs in Paterson's Old Bush Songs appear to come from that source.\nThe version here is taken from the singing of A.L.Lloyd."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": [
+    "book-006",
+    "book-031",
+    "book-102"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:05:56.911Z",
+   "site": "afs",
+   "siteId": "001",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/001.html"
+  },
+  "text": {
+   "incipit": "Hurrah for the old stock saddle, hurrah for the stockwhip too",
+   "lineCount": 20,
+   "stanzas": [
+    [
+     "Hurrah for the old stock saddle, hurrah for the stockwhip too",
+     "Hurrah for the baldy pony boys to carry me westward ho",
+     "To carry me westward ho my boys that's where the cattle stray",
+     "On the far Barcoo where they eat Nardoo a thousand mile away"
+    ],
+    [
+     "Then give your horses rein across the open plain",
+     "We'll crack our whips like a thunderbolt nor care what some folks say",
+     "And a running we'll bring home them cattle at Narome",
+     "On the far Barcoo where they eat Nardoo a thousand mile away"
+    ],
+    [
+     "Knee deep in grass we've got to pass the truth I'm bound to tell",
+     "Where in three weeks them cattle get as fat as they can swell",
+     "As fat as they can swell my lads a thousand pound they weigh",
+     "On the far Barcoo and the Flinders too a thousand mile away"
+    ],
+    [
+     "So fit me up with a snaffle and a four or a five inch spur",
+     "And fourteen foot of greenhide whip to chop the flaming fur",
+     "I'll yard them flaming cattle in away that's safe to swear",
+     "I'll make them Queensland cattlemen sit back in the saddle and stare"
+    ],
+    [
+     "Hurrah for the old stock saddle, hurrah for the stockwhip too",
+     "Hurrah for the baldy pony boys to carry me westward ho",
+     "To carry me westward ho my boys that's where the cattle stray",
+     "On the far Barcoo where they eat Nardoo a thousand mile away"
+    ]
+   ],
+   "wordCount": 237
+  },
+  "themes": [],
+  "title": "A Thousand Mile Away",
+  "titleAlt": [],
+  "titleRaw": "A Thousand Mile Away",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "index",
+   "value": 1894
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-002",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": null,
+   "lng": null,
+   "placeId": "au/tas/formby",
+   "raw": null,
+   "state": "TAS",
+   "town": "Formby"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/002.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://trove.nla.gov.au/newspaper/article/198894137",
+     "text": "North West Post\""
+    },
+    {
+     "href": "http://nla.gov.au/nla.news-article66976518",
+     "text": "Advocate"
+    }
+   ],
+   "text": "First printed in the Bulletin in May 1916.\n\nReworked from a sailor's song 'Noggin Boots' or 'Across the Western Ocean'\n\nThe song, or a related one, was also known as \"All for Me Grog\"\nwas mentioned in the Tasmanian Newspaper the North West Post\" of 20 Jul 1889.\nBANQUET AT ULVERSTONE.\n\nThe Loyal Star of the Sea Lodge, M.U., I.O.O.F.,\ncelebrated their second annual banquet at Rockliffe's Hotel, Ulverstone, on Wednesday evening\n\nBro Johnstone (Victoria) sang, \"The rolling stone gathers no moss,\" and, being re-called, \"All for my grog.\"\nThis version from the singing of A.L.Lloyd who writes \"Sung straight the song never seemed to me wildly exiting, but once I heard a drunken shearer named White sing it on a station near Bethungra NSW, in a way that would make the hair stand on end.\"\n\nIn 1925 the Tasmanian newspaper the Advocate, carried a story under the title \"The Rum Drinkers\"\n\n\"Fifteen men on the dead man's chest,\nYo, ho ho, and a bottle of rum!\nDrink and the devil had done for the rest;\nYo, ho ho, and a bottle of rum!\"\n\nIn the bad old days of the Coast, as well as other places, as far as the \"old hands\" were concerned, rum was the national drink, and many of the old fellows could swallow it like drinking new milk. In the early days of Latrobe a good many of those old fellows, who led a nomadic life, would como down to Sassafras for the harvest and potato digging, and as there were some good workers among them, at the end of the season they would have good cheques, coming to them. During the time they were working they would deny themselves various necessaries, so that, they could have a good \"rum-burst\" at the finish.\n\nWell, about. a mile out of Latrobe, on the road to Moriarty, there used to stand an old two-roomed place which was always known to us kiddies as the \"Swipers' Hut,\" and this place was often tenanted by as many as a dozen of these old follows at the one time. On wet days one of their number would be deputed to bring rum out by the gallon from Latrobe to the old camp. Needless to say, the carousals there were often fast and furious. Many a time other boys and myself would hide in the scrub that surrounded the hut, and listen to the wild singing, and, I am sorry to say, cursing that went on.\n\nThere was one little old wizened man, who looked nearly a hundred, whom we had christened \"Jimmy, the Rat.\" He used to talk in an awful squeaky kind of voice, and one of his favorite songs went, as far as I can remember, Something like this:\n\nAll for the grog, the jolly, jolly grog,\nAll for the beer and tobacco.\nThat's how I spent my tin, with the ladies, drinking gin,\nBut that sort of fun is now over.\n\nAnd from what I have heard of that man since it appears that, the song suited his character to a T, for he lived all his life just for beer and tobacco, and was found dead in a tap-room fireplace at the age of 84. Does it not seem wonderful that a man should live to such a great, age after taking so much poison into his body in the way of alcohol and nicotine? But there you are. He nearly reached the century, and had the horrors lots of times. Many a man who makes a study of his diet, slips off quietly in early life."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "as also known as \"All for Me Grog\" was mentioned in the Tasmanian Newspaper the North West Post\" of 20 Jul 1889. BANQUET AT ULVERSTONE. The Loyal Star of t",
+    "date": {
+     "day": 20,
+     "month": 7,
+     "raw": "20 Jul 1889",
+     "year": 1889
+    },
+    "key": "north-west-post",
+    "page": null,
+    "stateHint": null,
+    "title": "North West Post",
+    "troveArticleId": "198894137",
+    "troveUrl": "http://trove.nla.gov.au/newspaper/article/198894137"
+   },
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:05:57.940Z",
+   "site": "afs",
+   "siteId": "002",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/002.html"
+  },
+  "text": {
+   "incipit": "Chorus",
+   "lineCount": 21,
+   "stanzas": [
+    [
+     "Chorus",
+     "Oh for me grog my jolly jolly grog",
+     "Oh for me beer and tobacco",
+     "Well I spent all my tin in a shanty drinking gin",
+     "Now across the Western Plain I must wander"
+    ],
+    [
+     "I'm stiff stoney broke and I've parted with me moke",
+     "And the sky is looking black as flaming thunder",
+     "And the shanty boss is too for I haven't got a sou",
+     "That's the way you're treated when you're down and under"
+    ],
+    [
+     "Well I'm crook in the head for I haven't been to bed",
+     "Since first I touched this shanty with my plunder",
+     "I see centipedes and snakes, and I'm full of pains and aches",
+     "So I\"d better make a push out over yonder"
+    ],
+    [
+     "I'll take that Old Man Plain and I'll cross it once again",
+     "Until me eyes the track no longer see boys",
+     "And my beer and whisky brain looks for sleep but all in vain",
+     "And I feel as if I had the Darling Pea boys"
+    ],
+    [
+     "So hang that blasted grog, that hocussed shanty grog",
+     "And the beer that's loaded with tobacco",
+     "Grafting humour I am in and I'll stick the peg right in",
+     "And I'll settle down once more for some hard yakka"
+    ]
+   ],
+   "wordCount": 200
+  },
+  "themes": [],
+  "title": "Across the Western Plains",
+  "titleAlt": [],
+  "titleRaw": "Across the Western Plains",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1880s",
+   "from": "newspaper",
+   "value": 1889
+  }
+ },
+ {
+  "author": {
+   "name": "John Neilson",
+   "raw": "written by John Neilson of Penola",
+   "signature": null
+  },
+  "id": "afs-003",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/003.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/003.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Also known as 'Waiting for the Rain', John Meredith collected a version of it from wharfie Leo Dixon, who had been a bush worker and shearer and was born at Eugowra. Meredith writes: \"The words of this were written by John Neilson of Penola, a bush worker, farmer, and balladist, and the father of Australia's greatest lyricist, John Shaw Neilson\".\nThe last verse in this version was sent me by email and comes from Dave de Hugard\"s record \"Freedom On The Wallaby\"\nThe tune is the North American song 'Little Log Cabin in the Dell'."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": [
+    "book-021"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:05:58.904Z",
+   "site": "afs",
+   "siteId": "003",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/003.html"
+  },
+  "text": {
+   "incipit": "The weather has been sultry for a fortnight now or more",
+   "lineCount": 38,
+   "stanzas": [
+    [
+     "The weather has been sultry for a fortnight now or more",
+     "And the shearers have been driving might and main",
+     "For some have got the century who ne'er got it before",
+     "But now we all are waiting for the rain"
+    ],
+    [
+     "Chorus",
+     "For the boss is getting rusty and the ringer's caving in",
+     "His bandaged wrist is aching with the pain",
+     "And the second man I fear will make it hot for him",
+     "Unless we have another fall of rain"
+    ],
+    [
+     "Now some had taken quarters and were keeping well in bunk",
+     "When we shore the six-tooth wethers from the plain",
+     "And if the sheep get harder then a few more men will flunk",
+     "Unless we have another fall of rain"
+    ],
+    [
+     "Some cockies come here shearing they would fill a little book",
+     "About this sad dry weather for the grain",
+     "But here is lunch a-coming make way for Dick the cook",
+     "Old Dick is nigh as welcome as the rain"
+    ],
+    [
+     "But the sky is clouding over and the thunder's muttering loud",
+     "And the clouds are sweeping westward o'er the plain",
+     "And I see the lightning flashing round the edge of yon black cloud",
+     "And I hear the gentle patter of the rain"
+    ],
+    [
+     "So, lads, put up your stoppers and let us to the hut",
+     "Where we'll gather round and have a friendly game",
+     "While some are playing music and some play ante up",
+     "And some are gazing outwards at the rain."
+    ],
+    [
+     "But now the rain is over let the pressers spin the screw",
+     "Let the teamsters back their wagons in again",
+     "We'll block the classer's table by the way we push them through",
+     "For everything goes merry since the rain."
+    ],
+    [
+     "So its \"Boss bring out the bottle\" and we'll wet the final flock",
+     "For the shearers here may never meet again",
+     "Well some may meet next season and some not even then",
+     "And some they will just vanish like the rain"
+    ],
+    [
+     "Final Chorus",
+     "And the boss he won't be rusty when his sheep they all are shore",
+     "And the ringer's wrist won't ache much with the pain",
+     "Of pocketing his cheque for a hundred quid or more",
+     "And the second man will press him hard again"
+    ]
+   ],
+   "wordCount": 364
+  },
+  "themes": [],
+  "title": "Another Fall of Rain",
+  "titleAlt": [],
+  "titleRaw": "Another Fall of Rain",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1870s",
+   "from": "index",
+   "value": 1878
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-004",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/004.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/004.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "From Old Bush Recitations , collected by \"Bill Bowyang\" and published in 1933. To go \"on the wallaby\" or \"on the wallaby track\" or to \"hump the drum\" is to travel outback as a swaggie or sundowner, i.e. a tramp or itinerant worker. John Meredith collected a version from Noah Warren, a miner from Lithgow NSW, who got it from Joe Young who learned in Cairns. In that version the first verse goes:\n\nOur fathers came in search for gold\nThe claim it proved a duffer\nThe syndicates and bankers' bosses\nMade us all suffer\nWe're all for freedom for ourselves\nOurselves our mates of toil\nAustralia's sons are weary\nAnd the billy's on the boil\n\nMeredith notes that the tune \"is a variant of the tune used in northern Queensland for Lawson's 'Freedom on the Wallaby' \"."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "Joe Young"
+   ],
+   "songbooks": [
+    "book-011",
+    "book-021",
+    "book-087"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:05:59.906Z",
+   "site": "afs",
+   "siteId": "004",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/004.html"
+  },
+  "text": {
+   "incipit": "Our fathers came to search for gold",
+   "lineCount": 33,
+   "stanzas": [
+    [
+     "Our fathers came to search for gold",
+     "The mine has proved a duffer",
+     "From bankers boss and syndicate",
+     "We always had to suffer",
+     "They fought for freedom for themselves",
+     "Themselves and mates to toil",
+     "But Australia's sons are weary",
+     "And the billy's on the boil"
+    ],
+    [
+     "Chorus",
+     "Australia's on the wallaby",
+     "Just listen to the coo-ee",
+     "For the kangaroo he rolls his swag",
+     "And the emu shoulders bluey",
+     "The boomerangs are whizzing round",
+     "The dingo scratches gravel",
+     "The possum bear and bandicoot",
+     "Are all upon the travel"
+    ],
+    [
+     "The cuckoo calls the bats and now",
+     "The pigeon and the shag",
+     "The mallee-hen and platypus",
+     "Are rolling up their swag",
+     "For the curlew sings a sad farewell",
+     "Beside the long lagoon",
+     "And the brolga does his last-way waltz",
+     "To the lyrebird's mocking tune"
+    ],
+    [
+     "There's tiger-snakes and damper, boys",
+     "And what's that on the coals?",
+     "There's droughts and floods and ragged duds",
+     "And dried-up waterholes",
+     "There's shadeless trees and sun-scorched plains",
+     "All asking us to toil",
+     "But Australia's sons are weary",
+     "And the billy's on the boil"
+    ]
+   ],
+   "wordCount": 173
+  },
+  "themes": [],
+  "title": "Australia's on the Wallaby",
+  "titleAlt": [],
+  "titleRaw": "Australia's on the Wallaby",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1930s",
+   "from": "notes",
+   "value": 1933
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-005",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/005.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/005.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "First published as 'The Banks of the Riverine' in the Queenslander in 1894 This version from the singing of A.L.Lloyd. Folklorist Dr Edgar Waters writes (Australian Tradition Oct 1966) : \"The Banks of the Condamine seems to have been one of the most widely distributed bush songs. In recent years it has been reported from singers in northern Victoria and the Northern Territory, and a number of different versions have been recorded in New South Wales and in Queensland. Sometimes the man is going off to a horse-breaking camp rather than a shearing shed. In Victoria, and at least in southern New South Wales, it seems to have been known as 'The Banks of the Riverine', and perhaps this was the original form. The words of 'The Banks of the Condamine' were made over from 'The Banks of the Nile', a British Ballad of the beginning of the nineteenth century.\""
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:00.908Z",
+   "site": "afs",
+   "siteId": "005",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/005.html"
+  },
+  "text": {
+   "incipit": "Hark, hark, the dogs are barking, I can no longer stay",
+   "lineCount": 24,
+   "stanzas": [
+    [
+     "Hark, hark, the dogs are barking, I can no longer stay",
+     "The boys have all gone shearing , I heard the publican say",
+     "And I must be off in the morning love before the sun do shine",
+     "To meet the Roma shearers on the banks of the Condamine"
+    ],
+    [
+     "Oh Willie dearest Willie dont leave me here to mourn",
+     "Dont make me curse and rue the day that ever I was born",
+     "For parting with you Willie is like parting with my life",
+     "So stay and be a selector love and I will be your wife"
+    ],
+    [
+     "Oh Nancy dearest Nancy you know that I must go",
+     "The squatters are expecting me their shearing for to do",
+     "And when I'm on the board my love I'll think of you with pride",
+     "And my shears they will go freely when I'm on the whipping side"
+    ],
+    [
+     "Oh I'll cut off my yellow hair and go along with you",
+     "I'll dress myself in men's attire and be a shearer too",
+     "I'll cook and count your tally love whilst ringer-o you shine",
+     "And I'll wash your greasy moleskins on the banks of the Condamine"
+    ],
+    [
+     "Oh Nancy dearest Nancy you know you cannot go",
+     "The boss has given his orders no woman may do so",
+     "And your delicate constitution isn't equal unto mine",
+     "To eat the ramstag mutton on the banks of the Condamine"
+    ],
+    [
+     "But when the shearing's over I'll make of you my wife",
+     "I'll get a boundary riding job and settle down for life",
+     "And when the days' work's done my love and the evening it is fine",
+     "I'll tell of them sandy cobblers on the banks of the Condamine"
+    ]
+   ],
+   "wordCount": 275
+  },
+  "themes": [],
+  "title": "Banks of the Condamine",
+  "titleAlt": [],
+  "titleRaw": "Banks of the Condamine",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "index",
+   "value": 1894
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-006",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/006.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/006.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Ben Hall, Australia's most highly regarded bushranger, was shot by a police party in 1865. This song was collected by John Meredith from Sally Sloane who told him that Ben Hall's sister-in-law was the midwife at her birth. In his Folk Songs of Australia Meredith quotes Sally Sloane talking about the bushranger: \"I saw the place where Ben Hall was killed. He lay down to have a rest this day and was ambushed. Yes it was near Forbes on the Lachlan Plain. He lay there this day waiting for Coobung Mick to bring food to him. Instead of bringing food he brought the cops. and when the policemen came they surrounded him and riddled his body with bullets\"."
+  },
+  "provenance": {
+   "collectors": [
+    "John Meredith"
+   ],
+   "newspaper": null,
+   "singers": [
+    "Sally Sloane"
+   ],
+   "songbooks": [
+    "book-062"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:01.906Z",
+   "site": "afs",
+   "siteId": "006",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/006.html"
+  },
+  "text": {
+   "incipit": "Come all you young Australians and everyone besides",
+   "lineCount": 32,
+   "stanzas": [
+    [
+     "Come all you young Australians and everyone besides",
+     "I'll sing to you a ditty that will fill you with surprise",
+     "Concerning of a ranger bold whose name it was Ben Hall",
+     "But cruelly murdered was this day which proved his downfall"
+    ],
+    [
+     "An outcast from society he was forced to take the road",
+     "All through his false and treacherous wife who sold off his abode",
+     "He was hunted like a native dog from bush to hill and dale",
+     "Till he turned upon his enemies and they could not find his trail"
+    ],
+    [
+     "All out with his companions men's blood he scorned to shed",
+     "He oft-times stayed their lifted hands with vengeance on their heads",
+     "No petty mean or pilfering act he ever stooped to do",
+     "But robbed the rich and hearty man and scorned to rob the poor"
+    ],
+    [
+     "One night as he in ambush lay all on the Lachlan Plain",
+     "When thinking everthing secure to ease himself had lain",
+     "When to his consternation and to his great surprise",
+     "And without one moment's warning a bullet past him flies"
+    ],
+    [
+     "And it was soon succeeded by a volley sharp and loud",
+     "With twelve revolving rifles all pointed at his head",
+     "Where are you Gilbert? where is Dunn? he loudly did call",
+     "It was all in vain they were not there to witness his downfall"
+    ],
+    [
+     "They riddled all his body as if they were afraid",
+     "But in his dying moment he breathed curses on their heads",
+     "That cowardly hearted Condel the sergeant of police",
+     "He crept and fired with fiendish glee till death did him release"
+    ],
+    [
+     "Although he had a lions heart more braver than the brave",
+     "Those cowards shot him like a dog no word of challenge gave",
+     "Though many friends had poor Ben Hall his enemies were few",
+     "Like the emblems of his native land his days were numbered too"
+    ],
+    [
+     "It's through Australia's sunny climb Ben Hall will roam no more",
+     "His name is spread both near and far to every distant shore",
+     "For generations after this parents will to their children call",
+     "And rehearse for them the daring deeds comitted by Ben Hall"
+    ]
+   ],
+   "wordCount": 351
+  },
+  "themes": [],
+  "title": "Ben Hall",
+  "titleAlt": [],
+  "titleRaw": "Ben Hall",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1860s",
+   "from": "notes",
+   "value": 1865
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-007",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/007.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/007.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "A song well known amongst sailors of Britain, Ireland, North America and Australia. In his Farewell to Old England Hugh Anderson gives a broadside version of the song, printed by Ryle & Co, Seven Dials, dated about 1842. This version collected by Alex Hood from Toby Willis, of Western Australia, who learnt it from his father."
+  },
+  "provenance": {
+   "collectors": [
+    "Alex Hood"
+   ],
+   "newspaper": null,
+   "singers": [
+    "Toby Willis"
+   ],
+   "songbooks": [
+    "book-052"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:02.957Z",
+   "site": "afs",
+   "siteId": "007",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/007.html"
+  },
+  "text": {
+   "incipit": "It was in the city of London",
+   "lineCount": 29,
+   "stanzas": [
+    [
+     "It was in the city of London",
+     "In apprenticeship I was bound",
+     "And many's the gay old hour",
+     "I spent in that dear old town"
+    ],
+    [
+     "One day as I was walking",
+     "Along my usual beat",
+     "A pretty little young maiden",
+     "Came tripping along the street"
+    ],
+    [
+     "Chorus",
+     "And her eyes they shone like diamonds",
+     "I thought her the pride of the land",
+     "The hair that hung down on her shoulder",
+     "Was tied with a black velvet band"
+    ],
+    [
+     "One day as we were a walking",
+     "A gentleman passed us by",
+     "I could see she was bent on some mischief",
+     "By the rolling of her dark blue eye"
+    ],
+    [
+     "Gold watch she picked from his pocket",
+     "And slyly placed into my hand",
+     "I was taken in charge by a copper",
+     "Bad luck to that black velvet band"
+    ],
+    [
+     "Before the Lord Mayor I was taken",
+     "Your case, sir, I plainly can see",
+     "And if I'm not greatly mistaken",
+     "You're bound far over the sea"
+    ],
+    [
+     "It's over the dark and blue ocean",
+     "Far away to Van Diemen's Land",
+     "Away from my friends and relations",
+     "And the girl with the black velvet band"
+    ]
+   ],
+   "wordCount": 186
+  },
+  "themes": [],
+  "title": "Black Velvet Band",
+  "titleAlt": [],
+  "titleRaw": "Black Velvet Band",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1840s",
+   "from": "notes",
+   "value": 1842
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-008",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/008.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/008.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "From the singing of A.L.Lloyd. Simon McDonald of Creswick Vic, sings another version called 'Bill Brink' which is closer to Tex Morton's version recorded in the late 1930's."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:03.918Z",
+   "site": "afs",
+   "siteId": "008",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/008.html"
+  },
+  "text": {
+   "incipit": "There once was a shearer by name Bluey Brink",
+   "lineCount": 32,
+   "stanzas": [
+    [
+     "There once was a shearer by name Bluey Brink",
+     "A devil for work and a terror for drink",
+     "He could shear a full hundred each day without fear",
+     "And drink without winking four gallons of beer"
+    ],
+    [
+     "Now Jimmy the barman who served out the drink",
+     "He hated the sight of this here Bluey Brink",
+     "Who stayed much too late and who came much too soon",
+     "At morning, at evening, at night and at noon"
+    ],
+    [
+     "One day as Jimmy was cleaning the bar",
+     "With sulphuric acid he kept in a jar",
+     "Along comes this shearer a bawling with thirst",
+     "Saying whatever you've got Jim just give me the first"
+    ],
+    [
+     "Now it aint in the history, you wont find it in print",
+     "But that shearer drunk acid with never a wink",
+     "Saying that's the stuff Jimmy why strike me stone dead",
+     "This'll make me the ringer of Stephenson's shed"
+    ],
+    [
+     "All through that long day as he served up the beer",
+     "Poor Jimmy was sick with his trouble and fear",
+     "Too anxious to argue too worried to fight",
+     "He saw that poor shearer a corpse in his fright"
+    ],
+    [
+     "But early next morning when he opened the door",
+     "Well there was that shearer a yelling for more",
+     "With his eyebrows all singed and his whiskers deranged",
+     "And holes in hide hide like a dog with the mange."
+    ],
+    [
+     "Says Jimmy and how did you find the new stuff?",
+     "Says Bluey it's fine but I've not had enough",
+     "It gives me great courage to shear and to fight",
+     "But why does that stuff set me whiskers alight?"
+    ],
+    [
+     "I thought I knew grog, but I must have been wrong",
+     "The stuff that you gave me was proper and strong",
+     "It set me to coughing and you know I'm no liar",
+     "But every damn cough set me whiskers on fire"
+    ]
+   ],
+   "wordCount": 302
+  },
+  "themes": [],
+  "title": "Bluey Brink",
+  "titleAlt": [],
+  "titleRaw": "Bluey Brink",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1930s",
+   "from": "notes",
+   "value": 1930
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-009",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/009.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/009.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://www.nationalarchives.ie/search01.html",
+     "text": "http://www.nationalarchives.ie/search01.html"
+    }
+   ],
+   "text": "This version collected by Alan Scott from Mr H. Beatty of Hawthorne Qld. In his booklet The Donahoe Ballads gives some 16 tunes that have been collected. The earliest Donahoe ballad appeared in The Sydney Gazette 7th September 1830. On 2nd January 1825 John Donahoe arrived at Sydney Cove on board the convict ship 'Ann and Amelia'. He had been sentenced to transportation for life on a charge \"Intent to commit felony\". On 1st September 1830 Donahoe, with his companions William Webber and John Warmsley, was ambushed by a party of police near Bringelly. Donahoe was shot dead, while Webber and Walmsley escaped.\n\nSearchable archives of Irish transports are now available on at The National Archives of Ireland\n\nhttp://www.nationalarchives.ie/search01.html"
+  },
+  "provenance": {
+   "collectors": [
+    "Alan Scott"
+   ],
+   "newspaper": null,
+   "singers": [
+    "H. Beatty"
+   ],
+   "songbooks": [
+    "book-122"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:04.911Z",
+   "site": "afs",
+   "siteId": "009",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/009.html"
+  },
+  "text": {
+   "incipit": "In Dublin town I was brought up that city of great fame",
+   "lineCount": 27,
+   "stanzas": [
+    [
+     "In Dublin town I was brought up that city of great fame",
+     "My parents reared me tenderly there's many did the same",
+     "Being a wild colonial boy I was forced to cross the main",
+     "And for seven long years in New South Wales to wear a convict's chain"
+    ],
+    [
+     "Oh I'd been no longer than six months upon Australian shores",
+     "When I turned out as a Tory boy as I'd often done before",
+     "There was Macnamara from yonder woods and Captain Mackie too",
+     "They were the chief associates of bold Jack Donahoe"
+    ],
+    [
+     "As O'Donahoe was taken for a notorious crime",
+     "And sentenced to be hanged all on the gallows high",
+     "But when he came to Sydney gaol he left them in a stew",
+     "For when they came to call the roll they missed Jack Donahoe"
+    ],
+    [
+     "As O'Donahoe made his escape to the woods he did repair",
+     "Where the tyrants dared not show their face by night and day",
+     "And every week in the newspapers there was published something new",
+     "Concerning that bold hero boy called brave Jack Donahoe"
+    ],
+    [
+     "As O'Donahoe was walking one summer's afternoon",
+     "Little was his notion that his death should be so soon",
+     "When a sergeant of the horse police discharged his carabine",
+     "And loudly called to O'Donahoe to fight or else resign"
+    ],
+    [
+     "Resign to you, you cowardly dogs its a thing I ne'er will do",
+     "For I'll range these woods and valleys like a wolf or kangaroo",
+     "Before I'll work for Government said bold Jack Donahoe"
+    ],
+    [
+     "Nine rounds the horse policeman fired till at length a fatal ball",
+     "He lodged it in O'Donahoe's breast and it caused him to fall",
+     "As he closed his mournful eyes to this world he bid adieu",
+     "Good people all both great and small pray for Jack Donahoe"
+    ]
+   ],
+   "wordCount": 296
+  },
+  "themes": [],
+  "title": "Bold Jack Donohue",
+  "titleAlt": [],
+  "titleRaw": "Bold Jack Donohue",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1830s",
+   "from": "notes",
+   "value": 1830
+  }
+ },
+ {
+  "author": {
+   "name": "Stephens",
+   "raw": "written by Stephens and Yardley",
+   "signature": null
+  },
+  "id": "afs-010",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/010.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/010.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://www.nationalarchives.ie/search01.html",
+     "text": "http://www.nationalarchives.ie/search01.html"
+    }
+   ],
+   "text": "First published in Sydney Golden Songster in 1893 This song is a burlesque, written by Stephens and Yardley, from the comedy 'Little Jack Shepherd' that played in London in 1885, and in Melbourne in 1886. 'Botany Bay' shares two verses with 'Fairwell to Judges and Juries' a broadside c.1820\n\nIn 2011 I came across this version of the song\n\nThe West Australian Wednesday 24 November 1886 p.3\nhttp://trove.nla.gov.au/ndp/del/article/3759595\n\nFROM THE \"PINK 'UN.\"\n\nO ! my rum pals, my ben culls, and barrakers,\nMy old lags and scampsmen so gay,\nMy blooming bushrangers and larrikins,\nOn the Shores of Old Botany Bay.\n\nIn the days of our youth I've a noshiun,\nFrom rectitoods path we did stray,\nSo they shipped us across the salt o-shiun,\nTo do time at Botany Bay.\n\nBut now we've returned to these British shores,\nWhere we 'opes for a long time to stay,\nThey calls has Colonial Visitors,\nNot menshioning Botany Bay.\n\nAnd we pal on with Dukes, Lords and Markisses\nWhich our manners is strickly O.K.\nAnd they don't make no nasty remarkises,\nRespectu-ing Botany Bay.\n\nO ! the fakes they get up to please as is\nQuite lovely in every way,\nAnd they've made us all K.C.M.G.esuses,\nVich you can't do in Botany Bay.\n\n(Sing) Tooral lal looral lal laddidi,\n(Also) Tooral lal looral liday,\n(Likewise) Tooral lal looral lal laddidi,\n(Not forgetting) Tooral lal looral liday.\n\nSearchable archives of Irish transports are now available on at The National Archives of Ireland\n\nhttp://www.nationalarchives.ie/search01.html"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": [
+    "book-005"
+   ]
+  },
+  "related": [
+   {
+    "id": "afs-011",
+    "relation": "variant",
+    "title": "Botany Bay 2"
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:05.917Z",
+   "site": "afs",
+   "siteId": "010",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/010.html"
+  },
+  "text": {
+   "incipit": "Farewell to old England forever",
+   "lineCount": 28,
+   "stanzas": [
+    [
+     "Farewell to old England forever",
+     "Farewell to my rum culls as well",
+     "Farewell to the well known Old Bailey",
+     "Where I used for to cut such a swell"
+    ],
+    [
+     "Singing Tooral liooral liaddity",
+     "Singing Tooral liooral liay",
+     "Singing Tooral liooral liaddity",
+     "And we're bound for Botany Bay"
+    ],
+    [
+     "There's the captain as is our commander",
+     "There's the bosun and all the ship's crew",
+     "There's the first and the second class passengers",
+     "Knows what we poor convicts go through"
+    ],
+    [
+     "Taint leaving old England we cares about",
+     "Taint cos we mis-spells what we knows",
+     "But because all we light fingered gentry",
+     "Hops around with a log on our toes"
+    ],
+    [
+     "These seven long years I've been serving now",
+     "And seven long more have to stay",
+     "All for bashing a bloke down our alley",
+     "And taking his ticker away"
+    ],
+    [
+     "Oh had I the wings of a turtle dove",
+     "I'd soar on my pinions so high",
+     "Slap bang to the arms of my Polly love",
+     "And in her sweet presence I'd die"
+    ],
+    [
+     "Now all my young Dookies and Dutchesses",
+     "Take warning from what I've to say",
+     "Mind all is your own as you toucheses",
+     "Or you'll find us in Botany Bay"
+    ]
+   ],
+   "wordCount": 194
+  },
+  "themes": [],
+  "title": "Botany Bay",
+  "titleAlt": [],
+  "titleRaw": "Botany Bay",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "notes",
+   "value": 1893
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-011",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/011.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://www.nationalarchives.ie/search01.html",
+     "text": "http://www.nationalarchives.ie/search01.html"
+    }
+   ],
+   "text": "This version collected by the great English collector Cecil Sharp early this century. It is closely related to 'The Transport' also in this collection. See also 'Girls of the Shamrock Shore'.\n\nSearchable archives of Irish transports are now available on at The National Archives of Ireland\n\nhttp://www.nationalarchives.ie/search01.html"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [
+   {
+    "id": "afs-010",
+    "relation": "variant",
+    "title": "Botany Bay"
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:06.905Z",
+   "site": "afs",
+   "siteId": "011",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/011.html"
+  },
+  "text": {
+   "incipit": "Come all young men of learning, a warning take by me",
+   "lineCount": 16,
+   "stanzas": [
+    [
+     "Come all young men of learning, a warning take by me",
+     "I'll have you quit night walking and shun bad company",
+     "I'll have you quit night walking, or else you'll rue the day",
+     "And you will be transported and be sent to Botany Bay"
+    ],
+    [
+     "I was brought up in London town, a place I know full well",
+     "Brought up by honest parents, the truth to you I'll tell",
+     "Brought up by honest parents, who loved me tenderly",
+     "Till I became a roving blade, to prove my destiny"
+    ],
+    [
+     "My character was taken and I was sent to goal",
+     "My parents tried to clear me, but nothing would prevail",
+     "Twas at our Rutland sessions the Judge to me did say",
+     "The jury's found you guilty, you must go to Botany Bay"
+    ],
+    [
+     "To see my poor old father, as he stood at the bar",
+     "Likewise my dear old mother, her old gray locks she tore",
+     "And in tearing of her old gray locks these words to me she did say",
+     "O son ! O son ! What hast thou done, Thou art bound for Botany Bay"
+    ]
+   ],
+   "wordCount": 183
+  },
+  "themes": [],
+  "title": "Botany Bay 2",
+  "titleAlt": [],
+  "titleRaw": "Botany Bay 2",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-012",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/012.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [],
+   "text": "From the singing of A.L.Lloyd. A version was collected by Laura Smith from sailors in Tyneside and printed in her The Music of the Waters in 1888."
+  },
+  "provenance": {
+   "collectors": [
+    "Laura Smith"
+   ],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:07.909Z",
+   "site": "afs",
+   "siteId": "012",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/012.html"
+  },
+  "text": {
+   "incipit": "In South Australia I was born",
+   "lineCount": 29,
+   "stanzas": [
+    [
+     "In South Australia I was born",
+     "Heave away, haul away",
+     "South Australia round Cape Horn",
+     "We're bound for South Australia"
+    ],
+    [
+     "Chorus",
+     "Heave away, you rolling king",
+     "Heave away, haul away",
+     "Heave away, oh hear me sing",
+     "We're bound for South Australia"
+    ],
+    [
+     "There ain't but one thing grieves my mind",
+     "Heave away, haul away",
+     "To leave Miss Nancy Blair behind",
+     "We're bound for South Australia"
+    ],
+    [
+     "Oh when I sailed across the sea",
+     "Heave away, haul away",
+     "My girl said she'd be true to me",
+     "We're bound for South Australia"
+    ],
+    [
+     "I rung her all night I rung her all day",
+     "Heave away, haul away",
+     "I rung her before we sailed away",
+     "We're bound for South Australia"
+    ],
+    [
+     "And now I'm on some foreign strand",
+     "Heave away, haul away",
+     "With a bottle of whiskey in my hand",
+     "We're bound for South Australia"
+    ],
+    [
+     "And as we wallop around Cape Horn",
+     "Heave away, haul away",
+     "You wish to God you'd never been born",
+     "We're bound for South Australia"
+    ]
+   ],
+   "wordCount": 162
+  },
+  "themes": [],
+  "title": "Bound for South Australia",
+  "titleAlt": [],
+  "titleRaw": "Bound for South Australia",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1880s",
+   "from": "notes",
+   "value": 1888
+  }
+ },
+ {
+  "author": {
+   "name": "Saul Mendelsohn",
+   "raw": "written by Saul Mendelsohn",
+   "signature": null
+  },
+  "id": "afs-013",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/013.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/013.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Printed in Stewart & Keesing Old Bush Songs with the note: \"Reconstructed from a version in the Boomerang of 28th February 1891, and from a version collected by Mercedes Birkbeck, of \"Old Glenmore\", via Rockhampton, Queensland, from Mrs E. Ware, of Kelvin Grove, Brisbane.\" This version from the singing of A.L.Lloyd whose tune and fourth verse make it distinct from other versions: Then onto Nanango that hard-bitten township Where the out of work station hands sit in the dust..... Like a number of Bush Songs 'Brisbane Ladies' derives from a sailors song in this case 'Spanish Ladies'. Ron Edwards writes that a version appears in the Hurd collection (1894-1900) \"with a note 'Supplied by S.Mendelsohn, Narango.' The song was written by Saul Mendelsohn, who was a storekeeper there, he died in 1879. The original title of the song was The Drover but in recent years it has always been known as Brisbane Ladies\"."
+  },
+  "provenance": {
+   "collectors": [
+    "Mercedes Birkbeck"
+   ],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": [
+    "book-006",
+    "book-031"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:08.915Z",
+   "site": "afs",
+   "siteId": "013",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/013.html"
+  },
+  "text": {
+   "incipit": "Farewell and adieu to you Brisbane ladies",
+   "lineCount": 29,
+   "stanzas": [
+    [
+     "Farewell and adieu to you Brisbane ladies",
+     "Farewell and adieu to you girls of Toowong",
+     "For we've sold all our cattle and have to be moving",
+     "But we hope we shall see you again before long"
+    ],
+    [
+     "Chorus",
+     "We'll rant and we'll roar like true Queensland drovers",
+     "We'll rant and we'll roar as onward we push",
+     "Until we get back to the Augathella station",
+     "It's flaming dry going through the old Queensland bush"
+    ],
+    [
+     "The first camp we make we shall call it the Quart Pot",
+     "Cabbolture then Kilcoy and Collington's hut",
+     "We'll pull up at the Stone House, Bob Williamson's paddock",
+     "And early next morning we cross the Blackbutt"
+    ],
+    [
+     "Then onto Taromeo and Yarraman Creek lads",
+     "It's there we shall make our next camp for the day",
+     "Where the water and grass are both plenty and sweet lads",
+     "And maybe we'll butcher a fat little stray"
+    ],
+    [
+     "Then onto Nanango that hard-bitten township",
+     "Where the out of work station hands sit in the dust",
+     "And the shearers get shore by old Tim the contractor",
+     "I wouldn't go by there but I flaming well must"
+    ],
+    [
+     "The girls of Toomancy they look so entrancing",
+     "Those young bawling heifers are out looking for fun",
+     "With the waltz and the polka and all kinds of dancing",
+     "To the racketty old banjo of Henry Gunn"
+    ],
+    [
+     "Then fill up your glasses and we'll drink to the lasses",
+     "We'll drink this town dry then farewell to all",
+     "And when we return once more to Augathella",
+     "We hope you'll come by there and pay us a call"
+    ]
+   ],
+   "wordCount": 257
+  },
+  "themes": [],
+  "title": "Brisbane Ladies",
+  "titleAlt": [],
+  "titleRaw": "Brisbane Ladies",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1870s",
+   "from": "index",
+   "value": 1879
+  }
+ },
+ {
+  "author": {
+   "name": "Charles Augustus Flower",
+   "raw": "Written by Charles Augustus Flower",
+   "signature": null
+  },
+  "id": "afs-014",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -27.46794,
+   "lng": 153.02809,
+   "placeId": "au/qld/brisbane",
+   "raw": null,
+   "state": "QLD",
+   "town": "Brisbane"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/014.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/014.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article23976029",
+     "text": "Queenslander"
+    }
+   ],
+   "text": "First published in the Queenslander in 1894 under the title \"The Squatter's Farewell.\" A.D. 1885. Anthos.\n\nWritten by Charles Augustus Flower. The brothers Horace and Charles Flower, Queensland station owners, were keen songwriters in the 1880's - 90's. Charles Flower's manuscripts are in the Oxley Library, Brisbane. In 1891 the squatters were at war with the shearers in the Shearers' Strike. In 1893 the banks crashed. This tune is from Jack 'Hoopiron' Lee who was 77 and had been blind for a number of years when he was recorded by John Meredith in 1953."
+  },
+  "provenance": {
+   "collectors": [
+    "John Meredith"
+   ],
+   "newspaper": {
+    "context": "First published in the Queenslander in 1894 under the title \"The Squatter's Farewell.\" A.D. 188",
+    "date": null,
+    "key": "queenslander",
+    "page": null,
+    "stateHint": null,
+    "title": "Queenslander",
+    "troveArticleId": "23976029",
+    "troveUrl": "http://nla.gov.au/nla.news-article23976029"
+   },
+   "singers": [],
+   "songbooks": [
+    "book-126"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:09.916Z",
+   "site": "afs",
+   "siteId": "014",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/014.html"
+  },
+  "text": {
+   "incipit": "Come, Stumpy old man, we must shift while we can",
+   "lineCount": 38,
+   "stanzas": [
+    [
+     "Come, Stumpy old man, we must shift while we can",
+     "All your mates in the paddock are dead",
+     "Let us wave our farewells to Glen Eva's sweet dells",
+     "And the hills where your lordship was bred",
+     "Together to roam from our drought-stricken home",
+     "It's tough that such things have to be",
+     "And it's hard on a horse to have nought for a boss",
+     "But a broken-down squatter like me"
+    ],
+    [
+     "Chorus",
+     "For the banks are all broken they say",
+     "And the merchants are all up a tree",
+     "When the big-wigs are brought",
+     "To the Bankruptcy Court",
+     "What hope for a squatter like me"
+    ],
+    [
+     "No more shall we muster the river for fats",
+     "Or spiel on the Fifteen Mile Plain",
+     "Or rip through the scrub by the light of the moon",
+     "Or see the old stockyard again",
+     "Leave the slip-panels down, it won't matter much now",
+     "There are none but the crows left to see",
+     "Perching gaunt on yon pine, as though longing to dine",
+     "On a broken-down squatter like me"
+    ],
+    [
+     "When the country was cursed with the drought at its worst",
+     "And the cattle were dying in scores",
+     "Though down on my luck, I kept up my pluck",
+     "Thinking justice might temper the laws",
+     "But the farce has been played, and the Government aid",
+     "Ain't extended to squatters, old son",
+     "When my money was spent, they doubled the rent",
+     "And resumed the best half of the run"
+    ],
+    [
+     "'Twas done without reason, for (leaving the season)",
+     "No squatter could stand such a rub",
+     "For it's useless to squat when the rents are so hot",
+     "That you can't save the price of your grub",
+     "And there's not much to choose 'twixt the banks and the screws",
+     "Once a fellow gets put up a tree",
+     "No odds what I feel, there's no Court of Appeal",
+     "For a broken-down squatter like me"
+    ]
+   ],
+   "wordCount": 307
+  },
+  "themes": [],
+  "title": "Broken-down Squatter",
+  "titleAlt": [],
+  "titleRaw": "Broken-down Squatter",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "index",
+   "value": 1894
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-015",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/015.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [],
+   "text": "In his Big Book of Australian Folk Song Ron Edwards writes \"A Bullockie's Song was collected by Bob Michell and Stan Arthur in 1966 at Bundaberg, Qld, from the singing of Albert Newitt (born c. 1879). According to the conversation on the tape this is one of the informant's own compositions. He had worked as a bullock driver for many years in the Bundaberg area, and the song describes what must have been a typical day in his life\"."
+  },
+  "provenance": {
+   "collectors": [
+    "Bob Michell"
+   ],
+   "newspaper": null,
+   "singers": [
+    "Albert Newitt"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:10.919Z",
+   "site": "afs",
+   "siteId": "015",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/015.html"
+  },
+  "text": {
+   "incipit": "There's an old bullock driver lives in Bundaberg up west",
+   "lineCount": 28,
+   "stanzas": [
+    [
+     "There's an old bullock driver lives in Bundaberg up west",
+     "His name is Jim and he's one of the best",
+     "He'd yoke up his team, go where any teamster could go",
+     "He'd snig out his logs and load up his load"
+    ],
+    [
+     "He'd hook the bullocks to the wagon you see",
+     "Crack his whip, 'Get up' says he",
+     "All the bullocks would lean into the yokes and the bows",
+     "And the wagon would start moving very slow"
+    ],
+    [
+     "He would drive his team along the road",
+     "Up hills and down hills they would go",
+     "Across sandy flats with their heads bending low",
+     "Doing their best to pull a big load"
+    ],
+    [
+     "Then to the camp he would drive his team",
+     "Unyoke his bullocks, turn them out to the feed",
+     "Poke up the fire to cook him some tea",
+     "Salt junk and damper, oh that was his meal"
+    ],
+    [
+     "He would sit by the fire and smoke his pipe",
+     "Then into his bunk to retire for the night",
+     "Up in the morning at the dawn of the day",
+     "Saddle his horse and jog on his way"
+    ],
+    [
+     "His old black dog Nipper trotting behind",
+     "Off they would go, the bullocks to find",
+     "Muster the team, drive them back to the camp",
+     "Yoke up his bullocks and away he would tramp"
+    ],
+    [
+     "Now Jimmy is old and wrinkled and gray",
+     "He knows that his time must soon pass away",
+     "He knows he must go where his cobbers have gone",
+     "Where there's no bullock teams to drive along"
+    ]
+   ],
+   "wordCount": 249
+  },
+  "themes": [],
+  "title": "Bullockie's Song",
+  "titleAlt": [
+   "Bullockies Song"
+  ],
+  "titleRaw": "Bullockie's Song",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1960s",
+   "from": "notes",
+   "value": 1966
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-016",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/016.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/016.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "This parody of 'Finnegans Wake' was sung to John Meredith by Margaret Parker and her sister Mrs Sprike, who had learned the song from their father, John Brennan. Brennan heard the song while droving in the Gulf Country of northern Queensland. Prog is food, waddurang means old woman, and pigweed was boiled up or eaten raw as a green vegetable to prevent 'Barcoo rot' or scurvy."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:11.921Z",
+   "site": "afs",
+   "siteId": "016",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/016.html"
+  },
+  "text": {
+   "incipit": "The teams were camped along the gully, soon the news flew round about",
+   "lineCount": 30,
+   "stanzas": [
+    [
+     "The teams were camped along the gully, soon the news flew round about",
+     "Plans were worked out by Pat Skulley, to give the boys a grand blowout",
+     "We had an awning of tarpaulin, kegs and casks came quickly rolling",
+     "Then the boys and girls came strolling, to have a burst at the Bullockies' Ball."
+    ],
+    [
+     "Chorus",
+     "Oh, my hearty, that was a party",
+     "Help yourself, free, gratis all",
+     "Lots of prog and buckets of grog",
+     "To swig away at the Bullockies' Ball"
+    ],
+    [
+     "First came Flash Joe, but Jimmy was flasher Hopping Billy the one-eyed boss",
+     "Brisbane Sal and the Derwent Slasher Billy the Bull and Paddy the Hoss",
+     "Nanny the Rat, the real macassar Brisbane Bess and Mother McCall",
+     "All came rolling up together, to have a burst at the Bullockies' Ball"
+    ],
+    [
+     "Soon pint pots began to rattle, the cry was \"Pass the rum this way!\"",
+     "The boys began to blow their cattle, and the ladies, of course, must have their say",
+     "Sal said she'd take cheek from no man, down to a dish of hash did stoop",
+     "She got a smack in the eye with a doughboy, put her sitting in a bucket of soup."
+    ],
+    [
+     "Oh then, boys, there was the ructions, man the tucker and let fly",
+     "Brisbane Bess with a hunk of damper caught Flash Joe right in the eye",
+     "Nanny the Rat, the real macassar, with a frying pan a dozen slew",
+     "He got a clip with a leg of mutton, took a dive in an Irish stew"
+    ],
+    [
+     "There was a wallowman Doughy Rolly Foley, said he's put them to the rout",
+     "Seized a junk of roly-poly, but a poultice of pigweed stopped his mouth",
+     "Now, this raised his old woman's dander, into an awful tanter flew",
+     "\"Fair play\" cried she to a bleedin' overlander, \"You pumpkin-peeling,toe rag snob!"
+    ],
+    [
+     "Last Chorus",
+     "Oh, my hearty, that was a party",
+     "Help yourself, free, gratis all",
+     "Blackened eyes and broken noses",
+     "That wound up the Bullockies' Ball"
+    ]
+   ],
+   "wordCount": 327
+  },
+  "themes": [],
+  "title": "Bullockies' Ball",
+  "titleAlt": [],
+  "titleRaw": "Bullockies' Ball",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-017",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 340,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/017.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/017.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Collected from Cyril Duncan, Nerang by the Queensland Folklore Society. Published in the Queensland Centenary Pocket Songbook . Cyril Duncan reported that the song was written by his grandfather an early settler on the Nerang river."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "Cyril Duncan"
+   ],
+   "songbooks": [
+    "book-037"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:12.911Z",
+   "site": "afs",
+   "siteId": "017",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/017.html"
+  },
+  "text": {
+   "incipit": "I draw for Speckle's Mill, bullocky oh, bullocky oh",
+   "lineCount": 18,
+   "stanzas": [
+    [
+     "I draw for Speckle's Mill, bullocky oh, bullocky oh",
+     "And it's many a log I drew, bullocky oh",
+     "I draw cedar, beech and pine, and I never get on the wine",
+     "I'm the king of bullock drivers, don't you know, bullocky oh"
+    ],
+    [
+     "Chorus",
+     "I'm the king of bullock drivers, don't you know, bullocky oh"
+    ],
+    [
+     "There's Guinea and Anderson too, bullocky oh, bullocky oh",
+     "And it's many a log they drew, bullocky oh",
+     "I can give them a thousand feet, axe 'em square and never cheat",
+     "I'm the king of bullock drivers, don't you know, bullocky oh"
+    ],
+    [
+     "There's Wapples, too: he brags, bullocky oh bullocky oh",
+     "Of his forty raw-boned stags, bullocky oh",
+     "I can tell you it's no slander when I say I raise their dander",
+     "When they hear the crack of me whip, bullocky oh, bullocky oh"
+    ],
+    [
+     "I draw for Speckle's Mill, bullocky oh, bullocky oh",
+     "And it's many a log I drew, bullocky oh",
+     "I draw cedar, beech and pine, and I never get on the wine",
+     "I'm the king of bullock drivers, don't you know, bullocky oh"
+    ]
+   ],
+   "wordCount": 180
+  },
+  "themes": [],
+  "title": "Bullocky Oh",
+  "titleAlt": [],
+  "titleRaw": "Bullocky Oh",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-018",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/018.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/018.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "From the poem Bulls of Speewah by R.C.Pierce (Bob Bloodwood) This version as sung by A.L.Lloyd in a concert at the Singers Club in London 1973. Chris Kempster transcribed the tune for this collection from a tape recording made of the concert by Mark Gregory."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:13.920Z",
+   "site": "afs",
+   "siteId": "018",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/018.html"
+  },
+  "text": {
+   "incipit": "Oh all this talk of the Dawson scrub it fairly leaves me cold",
+   "lineCount": 28,
+   "stanzas": [
+    [
+     "Oh all this talk of the Dawson scrub it fairly leaves me cold",
+     "For I tell you them bulls was dinkum cows in the Speewah days of old",
+     "More fiercer than the fiercest cat more cunning than the Blacks",
+     "I've known them tie branches to their tails to cover up their tracks"
+    ],
+    [
+     "When leaving camp you must put out the fires you had last night",
+     "For them bulls carry firesticks in their teeth to set your yards alight",
+     "They have the bower-birds squared to bellow to put you off your course",
+     "They even have the dingoes trained to heel your bloody horse"
+    ],
+    [
+     "I remember one day there was six of us to muster to Jackass yard",
+     "No finer stockmen in the land and used to riding hard",
+     "The boss was up on a raking bay called Casanover's Desire",
+     "And I kidded myself that I looked at home on a horse called Black Maria"
+    ],
+    [
+     "We sighted a score or more of bulls contented as you please",
+     "Some was sharpening their horns on the sandstone rocks and some was skewering trees",
+     "Well we made them flaming cattle run as hard as they could lick",
+     "But every time I looked behind they seemed to be gaining quick"
+    ],
+    [
+     "There was one roan bull about a yard behind bowled over my mare and me",
+     "So to to see if me comrades was alright I climbed the nearest tree",
+     "Well I'm up here and he's down there as if he'd like to stay",
+     "But seeing I've no further use for him I let him drift away"
+    ],
+    [
+     "Then down I come and grab my mare (her feet's caught in the rein)",
+     "For I'm as keen as mustard now to help my mates again",
+     "They was heading straight for the Jackass yard it was clear the way they went",
+     "They'd torn big trees up by the roots and even the hills looked bent"
+    ],
+    [
+     "When I come in sight of the that there yard I sat there goggle-eyed",
+     "For the bulls was camped outside the gate and the stockmen was inside",
+     "So when I hear talk of the Dawson days my mind goes back to when",
+     "Them wild bulls of the Speewah scrub used to muster up the men"
+    ]
+   ],
+   "wordCount": 370
+  },
+  "themes": [],
+  "title": "Bulls of the Speewah",
+  "titleAlt": [],
+  "titleRaw": "Bulls of the Speewah",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": "Bill Casey",
+   "raw": "Written by Bill Casey",
+   "signature": null
+  },
+  "id": "afs-019",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/019.gif",
+     "width": 510
+    },
+    {
+     "height": 458,
+     "role": "notation",
+     "type": "png",
+     "url": "https://folkstream.com/019.png",
+     "width": 300
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/019.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://folkstream.com/reviews/conscriptionarmy.html",
+     "text": "'Anti-Conscription Army Songs'"
+    }
+   ],
+   "text": "Written by Bill Casey an Australian member of the IWW (Industrial Workers of the World) who later became secretary of the Queensland Branch of the Seamen's Union of Australia.\n\nThe IWW or Wobblies played an important part in the development of trade unions in USA. The most famous Wobbly was organiser/songwriter Joe Hill who was framed on a murder charge and executed in Salt Lake City. His ashes were scattered in many cities throughout the world, including Sydney. Tune 'Yankee Doodle'\n\nA longer version of this song can be found in a 1917 song sheet titled 'Anti-Conscription Army Songs' included on this site."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:14.928Z",
+   "site": "afs",
+   "siteId": "019",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/019.html"
+  },
+  "text": {
+   "incipit": "Come listen all kind friends of mine",
+   "lineCount": 25,
+   "stanzas": [
+    [
+     "Come listen all kind friends of mine",
+     "I want to move a motion",
+     "To make an Eldorado here",
+     "I've got a bonza notion"
+    ],
+    [
+     "Chorus",
+     "Bump me into parliament",
+     "Bounce me any way at all",
+     "Bang me into parliament",
+     "On next election day"
+    ],
+    [
+     "Some very wealthy friends I know",
+     "Declare I am most clever",
+     "While some can talk for an hour or so",
+     "Why I can talk for ever"
+    ],
+    [
+     "I've read my bible ten times o'er",
+     "And Jesus justifies me",
+     "The man who does not vote for me",
+     "By Christ he crucifies me"
+    ],
+    [
+     "Oh yes I am a Labor man",
+     "I believe in revolution",
+     "The quickest way to bring it on",
+     "Is talking constitution"
+    ],
+    [
+     "I think the worker and the boss",
+     "Should keep their present stations",
+     "So I will surely pass a bill",
+     "'Industrial Relations'"
+    ]
+   ],
+   "wordCount": 134
+  },
+  "themes": [],
+  "title": "Bump me into Parliament",
+  "titleAlt": [],
+  "titleRaw": "Bump me into Parliament",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-020",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/020.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/020.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Collected by Ron Edwards from Stan Dean (and others) of Cairns, who said it was based on an old hymn. Ron Edwards writes \"This ballad is known all along the coast and the second line was altered to fit different areas 'On the Isis', 'On the banks of the Herbert' etc.\""
+  },
+  "provenance": {
+   "collectors": [
+    "Ron Edwards"
+   ],
+   "newspaper": null,
+   "singers": [
+    "Stan Dean"
+   ],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:15.918Z",
+   "site": "afs",
+   "siteId": "020",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/020.html"
+  },
+  "text": {
+   "incipit": "How we suffered grief and pain",
+   "lineCount": 20,
+   "stanzas": [
+    [
+     "How we suffered grief and pain",
+     "On the banks of the Barron cutting cane",
+     "We sweated blood we were as black as sin",
+     "And the ganger he put the spur right in"
+    ],
+    [
+     "The greasy cook with sore-eyed look",
+     "And the matter all stuck to his lashes",
+     "He damned our souls with his half baked rolls",
+     "And he'd poison the snakes with his hashes"
+    ],
+    [
+     "The first six weeks so help me Christ",
+     "We lived on cheese and half boiled rice",
+     "Mouldy bread and cats meat stew",
+     "And corn beef that the flies had blew"
+    ],
+    [
+     "The cane was bad the cutters were mad",
+     "The cook had shit on the liver",
+     "And I'll never cut cane for that bastard again",
+     "On the banks of the Barron River"
+    ],
+    [
+     "So now I'm leaving that lousy place",
+     "I'll cut no more for that bugger",
+     "He can stand in the mud that's red as blood",
+     "And cut his own bloody sugar"
+    ]
+   ],
+   "wordCount": 154
+  },
+  "themes": [],
+  "title": "Cane Cutter's Lament",
+  "titleAlt": [],
+  "titleRaw": "Cane Cutter's Lament",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-021",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -31.95224,
+   "lng": 115.8614,
+   "placeId": "au/wa/perth",
+   "raw": null,
+   "state": "WA",
+   "town": "Perth"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/021.gif",
+     "width": 510
+    },
+    {
+     "height": 42,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/021.png",
+     "width": 500
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/021.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article24737760",
+     "text": "West Australian"
+    },
+    {
+     "href": "https://folkstream.com/180.html",
+     "text": "The Fenians' Rescue"
+    }
+   ],
+   "text": "First published in Three Street Ballads in 1957 This version was collected by Russel Ward from Victor Courtney a journalist on the Sunday Times, Perth, Western Australia, who commented, \"I remember in my early days as a cadet hearing a band of old boys in a pub in Fremantle singing this song. It is said that the song became so popular that it was banned by the authority of the day and jail was threatened to anyone caught singing it. It was suggested, too, that the escape was made easy because there was plenty of American gold and some of it was placed in the hands of unscrupulous warders. The incident took place in April 1876.\"\n\nThe escape of the six Fenians from Freemantle Jail was funded by collections in Australia and the United States. Over three thousand pounds was collected in Australia.\n\nSeveral tunes are associated with this song, including tunes used for 'Botany Bay' and 'The Dying Stockman'. The tune given here is a variant of 'Rosin the Bow'.\n\nAn early published fragment of the song was published in the West Australian Wednesday 5 February 1902 p. 3.:--\n\nSome years after private letters were received in Western Australia, one from John Boyle O'Reilly, and another from Collins, which explained the whole of the plot. An American newspaper arrived about the same time, giving the whole details of the plan and the escape, and in this journal it was stated that O'Reilly had admitted that he was largely responsible for the design which had enabled the six men to escape.\n\nEven in those days, the music hall custom of seizing upon prominent events of the day for topical allusions was not unknown in Western Australia, and it is not surprising that such an exciting occurrence should have been availed of by local versifiers. Within a week of the escape, the following doggerel was sung with great gusto in the streets and elsewhere, to the tune of \"Botany Bay\":\n\nThe Georgette was manned by brave warriors,\nWho resolved the Catalpa to chase;\nBut they hoisted their star-spangled banner,\nSaying. \"You'd better not touch us, I guess.\"\n\nNow all you brave warders and gaolers,\nRemember that glorious day;\nTake care of the rest of your Fenians,\nOr the Yankees will steal them away.\n\nChorus.\nSinging, tooral lal looral lal laddity,\n(Also) tooral lal looral lal lay.\n(Likewise) tooral lal ooral lal laddity.\n(Not forgetting) tooral lal looral lal lay.\n\nSee in this collection The Fenians' Rescue published in the WA newspaper the Mirror in 1923."
+  },
+  "provenance": {
+   "collectors": [
+    "Russel Ward"
+   ],
+   "newspaper": {
+    "context": "'Rosin the Bow'. An early published fragment of the song was published in the West Australian Wednesday 5 February 1902 p. 3.:-- Some years after privat",
+    "date": {
+     "day": 5,
+     "month": 2,
+     "raw": "5 February 1902",
+     "year": 1902
+    },
+    "key": "west-australian",
+    "page": 3,
+    "stateHint": null,
+    "title": "West Australian",
+    "troveArticleId": "24737760",
+    "troveUrl": "http://nla.gov.au/nla.news-article24737760"
+   },
+   "singers": [
+    "Victor Courtney"
+   ],
+   "songbooks": [
+    "book-033"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:16.919Z",
+   "site": "afs",
+   "siteId": "021",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/021.html"
+  },
+  "text": {
+   "incipit": "A noble whale ship and commander",
+   "lineCount": 33,
+   "stanzas": [
+    [
+     "A noble whale ship and commander",
+     "Called the Catalpa, they say",
+     "Came out to Western Australia",
+     "And took six poor Fenians away"
+    ],
+    [
+     "Chorus",
+     "So come all you screw warders and jailers",
+     "Remember Perth regatta day",
+     "Take care of the rest of your Fenians",
+     "Or the Yankees will steal them away"
+    ],
+    [
+     "Seven long years had they served here",
+     "And seven long more had to stay",
+     "For defending their country Old Ireland",
+     "For that they were banished away"
+    ],
+    [
+     "You kept them in Western Australia",
+     "Till their hair began to turn grey",
+     "When a Yank from the States of America",
+     "Came out here and stole them away"
+    ],
+    [
+     "Now all the Perth boats were a-racing",
+     "And making short tacks for the spot",
+     "But the Yankee she tacked into Fremantle",
+     "And took the best prize of the lot"
+    ],
+    [
+     "The Georgette armed with bold warriors",
+     "Went out the poor Yanks to arrest",
+     "But she hoisted her star-spangled banner",
+     "Saying you'll not board me I guess"
+    ],
+    [
+     "So remember those six Fenians colonial",
+     "And sing o'er these few verses with skill",
+     "And remember the Yankee that stole them",
+     "And the home that they left on the hill"
+    ],
+    [
+     "Now they've landed safe in America",
+     "And there will be able to cry",
+     "Hoist up the green flag and shamrock",
+     "Hurrah for old Ireland we'll die"
+    ]
+   ],
+   "wordCount": 215
+  },
+  "themes": [],
+  "title": "Catalpa",
+  "titleAlt": [],
+  "titleRaw": "Catalpa",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1900s",
+   "from": "newspaper",
+   "value": 1902
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-022",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -32.55588,
+   "lng": 148.94508,
+   "placeId": "au/nsw/wellington",
+   "raw": "NSW",
+   "state": "NSW",
+   "town": "Wellington"
+  },
+  "media": {
+   "audio": [
+    {
+     "url": "https://folkstream.com/022.mp3"
+    }
+   ],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/022.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/022.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "https://folkstream.com/112.html",
+     "text": "Bacchus Marsh Express in 1891."
+    },
+    {
+     "href": "http://folkstream.com/reviews/jones/",
+     "text": "Twentieth Century"
+    },
+    {
+     "href": "http://folkstream.com/146.html",
+     "text": "World's News"
+    },
+    {
+     "href": "http://folkstream.com/179.html",
+     "text": "Wellington Times"
+    }
+   ],
+   "text": "The first version of this song was titled \"The Bare-Belled Ewe\" and was published the Bacchus Marsh Express in 1891. The version above was published much later in the Twentieth Century magazine in 1946 in an article by Percy Jones. Recent research has discovered a 1939 version titled \"The Shearers Song\" published in the Sydney newspaper the World's News A variant of that was published in the NSW newspaper the Wellington Times in December 1939.\n\nPrinted in Stewart and Keesing's Old Bush Songs with the following note: \"From Dr Percy Jones's collection, with one additional stanza, \"Now Mister Newchum\" etc., collected by John Meredith from Mrs Sloane, of Lithgow, New South Wales. \"Mrs Sloane is 60, and learnt most of her songs from her mother in the early part of this century. Mrs Sloane plays button-accordion, fiddle, mouth-organ and jewsharp, and her mother, Mrs Frost, played concertina, accordion and jews-harp.\" The word \"Joe\" is presumably a corruption of \"Yowe\" or \"ewe.\"\n\nOld Bush Songs also prints the following fragment and accompanying note:\n\nThat's How The Shears Go You take off the belly-wool clean out the crutch Go up the neck for the rules they are such You clean round the horns first shoulder go down One blow up the back and you then turn around Click, click, that's how the shears go Click, click, so awfully quick You pull out a sheep he'll give a kick And still hear your shears going click, click, click\n\nCollected by John Meredith, with the note: \"Sung by Jack Luscombe of Ryde, aged 81: started picking up at 11, and shearing at 15. Was in the '91 strike at 18. Both songs learned in the 90s.\"\n\nRING THE BELL, WATCHMAN\n(Henry Clay Work 1865)\n\nHigh in the belfry the old sexton stands\nGrasping the rope with his thin bony hands\nFix'd is his gaze as by some magic spell\nTill he hears the distant murmur\nRing, ring the bell\n\nChorus\nRing the bell, watchman! ring! ring! ring!\nYes, yes! the good news is now on the wing.\nYes, yes! they come and with tiding to tell\nGlorious and blessed tidings. Ring, ring the bell!\n\nBaring his long silver locks to the breeze\nFirst for a moment he drops on his knees\nThen with a vigor that few could excel\nAnswers he the welcome bidding\nRing, ring the bell\n\nHear! from the hilltop, the first signal gun\nThunders the word that some great deed is done\nHear! thro' the valley the long echoes swell\nEver and anon repeating\nRing, ring the bell\n\nBonfires are blazing and rockets ascend\nNo meagre triumph such tokens portend\nShout! shout! my brothers for \"all, all is well!\"\n'Tis the universal chorus\nRing, ring the bell"
+  },
+  "provenance": {
+   "collectors": [
+    "John Meredith"
+   ],
+   "newspaper": {
+    "context": "published in the NSW newspaper the Wellington Times in",
+    "date": {
+     "day": null,
+     "month": 12,
+     "raw": "December 1939",
+     "year": 1939
+    },
+    "key": "wellington-times",
+    "page": null,
+    "stateHint": "NSW",
+    "title": "The Wellington Times",
+    "troveArticleId": null,
+    "troveUrl": null
+   },
+   "singers": [
+    "Jack Luscombe",
+    "Sloane"
+   ],
+   "songbooks": [
+    "book-006",
+    "book-031",
+    "book-126",
+    "book-147"
+   ]
+  },
+  "related": [
+   {
+    "id": "afs-112",
+    "relation": "linked",
+    "title": "Bacchus Marsh Express in 1891."
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:17.913Z",
+   "site": "afs",
+   "siteId": "022",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/022.html"
+  },
+  "text": {
+   "incipit": "- [play]",
+   "lineCount": 33,
+   "stanzas": [
+    [
+     "- [play]"
+    ],
+    [
+     "Out on the board the old shearer stands,",
+     "Grasping his shears in his long, honey hands,",
+     "Fixed is his gaze on a bare-bellied \"Joe,\"",
+     "Glory if he gets her, won't he make the \"ringer\" go."
+    ],
+    [
+     "Chorus: Click go the shears boys, click, click, click,",
+     "Wide is his blow and his hands move quick,",
+     "The ringer looks around and is beaten by a blow,",
+     "And curses the old snagger with the blue-bellied \"Joe.\""
+    ],
+    [
+     "In the middle of the floor, in his cane-bottomed chair",
+     "Is the boss of the board, with eyes everywhere;",
+     "Notes well each fleece as it comes to the screen",
+     "Paying strict attention if it's taken off clean."
+    ],
+    [
+     "The colonial experience man, he is there, of course,",
+     "With his shiny leggin's, just got off his horse,",
+     "Casting round his eye like a real connoisseur,",
+     "Whistling the old tune, \"I'm the Perfect Lure.\""
+    ],
+    [
+     "The tar-boy is there, awaiting in demand,",
+     "With his blackened tar-pot, and his tarry hand;",
+     "Sees one old sheep with a cut upon its back,",
+     "Hears what he's waiting for, \"Tar here, Jack!\""
+    ],
+    [
+     "Shearing is all over and we've all got our cheques,",
+     "Roll up your swag for we're off on the tracks;",
+     "The first pub we come to, it's there we'll have a spree,",
+     "And everyone that comes along it's \"Come and drink with me!\""
+    ],
+    [
+     "Down by the bar the old shearer stands,",
+     "Grasping his glass in his thin honey hands;",
+     "Fixed is his gaze on a green-painted keg,",
+     "Glory he'll get down on it, ere he stirs a peg."
+    ],
+    [
+     "There we leave him standing, shouting for all hands,",
+     "Whilst all around him, every \"shouter\" stands",
+     "His eyes are on the cask, which is now lowering fast,",
+     "He works hard, he drinks hard, and goes to hell at last!"
+    ]
+   ],
+   "wordCount": 295
+  },
+  "themes": [],
+  "title": "Click go the Shears",
+  "titleAlt": [],
+  "titleRaw": "Click go the Shears",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1940s",
+   "from": "index",
+   "value": 1946
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-023",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/023.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://folkstream.com/024.html",
+     "text": "Cockies of Bungaree 2"
+    }
+   ],
+   "text": "From the singing of A.L.Lloyd. Simon McDonald of Creswick sings another version. See Cockies of Bungaree 2 in this collection. Frank Hardy told me he heard the Lloyd version of the song in the Ballarat area during the 1930s depression. Bungaree is sixteen kilometres east of Ballarat in Victoria. A related and earlier song 'Stringy Bark Cockatoo' was printed in Paterson's Old Bush Songs"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": [
+    "book-006",
+    "book-031"
+   ]
+  },
+  "related": [
+   {
+    "id": "afs-024",
+    "relation": "linked",
+    "title": "Cockies of Bungaree 2"
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:18.926Z",
+   "site": "afs",
+   "siteId": "023",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/023.html"
+  },
+  "text": {
+   "incipit": "Come all you weary travellers that's out of work just mind",
+   "lineCount": 30,
+   "stanzas": [
+    [
+     "Come all you weary travellers that's out of work just mind",
+     "You take a trip to Bungaree and plenty there you'll find",
+     "Have a trial with the cockies you can take it straight from me",
+     "I'm very sure you'll rue the day you first saw Bungaree"
+    ],
+    [
+     "Well how I come this weary way I mean to let you know",
+     "Being out of employment I didn't know where to go",
+     "So I went to the registry office and there I did agree",
+     "To take a job of clearing for a cocky in Bungaree"
+    ],
+    [
+     "His homestead was of surface mud the roof of mouldy thatch",
+     "The doors and windows hung by a nail with never a bolt or catch",
+     "The chickens laid eggs on the table such a sight you never did see",
+     "One laid an egg on the old tin plate of the cocky of Bungaree"
+    ],
+    [
+     "Well it's early the very next morning it was the usual go",
+     "He rattled a plate for breakfast before the sun did show",
+     "The stars were shining glorious and the moon was high you see",
+     "I thought before the sun would rise I'd die in Bungaree"
+    ],
+    [
+     "By the time I come into supper it was just on half past nine",
+     "And when I had it eat I reckon it was my bedtime",
+     "But the cocky he come over to me and he says with a merry laugh",
+     "I want you now for an hour or two to cut a bail of chaff"
+    ],
+    [
+     "Well when the work was over I had to nurse the youngest child",
+     "Whenever I cracked a bit of a joke the missus she would smile",
+     "The old feller he got jealous looked like he'd murder me",
+     "And there he sat and whipped the cat the cocky in Bungaree"
+    ],
+    [
+     "Well when I'd done my first week's work I reckoned I'd had enough",
+     "I went up to that cocky and asked him for me stuff",
+     "I came down into Ballarat and it didn't take me long",
+     "I went straight into Sayer's Hotel and blued my one pound one"
+    ],
+    [
+     "So now my job is over and I'm at liberty",
+     "I'll never forget the day I met that cocky in Bungaree"
+    ]
+   ],
+   "wordCount": 365
+  },
+  "themes": [],
+  "title": "Cockies of Bungaree",
+  "titleAlt": [],
+  "titleRaw": "Cockies of Bungaree",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-024",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/024.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://folkstream.com/023.html",
+     "text": "Cockies of Bungaree"
+    }
+   ],
+   "text": "This version collected by Norm O'Connor from Simon McDonald of Creswick, Victoria. In his biography of McDonald \"Time Out of Mind\" Hugh Anderson was told by the singer \"I've been told off a bit by some of the cockies about that song. They dont like it, they're a bit ashamed of it these days, but it's pretty true of my younger days\". A.L.Lloyd sings another version - See Cockies of Bungaree in this collection."
+  },
+  "provenance": {
+   "collectors": [
+    "Norm O'Connor"
+   ],
+   "newspaper": null,
+   "singers": [
+    "Simon McDonald"
+   ],
+   "songbooks": []
+  },
+  "related": [
+   {
+    "id": "afs-023",
+    "relation": "linked",
+    "title": "Cockies of Bungaree"
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:19.917Z",
+   "site": "afs",
+   "siteId": "024",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/024.html"
+  },
+  "text": {
+   "incipit": "Now all you blokes take my advice and do your daily toil",
+   "lineCount": 21,
+   "stanzas": [
+    [
+     "Now all you blokes take my advice and do your daily toil",
+     "But dont go out to Bungaree to work in the chocolate soil",
+     "For the days they are so long me boys, they'd break your heart in two",
+     "And if ever you work for Cocky Bourke, you very soon will know"
+    ],
+    [
+     "Chorus",
+     "Oh we used to go to bed you know a little bit after dark",
+     "The room we used to sleep in it was just like Noah's Ark",
+     "There were dogs and cats and mice and cats and pigs and poulteree",
+     "But I'll never forget the time we had while down in Bungaree"
+    ],
+    [
+     "Oh the first thing Monday morning sure to work we had to go",
+     "My noble cocky says to me \"Get up you're rather slow\"",
+     "The moon was shining gloriously and the stars were out you see",
+     "And I thought before the sun would rise I'd die in Bungaree"
+    ],
+    [
+     "Oh he called me to my supper at half-past eight or nine",
+     "He called me to my breakfast before the sun did shine",
+     "And after tea was over all with a merry laugh",
+     "The old cocky says to me \"We'll cut a bit of chaff\""
+    ],
+    [
+     "Now when you are chaff cutting boys isn't it a spell",
+     "Yes by jove it is says I and it's me that knows it well",
+     "For many of those spells with me they disagree",
+     "For I hate the jolly night work that they do in Bungaree"
+    ]
+   ],
+   "wordCount": 244
+  },
+  "themes": [],
+  "title": "Cockies of Bungaree 2",
+  "titleAlt": [],
+  "titleRaw": "Cockies of Bungaree 2",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-025",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/025.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/025.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "In his notes for this song in Tradition (Oct 1966) Edgar Waters writes \"Versions of this shanty are not uncommon in print, but they are mostly to be found in rather recent, popular books for singers. The shanty is found only rarely in the works which are reliable records of collecting from sailors at first hand\".\n\nIn Feb 2001 I received an additional verse by email from Rich Gough who writes\n\"25 years ago I learned it in Boy Scouts from a scout master who fought in Korea, I suspect he picked it up from someone there\"\n\nAustralian ships, they have no sails\nheave away, heave away\nThey sail their ships with codfish tails\nWe are bound for Australia"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:20.924Z",
+   "site": "afs",
+   "siteId": "025",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/025.html"
+  },
+  "text": {
+   "incipit": "Melbourne girls, they have no combs",
+   "lineCount": 16,
+   "stanzas": [
+    [
+     "Melbourne girls, they have no combs",
+     "Heave away, heave away",
+     "They comb their hair with cod-fish bones",
+     "And we're bound for Australia"
+    ],
+    [
+     "Chorus",
+     "Heave away, my bully bully boys, heave away, heave away",
+     "Heave away, why don't you make a noise",
+     "And we're bound for Australia"
+    ],
+    [
+     "Melbourne boys, they have no sleds",
+     "Heave away, heave away",
+     "They slide downhill on cod-fish heads",
+     "And we're bound for Australia"
+    ],
+    [
+     "Liza Lee, she promised me",
+     "Heave away, Heave away",
+     "When I return she'll marry me",
+     "And we're bound for Australia"
+    ]
+   ],
+   "wordCount": 87
+  },
+  "themes": [],
+  "title": "Codfish Shanty",
+  "titleAlt": [],
+  "titleRaw": "Codfish Shanty",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-026",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/026.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/026.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "From Butterss & Webby Penguin Book of Australian Ballads where the song is called 'The London Convict Maid' with the note: \"From a broadside in the Mitchell Library. Printed by Birt, 39 Great St. Adrew Street, Seven Dials\". This tune is a variant of the Irish song from 1788 rebellion, 'The Croppy Boy', a tune also used for the British ballad 'McCaffery'. Nearly 25,000 women were transported to Australia as convicts, half of them from Ireland. Convicts themselves were often defiant rather than repentent, as in the case of the Irish woman who on being sentenced in a Belfast court to a further term of transportation shouted \"Hurrah for Sydney and the sky above her!\""
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": [
+    "book-051",
+    "book-167"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:21.928Z",
+   "site": "afs",
+   "siteId": "026",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/026.html"
+  },
+  "text": {
+   "incipit": "Ye London maids attend to me",
+   "lineCount": 40,
+   "stanzas": [
+    [
+     "Ye London maids attend to me",
+     "While I relate my misery",
+     "Through London streets I oft have strayed",
+     "But now I am a Convict Maid"
+    ],
+    [
+     "In innocence I once did live",
+     "In all the joy that peace could give",
+     "But sin my youthful heart betrayed",
+     "And now I am a Convict Maid"
+    ],
+    [
+     "To wed my lover I did try",
+     "To take my master's property",
+     "So all my guilt was soon displayed",
+     "And I became a Convict Maid"
+    ],
+    [
+     "Then I was soon to prison sent",
+     "To wait in fear my punishment",
+     "When at the bar I stood dismayed",
+     "Since doomed to be a Convict Maid"
+    ],
+    [
+     "At lenth the Judge did me address",
+     "Which filled with pain my aching breast",
+     "To Botany Bay you will be conveyed",
+     "For seven years a Convict Maid"
+    ],
+    [
+     "For seven long years oh how I sighed",
+     "While my poor mother loudly cried",
+     "My lover wept and thus he said",
+     "May God be with my Convict Maid"
+    ],
+    [
+     "To you that here my mournful tale",
+     "I cannot half my grief reveal",
+     "No sorrow yet has been portrayed",
+     "Like that of the poor Convict Maid"
+    ],
+    [
+     "Far from my friends and home so dear",
+     "My punishment is most severe",
+     "My woe is great and I'm afraid",
+     "That I shall die a Convict Maid"
+    ],
+    [
+     "I toil each day in greaf and pain",
+     "And sleepless through the night remain",
+     "My constant toils are unrepaid",
+     "And wretched is the Convict Maid"
+    ],
+    [
+     "Oh could I but once more be free",
+     "I'd never again a captive be",
+     "But I would seek some honest trade",
+     "And never become a Convict Maid"
+    ]
+   ],
+   "wordCount": 264
+  },
+  "themes": [],
+  "title": "Convict Maid",
+  "titleAlt": [],
+  "titleRaw": "Convict Maid",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-027",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/027.gif",
+     "width": 510
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://www.nationalarchives.ie/search/index.php?category=18",
+     "text": "http://www.nationalarchives.ie/search/index.php?category=18"
+    }
+   ],
+   "text": "Lloyd Robson: Well perhaps you'd like to tell us then something about this song the Seizure of the Brig Cyprus Mr. Davies.\nJ.H.Davies: Well about all I can tell you about prisoners transported out here, well they were sent out for fourteen years you see, and when they got to Hobart of course they were sent out to different Masters to work on farms mostly and for little offences they go sent to gaol to get a second sentence see. They were transported for the second sentence to Macquarie Harbour, to receive the second sentence you see. Of course that was a quite common thing in the prison times you know. The used to take these men out, ticket-of-leave men, they had to pay 'em a small wage, well of course there was no such thing as pay day in those days ... they paid you when you got the sack or else not at all. Well what they used to do the farmers in those days apply to get two or three or whatever they wanted onto their farm, and then when they had a bit of a cheque to come, they'd rig up some crime again 'em and send them into Hobart. Give them a letter to bring in to walk in perhaps the old boss was far away when they got to the gaol it was a letter to get a floggin'. That was quite common, and of course they'd lose their pay then, perhaps they's been workin' three months or more and get nothing for it, cause they'd committed an offence see.\nLloyd Robson: Could you sing us this particular song, now then? How does that song go, the Cyprus Brig?\nJ.H.Davies: The Cyprus Brig? Yeah, I'll do me best.\n\nThe seizure of convict ships by convicts happened a number of times. This particular event occured in August 1829, and a manuscript in the Mitchell Library has a poem of 48 lines that commemorates the seizure. Titled 'Seizure of the Cyprus Brig in Recherche Bay' it is printed in Geoffrey Ingleton's True Patriots All and attributed to Frank MacNamara (Frank the Poet). This version was collected by Lloyd Robson from J.H.Davies of Newtown, Tasmania.\n\nIn his encylopaedic book Fairwell to Judges & Juries (2000 p.608) Hugh Anderson writes:\n'A very good account of the events dealt with here is in F Clune and PR. Stephensen's \"docu-fictional account\", The Pirates of the Brig Cyprus (London, 1962), and which is complemented by the contemporary reports of the trial of the mutineers (14 October~ 14 December 1834) in S.A.Spence's book (Mitcham, Surrey, 1968).William Swallow, alias Brown, a seaman from North Shields, who was married with two children and aged 39 years when tried for housebreaking in Surrey, led a remarkable if miserable life. He was born at Sunderland in 1792, and as William Walker was apprenticed in a collier when aged 15 years. Three years later he was press ganged in the Royal Navy and served two years before being discharged into the chronic unemployment after the Napoleonic Wars. He sank into complete poverty and in October 1820 was caught stealing clothes and food down-valued to eightpence, for which he was given seven years transportation. On the way to London on the Merchant Packet Swallow jumped overboard, later claiming he had fallen from the rigging. Under the name William Walker he was sentenced at Durham in January 1821 for stealing a quilt and arrived in Hobart on the Malabar later that year. He did not remain in the colony for long, but absconded in the Deveron in 1823.As Swallow he was returned on 18 April 1829 on the Georgiana with a life sentence. Nevertheless, his convict record states he was \"a very good man\".William Swallow died at Port Arthur in May 1834.'\n\nA searchable Ireland-Australia transportation database is available on at The National Archives of Ireland\n\nhttp://www.nationalarchives.ie/search/index.php?category=18"
+  },
+  "provenance": {
+   "collectors": [
+    "Lloyd Robson"
+   ],
+   "newspaper": null,
+   "singers": [
+    "J.H.Davies"
+   ],
+   "songbooks": [
+    "book-019",
+    "book-111",
+    "book-189"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:22.921Z",
+   "site": "afs",
+   "siteId": "027",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/027.html"
+  },
+  "text": {
+   "incipit": "(J.H.Davies talks and sings to Dr. Lloyd Robson)",
+   "lineCount": 27,
+   "stanzas": [
+    [
+     "(J.H.Davies talks and sings to Dr. Lloyd Robson)"
+    ],
+    [
+     "Poor Tom Brown from Nottingham Jack Williams and poor Joe",
+     "They were three gallant poacher boys their country all does know",
+     "And by the laws of the Game Act that you may understand",
+     "Were fourteen years transported boys all to Van Diemen's Land"
+    ],
+    [
+     "When we landed in this colony to different masters sent",
+     "For little trifling offences boys to Hobart Town gaol were sent",
+     "Now the second sentence we received and ordered for to be",
+     "Sent to Macquarie Harbour that place of tyranny"
+    ],
+    [
+     "Down Hobart Town streets we were guarded on the Cyprus Brig conveyed",
+     "Our topsails they were hoisted boys our anchor it was weighed",
+     "The wind it blew a nor nor west and on we steered straight way",
+     "Till we brought her to an anchorage in a place called Research Bay"
+    ],
+    [
+     "Now confined in a dismal hole those lads contrived a plan",
+     "To take possession of that brig or else die every man",
+     "The plan it being approved upon we all retired to rest",
+     "And early next morning boys we put them to the test"
+    ],
+    [
+     "Up steps bold Jack Muldemon his comrades three more",
+     "We soon disarmed the sentry and left him in his gore",
+     "Liberty Oh Liberty it's Liberty we crave",
+     "Deliver up your arms my boys or the sea shall be your grave"
+    ],
+    [
+     "First we landed the soldiers the captain and his crew",
+     "We gave three cheers for Liberty and soon bid them adieu",
+     "William Swallows he was chosen our commander for to be",
+     "We gave three cheers for Liberty and boldly put to sea"
+    ],
+    [
+     "Play on your golden trumpets boys and sound your cheerful notes",
+     "The Cyprus Brig's on the ocean boys by justice does she float"
+    ]
+   ],
+   "wordCount": 290
+  },
+  "themes": [],
+  "title": "Cyprus Brig",
+  "titleAlt": [],
+  "titleRaw": "Cyprus Brig",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1820s",
+   "from": "notes",
+   "value": 1829
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-028",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/028.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/028.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "A number of versions of this song have been collected in Australia, 'Albury Ram', 'Derby Ram', 'Dalby Ram', 'Derby Shed Ram'. This version from the singing of A.L.Lloyd, who writes in his Folk Song in England : \"Survivals of agricultural magic-making abound in our folk song even today though as the old meaning becomes unclear what was once ritualistic is likely to change into broad comedy, as with the randy animal-guiser song of the 'Derby ram', concerning a beast of gigantic, not to say cosmic, attributes, a song that is the lyrical equivalent of those phallophoric dances that survive in farming ceremonies in Europe, intended to celebrate and stimulate the powers of reproduction in plants, animals and men, a song that nowadays survives mainly as a bawdy anthem for beery students or soldiers coming home on leave\"."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": [
+    "book-072"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:23.931Z",
+   "site": "afs",
+   "siteId": "028",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/028.html"
+  },
+  "text": {
+   "incipit": "As I was going to Dalby all on a market day",
+   "lineCount": 28,
+   "stanzas": [
+    [
+     "As I was going to Dalby all on a market day",
+     "I met the biggest ram my boys that ever was fed on hay",
+     "And indeed my lads it's true my lads I never was known to lie",
+     "And if you'd been in Dalby you'd seen him the same as I"
+    ],
+    [
+     "The wool on this ram's belly well it grew into the ground",
+     "Cut off and sent to the Sydney sales it fetched a thousand pound",
+     "The wool on this ram's back my boys grew so very high",
+     "The eagles came and built their nests and I heard the young 'uns cry"
+    ],
+    [
+     "The horns on this ram's head they reached up to the moon",
+     "A little boy went up in January and he didn't get back till June",
+     "And indeed my lads it's true my lads I never was known to lie",
+     "And if you'd been in Dalby you'd seen him the same as I"
+    ],
+    [
+     "The man that fed this ram my boys he fed him twice a day",
+     "And every time he opened his mouth he swallowed a bale of lucerne hay",
+     "The man that watered this ram my boys watered him twice a day",
+     "And every time he opened his mouth he drunk the river dry"
+    ],
+    [
+     "Now this old ram he had a tail that reached right down to hell",
+     "And every time he waggled it he rung the fireman's bell",
+     "And indeed my lads it's true my lads I never was known to lie",
+     "And if you'd been in Dalby you'd seen him the same as I"
+    ],
+    [
+     "The butcher that stuck this ram my boys was up to knees in blood",
+     "And the little boy who held the bowl was carried away by the flood",
+     "Took all the boys in Dalby to roll away his bones",
+     "Took all the girls in Dalby to roll away his stone the crows"
+    ],
+    [
+     "Now the man that fattened this ram my boys he must have been very rich",
+     "And the man who sung this song must be a lying son of a .... so he is",
+     "Well now my song is ended I've got no more to say",
+     "So give us another pint of beer and we'll all of us go away"
+    ]
+   ],
+   "wordCount": 371
+  },
+  "themes": [],
+  "title": "Dalby Ram",
+  "titleAlt": [],
+  "titleRaw": "Dalby Ram",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-029",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/029.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/029.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "Collected by John Meredith via Dr English who heard it from Edwin Goodwin, a patient in Royal Prince Alfred Hospital, Sydney. See another song in this collection, 'With My Swag All on My Shoulder'. The tunes of both songs are variants of the Irish tune 'Boys of Wexford' a ballad commemorating the Vinegar Hill uprising."
+  },
+  "provenance": {
+   "collectors": [
+    "John Meredith"
+   ],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:24.922Z",
+   "site": "afs",
+   "siteId": "029",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/029.html"
+  },
+  "text": {
+   "incipit": "My name is Dennis O'Reilly",
+   "lineCount": 28,
+   "stanzas": [
+    [
+     "My name is Dennis O'Reilly",
+     "From Dublin town I came",
+     "For to sail this world all over",
+     "I sailed the Australian main",
+     "With my pack upon my shoulder",
+     "And a blackthorn in my hand",
+     "For to travel the bushes of Australia",
+     "Like a trueborn Irishman"
+    ],
+    [
+     "When I arrived in Melbourne town",
+     "The girls all jumped with joy",
+     "Saying one unto another",
+     "Here comes my Irish boy",
+     "With his pack upon his shoulder",
+     "And a blackthorn in his hand",
+     "For to travel the bushes of Australia",
+     "Like a trueborn Irishman"
+    ],
+    [
+     "Oh, daughter dearest daughter",
+     "What do you intend to do",
+     "To fall in love with an Irishman",
+     "A man you never knew",
+     "Oh mother dearest mother",
+     "I'll do the best I can",
+     "I'll travel the bushes of Australia",
+     "With my trueborn Irishman"
+    ],
+    [
+     "With my pack upon my shoulder",
+     "And my blackthorn in my hand,",
+     "I'll travel the bushes of Australia",
+     "Like a trueborn Irishman."
+    ]
+   ],
+   "wordCount": 153
+  },
+  "themes": [],
+  "title": "Dennis O'Reilly",
+  "titleAlt": [],
+  "titleRaw": "Dennis O'Reilly",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": null,
+   "from": null,
+   "value": null
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-030",
+  "kind": "song",
+  "location": {
+   "basis": null,
+   "lat": null,
+   "lng": null,
+   "placeId": null,
+   "raw": null,
+   "state": null,
+   "town": null
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/030.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/030.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [],
+   "text": "From the poem by Henry Lawson written in 1910. Tune (1984) by Chris Kempster who has written tunes to a number of Lawsons poems (see 'Reedy River' in this collection). Thanks to Chris Kempster for permission to use his tune in this collection. Chris is the compiler of The Songs of Henry Lawson (Viking O'Neil 1989) which has tunes for over 100 of Lawsons poems. In this book Chris writes\n\n\"Two final verses are printed below. They are from the original version of the poem and were later omitted, but the more I read them and understand their meaning, the more I am drawn to them.\"\n\nThey sneer or scoff, and they pray or groan, and the false friend plays his part.\nDo you think that the blackguard who drinks alone knows aught of a pure girl's heart?\nKnows aught of the first pure love of a boy with his warm young blood aglow,\nKnows aught of the thrill of the world-old joy do you think that I do not know?\n\nThey say that I never have written of love, they say that my heart is such\nThat finer feelings are far above; but a writer may know too much.\nThere are darkest depths in the brightest nights, when the clustering stars hang low;\nThere are things it would break his strong heart to write do you think that I do not know?"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": null,
+   "singers": [],
+   "songbooks": [
+    "book-150"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:25.932Z",
+   "site": "afs",
+   "siteId": "030",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/030.html"
+  },
+  "text": {
+   "incipit": "They say that I never have written of love, as a writer of songs should do",
+   "lineCount": 20,
+   "stanzas": [
+    [
+     "They say that I never have written of love, as a writer of songs should do",
+     "They say that I never could touch the strings with a touch that is firm and true",
+     "They say I know nothing of women and men in the fields where Love's roses grow",
+     "I must write, they say, with a halting pen do you think that I do not know?"
+    ],
+    [
+     "My love-burst came, like an English Spring, in days when our hair was brown",
+     "And the hem of her skirt was a sacred thing and her hair was an angel's crown",
+     "The shock when another man touched her arm, where the dancers sat in a row",
+     "The hope, the despair, and the false alarm do you think that I do not know"
+    ],
+    [
+     "By the arbour lights on the western farms, you remember the question put",
+     "While you held her warm in your quivering arms and you trembled from head to foot",
+     "The electric shock from her finger-tips, and the murmuring answer low",
+     "The soft, shy yielding of warm red lips do you think that I do not know"
+    ],
+    [
+     "She was buried at Brighton, where Gordon sleeps, when I was a world away",
+     "And the sad old garden its secret keeps, for nobody knows to-day",
+     "She left a message for me to read, where the wild wide oceans flow",
+     "Do you know how the heart of a man can bleed do you think that I do know"
+    ],
+    [
+     "I stood by the grave where the dead girl lies, when the sunlit scenes were fair",
+     "Neath white clouds high in the autumn skies, and I answered the message there",
+     "But the haunting words of the dead to me shall go wherever I go",
+     "She lives in the Marriage that Might Have Been do you think that I do not know"
+    ]
+   ],
+   "wordCount": 303
+  },
+  "themes": [],
+  "title": "Do you think that I do not know",
+  "titleAlt": [
+   "Do you think that I do not know?"
+  ],
+  "titleRaw": "Do you think that I do not know",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1910s",
+   "from": "notes",
+   "value": 1910
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-040",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -33.86785,
+   "lng": 151.20732,
+   "placeId": "au/nsw/sydney",
+   "raw": null,
+   "state": "NSW",
+   "town": "Sydney"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/040.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/040.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article103051007",
+     "text": "The Land"
+    }
+   ],
+   "text": "Printed in Paterson's Old Bush Songs with the note:\n\n\"Wolsleys and B-bows are respectively machines and hand-shears, and 'pinking' means that he had shorn the sheep so closely that the pink skin showed through.... 'I rung Cudgingie shed and blued it in a week' i.e he was the ringer or the fastest shearer of the shed, and he dissipated his earnings in a single week's drunkeness.... 'Whaling up the Lachlan' In the old days there was an army of professional loafers who walked from station to station, ostensively to look for work, but without any idea of accepting it. These nomads often followed up and down certain rivers, and would camp for days and fish for cod in the bends of the river. Hence whaling up the Lachlan\".\n\nThe song was also published (without attribution) in The Land 4 July 1930."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "whaling up the Lachlan\". The song was also published (without attribution) in The Land 4 July 1930.",
+    "date": {
+     "day": 4,
+     "month": 7,
+     "raw": "4 July 1930",
+     "year": 1930
+    },
+    "key": "land",
+    "page": null,
+    "stateHint": null,
+    "title": "The Land",
+    "troveArticleId": "103051007",
+    "troveUrl": "http://nla.gov.au/nla.news-article103051007"
+   },
+   "singers": [],
+   "songbooks": [
+    "book-006",
+    "book-031"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:35.950Z",
+   "site": "afs",
+   "siteId": "040",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/040.html"
+  },
+  "text": {
+   "incipit": "I've shore at Burrabogie and I've shore at Toganmain",
+   "lineCount": 21,
+   "stanzas": [
+    [
+     "I've shore at Burrabogie and I've shore at Toganmain",
+     "I've shore at Big Willandra and out on the Coleraine",
+     "But before the shearing was over I longed to get back again",
+     "Shearing for old Tom Patterson on the One Tree Plain"
+    ],
+    [
+     "Chorus",
+     "All among the wool boys all among the wool",
+     "Keep your blades full boys keep your blades full",
+     "I can do a respectable tally myself whenever I like to try",
+     "And they know me round the backblocks as Flash Jack from Gundagai"
+    ],
+    [
+     "I've shore at Big Willandra and I've shore at Tilberoo",
+     "And once I drew my blades boys upon the famed Barcoo",
+     "At Cowan Downs and Trida as far as Moulamein",
+     "But I was always glad to get back again to the One Tree Plain"
+    ],
+    [
+     "I've pinked them with the Wolseleys and I've rushed with B-bows too",
+     "And shaved them in the grease boys with the grass seeds showing through",
+     "But I never slummed a pen my lads whatever it might contain",
+     "When shearing for Old Tom Patterson on the One Tree Plain"
+    ],
+    [
+     "I've been whaling up the Lachlan and I've dossed on Cooper's Creek",
+     "And once I rung Cudjingie shed and blued it in a week",
+     "But when Gabriel blows his trumpet lads I'll catch the morning train",
+     "And push for Old Tom Patterson's on the One Tree Plain"
+    ]
+   ],
+   "wordCount": 223
+  },
+  "themes": [],
+  "title": "Flash Jack from Gundagai",
+  "titleAlt": [],
+  "titleRaw": "Flash Jack from Gundagai",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1930s",
+   "from": "newspaper",
+   "value": 1930
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-054",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -34.92866,
+   "lng": 138.59863,
+   "placeId": "au/sa/adelaide",
+   "raw": "Adelaide",
+   "state": "SA",
+   "town": "Adelaide"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/054.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/054.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://folkstream.com/121.html",
+     "text": "The Chronicle"
+    }
+   ],
+   "text": "First published by Banjo Paterson as \"Lousy Harry's\" in an article in the Adelaide newspaper The Chronicle 10 March 1900 in this collection. Later printed in Paterson's Old Bush Songs in 1905.\n\nThis version from the singing of A.L.Lloyd.\n\nRon Edwards collected a version of the song from Jack Parveez in Charters Towers, Qld. Parveez had a different tune and his shearers \"started out from Reio\".\n\nRoto is a station in south central NSW. Gundagai lies on what is now the main road from Sydney to Melbourne, the Hume Highway. Perhaps more songs mention Gundagai than any other town in Australia.\n\nThree-spot-check: a check in the hundreds of pounds"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "in the Adelaide newspaper The Chronicle",
+    "date": {
+     "day": 10,
+     "month": 3,
+     "raw": "10 March 1900",
+     "year": 1900
+    },
+    "key": "chronicle",
+    "page": null,
+    "stateHint": "Adelaide",
+    "title": "The Chronicle",
+    "troveArticleId": null,
+    "troveUrl": null
+   },
+   "singers": [
+    "A.L.Lloyd"
+   ],
+   "songbooks": [
+    "book-006",
+    "book-031"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:06:50.955Z",
+   "site": "afs",
+   "siteId": "054",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/054.html"
+  },
+  "text": {
+   "incipit": "Oh we started down from Roto when the sheds had all cut out",
+   "lineCount": 30,
+   "stanzas": [
+    [
+     "Oh we started down from Roto when the sheds had all cut out",
+     "We'd whips and whips of Rhino as w e meant to push about",
+     "So we humped our blues serenely and made for Sydney town",
+     "With a three-spot cheque between us as wanted knocking down"
+    ],
+    [
+     "Chorus",
+     "But we camped at Lazy Harry's, on the road to Gundagai",
+     "The road to Gundagai",
+     "Not five miles from Gundagai",
+     "Yes we camped at Lazy Harry's on the road to Gundagai"
+    ],
+    [
+     "Well we struck the Murrumbidgee near the Yanco in a week",
+     "And passed through old Narrandera and crossed the Burnett Creek",
+     "And we never stopped at Wagga for we'd Sydney in our eye",
+     "But we camped at Lazy Harry's on the road to Gundagai"
+    ],
+    [
+     "Oh I've seen a lot of girls my boys and drunk a lot of beer",
+     "And I've met with some of both chaps as has left me mighty queer",
+     "But for beer to knock you sideways and for girls to make you sigh",
+     "You must camp at Lazy Harry's on the road to Gundagai"
+    ],
+    [
+     "Well we chucked our blooming swags off and we walked into the bar",
+     "And we called for rum-an'-raspb'ry and a shilling each cigar",
+     "But the girl that served the poison she winked at Bill and I",
+     "And we camped at Lazy Harry's not five miles from Gundagai"
+    ],
+    [
+     "In a week the spree was over and the cheque was all knocked down",
+     "So we shouldered our Matildas and we turned our back on town",
+     "And the girls they stood a nobbler as we sadly said good-bye",
+     "And we tramped from Lazy Harry's not five miles from Gundagai"
+    ],
+    [
+     "Last chorus",
+     "And we tramped from Lazy Harry's not five miles from Gundagai",
+     "The road to Gundagai",
+     "Not five miles from Gundagai",
+     "Yes we tramped from Lazy Harry's on the road to Gundagai"
+    ]
+   ],
+   "wordCount": 306
+  },
+  "themes": [],
+  "title": "Lazy Harry's",
+  "titleAlt": [],
+  "titleRaw": "Lazy Harry's",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1900s",
+   "from": "newspaper",
+   "value": 1900
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-091",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -41.43876,
+   "lng": 147.13467,
+   "placeId": "au/tas/launceston",
+   "raw": null,
+   "state": "TAS",
+   "town": "Launceston"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 283,
+     "role": "notation",
+     "type": "gif",
+     "url": "https://folkstream.com/091.gif",
+     "width": 510
+    }
+   ],
+   "midi": [
+    {
+     "url": "https://folkstream.com/091.mid"
+    }
+   ]
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article84756243",
+     "text": "Launceston Advertiser"
+    },
+    {
+     "href": "http://findingaids.nationalarchives.ie/index.php?category=18&subcategory=147",
+     "text": "http://www.nationalarchives.ie/"
+    }
+   ],
+   "text": "This version collected by Lucy Broadwood in England around the turn of the century, The National Library in Canberra has a copy of an 1830's broadside 'Van Dieman's Land' from Taylor of London. This is reprinted in Hugh Anderson's Farewell to Old England Transportation to Van Diemen's Land continued until 1853 when the island was renamed Tasmania.\n\nFour verses of the ballad were published, appropriately enough in Van Diemen's Land in the local newspaper the Launceston Advertiser 21 November 1839>\n\nThey chain us two by two, and whip and lash along,\nThey cut off our provisions if we do the least thing wrong,\nThey march us in the burning sun, until our feet are sore,\nSo hard's our lot now we are got upon Van Diemen's shore.\n\nWe labour hard from morn to night, until our bones do ache.\nThen every one, they must obey, their mouldy beds must make ;\nWe often wish, when we lay down, we ne'er may rise no more.\nTo meet our savage governors upon Van Diemen's shore.\n\nEvery night when I lay down, I wash my straw with tears,\nWhile wind upon that horrid shore do whistle in our ears\nThose dreadful beasts upon that land around our cots do roar ;\nMost dismal is our doom upon Van Diemen's shore.\n\nCome all young men and maidens, do bad company forsake,\nIf tongue can tell our overthrow, it would make your heart to ache ;\nYou girls, I pray, be ruled by me, your wicked ways give o'er,\nFor fear, like us, you spend your days upon Van Diemen's shore.\n\nIn his Folk Song in England A.L.Lloyd writes: \"For wounding a keeper an man could be hanged; for taking a squire's pheasant or hare he could be transported to the penal stations of Van Dieman's Land, Norfolk Island, Botany Bay, Moreton Bay. In the three years alone between 1827 and 1830, more than 8,500 men and youths were convicted as poachers, and a high proportion of them shipped away in broad-arrowed felt suits, shackles on their ankles\".\n\nSearchable archives of Irish transports are now available on at The National Archives of Ireland\n\nhttp://www.nationalarchives.ie/"
+  },
+  "provenance": {
+   "collectors": [
+    "Lucy Broadwood"
+   ],
+   "newspaper": {
+    "context": "published, appropriately enough in Van Diemen's Land in the local newspaper the Launceston Advertiser 21 November 1839> They chain us two by two, and whip and l",
+    "date": {
+     "day": 21,
+     "month": 11,
+     "raw": "21 November 1839",
+     "year": 1839
+    },
+    "key": "launceston-advertiser",
+    "page": null,
+    "stateHint": null,
+    "title": "Launceston Advertiser",
+    "troveArticleId": "84756243",
+    "troveUrl": "http://nla.gov.au/nla.news-article84756243"
+   },
+   "singers": [],
+   "songbooks": [
+    "book-052",
+    "book-072"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:07:27.000Z",
+   "site": "afs",
+   "siteId": "091",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/091.html"
+  },
+  "text": {
+   "incipit": "Come all you gallant poachers that ramble free from care",
+   "lineCount": 32,
+   "stanzas": [
+    [
+     "Come all you gallant poachers that ramble free from care",
+     "That walk out of a moonlight night with your dog your gun and snare",
+     "Where the lofty hare and pheasant you have at your command",
+     "Not thinking that your last career is on Van Diemen's Land"
+    ],
+    [
+     "There was poor Tom Brown from Nottingham Jack Williams and poor Joe",
+     "Were three as daring poachers as the country well does know",
+     "At night they were trepanned by the keeper's hideous hand",
+     "And for fourteen years transported were unto Van Diemen's Land"
+    ],
+    [
+     "Oh when we sailed from England we landed at the bay",
+     "We had rotten straw for bedding we dared not to say nay",
+     "Our cots were fenced with fire we slumber when we can",
+     "To drive away the wolves and tigers upon Van Diemen's Land"
+    ],
+    [
+     "Oh when that we were landed upon that fatal bay",
+     "The planters they came flocking round full twenty score or more",
+     "They ranked us up like horses and sold us out of hand",
+     "They yoked us up to the plough my boys to plough Van Diemen's Land"
+    ],
+    [
+     "There was one girl from England Susan Summers was her name",
+     "For fourteen years transported was we all well knew the same",
+     "Our planter bought her freedom and he married her out of hand",
+     "Good usage then she gave to us upon Van Diemen's Land"
+    ],
+    [
+     "Often when I am slumbering I have a pleasant dream",
+     "With my sweet girl I am sitting down by some purling stream",
+     "Through England I am roaming with her at my command",
+     "Then waken broken hearted upon Van Diemen's Land"
+    ],
+    [
+     "God bless our wives and families likewise that happy shore",
+     "That isle of sweet contentment which we shall see no more",
+     "As for our wretched females see them we seldom can",
+     "There are twenty to one woman upon Van Diemen's Land"
+    ],
+    [
+     "Come all you gallant poachers give ear unto my song",
+     "It is a bit of good advice although it is not long",
+     "Lay by your dog and snare to you I do speak plain",
+     "If you knew the hardship we endure you ne'er would poach again"
+    ]
+   ],
+   "wordCount": 353
+  },
+  "themes": [],
+  "title": "Van Dieman's Land",
+  "titleAlt": [],
+  "titleRaw": "Van Dieman's Land",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1830s",
+   "from": "newspaper",
+   "value": 1839
+  }
+ },
+ {
+  "author": {
+   "name": "Paterson",
+   "raw": "written by Paterson",
+   "signature": null
+  },
+  "id": "afs-094",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -23.38032,
+   "lng": 150.50595,
+   "placeId": "au/qld/rockhampton",
+   "raw": "Queensland regional",
+   "state": "QLD",
+   "town": "Rockhampton"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 743,
+     "role": "notation",
+     "type": "png",
+     "url": "https://folkstream.com/094.png",
+     "width": 600
+    },
+    {
+     "height": 115,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/capricornian.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article68258559",
+     "text": "The Capricornian"
+    }
+   ],
+   "text": "A Song by Banjo Paterson©Banjo Paterson 1895\n\nAustralia's real national anthem.\n\nThis is probably the first published version of the song six years after it was written by Paterson who set it to the tune as seen above. It was published in the Queensland regional newspaper The Capricornian of Saturday 14 December 1901 p. 8. The newspaper version is remarkably similar to the original manuscript while the promise to publish the music seems never to have occurred. The report shows how the song is regarded as a \"quaint trifle\" at the time although the tune was considered \"exceedingly catchy\". The next published version of the song seems to have been the Marie Cowan 1903 sheet music with a different tune and and changed words. In neither version is Banjo Paterson credited.\n\nIn the early 1930s on ABC radio Paterson explained the provenance of the song \"The shearers staged a strike and Macpherson's woolshed at Dagworth was burnt down and a man was picked up dead ... Miss Macpherson used to play a little Scottish tune on a zither and I put words to it and called it \"Waltzing Matilda\""
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "o the tune as seen above. It was published in the Queensland regional newspaper The Capricornian of Saturday 14 December 1901 p. 8. The newspaper version is",
+    "date": {
+     "day": 14,
+     "month": 12,
+     "raw": "14 December 1901",
+     "year": 1901
+    },
+    "key": "capricornian",
+    "page": 8,
+    "stateHint": "Queensland regional",
+    "title": "The Capricornian",
+    "troveArticleId": "68258559",
+    "troveUrl": "http://nla.gov.au/nla.news-article68258559"
+   },
+   "singers": [],
+   "songbooks": [
+    "book-126"
+   ]
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:07:29.997Z",
+   "site": "afs",
+   "siteId": "094",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/094.html"
+  },
+  "text": {
+   "incipit": "\"A bush poem entitled \"Waltzing Matilda\" is all the rage here just now,",
+   "lineCount": 29,
+   "stanzas": [
+    [
+     "\"A bush poem entitled \"Waltzing Matilda\" is all the rage here just now,",
+     "says the \"N.Q. Herald.\" and some clever fellow has managed to fit the",
+     "quaint trifle with an exceedingly catchy air. \"Waltzing Matilda,\" it may",
+     "be explained for the benefit of the uninitiated means the same thing as",
+     "\"Humping Bluey,\" otherwise carrying a swag, and jumbuck, as most people",
+     "are aware, means in blackfellow's lingo a sheep. The music of the song",
+     "has not been printed yet, but that omission will be rectified shortly.\""
+    ],
+    [
+     "Waltzing Matilda"
+    ],
+    [
+     "Oh there once was a swagman camped on a billabong",
+     "Under the shade of a coolibah tree",
+     "And he sang as he watched his old billy boiling",
+     "You'll come a-waltzing Matilda with me"
+    ],
+    [
+     "Chorus",
+     "Waltzing Matilda, Matilda, my darling",
+     "You'll come a-waltzing, Matilda, with me",
+     "And he sang as he watched his old billy boiling",
+     "You'll come a-waltzing, Matilda, with me"
+    ],
+    [
+     "Down came a jumbuck to drink at the waterhole",
+     "Up jumped the swagman and grabbed him with glee",
+     "And he sang as he stowed him away in his tucker bag",
+     "You'll come a-waltzing, Matilda, with me"
+    ],
+    [
+     "Down came the squatter a riding a thoroughbred",
+     "Down came the troopers one two and three",
+     "Whose is that jumbuck you've got in your tucker bag",
+     "You'll come a-waltzing, Matilda, with me"
+    ],
+    [
+     "Up jumped the swagman, sprang into the waterhole",
+     "Drowning himself 'neath the coolibah tree",
+     "And his ghost may be heard as it sings through the billabong",
+     "You'll come a-waltzing, Matilda, with me"
+    ]
+   ],
+   "wordCount": 249
+  },
+  "themes": [],
+  "title": "Waltzing Matilda",
+  "titleAlt": [],
+  "titleRaw": "Waltzing Matilda",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1900s",
+   "from": "newspaper",
+   "value": 1901
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-112",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -37.675,
+   "lng": 144.438888888,
+   "placeId": "au/vic/bacchus-marsh",
+   "raw": null,
+   "state": "VIC",
+   "town": "Bacchus Marsh"
+  },
+  "media": {
+   "audio": [
+    {
+     "url": "https://folkstream.com/112.mp3"
+    }
+   ],
+   "images": [
+    {
+     "height": 355,
+     "role": "notation",
+     "type": "png",
+     "url": "https://folkstream.com/112.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://www.rowethmusic.com.au/",
+     "text": "Visit their website"
+    },
+    {
+     "href": "http://nla.gov.au/nla.news-article89280995",
+     "text": "Bacchus Marsh Express"
+    },
+    {
+     "href": "http://nla.gov.au/nla.news-article163354797",
+     "text": "Newcastle Sun"
+    },
+    {
+     "href": "http://folkstream.com/145.html",
+     "text": "Shearing in the Bar"
+    },
+    {
+     "href": "http://folkstream.com/146.html",
+     "text": "http://folkstream.com/146.html"
+    },
+    {
+     "href": "http://folkstream.com/reviews/jones/",
+     "text": "\"Australia's Folk-Songs\""
+    },
+    {
+     "href": "http://media.uow.edu.au/news/UOW165770.html",
+     "text": "'Research Links Famous Ballad To Birth Of ALP'"
+    },
+    {
+     "href": "http://media.uow.edu.au/news/UOW165770.html",
+     "text": "Watch"
+    },
+    {
+     "href": "http://www.abc.net.au/landline/content/2013/s3936362.htm",
+     "text": "ABC TV Landline report"
+    },
+    {
+     "href": "https://folkstream.com/022.html",
+     "text": "Click Go the Shears"
+    }
+   ],
+   "text": "Many thanks to Chloë and Jason Roweth for permission to add their recorded interpretation of the song to this collection.\nVisit their website\n\nThis is the first published version of the iconic song now known as Click Go the Shears.\nDiscovered in the Victorian Newspaper the Bacchus Marsh Express through the National Library of Australia TROVE project and corrected by Mark Gregory, 4 June 2013 searching for \"tar here jack\"\n\nThis song was referred to in 1925 in an article in the NSW newspaper the Newcastle Sun Saturday 19 December 1925 about the export of Australian wool for export \"...the bales have already left the warehouses in lorries and rail vans, or have been loaded on steamers for America or Europe. From Australia, where the old shearers' song (if any sing it now) of \"The bare bellied yeo (ewe)\" has been chanted over them, they have reached a place of new incantations, where the language is of yarns and tops and soils and laps and wastes...\"\n\nBare Belled is perhaps a mishearing or misspelling of the more usual Bare Bellied ... easily done either by the the author C. C. or the compositor who set his handwritten letter into type. On the other hand Duke Tritton writes about sheep being on the bell in his song Shearing in the Bar \"And a pen chock full of cobblers is a shearer's dream of hell / So, loud and lurid are their words when they catch one on the bell.\" A cobbler is a rough wooled sheep and to have to shear one you had caught just before the the bell rang was tough. A bare belled ewe was undoubtedly an easier proposition.\n\nAnother version of this song was published in the World's News in 1939, and what I can find of it is also in this collection see http://folkstream.com/146.html\n\nI had previously found very little using \"click go the shears\" and other phrases from the song ... then I tried \"tar here jack\" and Bingo!\n\nFor over sixty years it has been thought that the first published version of this iconic song was in and article by Percy Jones titled \"Australia's Folk-Songs\" in 1946 with no attribution of authorship or information about where he found it. Now we know for certain it was first published in the year of the Shearers' Strike in Queensland, this opens up a whole new arena for rethinking the provenance of the song, which seems likely to have entered oral tradition post 1891 and maybe even earlier.\n\nSee University of Wollongong report about the discovery of this song 'Research Links Famous Ballad To Birth Of ALP'\n\nWatch ABC TV Landline report broadcast 2 February 2014\n\nSee also Click Go the Shears in this collection."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "ong now known as Click Go the Shears. Discovered in the Victorian Newspaper the Bacchus Marsh Express through the National Library of Australia TROVE project and",
+    "date": {
+     "day": 4,
+     "month": 6,
+     "raw": "4 June 2013",
+     "year": 2013
+    },
+    "key": "bacchus-marsh-express",
+    "page": null,
+    "stateHint": null,
+    "title": "Bacchus Marsh Express",
+    "troveArticleId": "89280995",
+    "troveUrl": "http://nla.gov.au/nla.news-article89280995"
+   },
+   "singers": [],
+   "songbooks": [
+    "book-126",
+    "book-147"
+   ]
+  },
+  "related": [
+   {
+    "id": "afs-022",
+    "relation": "linked",
+    "title": "Click Go the Shears"
+   }
+  ],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:21.096Z",
+   "site": "afs",
+   "siteId": "112",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/112.html"
+  },
+  "text": {
+   "incipit": "Sung by Chloë and Jason Roweth©Chloë and Jason Roweth 2013",
+   "lineCount": 48,
+   "stanzas": [
+    [
+     "Sung by Chloë and Jason Roweth©Chloë and Jason Roweth 2013"
+    ],
+    [
+     "- [play]"
+    ],
+    [
+     "Oh, down at the catching pen an old shearer stands,",
+     "Grasping his shears in his long bony hands ;",
+     "Fixed is his gaze on a bare belled ewe,",
+     "Saying \" If I can only get her, won't I make the ringer go.\""
+    ],
+    [
+     "Click goes his shears; click, click, click.",
+     "Wide are the blows, and his hand is moving quick,",
+     "The ringer looks round, for he lost it by a blow,",
+     "And he curses that old shearer with the bare belled ewe."
+    ],
+    [
+     "At the end of the board, in a cane bottomed chair,",
+     "The boss remains seated with his eyes everywhere ;",
+     "He marks well each fleece as it comes to the screen,",
+     "And he watches where it comes from if not taken off clean."
+    ],
+    [
+     "The \"colonial experience\" is there of course.",
+     "With his silver buckled leggings, he's just off his horse ;",
+     "With the air of a connoiseur he walks up the floor ;",
+     "And he whistles that sweet melody, \"I am a perfect cure.\""
+    ],
+    [
+     "\"So master new chum, you may now begin,",
+     "Muster number seven paddock, bring the sheep all in ;",
+     "Leave none behind you, whatever you do,",
+     "And then we'll say you'r fit to be a Jackeroo.\""
+    ],
+    [
+     "The tar boy is there, awaiting all demands,",
+     "With his black tarry stick, in his black tarry hands.",
+     "He sees an old ewe, with a cut upon the back,",
+     "He hears what he supposes is--\" Tar here, Jack.\""
+    ],
+    [
+     "\"Tar on the back, Jack; Tar, boy, tar.\"",
+     "Tar from the middle to both ends of the board.",
+     "Jack jumps around, for he has no time to sleep,",
+     "And tars the shearer's backs as well as the sheep."
+    ],
+    [
+     "So now the shearing's over, each man has got his cheque,",
+     "The hut is as dull as the dullest old wreck ;",
+     "Where was many a noise and bustle only a few hours before,",
+     "Now you can hear it plainly if a pin fall on the floor."
+    ],
+    [
+     "The shearers now are scattered many miles and far ;",
+     "Some in other sheds perhaps, singing out for \"tar.\"",
+     "Down at the bar, there the old shearer stands,",
+     "Grasping his glass in his long bony hands."
+    ],
+    [
+     "Saying \"Come on, landlord, come on, come !",
+     "I'm shouting for all hands, what's yours--mine's a rum ;\"",
+     "He chucks down his cheque, which is collared in a crack,",
+     "And the landlord with a pen writes no mercy on the back !"
+    ],
+    [
+     "His eyes they were fixed on a green painted keg,",
+     "Saying \" I will lower your contents, before I move a peg.\"",
+     "His eyes are on the keg, and are now lowering fast ;",
+     "He works hard, he dies hard, and goes to heaven at last."
+    ],
+    [
+     "C. C.",
+     "Eynesbury, Nov. 20, 1891."
+    ]
+   ],
+   "wordCount": 465
+  },
+  "themes": [],
+  "title": "The Bare Belled Ewe",
+  "titleAlt": [
+   "Click go the Shears"
+  ],
+  "titleRaw": "The Bare Belled Ewe",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "index",
+   "value": 1891
+  }
+ },
+ {
+  "author": {
+   "name": "COONATTO",
+   "raw": "COONATTO",
+   "signature": "COONATTO"
+  },
+  "id": "afs-113",
+  "kind": "unknown",
+  "location": {
+   "basis": "newspaper",
+   "lat": -33.83325,
+   "lng": 138.61064,
+   "placeId": "au/sa/clare",
+   "raw": null,
+   "state": "SA",
+   "town": "Clare"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 92,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/113.png",
+     "width": 800
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article92765832",
+     "text": "Northern Argus"
+    }
+   ],
+   "text": "From the South Australian newspaper the Northern Argus Friday 3 April 1874. p. 3.\n\nBecause of its familiar phrases this 1874 South Australian song appears to me to be a forerunner of other shearers' songs. We have the famous hand shears \"Ward and Payne\", the ringer, the \"clicking of the shears\", \"down the belly up the neck and down the whipping side\", the \"open Sorby wide\", the \"loudly bawls for tar\", \"wool, wool ringing near and far\" and \"the cobbler\". All these phrases or variations of them appear in a number well known songs including Lachlan Tigers, Ryebuck Shearer, Tomahawking Fred, Widgegoweera Joe, Goorianawa, and, last but not least, Click Go the Shears.\n\nSorby's Sheep-shears were advertised in Australia as early as 1845 in the Geelong Advertiser and Squatters' Advocate, while Ward and Payne Sheep shears were advertised in the Argus as early as 1853.\n\nPeter Neilson writes that the song is\n'related to Coonatto the sheep station north of Adelaide. The need for wool to feed the mills at the time spread its influence far and wide and has a lot to answer for by way of land clearances in England and here...but was also responsible for for some very good working songs'"
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "From the South Australian newspaper the Northern Argus Friday 3 April 1874. p. 3. Because of its familiar phrases",
+    "date": {
+     "day": 3,
+     "month": 4,
+     "raw": "3 April 1874",
+     "year": 1874
+    },
+    "key": "northern-argus",
+    "page": 3,
+    "stateHint": null,
+    "title": "Northern Argus",
+    "troveArticleId": "92765832",
+    "troveUrl": "http://nla.gov.au/nla.news-article92765832"
+   },
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:22.100Z",
+   "site": "afs",
+   "siteId": "113",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/113.html"
+  },
+  "text": {
+   "incipit": "[Tune: Marching Through Georgia]",
+   "lineCount": 22,
+   "stanzas": [
+    [
+     "[Tune: Marching Through Georgia]"
+    ],
+    [
+     "Now the \"pen\" is full lads, we'll have another run,",
+     "Toil away like jolly dogs until we get them done;",
+     "And when they are finished off, and waiting more to come,",
+     "Each one his Ward and Payne will sharpen."
+    ],
+    [
+     "Hurrah! hurrah! the yoke is up to-day,",
+     "Hurrah! hurrah! we'll work and sing away;",
+     "Then let us all be jolly boys, light-hearted and gay,",
+     "As we go \"wiring\" in at shearing."
+    ],
+    [
+     "The \"ringer\" he is ready now, rush oh lads again,",
+     "Nimbly step into the \"pen\" as others do the same;",
+     "Then take your \"nanny\" on the board, and keep it free from pain,",
+     "Whilst off its back the fleece is rolling."
+    ],
+    [
+     "Hear the clicking of the shears as they swiftly glide,",
+     "Down the belly, up the neck, and o'er the whipping side;",
+     "And watch Groves biting out his open Sorby wide,",
+     "Trying all he can to pass the \"ringer.\""
+    ],
+    [
+     "Now the cry is wool, wool, ringing near and far,",
+     "Whilst another two or three loudly bawls for tar!",
+     "And as the \"larrikins\" bring it, and daub it on the scar,",
+     "Oh! what a rush there is to get the cobbler."
+    ],
+    [
+     "COONATTO."
+    ]
+   ],
+   "wordCount": 195
+  },
+  "themes": [],
+  "title": "The Shearer",
+  "titleAlt": [],
+  "titleRaw": "The Shearer (1874)",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1870s",
+   "from": "title",
+   "value": 1874
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-127",
+  "kind": "poem",
+  "location": {
+   "basis": "newspaper",
+   "lat": -27.46794,
+   "lng": 153.02809,
+   "placeId": "au/qld/brisbane",
+   "raw": null,
+   "state": "QLD",
+   "town": "Brisbane"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 156,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/127.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article70858250",
+     "text": "The Worker"
+    },
+    {
+     "href": "http://nla.gov.au/nla.news-article72541279",
+     "text": "Windsor and Richmond Gazette"
+    },
+    {
+     "href": "http://nla.gov.au/nla.news-article124809770",
+     "text": "Weekly Herald"
+    }
+   ],
+   "text": "From The Worker Saturday 22 August 1891.\n\nJack Cornstalk.\nBrisbane, August, 1891.\n\nThe poem was later published in the Windsor and Richmond Gazette Saturday 24 October 1891 (under the title Pen the Truth) and the Weekly Herald Friday 12 October 1894."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "From The Worker Saturday 22 August 1891. Jack Cornstalk. Brisbane, August,",
+    "date": {
+     "day": 22,
+     "month": 8,
+     "raw": "22 August 1891",
+     "year": 1891
+    },
+    "key": "worker",
+    "page": null,
+    "stateHint": null,
+    "title": "The Worker",
+    "troveArticleId": "70858250",
+    "troveUrl": "http://nla.gov.au/nla.news-article70858250"
+   },
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:36.124Z",
+   "site": "afs",
+   "siteId": "127",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/127.html"
+  },
+  "text": {
+   "incipit": "A Poem By Henry Lawson",
+   "lineCount": 19,
+   "stanzas": [
+    [
+     "A Poem By Henry Lawson"
+    ],
+    [
+     "Brave the anger of the wealthy ! Scorn their bitter lying spite !",
+     "Pen the Truth in simple language, when you know that you are right !",
+     "And they'll read it by the slush-lamps in the station huts at night."
+    ],
+    [
+     "I have seen the People's triumph in the visions of my dreams.",
+     "It is pictured by the camp-fires down the lonely western streams ;",
+     "And the teamsters talk about it as they tramp beside their teams."
+    ],
+    [
+     "Write the Truth in simple language and you shall not write in vain !",
+     "Sing a ringing song of freedom and you'll hear the same refrain",
+     "Where the drovers ride together far across the western plain."
+    ],
+    [
+     "Write of wrongs that you are hating with the grand old burning hate !",
+     "For the lonely digger reads it when the western day is late,",
+     "And he marks it in the paper he is sending to his mate."
+    ],
+    [
+     "Write the Truth in simple language when you feel it in your breast :",
+     "It will reach the far selections in the wide Australian west",
+     "Where the bushmen yarn together on a sunny days of rest."
+    ],
+    [
+     "Oh ! the workers new religion spreads beneath the southern skies,",
+     "And the bearded fathers read it for its words are kind and wise,",
+     "And the little children listen to the Truth with wond'ring eyes."
+    ]
+   ],
+   "wordCount": 227
+  },
+  "themes": [],
+  "title": "Spread The Truth !",
+  "titleAlt": [
+   "Spread the Truth"
+  ],
+  "titleRaw": "Spread The Truth !",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1890s",
+   "from": "index",
+   "value": 1891
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-129",
+  "kind": "song",
+  "location": {
+   "basis": "newspaper",
+   "lat": -37.814,
+   "lng": 144.96332,
+   "placeId": "au/vic/melbourne",
+   "raw": null,
+   "state": "VIC",
+   "town": "Melbourne"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 139,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/129.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article4769562",
+     "text": "Argus"
+    }
+   ],
+   "text": "From the Argus Monday 12 November 1849.\n\nYOUNG FIFFEY.\nMelbourne,\nNovember, 1849.\n\nThis song alludes to the power that the employer (in this case a settler) had over his workforce. The law that the settler is referring to is the Masters' and Servants' Act, which was imported from Britain (sometimes revised to make it even more one sided) and widely used in Australia to suppress the \"appearance of any dissention\" as the song describes. It is also interesting that it is set the tune of the popular Irish protest song \"Exile of Erin\". Variations of the Masters and Servants Act existed until the the 1970s, and it can be argued that modern corporations in Australia and elsewhere are presenting similar laws for compliant governments to pass to this day. A good recent example was John Howard's twenty first century anti-union legislation carrying the Orwellian title \"WorkChoices\"."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "From the Argus Monday 12 November 1849. YOUNG FIFFEY. Melbourne, November",
+    "date": {
+     "day": 12,
+     "month": 11,
+     "raw": "12 November 1849",
+     "year": 1849
+    },
+    "key": "argus",
+    "page": null,
+    "stateHint": null,
+    "title": "Argus",
+    "troveArticleId": "4769562",
+    "troveUrl": "http://nla.gov.au/nla.news-article4769562"
+   },
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:38.104Z",
+   "site": "afs",
+   "siteId": "129",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/129.html"
+  },
+  "text": {
+   "incipit": "A Song by Young Fiffey©1849",
+   "lineCount": 26,
+   "stanzas": [
+    [
+     "A Song by Young Fiffey©1849",
+     "Tune-\"The Exile of Erin.\""
+    ],
+    [
+     "Farewell for a season, my mutton and damper,",
+     "Just three weeks farewell, I now bid unto thee ;",
+     "Away to the City, I quickly must scamper,",
+     "To transact some business-and kick up a spree."
+    ],
+    [
+     "The shearing is over, and off I must hasten,",
+     "Away to the City to sell off my wool ;",
+     "When I am there, why of grog, I shall have a slight taster-",
+     "But not quite so much as will make me a fool."
+    ],
+    [
+     "I always take things in their due moderation,",
+     "I never exceed thirty noblers a day ;",
+     "Which at three-pence a piece, by my calculation,",
+     "Just leaves, seven shillings and six pence to pay :"
+    ],
+    [
+     "Now Shepherds, my lads, unto me pay attention,",
+     "Take all sorts of care your sheep do'nt get astray-",
+     "And see that among you there be no contention,",
+     "But fatten your flocks well, while I'm away."
+    ],
+    [
+     "And now my hutkeepers, at night when your watching,",
+     "The sheep in the hurdles, that stand on the brow",
+     "Take care that, the wild dogs, don't be after catching,",
+     "Some fine old fat wether, or motherly ewe."
+    ],
+    [
+     "I hope to my orders, you'll pay strict attention,",
+     "If not, I've a cure unto which I'll resort",
+     "On the first appearance of any dissention,",
+     "I'll pull the whole kit of you, up to the Court."
+    ]
+   ],
+   "wordCount": 228
+  },
+  "themes": [],
+  "title": "The Lay Of The Settler",
+  "titleAlt": [
+   "The Lay of the Settler"
+  ],
+  "titleRaw": "The Lay Of The Settler",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1840s",
+   "from": "newspaper",
+   "value": 1849
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-131",
+  "kind": "unknown",
+  "location": {
+   "basis": "newspaper",
+   "lat": -33.32711,
+   "lng": 115.64137,
+   "placeId": "au/wa/bunbury",
+   "raw": null,
+   "state": "WA",
+   "town": "Bunbury"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 199,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/131.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article87108231",
+     "text": "Bunbury Herald"
+    }
+   ],
+   "text": "From the Bunbury Herald Saturday 25 November 1911."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "From the Bunbury Herald Saturday 25 November 1911.",
+    "date": {
+     "day": 25,
+     "month": 11,
+     "raw": "25 November 1911",
+     "year": 1911
+    },
+    "key": "bunbury-herald",
+    "page": null,
+    "stateHint": null,
+    "title": "Bunbury Herald",
+    "troveArticleId": "87108231",
+    "troveUrl": "http://nla.gov.au/nla.news-article87108231"
+   },
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:40.105Z",
+   "site": "afs",
+   "siteId": "131",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/131.html"
+  },
+  "text": {
+   "incipit": "A Poem by Gilrooney©1911",
+   "lineCount": 33,
+   "stanzas": [
+    [
+     "A Poem by Gilrooney©1911"
+    ],
+    [
+     "With the greeting smile of summer, ever comes a busy time,",
+     "To the little cockie squatter settled round,",
+     "When no mercy knows the laggard, and to dally is a crime,",
+     "And with Babylonic noise the hills resound ;",
+     "With the cattle kelpies yelping, and the kiddies barking, too,",
+     "And mother bustling round till daylight's gone-",
+     "She has neither leave nor leisure now to yarn with me or you,",
+     "When the little cockie squatter's shearing's on."
+    ],
+    [
+     "Oh, such busy bustling hurry, and such grinding up of shears !",
+     "Oh, what pottering and patching at the shed,",
+     "And the fences and the crushes, that do service through the years-",
+     "When the little bit of shearing's just ahead !",
+     "And what comic journal pictures are the father and the sons,",
+     "In the fancy shearing costumes that they don ;",
+     "Ah! in spite of battles bitter, what a flood of humour runs",
+     "When the little cockie squatter's shearing's on."
+    ],
+    [
+     "How they bow to Labour's bidding ! How they swill and sweat and swear,",
+     "When the crimson-tinted carnage once begins !",
+     "How they court a spirit reckless, and with neither thought nor care",
+     "Of the sequence of their sallies and their sins.",
+     "And then father, too, has dreamings of wool values good and bad,",
+     "Of the markets that his clip may chance upon ;",
+     "'Tis a time of dark foreboding, and it sorely troubles dad,",
+     "When his little bit of shearing's really on."
+    ],
+    [
+     "Ah ! well, now the shearing's over, and 'tis gentle peace again ;",
+     "For the solitary bale is tarred and tied.",
+     "And he feels as he surveys it that his work was not in vain,",
+     "And he's bloated with a squatter's proper pride.",
+     "It is well ; and may his values soon rise level with his best,",
+     "For then will all his sleepless nights be gone ;",
+     "And the farm will work on bearings of all hearts and minds at rest,",
+     "Till the distant next year's shearing's coming on."
+    ]
+   ],
+   "wordCount": 331
+  },
+  "themes": [],
+  "title": "When The Cockie's Shearing's On",
+  "titleAlt": [],
+  "titleRaw": "When The Cockie's Shearing's On",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1910s",
+   "from": "newspaper",
+   "value": 1911
+  }
+ },
+ {
+  "author": {
+   "name": null,
+   "raw": null,
+   "signature": null
+  },
+  "id": "afs-144",
+  "kind": "poem",
+  "location": {
+   "basis": "newspaper",
+   "lat": -38.14711,
+   "lng": 144.36069,
+   "placeId": "au/vic/geelong",
+   "raw": null,
+   "state": "VIC",
+   "town": "Geelong"
+  },
+  "media": {
+   "audio": [],
+   "images": [
+    {
+     "height": 70,
+     "role": "masthead",
+     "type": "png",
+     "url": "https://folkstream.com/144.png",
+     "width": 500
+    }
+   ],
+   "midi": []
+  },
+  "notes": {
+   "links": [
+    {
+     "href": "http://nla.gov.au/nla.news-article91861696",
+     "text": "Geelong Advertiser and Intelligencer"
+    }
+   ],
+   "text": "From Geelong Advertiser and Intelligencer 6 December 1854.\n\nPublished three days after the Eureka Massacre this poem (or song) describes in great detail the slaughter of wounded diggers in the after surrender rampage by the rum fuelled soldiers and police at the Eureka Stockade on Sunday at dawn on 3 December 1854."
+  },
+  "provenance": {
+   "collectors": [],
+   "newspaper": {
+    "context": "From Geelong Advertiser and Intelligencer 6 December 1854. Published three days after the Eureka Mas",
+    "date": {
+     "day": 6,
+     "month": 12,
+     "raw": "6 December 1854",
+     "year": 1854
+    },
+    "key": "geelong-advertiser-and-intelligencer",
+    "page": null,
+    "stateHint": null,
+    "title": "Geelong Advertiser and Intelligencer",
+    "troveArticleId": "91861696",
+    "troveUrl": "http://nla.gov.au/nla.news-article91861696"
+   },
+   "singers": [],
+   "songbooks": []
+  },
+  "related": [],
+  "source": {
+   "fetchedAt": "2026-09-29T07:09:53.113Z",
+   "site": "afs",
+   "siteId": "144",
+   "siteName": "Australian Folk Songs (folkstream.com, Mark Gregory)",
+   "url": "https://folkstream.com/144.html"
+  },
+  "text": {
+   "incipit": "\"Requiescat in pace.\" -- Amen.",
+   "lineCount": 35,
+   "stanzas": [
+    [
+     "\"Requiescat in pace.\" -- Amen.",
+     "J. M.",
+     "Geelong, 5th December, 1854."
+    ],
+    [
+     "Toll the bell softly ! toll toll for the digger,",
+     "Solemnly ! solemnly ! toll for the dead !",
+     "Rash men, yet brave ones, cut down in life's vigour,",
+     "Gently recline them in earth's lowly bed;",
+     "Slaughtered by scores, the hearts blood ran luridly;",
+     "Tingeing the moonbeams that shone on the plain;",
+     "Peaceful souls bayoneted, horridly ! horridly !",
+     "Seeking their friends 'midst the heap of the slain."
+    ],
+    [
+     "Toll the bell slowly ! but mournfully ! mournfully",
+     "Toll the bell softly ! the knell's for the brave;",
+     "Toll for the weaponless, innocent, loyal man,",
+     "Sabred and shot as a fugitive slave.",
+     "Whizzing the fatal ball sped on its ruthless way,",
+     "Gleaming the keen sword leaped out from its sheath,",
+     "Dreadful the groans at the wounded, who, dying lay",
+     "Mangled in death by the trooper steeds' feet."
+    ],
+    [
+     "Toll the bell loudly! the LORD hears its doleful cry,",
+     "Wailing for JUSTICE before HIS high throne;",
+     "In fulness of time will his forked lightnings fearful fly;",
+     "Vengeance is HIS, pray for those who have gone !",
+     "Pray for the heart broken mother whose sorrow",
+     "Pierceth the clouds, 'tis her son's death she weeps.",
+     "Pray for the young wife, a bitter to-morrow",
+     "Frowns on her life, though unconscious she sleeps."
+    ],
+    [
+     "Pray ! see the burning tents 'lumine the dark wood;",
+     "Pray ! by that wild glare sad deeds will be traced;",
+     "Pray ! that again may be ne'er shed such life blood;",
+     "Pray that all wrong doing soon be erased.",
+     "Toll the bell softly ! toll, toll for the digger;",
+     "Solemnly ! solemnly ! toll for the dead !",
+     "Rash men, yet brave ones, cut down in life's vigour;",
+     "Gently recline them in earth's lowly bed."
+    ]
+   ],
+   "wordCount": 293
+  },
+  "themes": [],
+  "title": "The Diggers' Dirge",
+  "titleAlt": [],
+  "titleRaw": "The Diggers' Dirge",
+  "warnings": [],
+  "year": {
+   "approx": false,
+   "decade": "1850s",
+   "from": "newspaper",
+   "value": 1854
+  }
+ }
+]

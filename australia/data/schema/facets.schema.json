@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://culegeri.local/australia/schema/facets.schema.json",
+  "title": "Facets",
+  "description": "facets.json: for each facet, a map of value -> number of songs. Keys are sorted. Null values are counted under the key 'null'.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_meta",
+    "decade",
+    "year",
+    "kind",
+    "state",
+    "town",
+    "newspaper",
+    "songbook",
+    "singer",
+    "collector",
+    "author",
+    "hasNotation",
+    "hasMasthead",
+    "hasMidi",
+    "hasAudio",
+    "yearFrom"
+  ],
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "songCount"
+      ],
+      "properties": {
+        "songCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "builtWith": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "decade": {
+      "$ref": "#/$defs/countMap"
+    },
+    "year": {
+      "$ref": "#/$defs/countMap"
+    },
+    "kind": {
+      "$ref": "#/$defs/countMap"
+    },
+    "state": {
+      "$ref": "#/$defs/countMap"
+    },
+    "town": {
+      "$ref": "#/$defs/countMap"
+    },
+    "newspaper": {
+      "$ref": "#/$defs/countMap"
+    },
+    "songbook": {
+      "$ref": "#/$defs/countMap"
+    },
+    "singer": {
+      "$ref": "#/$defs/countMap"
+    },
+    "collector": {
+      "$ref": "#/$defs/countMap"
+    },
+    "author": {
+      "$ref": "#/$defs/countMap"
+    },
+    "hasNotation": {
+      "$ref": "#/$defs/countMap"
+    },
+    "hasMidi": {
+      "$ref": "#/$defs/countMap"
+    },
+    "yearFrom": {
+      "$ref": "#/$defs/countMap"
+    },
+    "hasMasthead": {
+      "$ref": "#/$defs/countMap"
+    },
+    "hasAudio": {
+      "$ref": "#/$defs/countMap"
+    }
+  },
+  "$defs": {
+    "countMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

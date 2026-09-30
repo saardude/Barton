@@ -1,18 +1,58 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "npm ci --prefix app",
-  "buildCommand": "npm run build --prefix app",
+  "installCommand": "npm ci --prefix app && npm ci --prefix australia/app",
+  "buildCommand": "node scripts/build-site.mjs",
   "outputDirectory": "app/dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!data/|assets/).*)",
+      "source": "/australia/((?!data/|assets/).*)",
+      "destination": "/australia"
+    },
+    {
+      "source": "/((?!data/|assets/|australia/).*)",
       "destination": "/"
     }
   ],
   "headers": [
+    {
+      "source": "/australia/data/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/australia/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/australia",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/australia/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
     {
       "source": "/data/(.*)",
       "headers": [
@@ -65,14 +105,9 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://basemaps.cartocdn.com https://*.basemaps.cartocdn.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://*.zti.hu; media-src 'self' https://*.zti.hu; connect-src 'self' https://*.zti.hu; font-src 'self'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://basemaps.cartocdn.com https://*.basemaps.cartocdn.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://*.zti.hu https://folkstream.com https://www.folkstream.com; media-src 'self' https://*.zti.hu https://folkstream.com https://www.folkstream.com; connect-src 'self' https://*.zti.hu; font-src 'self'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
         }
       ]
     }
-  ],
-  "git": {
-    "deploymentEnabled": {
-      "claude/bartok-ethnographic-viewer-kvjt8j": false
-    }
-  }
+  ]
 }
