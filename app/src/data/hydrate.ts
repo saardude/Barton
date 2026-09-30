@@ -5,6 +5,8 @@
 import type { Place } from '../types/place'
 import type { Song } from '../types/song'
 import { collectorsOf } from './collectors'
+// Side-effect import so the `collectors` interface merge is part of every build, incremental or not.
+import '../types/song-augment'
 
 type Raw = Record<string, unknown>
 const obj = (v: unknown): Raw => (v && typeof v === 'object' && !Array.isArray(v) ? (v as Raw) : {})
