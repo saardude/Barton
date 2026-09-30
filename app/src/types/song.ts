@@ -6,7 +6,7 @@
  */
 export interface Song {
   /**
-   * Stable id: site prefix + site record id. Prefixes: fmbc (bartok-nepzene.zti.hu), bsys (systems.zti.hu/br), gyuj (bartok-gyujtesek.zti.hu), rfm (printed Rumanian Folk Music volumes, digitised copy, see docs/PRINT-SOURCES.md).
+   * Stable id: site prefix + site record id. Prefixes: fmbc (bartok-nepzene.zti.hu), bsys (systems.zti.hu/br), gyuj (bartok-gyujtesek.zti.hu), rfm (printed Rumanian Folk Music volumes via the Internet Archive scans, see docs/PRINT-SOURCES.md).
    */
   id: string
   source: {
@@ -92,7 +92,7 @@ export interface Song {
     ethnicity: string | null
   }
   /**
-   * Collector name, usually Bartok Bela; verbatim.
+   * Collector string as printed (kept for compatibility; use collectors[] for facets).
    */
   collector: string | null
   collected: {
@@ -246,6 +246,14 @@ export interface Song {
     place?: string | null
     url?: string | null
   } | null
+  /**
+   * The original collector string, verbatim (same as collector).
+   */
+  collectorRaw: string | null
+  /**
+   * Normalised collector names in the Hungarian order the sources use ("Bartok Bela"), one per person; multi-collector strings split; Western-order and spelling variants folded via COLLECTOR_ALIASES in scraper/src/normalize.js. [] when unknown.
+   */
+  collectors: string[]
 }
 export interface MediaItem {
   url: string

@@ -104,7 +104,8 @@ export function hydrateSong(input: unknown, placeById: Map<string, Place>): Song
       sex: (str(perf.sex) as 'm' | 'f' | null) ?? null,
       ethnicity: str(perf.ethnicity),
     },
-    collector: str(r.collector),
+    collector: str(r.collector) ?? (Array.isArray(r.collectors) && r.collectors.length ? String(r.collectors[0]) : null),
+    collectorRaw: str(r.collectorRaw) ?? str(r.collector),
     collectors: collectorsOf(r.collectors, str(r.collector)),
     collected: { year: num(col.year), month: num(col.month), day: num(col.day), raw: str(col.raw) },
     location: placeId
