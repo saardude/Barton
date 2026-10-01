@@ -22,3 +22,21 @@ Run (Python 3.11): `pip install torch torchaudio --index-url https://download.py
 then `pip install onnxruntime librosa soundfile scipy speechmos torchmetrics faster-whisper`;
 convert each MP3 to 16 kHz mono WAV named by cylinder, then
 `python score.py sample.json wav scores.json --only dnsmos,librosa`.
+
+## Version 2: clarity of the target (60%) + noise (40%)
+
+Version 1 mostly measured noise, so a quiet cylinder with a dull voice ranked first and a noisy
+cylinder with a clear voice last. Version 2 separates the target first (torchaudio
+`HDEMUCS_HIGH_MUSDB_PLUS`) and scores the separated voice or instrument:
+
+- `features_v2.py` (stage 1, slow): words (Whisper small vs the catalogue first line, wav2vec2
+  XLSR-53 phoneme confidence), CREPE pitch confidence, harmonic richness (overtones above 1 kHz read
+  at multiples of f0, so hiss cannot count), Praat harmonics-to-noise, onset clarity. The catalogue
+  decides sung vs instrumental; first 60 s of each recording.
+- `score_v2.py` (stage 2, instant): `legib = 0.6 × clarity + 0.4 × noise`; noise reuses the v1
+  librosa noise features and DNSMOS background (BAK). Mapping ranges are fixed a priori.
+- `features_v2.json`, `v2.json`: raw features and scores for the 20.
+
+Result: Spearman 0.40 between v1 and v2 rankings; MH_1381b moves from 20th to 4th, MH_0432e from
+2nd to 7th. About 70–90 s per recording on 4 CPU cores; a GPU run is planned for the full corpus.
+Install additionally: `pip install torchcrepe praat-parselmouth transformers rapidfuzz`.
