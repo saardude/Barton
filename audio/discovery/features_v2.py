@@ -161,6 +161,15 @@ def incipit_match(y, incipit, lang):
 if __name__ == "__main__":
     sample, mp3dir, out = sys.argv[1:4]
     songs = {s["id"]: s for s in json.load(open("/home/user/Culegeri/data/songs.json"))}
+    own_first = lambda s: s.get("incipit") or (re.search(r"\[([^\]]+)\]", s.get("title") or "") or [None, None])[1]
+    # the same cylinder is often catalogued twice (fmbc names Bartok's piece, bsys has the sung first line)
+    by_cyl = {}
+    for o in songs.values():
+        refs = [a["url"] for a in o["media"]["audio"]] + [o["rawFields"].get("Sound recording") or ""]
+        for u in refs:
+            m = re.search(r"((?:MH|KF)_[0-9A-Za-z]+)", u)
+            if m and own_first(o):
+                by_cyl.setdefault(m.group(1).lower(), own_first(o))
     res = json.load(open(out)) if os.path.exists(out) else {}
     for p in json.load(open(sample)):
         if p["cyl"] in res:
@@ -171,7 +180,7 @@ if __name__ == "__main__":
         tonal = e["vocals"] + e["other"] + e["bass"]  # drums mostly collects cylinder clicks
         vshare = e["vocals"] / (tonal + 1e-12)
         s = songs[p["id"]]
-        first = s.get("incipit") or (re.search(r"\[([^\]]+)\]", s.get("title") or "") or [None, None])[1]
+        first = own_first(s) or by_cyl.get(p["cyl"].lower())
         # the catalogue decides voice vs instrument; the separator only when the catalogue is silent
         sung = s["performance"] in ("vocal", "mixed") or (s["performance"] != "instrumental" and bool(first))
         vocal = sung or (s["performance"] != "instrumental" and vshare >= 0.5)

@@ -8,7 +8,10 @@ legib = 0.6 x clarity + 0.4 x noise
 Dropped after calibration: CREPE pitch confidence and Praat HNR (ran against the ratings; they still
 reward quiet recordings), overtones and phoneme confidence (no gain), the click counter and frequency
 range (inverted: they rate the noisiest recordings as cleanest).
-Held-out rank agreement with the owner's combined ratings: 0.86 (v2 0.42, v1 0.38).
+Rank agreement with the owner's combined ratings: 0.86 (v2 0.42, v1 0.38); clarity 0.80, noise 0.86.
+
+First line: the record's own incipit, else the bracketed line in its title, else the first line of
+another record of the same cylinder (fmbc entries borrow from bsys); else words get 0.5.
 
 Usage: python score_v3.py features_v2.json scores.json out.json
 """
@@ -21,11 +24,9 @@ W_CLARITY, W_NOISE = 0.6, 0.4
 def clarity(f, stoi):
     parts = {"intelligibility": lin(stoi, 0.4, 0.75), "rhythm": lin(f["rhythm"], 2, 10)}
     inc = (f.get("incipit") or {}).get("match")
-    if inc is not None:
-        parts["words"] = lin(inc, 0.3, 1.0)
-        w = {"intelligibility": 0.50, "words": 0.25, "rhythm": 0.25}
-    else:  # no first line in the catalogue: keep the same 2:1 balance between the other two
-        w = {"intelligibility": 2 / 3, "rhythm": 1 / 3}
+    # no first line anywhere in the catalogue (41 cylinder records): neutral half credit for words
+    parts["words"] = lin(inc, 0.3, 1.0) if inc is not None else 0.5
+    w = {"intelligibility": 0.50, "words": 0.25, "rhythm": 0.25}
     return sum(parts[k] * w[k] for k in w), parts
 
 

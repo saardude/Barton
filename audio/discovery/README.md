@@ -51,8 +51,11 @@ result:
 - clarity = 0.50 SQUIM intelligibility + 0.25 words vs first line + 0.25 rhythm (separated voice)
 - noise = 0.80 DNSMOS background + 0.20 low hiss
 
-Rank agreement with the owner's combined ratings: v3 0.78 (0.89 without MH_1046b, the only record
-with no catalogue first line), v2 0.42, v1 0.38. Clarity half 0.75, noise half 0.86. Pitch
+Rank agreement with the owner's combined ratings: v3 0.86, v2 0.42, v1 0.38. Clarity half 0.80,
+noise half 0.86. First lines are borrowed by cylinder number when a record has none (fmbc entries
+name Bartok's piece; the bsys record of the same cylinder has the sung line): 70 of the 111 cylinder
+records without a first line recover one, the other 41 get half credit for words. This moved
+MH_1046b from 1st to 7th (Whisper hears no words in it). Pitch
 confidence and HNR ran against the ratings; the click counter and frequency range were inverted.
 `unseparated-test.json`: words and rhythm measured without separation drop the combined
 agreement to 0.74, so separation stays. No instrumental recording was in the sample.

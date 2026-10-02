@@ -209,19 +209,6 @@
    "hiss": 0.68
   }
  },
- "MH_1046b": {
-  "legib": 0.618,
-  "clarity": 0.482,
-  "noise": 0.822,
-  "clarity_parts": {
-   "intelligibility": 0.4,
-   "rhythm": 0.64
-  },
-  "noise_parts": {
-   "background": 0.79,
-   "hiss": 0.93
-  }
- },
  "MH_1192a": {
   "legib": 0.562,
   "clarity": 0.468,
@@ -276,6 +263,20 @@
   "noise_parts": {
    "background": 0.14,
    "hiss": 0.97
+  }
+ },
+ "MH_1046b": {
+  "legib": 0.546,
+  "clarity": 0.362,
+  "noise": 0.822,
+  "clarity_parts": {
+   "intelligibility": 0.4,
+   "rhythm": 0.64,
+   "words": 0.0
+  },
+  "noise_parts": {
+   "background": 0.79,
+   "hiss": 0.93
   }
  }
 }
