@@ -552,6 +552,43 @@ def write_quality(out_path, dest):
         json.dump(doc, f, ensure_ascii=False, indent=1)
         f.write("\n")
     log(f"wrote {len(tracks)} tracks to {os.path.relpath(dest, REPO)}")
+    report(rows, out_path)
+
+
+def report(rows, out_path):
+    """Coverage, score distribution and the open points (instrumental records, records without a first line)."""
+    import collections
+    import numpy as np
+    songs = json.load(open(os.path.join(REPO, "data", "songs.json"), encoding="utf-8"))
+    every = {t["cyl"].lower() for t in build_tracks(songs)}
+    scored = {k.lower() for k in rows}
+    failed = {}
+    for f in read_jsonl(os.path.join(os.path.dirname(out_path), "failures.jsonl")):
+        if f["cyl"].lower() not in scored:
+            failed[f["cyl"].lower()] = f
+    print(f"coverage: {len(every)} tracks; scored {len(scored & every)}, failed {len(failed)}, "
+          f"not attempted {len(every - scored - set(failed))}")
+    for stage, c in collections.Counter((f["stage"], f["error"].split(":")[0][:80]) for f in failed.values()).most_common(8):
+        print(f"  failed at {stage[0]}: {stage[1]} x{c}")
+    L = np.array([r["legib"] for r in rows.values()])
+    edges = np.round(np.arange(0, 1.01, 0.1), 1)
+    hist = np.histogram(L, bins=edges)[0]
+    print(f"legib: mean {L.mean():.3f}, median {np.median(L):.3f}, p10 {np.percentile(L, 10):.3f}, "
+          f"p90 {np.percentile(L, 90):.3f}, min {L.min():.3f}, max {L.max():.3f}")
+    for lo, n in zip(edges[:-1], hist):
+        print(f"  {lo:.1f}-{lo + 0.1:.1f} {n:5d} {'#' * int(round(60 * n / max(hist)))}")
+    for key in ("kind", "kindFrom", "target", "firstLineSource", "lang"):
+        print(f"{key}: {dict(collections.Counter(r[key] for r in rows.values()).most_common())}")
+    for kind in ("sung", "instrumental"):
+        v = [r["legib"] for r in rows.values() if r["kind"] == kind]
+        if v:
+            print(f"  {kind}: n {len(v)}, median legib {np.median(v):.3f}")
+    nofirst = [r["cyl"] for r in rows.values() if r["firstLineSource"] == "none"]
+    nofirst_sung = [r["cyl"] for r in rows.values() if r["firstLineSource"] == "none" and r["kind"] == "sung"]
+    print(f"no first line anywhere: {len(nofirst)} tracks (words = 0.5), of which sung {len(nofirst_sung)}")
+    for k in ("intelligibility", "words", "rhythm", "background", "hiss"):
+        v = np.array([r["parts"][k] for r in rows.values()])
+        print(f"  {k:15s} mean {v.mean():.2f}  at 0: {int((v == 0).sum())}  at 1: {int((v == 1).sum())}")
 
 
 def check_gpu(args):
