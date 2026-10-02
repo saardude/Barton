@@ -54,6 +54,12 @@ omr/.venv/
 
 omr/.venv*/
 omr/samples/**/*.onnx
+# cylinder legibility run (audio/run_legibility.py): audit log, failures, downloaded audio, venv
+audio/out/
+audio/cache/
+audio/.venv/
+.venv/
+
 # raw HTML cache of the Australia scraper (never committed)
 australia/scraper/cache/
 
