@@ -40,3 +40,19 @@ cylinder with a clear voice last. Version 2 separates the target first (torchaud
 Result: Spearman 0.40 between v1 and v2 rankings; MH_1381b moves from 20th to 4th, MH_0432e from
 2nd to 7th. About 70–90 s per recording on 4 CPU cores; a GPU run is planned for the full corpus.
 Install additionally: `pip install torchcrepe praat-parselmouth transformers rapidfuzz`.
+
+## Version 3: calibrated to the owner's ratings (2 October 2026)
+
+`owner-ratings.json` holds the owner's ratings of the 20 cylinders: clarity of the voice or
+instrument and noise (1 = little noise), each 0–1, combined 0.6 / 0.4. Weights inside each half
+were fitted with non-negative weights summing to 1 and checked leave-one-out; `score_v3.py` has the
+result:
+
+- clarity = 0.50 SQUIM intelligibility + 0.25 words vs first line + 0.25 rhythm (separated voice)
+- noise = 0.80 DNSMOS background + 0.20 low hiss
+
+Rank agreement with the owner's combined ratings: v3 0.78 (0.89 without MH_1046b, the only record
+with no catalogue first line), v2 0.42, v1 0.38. Clarity half 0.75, noise half 0.86. Pitch
+confidence and HNR ran against the ratings; the click counter and frequency range were inverted.
+`unseparated-test.json`: words and rhythm measured without separation drop the combined
+agreement to 0.74, so separation stays. No instrumental recording was in the sample.
