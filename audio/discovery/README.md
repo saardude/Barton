@@ -59,3 +59,14 @@ MH_1046b from 1st to 7th (Whisper hears no words in it). Pitch
 confidence and HNR ran against the ratings; the click counter and frequency range were inverted.
 `unseparated-test.json`: words and rhythm measured without separation drop the combined
 agreement to 0.74, so separation stays. No instrumental recording was in the sample.
+
+## Record scores leave out spoken clips (3 October 2026)
+
+319 tracks have a numbered twin (MH_1250a and MH_1250a0). Most are short clips (median 7.9 s) that
+the owner and Whisper both hear as spoken announcements or fragments, not the song; speech measures
+score them higher, so a record that took its best track was often scored on the clip.
+`audio/quality_records.py` marks a track as a clip when its ID ends in a number after the side letter
+and it lasts 20 s or less (316 tracks; lengths in `audio/clip-lengths.json`). A record's score is its
+best non-clip track; the 2 records with clips only are scored on the clip and flagged "clip-only".
+This changed 241 record scores (mean drop 0.18). `data/recording-quality.json` now holds `tracks`
+(every track), `clips` and `records` (`{"legib", "track", "flag"?}` per record).

@@ -548,6 +548,12 @@ def write_quality(out_path, dest):
     stamp = max(r["scoredAt"] for r in rows.values())[:10]
     tracks = {k: round(rows[k]["legib"], 2) for k in sorted(rows, key=str.lower)}
     doc = {"method": METHOD, "scoredAt": stamp, "tracks": tracks}
+    # record scores leave out the short numbered clips (spoken announcements); see quality_records.py
+    import quality_records
+    lengths = json.load(open(os.path.join(HERE, "clip-lengths.json"), encoding="utf-8"))
+    lengths.update({k: r["durationS"] for k, r in rows.items() if r.get("durationS") is not None})
+    songs = json.load(open(os.path.join(REPO, "data", "songs.json"), encoding="utf-8"))
+    quality_records.annotate(doc, songs, lengths)
     with open(dest, "w", encoding="utf-8", newline="\n") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
         f.write("\n")
