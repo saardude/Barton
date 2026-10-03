@@ -73,3 +73,7 @@ australia/app/src/generated/
 australia/app/e2e-results/
 australia/app/e2e-report/
 australia/app/test-results/
+
+# Python bytecode
+__pycache__/
+*.pyc
